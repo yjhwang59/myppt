@@ -1,0 +1,32 @@
+{
+  "name": "ai-eip",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Enterprise AI portal deck with narration pipeline",
+  "scripts": {
+    "narration:extract": "node scripts/narration/extract-slides.js",
+    "narration:generate": "node scripts/narration/generate-scripts.js",
+    "narration:approve": "node scripts/narration/approve-scripts.js",
+    "narration:tts": "node scripts/narration/synthesize-audio.js",
+    "narration:validate": "node scripts/narration/validate-manifest.js",
+    "narration:pipeline": "node scripts/narration/run-pipeline.js",
+    "narration:fix-audio-urls": "node scripts/narration/fix-audio-urls.js",
+    "migrate:slides": "node scripts/narration/migrate-slides.js",
+    "build:deck": "node scripts/narration/build-deck.js",
+    "dev": "node server/index.js",
+    "deploy": "wrangler deploy"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.127.1"
+  }
+}

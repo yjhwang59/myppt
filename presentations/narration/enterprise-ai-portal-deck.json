@@ -1,0 +1,767 @@
+{
+  "version": "1.0.0",
+  "deckId": "enterprise-ai-portal-deck",
+  "deckPath": "enterprise-ai-portal-deck.html",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "04571318d1ad6dd15fa9e6eface2e9c0a21a8a9ee979a2a1e4425364ccc104b6",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "主管決策簡報 · Enterprise AI Portal",
+        "headings": [
+          "企業 AI 入口網整合平台架構"
+        ],
+        "lead": "以統一入口與編排器(Orchestrator)串接雲端生成式 AI 與私有 GPU 推論，把企業資料轉成可治理、可落地的智慧服務。",
+        "stamp": "對象：決策層／資訊長／數位轉型負責人 · 約 11 頁 · 16:9",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "各位主管好，這份簡報的主題是「企業 AI 入口網整合平台架構」。以統一入口與編排器(Orchestrator)串接雲端生成式 AI 與私有 GPU 推論，把企業資料轉成可治理、可落地的智慧服務。理解這一頁後，下一頁我們會進入「為什麼現在」。",
+      "estimatedSeconds": 30,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s01.mp3",
+      "audioDurationSeconds": 21.3,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.766Z",
+      "approvedAt": "2026-08-31T06:43:39.288Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "為什麼現在",
+      "sourceHash": "057ab27bb5e711bb55a05e4828c2123c5597a58704dc5359a808efdb5e22baa9",
+      "extractedContent": {
+        "eyebrow": "02 / 為什麼現在",
+        "kicker": "",
+        "headings": [
+          "多系統、多模型、多風險 — 需要一個入口"
+        ],
+        "lead": "散落的試點與工具無法形成組織能力；先統一入口與編排層，再談擴張場景。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "資料孤島(Data Silo)",
+            "paragraph": "SOP、合約、ERP／ITSM、監控日誌與外部 API 分屬不同系統，問答與報表難以跨來源組裝。",
+            "bullets": []
+          },
+          {
+            "heading": "多模型與成本失控",
+            "paragraph": "雲端模型與私有推論各走各的；缺少模型路由(Model Routing)與權限控管，試點難以規模化。",
+            "bullets": []
+          },
+          {
+            "heading": "資安與導入成本",
+            "paragraph": "敏感資料不宜一律上雲；合規、稽核與 Agent 自動化需要中央治理，而非各部門自建黑盒。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "結論：需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「為什麼現在」。散落的試點與工具無法形成組織能力；先統一入口與編排層，再談擴張場景。這頁有三個重點。第一，資料孤島(Data Silo)：SOP、合約、ERP／ITSM、監控日誌與外部 API 分屬不同系統，問答與報表難以跨來源組裝。。第二，多模型與成本失控：雲端模型與私有推論各走各的；缺少模型路由(Model Routing)與權限控管，試點難以規模化。。第三，資安與導入成本：敏感資料不宜一律上雲；合規、稽核與 Agent 自動化需要中央治理，而非各部門自建黑盒。。需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。理解這一頁後，下一頁我們會進入「架構總覽」。",
+      "estimatedSeconds": 68,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s02.mp3",
+      "audioDurationSeconds": 55.2,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.768Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "架構總覽",
+      "sourceHash": "c1d9de7c991a3b81f774adbfcb6691e1b1dd2dcf8ca11133d861a5cbc6c0af6c",
+      "extractedContent": {
+        "eyebrow": "03 / 架構總覽",
+        "kicker": "",
+        "headings": [
+          "五層架構：從入口到產業價值"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [
+          "1",
+          "使用者",
+          "統一入口體驗",
+          "企業 AI 入口網站",
+          "Chatbot",
+          "行動 App",
+          "🌐",
+          "💬",
+          "📱",
+          "2",
+          "編排層",
+          "AI Orchestrator",
+          "身分驗證與權限",
+          "提示工程 Prompt",
+          "Agent 工作流",
+          "模型路由",
+          "回應優化",
+          "3",
+          "模型與資料",
+          "混合部署底座",
+          "☁ Cloudflare",
+          "雲端邊緣與服務",
+          "🖥 企業內部 Server",
+          "地端私有推論",
+          "🗄 企業資料庫",
+          "SQL / 文件 / 日誌",
+          "✦ LLM",
+          "大型語言模型",
+          "4",
+          "分析回饋",
+          "閉環產出",
+          "文件問答",
+          "資產分析",
+          "維運建議",
+          "生成 → 分析 → 預測 → 建議 → 自動執行",
+          "可稽核的智慧服務閉環",
+          "5",
+          "價值",
+          "場景 × 產業",
+          "六大企業場景",
+          "六大產業應用",
+          "混合部署與資安治理"
+        ],
+        "callouts": []
+      },
+      "script": "接下來這一頁，我們來看「架構總覽」。架構上，我們依序看：1、使用者、統一入口體驗、企業 AI 入口網站、Chatbot、行動 App、🌐、💬。理解這一頁後，下一頁我們會進入「使用者入口」。",
+      "estimatedSeconds": 30,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s03.mp3",
+      "audioDurationSeconds": 15.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.768Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "使用者入口",
+      "sourceHash": "54a13168ce490d8f4a2b642683521b72fb5b1e7c3b818bbec9b21fd9f7bf7dff",
+      "extractedContent": {
+        "eyebrow": "04 / 使用者入口",
+        "kicker": "",
+        "headings": [
+          "一個入口、多端體驗"
+        ],
+        "lead": "員工與主管不必記住十套 AI 工具；從入口網站、對話與行動端進入同一套權限與編排。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "企業 AI 入口網站",
+            "paragraph": "",
+            "bullets": [
+              "場景目錄與角色首頁",
+              "知識庫／報表／Agent 入口",
+              "與既有 SSO 對齊"
+            ]
+          },
+          {
+            "heading": "Chatbot",
+            "paragraph": "",
+            "bullets": [
+              "自然語言問答與工單輔助",
+              "可引用企業文件與系統狀態",
+              "適合作業現場與服務台"
+            ]
+          },
+          {
+            "heading": "行動 App",
+            "paragraph": "",
+            "bullets": [
+              "外出／廠區／值班查詢",
+              "輕量通知與審批提示",
+              "與入口同一後端編排"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "設計原則：體驗在前端分流，治理與模型呼叫一律經編排器(Orchestrator)，避免旁路繞過權限。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「使用者入口」。員工與主管不必記住十套 AI 工具；從入口網站、對話與行動端進入同一套權限與編排。這頁有三個重點。第一，企業 AI 入口網站：場景目錄與角色首頁。第二，Chatbot：自然語言問答與工單輔助。第三，行動 App：外出／廠區／值班查詢。體驗在前端分流，治理與模型呼叫一律經編排器(Orchestrator)，避免旁路繞過權限。理解這一頁後，下一頁我們會進入「Orchestrator」。",
+      "estimatedSeconds": 46,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s04.mp3",
+      "audioDurationSeconds": 36,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.768Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "Orchestrator",
+      "sourceHash": "7ece26314a3b2cb30610190830938ed4ff0435c16fec04552e4a82ddbb6fe465",
+      "extractedContent": {
+        "eyebrow": "05 / AI 整合平台",
+        "kicker": "",
+        "headings": [
+          "編排器(Orchestrator)：五步治理管線"
+        ],
+        "lead": "把「誰能問什麼、用哪個模型、如何組裝答案」變成可稽核流程。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "身分驗證與權限管控",
+            "description": "Identity / RBAC；依角色與資料分級放行"
+          },
+          {
+            "title": "提示工程與管理",
+            "description": "Prompt 模板版本化；避免各單位自行散落"
+          },
+          {
+            "title": "工作流與 Agent 管理",
+            "description": "多步驟任務、工具呼叫與人工審核點"
+          },
+          {
+            "title": "模型路由與任務分派",
+            "description": "雲端或私有 GPU；依敏感度與成本選擇"
+          },
+          {
+            "title": "回應整合與結果優化",
+            "description": "引用來源、格式化、品質與安全過濾"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [
+          "主管重點：編排層是平台「作業系統」— 沒有它，模型與資料再多也只是分散試點。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「Orchestrator」。把「誰能問什麼、用哪個模型、如何組裝答案」變成可稽核流程。流程上，第1步是身分驗證與權限管控，Identity / RBAC；依角色與資料分級放行。第2步是提示工程與管理，Prompt 模板版本化；避免各單位自行散落。第3步是工作流與 Agent 管理，多步驟任務、工具呼叫與人工審核點。第4步是模型路由與任務分派，雲端或私有 GPU；依敏感度與成本選擇。第5步是回應整合與結果優化，引用來源、格式化、品質與安全過濾。編排層是平台「作業系統」— 沒有它，模型與資料再多也只是分散試點。理解這一頁後，下一頁我們會進入「雙模型策略」。",
+      "estimatedSeconds": 63,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s05.mp3",
+      "audioDurationSeconds": 52.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.769Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "雙模型策略",
+      "sourceHash": "de4242cf0193295c7161de69c678787fee7e0ec41cc15b78f43ecc14e48bc1df",
+      "extractedContent": {
+        "eyebrow": "06 / 雙模型策略",
+        "kicker": "",
+        "headings": [
+          "雲端生成式 ＋ 私有 GPU：混合部署"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "雲端生成式模型服務",
+            "paragraph": "",
+            "bullets": [
+              "模型家族：Claude、Titan、Llama、Mistral、Stable Diffusion 等",
+              "適用：文件摘要、檢索增強生成(RAG)、自然語言問答、報告產生",
+              "優勢：快速取得多模型能力、彈性擴充、降低自建基礎設施負擔"
+            ]
+          },
+          {
+            "heading": "私有化高效能推論",
+            "paragraph": "",
+            "bullets": [
+              "能力：私有 LLM、語音／影像模型、高效能 Inference",
+              "適用：敏感資料、內部 Agent、需留在企業邊界的工作負載",
+              "優勢：資料主權、可控延遲、與企業 Agent 緊密整合"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "策略：一般知識與產能型任務可走雲端；個資／營業機密／高合規場景預設走私有 NIM，並由模型路由統一決策。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「雙模型策略」。這頁有三個重點。第一，雲端生成式模型服務：模型家族：Claude、Titan、Llama、Mistral、Stable Diffusion 等。第二，私有化高效能推論：能力：私有 LLM、語音／影像模型、高效能 Inference。一般知識與產能型任務可走雲端；個資／營業機密／高合規場景預設走私有 NIM，並由模型路由統一決策。理解這一頁後，下一頁我們會進入「資料與知識」。",
+      "estimatedSeconds": 45,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s06.mp3",
+      "audioDurationSeconds": 32.3,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.769Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "資料與知識",
+      "sourceHash": "2d572cdceaeab6416d5b6c60953460c747da8bfcf9099a6a09209e53b5f663e6",
+      "extractedContent": {
+        "eyebrow": "07 / 資料與知識",
+        "kicker": "",
+        "headings": [
+          "輸入燃料與企業資料來源"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "左側：常見輸入類型",
+            "paragraph": "",
+            "bullets": [
+              "企業文件 — SOP、合約、技術手冊",
+              "結構化資料 — 財務、人資、維修紀錄",
+              "系統與平台 — CRM、ERP、SCM、ITSM",
+              "監控與日誌 — 伺服器、應用警報",
+              "外部資訊 — 市場、天氣、匯率等"
+            ]
+          },
+          {
+            "heading": "平台側：Data Sources 抽象",
+            "paragraph": "資料經編排層進入 RAG／Agent，不直接「裸連」給終端模型。",
+            "bullets": [
+              "文件檔案（Office 等）",
+              "資料庫（SQL／NoSQL）",
+              "內部系統（ERP／ITSM…）",
+              "日誌與監控",
+              "外部 API"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "治理提醒：先定義資料分級與允許用途，再接模型；否則入口越方便，外洩風險越高。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「資料與知識」。這頁有三個重點。第一，左側：常見輸入類型：企業文件 — SOP、合約、技術手冊。第二，平台側：Data Sources 抽象：資料經編排層進入 RAG／Agent，不直接「裸連」給終端模型。。先定義資料分級與允許用途，再接模型；否則入口越方便，外洩風險越高。理解這一頁後，下一頁我們會進入「分析與回饋」。",
+      "estimatedSeconds": 37,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s07.mp3",
+      "audioDurationSeconds": 29.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.769Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "分析與回饋",
+      "sourceHash": "fb85db0fcdc0cecc765d9f3784e95689f5644fd53e37fb5a8952c49d8b4de28f",
+      "extractedContent": {
+        "eyebrow": "08 / 分析與回饋",
+        "kicker": "",
+        "headings": [
+          "從內容生成到自動執行的閉環"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "文件問答",
+            "paragraph": "以 RAG 對 SOP／合約／手冊回答，並附引用來源，降低「憑印象」決策。",
+            "bullets": []
+          },
+          {
+            "heading": "資產分析",
+            "paragraph": "查詢資產狀態、壽命與汰換建議，支援資產管理與採購對話。",
+            "bullets": []
+          },
+          {
+            "heading": "維運建議",
+            "paragraph": "結合日誌與監控，產出診斷摘要與容量／維運建議。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "內容生成",
+            "description": "摘要、草稿、說明"
+          },
+          {
+            "title": "資料分析",
+            "description": "結構化解讀與比對"
+          },
+          {
+            "title": "趨勢預測",
+            "description": "容量／風險／需求"
+          },
+          {
+            "title": "智能建議",
+            "description": "可執行的下一步"
+          },
+          {
+            "title": "自動執行",
+            "description": "經審核的 Agent 動作"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來這一頁，我們來看「分析與回饋」。這頁有三個重點。第一，文件問答：以 RAG 對 SOP／合約／手冊回答，並附引用來源，降低「憑印象」決策。。第二，資產分析：查詢資產狀態、壽命與汰換建議，支援資產管理與採購對話。。第三，維運建議：結合日誌與監控，產出診斷摘要與容量／維運建議。。理解這一頁後，下一頁我們會進入「企業場景」。",
+      "estimatedSeconds": 36,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s08.mp3",
+      "audioDurationSeconds": 29.3,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.769Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "企業場景",
+      "sourceHash": "69d06772d6a3bae00664f2e9be29bd1b6c40dcd6b57d2888f2a5a3bad2a9152c",
+      "extractedContent": {
+        "eyebrow": "09 / 企業場景",
+        "kicker": "",
+        "headings": [
+          "六大常見 Use Cases"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "IT Helpdesk 智能助理",
+            "paragraph": "FAQ 自動回覆、工單追蹤與知識推薦，縮短一線處理時間。",
+            "bullets": []
+          },
+          {
+            "heading": "資產管理 AI 助理",
+            "paragraph": "狀態查詢、壽命評估與汰換建議，支援盤點與採購對話。",
+            "bullets": []
+          },
+          {
+            "heading": "維運智能分析",
+            "paragraph": "日誌診斷、異常摘要與容量規劃建議，輔助 NOC／維運班表。",
+            "bullets": []
+          },
+          {
+            "heading": "文件與知識管理",
+            "paragraph": "知識搜尋、自動標籤與文件摘要，強化組織記憶傳承。",
+            "bullets": []
+          },
+          {
+            "heading": "報表自動生成",
+            "paragraph": "管理報表草稿與資料可視化說明，縮短「從資料到簡報」週期。",
+            "bullets": []
+          },
+          {
+            "heading": "AI Agent 自動化流程",
+            "paragraph": "跨系統任務編排與受控執行，把重複作業變成可監管工作流。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "落地建議：先選 1–2 個痛點明確、資料權限清楚的場景做 PoC，再複製編排與治理模式。"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「企業場景」。這頁有三個重點。第一，IT Helpdesk 智能助理：FAQ 自動回覆、工單追蹤與知識推薦，縮短一線處理時間。。第二，資產管理 AI 助理：狀態查詢、壽命評估與汰換建議，支援盤點與採購對話。。第三，維運智能分析：日誌診斷、異常摘要與容量規劃建議，輔助 NOC／維運班表。。先選 1–2 個痛點明確、資料權限清楚的場景做 PoC，再複製編排與治理模式。理解這一頁後，下一頁我們會進入「產業價值」。",
+      "estimatedSeconds": 46,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s09.mp3",
+      "audioDurationSeconds": 39.4,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.770Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "產業價值",
+      "sourceHash": "8720342f8fdc6abe701f9b9e149559b98e900ac3d7054bc38100e4a6dcc10b21",
+      "extractedContent": {
+        "eyebrow": "10 / 產業應用",
+        "kicker": "",
+        "headings": [
+          "跨產業價值對照"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "產業",
+            "應用焦點",
+            "對主管的意義"
+          ],
+          [
+            "製造",
+            "預測性維護、良率分析",
+            "降低非計畫停機、加速異常歸因"
+          ],
+          [
+            "金融",
+            "合規分析、詐欺偵測、智能客服",
+            "強化風險控管與服務產能"
+          ],
+          [
+            "醫療",
+            "病歷查詢輔助、疾病風險預測支援",
+            "提升資訊取用效率（需嚴格合規邊界）"
+          ],
+          [
+            "零售／電商",
+            "商品文案生成、銷售預測",
+            "縮短內容產製、支援營運規劃"
+          ],
+          [
+            "政府",
+            "政策分析、智慧公共服務",
+            "提升政策理解與便民服務品質"
+          ],
+          [
+            "教育",
+            "試題生成、學習分析",
+            "減輕備課負擔、掌握學習狀態"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來這一頁，我們來看「產業價值」。各產業對照如下。製造著重預測性維護、良率分析，對主管的意義是降低非計畫停機、加速異常歸因；金融著重合規分析、詐欺偵測、智能客服，對主管的意義是強化風險控管與服務產能；醫療著重病歷查詢輔助、疾病風險預測支援，對主管的意義是提升資訊取用效率（需嚴格合規邊界）。理解這一頁後，下一頁我們會進入「決策摘要」。",
+      "estimatedSeconds": 37,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s10.mp3",
+      "audioDurationSeconds": 34.7,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.770Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "決策摘要",
+      "sourceHash": "7fa835393c6f22e38a1c350176f9619967273968909420617c408b8f223f5e51",
+      "extractedContent": {
+        "eyebrow": "11 / 決策摘要",
+        "kicker": "",
+        "headings": [
+          "平台能力、導入價值與建議下一步"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "平台核心能力",
+            "paragraph": "",
+            "bullets": [
+              "多模型整合與路由",
+              "安全與隱私保護",
+              "高可用與穩定服務",
+              "API 連接企業系統",
+              "彈性部署：雲端／私有／混合",
+              "提示與 Agent 工作流治理",
+              "統一入口與權限"
+            ]
+          },
+          {
+            "heading": "導入價值（決策檢核）",
+            "paragraph": "",
+            "bullets": [
+              "提升營運效率、降低重複人力成本",
+              "加速決策、提高資訊一致性",
+              "知識傳承、降低對個人經驗依賴",
+              "強化資安與資料主控",
+              "支撐服務創新與競爭力"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "建議下一步： ① 選定 PoC 場景與成功指標 ② 畫定資料邊界與敏感分級 ③ 建立編排／權限／稽核最小治理 ④ 決定雲端與私有模型分工原則"
+        ]
+      },
+      "script": "接下來這一頁，我們來看「決策摘要」。這頁有三個重點。第一，平台核心能力：多模型整合與路由。第二，導入價值（決策檢核）：提升營運效率、降低重複人力成本。 ① 選定 PoC 場景與成功指標 ② 畫定資料邊界與敏感分級 ③ 建立編排／權限／稽核最小治理 ④ 決定雲端與私有模型分工原則以上是平台能力、導入價值與建議下一步，謝謝各位。",
+      "estimatedSeconds": 34,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/s11.mp3",
+      "audioDurationSeconds": 32,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T05:52:32.770Z",
+      "approvedAt": "2026-08-31T06:43:39.290Z",
+      "approvedBy": "reviewer",
+      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-08-31T06:33:54.360Z",
+    "totalEstimatedSeconds": 472,
+    "ttsCostEstimateUsd": 0.0317
+  }
+}

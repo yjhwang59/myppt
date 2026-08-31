@@ -1,0 +1,94 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+.topbar h1 { margin: 0; font-size: 18px; }
+.topbar-actions { display: flex; gap: 8px; align-items: center; }
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 420px;
+  min-height: calc(100vh - 52px);
+}
+.slide-list-panel, .editor-panel, .preview-panel {
+  border-right: 1px solid #334155;
+  padding: 12px;
+  overflow: auto;
+}
+.preview-panel { border-right: none; }
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+#slide-list { list-style: none; margin: 0; padding: 0; }
+#slide-list li {
+  padding: 10px 12px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  background: #1e293b;
+}
+#slide-list li.active { border-color: #3b82f6; background: #172554; }
+#slide-list .meta { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+.slide-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+.slide-form input, .slide-form textarea, .slide-form select, #script {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+fieldset {
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 12px 0;
+}
+.card-row {
+  border: 1px dashed #475569;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #334155;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+button:hover { border-color: #3b82f6; }
+.status { font-size: 13px; color: #94a3b8; min-height: 20px; }
+#preview {
+  width: 100%;
+  height: calc(100vh - 120px);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #000;
+}
+@media (max-width: 1200px) {
+  .layout { grid-template-columns: 1fr; }
+  .preview-panel { min-height: 420px; }
+}

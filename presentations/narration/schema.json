@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aidc.work/schemas/deck-narration-manifest.v1.json",
+  "title": "DeckNarrationManifest",
+  "type": "object",
+  "required": ["version", "deckId", "deckPath", "promptVersion", "slides"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0.0" },
+    "deckId": { "type": "string", "minLength": 1 },
+    "deckPath": { "type": "string", "minLength": 1 },
+    "promptVersion": { "type": "string", "minLength": 1 },
+    "modelVersion": { "type": ["string", "null"] },
+    "voice": {
+      "type": "object",
+      "required": ["provider", "voiceId"],
+      "properties": {
+        "provider": { "type": "string" },
+        "voiceId": { "type": "string" },
+        "speed": { "type": "number", "minimum": 0.5, "maximum": 2.0 }
+      }
+    },
+    "presenter": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "avatarVideoUrl": { "type": ["string", "null"] }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/slideNarration" }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "lastExtractedAt": { "type": "string", "format": "date-time" },
+        "totalEstimatedSeconds": { "type": "number", "minimum": 0 },
+        "ttsCostEstimateUsd": { "type": "number", "minimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "slideStatus": {
+      "type": "string",
+      "enum": ["empty", "draft", "pending_review", "approved", "stale", "audio_ready", "audio_failed"]
+    },
+    "slideNarration": {
+      "type": "object",
+      "required": ["slideId", "index", "title", "sourceHash", "extractedContent", "status"],
+      "properties": {
+        "slideId": { "type": "string", "pattern": "^s\\d+$" },
+        "index": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "sourceHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "extractedContent": { "type": "object" },
+        "script": { "type": ["string", "null"] },
+        "estimatedSeconds": { "type": ["number", "null"], "minimum": 0 },
+        "status": { "$ref": "#/$defs/slideStatus" },
+        "voice": {
+          "type": "object",
+          "properties": {
+            "provider": { "type": "string" },
+            "voiceId": { "type": "string" },
+            "speed": { "type": "number" }
+          }
+        },
+        "audioUrl": { "type": ["string", "null"] },
+        "audioDurationSeconds": { "type": ["number", "null"], "minimum": 0 },
+        "presenter": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "avatarVideoUrl": { "type": ["string", "null"] }
+          }
+        },
+        "avatarVideoUrl": { "type": ["string", "null"] },
+        "captionsUrl": { "type": ["string", "null"] },
+        "cuePoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["atSeconds", "label"],
+            "properties": {
+              "atSeconds": { "type": "number", "minimum": 0 },
+              "label": { "type": "string" }
+            }
+          }
+        },
+        "generatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "approvedAt": { "type": ["string", "null"], "format": "date-time" },
+        "approvedBy": { "type": ["string", "null"] },
+        "generationNotes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

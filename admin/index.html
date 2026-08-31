@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>簡報後台 · AI-EIP</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>簡報後台</h1>
+    <div class="topbar-actions">
+      <input id="admin-secret" type="password" placeholder="ADMIN_SECRET" />
+      <button type="button" id="btn-connect">連線</button>
+      <button type="button" id="btn-rebuild">Rebuild HTML</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="slide-list-panel">
+      <div class="panel-head">
+        <strong>Slides</strong>
+        <button type="button" id="btn-reload">重新載入</button>
+      </div>
+      <ul id="slide-list"></ul>
+    </aside>
+
+    <section class="editor-panel">
+      <div class="panel-head">
+        <strong id="editor-title">選擇左側 slide</strong>
+        <div class="toolbar">
+          <label>聲音
+            <select id="voice-gender">
+              <option value="female">女聲</option>
+              <option value="male">男聲</option>
+            </select>
+          </label>
+          <select id="voice-id"></select>
+          <button type="button" id="btn-save">儲存內容</button>
+          <button type="button" id="btn-regen-script">重生講稿</button>
+          <button type="button" id="btn-synth">重生語音</button>
+        </div>
+      </div>
+
+      <form id="slide-form" class="slide-form">
+        <label>標題 data-title<input name="title" type="text" /></label>
+        <label>eyebrow<input name="eyebrow" type="text" /></label>
+        <label>kicker<input name="kicker" type="text" /></label>
+        <label>h1<textarea name="h1" rows="2"></textarea></label>
+        <label>h2<input name="h2" type="text" /></label>
+        <label>lead<textarea name="lead" rows="3"></textarea></label>
+        <label>stamp<input name="stamp" type="text" /></label>
+        <label>callout<textarea name="callout" rows="2"></textarea></label>
+
+        <fieldset>
+          <legend>Cards</legend>
+          <div id="cards-editor"></div>
+          <button type="button" id="btn-add-card">+ Card</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>講稿 script</legend>
+          <textarea id="script" rows="8"></textarea>
+          <button type="button" id="btn-save-script">儲存講稿</button>
+        </fieldset>
+      </form>
+
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="preview-panel">
+      <div class="panel-head"><strong>即時預覽</strong></div>
+      <iframe id="preview" title="deck preview" src="/enterprise-ai-portal-deck.html"></iframe>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

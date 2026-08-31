@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="企業 AI 入口網｜整合平台架構主管簡報：入口、Orchestrator、雙模型、資料來源、場景與導入價值。" />
+  <title>企業 AI 入口網｜整合平台架構</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --card: #17233b;
+      --card-2: #1c2b48;
+      --text: #e8eef9;
+      --muted: #9aa8c2;
+      --line: #2a3b5c;
+      --accent: #3b82f6;
+      --portal: #1e3a5f;
+      --portal-bright: #2563eb;
+      --bedrock: #f97316;
+      --bedrock-bg: #3b2412;
+      --nim: #22c55e;
+      --nim-bg: #12301f;
+      --data: #38bdf8;
+      --data-bg: #0f2a3d;
+      --industry: #34d399;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --good: #10b981;
+      --header-h: 52px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --font-scale: 1.15;
+      --deck-scale: 1;
+      --slide-bg: radial-gradient(1200px 500px at 10% -10%, rgba(37, 99, 235, 0.18), transparent 55%), radial-gradient(900px 400px at 100% 0%, rgba(34, 197, 94, 0.08), transparent 50%), linear-gradient(180deg, #0e1628 0%, #0a1220 100%);
+      --hero-bg: radial-gradient(900px 500px at 20% 20%, rgba(37, 99, 235, 0.28), transparent 55%), radial-gradient(700px 400px at 85% 70%, rgba(249, 115, 22, 0.14), transparent 50%), linear-gradient(160deg, #0b1730, #09101d 60%, #0d1a14);
+      --flow-bg: linear-gradient(90deg, rgba(30, 58, 95, 0.35), rgba(15, 42, 61, 0.25));
+      --kicker-bg: rgba(37, 99, 235, 0.15);
+      --kicker-border: rgba(59, 130, 246, 0.35);
+      --kicker-text: #bfdbfe;
+      --num-bg: rgba(59, 130, 246, 0.18);
+      --num-text: #93c5fd;
+      --callout-bg: rgba(37, 99, 235, 0.12);
+      --callout-border: rgba(59, 130, 246, 0.35);
+      --callout-text: #dbeafe;
+      --callout-strong: #fff;
+      --pill-portal-bg: rgba(37,99,235,.18);
+      --pill-portal-border: rgba(37,99,235,.4);
+      --pill-portal-text: #bfdbfe;
+      --pill-orch-bg: rgba(99,102,241,.18);
+      --pill-orch-border: rgba(99,102,241,.4);
+      --pill-orch-text: #c7d2fe;
+      --pill-bedrock-bg: rgba(249,115,22,.18);
+      --pill-bedrock-border: rgba(249,115,22,.45);
+      --pill-bedrock-text: #fdba74;
+      --pill-nim-bg: rgba(34,197,94,.18);
+      --pill-nim-border: rgba(34,197,94,.4);
+      --pill-nim-text: #86efac;
+      --pill-data-bg: rgba(56,189,248,.15);
+      --pill-data-border: rgba(56,189,248,.4);
+      --pill-data-text: #7dd3fc;
+      --pill-out-bg: rgba(52,211,153,.15);
+      --pill-out-border: rgba(52,211,153,.35);
+      --pill-out-text: #a7f3d0;
+      --tag-orange-bg: rgba(249,115,22,.2);
+      --tag-orange-text: #fdba74;
+      --tag-green-bg: rgba(34,197,94,.2);
+      --tag-green-text: #86efac;
+      --th-text: #e2e8f0;
+      --bedrock-card-bg: linear-gradient(180deg, #2a1a10, var(--card));
+      --nim-card-bg: linear-gradient(180deg, #102418, var(--card));
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --card: #f1f5f9;
+      --card-2: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --accent: #2563eb;
+      --portal: #dbeafe;
+      --portal-bright: #3b82f6;
+      --bedrock: #ea580c;
+      --bedrock-bg: #ffedd5;
+      --nim: #16a34a;
+      --nim-bg: #dcfce7;
+      --data: #0284c7;
+      --data-bg: #e0f2fe;
+      --industry: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --good: #16a34a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --slide-bg: #ffffff;
+      --hero-bg: linear-gradient(160deg, #f8fafc, #f1f5f9);
+      --flow-bg: #f8fafc;
+      --kicker-bg: #dbeafe;
+      --kicker-border: #bfdbfe;
+      --kicker-text: #1d4ed8;
+      --num-bg: #dbeafe;
+      --num-text: #1d4ed8;
+      --callout-bg: #eff6ff;
+      --callout-border: #bfdbfe;
+      --callout-text: #1e3a8a;
+      --callout-strong: #1e40af;
+      --pill-portal-bg: #dbeafe;
+      --pill-portal-border: #bfdbfe;
+      --pill-portal-text: #1d4ed8;
+      --pill-orch-bg: #e0e7ff;
+      --pill-orch-border: #c7d2fe;
+      --pill-orch-text: #4338ca;
+      --pill-bedrock-bg: #ffedd5;
+      --pill-bedrock-border: #fed7aa;
+      --pill-bedrock-text: #c2410c;
+      --pill-nim-bg: #dcfce7;
+      --pill-nim-border: #bbf7d0;
+      --pill-nim-text: #15803d;
+      --pill-data-bg: #e0f2fe;
+      --pill-data-border: #bae6fd;
+      --pill-data-text: #0369a1;
+      --pill-out-bg: #d1fae5;
+      --pill-out-border: #a7f3d0;
+      --pill-out-text: #047857;
+      --tag-orange-bg: #ffedd5;
+      --tag-orange-text: #c2410c;
+      --tag-green-bg: #dcfce7;
+      --tag-green-text: #15803d;
+      --th-text: #0f172a;
+      --bedrock-card-bg: linear-gradient(180deg, #fff7ed, var(--card));
+      --nim-card-bg: linear-gradient(180deg, #f0fdf4, var(--card));
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+
+    #deck-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--header-h);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.3s ease;
+    }
+    body.presenting #deck-header {
+      opacity: 0;
+    }
+    body.presenting #deck-header:hover {
+      opacity: 0.95;
+    }
+    #deck-header .brand {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    #deck-header .brand span { color: var(--accent); }
+    #progress {
+      flex: 1;
+      height: 6px;
+      background: #1a2740;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    #progress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--portal-bright), var(--data));
+      transition: width 0.25s ease;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .toolbar button:hover { border-color: var(--accent); }
+    #slide-counter {
+      min-width: 64px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #deck {
+      padding-top: calc(var(--header-h) + 18px);
+      padding-bottom: 24px;
+      min-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .slide {
+      display: none;
+      width: min(1280px, calc(100vw - 32px));
+      aspect-ratio: 16 / 9;
+      background: var(--slide-bg);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 36px 44px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero {
+      justify-content: center;
+      background: var(--hero-bg);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--kicker-bg);
+      border: 1px solid var(--kicker-border);
+      color: var(--kicker-text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: calc(clamp(34px, 3.6vw, 52px) * var(--font-scale));
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: calc(clamp(26px, 2.4vw, 34px) * var(--font-scale));
+      line-height: 1.2;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: calc(clamp(16px, 1.35vw, 20px) * var(--font-scale));
+      line-height: 1.55;
+      max-width: 52ch;
+    }
+    .stamp {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+    }
+
+    .footer {
+      position: absolute;
+      left: 44px;
+      right: 44px;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+
+    .grid { display: grid; gap: 14px; margin-top: 18px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      min-height: 0;
+    }
+    .card > strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .card p, .card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+      line-height: 1.5;
+    }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background: var(--num-bg);
+      color: var(--num-text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .callout {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--callout-border);
+      background: var(--callout-bg);
+      color: var(--callout-text);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--flow-bg);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      border-top: 3px solid var(--accent);
+    }
+    .flow-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .flow-step strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .flow-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .flow-arrow {
+      width: 18px;
+      flex: 0 0 18px;
+      align-self: center;
+      height: 2px;
+      background: #64748b;
+      position: relative;
+    }
+    .flow-arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -4px;
+      border: 5px solid transparent;
+      border-left-color: #64748b;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .pill.portal { background: var(--pill-portal-bg); border-color: var(--pill-portal-border); color: var(--pill-portal-text); }
+    .pill.orch { background: var(--pill-orch-bg); border-color: var(--pill-orch-border); color: var(--pill-orch-text); }
+    .pill.bedrock { background: var(--pill-bedrock-bg); border-color: var(--pill-bedrock-border); color: var(--pill-bedrock-text); }
+    .pill.nim { background: var(--pill-nim-bg); border-color: var(--pill-nim-border); color: var(--pill-nim-text); }
+    .pill.data { background: var(--pill-data-bg); border-color: var(--pill-data-border); color: var(--pill-data-text); }
+    .pill.out { background: var(--pill-out-bg); border-color: var(--pill-out-border); color: var(--pill-out-text); }
+
+    /* 第3頁：五層架構 SVG 圖 */
+    #s3 h2 { margin-bottom: 6px; }
+    .arch-svg-wrap {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      min-height: 480px;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+    .arch-svg {
+      width: 100%;
+      max-width: 1180px;
+      height: 100%;
+      min-height: 480px;
+      max-height: 540px;
+      display: block;
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      /* 基準字級：隨 A- / A+ 的 --font-scale 縮放 */
+      font-size: calc(16px * var(--font-scale));
+    }
+    .arch-svg text {
+      font-family: inherit;
+    }
+    .arch-svg .svg-panel {
+      fill: var(--card);
+      stroke: var(--line);
+      stroke-width: 1.5;
+    }
+    .arch-svg .svg-panel-soft {
+      fill: var(--panel);
+      stroke: var(--line);
+      stroke-width: 1.2;
+    }
+    .arch-svg .svg-label {
+      fill: var(--accent);
+      font-size: calc(16px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-title {
+      fill: var(--text);
+      font-size: calc(17px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-sub {
+      fill: var(--muted);
+      font-size: calc(13px * var(--font-scale));
+      font-weight: 500;
+    }
+    .arch-svg .svg-chip-text {
+      fill: var(--text);
+      font-size: calc(15px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-chip-lg {
+      fill: var(--text);
+      font-size: calc(16px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-icon {
+      font-size: calc(16px * var(--font-scale));
+    }
+    .arch-svg .svg-flow-text {
+      fill: var(--muted);
+      font-size: calc(13px * var(--font-scale));
+      font-weight: 600;
+    }
+    .arch-svg .chip-portal { fill: var(--pill-portal-bg); stroke: var(--pill-portal-border); }
+    .arch-svg .chip-orch { fill: var(--pill-orch-bg); stroke: var(--pill-orch-border); }
+    .arch-svg .chip-cloud { fill: var(--pill-bedrock-bg); stroke: var(--pill-bedrock-border); }
+    .arch-svg .chip-onprem { fill: var(--pill-nim-bg); stroke: var(--pill-nim-border); }
+    .arch-svg .chip-data { fill: var(--pill-data-bg); stroke: var(--pill-data-border); }
+    .arch-svg .chip-out { fill: var(--pill-out-bg); stroke: var(--pill-out-border); }
+    .arch-svg .chip-val { fill: var(--callout-bg); stroke: var(--callout-border); }
+    .arch-svg .chip-portal-t { fill: var(--pill-portal-text); }
+    .arch-svg .chip-orch-t { fill: var(--pill-orch-text); }
+    .arch-svg .chip-cloud-t { fill: var(--pill-bedrock-text); }
+    .arch-svg .chip-onprem-t { fill: var(--pill-nim-text); }
+    .arch-svg .chip-data-t { fill: var(--pill-data-text); }
+    .arch-svg .chip-out-t { fill: var(--pill-out-text); }
+    .arch-svg .chip-val-t { fill: var(--callout-strong); }
+    .arch-svg .flow-line {
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 5 4;
+      opacity: 0.7;
+    }
+    .arch-svg .arrow-head { fill: var(--accent); opacity: 0.75; }
+    .arch-svg .layer-badge {
+      fill: var(--accent);
+    }
+    .arch-svg .layer-badge-t {
+      fill: #fff;
+      font-size: calc(14px * var(--font-scale));
+      font-weight: 800;
+    }
+    :root[data-theme="light"] .arch-svg .layer-badge-t { fill: #fff; }
+
+    .model-card.bedrock-card {
+      border-top: 4px solid var(--bedrock);
+      background: var(--bedrock-card-bg);
+    }
+    .model-card.nim-card {
+      border-top: 4px solid var(--nim);
+      background: var(--nim-card-bg);
+    }
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .tag.orange { background: var(--tag-orange-bg); color: var(--tag-orange-text); }
+    .tag.green { background: var(--tag-green-bg); color: var(--tag-green-text); }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .table th {
+      background: var(--flow-bg);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .table td { color: var(--muted); background: var(--card); }
+    .table td strong { color: var(--text); }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .check-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+      line-height: 1.4;
+    }
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    .mini-note {
+      margin: 10px 0 0;
+      color: #7c8ba8;
+      font-size: 12px;
+    }
+    .mini-note a { color: #93c5fd; }
+
+    body.presenting #deck-header { display: none; }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0;
+      width: 1280px;
+      height: 720px;
+      aspect-ratio: auto;
+      border-radius: 0;
+      border: none;
+    }
+
+    /* Narration / speaker mode */
+    #narration-panel {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      width: min(420px, calc(100vw - 32px));
+      max-height: min(52vh, 520px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transform: translateY(calc(100% + 24px));
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s ease, opacity 0.28s ease, width 0.2s ease, max-height 0.2s ease, padding 0.2s ease;
+    }
+    #narration-panel.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #narration-panel.minimized {
+      width: auto;
+      max-width: min(360px, calc(100vw - 32px));
+      max-height: none;
+      padding: 8px 10px;
+      gap: 6px;
+    }
+    #narration-panel.minimized #narration-script,
+    #narration-panel.minimized #narration-avatar,
+    #narration-panel.minimized .narration-settings {
+      display: none;
+    }
+    #narration-panel.minimized #narration-status {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    #narration-panel header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    #narration-panel header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    #narration-panel header .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    #narration-panel header strong {
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    #narration-panel .icon-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    #narration-panel .icon-btn:hover { border-color: var(--accent); }
+    #narration-status {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    #narration-script {
+      flex: 1;
+      overflow: auto;
+      margin: 0;
+      padding: 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: calc(13px * var(--font-scale));
+      line-height: 1.65;
+      white-space: pre-wrap;
+      max-height: 220px;
+    }
+    #narration-progress {
+      height: 4px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    #narration-progress-bar {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--portal-bright), var(--data));
+      transition: width 0.15s linear;
+    }
+    .narration-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .narration-controls button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .narration-controls button:hover { border-color: var(--accent); }
+    .narration-controls label,
+    .narration-settings label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .narration-settings {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .narration-controls input[type="range"],
+    .narration-settings input[type="range"] {
+      width: 72px;
+      accent-color: var(--accent);
+    }
+    #narration-rate-value {
+      min-width: 2.8em;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      font-weight: 600;
+    }
+    #narration-avatar {
+      min-height: 0;
+    }
+    .narration-avatar-video {
+      width: 100%;
+      max-height: 120px;
+      border-radius: 10px;
+      background: #000;
+    }
+    .narration-avatar-video.hidden { display: none; }
+    body.presenting #narration-panel {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        break-after: page;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .slide { width: calc(100vw - 16px); padding: 22px 18px 40px; }
+      .grid.six { grid-template-columns: repeat(2, 1fr); }
+      .footer { left: 18px; right: 18px; }
+      .flow { gap: 4px; padding: 10px; }
+      .flow-step { min-width: 88px; padding: 8px; }
+      .flow-desc { font-size: 11px; }
+      .flow-arrow { width: 10px; flex-basis: 10px; }
+    }
+
+    @media (max-width: 640px) {
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .check-list { grid-template-columns: 1fr; }
+      .arch-svg { max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand">企業 AI 入口網 <span>·</span> 整合平台</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體">A-</button>
+      <button type="button" id="btn-aplus" title="放大字體">A+</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 11</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-narration" title="講稿 / 語音 (N)" aria-pressed="false">🎙</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+  </header>
+
+  <main id="deck">
+    <!-- 1 封面 -->
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">主管決策簡報 · Enterprise AI Portal</p>
+      <h1>企業 AI 入口網<br />整合平台架構</h1>
+      <p class="lead">以統一入口與編排器(Orchestrator)串接雲端生成式 AI 與私有 GPU 推論，把企業資料轉成可治理、可落地的智慧服務。</p>
+      <p class="stamp">對象：決策層／資訊長／數位轉型負責人 · 約 11 頁 · 16:9</p>
+      <div class="footer"><span>企業 AI 整合平台</span><span>1 / 11</span></div>
+    </section>
+
+    <!-- 2 為什麼現在 -->
+    <section class="slide" id="s2" data-title="為什麼現在">
+      <p class="eyebrow">02 / 為什麼現在</p>
+      <h2>多系統、多模型、多風險 — 需要一個入口</h2>
+      <p class="lead">散落的試點與工具無法形成組織能力；先統一入口與編排層，再談擴張場景。</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>資料孤島(Data Silo)</strong>
+          <p>SOP、合約、ERP／ITSM、監控日誌與外部 API 分屬不同系統，問答與報表難以跨來源組裝。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>多模型與成本失控</strong>
+          <p>雲端模型與私有推論各走各的；缺少模型路由(Model Routing)與權限控管，試點難以規模化。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>資安與導入成本</strong>
+          <p>敏感資料不宜一律上雲；合規、稽核與 Agent 自動化需要中央治理，而非各部門自建黑盒。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>結論：</strong>需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>2 / 11</span></div>
+    </section>
+
+    <!-- 3 架構總覽 -->
+    <section class="slide" id="s3" data-title="架構總覽">
+      <p class="eyebrow">03 / 架構總覽</p>
+      <h2>五層架構：從入口到產業價值</h2>
+      <div class="arch-svg-wrap" role="img" aria-label="企業 AI 五層架構圖：使用者、編排層、模型與資料、分析回饋、價值">
+        <svg class="arch-svg" viewBox="0 0 1120 540" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrowDown" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" class="arrow-head"/>
+            </marker>
+            <filter id="softShadow" x="-4%" y="-4%" width="108%" height="112%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.18"/>
+            </filter>
+          </defs>
+
+          <!-- 連線箭頭 -->
+          <line x1="560" y1="88" x2="560" y2="108" class="flow-line" marker-end="url(#arrowDown)"/>
+          <line x1="560" y1="188" x2="560" y2="208" class="flow-line" marker-end="url(#arrowDown)"/>
+          <line x1="560" y1="318" x2="560" y2="338" class="flow-line" marker-end="url(#arrowDown)"/>
+          <line x1="560" y1="428" x2="560" y2="448" class="flow-line" marker-end="url(#arrowDown)"/>
+
+          <!-- L1 使用者 -->
+          <g filter="url(#softShadow)">
+            <rect x="40" y="8" width="1040" height="80" rx="14" class="svg-panel"/>
+            <rect x="52" y="28" width="28" height="40" rx="8" class="layer-badge"/>
+            <text x="66" y="53" text-anchor="middle" class="layer-badge-t">1</text>
+            <text x="96" y="42" class="svg-label">使用者</text>
+            <text x="96" y="60" class="svg-sub">統一入口體驗</text>
+            <rect x="250" y="26" width="220" height="44" rx="12" class="chip-portal" stroke-width="1.5"/>
+            <text x="360" y="53" text-anchor="middle" class="svg-chip-text chip-portal-t">企業 AI 入口網站</text>
+            <rect x="490" y="26" width="140" height="44" rx="12" class="chip-portal" stroke-width="1.5"/>
+            <text x="560" y="53" text-anchor="middle" class="svg-chip-text chip-portal-t">Chatbot</text>
+            <rect x="650" y="26" width="140" height="44" rx="12" class="chip-portal" stroke-width="1.5"/>
+            <text x="720" y="53" text-anchor="middle" class="svg-chip-text chip-portal-t">行動 App</text>
+            <circle cx="920" cy="48" r="14" class="chip-portal" stroke-width="1.5"/>
+            <text x="920" y="53" text-anchor="middle" class="svg-icon">🌐</text>
+            <circle cx="960" cy="48" r="14" class="chip-portal" stroke-width="1.5"/>
+            <text x="960" y="53" text-anchor="middle" class="svg-icon">💬</text>
+            <circle cx="1000" cy="48" r="14" class="chip-portal" stroke-width="1.5"/>
+            <text x="1000" y="53" text-anchor="middle" class="svg-icon">📱</text>
+          </g>
+
+          <!-- L2 編排層 -->
+          <g filter="url(#softShadow)">
+            <rect x="40" y="108" width="1040" height="80" rx="14" class="svg-panel"/>
+            <rect x="52" y="128" width="28" height="40" rx="8" class="layer-badge"/>
+            <text x="66" y="153" text-anchor="middle" class="layer-badge-t">2</text>
+            <text x="96" y="142" class="svg-label">編排層</text>
+            <text x="96" y="160" class="svg-sub">AI Orchestrator</text>
+            <rect x="250" y="126" width="148" height="44" rx="12" class="chip-orch" stroke-width="1.5"/>
+            <text x="324" y="153" text-anchor="middle" class="svg-chip-text chip-orch-t">身分驗證與權限</text>
+            <rect x="412" y="126" width="148" height="44" rx="12" class="chip-orch" stroke-width="1.5"/>
+            <text x="486" y="153" text-anchor="middle" class="svg-chip-text chip-orch-t">提示工程 Prompt</text>
+            <rect x="574" y="126" width="148" height="44" rx="12" class="chip-orch" stroke-width="1.5"/>
+            <text x="648" y="153" text-anchor="middle" class="svg-chip-text chip-orch-t">Agent 工作流</text>
+            <rect x="736" y="126" width="128" height="44" rx="12" class="chip-orch" stroke-width="1.5"/>
+            <text x="800" y="153" text-anchor="middle" class="svg-chip-text chip-orch-t">模型路由</text>
+            <rect x="878" y="126" width="128" height="44" rx="12" class="chip-orch" stroke-width="1.5"/>
+            <text x="942" y="153" text-anchor="middle" class="svg-chip-text chip-orch-t">回應優化</text>
+          </g>
+
+          <!-- L3 模型與資料 -->
+          <g filter="url(#softShadow)">
+            <rect x="40" y="208" width="1040" height="110" rx="14" class="svg-panel"/>
+            <rect x="52" y="243" width="28" height="40" rx="8" class="layer-badge"/>
+            <text x="66" y="268" text-anchor="middle" class="layer-badge-t">3</text>
+            <text x="96" y="257" class="svg-label">模型與資料</text>
+            <text x="96" y="275" class="svg-sub">混合部署底座</text>
+
+            <rect x="250" y="226" width="200" height="74" rx="12" class="chip-cloud" stroke-width="1.8"/>
+            <text x="350" y="255" text-anchor="middle" class="svg-chip-lg chip-cloud-t">☁ Cloudflare</text>
+            <text x="350" y="278" text-anchor="middle" class="svg-sub chip-cloud-t">雲端邊緣與服務</text>
+
+            <rect x="470" y="226" width="220" height="74" rx="12" class="chip-onprem" stroke-width="1.8"/>
+            <text x="580" y="255" text-anchor="middle" class="svg-chip-lg chip-onprem-t">🖥 企業內部 Server</text>
+            <text x="580" y="278" text-anchor="middle" class="svg-sub chip-onprem-t">地端私有推論</text>
+
+            <rect x="710" y="226" width="160" height="74" rx="12" class="chip-data" stroke-width="1.8"/>
+            <text x="790" y="255" text-anchor="middle" class="svg-chip-lg chip-data-t">🗄 企業資料庫</text>
+            <text x="790" y="278" text-anchor="middle" class="svg-sub chip-data-t">SQL / 文件 / 日誌</text>
+
+            <rect x="890" y="226" width="150" height="74" rx="12" class="chip-data" stroke-width="1.8"/>
+            <text x="965" y="255" text-anchor="middle" class="svg-chip-lg chip-data-t">✦ LLM</text>
+            <text x="965" y="278" text-anchor="middle" class="svg-sub chip-data-t">大型語言模型</text>
+          </g>
+
+          <!-- L4 分析回饋 -->
+          <g filter="url(#softShadow)">
+            <rect x="40" y="338" width="1040" height="90" rx="14" class="svg-panel"/>
+            <rect x="52" y="363" width="28" height="40" rx="8" class="layer-badge"/>
+            <text x="66" y="388" text-anchor="middle" class="layer-badge-t">4</text>
+            <text x="96" y="377" class="svg-label">分析回饋</text>
+            <text x="96" y="395" class="svg-sub">閉環產出</text>
+
+            <rect x="250" y="356" width="130" height="54" rx="12" class="chip-out" stroke-width="1.5"/>
+            <text x="315" y="388" text-anchor="middle" class="svg-chip-text chip-out-t">文件問答</text>
+            <rect x="400" y="356" width="130" height="54" rx="12" class="chip-out" stroke-width="1.5"/>
+            <text x="465" y="388" text-anchor="middle" class="svg-chip-text chip-out-t">資產分析</text>
+            <rect x="550" y="356" width="130" height="54" rx="12" class="chip-out" stroke-width="1.5"/>
+            <text x="615" y="388" text-anchor="middle" class="svg-chip-text chip-out-t">維運建議</text>
+
+            <rect x="700" y="356" width="340" height="54" rx="12" class="svg-panel-soft"/>
+            <text x="870" y="378" text-anchor="middle" class="svg-flow-text">生成 → 分析 → 預測 → 建議 → 自動執行</text>
+            <text x="870" y="398" text-anchor="middle" class="svg-chip-text">可稽核的智慧服務閉環</text>
+          </g>
+
+          <!-- L5 價值 -->
+          <g filter="url(#softShadow)">
+            <rect x="40" y="448" width="1040" height="80" rx="14" class="svg-panel"/>
+            <rect x="52" y="468" width="28" height="40" rx="8" class="layer-badge"/>
+            <text x="66" y="493" text-anchor="middle" class="layer-badge-t">5</text>
+            <text x="96" y="482" class="svg-label">價值</text>
+            <text x="96" y="500" class="svg-sub">場景 × 產業</text>
+
+            <rect x="250" y="466" width="220" height="44" rx="12" class="chip-val" stroke-width="1.5"/>
+            <text x="360" y="493" text-anchor="middle" class="svg-chip-text chip-val-t">六大企業場景</text>
+            <rect x="490" y="466" width="220" height="44" rx="12" class="chip-val" stroke-width="1.5"/>
+            <text x="600" y="493" text-anchor="middle" class="svg-chip-text chip-val-t">六大產業應用</text>
+            <rect x="730" y="466" width="276" height="44" rx="12" class="chip-val" stroke-width="1.5"/>
+            <text x="868" y="493" text-anchor="middle" class="svg-chip-text chip-val-t">混合部署與資安治理</text>
+          </g>
+        </svg>
+      </div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>3 / 11</span></div>
+    </section>
+
+    <!-- 4 使用者入口 -->
+    <section class="slide" id="s4" data-title="使用者入口">
+      <p class="eyebrow">04 / 使用者入口</p>
+      <h2>一個入口、多端體驗</h2>
+      <p class="lead">員工與主管不必記住十套 AI 工具；從入口網站、對話與行動端進入同一套權限與編排。</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">入口網</div>
+          <strong>企業 AI 入口網站</strong>
+          <ul>
+            <li>場景目錄與角色首頁</li>
+            <li>知識庫／報表／Agent 入口</li>
+            <li>與既有 SSO 對齊</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">對話</div>
+          <strong>Chatbot</strong>
+          <ul>
+            <li>自然語言問答與工單輔助</li>
+            <li>可引用企業文件與系統狀態</li>
+            <li>適合作業現場與服務台</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">行動</div>
+          <strong>行動 App</strong>
+          <ul>
+            <li>外出／廠區／值班查詢</li>
+            <li>輕量通知與審批提示</li>
+            <li>與入口同一後端編排</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>設計原則：</strong>體驗在前端分流，治理與模型呼叫一律經編排器(Orchestrator)，避免旁路繞過權限。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>4 / 11</span></div>
+    </section>
+
+    <!-- 5 Orchestrator -->
+    <section class="slide" id="s5" data-title="Orchestrator">
+      <p class="eyebrow">05 / AI 整合平台</p>
+      <h2>編排器(Orchestrator)：五步治理管線</h2>
+      <p class="lead">把「誰能問什麼、用哪個模型、如何組裝答案」變成可稽核流程。</p>
+      <div class="flow" role="list">
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>身分驗證與權限管控</strong>
+          <p class="flow-desc">Identity / RBAC；依角色與資料分級放行</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>提示工程與管理</strong>
+          <p class="flow-desc">Prompt 模板版本化；避免各單位自行散落</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>工作流與 Agent 管理</strong>
+          <p class="flow-desc">多步驟任務、工具呼叫與人工審核點</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>模型路由與任務分派</strong>
+          <p class="flow-desc">雲端或私有 GPU；依敏感度與成本選擇</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>回應整合與結果優化</strong>
+          <p class="flow-desc">引用來源、格式化、品質與安全過濾</p>
+        </div>
+      </div>
+      <div class="callout"><strong>主管重點：</strong>編排層是平台「作業系統」— 沒有它，模型與資料再多也只是分散試點。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>5 / 11</span></div>
+    </section>
+
+    <!-- 6 雙模型策略 -->
+    <section class="slide" id="s6" data-title="雙模型策略">
+      <p class="eyebrow">06 / 雙模型策略</p>
+      <h2>雲端生成式 ＋ 私有 GPU：混合部署</h2>
+      <div class="grid two">
+        <article class="card model-card bedrock-card">
+          <span class="tag orange">AWS Bedrock · Cloud AI</span>
+          <strong>雲端生成式模型服務</strong>
+          <ul>
+            <li>模型家族：Claude、Titan、Llama、Mistral、Stable Diffusion 等</li>
+            <li>適用：文件摘要、檢索增強生成(RAG)、自然語言問答、報告產生</li>
+            <li>優勢：快速取得多模型能力、彈性擴充、降低自建基礎設施負擔</li>
+          </ul>
+        </article>
+        <article class="card model-card nim-card">
+          <span class="tag green">NVIDIA NIM · Private GPU AI</span>
+          <strong>私有化高效能推論</strong>
+          <ul>
+            <li>能力：私有 LLM、語音／影像模型、高效能 Inference</li>
+            <li>適用：敏感資料、內部 Agent、需留在企業邊界的工作負載</li>
+            <li>優勢：資料主權、可控延遲、與企業 Agent 緊密整合</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>策略：</strong>一般知識與產能型任務可走雲端；個資／營業機密／高合規場景預設走私有 NIM，並由模型路由統一決策。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>6 / 11</span></div>
+    </section>
+
+    <!-- 7 資料與知識 -->
+    <section class="slide" id="s7" data-title="資料與知識">
+      <p class="eyebrow">07 / 資料與知識</p>
+      <h2>輸入燃料與企業資料來源</h2>
+      <div class="grid two">
+        <article class="card">
+          <strong>左側：常見輸入類型</strong>
+          <ul>
+            <li><strong>企業文件</strong> — SOP、合約、技術手冊</li>
+            <li><strong>結構化資料</strong> — 財務、人資、維修紀錄</li>
+            <li><strong>系統與平台</strong> — CRM、ERP、SCM、ITSM</li>
+            <li><strong>監控與日誌</strong> — 伺服器、應用警報</li>
+            <li><strong>外部資訊</strong> — 市場、天氣、匯率等</li>
+          </ul>
+        </article>
+        <article class="card">
+          <strong>平台側：Data Sources 抽象</strong>
+          <ul>
+            <li>文件檔案（Office 等）</li>
+            <li>資料庫（SQL／NoSQL）</li>
+            <li>內部系統（ERP／ITSM…）</li>
+            <li>日誌與監控</li>
+            <li>外部 API</li>
+          </ul>
+          <p style="margin-top:10px;color:var(--muted);font-size:13px;">資料經編排層進入 RAG／Agent，不直接「裸連」給終端模型。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>治理提醒：</strong>先定義資料分級與允許用途，再接模型；否則入口越方便，外洩風險越高。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>7 / 11</span></div>
+    </section>
+
+    <!-- 8 分析與回饋 -->
+    <section class="slide" id="s8" data-title="分析與回饋">
+      <p class="eyebrow">08 / 分析與回饋</p>
+      <h2>從內容生成到自動執行的閉環</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">核心</div>
+          <strong>文件問答</strong>
+          <p>以 RAG 對 SOP／合約／手冊回答，並附引用來源，降低「憑印象」決策。</p>
+        </article>
+        <article class="card">
+          <div class="num">核心</div>
+          <strong>資產分析</strong>
+          <p>查詢資產狀態、壽命與汰換建議，支援資產管理與採購對話。</p>
+        </article>
+        <article class="card">
+          <div class="num">核心</div>
+          <strong>維運建議</strong>
+          <p>結合日誌與監控，產出診斷摘要與容量／維運建議。</p>
+        </article>
+      </div>
+      <div class="flow" style="margin-top:16px;">
+        <div class="flow-step"><div class="flow-num">1</div><strong>內容生成</strong><p class="flow-desc">摘要、草稿、說明</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>資料分析</strong><p class="flow-desc">結構化解讀與比對</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>趨勢預測</strong><p class="flow-desc">容量／風險／需求</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>智能建議</strong><p class="flow-desc">可執行的下一步</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">5</div><strong>自動執行</strong><p class="flow-desc">經審核的 Agent 動作</p></div>
+      </div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>8 / 11</span></div>
+    </section>
+
+    <!-- 9 企業場景 -->
+    <section class="slide" id="s9" data-title="企業場景">
+      <p class="eyebrow">09 / 企業場景</p>
+      <h2>六大常見 Use Cases</h2>
+      <div class="grid six">
+        <article class="card">
+          <strong>IT Helpdesk 智能助理</strong>
+          <p>FAQ 自動回覆、工單追蹤與知識推薦，縮短一線處理時間。</p>
+        </article>
+        <article class="card">
+          <strong>資產管理 AI 助理</strong>
+          <p>狀態查詢、壽命評估與汰換建議，支援盤點與採購對話。</p>
+        </article>
+        <article class="card">
+          <strong>維運智能分析</strong>
+          <p>日誌診斷、異常摘要與容量規劃建議，輔助 NOC／維運班表。</p>
+        </article>
+        <article class="card">
+          <strong>文件與知識管理</strong>
+          <p>知識搜尋、自動標籤與文件摘要，強化組織記憶傳承。</p>
+        </article>
+        <article class="card">
+          <strong>報表自動生成</strong>
+          <p>管理報表草稿與資料可視化說明，縮短「從資料到簡報」週期。</p>
+        </article>
+        <article class="card">
+          <strong>AI Agent 自動化流程</strong>
+          <p>跨系統任務編排與受控執行，把重複作業變成可監管工作流。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>落地建議：</strong>先選 1–2 個痛點明確、資料權限清楚的場景做 PoC，再複製編排與治理模式。</div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>9 / 11</span></div>
+    </section>
+
+    <!-- 10 產業價值 -->
+    <section class="slide" id="s10" data-title="產業價值">
+      <p class="eyebrow">10 / 產業應用</p>
+      <h2>跨產業價值對照</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:18%">產業</th>
+            <th>應用焦點</th>
+            <th>對主管的意義</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>製造</strong></td>
+            <td>預測性維護、良率分析</td>
+            <td>降低非計畫停機、加速異常歸因</td>
+          </tr>
+          <tr>
+            <td><strong>金融</strong></td>
+            <td>合規分析、詐欺偵測、智能客服</td>
+            <td>強化風險控管與服務產能</td>
+          </tr>
+          <tr>
+            <td><strong>醫療</strong></td>
+            <td>病歷查詢輔助、疾病風險預測支援</td>
+            <td>提升資訊取用效率（需嚴格合規邊界）</td>
+          </tr>
+          <tr>
+            <td><strong>零售／電商</strong></td>
+            <td>商品文案生成、銷售預測</td>
+            <td>縮短內容產製、支援營運規劃</td>
+          </tr>
+          <tr>
+            <td><strong>政府</strong></td>
+            <td>政策分析、智慧公共服務</td>
+            <td>提升政策理解與便民服務品質</td>
+          </tr>
+          <tr>
+            <td><strong>教育</strong></td>
+            <td>試題生成、學習分析</td>
+            <td>減輕備課負擔、掌握學習狀態</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="footer"><span>企業 AI 整合平台</span><span>10 / 11</span></div>
+    </section>
+
+    <!-- 11 決策摘要 -->
+    <section class="slide" id="s11" data-title="決策摘要">
+      <p class="eyebrow">11 / 決策摘要</p>
+      <h2>平台能力、導入價值與建議下一步</h2>
+      <div class="grid two">
+        <article class="card">
+          <strong>平台核心能力</strong>
+          <ul>
+            <li>多模型整合與路由</li>
+            <li>安全與隱私保護</li>
+            <li>高可用與穩定服務</li>
+            <li>API 連接企業系統</li>
+            <li>彈性部署：雲端／私有／混合</li>
+            <li>提示與 Agent 工作流治理</li>
+            <li>統一入口與權限</li>
+          </ul>
+        </article>
+        <article class="card">
+          <strong>導入價值（決策檢核）</strong>
+          <ul class="check-list" style="grid-template-columns:1fr;">
+            <li>提升營運效率、降低重複人力成本</li>
+            <li>加速決策、提高資訊一致性</li>
+            <li>知識傳承、降低對個人經驗依賴</li>
+            <li>強化資安與資料主控</li>
+            <li>支撐服務創新與競爭力</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout">
+        <strong>建議下一步：</strong>
+        ① 選定 PoC 場景與成功指標　
+        ② 畫定資料邊界與敏感分級　
+        ③ 建立編排／權限／稽核最小治理　
+        ④ 決定雲端與私有模型分工原則
+      </div>
+      <div class="footer"><span>企業 AI 整合平台</span><span>11 / 11</span></div>
+    </section>
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化（縮小面板）" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一段（上一頁）">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一段（下一頁）">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked />播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked />翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1" /></label>
+      <label>語速
+        <input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1" />
+        <span id="narration-rate-value">1.00×</span>
+      </label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+      const btnPresent = document.getElementById("btn-present");
+      const btnPrint = document.getElementById("btn-print");
+      const btnTheme = document.getElementById("btn-theme");
+      const btnAminus = document.getElementById("btn-aminus");
+      const btnAplus = document.getElementById("btn-aplus");
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+
+      // Theme toggle
+      btnTheme.addEventListener("click", () => {
+        const root = document.documentElement;
+        const currentTheme = root.getAttribute("data-theme");
+        root.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
+      });
+
+      // Font scaling
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, fontScale + delta));
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+      }
+      btnAminus.addEventListener("click", () => updateFontScale(-0.1));
+      btnAplus.addEventListener("click", () => updateFontScale(0.1));
+
+      // Fullscreen scaling
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const winW = window.innerWidth;
+          const winH = window.innerHeight;
+          // Calculate scale to fit 1280x720 16:9 box
+          const scale = Math.min(winW / 1280, winH / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", 1);
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = ((index + 1) / total * 100).toFixed(2) + "%";
+        document.title = slides[index].dataset.title
+          ? slides[index].dataset.title + " · 企業 AI 入口網"
+          : "企業 AI 入口網｜整合平台架構";
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      btnPrev.addEventListener("click", prev);
+      btnNext.addEventListener("click", next);
+      btnPrint.addEventListener("click", () => window.print());
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.();
+        } else {
+          document.exitFullscreen?.();
+        }
+      });
+
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+          e.preventDefault();
+          next();
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          prev();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          show(0);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          show(total - 1);
+        } else if (e.key === "f" || e.key === "F") {
+          e.preventDefault();
+          btnPresent.click();
+        } else if (e.key === "t" || e.key === "T") {
+          e.preventDefault();
+          btnTheme.click();
+        } else if (e.key === "p" || e.key === "P") {
+          if (!e.ctrlKey && !e.metaKey) {
+            e.preventDefault();
+            window.print();
+          }
+        } else if (e.key === "Escape" && document.fullscreenElement) {
+          document.exitFullscreen?.();
+        }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>
