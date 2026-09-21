@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Grok Bot 簡介與應用：從會講到會收尾。名稱區分、五類應用、福圓號營運通／myppt／GoMatch 案例與交辦方式。" />
+  <title>Grok Bot 簡介與應用</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --card: #17233b;
+      --card-2: #1c2b48;
+      --text: #e8eef9;
+      --muted: #9aa8c2;
+      --line: #2a3b5c;
+      --accent: #3b82f6;
+      --portal: #1e3a5f;
+      --portal-bright: #2563eb;
+      --bedrock: #f97316;
+      --bedrock-bg: #3b2412;
+      --nim: #22c55e;
+      --nim-bg: #12301f;
+      --data: #38bdf8;
+      --data-bg: #0f2a3d;
+      --industry: #34d399;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --good: #10b981;
+      --header-h: 52px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --font-scale: 1.15;
+      --deck-scale: 1;
+      --slide-bg: radial-gradient(1200px 500px at 10% -10%, rgba(37, 99, 235, 0.18), transparent 55%), radial-gradient(900px 400px at 100% 0%, rgba(34, 197, 94, 0.08), transparent 50%), linear-gradient(180deg, #0e1628 0%, #0a1220 100%);
+      --hero-bg: radial-gradient(900px 500px at 20% 20%, rgba(37, 99, 235, 0.28), transparent 55%), radial-gradient(700px 400px at 85% 70%, rgba(249, 115, 22, 0.14), transparent 50%), linear-gradient(160deg, #0b1730, #09101d 60%, #0d1a14);
+      --flow-bg: linear-gradient(90deg, rgba(30, 58, 95, 0.35), rgba(15, 42, 61, 0.25));
+      --kicker-bg: rgba(37, 99, 235, 0.15);
+      --kicker-border: rgba(59, 130, 246, 0.35);
+      --kicker-text: #bfdbfe;
+      --num-bg: rgba(59, 130, 246, 0.18);
+      --num-text: #93c5fd;
+      --callout-bg: rgba(37, 99, 235, 0.12);
+      --callout-border: rgba(59, 130, 246, 0.35);
+      --callout-text: #dbeafe;
+      --callout-strong: #fff;
+      --pill-portal-bg: rgba(37,99,235,.18);
+      --pill-portal-border: rgba(37,99,235,.4);
+      --pill-portal-text: #bfdbfe;
+      --pill-orch-bg: rgba(99,102,241,.18);
+      --pill-orch-border: rgba(99,102,241,.4);
+      --pill-orch-text: #c7d2fe;
+      --pill-bedrock-bg: rgba(249,115,22,.18);
+      --pill-bedrock-border: rgba(249,115,22,.45);
+      --pill-bedrock-text: #fdba74;
+      --pill-nim-bg: rgba(34,197,94,.18);
+      --pill-nim-border: rgba(34,197,94,.4);
+      --pill-nim-text: #86efac;
+      --pill-data-bg: rgba(56,189,248,.15);
+      --pill-data-border: rgba(56,189,248,.4);
+      --pill-data-text: #7dd3fc;
+      --pill-out-bg: rgba(52,211,153,.15);
+      --pill-out-border: rgba(52,211,153,.35);
+      --pill-out-text: #a7f3d0;
+      --tag-orange-bg: rgba(249,115,22,.2);
+      --tag-orange-text: #fdba74;
+      --tag-green-bg: rgba(34,197,94,.2);
+      --tag-green-text: #86efac;
+      --th-text: #e2e8f0;
+      --bedrock-card-bg: linear-gradient(180deg, #2a1a10, var(--card));
+      --nim-card-bg: linear-gradient(180deg, #102418, var(--card));
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --card: #f1f5f9;
+      --card-2: #e2e8f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --accent: #2563eb;
+      --portal: #dbeafe;
+      --portal-bright: #3b82f6;
+      --bedrock: #ea580c;
+      --bedrock-bg: #ffedd5;
+      --nim: #16a34a;
+      --nim-bg: #dcfce7;
+      --data: #0284c7;
+      --data-bg: #e0f2fe;
+      --industry: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --good: #16a34a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --slide-bg: #ffffff;
+      --hero-bg: linear-gradient(160deg, #f8fafc, #f1f5f9);
+      --flow-bg: #f8fafc;
+      --kicker-bg: #dbeafe;
+      --kicker-border: #bfdbfe;
+      --kicker-text: #1d4ed8;
+      --num-bg: #dbeafe;
+      --num-text: #1d4ed8;
+      --callout-bg: #eff6ff;
+      --callout-border: #bfdbfe;
+      --callout-text: #1e3a8a;
+      --callout-strong: #1e40af;
+      --pill-portal-bg: #dbeafe;
+      --pill-portal-border: #bfdbfe;
+      --pill-portal-text: #1d4ed8;
+      --pill-orch-bg: #e0e7ff;
+      --pill-orch-border: #c7d2fe;
+      --pill-orch-text: #4338ca;
+      --pill-bedrock-bg: #ffedd5;
+      --pill-bedrock-border: #fed7aa;
+      --pill-bedrock-text: #c2410c;
+      --pill-nim-bg: #dcfce7;
+      --pill-nim-border: #bbf7d0;
+      --pill-nim-text: #15803d;
+      --pill-data-bg: #e0f2fe;
+      --pill-data-border: #bae6fd;
+      --pill-data-text: #0369a1;
+      --pill-out-bg: #d1fae5;
+      --pill-out-border: #a7f3d0;
+      --pill-out-text: #047857;
+      --tag-orange-bg: #ffedd5;
+      --tag-orange-text: #c2410c;
+      --tag-green-bg: #dcfce7;
+      --tag-green-text: #15803d;
+      --th-text: #0f172a;
+      --bedrock-card-bg: linear-gradient(180deg, #fff7ed, var(--card));
+      --nim-card-bg: linear-gradient(180deg, #f0fdf4, var(--card));
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+
+    #deck-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--header-h);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      transition: opacity 0.3s ease;
+    }
+    body.presenting #deck-header {
+      opacity: 0;
+    }
+    body.presenting #deck-header:hover {
+      opacity: 0.95;
+    }
+    #deck-header .brand {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    #deck-header .brand span { color: var(--accent); }
+    #progress {
+      flex: 1;
+      height: 6px;
+      background: #1a2740;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    #progress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--portal-bright), var(--data));
+      transition: width 0.25s ease;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .toolbar button:hover { border-color: var(--accent); }
+    #slide-counter {
+      min-width: 64px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #deck {
+      padding-top: calc(var(--header-h) + 18px);
+      padding-bottom: 24px;
+      min-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .slide {
+      display: none;
+      width: min(1280px, calc(100vw - 32px));
+      aspect-ratio: 16 / 9;
+      background: var(--slide-bg);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 36px 44px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero {
+      justify-content: center;
+      background: var(--hero-bg);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--kicker-bg);
+      border: 1px solid var(--kicker-border);
+      color: var(--kicker-text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: calc(clamp(34px, 3.6vw, 52px) * var(--font-scale));
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: calc(clamp(26px, 2.4vw, 34px) * var(--font-scale));
+      line-height: 1.2;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: calc(clamp(16px, 1.35vw, 20px) * var(--font-scale));
+      line-height: 1.55;
+      max-width: 52ch;
+    }
+    .stamp {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+    }
+
+    .footer {
+      position: absolute;
+      left: 44px;
+      right: 44px;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+
+    .grid { display: grid; gap: 14px; margin-top: 18px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      min-height: 0;
+    }
+    .card > strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .card p, .card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+      line-height: 1.5;
+    }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background: var(--num-bg);
+      color: var(--num-text);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .callout {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--callout-border);
+      background: var(--callout-bg);
+      color: var(--callout-text);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--flow-bg);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      border-top: 3px solid var(--accent);
+    }
+    .flow-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .flow-step strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .flow-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .flow-arrow {
+      width: 18px;
+      flex: 0 0 18px;
+      align-self: center;
+      height: 2px;
+      background: #64748b;
+      position: relative;
+    }
+    .flow-arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -4px;
+      border: 5px solid transparent;
+      border-left-color: #64748b;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .pill.portal { background: var(--pill-portal-bg); border-color: var(--pill-portal-border); color: var(--pill-portal-text); }
+    .pill.orch { background: var(--pill-orch-bg); border-color: var(--pill-orch-border); color: var(--pill-orch-text); }
+    .pill.bedrock { background: var(--pill-bedrock-bg); border-color: var(--pill-bedrock-border); color: var(--pill-bedrock-text); }
+    .pill.nim { background: var(--pill-nim-bg); border-color: var(--pill-nim-border); color: var(--pill-nim-text); }
+    .pill.data { background: var(--pill-data-bg); border-color: var(--pill-data-border); color: var(--pill-data-text); }
+    .pill.out { background: var(--pill-out-bg); border-color: var(--pill-out-border); color: var(--pill-out-text); }
+
+    /* 第3頁：五層架構 SVG 圖 */
+    #s3 h2 { margin-bottom: 6px; }
+    .arch-svg-wrap {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      min-height: 480px;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+    .arch-svg {
+      width: 100%;
+      max-width: 1180px;
+      height: 100%;
+      min-height: 480px;
+      max-height: 540px;
+      display: block;
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      /* 基準字級：隨 A- / A+ 的 --font-scale 縮放 */
+      font-size: calc(16px * var(--font-scale));
+    }
+    .arch-svg text {
+      font-family: inherit;
+    }
+    .arch-svg .svg-panel {
+      fill: var(--card);
+      stroke: var(--line);
+      stroke-width: 1.5;
+    }
+    .arch-svg .svg-panel-soft {
+      fill: var(--panel);
+      stroke: var(--line);
+      stroke-width: 1.2;
+    }
+    .arch-svg .svg-label {
+      fill: var(--accent);
+      font-size: calc(16px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-title {
+      fill: var(--text);
+      font-size: calc(17px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-sub {
+      fill: var(--muted);
+      font-size: calc(13px * var(--font-scale));
+      font-weight: 500;
+    }
+    .arch-svg .svg-chip-text {
+      fill: var(--text);
+      font-size: calc(15px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-chip-lg {
+      fill: var(--text);
+      font-size: calc(16px * var(--font-scale));
+      font-weight: 700;
+    }
+    .arch-svg .svg-icon {
+      font-size: calc(16px * var(--font-scale));
+    }
+    .arch-svg .svg-flow-text {
+      fill: var(--muted);
+      font-size: calc(13px * var(--font-scale));
+      font-weight: 600;
+    }
+    .arch-svg .chip-portal { fill: var(--pill-portal-bg); stroke: var(--pill-portal-border); }
+    .arch-svg .chip-orch { fill: var(--pill-orch-bg); stroke: var(--pill-orch-border); }
+    .arch-svg .chip-cloud { fill: var(--pill-bedrock-bg); stroke: var(--pill-bedrock-border); }
+    .arch-svg .chip-onprem { fill: var(--pill-nim-bg); stroke: var(--pill-nim-border); }
+    .arch-svg .chip-data { fill: var(--pill-data-bg); stroke: var(--pill-data-border); }
+    .arch-svg .chip-out { fill: var(--pill-out-bg); stroke: var(--pill-out-border); }
+    .arch-svg .chip-val { fill: var(--callout-bg); stroke: var(--callout-border); }
+    .arch-svg .chip-portal-t { fill: var(--pill-portal-text); }
+    .arch-svg .chip-orch-t { fill: var(--pill-orch-text); }
+    .arch-svg .chip-cloud-t { fill: var(--pill-bedrock-text); }
+    .arch-svg .chip-onprem-t { fill: var(--pill-nim-text); }
+    .arch-svg .chip-data-t { fill: var(--pill-data-text); }
+    .arch-svg .chip-out-t { fill: var(--pill-out-text); }
+    .arch-svg .chip-val-t { fill: var(--callout-strong); }
+    .arch-svg .flow-line {
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 5 4;
+      opacity: 0.7;
+    }
+    .arch-svg .arrow-head { fill: var(--accent); opacity: 0.75; }
+    .arch-svg .layer-badge {
+      fill: var(--accent);
+    }
+    .arch-svg .layer-badge-t {
+      fill: #fff;
+      font-size: calc(14px * var(--font-scale));
+      font-weight: 800;
+    }
+    :root[data-theme="light"] .arch-svg .layer-badge-t { fill: #fff; }
+
+    .model-card.bedrock-card {
+      border-top: 4px solid var(--bedrock);
+      background: var(--bedrock-card-bg);
+    }
+    .model-card.nim-card {
+      border-top: 4px solid var(--nim);
+      background: var(--nim-card-bg);
+    }
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .tag.orange { background: var(--tag-orange-bg); color: var(--tag-orange-text); }
+    .tag.green { background: var(--tag-green-bg); color: var(--tag-green-text); }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .table th {
+      background: var(--flow-bg);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .table td { color: var(--muted); background: var(--card); }
+    .table td strong { color: var(--text); }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .check-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: calc(14px * var(--font-scale));
+      line-height: 1.4;
+    }
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    .mini-note {
+      margin: 10px 0 0;
+      color: #7c8ba8;
+      font-size: 12px;
+    }
+    .mini-note a { color: #93c5fd; }
+
+    body.presenting #deck-header { display: none; }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0;
+      width: 1280px;
+      height: 720px;
+      aspect-ratio: auto;
+      border-radius: 0;
+      border: none;
+    }
+
+    /* Narration / speaker mode */
+    #narration-panel {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      width: min(420px, calc(100vw - 32px));
+      max-height: min(52vh, 520px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transform: translateY(calc(100% + 24px));
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s ease, opacity 0.28s ease, width 0.2s ease, max-height 0.2s ease, padding 0.2s ease;
+    }
+    #narration-panel.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #narration-panel.minimized {
+      width: auto;
+      max-width: min(360px, calc(100vw - 32px));
+      max-height: none;
+      padding: 8px 10px;
+      gap: 6px;
+    }
+    #narration-panel.minimized #narration-script,
+    #narration-panel.minimized #narration-avatar,
+    #narration-panel.minimized .narration-settings {
+      display: none;
+    }
+    #narration-panel.minimized #narration-status {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    #narration-panel header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    #narration-panel header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    #narration-panel header .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    #narration-panel header strong {
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    #narration-panel .icon-btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    #narration-panel .icon-btn:hover { border-color: var(--accent); }
+    #narration-status {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    #narration-script {
+      flex: 1;
+      overflow: auto;
+      margin: 0;
+      padding: 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: calc(13px * var(--font-scale));
+      line-height: 1.65;
+      white-space: pre-wrap;
+      max-height: 220px;
+    }
+    #narration-progress {
+      height: 4px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    #narration-progress-bar {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--portal-bright), var(--data));
+      transition: width 0.15s linear;
+    }
+    .narration-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .narration-controls button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .narration-controls button:hover { border-color: var(--accent); }
+    .narration-controls label,
+    .narration-settings label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .narration-settings {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .narration-controls input[type="range"],
+    .narration-settings input[type="range"] {
+      width: 72px;
+      accent-color: var(--accent);
+    }
+    #narration-rate-value {
+      min-width: 2.8em;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      font-weight: 600;
+    }
+    #narration-avatar {
+      min-height: 0;
+    }
+    .narration-avatar-video {
+      width: 100%;
+      max-height: 120px;
+      border-radius: 10px;
+      background: #000;
+    }
+    .narration-avatar-video.hidden { display: none; }
+    body.presenting #narration-panel {
+      right: 20px;
+      bottom: 20px;
+    }
+
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        break-after: page;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .slide { width: calc(100vw - 16px); padding: 22px 18px 40px; }
+      .grid.six { grid-template-columns: repeat(2, 1fr); }
+      .footer { left: 18px; right: 18px; }
+      .flow { gap: 4px; padding: 10px; }
+      .flow-step { min-width: 88px; padding: 8px; }
+      .flow-desc { font-size: 11px; }
+      .flow-arrow { width: 10px; flex-basis: 10px; }
+    }
+
+    @media (max-width: 640px) {
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .check-list { grid-template-columns: 1fr; }
+      .arch-svg { max-height: none; }
+    }
+  
+    .ref-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 18px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .ref-list li {
+      color: var(--muted);
+      font-size: calc(13px * var(--font-scale));
+      line-height: 1.45;
+    }
+    .ref-list a { color: var(--pill-data-text); text-decoration: none; }
+    .ref-list a:hover { text-decoration: underline; }
+    .path {
+      font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+      font-size: 12px;
+      color: var(--pill-data-text);
+      word-break: break-all;
+    }
+    .card a { color: var(--pill-data-text); }
+    @media (max-width: 640px) {
+      .ref-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand">Grok Bot <span>·</span> 簡介與應用</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體">A-</button>
+      <button type="button" id="btn-aplus" title="放大字體">A+</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 10</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+  </header>
+
+  <main id="deck">
+
+    <!-- 1 封面 -->
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">共學與對外分享 · Grok Bot</p>
+      <h1>Grok Bot<br />簡介與應用</h1>
+      <p class="lead">工作不是停在回覆裡，而是落到你原本就會打開的那些工具。把 AI 從「會講」推到「會收尾」。</p>
+      <p class="stamp">整理／優化：2026-09-21 · 約 10 頁 · 16:9 · 繁體中文</p>
+      <div class="footer"><span>Grok Bot</span><span>1 / 10</span></div>
+    </section>
+
+    <!-- 2 它是什麼 -->
+    <section class="slide" id="s2" data-title="它是什麼">
+      <p class="eyebrow">02 / 它是什麼</p>
+      <h2>具名 AI 隊友，加上一台常駐雲端電腦</h2>
+      <p class="lead">SpaceXAI 與 Cursor 生態中的 AI 隊友產品：像傳訊息給同事一樣把任務交出去。</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>有名字、有職責</strong>
+          <p>可建立一個或多個 Bot；同一 Bot 可在桌面與手機接續，不必重講一遍。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>常駐雲端電腦</strong>
+          <p>瀏覽器、檔案系統、終端機都在上面。你闔上筆電，工作仍可繼續。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>做到結束</strong>
+          <p>登入日常 App 與網站，跨工具收尾；需要你拍板時，它才回來找你。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>官方說法：</strong>Bots 可以登入你日常使用的 App 與網站，把事情做到結束，而不是只給一段草稿。</div>
+      <div class="footer"><span>Grok Bot</span><span>2 / 10</span></div>
+    </section>
+
+    <!-- 3 為什麼不同 -->
+    <section class="slide" id="s3" data-title="為什麼不同">
+      <p class="eyebrow">03 / 為什麼感覺不同</p>
+      <h2>不只有對話框，而是能把路走完</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>有電腦，不只有對話框</strong>
+          <p>可接 connectors／MCP；沒有乾淨 API 的網站，也能用電腦操作完成。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>起手是一句話</strong>
+          <p>建立 Bot、描述工作、按需要授權；不是先畫流程圖才開工。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>多個 Bot 能協調</strong>
+          <p>可平行做事、互傳訊息、進群組聊天，減少你當「人工路由器」。</p>
+        </article>
+      </div>
+      <div class="grid two" style="margin-top:14px;">
+        <article class="card">
+          <div class="num">04</div>
+          <strong>會從示範學會流程</strong>
+          <p>帶它走一遍，可存成 skill／routine，之後再跑或排程。</p>
+        </article>
+        <article class="card">
+          <div class="num">05</div>
+          <strong>記憶會累積</strong>
+          <p>具名 Bot 保有偏好與先前工作摘要；檔案與瀏覽器登入在帳號層級共享。</p>
+        </article>
+      </div>
+      <div class="footer"><span>Grok Bot</span><span>3 / 10</span></div>
+    </section>
+
+    <!-- 4 名字分清楚 -->
+    <section class="slide" id="s4" data-title="名字分清楚">
+      <p class="eyebrow">04 / 先把名字分清楚</p>
+      <h2>Grok Bot ≠ Cloud Agents ≠ 聊天 Grok</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width:22%">名稱</th>
+            <th>比較像</th>
+            <th>工作主要發生在哪</th>
+            <th>你通常要驗收什麼</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Grok Bot</strong></td>
+            <td>常駐隊友／小團隊</td>
+            <td>雲端電腦、App、網站、跨工具流程</td>
+            <td>已落地的成果；必要時請你核准</td>
+          </tr>
+          <tr>
+            <td><strong>Cursor Cloud Agents</strong></td>
+            <td>專案內工程代理</td>
+            <td>程式庫（repo）、分支、測試、PR</td>
+            <td>可審查的程式變更與證據</td>
+          </tr>
+          <tr>
+            <td><strong>Grok 對話產品</strong></td>
+            <td>問答與創作</td>
+            <td>對話介面</td>
+            <td>想法、文字、即時回答</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>一句話：</strong>Grok Bot 擅長「跨工具把事情做完」；Cursor coding agent 擅長「在 repo 裡把程式改完」。兩者可以接力。</div>
+      <div class="footer"><span>Grok Bot</span><span>4 / 10</span></div>
+    </section>
+
+    <!-- 5 五類應用 -->
+    <section class="slide" id="s5" data-title="五類應用">
+      <p class="eyebrow">05 / 五類典型應用</p>
+      <h2>結果要落在真實系統，不是沒人貼上的摘要</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>營運與行政收尾</strong>
+          <p>整理發票、新進流程、通話逐字稿進 CRM 並起草後續。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>銷售與外聯準備</strong>
+          <p>從 CRM 拉複盤名單、補情報、起草符合你語氣的外聯草稿。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>內容與研究</strong>
+          <p>蒐集素材、產出可分享的 Google 文件／簡報骨架、對齊來源。</p>
+        </article>
+      </div>
+      <div class="grid two" style="margin-top:14px;">
+        <article class="card">
+          <div class="num">04</div>
+          <strong>工程協調（不是取代 IDE）</strong>
+          <p>Bot 當調度者：重現問題、開票、追蹤雲端代理、檢查截圖／PR。改碼交給 Cloud Agents。</p>
+        </article>
+        <article class="card">
+          <div class="num">05</div>
+          <strong>小團隊分工</strong>
+          <p>總管＋專責（收件匣、費用、招募、除錯、營運）；人只處理判斷與核准。</p>
+        </article>
+      </div>
+      <div class="footer"><span>Grok Bot</span><span>5 / 10</span></div>
+    </section>
+
+    <!-- 6 實際案例 -->
+    <section class="slide" id="s6" data-title="實際案例">
+      <p class="eyebrow">06 / 我們實際怎麼用</p>
+      <h2>三個真實專案：從盤點到上架、再到建庫</h2>
+      <div class="grid three">
+        <article class="card">
+          <span class="tag orange">fyhGoogle</span>
+          <strong>福圓號營運通</strong>
+          <ul>
+            <li>盤點產銷預估流程</li>
+            <li>整理巨量資料分析案例</li>
+            <li>產出可分享 HTML／Google 簡報</li>
+            <li>Repo：<code>yjhwang59/fyhGoogle</code></li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag green">myppt</span>
+          <strong>簡報庫</strong>
+          <ul>
+            <li>把 HTML 培訓／主管簡報登錄並部署</li>
+            <li>公開站：<a href="https://myppt.aidc.work">https://myppt.aidc.work</a></li>
+            <li>例如 <code>fyh-bigdata-production-forecast</code></li>
+            <li>Repo：<code>yjhwang59/myppt</code></li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag orange">GoMatch</span>
+          <strong>本機專案起步</strong>
+          <ul>
+            <li>以 Grok Bot 在本機建 Cursor 專案</li>
+            <li>完成 git init 與 workspace</li>
+            <li>後續再接 GitHub remote</li>
+            <li class="path">Documents\GitHub\GoMatch</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>接力：</strong>Bot 收集需求與證據，寫碼交給 Cloud Agent，最後由人核准合併。</div>
+      <div class="footer"><span>Grok Bot</span><span>6 / 10</span></div>
+    </section>
+
+    <!-- 7 怎麼交辦 -->
+    <section class="slide" id="s7" data-title="怎麼交辦">
+      <p class="eyebrow">07 / 怎麼交辦才容易做完</p>
+      <h2>說清楚完成長什麼樣子，再放手</h2>
+      <div class="flow" role="list">
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>定義完成</strong>
+          <p class="flow-desc">交付物、截止、放在哪個工具</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>指明來源與禁區</strong>
+          <p class="flow-desc">哪些欄位不能進外部模型</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>保留核准點</strong>
+          <p class="flow-desc">寄信、匯款、合併、公開發布</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>固化成 skill</strong>
+          <p class="flow-desc">穩定流程再存成 routine</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>改碼走 PR</strong>
+          <p class="flow-desc">程式變更優先走 Cloud Agent</p>
+        </div>
+      </div>
+      <div class="callout"><strong>提醒：</strong>別把 Bot 雲端電腦當成第二套開發機；程式變更優先走 Cloud Agent／PR。</div>
+      <div class="footer"><span>Grok Bot</span><span>7 / 10</span></div>
+    </section>
+
+    <!-- 8 注意與起步 -->
+    <section class="slide" id="s8" data-title="注意與起步">
+      <p class="eyebrow">08 / 使用注意與最小起步</p>
+      <h2>先做一件可檢查的真實任務</h2>
+      <div class="grid two">
+        <article class="card">
+          <strong>使用注意</strong>
+          <ul>
+            <li>功能與方案可能調整，請以官方為準</li>
+            <li>可搭配付費 Cursor 個人／Teams，或 SuperGrok／Plus／Heavy</li>
+            <li>用量通常以週重置</li>
+            <li>同一帳號下各 Bot 共享一台雲端電腦</li>
+            <li>網站阻擋或需真人步驟時，交回給你；不要繞過安全關卡</li>
+          </ul>
+        </article>
+        <article class="card">
+          <strong>最小起步</strong>
+          <ul>
+            <li>安裝 App、建立具名 Bot</li>
+            <li>交辦一件跨兩三種工具、結果可檢查的真實任務</li>
+            <li>修正語氣與邊界後，再決定是否變成 routine</li>
+            <li>涉及改程式時，明確要求開 Cloud Agent／PR</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>原則：</strong>你負責定義完成與風險；它負責在真實工具裡把路走完，並在該停的地方停下來問你。</div>
+      <div class="footer"><span>Grok Bot</span><span>8 / 10</span></div>
+    </section>
+
+    <!-- 9 結語 -->
+    <section class="slide" id="s9" data-title="結語">
+      <p class="eyebrow">09 / 結語</p>
+      <h2>價值不在又多一個聊天視窗</h2>
+      <p class="lead">Grok Bot 扛的是「做到快完成」與「真的完成」之間的那一截。</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">你</div>
+          <strong>定義完成與風險</strong>
+          <p>交付物、禁區、核准點。該停的地方，必須停下來問你。</p>
+        </article>
+        <article class="card">
+          <div class="num">Bot</div>
+          <strong>在真實工具裡走完</strong>
+          <p>信箱、日曆、文件、瀏覽器、專案下一站——結果落地，不是停在回覆。</p>
+        </article>
+        <article class="card">
+          <div class="num">Agent</div>
+          <strong>在 repo 裡改完</strong>
+          <p>Bot 收集需求與證據；寫碼交給 Cloud Agent；人核准後合併。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>帶走一句：</strong>把 AI 從「會講」推到「會收尾」。</div>
+      <div class="footer"><span>Grok Bot</span><span>9 / 10</span></div>
+    </section>
+
+    <!-- 10 參考資料 -->
+    <section class="slide" id="s10" data-title="參考資料">
+      <p class="eyebrow">10 / 參考資料</p>
+      <h2>公開文件與同主題簡報</h2>
+      <p class="lead">本篇依公開文件與實際專案案例整理；方案與功能請以官網當下說明為準。</p>
+      <ul class="ref-list">
+        <li><a href="https://x.ai/news/introducing-grok-bot" target="_blank" rel="noopener">SpaceXAI｜Introducing Grok Bot</a></li>
+        <li><a href="https://docs.x.ai/grok-bot/overview" target="_blank" rel="noopener">xAI Docs｜Overview</a></li>
+        <li><a href="https://cursor.com/docs/grok-bot" target="_blank" rel="noopener">Cursor Docs｜Grok Bot</a></li>
+        <li><a href="https://x.ai/bot/guides/grok-bot-for-engineering" target="_blank" rel="noopener">xAI｜Grok Bot for Engineering</a></li>
+        <li><a href="https://docs.x.ai/grok-bot/faq" target="_blank" rel="noopener">xAI Docs｜FAQ</a></li>
+        <li><a href="https://bot.store/academy/grok-bot-vs-cursor-cloud-agents" target="_blank" rel="noopener">比較｜Grok Bot vs Cloud Agents</a></li>
+        <li><a href="https://docs.google.com/presentation/d/1rbcvUU7cYdEIKzBNqgncjPrWa1A-1zIM/edit" target="_blank" rel="noopener">一頁 Google 簡報（同主題）</a></li>
+        <li><a href="https://myppt.aidc.work" target="_blank" rel="noopener">myppt 公開簡報庫</a></li>
+      </ul>
+      <p class="mini-note">Repo 範例：yjhwang59/fyhGoogle、yjhwang59/myppt · GoMatch 本機：Documents\\GitHub\\GoMatch</p>
+      <div class="footer"><span>Grok Bot</span><span>10 / 10</span></div>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+      const btnPresent = document.getElementById("btn-present");
+      const btnPrint = document.getElementById("btn-print");
+      const btnTheme = document.getElementById("btn-theme");
+      const btnAminus = document.getElementById("btn-aminus");
+      const btnAplus = document.getElementById("btn-aplus");
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+
+      // Theme toggle
+      btnTheme.addEventListener("click", () => {
+        const root = document.documentElement;
+        const currentTheme = root.getAttribute("data-theme");
+        root.setAttribute("data-theme", currentTheme === "light" ? "dark" : "light");
+      });
+
+      // Font scaling
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, fontScale + delta));
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+      }
+      btnAminus.addEventListener("click", () => updateFontScale(-0.1));
+      btnAplus.addEventListener("click", () => updateFontScale(0.1));
+
+      // Fullscreen scaling
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const winW = window.innerWidth;
+          const winH = window.innerHeight;
+          // Calculate scale to fit 1280x720 16:9 box
+          const scale = Math.min(winW / 1280, winH / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", 1);
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = ((index + 1) / total * 100).toFixed(2) + "%";
+        document.title = slides[index].dataset.title
+          ? slides[index].dataset.title + " · Grok Bot"
+          : "Grok Bot 簡介與應用";
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      btnPrev.addEventListener("click", prev);
+      btnNext.addEventListener("click", next);
+      btnPrint.addEventListener("click", () => window.print());
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen?.();
+        } else {
+          document.exitFullscreen?.();
+        }
+      });
+
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+          e.preventDefault();
+          next();
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          prev();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          show(0);
+        } else if (e.key === "End") {
+          e.preventDefault();
+          show(total - 1);
+        } else if (e.key === "f" || e.key === "F") {
+          e.preventDefault();
+          btnPresent.click();
+        } else if (e.key === "t" || e.key === "T") {
+          e.preventDefault();
+          btnTheme.click();
+        } else if (e.key === "p" || e.key === "P") {
+          if (!e.ctrlKey && !e.metaKey) {
+            e.preventDefault();
+            window.print();
+          }
+        } else if (e.key === "Escape" && document.fullscreenElement) {
+          document.exitFullscreen?.();
+        }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+
+</body>
+</html>
