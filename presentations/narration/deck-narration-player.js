@@ -2,9 +2,14 @@
  * Deck narration player — audio now, avatar/video later via MediaRenderer.
  */
 (function () {
-  const MANIFEST_URL = "narration/enterprise-ai-portal-deck.json";
   const panel = document.getElementById("narration-panel");
   if (!panel) return;
+
+  const deckId =
+    document.documentElement.getAttribute("data-deck-id") ||
+    panel.getAttribute("data-deck-id") ||
+    "enterprise-ai-portal-deck";
+  const MANIFEST_URL = `narration/${deckId}.json`;
 
   const els = {
     script: document.getElementById("narration-script"),
@@ -309,7 +314,7 @@
     } catch (err) {
       if (els.script) {
         els.script.textContent =
-          "無法載入講稿 manifest。請以 npm run dev 開啟 http://localhost:8787/enterprise-ai-portal-deck.html。";
+          `無法載入講稿 manifest（${MANIFEST_URL}）。講者模式為選用功能。`;
       }
       setStatus(`manifest 載入失敗: ${err.message}`);
     }

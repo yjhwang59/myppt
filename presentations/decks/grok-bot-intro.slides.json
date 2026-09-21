@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "deckId": "grok-bot-intro-apps",
+  "deckId": "grok-bot-intro",
   "title": "Grok Bot 簡介與應用",
   "slides": [
     {
@@ -10,17 +10,21 @@
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "共學與對外分享 · Grok Bot",
+      "kicker": "共學與對外分享 · 2026-09-21 · AI-PPT HTML deck",
       "h1": "Grok Bot\n簡介與應用",
       "h2": "Grok Bot 簡介與應用",
       "lead": "工作不是停在回覆裡，而是落到你原本就會打開的那些工具。把 AI 從「會講」推到「會收尾」。",
-      "stamp": "整理／優化：2026-09-21 · 約 10 頁 · 16:9 · 繁體中文",
+      "stamp": "A−／A＋ 可調字級 · ←→ 翻頁 · T 主題 · F 全螢幕 · 約 10 頁 · 16:9",
       "cards": [],
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "Grok Bot",
-      "footerPage": "1 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "1 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s2",
@@ -65,8 +69,12 @@
       "callouts": [
         "官方說法：Bots 可以登入你日常使用的 App 與網站，把事情做到結束，而不是只給一段草稿。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "2 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "2 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s3",
@@ -125,8 +133,12 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "Grok Bot",
-      "footerPage": "3 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "3 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s4",
@@ -171,8 +183,12 @@
       "callouts": [
         "一句話：Grok Bot 擅長「跨工具把事情做完」；Cursor coding agent 擅長「在 repo 裡把程式改完」。兩者可以接力。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "4 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "4 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s5",
@@ -231,8 +247,12 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "Grok Bot",
-      "footerPage": "5 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "5 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s6",
@@ -292,8 +312,12 @@
       "callouts": [
         "接力：Bot 收集需求與證據，寫碼交給 Cloud Agent，最後由人核准合併。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "6 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "6 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s7",
@@ -334,8 +358,12 @@
       "callouts": [
         "提醒：別把 Bot 雲端電腦當成第二套開發機；程式變更優先走 Cloud Agent／PR。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "7 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "7 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s8",
@@ -383,8 +411,12 @@
       "callouts": [
         "原則：你負責定義完成與風險；它負責在真實工具裡把路走完，並在該停的地方停下來問你。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "8 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "8 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s9",
@@ -429,8 +461,12 @@
       "callouts": [
         "帶走一句：把 AI 從「會講」推到「會收尾」。"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "9 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "9 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     },
     {
       "slideId": "s10",
@@ -458,8 +494,14 @@
         "一頁 Google 簡報（同主題）— https://docs.google.com/presentation/d/1rbcvUU7cYdEIKzBNqgncjPrWa1A-1zIM/edit",
         "myppt 公開簡報庫 — https://myppt.aidc.work"
       ],
-      "footerBrand": "Grok Bot",
-      "footerPage": "10 / 10"
+      "footerBrand": "Grok Bot · AI-PPT",
+      "footerPage": "10 / 10",
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": []
     }
-  ]
+  ],
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native"
 }

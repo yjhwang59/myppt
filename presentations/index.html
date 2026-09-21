@@ -2,15 +2,364 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/enterprise-ai-portal-deck.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI-EIP</title>
-    <link rel="canonical" href="/enterprise-ai-portal-deck.html" />
+    <meta
+      name="description"
+      content="AIDC 簡報庫：企業 AI 教學與架構簡報，可直接開啟播放。"
+    />
+    <title>AIDC 簡報庫</title>
+    <link rel="canonical" href="/" />
+    <style>
+      :root {
+        --ink: #17324d;
+        --muted: #607286;
+        --brand: #368f88;
+        --brand-deep: #2a726c;
+        --accent: #ed9b48;
+        --paper: #f5faf8;
+        --line: #cbded9;
+        --card: #ffffff;
+        --shadow: 0 18px 50px #17324d1f;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(900px 420px at 100% 0, #bde8df55, transparent 42%),
+          radial-gradient(700px 360px at 0 8%, #ed9b4822, transparent 46%),
+          linear-gradient(180deg, #e7f2ef 0%, #dce9e5 100%);
+        color: var(--ink);
+        font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      }
+      a { color: inherit; }
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 0 10px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--brand), #1f6f6a);
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        font-size: 13px;
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: -0.03em;
+      }
+      .brand p {
+        margin: 2px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .site-link {
+        text-decoration: none;
+        color: var(--brand-deep);
+        font-weight: 700;
+        font-size: 14px;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 8px 14px;
+      }
+      .hero {
+        padding: 28px 0 8px;
+      }
+      .hero .kicker {
+        margin: 0 0 8px;
+        color: var(--brand-deep);
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        font-size: 12px;
+      }
+      .hero h2 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 1.15;
+        letter-spacing: -0.04em;
+      }
+      .hero p {
+        margin: 0;
+        max-width: 42rem;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        margin: 28px 0 18px;
+      }
+      .search {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 14px;
+        padding: 13px 16px;
+        font: inherit;
+        color: var(--ink);
+      }
+      .search:focus {
+        outline: 2px solid #368f8844;
+        border-color: var(--brand);
+      }
+      .count {
+        color: var(--muted);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 16px;
+        padding-bottom: 72px;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        min-height: 220px;
+        padding: 22px;
+        border: 1px solid #368f8833;
+        border-radius: 22px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+      .card:hover,
+      .card:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 22px 56px #17324d2e;
+        outline: none;
+      }
+      .card .meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .pill {
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 12px;
+        font-weight: 700;
+        background: #e7f6f3;
+        color: var(--brand-deep);
+      }
+      .pill.accent {
+        background: #fff1e2;
+        color: #9a5a16;
+      }
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        line-height: 1.3;
+        letter-spacing: -0.03em;
+      }
+      .card .lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .card .go {
+        margin-top: 16px;
+        font-weight: 800;
+        color: var(--brand-deep);
+        font-size: 14px;
+      }
+      .status, .empty {
+        padding: 28px 22px;
+        border: 1px dashed var(--line);
+        border-radius: 18px;
+        background: #ffffffaa;
+        color: var(--muted);
+      }
+      .empty h3 { margin: 0 0 6px; color: var(--ink); }
+      footer {
+        padding: 8px 0 36px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      footer a { color: var(--brand-deep); font-weight: 700; text-decoration: none; }
+      @media (max-width: 640px) {
+        header { align-items: flex-start; }
+        .toolbar { grid-template-columns: 1fr; }
+      }
+    </style>
   </head>
   <body>
-    <p>
-      Redirecting to
-      <a href="/enterprise-ai-portal-deck.html">enterprise-ai-portal-deck.html</a>…
-    </p>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="/">
+          <span class="mark" aria-hidden="true">AI</span>
+          <span>
+            <h1>AIDC 簡報庫</h1>
+            <p>企業 AI 教學與架構簡報</p>
+          </span>
+        </a>
+        <a class="site-link" href="https://aidc.work" rel="noopener">aidc.work</a>
+      </header>
+
+      <section class="hero">
+        <p class="kicker">PUBLIC DECK LIBRARY</p>
+        <h2>打開就能講的企業 AI 簡報</h2>
+        <p>精選教學、架構與閱讀路徑。點卡片即可全螢幕播放，不必登入後台。</p>
+      </section>
+
+      <div class="toolbar">
+        <input
+          id="search"
+          class="search"
+          type="search"
+          placeholder="搜尋標題或 deckId…"
+          autocomplete="off"
+        />
+        <div id="count" class="count">載入中…</div>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+      <footer>
+        Jack Y. J. Hwang · <a href="https://aidc.work">AIDC.work</a>
+      </footer>
+    </div>
+
+    <script>
+      const HIDDEN = (id) =>
+        id === "deck" || id.startsWith("test-") || id.startsWith("fyhgoogle-");
+
+      const TITLE_OVERRIDES = {
+        "fyh-bigdata-production-forecast": "fyhGoogle｜巨量資料分析｜次日生產預估",
+        "taiwan-ai-strategic-blueprint": "台灣 AI 戰略藍圖",
+        "aidc-work-system-architecture": "AIDC.work 系統架構",
+      };
+
+      const TYPE_LABEL = { html: "HTML", pdf: "PDF" };
+
+      function displayTitle(deck) {
+        return TITLE_OVERRIDES[deck.deckId] || deck.title || deck.deckId;
+      }
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      async function loadSlidesMeta(deckId) {
+        try {
+          const res = await fetch(`/decks/${encodeURIComponent(deckId)}.slides.json`, {
+            cache: "no-store",
+          });
+          if (!res.ok) return { slideCount: null, lead: "" };
+          const data = await res.json();
+          const first = data.slides?.[0] || {};
+          const lead = String(first.lead || first.h2 || "").replace(/\s+/g, " ").trim();
+          return {
+            slideCount: Array.isArray(data.slides) ? data.slides.length : null,
+            lead,
+          };
+        } catch {
+          return { slideCount: null, lead: "" };
+        }
+      }
+
+      function render(decks, query) {
+        const q = query.trim().toLowerCase();
+        const filtered = decks.filter((d) => {
+          if (!q) return true;
+          const hay = `${displayTitle(d)} ${d.deckId} ${d.lead || ""}`.toLowerCase();
+          return hay.includes(q);
+        });
+
+        const grid = document.getElementById("grid");
+        const count = document.getElementById("count");
+        count.textContent = q
+          ? `顯示 ${filtered.length} / ${decks.length} 份`
+          : `${decks.length} 份精選簡報`;
+
+        if (!filtered.length) {
+          grid.innerHTML = `
+            <div class="empty">
+              <h3>沒有符合的簡報</h3>
+              <p>試試其他關鍵字，或清空搜尋回到完整清單。</p>
+            </div>`;
+          return;
+        }
+
+        grid.innerHTML = filtered
+          .map((d) => {
+            const title = escapeHtml(displayTitle(d));
+            const lead = escapeHtml(d.lead || "開啟後即可翻頁播放。");
+            const type = TYPE_LABEL[d.sourceType] || "簡報";
+            const pages = d.slideCount ? `${d.slideCount} 頁` : "簡報";
+            return `
+              <a class="card" href="/${encodeURIComponent(d.deckId)}.html">
+                <div class="meta">
+                  <span class="pill">${escapeHtml(type)}</span>
+                  <span class="pill accent">${escapeHtml(pages)}</span>
+                </div>
+                <h3>${title}</h3>
+                <p class="lead">${lead}</p>
+                <span class="go">開啟簡報 →</span>
+              </a>`;
+          })
+          .join("");
+      }
+
+      async function main() {
+        const grid = document.getElementById("grid");
+        const search = document.getElementById("search");
+        try {
+          const res = await fetch("/decks/registry.json", { cache: "no-store" });
+          if (!res.ok) throw new Error(`registry ${res.status}`);
+          const registry = await res.json();
+          const publicDecks = (registry.decks || []).filter((d) => !HIDDEN(d.deckId));
+          const enriched = await Promise.all(
+            publicDecks.map(async (d) => {
+              const meta = await loadSlidesMeta(d.deckId);
+              return { ...d, ...meta };
+            })
+          );
+          enriched.sort((a, b) => displayTitle(a).localeCompare(displayTitle(b), "zh-Hant"));
+          render(enriched, search.value);
+          search.addEventListener("input", () => render(enriched, search.value));
+        } catch (err) {
+          document.getElementById("count").textContent = "無法載入清單";
+          grid.innerHTML = `
+            <div class="empty">
+              <h3>簡報清單暫時無法讀取</h3>
+              <p>${escapeHtml(err.message || "請稍後再試。")}</p>
+            </div>`;
+        }
+      }
+
+      main();
+    </script>
   </body>
 </html>
