@@ -10,7 +10,13 @@ export const SCHEMA_PATH = path.join(NARRATION_DIR, "schema.json");
 export const PROMPT_PATH = path.join(REPO_ROOT, "scripts/narration/prompts/slide-script.v1.md");
 
 export const DECK_ID = "enterprise-ai-portal-deck";
-export const DECK_HTML = path.join(PRESENTATIONS_DIR, "enterprise-ai-portal-deck.html");
+
+/** Resolve `presentations/<deckId>.html` so each deck rebuilds its own file. */
+export function deckHtmlPath(deckId = DECK_ID) {
+  return path.join(PRESENTATIONS_DIR, `${deckId}.html`);
+}
+
+export const DECK_HTML = deckHtmlPath(DECK_ID);
 export const MANIFEST_PATH = path.join(NARRATION_DIR, `${DECK_ID}.json`);
 
 export const PROMPT_VERSION = "1.0.0";

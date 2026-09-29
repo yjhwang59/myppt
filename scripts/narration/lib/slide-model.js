@@ -163,6 +163,10 @@ export function renderSlideHtml(slide, total) {
     }
 
     if (slide.callouts?.[0]) body += renderCallout(slide.callouts[0]);
+    if (slide.sourceUrl) {
+      const label = slide.sourceLabel || slide.sourceUrl;
+      body += `<p class="mini-note">原文：<a href="${escapeHtml(slide.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></p>`;
+    }
   }
 
   return `    <section class="slide${heroClass}${active}" id="${escapeHtml(slide.slideId)}" data-title="${escapeHtml(slide.title)}">

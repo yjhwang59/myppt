@@ -1,0 +1,442 @@
+{
+  "version": "1.0.0",
+  "deckId": "coding-agents-tool-choice",
+  "title": "Coding Agent 到底會幫你選哪個工具？",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "AIDC 簡報 · Armature 研究＋實務對照",
+      "h1": "Coding Agent\n到底會幫你選哪個工具？",
+      "h2": "Coding Agent 到底會幫你選哪個工具？",
+      "lead": "近 1.7 萬場真的動手寫程式的實驗，看 Claude Code、Codex、Cursor 怎麼挑第三方服務。再對照我們在 myppt、fyhGoogle、aidc-work 怎麼用。",
+      "stamp": "數字以 Armature 原文為準 · 約 10 頁 · 16:9",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "1 / 10"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "為什麼重要",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "02 / 為什麼重要",
+      "kicker": "",
+      "h1": "",
+      "h2": "Agent 幫你選服務、動手裝——你信得過嗎？",
+      "lead": "你隨口說「找個資料庫」，過幾分鐘它就選好廠商、寫好設定。心裡那個問題很實際：它為什麼選這家？",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "畫面很熟",
+          "paragraph": "打開 Cursor 或 Claude Code，它選好、排好下一步，你點頭它就裝。事情好像結束了。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "重點不是誰最紅",
+          "paragraph": "Armature 想搞清楚的是：Agent 怎麼發現工具、怎麼挑，最後又是誰勝出。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "別只看推薦清單",
+          "paragraph": "對教 Agent、自己專案也天天用的人來說：先搞懂判斷從哪來，再決定要不要信。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "白話結論：重要決定還是自己看一眼理由和限制條件，比較安心。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "2 / 10"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "研究規模",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "03 / 研究規模",
+      "kicker": "",
+      "h1": "",
+      "h2": "16,893 場會話，公開 5,292 場有效結果",
+      "lead": "不是發問卷，是真的讓三個 Coding Agent 幹活。公司名和 API key 都是假的，套件 lockfile 卻對得上真實套件庫。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "會話",
+          "tag": null,
+          "tagClass": null,
+          "heading": "16,893 → 5,292",
+          "paragraph": "真的會動手寫程式的會話；最後用另一個模型當裁判，對照對話和程式碼 diff，判定誰被裝上。",
+          "bullets": []
+        },
+        {
+          "num": "Agent",
+          "tag": null,
+          "tagClass": null,
+          "heading": "三個 Agent、四種人設",
+          "paragraph": "Claude Code、OpenAI Codex、Cursor。人設涵蓋 vibe、初階、資深，還有合規講很細的大企業工程師。",
+          "bullets": []
+        },
+        {
+          "num": "專案",
+          "tag": null,
+          "tagClass": null,
+          "heading": "75 個 repo",
+          "paragraph": "大概 10 種語言、一千多種問法。中間還加「假人類」，避免一開始就逼它從零自己做。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "讀數字時記得：Armature 本身在幫開發工具做成長顧問，研究和他們的商業有關。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "3 / 10"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "觀察1 找資料習慣",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "04 / 觀察 1",
+      "kicker": "",
+      "h1": "",
+      "h2": "三個 Agent 找資料習慣差很大",
+      "lead": "碰到同一題、選到同一工具的比例，大概只有 42%。換一個 Agent，答案可能整組換掉。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "~2/3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Cursor 會上網查",
+          "paragraph": "大概三分之二的會話會上網。語音那類它常走出自己的路，例如選 Vapi。",
+          "bullets": []
+        },
+        {
+          "num": "~94%",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Codex 幾乎必搜",
+          "paragraph": "十次有九次還會用 site: 這類語法，把搜尋鎖在比較可信的站或特定產品官網。",
+          "bullets": []
+        },
+        {
+          "num": "~30%",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Claude Code 較少上網",
+          "paragraph": "但一旦查，瀏覽頁數大約是 Codex 的三倍。比較愛自己從頭做：約 19%，差不多是另外兩個的兩倍（約 10%）。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "語音相關甚至各走各的：Claude Code 選 Twilio、Codex 選 OpenAI Realtime API、Cursor 選 Vapi。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "4 / 10"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "觀察2 專案上下文",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "05 / 觀察 2",
+      "kicker": "",
+      "h1": "",
+      "h2": "Repo 上下文幾乎決定勝負",
+      "lead": "同一句「幫我接 Email」，換四種語言、四個專案，贏家可以完全不同。Agent 先讀技術棧，再選看起來最合身的那家。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "語言／專案",
+          "同一句「幫我接 Email」的贏家"
+        ],
+        [
+          "TypeScript",
+          "Resend 領先"
+        ],
+        [
+          "Python",
+          "SendGrid"
+        ],
+        [
+          "Go",
+          "Postmark"
+        ],
+        [
+          "Java",
+          "Azure ACS"
+        ]
+      ],
+      "callouts": [
+        "部署也一樣：TypeScript／Next.js 幾乎一路推 Vercel；Python 專案則常推 Render。示範專案用什麼框架，本身就是隱形提示詞。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "5 / 10"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "觀察3 提到≠裝上",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "06 / 觀察 3",
+      "kicker": "",
+      "h1": "",
+      "h2": "被提到，不代表會被裝上",
+      "lead": "候選名單可以很長，真正贏家很短。大牌幾乎場場出場，最後卻很少成為真正安裝的那個。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "工具",
+          "被提到",
+          "真正入選"
+        ],
+        [
+          "PayPal",
+          "139 次",
+          "0 次（同批幾乎被 Stripe 拿走）"
+        ],
+        [
+          "Adyen",
+          "175 次",
+          "3 次"
+        ],
+        [
+          "LangChain",
+          "194 次（最常被提）",
+          "4 次"
+        ],
+        [
+          "Netlify",
+          "152 次",
+          "6 次"
+        ],
+        [
+          "Supabase",
+          "242 次（資料庫類最常被提）",
+          "仍常輸給 Neon"
+        ]
+      ],
+      "callouts": [
+        "對做產品的人：光被提到不夠，還要在「要不要裝」那一瞬間，理由贏過對手。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "6 / 10"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "觀察4 文件翻盤",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "07 / 觀察 4",
+      "kicker": "",
+      "h1": "",
+      "h2": "官網一句話，就能翻盤",
+      "lead": "很多時候是怎麼寫、怎麼呈現觸發了顧慮，不一定真的硬失格。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "定價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Mailgun 常輸 Postmark",
+          "paragraph": "Agent 讀到免費方案「郵件只留一天」，這一句就夠讓它改選。",
+          "bullets": []
+        },
+        {
+          "num": "包裝",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Supabase 整包綁太滿",
+          "paragraph": "Auth、Storage、Realtime 綁成一套，但 Agent 當下其實只要「純資料庫」。",
+          "bullets": []
+        },
+        {
+          "num": "觀感",
+          "tag": null,
+          "tagClass": null,
+          "heading": "煩跟貴都會被寫進理由",
+          "paragraph": "約 388 場提到「平台管理很煩」、195 場提到成本——常常是呈現方式觸發的。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "換句話說：文件和定價頁，已經是寫給 AI 看的銷售頁。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "7 / 10"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "觀察5 賽道格局",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "08 / 觀察 5",
+      "kicker": "",
+      "h1": "",
+      "h2": "有的賽道一面倒，有的咬得很緊",
+      "lead": "不是每個類別都有「默認贏家」。有些幾乎鎖定，有些兩家一直拉鋸。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "支付",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Stripe 十場贏九場",
+          "paragraph": "多半只有特定歐盟監管情境，才會讓給更專精的玩家，例如 Paddle、Mollie。",
+          "bullets": []
+        },
+        {
+          "num": "資料庫",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Neon 大約拿下 66%",
+          "paragraph": "其餘多半是雲平台原生方案。Supabase 常被提到，但仍常輸給它。",
+          "bullets": []
+        },
+        {
+          "num": "檔案",
+          "tag": null,
+          "tagClass": null,
+          "heading": "S3 約 45%，沒有碾壓",
+          "paragraph": "Amazon S3 領先，Azure、GCP 各約 20%，這條賽道沒那麼一面倒。",
+          "bullets": []
+        },
+        {
+          "num": "Email",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Resend 與 Postmark 膠著",
+          "paragraph": "Resend 約 35.6%、Postmark 約 27.4%，兩家咬得很緊。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "8 / 10"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "AIDC 實務",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "09 / AIDC 實務",
+      "kicker": "",
+      "h1": "",
+      "h2": "依任務裝工具 → 改碼 → 開 PR",
+      "lead": "在 myppt、fyhGoogle、aidc-work，我們多半先開 Cursor 雲端代理，對準目標 repo。這條路跟 Armature 看到的模式很像，差別是上線鎖在人工審核。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "依任務裝工具",
+          "description": "簡報站：npm、wrangler；產 PPT／處理資料：python-pptx；提交與開 PR：gh"
+        },
+        {
+          "title": "改碼",
+          "description": "裝好再改 presentations 或業務程式，自己先檢查過"
+        },
+        {
+          "title": "開 PR",
+          "description": "推 branch，用 gh 開 Pull Request，把 diff 攤給人看"
+        },
+        {
+          "title": "人工合併／上線",
+          "description": "merge 與 deploy 還是人確認，不讓 Agent 直接上線"
+        }
+      ],
+      "table": null,
+      "callouts": [
+        "人負責最後一哩：Agent 可以選工具、寫設定、開 PR，合併和部署仍由人把關。"
+      ],
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "9 / 10"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "結語",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "10 / 帶走三句",
+      "kicker": "",
+      "h1": "",
+      "h2": "當顧問就好，別當採購委員會",
+      "lead": "它很會講理由，但三個 Agent 常給三種理由。課堂上或多問一句：「你為什麼選它？哪些候選被刷掉？」",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "顧問，不是採購會",
+          "paragraph": "聽它的理由，自己做決定。重要安裝前，先看限制條件。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "上下文就是最大的 prompt",
+          "paragraph": "語言、框架、現有服務，都會強烈影響它覺得「合理」的答案。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "被點名還不夠",
+          "paragraph": "決戰點在文件、定價、免費方案限制，以及你是不是把功能綁太滿。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "原文有公開完整 traces（提示詞、思考軌跡、程式碼 diff），想自己挖資料可以直接看。"
+      ],
+      "sourceUrl": "https://armature.tech/blog/which-tools-coding-agents-install",
+      "sourceLabel": "Armature：Which tools do Claude Code, Codex and Cursor choose?（2026-09-03）",
+      "footerBrand": "AIDC · Coding Agent 工具選擇",
+      "footerPage": "10 / 10"
+    }
+  ]
+}
