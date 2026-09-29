@@ -6,8 +6,9 @@ Enterprise AI portal deck with local narration / admin tooling.
 
 Static deck is served from `presentations/` via Workers static assets.
 
-- After deploy: `https://ai-eip.<your-subdomain>.workers.dev`
-- Root `/` redirects to `/enterprise-ai-portal-deck.html`
+- After deploy: `https://ai-eip.<your-subdomain>.workers.dev` (custom host if configured, e.g. `https://myppt.aidc.work`)
+- Root `/` still redirects to `/enterprise-ai-portal-deck.html`
+- New deck: `/coding-agents-tool-choice.html`
 
 Push to `main` triggers GitHub Actions → `wrangler deploy` (requires repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
 
@@ -28,7 +29,15 @@ npm run dev
 ```
 
 - Deck: http://localhost:8787/enterprise-ai-portal-deck.html
+- New deck: http://localhost:8787/coding-agents-tool-choice.html
 - Admin: http://localhost:8787/admin/
+
+Rebuild a deck from its slides JSON (does not deploy):
+
+```powershell
+npm run build:deck -- coding-agents-tool-choice
+# default (no args) still rebuilds enterprise-ai-portal-deck
+```
 
 ## Scope
 
