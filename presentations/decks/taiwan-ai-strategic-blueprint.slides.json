@@ -1,0 +1,128 @@
+{
+  "version": "1.0.0",
+  "deckId": "taiwan-ai-strategic-blueprint",
+  "title": "Taiwan_AI_Strategic_Blueprint",
+  "sourceType": "pdf",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "第 1 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p01.png"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "第 2 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p02.png"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "第 3 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p03.png"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "第 4 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p04.png"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "第 5 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p05.png"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "第 6 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p06.png"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "第 7 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p07.png"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "第 8 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p08.png"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "第 9 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p09.png"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "第 10 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p10.png"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "第 11 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p11.png"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "第 12 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p12.png"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "第 13 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p13.png"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "第 14 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p14.png"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "第 15 頁",
+      "layout": "pdf-page",
+      "lead": "",
+      "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p15.png"
+    }
+  ]
+}
