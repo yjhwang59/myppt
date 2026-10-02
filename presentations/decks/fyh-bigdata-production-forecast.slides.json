@@ -1,0 +1,673 @@
+{
+  "version": "1.0.0",
+  "deckId": "fyh-bigdata-production-forecast",
+  "title": "fyhGoogle｜巨量資料分析｜次日生產預估",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "巨量資料分析案例 · 2026-09-21 · AI-PPT HTML deck",
+      "h1": "常溫品「次日生產預估」",
+      "h2": "常溫品「次日生產預估」",
+      "lead": "以 fyhGoogle（福圓號營運通）為例：從多源銷售／天氣／預購，到工廠產銷決策；並補上跨公司預售與新品／停售矩陣調整兩大痛點。",
+      "stamp": "A−／A＋ 可調字級 · 對象：產銷／營運／資料分析 · ←→ 翻頁 · F 全螢幕",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "1 / 13"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "議程",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "02 / 議程",
+      "kicker": "",
+      "h1": "",
+      "h2": "13 頁 · 分析題＋兩大痛點",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "A",
+          "tag": null,
+          "tagClass": null,
+          "heading": "分析骨架",
+          "paragraph": "",
+          "bullets": [
+            "使用者與場景",
+            "頻率／痛點／成本",
+            "成功指標（必填數字）"
+          ]
+        },
+        {
+          "num": "B",
+          "tag": null,
+          "tagClass": null,
+          "heading": "新增痛點",
+          "paragraph": "",
+          "bullets": [
+            "① 跨公司預售產銷預估",
+            "② 新品／停售調整生產矩陣"
+          ]
+        },
+        {
+          "num": "C",
+          "tag": null,
+          "tagClass": null,
+          "heading": "落地",
+          "paragraph": "",
+          "bullets": [
+            "資料來源",
+            "決策與人工點",
+            "風險＋Elevator pitch"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "字級：工具列 A−／A＋（或 Ctrl/Cmd + −／+），範圍約 80%～180%；與全螢幕等比放大可疊加。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "2 / 13"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "使用者與場景",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "03 / 1. 使用者與場景",
+      "kicker": "",
+      "h1": "",
+      "h2": "誰在用、要決定什麼？",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "使用者",
+          "paragraph": "",
+          "bullets": [
+            "主要：工廠／產銷計畫、營運主管",
+            "次要：門市店長（分貨、完售）",
+            "系統：約 <span class=\"metric\">26</span> 間營運門市"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "場景",
+          "paragraph": "",
+          "bullets": [
+            "每日決定「明天門市×常溫品要做／出多少包」",
+            "往下推爐數、盤數、麵糰／包子備料、BOM",
+            "公式：walk_in = baseline × F_R × F_W × F_S × F_P，再加 SD"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "操作入口：儀表板 ?view=production_plan → 手動「產生預估表」(POST /production-plan/run)；無固定自動排程。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "3 / 13"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "頻率與痛點",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04 / 2. 頻率與痛點",
+      "kicker": "",
+      "h1": "",
+      "h2": "每日節奏＋五大痛點",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "頻率",
+          "paragraph": "",
+          "bullets": [
+            "每日 ≥1 次人工觸發次日預估",
+            "Dudoo 約每 <span class=\"metric\">10</span> 分鐘；SD 約每 <span class=\"metric\">15</span> 分鐘",
+            "基準：近 <span class=\"metric\">31</span> 天同星期日均銷",
+            "工廠出貨晚間仍靠 Sheets"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "痛點（含新增）",
+          "paragraph": "",
+          "bullets": [
+            "預估靠人工點擊；公休／團購污染基準",
+            "天氣×回存×SD×覆寫難解釋",
+            "計畫→實出人工斷點；營收多口徑",
+            "① 跨公司預售也要納入產銷預估",
+            "② 新品／停售必須調整生產矩陣"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "4 / 13"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "痛點①跨公司預售",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "05 / 痛點① · 跨公司預售產銷",
+      "kicker": "",
+      "h1": "",
+      "h2": "不同公司通路的預售／代售，也要預估產量",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "現象",
+          "paragraph": "",
+          "bullets": [
+            "他牌／加盟／代售門市（如 G9976、10201 等）有預售或對照銷量",
+            "POS 品號≠FYH 生產品號，需 <code>cross_company_product_maps</code>",
+            "SD／購物車預購可能落在「非自營」公司主體",
+            "三總等品名後綴要映射回正式常溫品（如 C41→C01）"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "分析／營運風險",
+          "paragraph": "",
+          "bullets": [
+            "漏估：工廠少做 → 他牌／預售缺貨",
+            "重複估：自營＋他牌雙計 → 回存上升",
+            "矩陣有欄、主預估卻過濾 → 「看得到賣不到數」",
+            "qty_factor／對照未啟用 → 靜默(silently)漏量"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "成功指標草稿：跨公司對照覆蓋率 ≥ 95%；跨公司需求併入主預估誤差 ≤ ±10%；未對照 SKU 告警數每日可清零。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "5 / 13"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "痛點②新品停售",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "06 / 痛點② · 新品／停售矩陣",
+      "kicker": "",
+      "h1": "",
+      "h2": "生產矩陣必須隨商品生命週期調整",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "資料治理要點",
+          "paragraph": "",
+          "bullets": [
+            "<code>is_active</code> 與生產分類清單同步",
+            "新品：種子基準、類似品代理、或強制 manual_override",
+            "停售：自 production_plan／矩陣排除並稽核"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "成功指標草稿",
+          "paragraph": "",
+          "bullets": [
+            "主檔→矩陣同步延遲 ≤ <span class=\"metric\">1</span> 營業日",
+            "停售 SKU 誤入預估列 = <span class=\"metric\">0</span>",
+            "新品上線首 7 日人工覆寫率由高→降到 ≤ <span class=\"metric\">30%</span>"
+          ]
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "主檔異動",
+          "description": "新品上架／停售下架、分類、每包粒數"
+        },
+        {
+          "title": "矩陣欄位",
+          "description": "baseline／avg_sales／回存／天氣敏感度列"
+        },
+        {
+          "title": "冷啟動",
+          "description": "新品無 31 天同星期歷史 → 需種子或人工覆寫"
+        },
+        {
+          "title": "停售殘留",
+          "description": "舊列未剔除 → 工廠仍排產／分貨"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "6 / 13"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "現況與成本",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 3. 現況做法與成本",
+      "kicker": "",
+      "h1": "",
+      "h2": "ass多源拼圖，兩痛點放大成本",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "做法",
+          "paragraph": "",
+          "bullets": [
+            "同步 Dudoo／Sheets／SD／天氣",
+            "日均基準＋回存＋天氣矩陣＋覆寫",
+            "爐盤計算 → Sheets 出貨（人工斷點）",
+            "他牌：對照表＋特殊分母規則（草稿）",
+            "新品／停售：多半靠人工改主檔與覆寫"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "成本（含草稿）",
+          "paragraph": "",
+          "bullets": [
+            "計畫人員每日約 <span class=\"metric\">45–90</span> 分鐘",
+            "跨公司對帳、新品種子額外耗時",
+            "估多→回存／報廢；估少→提早完售",
+            "系統有回測 MAPE，但生命週期治理仍弱"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "7 / 13"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "成功指標",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "08 / 4. 成功指標／基準值（必填數字）",
+      "kicker": "",
+      "h1": "",
+      "h2": "核心 KPI＋兩痛點 KPI",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "指標",
+          "定義",
+          "基準／目標"
+        ],
+        [
+          "需求預估 MAPE",
+          "預估包 vs Dudoo 實銷",
+          "告警 >12%｜目標 ≤10%"
+        ],
+        [
+          "天氣因子 F_W",
+          "敏感度矩陣",
+          "例 0.93（少約7%）｜區間約 0.5–1.8"
+        ],
+        [
+          "回存率",
+          "(出貨−銷售)/出貨",
+          "<5%增產｜>30%減產｜目標多落 5–20%"
+        ],
+        [
+          "人工覆寫率",
+          "有 override 列占比",
+          "整體目標 ≤15%"
+        ],
+        [
+          "計畫→出貨對齊",
+          "|計畫−實出|/計畫",
+          "≥90% 列誤差在 ±10% 內"
+        ],
+        [
+          "跨公司對照覆蓋",
+          "需映射 SKU 已啟用對照",
+          "≥95%"
+        ],
+        [
+          "停售誤入預估",
+          "停售品仍進 production_plan",
+          "0 列／日"
+        ],
+        [
+          "主檔→矩陣延遲",
+          "新品／停售反映到矩陣",
+          "≤1 營業日"
+        ]
+      ],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "12%／0.93／5%–30%／26店／31天來自文件；其餘為可教學草稿目標",
+      "footerPage": "8 / 13"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "資料來源",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "09 / 5. 可能資料來源（草稿）",
+      "kicker": "",
+      "h1": "",
+      "h2": "多源倉＋對照＋生命週期",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "外部／營運",
+          "paragraph": "",
+          "bullets": [
+            "Dudoo POS：交易、明細、發票",
+            "Google Sheets：日報、出貨總計、SD",
+            "天氣預報：高低溫、降雨機率",
+            "他牌／代售 POS 與預售單"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "系統落點（例）",
+          "paragraph": "",
+          "bullets": [
+            "<code>dudoo_*</code>、<code>sd_orders</code>、<code>daily_*</code>",
+            "<code>weather_forecast_daily</code> → sensitivity matrix",
+            "<code>cross_company_product_maps</code>、<code>partner_plan_map</code>",
+            "<code>products.is_active</code>、<code>production_plan_*</code>、<code>baseline_sales_matrix</code>"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "9 / 13"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "決策與人工點",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "10 / 6. 決策動作與人工點",
+      "kicker": "",
+      "h1": "",
+      "h2": "系統半自動，兩痛點仍偏人工",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "系統可做",
+          "paragraph": "",
+          "bullets": [
+            "排程同步、異常單排除（如 &gt;3× 且 &gt;20 包）",
+            "一鍵算 baseline／天氣／SD",
+            "包→粒→爐盤／BOM；回測 MAPE",
+            "對照表啟用後換算他牌量（qty×factor）"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "人工必須碰",
+          "paragraph": "",
+          "bullets": [
+            "按下產生、倍率、公休特案",
+            "維護跨公司對照與預售口徑",
+            "新品種子／停售剔除與稽核",
+            "計畫寫進出貨 Sheets（最大斷點）"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "10 / 13"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "風險",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "11 / 7. 風險與不能做的事",
+      "kicker": "",
+      "h1": "",
+      "h2": "資料正確性紅線",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "不能",
+          "paragraph": "",
+          "bullets": [
+            "混加試算表／Dudoo／發票當唯一業績",
+            "未排除公休／團購就當長期基準",
+            "把建議產量當財務庫存／總帳",
+            "略過 RBAC 裸寫生產／主檔",
+            "未對照就把他牌銷量硬併進 FYH 產線",
+            "停售品仍留在生產矩陣卻不告警"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "風險",
+          "paragraph": "",
+          "bullets": [
+            "天氣格 n 不足 → F_W 不穩",
+            "出貨人工斷點 → 預估準、現場仍錯",
+            "過度追低 MAPE → 系統性估多",
+            "跨公司雙計／漏計 → 產銷失真",
+            "新品冷啟動亂覆寫 → 無法回測歸因"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "11 / 13"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "Elevator pitch",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "12 / Elevator pitch",
+      "kicker": "",
+      "h1": "",
+      "h2": "一句話版本（已含兩痛點）",
+      "lead": "",
+      "stamp": "模板：「使用者是____，現況____，改善到____，結果會觸發____。」",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle · AI-PPT",
+      "footerPage": "12 / 13"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "名詞表",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "13 / 中英文名詞（節錄）",
+      "kicker": "",
+      "h1": "",
+      "h2": "簡報用語對照",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "英文",
+          "中文",
+          "英意",
+          "中文解釋"
+        ],
+        [
+          "baseline",
+          "基準量",
+          "reference avg demand",
+          "近窗同星期日均銷，作預估起點"
+        ],
+        [
+          "MAPE",
+          "平均絕對百分比誤差",
+          "mean abs % error",
+          "預估相對實銷的誤差％"
+        ],
+        [
+          "cross_company_product_maps",
+          "跨公司商品對照",
+          "SKU mapping across cos.",
+          "他牌品號→FYH 生產品號"
+        ],
+        [
+          "manual_override",
+          "人工覆寫",
+          "human override qty",
+          "略過公式、指定建議包數"
+        ],
+        [
+          "cold start",
+          "冷啟動",
+          "no history yet",
+          "新品缺歷史，需種子／代理"
+        ],
+        [
+          "is_active",
+          "啟用中",
+          "active flag",
+          "停售應關閉，避免進矩陣"
+        ]
+      ],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "口語：中文(English)；欄位以 code 為準",
+      "footerPage": "13 / 13"
+    }
+  ]
+}

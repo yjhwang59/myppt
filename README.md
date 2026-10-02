@@ -1,13 +1,15 @@
-# AI-EIP
+# AIDC 簡報庫（myppt）
 
-Enterprise AI portal deck with local narration / admin tooling.
+Public HTML decks for [myppt.aidc.work](https://myppt.aidc.work), plus local narration / admin tooling.
 
 ## Public site (Cloudflare Workers)
 
-Static deck is served from `presentations/` via Workers static assets.
+Static files are served from `presentations/` via Workers static assets.
 
-- After deploy: `https://ai-eip.<your-subdomain>.workers.dev`
-- Root `/` redirects to `/enterprise-ai-portal-deck.html`
+- Library: `https://myppt.aidc.work/`
+- Enterprise deck: `/enterprise-ai-portal-deck.html`
+- Course deck (PCCU 1151, 2026-10-03): `/pccu-1151-bigdata-2026-10-03.html`
+- Catalog: `/decks/registry.json`
 
 Push to `main` triggers GitHub Actions → `wrangler deploy` (requires repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
 

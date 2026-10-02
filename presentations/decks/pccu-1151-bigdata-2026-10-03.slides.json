@@ -1,0 +1,579 @@
+{
+  "version": "1.0.0",
+  "deckId": "pccu-1151-bigdata-2026-10-03",
+  "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-03",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "文化大學推廣部｜1151 碩專｜2026-10-03 週六 13:10",
+      "h1": "巨量資料挖掘與分析\n課前簡報",
+      "h2": "巨量資料挖掘與分析課前簡報",
+      "lead": "作業二回饋 → PBL 工作室｜把檢查表推進到真正能驗的專案。今天講清楚 W3–W6、AISDLC，以及 Grok Bot 在這門課已經怎麼用。",
+      "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問　·　←→ 翻頁　·　F 全螢幕　·　13 頁 · 16:9",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "1 / 13"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "今日流程",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "02 / 今日流程",
+      "kicker": "",
+      "h1": "",
+      "h2": "先對齊班級狀況，再進工作室",
+      "lead": "共通講評不點名、不公布分數。後半段只秀「可點開的東西」。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "13:10–13:20",
+          "tag": null,
+          "tagClass": null,
+          "heading": "班級共通講評",
+          "paragraph": "去名化觀察。好的留下、缺口對齊品質門，不互相比分數。",
+          "bullets": []
+        },
+        {
+          "num": "13:20–13:45",
+          "tag": null,
+          "tagClass": null,
+          "heading": "W3–W6 × AISDLC",
+          "paragraph": "週次不是文號。把品質門對上 AI 軟體生命週期。",
+          "bullets": []
+        },
+        {
+          "num": "13:45–14:10",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Grok Bot 真實用法",
+          "paragraph": "評分、盤點、教材、去識別案例——參考實例，不是叫大家照抄工具。",
+          "bullets": []
+        },
+        {
+          "num": "14:10–16:10",
+          "tag": null,
+          "tagClass": null,
+          "heading": "工作室＋四件＋Q&A",
+          "paragraph": "30 秒 demo、抽查三硬門檻；下週繳件與補件預約。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "抽查三格：基線、系統、證據。有寫程式經驗可以超前深度，但不能跳過門檻。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "2 / 13"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "學習目標",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "03 / 本週學習目標",
+      "kicker": "",
+      "h1": "",
+      "h2": "離開教室前，要能指出自己卡在哪一扇門",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "W3–W6 在證明什麼",
+          "paragraph": "不是為了填週次。每一道門對應「痛點可重算／做得出來／不是運氣／敢給人看」。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對上 AISDLC",
+          "paragraph": "Discover → Define → Design → Develop → Deploy → Diagnose。作業與週次要掛得上去。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "看懂人機分工",
+          "paragraph": "Grok Bot 可以當助教／工程師起草；你仍是業主。口徑、退件、分數不是 Bot 的。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "離開教室：我現在缺的是基線、還是系統、還是證據？"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "3 / 13"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "W3–W6 品質門",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04 / W3–W6 是什麼",
+      "kicker": "",
+      "h1": "",
+      "h2": "品質門，不是官僚文號",
+      "lead": "有開發經驗可走軌道 F 加碼，但每週仍先過這四道門。系統很炫、基線是空的，一樣條件式或退件。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "W3 · 基線定稿",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證明「現在有多痛」",
+          "paragraph": "",
+          "bullets": [
+            "數字＋期間＋口徑＋來源",
+            "別人照著能重算",
+            "目標值不是基線；「希望變快」不算"
+          ]
+        },
+        {
+          "num": "W4 · 最小可跑系統",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證明「做得出來」",
+          "paragraph": "",
+          "bullets": [
+            "輸入 → 處理 → 輸出",
+            "外面附三到五行跑法",
+            "流程圖不算系統"
+          ]
+        },
+        {
+          "num": "W5 · 固定驗收集",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證明「不是運氣」",
+          "paragraph": "",
+          "bullets": [
+            "同一組輸入重跑，結果對得起來",
+            "有對照集，不是剛好跑一次",
+            "對齊 Deploy 的驗收邊界"
+          ]
+        },
+        {
+          "num": "W6 · 證據包",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證明「敢給人看」",
+          "paragraph": "",
+          "bullets": [
+            "前後對照＋限制／失敗一頁",
+            "檔案給得出去、可重跑",
+            "期中≈W4–W5；期末≈W6"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "4 / 13"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "三硬門檻與 5V",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "05 / 三硬門檻 × 5V",
+      "kicker": "",
+      "h1": "",
+      "h2": "沒過門，就還不能叫專案",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "基線",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對 W3",
+          "paragraph": "正式上傳缺基線退件。數字、期間、口徑、來源要齊，別人能重算。",
+          "bullets": []
+        },
+        {
+          "num": "系統",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對 W4",
+          "paragraph": "可執行檔／notebook，有輸入處理輸出與跑法。聊天截圖與流程圖都不算。",
+          "bullets": []
+        },
+        {
+          "num": "證據",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對 W5–W6",
+          "paragraph": "固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "5V 最低標",
+          "paragraph": "",
+          "bullets": [
+            "Volume／Velocity／Variety／Veracity／Value",
+            "至少三項要標「有」",
+            "Value、Veracity 不得為「無」",
+            "沒有可點開的檔，最多只能標「弱」，不要空勾「有」"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "記住這三句",
+          "paragraph": "沒有基線的 AI 叫聊天；沒有系統的分析叫作業；沒有證據的 Demo 叫表演。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "5 / 13"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "AISDLC",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "06 / AISDLC",
+      "kicker": "",
+      "h1": "",
+      "h2": "AI Software Development Life Cycle",
+      "lead": "本課用法：把 AI／資料專案當可治理的產品，不是一次 Demo。六步都要留下可重跑產物。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        { "title": "Discover", "description": "找痛點與使用者" },
+        { "title": "Define", "description": "基線與成功指標 → W3" },
+        { "title": "Design", "description": "資料、模型、人機覆核" },
+        { "title": "Develop", "description": "最小可跑路徑 → W4" },
+        { "title": "Deploy", "description": "驗收與上線邊界" },
+        { "title": "Diagnose", "description": "監測、失敗、回饋 → W5–W6" }
+      ],
+      "table": null,
+      "callouts": [
+        "人機分工：AI 可以大幅加速 Develop；Define 的數字與 Diagnose 的誠實失敗說明，一定是你的責任。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "6 / 13"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "AISDLC 對照本課",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "07 / 對照本課交付",
+      "kicker": "",
+      "h1": "",
+      "h2": "作業一、作業二，已經走在生命週期上",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        ["AISDLC", "本課對應", "你要留下的東西"],
+        ["Discover", "作業一 Use Case／需求盤點", "痛點、使用者、為什麼值得做"],
+        ["Define", "作業二 5V 表 → W3", "基線數字＋期間＋口徑＋來源"],
+        ["Design／Develop", "接下來幾週 → W4", "可執行檔、notebook、跑法"],
+        ["Deploy", "W5 固定驗收集", "同一輸入可重跑、權限／脫敏邊界"],
+        ["Diagnose", "W6 證據包", "限制頁、前後對照、下週只改一件事"]
+      ],
+      "callouts": [
+        "課堂先練「小而可驗」：企業以後還有版本、稽核、權限；現在先把三硬門檻做實。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "7 / 13"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "Grok Bot 參考實例",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "08 / Grok Bot × 巨量分析",
+      "kicker": "",
+      "h1": "",
+      "h2": "這門課已經發生的事，不是行銷故事",
+      "lead": "給你們當樣式。Bot 產草稿與清單；口徑、退件、成績，講師裁決。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "A · 評分治理",
+          "tag": null,
+          "tagClass": null,
+          "heading": "5V＋硬門檻草評語",
+          "paragraph": "依檢查表與三硬門檻起草評語，分數由講師確認。這叫人機覆核，不是自動打分數。",
+          "bullets": []
+        },
+        {
+          "num": "B · 作業盤點",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Drive → 去名化回饋",
+          "paragraph": "讀作業夾，整理班級共通講評與個人可貼評語，避免全班互相比分數。",
+          "bullets": []
+        },
+        {
+          "num": "C · 教材生產",
+          "tag": null,
+          "tagClass": null,
+          "heading": "模板與週五課前簡報",
+          "paragraph": "5V 空白／填寫範例、繳件四件說明，以及週五自動產課前簡報。",
+          "bullets": []
+        },
+        {
+          "num": "D · 去識別案例",
+          "tag": null,
+          "tagClass": null,
+          "heading": "「北風烘焙」",
+          "paragraph": "企業案改寫成教學用案例，保護客戶還能上課。你們看到的是可教的版本。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "模式：Bot drafts；instructor owns 口徑／退件／分數。你們用工具也一樣——AI 加速，業主負責。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "8 / 13"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "學生 AI 工具規則",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "09 / 學生怎麼用 AI",
+      "kicker": "",
+      "h1": "",
+      "h2": "Cursor／Claude／Codex／Grok 都可以，繳的是可跑產物",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "允許",
+          "tag": null,
+          "tagClass": null,
+          "heading": "拿來做事",
+          "paragraph": "",
+          "bullets": [
+            "寫程式、清資料、生 notebook、當場 demo",
+            "加速 Develop，把路走完",
+            "註明哪段是 AI 生的、你改了什麼、怎麼驗收"
+          ]
+        },
+        {
+          "num": "不算過",
+          "tag": null,
+          "tagClass": null,
+          "heading": "沒有可點開的檔",
+          "paragraph": "",
+          "bullets": [
+            "只交聊天截圖或「AI 說系統如下」",
+            "每次重跑答案都變",
+            "基線數字與失敗說明丟給模型編"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "對齊 AISDLC：AI 幫你 Develop；Define 的數字跟 Diagnose 的誠實失敗說明，還是你的。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "9 / 13"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "作業二觀察",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "10 / 作業二共通觀察（去名化）",
+      "kicker": "",
+      "h1": "",
+      "h2": "好的留下；缺口還是那幾扇門",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "好的一面",
+          "tag": null,
+          "tagClass": null,
+          "heading": "已有組交出可重跑數字",
+          "paragraph": "",
+          "bullets": [
+            "而且敢寫自己沒達 KPI",
+            "這才是證據，不是表演",
+            "有開發經驗的組，深度可以再加，門檻不能少"
+          ]
+        },
+        {
+          "num": "共通缺口",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先補品質門",
+          "paragraph": "",
+          "bullets": [
+            "「有」跟「待補」混用",
+            "基線缺三位一體（數字／期間／口徑／來源）",
+            "證據檔沒進繳交夾",
+            "敘事跑在實作前面；系統停在流程圖"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "所以下週：先補品質門，架構炫不炫排後面。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "10 / 13"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "下週四件",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "11 / 下週統一繳件",
+      "kicker": "",
+      "h1": "",
+      "h2": "就四件。不要交長報告裝忙",
+      "lead": "模板在課程 Drive《下週繳件四件｜說明＋模板＋範例》。照填就好。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "① 基線表",
+          "tag": null,
+          "tagClass": null,
+          "heading": "數字＋期間＋口徑＋來源",
+          "paragraph": "別人照著能重算。目標值另寫，不要跟基線混在同一格。",
+          "bullets": []
+        },
+        {
+          "num": "② 可執行檔",
+          "tag": null,
+          "tagClass": null,
+          "heading": "輸入 → 處理 → 輸出＋跑法",
+          "paragraph": "notebook 或專案檔都可以。外面附三到五行怎麼跑。",
+          "bullets": []
+        },
+        {
+          "num": "③ 限制頁",
+          "tag": null,
+          "tagClass": null,
+          "heading": "未達標＋截圖／CSV＋下一件",
+          "paragraph": "失敗寫一頁。沒達標不可恥；不敢寫才會被退。",
+          "bullets": []
+        },
+        {
+          "num": "④ 姓名學號",
+          "tag": null,
+          "tagClass": null,
+          "heading": "封面要找得到人",
+          "paragraph": "檔名與封面一致。助教與 Bot 盤點都靠這一頁對得上。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "11 / 13"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "工作室",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "12 / 課堂工作室",
+      "kicker": "",
+      "h1": "",
+      "h2": "三十秒，只講「這週多了什麼可點開的」",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "30 秒",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可點開，不是可口述",
+          "paragraph": "打開檔、跑一次、指到數字或輸出。流程圖請收起來。",
+          "bullets": []
+        },
+        {
+          "num": "抽三格",
+          "tag": null,
+          "tagClass": null,
+          "heading": "基線／系統／證據",
+          "paragraph": "S 軌先穩過門。F 軌過門再加碼。炫技不能換空白基線。",
+          "bullets": []
+        },
+        {
+          "num": "補件",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下課前約 10 分鐘",
+          "paragraph": "一對一優先談基線。需要約的同學下課前跟我說。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "開始前先問自己：我等一下要打開的，是基線表、可跑檔，還是限制頁？"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "12 / 13"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "收尾",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "下課前記住 · myppt.aidc.work",
+      "h1": "三句口號帶走",
+      "h2": "三句口號帶走",
+      "lead": "沒有基線的 AI 叫聊天。沒有系統的分析叫作業。沒有證據的 Demo 叫表演。",
+      "stamp": "簡報已上到 myppt.aidc.work，方便回家複習。下週五 14:00 自動產下一份課前簡報。講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "13 / 13"
+    }
+  ]
+}
