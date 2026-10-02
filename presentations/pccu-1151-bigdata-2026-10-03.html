@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="pccu-1151-bigdata-2026-10-03">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="文化大學推廣部「巨量資料挖掘與分析」1151｜2026-10-03 課前簡報：W3–W6 品質門、AISDLC、Grok Bot 真實用法與工作室。講師：黃燕忠。">
+  <title>巨量資料挖掘與分析｜1151｜2026-10-03</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 文大 1151</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <a class="btn-link" href="/" title="回到簡報庫">庫</a>
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 13</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+    <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+  </header>
+
+  <main id="deck">
+
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">文化大學推廣部｜1151 碩專｜2026-10-03 週六 13:10</p>
+      <h1>巨量資料挖掘與分析<br>課前簡報</h1>
+      <p class="lead">作業二回饋 → PBL 工作室｜把檢查表推進到真正能驗的專案。今天講清楚 W3–W6、AISDLC，以及 Grok Bot 在這門課已經怎麼用。</p>
+      <p class="stamp">講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問　·　←→ 翻頁　·　F 全螢幕　·　13 頁 · 16:9</p>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>1 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s2" data-title="今日流程">
+      <p class="eyebrow">02 / 今日流程</p>
+      <h2>先對齊班級狀況，再進工作室</h2>
+      <p class="lead">共通講評不點名、不公布分數。後半段只秀「可點開的東西」。</p>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">13:10–13:20</div>
+          <strong>班級共通講評</strong>
+          <p>去名化觀察。好的留下、缺口對齊品質門，不互相比分數。</p>
+        </article>
+        <article class="card">
+          <div class="num">13:20–13:45</div>
+          <strong>W3–W6 × AISDLC</strong>
+          <p>週次不是文號。把品質門對上 AI 軟體生命週期。</p>
+        </article>
+        <article class="card">
+          <div class="num">13:45–14:10</div>
+          <strong>Grok Bot 真實用法</strong>
+          <p>評分、盤點、教材、去識別案例——參考實例，不是叫大家照抄工具。</p>
+        </article>
+        <article class="card">
+          <div class="num">14:10–16:10</div>
+          <strong>工作室＋四件＋Q&amp;A</strong>
+          <p>30 秒 demo、抽查三硬門檻；下週繳件與補件預約。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>抽查三格：</strong>基線、系統、證據。有寫程式經驗可以超前深度，但不能跳過門檻。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>2 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s3" data-title="學習目標">
+      <p class="eyebrow">03 / 本週學習目標</p>
+      <h2>離開教室前，要能指出自己卡在哪一扇門</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>W3–W6 在證明什麼</strong>
+          <p>不是為了填週次。每一道門對應「痛點可重算／做得出來／不是運氣／敢給人看」。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>對上 AISDLC</strong>
+          <p>Discover → Define → Design → Develop → Deploy → Diagnose。作業與週次要掛得上去。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>看懂人機分工</strong>
+          <p>Grok Bot 可以當助教／工程師起草；你仍是業主。口徑、退件、分數不是 Bot 的。</p>
+        </article>
+      </div>
+      <div class="pitch">離開教室：我現在缺的是<strong>基線</strong>、還是<strong>系統</strong>、還是<strong>證據</strong>？</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>3 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s4" data-title="W3–W6 品質門">
+      <p class="eyebrow">04 / W3–W6 是什麼</p>
+      <h2>品質門，不是官僚文號</h2>
+      <p class="lead">有開發經驗可走軌道 F 加碼，但每週仍先過這四道門。系統很炫、基線是空的，一樣條件式或退件。</p>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">W3 · 基線定稿</div>
+          <strong>證明「現在有多痛」</strong>
+          <ul>
+            <li>數字＋期間＋口徑＋來源</li>
+            <li>別人照著能重算</li>
+            <li>目標值不是基線；「希望變快」不算</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W4 · 最小可跑系統</div>
+          <strong>證明「做得出來」</strong>
+          <ul>
+            <li>輸入 → 處理 → 輸出</li>
+            <li>外面附三到五行跑法</li>
+            <li>流程圖不算系統</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W5 · 固定驗收集</div>
+          <strong>證明「不是運氣」</strong>
+          <ul>
+            <li>同一組輸入重跑，結果對得起來</li>
+            <li>有對照集，不是剛好跑一次</li>
+            <li>對齊 Deploy 的驗收邊界</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W6 · 證據包</div>
+          <strong>證明「敢給人看」</strong>
+          <ul>
+            <li>前後對照＋限制／失敗一頁</li>
+            <li>檔案給得出去、可重跑</li>
+            <li>期中≈W4–W5；期末≈W6</li>
+          </ul>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>4 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s5" data-title="三硬門檻與 5V">
+      <p class="eyebrow">05 / 三硬門檻 × 5V</p>
+      <h2>沒過門，就還不能叫專案</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">基線</div>
+          <strong>對 W3</strong>
+          <p>正式上傳缺基線退件。數字、期間、口徑、來源要齊，別人能重算。</p>
+        </article>
+        <article class="card">
+          <div class="num">系統</div>
+          <strong>對 W4</strong>
+          <p>可執行檔／notebook，有輸入處理輸出與跑法。聊天截圖與流程圖都不算。</p>
+        </article>
+        <article class="card">
+          <div class="num">證據</div>
+          <strong>對 W5–W6</strong>
+          <p>固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。</p>
+        </article>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <strong>5V 最低標</strong>
+          <ul>
+            <li>Volume／Velocity／Variety／Veracity／Value</li>
+            <li>至少三項要標「有」</li>
+            <li>Value、Veracity 不得為「無」</li>
+            <li>沒有可點開的檔，最多只能標「弱」，不要空勾「有」</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <strong>記住這三句</strong>
+          <p>沒有基線的 AI 叫聊天；沒有系統的分析叫作業；沒有證據的 Demo 叫表演。</p>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>5 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s6" data-title="AISDLC">
+      <p class="eyebrow">06 / AISDLC</p>
+      <h2>AI Software Development Life Cycle</h2>
+      <p class="lead">本課用法：把 AI／資料專案當可治理的產品，不是一次 Demo。六步都要留下可重跑產物。</p>
+      <div class="flow" role="list">
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>Discover</strong>
+          <p class="flow-desc">找痛點與使用者</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step gate" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>Define</strong>
+          <p class="flow-desc">基線與成功指標 → W3</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>Design</strong>
+          <p class="flow-desc">資料、模型、人機覆核</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step gate" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>Develop</strong>
+          <p class="flow-desc">最小可跑路徑 → W4</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>Deploy</strong>
+          <p class="flow-desc">驗收與上線邊界</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step gate" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>Diagnose</strong>
+          <p class="flow-desc">監測、失敗、回饋 → W5–W6</p>
+        </div>
+      </div>
+      <div class="callout"><strong>人機分工：</strong>AI 可以大幅加速 Develop；Define 的數字與 Diagnose 的誠實失敗說明，一定是你的責任。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>6 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s7" data-title="AISDLC 對照本課">
+      <p class="eyebrow">07 / 對照本課交付</p>
+      <h2>作業一、作業二，已經走在生命週期上</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>AISDLC</th>
+            <th>本課對應</th>
+            <th>你要留下的東西</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Discover</strong></td>
+            <td>作業一 Use Case／需求盤點</td>
+            <td>痛點、使用者、為什麼值得做</td>
+          </tr>
+          <tr>
+            <td><strong>Define</strong></td>
+            <td>作業二 5V 表 → W3</td>
+            <td>基線數字＋期間＋口徑＋來源</td>
+          </tr>
+          <tr>
+            <td><strong>Design／Develop</strong></td>
+            <td>接下來幾週 → W4</td>
+            <td>可執行檔、notebook、跑法</td>
+          </tr>
+          <tr>
+            <td><strong>Deploy</strong></td>
+            <td>W5 固定驗收集</td>
+            <td>同一輸入可重跑、權限／脫敏邊界</td>
+          </tr>
+          <tr>
+            <td><strong>Diagnose</strong></td>
+            <td>W6 證據包</td>
+            <td>限制頁、前後對照、下週只改一件事</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>課堂先練「小而可驗」：</strong>企業以後還有版本、稽核、權限；現在先把三硬門檻做實。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>7 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s8" data-title="Grok Bot 參考實例">
+      <p class="eyebrow">08 / Grok Bot × 巨量分析</p>
+      <h2>這門課已經發生的事，不是行銷故事</h2>
+      <p class="lead">給你們當樣式。Bot 產草稿與清單；口徑、退件、成績，講師裁決。</p>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">A · 評分治理</div>
+          <strong>5V＋硬門檻草評語</strong>
+          <p>依檢查表與三硬門檻起草評語，分數由講師確認。這叫人機覆核，不是自動打分數。</p>
+        </article>
+        <article class="card">
+          <div class="num">B · 作業盤點</div>
+          <strong>Drive → 去名化回饋</strong>
+          <p>讀作業夾，整理班級共通講評與個人可貼評語，避免全班互相比分數。</p>
+        </article>
+        <article class="card">
+          <div class="num">C · 教材生產</div>
+          <strong>模板與週五課前簡報</strong>
+          <p>5V 空白／填寫範例、繳件四件說明，以及週五自動產課前簡報。</p>
+        </article>
+        <article class="card">
+          <div class="num">D · 去識別案例</div>
+          <strong>「北風烘焙」</strong>
+          <p>企業案改寫成教學用案例，保護客戶還能上課。你們看到的是可教的版本。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>模式：</strong>Bot drafts；instructor owns 口徑／退件／分數。你們用工具也一樣——AI 加速，業主負責。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>8 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s9" data-title="學生 AI 工具規則">
+      <p class="eyebrow">09 / 學生怎麼用 AI</p>
+      <h2>Cursor／Claude／Codex／Grok 都可以，繳的是可跑產物</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">允許</div>
+          <strong>拿來做事</strong>
+          <ul>
+            <li>寫程式、清資料、生 notebook、當場 demo</li>
+            <li>加速 Develop，把路走完</li>
+            <li>註明哪段是 AI 生的、你改了什麼、怎麼驗收</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <div class="num">不算過</div>
+          <strong>沒有可點開的檔</strong>
+          <ul>
+            <li>只交聊天截圖或「AI 說系統如下」</li>
+            <li>每次重跑答案都變</li>
+            <li>基線數字與失敗說明丟給模型編</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>對齊 AISDLC：</strong>AI 幫你 Develop；Define 的數字跟 Diagnose 的誠實失敗說明，還是你的。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>9 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s10" data-title="作業二觀察">
+      <p class="eyebrow">10 / 作業二共通觀察（去名化）</p>
+      <h2>好的留下；缺口還是那幾扇門</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">好的一面</div>
+          <strong>已有組交出可重跑數字</strong>
+          <ul>
+            <li>而且敢寫自己沒達 KPI</li>
+            <li>這才是證據，不是表演</li>
+            <li>有開發經驗的組，深度可以再加，門檻不能少</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <div class="num">共通缺口</div>
+          <strong>先補品質門</strong>
+          <ul>
+            <li>「有」跟「待補」混用</li>
+            <li>基線缺三位一體（數字／期間／口徑／來源）</li>
+            <li>證據檔沒進繳交夾</li>
+            <li>敘事跑在實作前面；系統停在流程圖</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>所以下週：</strong>先補品質門，架構炫不炫排後面。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>10 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s11" data-title="下週四件">
+      <p class="eyebrow">11 / 下週統一繳件</p>
+      <h2>就四件。不要交長報告裝忙</h2>
+      <p class="lead">模板在課程 Drive《下週繳件四件｜說明＋模板＋範例》。照填就好。</p>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">① 基線表</div>
+          <strong>數字＋期間＋口徑＋來源</strong>
+          <p>別人照著能重算。目標值另寫，不要跟基線混在同一格。</p>
+        </article>
+        <article class="card">
+          <div class="num">② 可執行檔</div>
+          <strong>輸入 → 處理 → 輸出＋跑法</strong>
+          <p>notebook 或專案檔都可以。外面附三到五行怎麼跑。</p>
+        </article>
+        <article class="card">
+          <div class="num">③ 限制頁</div>
+          <strong>未達標＋截圖／CSV＋下一件</strong>
+          <p>失敗寫一頁。沒達標不可恥；不敢寫才會被退。</p>
+        </article>
+        <article class="card">
+          <div class="num">④ 姓名學號</div>
+          <strong>封面要找得到人</strong>
+          <p>檔名與封面一致。助教與 Bot 盤點都靠這一頁對得上。</p>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>11 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s12" data-title="工作室">
+      <p class="eyebrow">12 / 課堂工作室</p>
+      <h2>三十秒，只講「這週多了什麼可點開的」</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">30 秒</div>
+          <strong>可點開，不是可口述</strong>
+          <p>打開檔、跑一次、指到數字或輸出。流程圖請收起來。</p>
+        </article>
+        <article class="card">
+          <div class="num">抽三格</div>
+          <strong>基線／系統／證據</strong>
+          <p>S 軌先穩過門。F 軌過門再加碼。炫技不能換空白基線。</p>
+        </article>
+        <article class="card">
+          <div class="num">補件</div>
+          <strong>下課前約 10 分鐘</strong>
+          <p>一對一優先談基線。需要約的同學下課前跟我說。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>開始前先問自己：</strong>我等一下要打開的，是基線表、可跑檔，還是限制頁？</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>12 / 13</span>
+      </div>
+    </section>
+
+    <section class="slide hero" id="s13" data-title="收尾">
+      <p class="kicker">下課前記住 · myppt.aidc.work</p>
+      <h2>三句口號帶走</h2>
+      <div class="slogan-stack">
+        <p>沒有基線的 AI 叫聊天</p>
+        <p>沒有系統的分析叫作業</p>
+        <p>沒有證據的 Demo 叫表演</p>
+      </div>
+      <p class="stamp">簡報已上到 myppt.aidc.work，方便回家複習。下週五 14:00 自動產下一份課前簡報。<br>講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</p>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>13 / 13</span>
+      </div>
+    </section>
+
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="pccu-1151-bigdata-2026-10-03">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "巨量資料挖掘與分析｜1151";
+      const LS_KEY = "ai-ppt-pccu-1151-bigdata-2026-10-03-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>
