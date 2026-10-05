@@ -48,6 +48,12 @@ export function slidesJsonPath(deckId = DECK_ID) {
   return path.join(DECKS_DIR, `${deckId}.slides.json`);
 }
 
+/** Public deck HTML. Enterprise stays on the historical constant. */
+export function deckHtmlPath(deckId = DECK_ID) {
+  if (deckId === DECK_ID) return DECK_HTML;
+  return path.join(PRESENTATIONS_DIR, `${deckId}.html`);
+}
+
 export function audioAbsolutePath(slideId) {
   return path.join(AUDIO_DIR, audioFileName(slideId));
 }
