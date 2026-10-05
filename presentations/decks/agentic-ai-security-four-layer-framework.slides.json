@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "deckId": "agentic-ai-security-four-layer-framework",
+  "title": "企業 Agentic AI 四層資安治理框架",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "h2": "企業 AI Security 新課題用「四層資安治理框架」管好會自己動手的 AI Agent",
+      "lead": "AI 已經不只回答問題，它會查資料、呼叫 API、寫進系統，甚至替你按下「送出」。企業要擔心的不只是「AI 說錯話」，而是「AI 做錯事」。"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "為什麼不一樣",
+      "h2": "為什麼 AI 資安 ≠ 傳統 AppSec？",
+      "lead": ""
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "框架總覽",
+      "h2": "Agentic AI 四層資安治理框架",
+      "lead": ""
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "第 1 層｜治理層",
+      "h2": "先講清楚規則和誰負責　Governance",
+      "lead": "在讓 Agent 上線之前，先定義它能做什麼、出事誰負責，並把任務範圍寫成可檢查的「合約」。"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "第 2 層｜管理層",
+      "h2": "每個 Agent 都要有身份、有權限邊界　Management",
+      "lead": "Agent 不能用共用帳號或工程師的個人金鑰跑。要有自己的身份，權限需要時才給、用完收回，並對應到真實負責的人或部門。"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "第 3 層｜監控管制層",
+      "h2": "執行當下就要能擋、能停　Monitoring & Control",
+      "lead": "護欄限制行為範圍；語意網閘檢查輸入輸出的「意圖」，不只比對關鍵字；中斷機制在異常時直接拔插頭。"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "第 4 層｜稽核審計層＋三原則",
+      "h2": "事後查得到、說得清、賴不掉　Auditing",
+      "lead": ""
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "學習重點",
+      "h2": "8 個應該帶走的重點",
+      "lead": ""
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "從小處開始",
+      "h2": "從小處開始，不要想一次煮沸大海",
+      "lead": "中小企業不需要第一天就把四層全部建好。務實起點是一個場景、四個動作："
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "結語與來源",
+      "h2": "先管好「誰、能做什麼、正在做什麼、做完能不能查」",
+      "lead": "會解釋 · 可追溯 · 受監控——讓 Agent 成為可以信任的數位員工。"
+    }
+  ]
+}
