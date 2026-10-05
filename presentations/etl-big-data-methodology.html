@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="etl-big-data-methodology">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="大數據分析方法論：ETL 不是搬資料。課堂投影用的萃取、轉換、載入導覽。">
+  <title>ETL 不是搬資料｜大數據分析方法論</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer span:first-child { flex: 1; min-width: 0; line-height: 1.35; }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> ETL 方法論</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <a class="btn-link" href="/" title="回到簡報庫">庫</a>
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 12</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+    <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+  </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">大數據分析方法論｜課堂投影</p>
+      <h1>ETL 不是搬資料</h1>
+      <p class="lead">把分散、髒亂的資料，變成可以做報表、做預測、給 AI 用的資料資產。</p>
+      <p class="stamp">依 AIDC 教學整理，查核 2026-10-05　·　←→ 翻頁　·　F 全螢幕　·　12 頁</p>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>1 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="三個字">
+<p class="eyebrow">02 / 先記這三個字</p><h2>ETL＝蒐集、清理、整合、準備</h2><p class="lead">少了這段，後面的 Dashboard 和 AI 都是在猜。</p><div class="grid three"><article class="card"><div class="num">E</div><strong>萃取 Extract</strong><p>從各處把資料拿出來。</p></article><article class="card"><div class="num">T</div><strong>轉換 Transform</strong><p>清乾淨、對得上、算得出指標。</p></article><article class="card"><div class="num">L</div><strong>載入 Load</strong><p>放進倉儲、資料超市或分析庫。</p></article></div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>2 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="方法論">
+<p class="eyebrow">03 / 先於寫程式</p><h2>方法論先於寫程式</h2><p class="lead">六步走完，才知道程式該寫在哪。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>業務問題</strong>
+          <p class="flow-desc">要回答什麼</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>看懂資料</strong>
+          <p class="flow-desc">長什麼樣</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>準備資料</strong>
+          <p class="flow-desc">ETL 主場</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>分析建模</strong>
+          <p class="flow-desc">這時才算</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>驗證可信</strong>
+          <p class="flow-desc">敢不敢給人看</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>排程上線</strong>
+          <p class="flow-desc">給人用</p>
+        </div></div><div class="callout">ETL 主要卡在第 2、3、6 步，但會決定後面準不準。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>3 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="白板流程">
+<p class="eyebrow">04 / 先畫再寫</p><h2>一條能畫在白板上的流程</h2><p class="lead">來源進來，先停在暫存，洗完才進正式的地方。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>來源</strong>
+          <p class="flow-desc">系統裡原有的</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>萃取</strong>
+          <p class="flow-desc">先拿出來</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>暫存</strong>
+          <p class="flow-desc">Staging</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>轉換</strong>
+          <p class="flow-desc">清、對、算</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>倉儲</strong>
+          <p class="flow-desc">超市或資料湖</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>使用</strong>
+          <p class="flow-desc">報表、模型、API</p>
+        </div></div><div class="callout">不要一進來就寫進正式分析表。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>4 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="每次搬多少">
+<p class="eyebrow">05 / 萃取</p><h2>每次先問：要搬多少</h2><p class="lead">來源很雜：資料庫、Excel／CSV、API、Log、感測、Google 表、電商 SaaS。</p><div class="grid three"><article class="card"><div class="num">全量</div><strong>小資料或第一次</strong><p>整包搬走，適合建置，不適合天天跑。</p></article><article class="card"><div class="num">增量</div><strong>正式營運的預設</strong><p>只抓新增與異動。updated_at &gt; 上次執行</p></article><article class="card"><div class="num">CDC</div><strong>追變更本身</strong><p>異動很勤的表，跟著變更走。</p></article></div><div class="callout">記得分頁、限流、失敗重試，而且每次都寫 log。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>5 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="暫存層">
+<p class="eyebrow">06 / 為什麼要 Staging</p><h2>暫存層是黑盒子錄影</h2><p class="lead">不是多餘的一張表。洗錯了，正式表還在。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>留原始</strong>
+          <p class="flow-desc">來源長怎樣</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>不污染</strong>
+          <p class="flow-desc">洗錯停在這裡</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>可重跑</strong>
+          <p class="flow-desc">失敗再來一次</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>能對帳</strong>
+          <p class="flow-desc">搬入和洗完</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>系統分開</strong>
+          <p class="flow-desc">來源歸來源</p>
+        </div></div><div class="callout">正式分析表不要當草稿。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>6 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="轉換">
+<p class="eyebrow">07 / 成敗在這裡</p><h2>轉換才是成敗</h2><p class="lead">搬得動不算完成。清得乾淨、對得上、算得出來，才算。</p><div class="grid two"><article class="card"><div class="num">八個動作</div><strong>洗到可以拿來算</strong><ul><li>空值、重複先清掉</li><li>日期、幣別講同一種話</li><li>代碼要對上名稱</li><li>多張表 JOIN 得起來</li><li>做成日、月彙總</li><li>算出毛利率、成長率</li><li>金額不能是負的</li><li>最後再去重一次</li></ul></article><article class="card"><div class="num">六問</div><strong>資料品質過不過</strong><ul><li>完整：該有的有沒有</li><li>正確：數字真不真</li><li>一致：同一件事同一種寫法</li><li>唯一：同一筆不要出現兩次</li><li>及時：現在看還算新鮮</li><li>合法：能不能這樣用</li></ul></article></div><div class="callout">這關沒過，後面的模型只是算得很認真的錯。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>7 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="載入">
+<p class="eyebrow">08 / 載入</p><h2>放錯地方，重跑就變兩筆</h2><p class="lead">倉儲給管理報表，資料超市給部門，資料湖留原始，向量庫給 RAG。</p><div class="grid two"><article class="card"><div class="num">Append</div><strong>只往後加</strong><p>流水、log。舊的不要改。</p></article><article class="card"><div class="num">Upsert</div><strong>有就更新</strong><p>訂單、會員、商品。同一筆還是同一筆。</p></article><article class="card"><div class="num">Overwrite</div><strong>整表覆蓋</strong><p>小主檔、每日快照。表不大才這樣做。</p></article><article class="card"><div class="num">慢變</div><strong>歷史要留著</strong><p>價格、等級不能直接蓋掉。</p></article></div><div class="callout">同一筆訂單，不能因為重跑就變成兩筆。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>8 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="星狀模型">
+<p class="eyebrow">09 / 主管也聽得懂</p><h2>中間是事實，周圍是切法</h2><p class="lead">先畫一顆星。先不要展開全部欄位。</p><div class="grid three"><article class="card"><div class="num">事實</div><strong>發生了什麼</strong><p>賣了多少、多少錢。這張表記事件。</p></article><article class="card"><div class="num">維度</div><strong>從哪個角度切</strong><p>門市、商品、日期。拿來切片。</p></article><article class="card"><div class="num">例子</div><strong>fact_sales</strong><p>掛上 store、product、date。一顆星就夠。</p></article></div><div class="callout"><strong>主管要聽的是：</strong>賣了什麼、在哪裡、哪一天。不是欄位清單。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>9 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="ETL 或 ELT">
+<p class="eyebrow">10 / 先洗還是先倒</p><h2>先洗再入，還是先倒再洗</h2><p class="lead">實務多半混著做：Raw → Staging → Transform → 整理好的表 → 分析。</p><div class="grid two"><article class="card"><div class="num">ETL</div><strong>先洗再入倉</strong><p>傳統倉儲。品質要先過關，才進得去。</p></article><article class="card"><div class="num">ELT</div><strong>先倒進去再洗</strong><p>雲端倉儲、dbt 這條路。彈性大，治理不能省。</p></article></div><div class="callout">ELT 很彈性；治理不夠，資料湖會變成資料沼澤。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>10 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="門市銷售">
+<p class="eyebrow">11 / 走完一輪</p><h2>用門市銷售把同一條線走完</h2><p class="lead">來源：POS、商品主檔、門市主檔、天氣、促銷。還是來源 → 萃取 → 暫存 → 轉換 → 倉儲 → 報表。</p><div class="grid two"><article class="card"><div class="num">營收</div><strong>賣了多少錢</strong><p>這段期間、這家門市的金額。</p></article><article class="card"><div class="num">來客數</div><strong>TC，來了多少人</strong><p>人來了沒有，先跟金額分開看。</p></article><article class="card"><div class="num">客單價</div><strong>每人平均花多少</strong><p>營收除以來客數。口徑要全公司一樣。</p></article><article class="card"><div class="num">成長率</div><strong>跟上一期比</strong><p>長還是縮。比的期間要先講清楚。</p></article></div><div class="callout"><strong>MAPE 用一句話：</strong>預測跟實際差多少百分比。</div>
+      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>11 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="最小可行">
+<p class="eyebrow">12 / 怎麼算做完</p><h2>八步都在，才算最小可行</h2><p class="lead">做到這裡，業務資料才變成可分析、可決策、可自動化的資產。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>來源</strong>
+          <p class="flow-desc">接哪裡</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>萃取</strong>
+          <p class="flow-desc">腳本</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>暫存</strong>
+          <p class="flow-desc">原樣留下</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>轉換</strong>
+          <p class="flow-desc">清完對完</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>目標表</strong>
+          <p class="flow-desc">給分析查</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>排程</strong>
+          <p class="flow-desc">自己跑</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">7</div>
+          <strong>日誌</strong>
+          <p class="flow-desc">這批成功沒</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">8</div>
+          <strong>看板</strong>
+          <p class="flow-desc">Dashboard</p>
+        </div></div><div class="callout"><strong>做完還要三條：</strong>先有問題再搬；失敗要告警（Email／LINE）；同一指標只准一種算法。</div>
+      <div class="footer"><span>完整講義見 Google 文件 https://docs.google.com/document/d/1tQD6GkIk89JJATEArNft49Eegn-5Ym3RJZTI1PwoTLw/edit</span><span>12 / 12</span></div>
+    </section>
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="etl-big-data-methodology">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "ETL 不是搬資料";
+      const LS_KEY = "ai-ppt-etl-big-data-methodology-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>
