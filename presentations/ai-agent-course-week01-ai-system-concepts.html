@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-deck-id="ai-agent-course-week01-ai-system-concepts">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="8 週 AI Agent 系統課程第 1 週：AI 系統開發概念與專案選題。建立共通語言與 Vibe Coding 觀念，選定 8 週可完成的小系統，產出一頁式專案提案。">
+  <title>第 1 週｜AI 系統開發概念與專案選題</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2.5vh 2vw 8vh;
+      zoom: var(--deck-fs, 1);
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: 86vh;
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.catalog { padding-bottom: 58px; }
+    h1 {
+      font-size: clamp(42px, 5.2vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: clamp(28px, 3.2vw, 48px);
+      margin: 0.1em 0 0.55em;
+      line-height: 1.15;
+    }
+    h2.tight {
+      font-size: clamp(24px, 2.6vw, 36px);
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: clamp(18px, 1.55vw, 26px);
+      margin: 0.15em 0 0.35em;
+    }
+    p, li {
+      font-size: clamp(15px, 1.25vw, 21px);
+      line-height: 1.52;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: clamp(12px, 1.1vw, 16px);
+      margin: 0;
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: clamp(20px, 1.8vw, 28px);
+    }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 22px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card strong {
+      display: block;
+      font-size: clamp(16px, 1.35vw, 22px);
+      line-height: 1.3;
+      margin: 0.1em 0 0.28em;
+    }
+    .card ol, .card ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .card li {
+      font-size: clamp(13px, 1.05vw, 17px);
+      line-height: 1.4;
+      margin: 0.22em 0;
+    }
+    .card p { margin: 0.15em 0; }
+    .num {
+      font-size: clamp(26px, 3.2vw, 46px);
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+    }
+    .num.sm { font-size: clamp(18px, 1.7vw, 26px); }
+    .callout {
+      padding: 14px 20px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: clamp(16px, 1.35vw, 22px);
+      margin-top: 14px;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .controls {
+      position: fixed;
+      z-index: 40;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #17324df2;
+      color: #fff;
+      box-shadow: 0 8px 26px #0004;
+      transition: opacity .2s, transform .2s;
+    }
+    .controls.collapsed { padding: 6px 10px; gap: 0; }
+    .controls.collapsed .ctrl-main { display: none; }
+    .controls button {
+      width: 36px; height: 36px; border: 0; border-radius: 50%;
+      background: #ffffff1f; color: #fff; cursor: pointer; font-size: 15px;
+      line-height: 1; flex-shrink: 0;
+    }
+    .controls button.wide {
+      width: auto; padding: 0 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .controls button:hover, .controls button:focus-visible {
+      outline: 3px solid #fff; background: var(--brand);
+    }
+    .ctrl-main { display: flex; align-items: center; gap: 8px; }
+    .ctrl-sep { width: 1px; height: 22px; background: #ffffff33; flex-shrink: 0; }
+    .fs-label {
+      min-width: 42px; text-align: center; font-size: 12px;
+      font-variant-numeric: tabular-nums; opacity: 0.9;
+    }
+    .bar {
+      width: min(18vw, 180px); height: 5px; background: #ffffff33;
+      border-radius: 8px; overflow: hidden;
+    }
+    .bar span { display: block; height: 100%; background: #78d8cb; }
+    .count {
+      min-width: 58px; text-align: center; font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .hint {
+      position: fixed; z-index: 50; left: 50%; bottom: 64px;
+      transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
+      background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
+      pointer-events: none; transition: opacity .2s;
+      max-width: min(90vw, 420px); text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    .pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: 12px;
+    }
+    .slide.dense { padding: 26px 34px 52px; }
+    .slide.dense .card { padding: 10px 12px; }
+    .slide.dense .card p,
+    .slide.dense .card li { font-size: clamp(13px, 1.02vw, 16px); line-height: 1.38; }
+    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: clamp(14px, 1.15vw, 18px); }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: 12px 12px 80px; }
+      .slide {
+        width: 100%; min-height: calc(100vh - 100px);
+        max-height: none; aspect-ratio: auto;
+      }
+      .grid, .grid.two, .grid.six { grid-template-columns: 1fr 1fr; }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .grid.six { grid-template-columns: 1fr; }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { display: block; padding: 0; zoom: 1 !important; }
+      .slide {
+        display: block !important; width: 16in; height: 9in;
+        min-height: 0; max-height: none; aspect-ratio: auto;
+        overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+        page-break-after: always; break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      .controls, .hint { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide active hero" id="s1" data-title="封面">
+      <p class="kicker">8 週課程 · 第 1 週</p>
+      <div class="mark"></div>
+      <h1>AI 系統開發概念<br>與專案選題</h1>
+      <p class="lead">建立 AI 系統共通語言與 Vibe Coding 觀念，選定 8 週可完成的小系統。產出：一頁式專案提案。</p>
+      <p><span class="pill">給還沒寫過程式的人</span>　<span class="pill">3 章 · 9 節</span>　<span class="pill">例子：請假／報修／客戶詢問</span></p>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>1 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="八週位置">
+      <p class="kicker">課程位置</p>
+      <h2 class="tight">這是 8 週裡的第 1 週</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1 / 8</div><strong>本週</strong><p>建立共通語言，把題目收到 8 週做得出來的大小。</p></div>
+        <div class="card"><div class="num">產出</div><strong>一頁式專案提案</strong><p>今天結束要帶得走的東西。不是程式。</p></div>
+        <div class="card"><div class="num">W2–W8</div><strong>後續週次</strong><p>標題以課堂公告為準。這份簡報只標出第 1 週，不預寫後面每週的名稱。</p></div>
+      </div>
+      <div class="callout">課程頁上的體驗場次：2026/10/08（週四）19:00–21:30，「從不會寫程式，到完成自己的 AI Agent 系統」免費體驗。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>2 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="學習目標">
+      <p class="kicker">今天結束時</p>
+      <h2 class="tight">你要帶走的四件事</h2>
+      <div class="grid two">
+        <div class="card"><div class="num">1</div><strong>分得清三種用法</strong><p>AI 對話、AI 功能、可上線的 AI 系統，不要混著叫。</p></div>
+        <div class="card"><div class="num">2</div><strong>說得出系統行為</strong><p>用五層架構，加上 CRUD、API、RBAC，描述一個小系統。</p></div>
+        <div class="card"><div class="num">3</div><strong>走得完一輪迭代</strong><p>生成 → 驗證 → 修正。並且知道哪些步驟要人確認。</p></div>
+        <div class="card"><div class="num">4</div><strong>交得出一頁提案</strong><p>題目小到 8 週做完，九個欄位都填得下去。</p></div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>3 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="三章地圖">
+      <p class="kicker">今天的三章</p>
+      <h2 class="tight">先有語言，再談工具，最後才選題</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="num">01-1</div>
+          <strong>什麼是 AI 系統</strong>
+          <ul>
+            <li>01-1-1 對話、功能、可上線系統</li>
+            <li>01-1-2 介面、後端、資料、權限、AI Agent</li>
+            <li>01-1-3 CRUD、API、RBAC</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="num">01-2</div>
+          <strong>AI 工具與 Vibe Coding</strong>
+          <ul>
+            <li>01-2-1 工具的角色與限制</li>
+            <li>01-2-2 生成 → 驗證 → 修正</li>
+            <li>01-2-3 去識別化與人工確認</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="num">01-3</div>
+          <strong>選題與 MVP 範圍</strong>
+          <ul>
+            <li>01-3-1 從工作問題找題目</li>
+            <li>01-3-2 使用者、流程、輸入輸出、不做事項</li>
+            <li>01-3-3 一頁提案與講師回饋</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">這堂課說的 MVP，是 8 週內可以示範完的主流程，不是功能做滿。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>4 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="01-1-1 說明">
+      <p class="kicker">01-1-1 · 什麼是 AI 系統</p>
+      <h2 class="tight">區分 AI 對話、AI 功能與可上線的 AI 系統</h2>
+      <div class="grid">
+        <div class="card"><div class="num">對話</div><strong>答案留在這一則聊天</strong><p>你問一句，它答一句。沒有固定的使用者、存下來的單據，也沒有誰能核准。</p></div>
+        <div class="card"><div class="num">功能</div><strong>畫面上有一個 AI 按鈕</strong><p>例如「幫我草擬」。方便，但整件事還沒有流程，也還沒有權限。</p></div>
+        <div class="card"><div class="num">系統</div><strong>同事下週還能用同一套</strong><p>有介面、後端、資料、權限，以及被規定好能做什麼的 AI Agent。</p></div>
+      </div>
+      <div class="callout">這堂課要做的是第三種的縮小版。聊天很有用，但聊天紀錄本身不是系統。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>5 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="01-1-1 例子">
+      <p class="kicker">01-1-1 · 例子 · 請假</p>
+      <h2 class="tight">同一件請假，三種層次差在哪</h2>
+      <div class="grid">
+        <div class="card"><span class="pill">對話</span><strong>問「年假怎麼算？」</strong><p>你自己看答案。這次申請沒有被留下，主管也看不到。</p></div>
+        <div class="card"><span class="pill">功能</span><strong>旁邊有「幫我寫理由」</strong><p>理由是草稿。還沒有人核准，也還沒寫進紀錄。</p></div>
+        <div class="card"><span class="pill">系統</span><strong>送出、留下、等人核准</strong><p>員工送出申請，AI 檢查必填是否齊，主管核准後才算完成。AI 不能自己核准。</p></div>
+      </div>
+      <div class="callout">分辨方式：關掉畫面之後，這件事還在不在？誰還能接著處理？</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>6 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="01-1-2 說明">
+      <p class="kicker">01-1-2 · 什麼是 AI 系統</p>
+      <h2 class="tight">介面、後端、資料、權限與 AI Agent</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div><strong>介面</strong><p>人看得到、點得到的畫面。表單、清單、對話框都算。</p></div>
+        <div class="card"><div class="num">2</div><strong>後端</strong><p>收到請求、照規則處理、把結果送回去的那一段。</p></div>
+        <div class="card"><div class="num">3</div><strong>資料</strong><p>單據與名單被存下來的地方。關掉畫面還在。</p></div>
+        <div class="card"><div class="num">4</div><strong>權限</strong><p>誰能申請、誰能核准、誰只能看自己的。</p></div>
+        <div class="card"><div class="num">5</div><strong>AI Agent</strong><p>在規則裡讀資料、整理、草擬。不取代權限。</p></div>
+      </div>
+      <div class="callout">少任何一層，就還不是這堂課說的可上線系統。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>7 / 26</span></div>
+    </section>
+
+    <section class="slide dense" id="s8" data-title="01-1-2 例子">
+      <p class="kicker">01-1-2 · 例子 · 報修</p>
+      <h2 class="tight">報修助理怎麼對上五層</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">介面</div><strong>報修表單、進度頁</strong><p>同事描述哪裡壞了，之後看處理到哪。</p></div>
+        <div class="card"><div class="num sm">後端</div><strong>建立工單、通知維修</strong><p>把表單收下來，讓該看的人看得到。</p></div>
+        <div class="card"><div class="num sm">資料</div><strong>地點、描述、狀態、時間</strong><p>沒有這些，電話講完就沒有紀錄。</p></div>
+        <div class="card"><div class="num sm">權限</div><strong>三種人，三種能做的事</strong><p>同事可報修。維修人員可改狀態。主管可看全部。</p></div>
+        <div class="card"><div class="num sm">AI Agent</div><strong>整理與建議，不結案</strong><p>把口語整理成欄位、建議分類。不直接關閉工單。</p></div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>8 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="01-1-3 說明">
+      <p class="kicker">01-1-3 · 什麼是 AI 系統</p>
+      <h2 class="tight">用 CRUD、API、RBAC 描述系統行為</h2>
+      <div class="grid">
+        <div class="card"><div class="num">CRUD</div><strong>資料會怎麼變</strong><p>建立 Create、讀取 Read、更新 Update、刪除 Delete。先用這四個動詞把單據說完。</p></div>
+        <div class="card"><div class="num">API</div><strong>介面請後端做的事</strong><p>雙方說好的請求。例如「送出請假」是一個，「查我的請假」是另一個。今天先寫白話，不必寫網址。</p></div>
+        <div class="card"><div class="num">RBAC</div><strong>依角色，不依每一個人</strong><p>Role-Based Access Control。員工、主管、管理者是角色，不必為每個人各寫一套規則。</p></div>
+      </div>
+      <div class="callout">還不會寫程式也沒關係。先把行為講出來，後面請 AI 產生畫面才有依據。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>9 / 26</span></div>
+    </section>
+
+    <section class="slide dense" id="s10" data-title="01-1-3 例子">
+      <p class="kicker">01-1-3 · 例子 · 客戶詢問</p>
+      <h2 class="tight">把客戶詢問助理說成行為</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>四個動詞</strong>
+          <ul>
+            <li>建立：客戶送出一則詢問</li>
+            <li>讀取：客服看未回覆；客戶只看自己的</li>
+            <li>更新：客服儲存回覆；AI 可以先草擬</li>
+            <li>刪除：這 8 週不做。改成把狀態更新為結案</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>角色與請求</strong>
+          <ul>
+            <li>角色：客戶、客服、主管</li>
+            <li>請求：建立詢問</li>
+            <li>請求：列出詢問</li>
+            <li>請求：儲存回覆草稿</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">這裡的 API 是「雙方說好的請求」，不是要你今天寫出網址。主管看得到全部，不代表主管要代客服回覆。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>10 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="01-2-1 說明">
+      <p class="kicker">01-2-1 · AI 工具與 Vibe Coding</p>
+      <h2 class="tight">AI 工具在開發流程中的角色與限制</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>適合請它做</strong>
+          <ul>
+            <li>把白話收成欄位、畫面說明、檢查問題</li>
+            <li>用你聽得懂的話解釋名詞</li>
+            <li>依照你寫清楚的範圍，改出下一版</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>不要請它決定</strong>
+          <ul>
+            <li>猜你沒寫出來的公司規則</li>
+            <li>代替你決定這 8 週做不做</li>
+            <li>代替主管核准，或保證第一次就對</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">AI 工具是共同作者，不是驗收的人。驗收始終是你。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>11 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="01-2-1 例子">
+      <p class="kicker">01-2-1 · 例子 · 請假助理</p>
+      <h2 class="tight">同一張請假單，人和工具怎麼分</h2>
+      <div class="grid">
+        <div class="card"><span class="pill">人</span><strong>規則與決定</strong><p>有哪些假別、誰能核准、什麼情況不能送出。這些要你寫出來。</p></div>
+        <div class="card"><span class="pill">工具</span><strong>草稿與缺口</strong><p>列出欄位草稿，指出你還沒寫「誰能核准」，再依你的更正重寫一版。</p></div>
+        <div class="card"><span class="pill">限制</span><strong>沒寫就不要猜</strong><p>特休怎麼計算若沒寫進說明，工具不該自己假設一套算法。</p></div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>12 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="01-2-2 說明">
+      <p class="kicker">01-2-2 · AI 工具與 Vibe Coding</p>
+      <h2 class="tight">迭代循環：生成 → 驗證 → 修正</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div><strong>生成</strong><p>用一段寫清楚範圍的話，請 AI 產出欄位或流程。</p></div>
+        <div class="card"><div class="num">2</div><strong>驗證</strong><p>對照真實工作：誰用、輸入什麼、輸出什麼、哪裡要人看過。</p></div>
+        <div class="card"><div class="num">3</div><strong>修正</strong><p>只改這一輪發現的一件事，再生成下一版。</p></div>
+      </div>
+      <div class="callout">不是一次生成就完成。每一輪只改一件事，你才知道是哪一句話讓結果變好。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>13 / 26</span></div>
+    </section>
+
+    <section class="slide dense" id="s14" data-title="01-2-2 練習">
+      <p class="kicker">01-2-2 · 練習</p>
+      <h2 class="tight">把一句模糊的話改成可驗證的指令</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>先不要這樣說</strong>
+          <p>「幫我做一個請假系統。」</p>
+          <p>範圍太大，你無法檢查它有沒有做對。</p>
+        </div>
+        <div class="card">
+          <strong>改成可驗證的</strong>
+          <p>員工申請特休或事假。主管核准後才寫入。AI 只檢查日期與假別有沒有填。請列出畫面欄位。不要加核准以外的功能。</p>
+        </div>
+      </div>
+      <div class="callout">接著自己寫三個驗證問題：誰可以送出？缺日期時是提醒還是直接送出？核准的人是誰，AI 能不能代按？</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>14 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s15" data-title="01-2-3 說明">
+      <p class="kicker">01-2-3 · AI 工具與 Vibe Coding</p>
+      <h2 class="tight">去識別化，高風險步驟保留人工確認</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>去識別化</strong>
+          <p>貼給 AI 之前，拿掉認得出個人的資料：姓名、員工編號、電話、Email、客戶名稱、薪資、病歷。</p>
+          <p>改成「員工 A」「客戶 B」再貼上。</p>
+        </div>
+        <div class="card">
+          <strong>人按最後一下</strong>
+          <p>送出、核准、刪除、對外寄信、改權限、動到錢或個資。</p>
+          <p>AI 可以草擬。人按下去才算數。</p>
+        </div>
+      </div>
+      <div class="callout">高風險不是「AI 不准碰」，是「AI 不准自己按最後一下」。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>15 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s16" data-title="01-2-3 例子">
+      <p class="kicker">01-2-3 · 例子</p>
+      <h2 class="tight">草擬可以，送出要人</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>可請 AI 做</strong>
+          <ul>
+            <li>把報修的口語整理成欄位</li>
+            <li>草擬一則客戶回覆</li>
+            <li>指出請假單缺了哪一格</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>必須人確認</strong>
+          <ul>
+            <li>關閉報修工單</li>
+            <li>把回覆寄給客戶</li>
+            <li>核准這張請假單</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">若要把真實單據貼進對話，先把姓名和電話換成員工 A、客戶 B。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>16 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s17" data-title="01-3-1 說明">
+      <p class="kicker">01-3-1 · 選題與 MVP 範圍</p>
+      <h2 class="tight">從工作問題找到專案題目</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>適合拿來當題目的問題</strong>
+          <ul>
+            <li>常常重複</li>
+            <li>規則大致固定</li>
+            <li>現在靠記憶或群組訊息</li>
+            <li>做錯了，有人在後面補</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>先收小</strong>
+          <p>題目要小到 8 週做得出一段可以示範的主流程。</p>
+          <p>「做一個什麼都能回答的公司大腦」太大，不是這 8 週的題目。</p>
+        </div>
+      </div>
+      <div class="callout">痛點是起點。箭頭右邊、小到可以示範的那一句，才是題目。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>17 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s18" data-title="01-3-1 例子">
+      <p class="kicker">01-3-1 · 例子</p>
+      <h2 class="tight">三個工作問題，怎麼收成題目</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">請假</div><strong>群組裡常被漏看</strong><p>題目：請假申請助理。只處理申請與核准。</p></div>
+        <div class="card"><div class="num sm">報修</div><strong>電話講完沒有紀錄</strong><p>題目：報修工單助理。只處理建立與狀態。</p></div>
+        <div class="card"><div class="num sm">詢問</div><strong>同一類問題問很多次</strong><p>題目：客戶詢問助理。只草擬回覆，不直接寄出。</p></div>
+      </div>
+      <div class="callout">三個都是內部小工具。選一個你真的遇過的，不要三個一起做。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>18 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s19" data-title="01-3-2 說明">
+      <p class="kicker">01-3-2 · 選題與 MVP 範圍</p>
+      <h2 class="tight">定義使用者、流程、輸入輸出與不做事項</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">使用者</div><strong>誰按、誰看、誰核准</strong><p>至少分出申請的人與確認的人。</p></div>
+        <div class="card"><div class="num sm">流程</div><strong>從開始到結束</strong><p>每一步標出是 AI 做，還是人做。</p></div>
+        <div class="card"><div class="num sm">輸入</div><strong>人交給系統什麼</strong><p>少到主流程跑得起來就好。</p></div>
+        <div class="card"><div class="num sm">輸出</div><strong>系統交還什麼</strong><p>人看完知道下一步是誰的事。</p></div>
+        <div class="card"><div class="num sm">不做</div><strong>這 8 週明確不做</strong><p>用來阻止範圍變大。寫得出來，題目才算小。</p></div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>19 / 26</span></div>
+    </section>
+
+    <section class="slide dense" id="s20" data-title="01-3-2 例子">
+      <p class="kicker">01-3-2 · 例子 · 請假助理</p>
+      <h2 class="tight">一張範圍卡長這樣</h2>
+      <div class="grid">
+        <div class="card"><strong>使用者</strong><p>員工申請，主管核准。</p></div>
+        <div class="card"><strong>流程</strong><p>填單 → AI 檢查必填 → 主管核准 → 寫入紀錄。</p></div>
+        <div class="card"><strong>輸入</strong><p>假別、日期、理由。</p></div>
+        <div class="card"><strong>輸出</strong><p>一張看得到狀態的請假單。</p></div>
+        <div class="card"><strong>不做事項</strong><p>不算薪資、不串其他系統、不讓 AI 核准、不處理補休與出差。</p></div>
+      </div>
+      <div class="callout">這張卡還沒有程式。它已經夠讓別人判斷：8 週做不做得完。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>20 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s21" data-title="01-3-3 說明">
+      <p class="kicker">01-3-3 · 選題與 MVP 範圍</p>
+      <h2 class="tight">完成一頁式專案提案，並接受講師回饋</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>一頁要回答的事</strong>
+          <ul>
+            <li>做給誰</li>
+            <li>痛點是什麼</li>
+            <li>AI 做到哪裡</li>
+            <li>人在哪裡確認</li>
+            <li>8 週做不做得完</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>請講師只看三件事</strong>
+          <ul>
+            <li>題目是否太寬</li>
+            <li>不做事項是否夠清楚</li>
+            <li>人工確認點有沒有漏</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">提案不是程式。它讓講師不用翻很多頁，就能告訴你範圍要不要再收小。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>21 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s22" data-title="01-3-3 練習">
+      <p class="kicker">01-3-3 · 練習</p>
+      <h2 class="tight">用三句話請講師回饋</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div><strong>題目與使用者</strong><p>我的題目是＿＿，使用者是＿＿。</p></div>
+        <div class="card"><div class="num">2</div><strong>AI 與人</strong><p>AI 只負責＿＿；人一定要確認＿＿。</p></div>
+        <div class="card"><div class="num">3</div><strong>不做事項</strong><p>這 8 週明確不做＿＿。</p></div>
+      </div>
+      <div class="callout">若有一句填不出來，先不要加新功能。回到範圍卡，把那一格補上。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>22 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s23" data-title="課堂練習">
+      <p class="kicker">課堂練習</p>
+      <h2 class="tight">現在就寫出提案的前半</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>1. 選一個小問題</strong>
+          <p>用你工作裡反覆出現的事。一時想不到，就用請假、報修、客戶詢問其中一個。</p>
+        </div>
+        <div class="card">
+          <strong>2. 先填六格</strong>
+          <p>題目、使用者、痛點、流程、輸入／輸出、AI 負責什麼。</p>
+        </div>
+        <div class="card">
+          <strong>3. 跟同學交換</strong>
+          <p>請對方只找一個「這 8 週做不完」的地方。</p>
+        </div>
+        <div class="card">
+          <strong>4. 寫進不做事項</strong>
+          <p>把那個地方收進範圍。練習的成品是一頁裡能看懂的範圍，不是程式。</p>
+        </div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>23 / 26</span></div>
+    </section>
+
+    <section class="slide dense" id="s24" data-title="提案範本">
+      <p class="kicker">一頁式專案提案</p>
+      <h2 class="tight">九個欄位，一頁寫完</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">1</div><strong>題目</strong><p>這 8 週要做的小系統，一句話。</p></div>
+        <div class="card"><div class="num sm">2</div><strong>使用者</strong><p>誰按、誰看、誰核准。</p></div>
+        <div class="card"><div class="num sm">3</div><strong>痛點</strong><p>現在怎麼做、哪裡卡住。</p></div>
+        <div class="card"><div class="num sm">4</div><strong>流程</strong><p>從開始到結束，標出 AI 與人。</p></div>
+        <div class="card"><div class="num sm">5</div><strong>輸入／輸出</strong><p>人交進來什麼，系統交回去什麼。</p></div>
+        <div class="card"><div class="num sm">6</div><strong>AI 負責什麼</strong><p>只寫被允許的步驟，例如檢查、整理、草擬。</p></div>
+        <div class="card"><div class="num sm">7</div><strong>人工確認點</strong><p>送出、核准、寄出這類最後一下。</p></div>
+        <div class="card"><div class="num sm">8</div><strong>不做事項</strong><p>這 8 週明確不做的事，至少寫三條。</p></div>
+        <div class="card"><div class="num sm">9</div><strong>8 週里程碑</strong><p>你的專案怎麼分段做完。下一頁說明怎麼填。</p></div>
+      </div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>24 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s25" data-title="里程碑怎麼填">
+      <p class="kicker">範本第 9 格 · 8 週里程碑</p>
+      <h2 class="tight">寫的是你的專案，不是課程每週標題</h2>
+      <p class="lead" style="font-size:clamp(16px,1.3vw,20px);margin-top:0">後續週次的課程名稱以課堂公告為準。這一格只寫你的小系統打算怎麼分段做完，課堂上可以再改。</p>
+      <div class="grid">
+        <div class="card"><div class="num sm">前段</div><strong>範圍定稿</strong><p>一頁提案可以給人看。</p></div>
+        <div class="card"><div class="num sm">中段</div><strong>主流程可示範</strong><p>可以點給人看，先不含全部例外。</p></div>
+        <div class="card"><div class="num sm">後段</div><strong>資料、權限、AI</strong><p>AI 只做被允許的步驟。</p></div>
+        <div class="card"><div class="num sm">最後</div><strong>自己走完一次</strong><p>準備用真實流程示範，不是只展示對話。</p></div>
+      </div>
+      <div class="callout">四段寫不出來，通常是題目還太大。先刪功能，再寫里程碑。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>25 / 26</span></div>
+    </section>
+
+    <section class="slide" id="s26" data-title="作業">
+      <p class="kicker">本週交付</p>
+      <h2 class="tight">作業：完成一頁式專案提案</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div><strong>九個欄位都寫完</strong><p>題目、使用者、痛點、流程、輸入／輸出、AI 負責什麼、人工確認點、不做事項、8 週里程碑。</p></div>
+        <div class="card"><div class="num">2</div><strong>兩個確認點、三條不做</strong><p>人工確認點至少兩個。不做事項至少三條。</p></div>
+        <div class="card"><div class="num">3</div><strong>帶來接受回饋</strong><p>用三句話請講師看：題目是否太寬、不做事項是否夠清楚、確認點有沒有漏。</p></div>
+      </div>
+      <div class="callout">若還沒有自己的工作問題，就用請假、報修或客戶詢問其中一個，寫完這一頁。</div>
+      <div class="footer"><span>AI Agent 系統課 · 第 1 週</span><span>26 / 26</span></div>
+    </section>
+  </main>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <nav class="controls" id="controls" aria-label="簡報控制">
+    <div class="ctrl-main">
+      <button id="prev" type="button" aria-label="上一頁" title="上一頁（←）">←</button>
+      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+      <div class="count" id="count">1 / 26</div>
+      <button id="next" type="button" aria-label="下一頁" title="下一頁（→）">→</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="fs-down" type="button" aria-label="縮小字體" title="縮小字體（-）">A−</button>
+      <span class="fs-label" id="fs-label" aria-live="polite">100%</span>
+      <button id="fs-up" type="button" aria-label="放大字體" title="放大字體（+）">A+</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="full" type="button" aria-label="全頁顯示" title="全頁顯示／離開（F）">⛶</button>
+      <button id="pdf" type="button" class="wide" aria-label="匯出為 PDF" title="匯出為 PDF（P）">PDF</button>
+    </div>
+    <button id="toggle-ui" type="button" aria-label="收合或展開工具列" title="收合／展開工具列（H）" aria-expanded="true">▾</button>
+  </nav>
+  <script>
+    const DECK_TITLE = "第 1 週｜AI 系統開發概念與專案選題";
+    const FS_STEPS = [0.85, 0.925, 1, 1.1, 1.2];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("count");
+    const barEl = document.getElementById("bar");
+    const controls = document.getElementById("controls");
+    const toggleUi = document.getElementById("toggle-ui");
+    const fsLabel = document.getElementById("fs-label");
+    const hintEl = document.getElementById("hint");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--deck-fs", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      const t = slides[index].dataset.title || "";
+      document.title = t ? `${t}｜${DECK_TITLE}` : DECK_TITLE;
+      history.replaceState(null, "", `#${slides[index].id || (index + 1)}`);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      controls.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    document.getElementById("prev").onclick = () => show(index - 1);
+    document.getElementById("next").onclick = () => show(index + 1);
+    document.getElementById("fs-down").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("fs-up").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("full").onclick = () => toggleFullscreen();
+    document.getElementById("pdf").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!controls.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!controls.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+      const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.getElementById("full").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const hash = location.hash.replace(/^#/, "");
+    const byId = slides.findIndex((s) => s.id === hash);
+    if (byId >= 0) show(byId);
+    else {
+      const requested = Number(new URLSearchParams(location.search).get("slide") || hash);
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+    }
+  </script>
+</body>
+</html>
