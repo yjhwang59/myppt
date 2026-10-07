@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Enterprise AI portal deck with narration pipeline",
+  "description": "myppt decks with a per-deck narration pipeline",
   "scripts": {
     "narration:extract": "node scripts/narration/extract-slides.js",
     "narration:generate": "node scripts/narration/generate-scripts.js",
@@ -14,6 +14,7 @@
     "narration:fix-audio-urls": "node scripts/narration/fix-audio-urls.js",
     "migrate:slides": "node scripts/narration/migrate-slides.js",
     "build:deck": "node scripts/narration/build-deck.js",
+    "test": "node --test scripts/narration/lib/*.test.js",
     "dev": "node server/index.js",
     "deploy": "wrangler deploy"
   },

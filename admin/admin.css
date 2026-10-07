@@ -15,6 +15,14 @@ body {
 }
 .topbar h1 { margin: 0; font-size: 18px; }
 .topbar-actions { display: flex; gap: 8px; align-items: center; }
+.topbar-actions select, .topbar-actions input {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+.topbar-actions label { font-size: 13px; display: flex; gap: 6px; align-items: center; }
 .layout {
   display: grid;
   grid-template-columns: 240px 1fr 420px;
@@ -80,6 +88,7 @@ button {
   cursor: pointer;
 }
 button:hover { border-color: #3b82f6; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
 .status { font-size: 13px; color: #94a3b8; min-height: 20px; }
 #preview {
   width: 100%;
