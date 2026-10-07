@@ -41,7 +41,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s01.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s01.mp3",
       "audioDurationSeconds": 21.3,
       "presenter": {
         "name": "default",
@@ -100,7 +100,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s02.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s02.mp3",
       "audioDurationSeconds": 55.2,
       "presenter": {
         "name": "default",
@@ -184,7 +184,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s03.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s03.mp3",
       "audioDurationSeconds": 15.8,
       "presenter": {
         "name": "default",
@@ -255,7 +255,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s04.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s04.mp3",
       "audioDurationSeconds": 36,
       "presenter": {
         "name": "default",
@@ -319,7 +319,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s05.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s05.mp3",
       "audioDurationSeconds": 52.8,
       "presenter": {
         "name": "default",
@@ -381,7 +381,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s06.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s06.mp3",
       "audioDurationSeconds": 32.3,
       "presenter": {
         "name": "default",
@@ -447,7 +447,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s07.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s07.mp3",
       "audioDurationSeconds": 29.8,
       "presenter": {
         "name": "default",
@@ -525,7 +525,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s08.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s08.mp3",
       "audioDurationSeconds": 29.3,
       "presenter": {
         "name": "default",
@@ -599,7 +599,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s09.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s09.mp3",
       "audioDurationSeconds": 39.4,
       "presenter": {
         "name": "default",
@@ -676,7 +676,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s10.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s10.mp3",
       "audioDurationSeconds": 34.7,
       "presenter": {
         "name": "default",
@@ -744,7 +744,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s11.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s11.mp3",
       "audioDurationSeconds": 32,
       "presenter": {
         "name": "default",
