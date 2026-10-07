@@ -58,8 +58,8 @@ npm run build:deck -- pccu-1151-bigdata-2026-10-03 --check
 
 `htmlRebuild`（registry）：
 
-- `safe`：允許 `build:deck` 覆寫 `<main id="deck">`。目前只有 enterprise。
-- `gated`：先做 round-trip 檢查，`<main>` 與現有 HTML 不等價就拒絕寫入。pccu-1151 屬於這類：講稿已核准、尚無音訊，Admin 與 `build:deck` 已接上同一條路徑，但現有投影片有 `grid four`、雙 grid、`pitch`、`slogan-stack`、`card risk`、`flow-step gate` 等 slides.json 還原不了的標記，所以檢查會失敗且不會改 HTML。
+- `safe`：允許 `build:deck` 覆寫 `<main id="deck">`。目前沒有 deck 使用這個值。
+- `gated`：先做 round-trip 檢查，`<main>` 與現有 HTML 不等價就拒絕寫入。enterprise 與 pccu-1151 都是這類，Admin 仍可編講稿與 TTS。enterprise 的已發佈 HTML 含 slides.json 還原不了的區塊（例如第 8 頁同時有 cards 與 flow）。pccu 則有 `grid four`、雙 grid、`pitch`、`slogan-stack`、`card risk`、`flow-step gate`。兩份 HTML 這次都沒有改寫。
 - `off`：手寫 HTML 或 PDF 殼層，維持原 SSOT，不要跑 `build:deck`。
 
 Enterprise 舊網址 `narration/audio/sNN.mp3` 是指向 `narration/audio/enterprise-ai-portal-deck/sNN.mp3` 的相對 symlink。Manifest 的 `audioUrl` 已改成 per-deck 路徑。

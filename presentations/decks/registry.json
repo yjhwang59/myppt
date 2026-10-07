@@ -12,8 +12,8 @@
       "sourceType": "html",
       "format": "slides-json",
       "pipeline": "native",
-      "htmlRebuild": "safe",
-      "note": "原生管線基準。舊音訊 URL narration/audio/sNN.mp3 以 symlink 指到 narration/audio/enterprise-ai-portal-deck/。",
+      "htmlRebuild": "gated",
+      "note": "原生管線基準。舊音訊 URL narration/audio/sNN.mp3 以 symlink 指到 narration/audio/enterprise-ai-portal-deck/。目前 slides.json 還原不了已發佈 HTML（例如 s8 同時有 cards 與 flow），build:deck 在 round-trip 等價前拒絕寫入。",
       "createdAt": "2026-08-31T08:12:19.302Z",
       "updatedAt": "2026-09-14T09:14:46.081Z"
     },

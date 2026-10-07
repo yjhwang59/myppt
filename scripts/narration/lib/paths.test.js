@@ -38,7 +38,7 @@ test("resolveDeckId keeps enterprise as the default", () => {
 test("admin registry exposes enterprise and pccu only", () => {
   const admin = listAdminDecks().map((deck) => deck.deckId);
   assert.deepEqual(admin, [DECK_ID, PCCU]);
-  assert.equal(getDeckPolicy(DECK_ID).htmlRebuild, "safe");
+  assert.equal(getDeckPolicy(DECK_ID).htmlRebuild, "gated");
   assert.equal(getDeckPolicy(PCCU).pipeline, "native");
   assert.equal(getDeckPolicy(PCCU).htmlRebuild, "gated");
   assert.equal(getDeckPolicy("deck").htmlRebuild, "off");
@@ -60,16 +60,16 @@ test("enterprise legacy audio symlinks follow the per-deck files", () => {
   assert.equal(fs.existsSync(AUDIO_DIR), true);
 });
 
-test("pccu rebuild is gated and does not count as writable", () => {
-  const html = fs.readFileSync(deckHtmlPath(PCCU), "utf8");
-  const before = fs.readFileSync(deckHtmlPath(PCCU));
-  const deckData = readSlidesJson(slidesJsonPath(PCCU));
-  const assessment = assessHtmlRebuild(html, deckData);
-  const decision = rebuildDecision(getDeckPolicy(PCCU), assessment);
-  assert.equal(assessment.ok, false);
-  assert.equal(decision.write, false);
-  assert.match(decision.reason, /grid four|not whitespace-equivalent|drop markup/);
-  assert.equal(fs.readFileSync(deckHtmlPath(PCCU)).equals(before), true);
+test("native decks refuse a lossy HTML rebuild", () => {
+  for (const deckId of [DECK_ID, PCCU]) {
+    const htmlPath = deckHtmlPath(deckId);
+    const before = fs.readFileSync(htmlPath);
+    const assessment = assessHtmlRebuild(before.toString("utf8"), readSlidesJson(slidesJsonPath(deckId)));
+    const decision = rebuildDecision(getDeckPolicy(deckId), assessment);
+    assert.equal(assessment.ok, false, deckId);
+    assert.equal(decision.write, false, deckId);
+    assert.equal(fs.readFileSync(htmlPath).equals(before), true, deckId);
+  }
 });
 
 test("pdf and fyh decks are not writable by build:deck policy", () => {
