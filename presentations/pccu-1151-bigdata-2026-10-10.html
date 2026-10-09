@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="pccu-1151-bigdata-2026-10-10">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="文化大學推廣部「巨量資料挖掘與分析」1151 碩專班｜2026-10-10 課前簡報：複習 W3–W6、作業三 SRS 共通觀察、W4 最小可跑系統與 PBL 工作室。講師：黃燕忠。">
+  <title>2026-10-10｜巨量1151｜課前簡報</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 文大 1151</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <a class="btn-link" href="/" title="回到簡報庫">庫</a>
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 12</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+    <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+  </header>
+
+  <main id="deck">
+
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">文化大學推廣部｜1151 碩專班｜2026-10-10 週六</p>
+      <h1>2026-10-10｜巨量1151<br>課前簡報</h1>
+      <p class="lead">巨量資料挖掘與分析。本週新繳件資料較少，採『複習＋PBL 工作室』版。</p>
+      <div class="flow" role="list">
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>開場</strong>
+          <p class="flow-desc">上週回顧</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>作業三</strong>
+          <p class="flow-desc">SRS 共通觀察</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step gate" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>W4</strong>
+          <p class="flow-desc">最小可跑系統</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>工作室</strong>
+          <p class="flow-desc">demo 與抽查</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>收尾</strong>
+          <p class="flow-desc">下課檢查清單</p>
+        </div>
+      </div>
+      <p class="stamp">講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問　·　←→ 翻頁　·　F 全螢幕　·　12 頁 · 16:9</p>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>1 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s2" data-title="學習目標">
+      <p class="eyebrow">02 / 本週學習目標</p>
+      <h2>從 SRS 走到最小可跑，而且能跟基線對上</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">01</div>
+          <strong>SRS → 最小可跑系統</strong>
+          <p>挑一個功能需求，切出最短的輸入、處理、輸出。文件停在 SRS，這週還不算做完。</p>
+        </article>
+        <article class="card">
+          <div class="num">02</div>
+          <strong>可重跑的跑法</strong>
+          <p>外面附三到五行。換一台電腦、換一個人，照著跑要得到同一份輸出。</p>
+        </article>
+        <article class="card">
+          <div class="num">03</div>
+          <strong>用基線對照</strong>
+          <p>系統輸出跟現況基線比一個指標。沒有對照，就還不知道有沒有比較好。</p>
+        </article>
+      </div>
+      <div class="pitch">離開教室要能說：最小路徑是<strong>哪個 FR</strong>、跑法<strong>怎麼重跑</strong>、跟基線比的是<strong>哪一個指標</strong>。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>2 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s3" data-title="W3–W6">
+      <p class="eyebrow">03 / W3–W6 的意義</p>
+      <h2>四道品質門，本週停在最小可跑</h2>
+      <p class="lead">複習用。週次不是文號，是你要交出的證明。</p>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">W3 · 基線定稿</div>
+          <strong>證明現在有多痛</strong>
+          <ul>
+            <li>數字＋期間＋口徑＋來源</li>
+            <li>別人照著能重算</li>
+            <li>目標值不是基線</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W4 · 最小可跑系統</div>
+          <strong>本週：證明做得出來</strong>
+          <ul>
+            <li>固定樣例進、輸出表出</li>
+            <li>外面附三到五行跑法</li>
+            <li>流程圖不算系統</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W5 · 固定驗收集</div>
+          <strong>證明不是運氣</strong>
+          <ul>
+            <li>同一組輸入重跑，結果對得起來</li>
+            <li>有對照，不是剛好跑一次</li>
+            <li>對齊上線前的驗收邊界</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">W6 · 證據包</div>
+          <strong>證明敢給人看</strong>
+          <ul>
+            <li>前後對照＋限制／失敗一頁</li>
+            <li>檔案給得出去、可重跑</li>
+            <li>期末看的是這包，不是口頭</li>
+          </ul>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>3 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s4" data-title="三硬門檻與 5V">
+      <p class="eyebrow">04 / 三硬門檻 × 5V</p>
+      <h2>沒過門，就還不能叫專案</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">基線</div>
+          <strong>對 W3</strong>
+          <p>數字、期間、口徑、來源要齊。缺現況基線，後面的模型先不要談。</p>
+        </article>
+        <article class="card">
+          <div class="num">系統</div>
+          <strong>對 W4 · 本週</strong>
+          <p>可執行檔或 notebook，有輸入、處理、輸出與跑法。聊天截圖與流程圖都不算。</p>
+        </article>
+        <article class="card">
+          <div class="num">證據</div>
+          <strong>對 W5–W6</strong>
+          <p>固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。</p>
+        </article>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <strong>5V</strong>
+          <ul>
+            <li>Volume 資料量</li>
+            <li>Velocity 更新速度</li>
+            <li>Variety 資料型態</li>
+            <li>Veracity 可不可信</li>
+            <li>Value 有沒有用</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <strong>標「有」之前</strong>
+          <p>至少三項要標得了「有」。Value、Veracity 不得為「無」。沒有可點開的檔，最多只能標「弱」。</p>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>4 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s5" data-title="AISDLC 週次對照">
+      <p class="eyebrow">05 / AISDLC × 週次</p>
+      <h2>Discover → Diagnose，對上 W1–W6</h2>
+      <p class="lead">AI Software Development Life Cycle。本課把專案當可治理的產品，不是一次 Demo。</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>週次</th>
+            <th>AISDLC</th>
+            <th>這門課在做什麼</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>W1–W2</strong></td>
+            <td>Discover／Define</td>
+            <td>需求盤點／Use Case</td>
+          </tr>
+          <tr>
+            <td><strong>W3</strong></td>
+            <td>Define／Design</td>
+            <td>SRS＋基線</td>
+          </tr>
+          <tr>
+            <td><strong>W4 · 本週</strong></td>
+            <td>Develop</td>
+            <td>最小可跑系統</td>
+          </tr>
+          <tr>
+            <td><strong>W5</strong></td>
+            <td>Deploy</td>
+            <td>上線前的固定驗收集</td>
+          </tr>
+          <tr>
+            <td><strong>W6</strong></td>
+            <td>Diagnose</td>
+            <td>證據包：限制、失敗、前後對照</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>本週停在 Develop：</strong>先把最小系統跑起來。Define 的數字與 Diagnose 的失敗說明，仍是你的責任。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>5 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s6" data-title="作業三 SRS 觀察">
+      <p class="eyebrow">06 / 作業三 SRS 共通觀察（去名化）</p>
+      <h2>六項看齊了沒有；缺口仍是那幾類</h2>
+      <p class="lead">不點名、不公布個人分數。只講班級共通的地方。</p>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">SRS 六項</div>
+          <strong>這六格都要在</strong>
+          <ul>
+            <li>使用者與管理者</li>
+            <li>功能需求 FR</li>
+            <li>非功能需求 NFR</li>
+            <li>資料與系統</li>
+            <li>權限／人工核准</li>
+            <li>成功／失敗／停止條件</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <div class="num">常見問題</div>
+          <strong>先補這幾類</strong>
+          <ul>
+            <li>缺現況基線數字</li>
+            <li>指標口徑前後不一致，例如 R²</li>
+            <li>題目需避開博弈、投注建議類</li>
+            <li>5V 待補</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">做得好</div>
+          <strong>留下這個樣子</strong>
+          <ul>
+            <li>六項齊全</li>
+            <li>驗收條件量得出來</li>
+            <li>成功、失敗、停止寫得具體</li>
+            <li>別人看得懂什麼叫做完</li>
+          </ul>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>6 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s7" data-title="W4 怎麼做">
+      <p class="eyebrow">07 / W4 最小可跑系統</p>
+      <h2>從一個 FR 切開，跑完一條最短路徑</h2>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">1 · 切路徑</div>
+          <strong>只留一個 FR</strong>
+          <p>其餘功能需求先標「這週不做」。路徑要短到這週跑得完。</p>
+        </article>
+        <article class="card">
+          <div class="num">2 · 固定樣例</div>
+          <strong>CSV → 模型／規則 → 輸出表</strong>
+          <p>樣例檔固定。不要每次換一份資料，還說結果不一樣。</p>
+        </article>
+        <article class="card">
+          <div class="num">3 · 對基線</div>
+          <strong>只比一個指標</strong>
+          <p>口徑寫清楚，而且跟前面作業用同一套定義。</p>
+        </article>
+        <article class="card">
+          <div class="num">4 · 限制一頁</div>
+          <strong>失敗也要寫出來</strong>
+          <p>沒達標、資料不夠、不能上線的原因，集中一頁。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>不算跑完：</strong>只有流程圖，或只有聊天截圖。要有進得去的樣例、出得來的表、以及三到五行跑法。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>7 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s8" data-title="Grok Bot 參考實例">
+      <p class="eyebrow">08 / Grok Bot × 巨量分析</p>
+      <h2>助教可以起草，核准與口徑仍在講師</h2>
+      <p class="lead">參考實例。看人機分工怎麼落在這門課，不是叫大家照抄同一套工具。</p>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">A · 讀作業夾</div>
+          <strong>評分建議，待覆核</strong>
+          <p>AI 助教每週讀 Drive 作業夾，依 5V、三硬門檻與 SRS 六項起草建議。還沒經講師覆核，就不是成績。</p>
+        </article>
+        <article class="card">
+          <div class="num">B · 週五教材</div>
+          <strong>課前簡報＋講稿</strong>
+          <p>週五自動產出這一類課前簡報與口語講稿。內容仍要人看過才進教室。</p>
+        </article>
+        <article class="card">
+          <div class="num">C · 上稿</div>
+          <strong>HTML 簡報並開 PR</strong>
+          <p>雲端代理把簡報送上版本庫、開 pull request。合併前看得到改了什麼。</p>
+        </article>
+        <article class="card">
+          <div class="num">D · 北風烘焙</div>
+          <strong>去識別化範例</strong>
+          <p>隔日麵包需求預測。同一條線走基線 → 最小系統 → 證據，不放真實客戶資料。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>人工核准與可追溯：</strong>這就是 SRS「權限／人工核准」的示範。建議要留得下是誰核准的，Bot 不能自己把草稿改成成績。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>8 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s9" data-title="AI 工具繳交規範">
+      <p class="eyebrow">09 / AI 工具繳交規範</p>
+      <h2>工具可以換，繳的是可重跑產物</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">可以用</div>
+          <strong>Cursor、Claude、Codex、Grok Bot</strong>
+          <ul>
+            <li>必交專案檔</li>
+            <li>可重跑的 3–5 行跑法</li>
+            <li>固定樣例的輸入＋輸出</li>
+            <li>註明 AI 產生段落，以及你怎麼驗收</li>
+          </ul>
+        </article>
+        <article class="card risk">
+          <div class="num">不算過關</div>
+          <strong>不能重現，就不算交</strong>
+          <ul>
+            <li>只有聊天截圖</li>
+            <li>不可重現的輸出</li>
+            <li>每次重跑答案都不一樣</li>
+          </ul>
+        </article>
+      </div>
+      <div class="grid four">
+        <article class="card">
+          <div class="num">①</div>
+          <strong>基線數字表一頁</strong>
+          <p>數字、期間、口徑、來源。</p>
+        </article>
+        <article class="card">
+          <div class="num">②</div>
+          <strong>可執行檔或 notebook</strong>
+          <p>含跑法，別人照著能跑。</p>
+        </article>
+        <article class="card">
+          <div class="num">③</div>
+          <strong>限制／失敗一頁</strong>
+          <p>沒達標與做不到的邊界。</p>
+        </article>
+        <article class="card">
+          <div class="num">④</div>
+          <strong>封面姓名學號</strong>
+          <p>檔名與封面要對得上人。</p>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>9 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s10" data-title="PBL 雙軌">
+      <p class="eyebrow">10 / PBL 雙軌</p>
+      <h2>先過門，再決定要不要加碼</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">S · 穩健</div>
+          <strong>先過必過項</strong>
+          <ul>
+            <li>基線表：數字＋期間＋口徑＋來源</li>
+            <li>一條最小可跑路徑</li>
+            <li>固定樣例、跑法、一個對照指標</li>
+            <li>限制／失敗寫一頁</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">F · 快速</div>
+          <strong>過門檻之後才加碼</strong>
+          <ul>
+            <li>多指標基線</li>
+            <li>真實 API／排程</li>
+            <li>CI／儀表板</li>
+            <li>A/B 或回測</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout"><strong>超前換到的是展示與分享。</strong>不會因為做得比較深，就提早放期末分。門檻空白，加碼也不計。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>10 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s11" data-title="本週作業與工作室">
+      <p class="eyebrow">11 / 本週作業與工作室</p>
+      <h2>短講評、三分鐘 demo、抽查三格</h2>
+      <div class="grid three">
+        <article class="card">
+          <div class="num">短講評</div>
+          <strong>只講共通處</strong>
+          <p>去名化。不點名、不公布個人分數。好的留下，缺口對齊三硬門檻。</p>
+        </article>
+        <article class="card">
+          <div class="num">3 分鐘</div>
+          <strong>組別 demo</strong>
+          <p>打開檔、跑一次、指到輸出。口述流程圖請收起來。</p>
+        </article>
+        <article class="card">
+          <div class="num">抽查</div>
+          <strong>基線／系統／證據</strong>
+          <p>三格都要指得到。缺一格，這週就還在補門，不在加碼。</p>
+        </article>
+      </div>
+      <div class="callout"><strong>W5 前繳：</strong>最小可跑系統＋固定樣例輸入與輸出＋跑法＋與基線比較一個指標。</div>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>11 / 12</span>
+      </div>
+    </section>
+
+    <section class="slide" id="s12" data-title="下課檢查清單">
+      <p class="eyebrow">12 / 下課檢查清單</p>
+      <h2>走之前對一下這六項</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="num">系統與基線</div>
+          <strong>先對得上，再離席</strong>
+          <ul>
+            <li>基線表還在：數字、期間、口徑、來源</li>
+            <li>最小路徑對得上一個 FR</li>
+            <li>固定樣例進得去，輸出表出得來</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="num">跑法與證據</div>
+          <strong>別人重跑得了，才算數</strong>
+          <ul>
+            <li>跑法 3–5 行，重跑得到同一份輸出</li>
+            <li>跟基線比過一個指標，口徑前後一致</li>
+            <li>限制／失敗寫了一頁；封面有姓名學號</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slogan-stack">
+        <p>先有基線，再談模型</p>
+        <p>能重跑，才算數</p>
+      </div>
+      <p class="mini-note">課後複習：myppt.aidc.work／pccu-1151-bigdata-2026-10-10.html</p>
+      <div class="footer">
+        <span class="instructor">黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問</span>
+        <span>12 / 12</span>
+      </div>
+    </section>
+
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="pccu-1151-bigdata-2026-10-10">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "巨量資料挖掘與分析｜1151";
+      const LS_KEY = "ai-ppt-pccu-1151-bigdata-2026-10-10-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>

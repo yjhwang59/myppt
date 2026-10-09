@@ -9,6 +9,7 @@ Static files are served from `presentations/` via Workers static assets.
 - Library: `https://myppt.aidc.work/`
 - Enterprise deck: `/enterprise-ai-portal-deck.html`
 - Course deck (PCCU 1151, 2026-10-03): `/pccu-1151-bigdata-2026-10-03.html`
+- Course deck (PCCU 1151, 2026-10-10): `/pccu-1151-bigdata-2026-10-10.html`
 - Catalog: `/decks/registry.json`
 
 Push to `main` triggers GitHub Actions → `wrangler deploy` (requires repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
