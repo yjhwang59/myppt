@@ -7,8 +7,10 @@ import {
   writeManifest,
   recalcManifestMeta,
 } from "./lib/manifest.js";
+import fs from "node:fs";
 import { generateScriptWithLlm } from "./lib/llm.js";
-import { MANIFEST_PATH } from "./lib/paths.js";
+import { manifestPath, resolveDeckId, slidesJsonPath } from "./lib/paths.js";
+import { readSlidesJson } from "./lib/slide-model.js";
 import { loadAndValidateManifest } from "./lib/validate.js";
 
 const args = process.argv.slice(2);
@@ -17,7 +19,11 @@ const onlyEmpty = args.includes("--empty-only");
 const slideFilter = args.find((a) => a.startsWith("--slide="))?.split("=")[1];
 const force = args.includes("--force");
 
-let { manifest } = loadAndValidateManifest(MANIFEST_PATH);
+const deckId = resolveDeckId(process.argv.slice(2));
+const narrationPath = manifestPath(deckId);
+let { manifest } = loadAndValidateManifest(narrationPath);
+const slidesPath = slidesJsonPath(manifest.deckId || deckId);
+const deckTitle = fs.existsSync(slidesPath) ? readSlidesJson(slidesPath).title : manifest.deckId;
 
 let generated = 0;
 for (let i = 0; i < manifest.slides.length; i++) {
@@ -38,7 +44,7 @@ for (let i = 0; i < manifest.slides.length; i++) {
     continue;
   }
 
-  const context = buildGenerationContext(manifest, i);
+  const context = buildGenerationContext(manifest, i, { deckTitle });
   console.log(`生成講稿 ${slide.slideId} — ${slide.title}...`);
 
   const result = await generateScriptWithLlm(slide, context);
@@ -50,7 +56,7 @@ for (let i = 0; i < manifest.slides.length; i++) {
 }
 
 recalcManifestMeta(manifest);
-writeManifest(manifest);
+writeManifest(manifest, narrationPath);
 
 console.log(`✓ 已生成 ${generated} 頁講稿`);
 console.log("→ 人工檢視後執行: npm run narration:approve -- --all");

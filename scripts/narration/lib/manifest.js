@@ -2,11 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { hashContent } from "./hash.js";
 import {
-  AUDIO_DIR,
+  DECK_ID,
   DEFAULT_VOICE,
   MANIFEST_PATH,
   MANIFEST_VERSION,
   PROMPT_VERSION,
+  audioDirForDeck,
   audioRelativeUrl,
 } from "./paths.js";
 import { summarizeSlide } from "./extract.js";
@@ -107,26 +108,25 @@ export function applyGeneratedScript(slideRecord, generationResult) {
   return slideRecord;
 }
 
-export function buildGenerationContext(manifest, slideIndex) {
+export function buildGenerationContext(manifest, slideIndex, extras = {}) {
   const slides = manifest.slides;
-  const slide = slides[slideIndex];
   const prev = slideIndex > 0 ? slides[slideIndex - 1] : null;
   const next = slideIndex < slides.length - 1 ? slides[slideIndex + 1] : null;
 
   return {
-    deckTitle: "企業 AI 入口網整合平台架構",
+    deckTitle: extras.deckTitle || manifest.title || manifest.deckId || DECK_ID,
     slideTotal: slides.length,
     prevSlideSummary: prev ? summarizeSlide(prev) : "",
     nextSlideTitle: next?.title || "",
   };
 }
 
-export function ensureAudioDir() {
-  fs.mkdirSync(AUDIO_DIR, { recursive: true });
+export function ensureAudioDir(deckId = DECK_ID) {
+  fs.mkdirSync(audioDirForDeck(deckId), { recursive: true });
 }
 
-export function setSlideAudioReady(slide, durationSeconds) {
-  slide.audioUrl = audioRelativeUrl(slide.slideId);
+export function setSlideAudioReady(slide, durationSeconds, deckId = DECK_ID) {
+  slide.audioUrl = audioRelativeUrl(slide.slideId, deckId);
   slide.audioDurationSeconds = durationSeconds;
   slide.status = "audio_ready";
 }

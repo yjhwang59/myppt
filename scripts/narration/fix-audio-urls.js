@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import { MANIFEST_PATH, audioRelativeUrl } from "./lib/paths.js";
+import { audioRelativeUrl, manifestPath, resolveDeckId } from "./lib/paths.js";
 
-const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"));
+const deckId = resolveDeckId(process.argv.slice(2));
+const narrationPath = manifestPath(deckId);
+const manifest = JSON.parse(fs.readFileSync(narrationPath, "utf8"));
+const id = manifest.deckId || deckId;
 for (const slide of manifest.slides) {
-  slide.audioUrl = audioRelativeUrl(slide.slideId);
+  if (!slide.audioUrl && slide.status !== "audio_ready") continue;
+  slide.audioUrl = audioRelativeUrl(slide.slideId, id);
 }
-fs.writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-console.log(`✓ 已更新 ${manifest.slides.length} 筆 audioUrl`);
+fs.writeFileSync(narrationPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+console.log(`✓ 已更新 ${manifest.slides.filter((slide) => slide.audioUrl).length} 筆 audioUrl → ${narrationPath}`);

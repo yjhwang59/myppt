@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import "dotenv/config";
-import fs from "node:fs";
 import "./lib/tts/openai-adapter.js";
 import "./lib/tts/dry-run-adapter.js";
 import {
@@ -13,7 +12,8 @@ import {
 } from "./lib/manifest.js";
 import {
   audioAbsolutePath,
-  MANIFEST_PATH,
+  manifestPath,
+  resolveDeckId,
 } from "./lib/paths.js";
 import {
   getTtsAdapter,
@@ -29,8 +29,11 @@ const force = args.includes("--force");
 const budgetUsd = Number(process.env.NARRATION_TTS_BUDGET_USD || 5);
 const maxRetries = Number(process.env.NARRATION_TTS_MAX_RETRIES || 2);
 
-const { manifest } = loadAndValidateManifest(MANIFEST_PATH);
-ensureAudioDir();
+const deckId = resolveDeckId(args);
+const narrationPath = manifestPath(deckId);
+const { manifest } = loadAndValidateManifest(narrationPath);
+const resolvedDeckId = manifest.deckId || deckId;
+ensureAudioDir(resolvedDeckId);
 
 const provider = dryRun ? "dry-run" : (process.env.NARRATION_TTS_PROVIDER || "openai");
 const adapter = await getTtsAdapter(provider);
@@ -58,7 +61,7 @@ for (const slide of eligible) {
     break;
   }
 
-  const outPath = audioAbsolutePath(slide.slideId);
+  const outPath = audioAbsolutePath(slide.slideId, resolvedDeckId);
   const voice = slide.voice || manifest.voice;
   console.log(`TTS ${slide.slideId} → ${outPath} (${provider})`);
 
@@ -71,7 +74,7 @@ for (const slide of eligible) {
         speed: voice.speed ?? 1.0,
         outputPath: outPath,
       });
-      setSlideAudioReady(slide, result.durationSeconds);
+      setSlideAudioReady(slide, result.durationSeconds, resolvedDeckId);
       spent += result.costUsd;
       success++;
       lastErr = null;
@@ -96,7 +99,7 @@ for (const slide of eligible) {
 manifest.meta = manifest.meta || {};
 manifest.meta.ttsCostEstimateUsd = Number(spent.toFixed(4));
 recalcManifestMeta(manifest);
-writeManifest(manifest);
+writeManifest(manifest, narrationPath);
 
 console.log(`✓ TTS 完成: 成功 ${success}, 失敗 ${failed}, 累計成本約 $${manifest.meta.ttsCostEstimateUsd}`);
 if (dryRun) {

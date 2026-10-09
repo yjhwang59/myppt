@@ -1,10 +1,13 @@
-const DECK_ID = "enterprise-ai-portal-deck";
 const API = "";
+const DEFAULT_DECK_ID = "enterprise-ai-portal-deck";
 
 const state = {
   slides: [],
   currentId: null,
   voices: [],
+  decks: [],
+  deckId: DEFAULT_DECK_ID,
+  rebuild: { allowed: true, summary: "" },
 };
 
 const els = {
@@ -26,6 +29,7 @@ const els = {
   preview: document.getElementById("preview"),
   status: document.getElementById("status"),
   editorTitle: document.getElementById("editor-title"),
+  deck: document.getElementById("deck-id"),
 };
 
 function token() {
@@ -159,17 +163,59 @@ function collectPayload() {
   };
 }
 
+function deckPage() {
+  return `/${encodeURIComponent(state.deckId)}.html`;
+}
+
 function refreshPreview() {
-  if (!state.currentId) return;
-  els.preview.src = `/enterprise-ai-portal-deck.html#${state.currentId}?t=${Date.now()}`;
+  const hash = state.currentId ? `#${state.currentId}` : "";
+  els.preview.src = `${deckPage()}?t=${Date.now()}${hash}`;
+}
+
+function preferredDeckId() {
+  return new URLSearchParams(location.search).get("deck") || localStorage.getItem("adminDeckId") || DEFAULT_DECK_ID;
+}
+
+function applyRebuildGate() {
+  const allowed = Boolean(state.rebuild?.allowed);
+  els.rebuild.disabled = !allowed;
+  els.save.disabled = !allowed;
+  const reason = state.rebuild?.summary || "";
+  els.rebuild.title = allowed ? "由 slides.json 覆寫 <main id=\"deck\">" : reason;
+  els.save.title = allowed ? "" : reason;
+}
+
+async function loadDeckList() {
+  const data = await api("/api/decks");
+  state.decks = data.decks || [];
+  const preferred = preferredDeckId();
+  els.deck.innerHTML = "";
+  for (const deck of state.decks) {
+    const opt = document.createElement("option");
+    opt.value = deck.deckId;
+    opt.textContent = deck.title || deck.deckId;
+    els.deck.appendChild(opt);
+  }
+  const known = state.decks.some((deck) => deck.deckId === preferred);
+  state.deckId = known ? preferred : state.decks[0]?.deckId || DEFAULT_DECK_ID;
+  if ([...els.deck.options].some((opt) => opt.value === state.deckId)) {
+    els.deck.value = state.deckId;
+  }
+  localStorage.setItem("adminDeckId", state.deckId);
 }
 
 async function loadSlides() {
-  const data = await api(`/api/decks/${DECK_ID}/slides`);
+  const data = await api(`/api/decks/${encodeURIComponent(state.deckId)}/slides`);
   state.slides = data.slides;
+  state.rebuild = data.rebuild || { allowed: false, summary: "" };
+  applyRebuildGate();
   if (!state.currentId && state.slides.length) selectSlide(state.slides[0].slideId);
-  else renderList();
-  setStatus(`已載入 ${state.slides.length} 頁`);
+  else {
+    renderList();
+    refreshPreview();
+  }
+  const gate = state.rebuild.allowed ? "" : ` HTML 未改寫：${state.rebuild.summary}`;
+  setStatus(`已載入 ${state.slides.length} 頁（${state.deckId}）。${gate}`);
 }
 
 els.connect.addEventListener("click", async () => {
@@ -177,6 +223,7 @@ els.connect.addEventListener("click", async () => {
   try {
     const voices = await api("/api/voices");
     state.voices = voices.voices;
+    await loadDeckList();
     await loadSlides();
   } catch (err) {
     setStatus(`連線失敗：${err.message}`);
@@ -186,7 +233,7 @@ els.connect.addEventListener("click", async () => {
 els.reload.addEventListener("click", () => loadSlides().catch((e) => setStatus(e.message)));
 els.rebuild.addEventListener("click", async () => {
   try {
-    await api(`/api/decks/${DECK_ID}/rebuild`, { method: "POST" });
+    await api(`/api/decks/${encodeURIComponent(state.deckId)}/rebuild`, { method: "POST" });
     refreshPreview();
     setStatus("HTML 已 rebuild");
   } catch (err) {
@@ -198,7 +245,7 @@ els.save.addEventListener("click", async () => {
   if (!state.currentId) return;
   try {
     const payload = collectPayload();
-    await api(`/api/decks/${DECK_ID}/slides/${state.currentId}`, {
+    await api(`/api/decks/${encodeURIComponent(state.deckId)}/slides/${state.currentId}`, {
       method: "PUT",
       body: JSON.stringify(payload),
     });
@@ -213,7 +260,7 @@ els.save.addEventListener("click", async () => {
 els.saveScript.addEventListener("click", async () => {
   if (!state.currentId) return;
   try {
-    await api(`/api/decks/${DECK_ID}/slides/${state.currentId}/script`, {
+    await api(`/api/decks/${encodeURIComponent(state.deckId)}/slides/${state.currentId}/script`, {
       method: "PUT",
       body: JSON.stringify({ script: els.script.value }),
     });
@@ -229,7 +276,7 @@ els.regenScript.addEventListener("click", async () => {
   if (!state.currentId) return;
   setStatus("重生講稿中…");
   try {
-    const data = await api(`/api/decks/${DECK_ID}/slides/${state.currentId}/regenerate-script`, { method: "POST" });
+    const data = await api(`/api/decks/${encodeURIComponent(state.deckId)}/slides/${state.currentId}/regenerate-script`, { method: "POST" });
     els.script.value = data.slide.script || "";
     await loadSlides();
     selectSlide(state.currentId);
@@ -243,7 +290,7 @@ els.synth.addEventListener("click", async () => {
   if (!state.currentId) return;
   setStatus("TTS 合成中…");
   try {
-    await api(`/api/decks/${DECK_ID}/slides/${state.currentId}/synthesize`, {
+    await api(`/api/decks/${encodeURIComponent(state.deckId)}/slides/${state.currentId}/synthesize`, {
       method: "POST",
       body: JSON.stringify({ gender: els.gender.value, voiceId: els.voiceId.value }),
     });
@@ -255,6 +302,16 @@ els.synth.addEventListener("click", async () => {
   }
 });
 
+els.deck.addEventListener("change", async () => {
+  state.deckId = els.deck.value;
+  state.currentId = null;
+  localStorage.setItem("adminDeckId", state.deckId);
+  try {
+    await loadSlides();
+  } catch (err) {
+    setStatus(err.message);
+  }
+});
 els.gender.addEventListener("change", () => fillVoiceOptions(els.gender.value, null));
 els.addCard.addEventListener("click", () => {
   const slide = currentSlide();

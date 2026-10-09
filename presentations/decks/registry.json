@@ -1,10 +1,19 @@
 {
   "version": 1,
+  "formats": {
+    "slides-json": "slides.json 是 SSOT，HTML 由 build:deck 產出。旁白在 presentations/narration/<deckId>.json，音訊在 presentations/narration/audio/<deckId>/sNN.mp3。",
+    "html-hand": "手寫 HTML 是 SSOT。不要執行 build:deck。",
+    "pdf": "PDF 殼層。不是 slides.json 管線的遷移目標。"
+  },
   "decks": [
     {
       "deckId": "enterprise-ai-portal-deck",
       "title": "企業 AI 入口網整合平台架構",
       "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "gated",
+      "note": "原生管線基準。舊音訊 URL narration/audio/sNN.mp3 以 symlink 指到 narration/audio/enterprise-ai-portal-deck/。目前 slides.json 還原不了已發佈 HTML（例如 s8 同時有 cards 與 flow），build:deck 在 round-trip 等價前拒絕寫入。",
       "createdAt": "2026-08-31T08:12:19.302Z",
       "updatedAt": "2026-09-14T09:14:46.081Z"
     },
@@ -12,6 +21,10 @@
       "deckId": "test-upload-deck",
       "title": "測試上傳簡報",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-08-31T08:14:11.241Z",
       "updatedAt": "2026-08-31T08:14:11.241Z"
     },
@@ -19,6 +32,10 @@
       "deckId": "test-pdf-deck",
       "title": "PDF Test",
       "sourceType": "pdf",
+      "format": "pdf",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "PDF 殼層。不是本次遷移目標。",
       "createdAt": "2026-08-31T08:15:00.055Z",
       "updatedAt": "2026-08-31T08:15:00.055Z"
     },
@@ -26,6 +43,10 @@
       "deckId": "taiwan-ai-strategic-blueprint",
       "title": "Taiwan_AI_Strategic_Blueprint",
       "sourceType": "pdf",
+      "format": "pdf",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "PDF 殼層。不是本次遷移目標。",
       "createdAt": "2026-09-01T05:55:12.902Z",
       "updatedAt": "2026-09-01T08:19:41.324Z"
     },
@@ -33,6 +54,10 @@
       "deckId": "aidc-work-system-architecture",
       "title": "aidc-work-system-architecture",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。未證明可安全 rebuild，維持 html-hand。",
       "createdAt": "2026-09-02T06:19:37.321Z",
       "updatedAt": "2026-09-02T06:19:37.321Z"
     },
@@ -40,6 +65,11 @@
       "deckId": "deck",
       "title": "FYH-營運通系統現況-主管會議簡報",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "sourceFlavor": "fyh-deck-chrome",
+      "note": "fyh-deck-chrome。不是本次遷移目標。線上 /deck/assets/* 不在 git，合併部署前必須先同步那些靜態檔。",
       "createdAt": "2026-09-14T04:44:45.634Z",
       "updatedAt": "2026-09-14T06:04:55.938Z"
     },
@@ -47,6 +77,10 @@
       "deckId": "fyhgoogle-2026-w37",
       "title": "fyhGoogle｜2026-W37 週報｜主管會議",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-09-14T06:59:42.464Z",
       "updatedAt": "2026-09-14T06:59:42.464Z"
     },
@@ -54,6 +88,10 @@
       "deckId": "aidc-blog-reading-path",
       "title": "Blog 分類與閱讀路徑",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-09-14T09:33:58.414Z",
       "updatedAt": "2026-09-14T09:33:58.414Z"
     },
@@ -61,6 +99,10 @@
       "deckId": "fyh-bigdata-production-forecast",
       "title": "fyhGoogle｜巨量資料分析｜次日生產預估",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-09-20T22:22:54.704Z",
       "updatedAt": "2026-09-20T22:22:54.704Z"
     },
@@ -68,6 +110,10 @@
       "deckId": "aidc-blog-weekly-learning-2026-09-21",
       "title": "AIDC.work Blog 每週學習簡報（基準快照）",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-09-21T00:29:39.458Z",
       "updatedAt": "2026-09-21T00:29:39.458Z"
     },
@@ -75,6 +121,10 @@
       "deckId": "pccu-1151-bigdata-2026-10-03",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-03",
       "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "gated",
+      "note": "第一個非 enterprise 原生 deck。講稿已核准、尚無音訊。Admin 可編講稿與 TTS；build:deck 僅在 <main> round-trip 等價時才寫入 HTML。",
       "createdAt": "2026-10-03T00:00:00.000Z",
       "updatedAt": "2026-10-03T00:00:00.000Z"
     },
@@ -82,6 +132,10 @@
       "deckId": "aidc-blog-weekly-learning-2026-10-02",
       "title": "AIDC.work Blog 每週學習簡報（2026-10-02）",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-10-02T15:30:00.000Z",
       "updatedAt": "2026-10-02T15:30:00.000Z"
     },
@@ -89,6 +143,10 @@
       "deckId": "etl-big-data-methodology",
       "title": "大數據分析方法論：ETL 不是搬資料",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-10-05T00:00:00.000Z",
       "updatedAt": "2026-10-05T00:00:00.000Z"
     },
@@ -96,6 +154,10 @@
       "deckId": "agentic-ai-security-four-layer-framework",
       "title": "企業 Agentic AI 四層資安治理框架",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-10-05T06:50:00.000Z",
       "updatedAt": "2026-10-05T06:50:00.000Z"
     },
@@ -103,6 +165,10 @@
       "deckId": "ai-agent-course-week01-ai-system-concepts",
       "title": "第 1 週｜AI 系統開發概念與專案選題",
       "sourceType": "html",
+      "format": "html-hand",
+      "pipeline": "none",
+      "htmlRebuild": "off",
+      "note": "手寫 HTML。不要 build:deck。",
       "createdAt": "2026-10-06T11:10:00.000Z",
       "updatedAt": "2026-10-06T11:10:00.000Z"
     },
