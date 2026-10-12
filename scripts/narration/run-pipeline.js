@@ -6,12 +6,13 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const node = process.execPath;
 
+const forwarded = process.argv.slice(2).filter((arg) => arg.startsWith("--deck="));
 const steps = [
-  ["extract-slides.js", []],
-  ["generate-scripts.js", []],
-  ["approve-scripts.js", ["--all"]],
-  ["synthesize-audio.js", process.argv.includes("--dry-run") ? ["--dry-run"] : []],
-  ["validate-manifest.js", []],
+  ["extract-slides.js", [...forwarded]],
+  ["generate-scripts.js", [...forwarded]],
+  ["approve-scripts.js", ["--all", ...forwarded]],
+  ["synthesize-audio.js", [...(process.argv.includes("--dry-run") ? ["--dry-run"] : []), ...forwarded]],
+  ["validate-manifest.js", [...forwarded]],
 ];
 
 for (const [script, extraArgs] of steps) {

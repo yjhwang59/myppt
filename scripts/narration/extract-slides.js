@@ -2,9 +2,9 @@
 import "dotenv/config";
 import { extractDeckFromFile } from "./lib/extract.js";
 import {
-  DECK_HTML,
-  DECK_ID,
-  MANIFEST_PATH,
+  deckHtmlPath,
+  manifestPath,
+  resolveDeckId,
 } from "./lib/paths.js";
 import {
   mergeExtractedSlides,
@@ -14,22 +14,24 @@ import {
 } from "./lib/manifest.js";
 import { loadAndValidateManifest } from "./lib/validate.js";
 
-const deckPath = process.argv[2] || DECK_HTML;
+const deckId = resolveDeckId(process.argv.slice(2));
+const deckPath = deckHtmlPath(deckId);
+const narrationPath = manifestPath(deckId);
 const extracted = extractDeckFromFile(deckPath);
-const existing = readManifest();
+const existing = readManifest(narrationPath);
 
 const manifest = mergeExtractedSlides({
-  deckId: DECK_ID,
-  deckPath: "enterprise-ai-portal-deck.html",
+  deckId,
+  deckPath: `${deckId}.html`,
   extractedSlides: extracted,
   existingManifest: existing,
 });
 
 recalcManifestMeta(manifest);
-writeManifest(manifest);
+writeManifest(manifest, narrationPath);
 
-const { ok, errors } = loadAndValidateManifest(MANIFEST_PATH);
-console.log(`✓ 已抽取 ${extracted.length} 頁 → ${MANIFEST_PATH}`);
+const { ok, errors } = loadAndValidateManifest(narrationPath);
+console.log(`✓ 已抽取 ${extracted.length} 頁 → ${narrationPath}`);
 if (!ok) {
   console.warn("驗證警告:", errors.join("; "));
 } else {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import "dotenv/config";
 import { readManifest, writeManifest } from "./lib/manifest.js";
-import { MANIFEST_PATH } from "./lib/paths.js";
+import { manifestPath, resolveDeckId } from "./lib/paths.js";
 import { loadAndValidateManifest } from "./lib/validate.js";
 
 const args = process.argv.slice(2);
@@ -14,12 +14,15 @@ if (!approveAll && !slideId && !toPending) {
   console.log(`用法:
   npm run narration:approve -- --slide=s1
   npm run narration:approve -- --all
+  npm run narration:approve -- --deck=pccu-1151-bigdata-2026-10-03 --all
   npm run narration:approve -- --slide=s1 --pending
   npm run narration:approve -- --all --by=jack`);
   process.exit(1);
 }
 
-const { manifest } = loadAndValidateManifest(MANIFEST_PATH);
+const deckId = resolveDeckId(process.argv.slice(2));
+const narrationPath = manifestPath(deckId);
+const { manifest } = loadAndValidateManifest(narrationPath);
 let updated = 0;
 
 for (const slide of manifest.slides) {
@@ -39,7 +42,7 @@ for (const slide of manifest.slides) {
   updated++;
 }
 
-writeManifest(manifest);
+writeManifest(manifest, narrationPath);
 console.log(`✓ 已更新 ${updated} 頁狀態`);
 if (!toPending) {
   console.log("→ 執行 TTS: npm run narration:tts");
