@@ -246,6 +246,29 @@
     #s5 .card strong { font-size: clamp(14px, 1.15vw, 18px); }
     #s5 .callout { margin-top: 8px; padding: 8px 14px; font-size: clamp(13px, 1.1vw, 16px); }
     #s5 .src { margin-top: 4px; }
+    #s16 .closing {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    #s16 .closing .callout { margin: 0; flex: 1; }
+    a.survey-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    a.survey-link:hover { color: #fff; text-decoration: none; filter: brightness(1.08); }
     .slide.dense { padding: 26px 34px 52px; }
     .slide.dense .card { padding: 10px 12px; }
     .slide.dense .card p,
@@ -960,7 +983,10 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
         <div class="card"><strong>Grok Bot 課後選做（≤10 分）</strong>
           <p>問 Bot「請列出你目前記得關於我的所有事」，有不該記的就請它刪掉；想 1 件每週固定要做的事，下週拿來寫 routine。</p></div>
       </div>
-      <div class="callout">AI 寫得快、記得住；但「原文有沒有」跟「對不對」，是我們要把關的。下週一 10/19 見！</div>
+      <div class="closing">
+        <div class="callout">AI 寫得快、記得住；但「原文有沒有」跟「對不對」，是我們要把關的。下週一 10/19 見！</div>
+        <a class="survey-link" href="https://aidc.work/s/ee50c25a3377356da55eb2575ebf2d10" target="_blank" rel="noopener">課後問卷</a>
+      </div>
       <div class="footer"><span>興銘內訓 · 第 1 場 · 收尾</span><span>16 / 16</span></div>
       <aside class="notes">小卡題目分別出自主講義第十章與 Grok Bot 講義第十二章。小卡會回收，作為第 4 場 KPT 回顧和下一版講義修訂依據。</aside>
     </section>
