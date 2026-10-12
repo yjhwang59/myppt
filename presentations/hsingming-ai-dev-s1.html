@@ -25,6 +25,7 @@
       --text: #0f172a;
       --portal-bright: #0f766e;
       --data: #0284c7;
+      --content-scale: 1;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -42,7 +43,6 @@
       display: grid;
       place-items: center;
       padding: calc(var(--header-h) + 10px) 2vw 12px;
-      zoom: var(--deck-fs, 1);
     }
     .slide {
       display: none;
@@ -67,26 +67,26 @@
         linear-gradient(135deg, #fff, #f5faf8);
     }
     h1 {
-      font-size: clamp(42px, 5.2vw, 76px);
+      font-size: calc(clamp(42px, 5.2vw, 76px) * var(--content-scale));
       line-height: 1.08;
       letter-spacing: -0.04em;
       margin: 0.2em 0;
     }
     h2 {
-      font-size: clamp(28px, 3.2vw, 48px);
+      font-size: calc(clamp(28px, 3.2vw, 48px) * var(--content-scale));
       margin: 0.1em 0 0.55em;
       line-height: 1.15;
     }
     h2.tight {
-      font-size: clamp(24px, 2.6vw, 36px);
+      font-size: calc(clamp(24px, 2.6vw, 36px) * var(--content-scale));
       margin-bottom: 0.35em;
     }
     h3 {
-      font-size: clamp(18px, 1.55vw, 26px);
+      font-size: calc(clamp(18px, 1.55vw, 26px) * var(--content-scale));
       margin: 0.15em 0 0.35em;
     }
     p, li {
-      font-size: clamp(15px, 1.25vw, 21px);
+      font-size: calc(clamp(15px, 1.25vw, 21px) * var(--content-scale));
       line-height: 1.52;
     }
     a { color: var(--brand); text-decoration: none; }
@@ -96,15 +96,15 @@
       font-weight: 850;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: clamp(12px, 1.1vw, 16px);
+      font-size: calc(clamp(12px, 1.1vw, 16px) * var(--content-scale));
       margin: 0;
     }
     .lead {
       max-width: 1050px;
       color: var(--muted);
-      font-size: clamp(20px, 1.8vw, 28px);
+      font-size: calc(clamp(20px, 1.8vw, 28px) * var(--content-scale));
     }
-    .lead.sm { font-size: clamp(15px, 1.3vw, 20px); margin: 0 0 12px; }
+    .lead.sm { font-size: calc(clamp(15px, 1.3vw, 20px) * var(--content-scale)); margin: 0 0 12px; }
     .mark {
       width: 110px;
       height: 10px;
@@ -130,7 +130,7 @@
     }
     .card strong {
       display: block;
-      font-size: clamp(16px, 1.35vw, 22px);
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
       line-height: 1.3;
       margin: 0.1em 0 0.28em;
     }
@@ -139,7 +139,7 @@
       padding-left: 1.15em;
     }
     .card li {
-      font-size: clamp(13px, 1.05vw, 17px);
+      font-size: calc(clamp(13px, 1.05vw, 17px) * var(--content-scale));
       line-height: 1.4;
       margin: 0.22em 0;
     }
@@ -147,18 +147,18 @@
     .card.warm { background: #fff8ef; border-color: #f3d3ad; }
     .card.alert { background: var(--warn-bg); border-color: #f1b8ae; }
     .num {
-      font-size: clamp(26px, 3.2vw, 46px);
+      font-size: calc(clamp(26px, 3.2vw, 46px) * var(--content-scale));
       font-weight: 900;
       color: var(--brand);
       line-height: 1;
     }
-    .num.sm { font-size: clamp(18px, 1.7vw, 26px); }
+    .num.sm { font-size: calc(clamp(18px, 1.7vw, 26px) * var(--content-scale)); }
     .callout {
       padding: 14px 20px;
       border-left: 7px solid var(--accent);
       border-radius: 9px 18px 18px 9px;
       background: #fff4e7;
-      font-size: clamp(16px, 1.35vw, 22px);
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
       margin-top: 14px;
     }
     .footer {
@@ -173,18 +173,18 @@
     }
     .pill {
       display: inline-block; padding: 2px 10px; border-radius: 999px;
-      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: 12px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: calc(12px * var(--content-scale));
     }
     .pill.o { background: #fdebd6; color: #9a5512; }
     .pill.r { background: var(--warn-bg); color: var(--warn); }
-    .pill.lg { font-size: clamp(13px, 1.1vw, 16px); padding: 4px 14px; margin: 0 6px 8px 0; }
+    .pill.lg { font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); padding: 4px 14px; margin: 0 6px 8px 0; }
     .src {
-      font-size: 12px; color: #708397; margin-top: 10px; line-height: 1.45;
+      font-size: calc(12px * var(--content-scale)); color: #708397; margin-top: 10px; line-height: 1.45;
     }
     .aisdlc-label {
       margin: 10px 0 4px;
       color: var(--brand);
-      font-size: 12px;
+      font-size: calc(12px * var(--content-scale));
       font-weight: 800;
       letter-spacing: 0.04em;
     }
@@ -224,13 +224,13 @@
       border-radius: 50%;
       background: #e6f6f3;
       color: #1d6b64;
-      font-size: 10px;
+      font-size: calc(10px * var(--content-scale));
       line-height: 1;
     }
     .aisdlc span {
       display: block;
       color: var(--ink);
-      font-size: 12px;
+      font-size: calc(12px * var(--content-scale));
       font-weight: 800;
       line-height: 1.25;
     }
@@ -238,13 +238,13 @@
       display: block;
       margin-top: 3px;
       color: var(--muted);
-      font-size: 10px;
+      font-size: calc(10px * var(--content-scale));
       line-height: 1.3;
     }
     #s5 .grid.four { gap: 8px; }
     #s5 .card { padding: 10px 12px; }
-    #s5 .card strong { font-size: clamp(14px, 1.15vw, 18px); }
-    #s5 .callout { margin-top: 8px; padding: 8px 14px; font-size: clamp(13px, 1.1vw, 16px); }
+    #s5 .card strong { font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
+    #s5 .callout { margin-top: 8px; padding: 8px 14px; font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); }
     #s5 .src { margin-top: 4px; }
     #s16 .closing {
       display: flex;
@@ -262,7 +262,7 @@
       border-radius: 999px;
       background: var(--brand);
       color: #fff;
-      font-size: 16px;
+      font-size: calc(16px * var(--content-scale));
       font-weight: 800;
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -272,18 +272,18 @@
     .slide.dense { padding: 26px 34px 52px; }
     .slide.dense .card { padding: 10px 12px; }
     .slide.dense .card p,
-    .slide.dense .card li { font-size: clamp(13px, 1.02vw, 16px); line-height: 1.38; }
-    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: clamp(14px, 1.15vw, 18px); }
+    .slide.dense .card li { font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.38; }
+    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
 
     /* ---- 時間表 ---- */
     .timeline { display: grid; gap: 6px; }
     .tl {
       display: grid; grid-template-columns: 118px 46px 1fr; gap: 10px; align-items: center;
       padding: 6px 12px; border-radius: 12px; background: #ffffffcc; border: 1px solid var(--line);
-      font-size: clamp(13px, 1.02vw, 16px);
+      font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale));
     }
     .tl b { font-variant-numeric: tabular-nums; color: var(--ink); }
-    .tl .m { color: var(--muted); font-size: 12px; }
+    .tl .m { color: var(--muted); font-size: calc(12px * var(--content-scale)); }
     .tl.hot { background: #e6f6f3; border-color: #9fd6cc; }
     .tl.rest { background: #f4f6f7; color: var(--muted); }
 
@@ -291,7 +291,7 @@
     .chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 2px; }
     .chain span {
       padding: 4px 12px; border-radius: 999px; background: #fff; border: 1px solid #9fd6cc;
-      font-weight: 700; font-size: clamp(13px, 1.05vw, 16px);
+      font-weight: 700; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
     }
     .chain i { font-style: normal; color: var(--brand); font-weight: 900; }
 
@@ -306,14 +306,14 @@
     }
     .prompt .ph {
       display: flex; justify-content: space-between; align-items: center; gap: 8px;
-      padding: 8px 12px 8px 16px; background: #0d1f30; font-size: 13px; font-weight: 800;
+      padding: 8px 12px 8px 16px; background: #0d1f30; font-size: calc(13px * var(--content-scale)); font-weight: 800;
       letter-spacing: 0.02em; color: #9fe3d7;
     }
     .prompt pre {
       margin: 0; padding: 12px 16px 14px;
       white-space: pre-wrap; word-break: break-word;
       font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
-      font-size: clamp(13.5px, 1.12vw, 18px); line-height: 1.6;
+      font-size: calc(clamp(13.5px, 1.12vw, 18px) * var(--content-scale)); line-height: 1.6;
       max-height: var(--pmax, 44vh); overflow: auto;
     }
     .prompt pre .fill { color: #ffcf8f; }
@@ -328,28 +328,28 @@
       border: 1px dashed #9fd6cc; border-radius: 14px; background: #ffffffcc; padding: 6px 12px;
     }
     details.more > summary {
-      cursor: pointer; font-weight: 800; color: #1d6b64; font-size: clamp(13px, 1.05vw, 16px);
+      cursor: pointer; font-weight: 800; color: #1d6b64; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
       padding: 4px 0; list-style: none;
     }
     details.more > summary::before { content: "▸ "; }
     details.more[open] > summary::before { content: "▾ "; }
     details.more .prompt { margin: 6px 0 6px; }
-    .mini { font-size: clamp(12px, 0.95vw, 14px) !important; color: var(--muted); }
+    .mini { font-size: calc(clamp(12px, 0.95vw, 14px) * var(--content-scale)) !important; color: var(--muted); }
 
     /* ---- 假對話 ---- */
     .bubble {
       padding: 12px 16px; border-radius: 16px; margin: 8px 0; max-width: 92%;
-      font-size: clamp(14px, 1.15vw, 19px); line-height: 1.5;
+      font-size: calc(clamp(14px, 1.15vw, 19px) * var(--content-scale)); line-height: 1.5;
     }
     .bubble.me { background: #e6f6f3; margin-left: auto; border-bottom-right-radius: 4px; }
     .bubble.ai { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
     .stamp {
       display: inline-block; transform: rotate(-4deg); border: 3px solid var(--warn); color: var(--warn);
-      padding: 2px 12px; border-radius: 10px; font-weight: 900; font-size: clamp(14px, 1.2vw, 18px);
+      padding: 2px 12px; border-radius: 10px; font-weight: 900; font-size: calc(clamp(14px, 1.2vw, 18px) * var(--content-scale));
     }
 
     /* ---- 表格 ---- */
-    table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: clamp(13px, 1.1vw, 18px); }
+    table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: calc(clamp(13px, 1.1vw, 18px) * var(--content-scale)); }
     table.plan th, table.plan td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.4; }
     table.plan th { background: #e6f6f3; color: #1d6b64; }
     table.plan tr:first-child th:first-child { border-top-left-radius: 12px; }
@@ -411,7 +411,8 @@
     @page { size: 16in 9in; margin: 0; }
     @media print {
       html, body { overflow: visible; background: #fff; }
-      .deck { display: block; padding: 0; zoom: 1 !important; }
+      .deck { display: block; padding: 0; }
+      html { --content-scale: 1 !important; }
       .slide {
         display: block !important; width: 16in; height: 9in;
         min-height: 0; max-height: none; aspect-ratio: auto;
@@ -996,7 +997,7 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
   <div class="hint" id="hint" role="status" aria-live="polite"></div>
   <script>
     const DECK_TITLE = "AI 系統開發內訓・第1場｜用 AI 做需求分析";
-    const FS_STEPS = [0.85, 0.925, 1, 1.1, 1.2];
+    const FS_STEPS = [0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4];
     const slides = [...document.querySelectorAll(".slide")];
     const countEl = document.getElementById("slide-counter");
     const barEl = document.getElementById("progress-bar");
@@ -1020,7 +1021,7 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
 
     function applyFontScale() {
       const scale = FS_STEPS[fsIndex];
-      document.documentElement.style.setProperty("--deck-fs", String(scale));
+      document.documentElement.style.setProperty("--content-scale", String(scale));
       fsLabel.textContent = `${Math.round(scale * 100)}%`;
     }
 
