@@ -19,6 +19,12 @@
       --code-ink: #e6f1ef;
       --warn-bg: #fdecea;
       --warn: #b6412f;
+      --header-h: 52px;
+      --panel: #fff;
+      --card: #f1f5f9;
+      --text: #0f172a;
+      --portal-bright: #0f766e;
+      --data: #0284c7;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -35,14 +41,14 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 2.5vh 2vw 8vh;
+      padding: calc(var(--header-h) + 10px) 2vw 12px;
       zoom: var(--deck-fs, 1);
     }
     .slide {
       display: none;
       width: min(94vw, 1440px);
       aspect-ratio: 16 / 9;
-      max-height: 86vh;
+      max-height: calc(100vh - var(--header-h) - 22px);
       overflow: auto;
       padding: clamp(30px, 4vw, 64px);
       position: relative;
@@ -175,6 +181,71 @@
     .src {
       font-size: 12px; color: #708397; margin-top: 10px; line-height: 1.45;
     }
+    .aisdlc-label {
+      margin: 10px 0 4px;
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .aisdlc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+    .aisdlc li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      padding: 6px 7px 7px;
+      border: 1px solid #9fd6cc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .aisdlc li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 16px;
+      z-index: 1;
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--brand);
+    }
+    .aisdlc b {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 3px;
+      border-radius: 50%;
+      background: #e6f6f3;
+      color: #1d6b64;
+      font-size: 10px;
+      line-height: 1;
+    }
+    .aisdlc span {
+      display: block;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .aisdlc small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.3;
+    }
+    #s5 .grid.four { gap: 8px; }
+    #s5 .card { padding: 10px 12px; }
+    #s5 .card strong { font-size: clamp(14px, 1.15vw, 18px); }
+    #s5 .callout { margin-top: 8px; padding: 8px 14px; font-size: clamp(13px, 1.1vw, 16px); }
+    #s5 .src { margin-top: 4px; }
     .slide.dense { padding: 26px 34px 52px; }
     .slide.dense .card { padding: 10px 12px; }
     .slide.dense .card p,
@@ -264,60 +335,36 @@
     /* ---- 講稿面板 ---- */
     aside.notes { display: none; }
     #notes-panel {
-      position: fixed; right: 16px; bottom: 70px; z-index: 60; width: min(380px, 92vw); max-height: 52vh;
+      position: fixed; right: 16px; bottom: 16px; z-index: 60; width: min(380px, 92vw); max-height: 52vh;
       overflow: auto; background: #17324df2; color: #eef6f4; border-radius: 14px; padding: 12px 14px;
       box-shadow: 0 12px 40px #0006; font-size: 14px; line-height: 1.6; display: none;
     }
     #notes-panel.open { display: block; }
     #notes-panel h4 { margin: 0 0 6px; font-size: 13px; color: #9fe3d7; letter-spacing: .06em; }
 
-    .controls {
-      position: fixed;
-      z-index: 40;
-      left: 50%;
-      bottom: 14px;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #17324df2;
-      color: #fff;
-      box-shadow: 0 8px 26px #0004;
-      transition: opacity .2s, transform .2s;
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
     }
-    .controls.collapsed { padding: 6px 10px; gap: 0; }
-    .controls.collapsed .ctrl-main { display: none; }
-    .controls button {
-      width: 36px; height: 36px; border: 0; border-radius: 50%;
-      background: #ffffff1f; color: #fff; cursor: pointer; font-size: 15px;
-      line-height: 1; flex-shrink: 0;
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
     }
-    .controls button.wide {
-      width: auto; padding: 0 12px; border-radius: 999px;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
-    }
-    .controls button:hover, .controls button:focus-visible {
-      outline: 3px solid #fff; background: var(--brand);
-    }
-    .ctrl-main { display: flex; align-items: center; gap: 8px; }
-    .ctrl-sep { width: 1px; height: 22px; background: #ffffff33; flex-shrink: 0; }
-    .fs-label {
-      min-width: 42px; text-align: center; font-size: 12px;
-      font-variant-numeric: tabular-nums; opacity: 0.9;
-    }
-    .bar {
-      width: min(18vw, 180px); height: 5px; background: #ffffff33;
-      border-radius: 8px; overflow: hidden;
-    }
-    .bar span { display: block; height: 100%; background: #78d8cb; }
-    .count {
-      min-width: 58px; text-align: center; font-size: 13px;
-      font-variant-numeric: tabular-nums;
-    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck-header.collapsed .toolbar > :not(#btn-header-toggle) { display: none; }
     .hint {
-      position: fixed; z-index: 50; left: 50%; bottom: 64px;
+      position: fixed; z-index: 50; left: 50%; bottom: 24px;
       transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
       background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
       pointer-events: none; transition: opacity .2s;
@@ -326,7 +373,7 @@
     .hint.show { opacity: 1; }
     @media (max-width: 900px) {
       body { overflow: auto; }
-      .deck { padding: 12px 12px 80px; }
+      .deck { padding: calc(var(--header-h) + 12px) 12px 16px; }
       .slide {
         width: 100%; min-height: calc(100vh - 100px);
         max-height: none; aspect-ratio: auto;
@@ -349,12 +396,28 @@
         page-break-after: always; break-after: page;
       }
       .slide:last-child { page-break-after: auto; break-after: auto; }
-      .controls, .hint, #notes-panel, .copy { display: none !important; }
+      #deck-header, .hint, #notes-panel, .copy { display: none !important; }
       .prompt pre { max-height: none; overflow: visible; }
     }
   </style>
 </head>
 <body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 興銘內訓</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-aminus" title="縮小字體（-）">A−</button>
+      <span id="type-scale-label">100%</span>
+      <button type="button" id="btn-aplus" title="放大字體（+）">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
+      <span id="slide-counter">1 / 16</span>
+      <button type="button" id="btn-next" title="下一頁（→）">›</button>
+      <button type="button" id="btn-present" title="全頁顯示／離開（F）">⛶</button>
+      <button type="button" id="btn-notes" title="講稿（N）">講稿</button>
+      <button type="button" id="btn-print" title="匯出為 PDF（P）">PDF</button>
+      <button type="button" id="btn-header-toggle" title="收合／展開工具列（H）" aria-label="收合或展開工具列" aria-expanded="true">▾</button>
+    </div>
+  </header>
   <main class="deck">
 
     <!-- 1 封面 -->
@@ -484,7 +547,20 @@
         <div class="card"><div class="num sm">第 3 場 · 11/09</div><strong>用 AI 生成原型</strong><p>可點擊 3 畫面：行事曆、案件清單、營業稅案件頁</p><p class="mini">全員統一用 Cursor</p></div>
         <div class="card"><div class="num sm">第 4 場 · 11/16</div><strong>AI 檢核與展示</strong><p>發票異常檢核、驗收測試、成果展示與回顧</p></div>
       </div>
-      <div class="card" style="margin-top:14px">
+      <p class="aisdlc-label">AI 系統開發生命週期（AISDLC）九階段</p>
+      <ol class="aisdlc" aria-label="AISDLC 九階段">
+        <li><b>1</b><span>定義問題與商業目標</span><small>為什麼值得做？</small></li>
+        <li><b>2</b><span>需求分析與規格確認</span><small>誰要用、做到什麼程度？</small></li>
+        <li><b>3</b><span>工作流程設計</span><small>人、系統與 AI 如何協作？</small></li>
+        <li><b>4</b><span>資料與知識準備</span><small>AI 憑什麼產出可信結果？</small></li>
+        <li><b>5</b><span>選擇 AI 工具與模型</span><small>哪種技術組合最適合？</small></li>
+        <li><b>6</b><span>AI 系統開發</span><small>如何做出可驗證的解法？</small></li>
+        <li><b>7</b><span>測試與驗證</span><small>是否正確、安全、可接受？</small></li>
+        <li><b>8</b><span>部署與營運</span><small>如何穩定、安全地持續運行？</small></li>
+        <li><b>9</b><span>成效衡量與持續改善</span><small>是否創造價值，下一步改善什麼？</small></li>
+      </ol>
+      <p class="src">來源：<a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc">AI SDLC：從問題定義到持續改善</a></p>
+      <div class="card" style="margin-top:8px">
         <strong>主線：申報行事曆＋營業稅案件＋案件流程（7 個狀態）</strong>
         <div class="chain"><span>待收件</span><i>→</i><span>整理中</span><i>→</i><span>待覆核</span><i>→</i><span>已核准</span><i>→</i><span>已申報</span><i>→</i><span>已繳款</span><i>→</i><span>結案</span></div>
       </div>
@@ -722,7 +798,7 @@
             </ul></div>
         </div>
       </div>
-      <p class="src">方案與價格：<a href="https://cursor.com/pricing">https://cursor.com/pricing</a>（2026-10-12 查閱，月繳顯示價）；專案搜尋：<a href="https://cursor.com/docs/agent/tools/search">cursor.com/docs/agent/tools/search</a>（2026-10-12 查閱）；模式、@ 引用、規則檔：主講義 v1.1「Cursor 設定」。介面名稱可能依版本不同，以官網為準。</p>
+      <p class="src">延伸閱讀：<a href="https://aidc.work/blog/cursor-codex-claude-beginner-choice">Cursor、Codex、Claude 新手怎麼選</a>。方案與價格：<a href="https://cursor.com/pricing">https://cursor.com/pricing</a>（2026-10-12 查閱，月繳顯示價）；專案搜尋：<a href="https://cursor.com/docs/agent/tools/search">cursor.com/docs/agent/tools/search</a>（2026-10-12 查閱）；模式、@ 引用、規則檔：主講義 v1.1「Cursor 設定」。介面名稱可能依版本不同，以官網為準。</p>
       <div class="footer"><span>興銘內訓 · 第 1 場 · 需求分析</span><span>12 / 16</span></div>
       <aside class="notes">這頁 2 分鐘帶過就好，今晚不用裝。重點只有一句：第 2 場（10/19）回家要先裝好 Cursor＋Node.js＋Git，卡關就截圖貼群組，11/9 我 18:30 提早到場幫忙。官網價格今天（2026-10-12）查過：Hobby 免費、Pro US$20/月、Teams US$40/人/月；Pro+、Ultra 頁面有列，實際額度以官網為準。</aside>
     </section>
@@ -892,32 +968,15 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
 
   <aside id="notes-panel" aria-live="polite" aria-label="講稿"><h4>講稿</h4><div id="notes-body"></div></aside>
   <div class="hint" id="hint" role="status" aria-live="polite"></div>
-  <nav class="controls" id="controls" aria-label="簡報控制">
-    <div class="ctrl-main">
-      <button id="prev" type="button" aria-label="上一頁" title="上一頁（←）">←</button>
-      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
-      <div class="count" id="count">1 / 16</div>
-      <button id="next" type="button" aria-label="下一頁" title="下一頁（→）">→</button>
-      <span class="ctrl-sep" aria-hidden="true"></span>
-      <button id="fs-down" type="button" aria-label="縮小字體" title="縮小字體（-）">A−</button>
-      <span class="fs-label" id="fs-label" aria-live="polite">100%</span>
-      <button id="fs-up" type="button" aria-label="放大字體" title="放大字體（+）">A+</button>
-      <span class="ctrl-sep" aria-hidden="true"></span>
-      <button id="full" type="button" aria-label="全頁顯示" title="全頁顯示／離開（F）">⛶</button>
-      <button id="notes" type="button" class="wide" aria-label="講稿" title="講稿（N）">講稿</button>
-      <button id="pdf" type="button" class="wide" aria-label="匯出為 PDF" title="匯出為 PDF（P）">PDF</button>
-    </div>
-    <button id="toggle-ui" type="button" aria-label="收合或展開工具列" title="收合／展開工具列（H）" aria-expanded="true">▾</button>
-  </nav>
   <script>
     const DECK_TITLE = "AI 系統開發內訓・第1場｜用 AI 做需求分析";
     const FS_STEPS = [0.85, 0.925, 1, 1.1, 1.2];
     const slides = [...document.querySelectorAll(".slide")];
-    const countEl = document.getElementById("count");
-    const barEl = document.getElementById("bar");
-    const controls = document.getElementById("controls");
-    const toggleUi = document.getElementById("toggle-ui");
-    const fsLabel = document.getElementById("fs-label");
+    const countEl = document.getElementById("slide-counter");
+    const barEl = document.getElementById("progress-bar");
+    const header = document.getElementById("deck-header");
+    const toggleUi = document.getElementById("btn-header-toggle");
+    const fsLabel = document.getElementById("type-scale-label");
     const hintEl = document.getElementById("hint");
     const notesPanel = document.getElementById("notes-panel");
     const notesBody = document.getElementById("notes-body");
@@ -969,7 +1028,7 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
     }
 
     function setCollapsed(collapsed) {
-      controls.classList.toggle("collapsed", collapsed);
+      header.classList.toggle("collapsed", collapsed);
       toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
       toggleUi.textContent = collapsed ? "▴" : "▾";
       toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
@@ -1022,18 +1081,18 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
       document.querySelectorAll("details").forEach((d) => { d.open = d.dataset.wasOpen === "1"; });
     });
 
-    document.getElementById("prev").onclick = () => show(index - 1);
-    document.getElementById("next").onclick = () => show(index + 1);
-    document.getElementById("fs-down").onclick = () => {
+    document.getElementById("btn-prev").onclick = () => show(index - 1);
+    document.getElementById("btn-next").onclick = () => show(index + 1);
+    document.getElementById("btn-aminus").onclick = () => {
       if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
     };
-    document.getElementById("fs-up").onclick = () => {
+    document.getElementById("btn-aplus").onclick = () => {
       if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
     };
-    document.getElementById("full").onclick = () => toggleFullscreen();
-    document.getElementById("notes").onclick = () => toggleNotes();
-    document.getElementById("pdf").onclick = () => exportPdf();
-    toggleUi.onclick = () => setCollapsed(!controls.classList.contains("collapsed"));
+    document.getElementById("btn-present").onclick = () => toggleFullscreen();
+    document.getElementById("btn-notes").onclick = () => toggleNotes();
+    document.getElementById("btn-print").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!header.classList.contains("collapsed"));
 
     addEventListener("keydown", (e) => {
       const tag = (e.target && e.target.tagName) || "";
@@ -1063,7 +1122,7 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
       }
       if (e.key.toLowerCase() === "h") {
         e.preventDefault();
-        setCollapsed(!controls.classList.contains("collapsed"));
+        setCollapsed(!header.classList.contains("collapsed"));
       }
       if (e.key.toLowerCase() === "n") {
         e.preventDefault();
@@ -1086,7 +1145,8 @@ FR-CASE-004 指派：承辦與覆核不得為同一人；轉派留痕並通知�
 
     document.addEventListener("fullscreenchange", () => {
       const on = Boolean(document.fullscreenElement);
-      document.getElementById("full").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      document.body.classList.toggle("presenting", on);
+      document.getElementById("btn-present").title = on ? "離開全頁（F）" : "全頁顯示（F）";
       if (on) setCollapsed(true);
     });
 
