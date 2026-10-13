@@ -21,7 +21,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "1 / 26",
       "phases": [],
       "facts": [],
@@ -71,7 +71,7 @@
       "callouts": [
         "課程頁上的體驗場次：2026/10/08（週四）19:00–21:30，「從不會寫程式，到完成自己的 AI Agent 系統」免費體驗。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "2 / 26",
       "phases": [],
       "facts": [],
@@ -127,7 +127,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "3 / 26",
       "phases": [],
       "facts": [],
@@ -189,7 +189,7 @@
       "callouts": [
         "這堂課說的 MVP，是 8 週內可以示範完的主流程，不是功能做滿。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "4 / 26",
       "phases": [],
       "facts": [],
@@ -239,7 +239,7 @@
       "callouts": [
         "這堂課要做的是第三種的縮小版。聊天很有用，但聊天紀錄本身不是系統。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "5 / 26",
       "phases": [],
       "facts": [],
@@ -289,7 +289,7 @@
       "callouts": [
         "分辨方式：關掉畫面之後，這件事還在不在？誰還能接著處理？"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "6 / 26",
       "phases": [],
       "facts": [],
@@ -355,7 +355,7 @@
       "callouts": [
         "少任何一層，就還不是這堂課說的可上線系統。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "7 / 26",
       "phases": [],
       "facts": [],
@@ -419,7 +419,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "8 / 26",
       "phases": [],
       "facts": [],
@@ -469,7 +469,7 @@
       "callouts": [
         "還不會寫程式也沒關係。先把行為講出來，後面請 AI 產生畫面才有依據。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "9 / 26",
       "phases": [],
       "facts": [],
@@ -521,7 +521,7 @@
       "callouts": [
         "這裡的 API 是「雙方說好的請求」，不是要你今天寫出網址。主管看得到全部，不代表主管要代客服回覆。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "10 / 26",
       "phases": [],
       "facts": [],
@@ -571,7 +571,7 @@
       "callouts": [
         "AI 工具是共同作者，不是驗收的人。驗收始終是你。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "11 / 26",
       "phases": [],
       "facts": [],
@@ -619,7 +619,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "12 / 26",
       "phases": [],
       "facts": [],
@@ -669,7 +669,7 @@
       "callouts": [
         "不是一次生成就完成。每一輪只改一件事，你才知道是哪一句話讓結果變好。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "13 / 26",
       "phases": [],
       "facts": [],
@@ -711,7 +711,7 @@
       "callouts": [
         "接著自己寫三個驗證問題：誰可以送出？缺日期時是提醒還是直接送出？核准的人是誰，AI 能不能代按？"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "14 / 26",
       "phases": [],
       "facts": [],
@@ -753,7 +753,7 @@
       "callouts": [
         "高風險不是「AI 不准碰」，是「AI 不准自己按最後一下」。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "15 / 26",
       "phases": [],
       "facts": [],
@@ -803,7 +803,7 @@
       "callouts": [
         "若要把真實單據貼進對話，先把姓名和電話換成員工 A、客戶 B。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "16 / 26",
       "phases": [],
       "facts": [],
@@ -850,7 +850,7 @@
       "callouts": [
         "痛點是起點。箭頭右邊、小到可以示範的那一句，才是題目。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "17 / 26",
       "phases": [],
       "facts": [],
@@ -900,7 +900,7 @@
       "callouts": [
         "三個都是內部小工具。選一個你真的遇過的，不要三個一起做。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "18 / 26",
       "phases": [],
       "facts": [],
@@ -964,7 +964,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "19 / 26",
       "phases": [],
       "facts": [],
@@ -1030,7 +1030,7 @@
       "callouts": [
         "這張卡還沒有程式。它已經夠讓別人判斷：8 週做不做得完。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "20 / 26",
       "phases": [],
       "facts": [],
@@ -1082,7 +1082,7 @@
       "callouts": [
         "提案不是程式。它讓講師不用翻很多頁，就能告訴你範圍要不要再收小。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "21 / 26",
       "phases": [],
       "facts": [],
@@ -1132,7 +1132,7 @@
       "callouts": [
         "若有一句填不出來，先不要加新功能。回到範圍卡，把那一格補上。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "22 / 26",
       "phases": [],
       "facts": [],
@@ -1188,7 +1188,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "23 / 26",
       "phases": [],
       "facts": [],
@@ -1284,7 +1284,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "24 / 26",
       "phases": [],
       "facts": [],
@@ -1342,7 +1342,7 @@
       "callouts": [
         "四段寫不出來，通常是題目還太大。先刪功能，再寫里程碑。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "25 / 26",
       "phases": [],
       "facts": [],
@@ -1392,7 +1392,7 @@
       "callouts": [
         "若還沒有自己的工作問題，就用請假、報修或客戶詢問其中一個，寫完這一頁。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
+      "footerBrand": "AI發展顧問",
       "footerPage": "26 / 26",
       "phases": [],
       "facts": [],

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import * as cheerio from "cheerio";
+import { normalizeBrand } from "./branding.js";
 import { extractSlideContent } from "./extract.js";
 
 function cleanText(text) {
@@ -79,7 +80,7 @@ export function migrateSlideFromHtml($, el, index, total) {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
   }
 
-  slide.footerBrand = cleanText($el.find(".footer span").first().text()) || "企業 AI 整合平台";
+  slide.footerBrand = normalizeBrand(cleanText($el.find(".footer span").first().text()));
   slide.footerPage = `${index + 1} / ${total}`;
   return slide;
 }
@@ -167,7 +168,7 @@ export function renderSlideHtml(slide, total) {
 
   return `    <section class="slide${heroClass}${active}" id="${escapeHtml(slide.slideId)}" data-title="${escapeHtml(slide.title)}">
 ${body}
-      <div class="footer"><span>${escapeHtml(slide.footerBrand || "企業 AI 整合平台")}</span><span>${footerPage}</span></div>
+      <div class="footer"><span>${escapeHtml(normalizeBrand(slide.footerBrand))}</span><span>${footerPage}</span></div>
     </section>`;
 }
 

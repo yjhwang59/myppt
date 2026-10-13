@@ -224,12 +224,12 @@
       <h1>ETL 不是搬資料</h1>
       <p class="lead">把分散、髒亂的資料，變成可以做報表、做預測、給 AI 用的資料資產。</p>
       <p class="stamp">依 AIDC 教學整理，查核 2026-10-05　·　←→ 翻頁　·　F 全螢幕　·　12 頁</p>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>1 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>1 / 12</span></div>
     </section>
 
     <section class="slide" id="s2" data-title="三個字">
 <p class="eyebrow">02 / 先記這三個字</p><h2>ETL＝蒐集、清理、整合、準備</h2><p class="lead">少了這段，後面的 Dashboard 和 AI 都是在猜。</p><div class="grid three"><article class="card"><div class="num">E</div><strong>萃取 Extract</strong><p>從各處把資料拿出來。</p></article><article class="card"><div class="num">T</div><strong>轉換 Transform</strong><p>清乾淨、對得上、算得出指標。</p></article><article class="card"><div class="num">L</div><strong>載入 Load</strong><p>放進倉儲、資料超市或分析庫。</p></article></div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>2 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>2 / 12</span></div>
     </section>
 
     <section class="slide" id="s3" data-title="方法論">
@@ -270,7 +270,7 @@
           <strong>排程上線</strong>
           <p class="flow-desc">給人用</p>
         </div></div><div class="callout">ETL 主要卡在第 2、3、6 步，但會決定後面準不準。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>3 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>3 / 12</span></div>
     </section>
 
     <section class="slide" id="s4" data-title="白板流程">
@@ -311,12 +311,12 @@
           <strong>使用</strong>
           <p class="flow-desc">報表、模型、API</p>
         </div></div><div class="callout">不要一進來就寫進正式分析表。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>4 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>4 / 12</span></div>
     </section>
 
     <section class="slide" id="s5" data-title="每次搬多少">
 <p class="eyebrow">05 / 萃取</p><h2>每次先問：要搬多少</h2><p class="lead">來源很雜：資料庫、Excel／CSV、API、Log、感測、Google 表、電商 SaaS。</p><div class="grid three"><article class="card"><div class="num">全量</div><strong>小資料或第一次</strong><p>整包搬走，適合建置，不適合天天跑。</p></article><article class="card"><div class="num">增量</div><strong>正式營運的預設</strong><p>只抓新增與異動。updated_at &gt; 上次執行</p></article><article class="card"><div class="num">CDC</div><strong>追變更本身</strong><p>異動很勤的表，跟著變更走。</p></article></div><div class="callout">記得分頁、限流、失敗重試，而且每次都寫 log。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>5 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>5 / 12</span></div>
     </section>
 
     <section class="slide" id="s6" data-title="暫存層">
@@ -351,32 +351,32 @@
           <strong>系統分開</strong>
           <p class="flow-desc">來源歸來源</p>
         </div></div><div class="callout">正式分析表不要當草稿。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>6 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>6 / 12</span></div>
     </section>
 
     <section class="slide" id="s7" data-title="轉換">
 <p class="eyebrow">07 / 成敗在這裡</p><h2>轉換才是成敗</h2><p class="lead">搬得動不算完成。清得乾淨、對得上、算得出來，才算。</p><div class="grid two"><article class="card"><div class="num">八個動作</div><strong>洗到可以拿來算</strong><ul><li>空值、重複先清掉</li><li>日期、幣別講同一種話</li><li>代碼要對上名稱</li><li>多張表 JOIN 得起來</li><li>做成日、月彙總</li><li>算出毛利率、成長率</li><li>金額不能是負的</li><li>最後再去重一次</li></ul></article><article class="card"><div class="num">六問</div><strong>資料品質過不過</strong><ul><li>完整：該有的有沒有</li><li>正確：數字真不真</li><li>一致：同一件事同一種寫法</li><li>唯一：同一筆不要出現兩次</li><li>及時：現在看還算新鮮</li><li>合法：能不能這樣用</li></ul></article></div><div class="callout">這關沒過，後面的模型只是算得很認真的錯。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>7 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>7 / 12</span></div>
     </section>
 
     <section class="slide" id="s8" data-title="載入">
 <p class="eyebrow">08 / 載入</p><h2>放錯地方，重跑就變兩筆</h2><p class="lead">倉儲給管理報表，資料超市給部門，資料湖留原始，向量庫給 RAG。</p><div class="grid two"><article class="card"><div class="num">Append</div><strong>只往後加</strong><p>流水、log。舊的不要改。</p></article><article class="card"><div class="num">Upsert</div><strong>有就更新</strong><p>訂單、會員、商品。同一筆還是同一筆。</p></article><article class="card"><div class="num">Overwrite</div><strong>整表覆蓋</strong><p>小主檔、每日快照。表不大才這樣做。</p></article><article class="card"><div class="num">慢變</div><strong>歷史要留著</strong><p>價格、等級不能直接蓋掉。</p></article></div><div class="callout">同一筆訂單，不能因為重跑就變成兩筆。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>8 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>8 / 12</span></div>
     </section>
 
     <section class="slide" id="s9" data-title="星狀模型">
 <p class="eyebrow">09 / 主管也聽得懂</p><h2>中間是事實，周圍是切法</h2><p class="lead">先畫一顆星。先不要展開全部欄位。</p><div class="grid three"><article class="card"><div class="num">事實</div><strong>發生了什麼</strong><p>賣了多少、多少錢。這張表記事件。</p></article><article class="card"><div class="num">維度</div><strong>從哪個角度切</strong><p>門市、商品、日期。拿來切片。</p></article><article class="card"><div class="num">例子</div><strong>fact_sales</strong><p>掛上 store、product、date。一顆星就夠。</p></article></div><div class="callout"><strong>主管要聽的是：</strong>賣了什麼、在哪裡、哪一天。不是欄位清單。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>9 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>9 / 12</span></div>
     </section>
 
     <section class="slide" id="s10" data-title="ETL 或 ELT">
 <p class="eyebrow">10 / 先洗還是先倒</p><h2>先洗再入，還是先倒再洗</h2><p class="lead">實務多半混著做：Raw → Staging → Transform → 整理好的表 → 分析。</p><div class="grid two"><article class="card"><div class="num">ETL</div><strong>先洗再入倉</strong><p>傳統倉儲。品質要先過關，才進得去。</p></article><article class="card"><div class="num">ELT</div><strong>先倒進去再洗</strong><p>雲端倉儲、dbt 這條路。彈性大，治理不能省。</p></article></div><div class="callout">ELT 很彈性；治理不夠，資料湖會變成資料沼澤。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>10 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>10 / 12</span></div>
     </section>
 
     <section class="slide" id="s11" data-title="門市銷售">
 <p class="eyebrow">11 / 走完一輪</p><h2>用門市銷售把同一條線走完</h2><p class="lead">來源：POS、商品主檔、門市主檔、天氣、促銷。還是來源 → 萃取 → 暫存 → 轉換 → 倉儲 → 報表。</p><div class="grid two"><article class="card"><div class="num">營收</div><strong>賣了多少錢</strong><p>這段期間、這家門市的金額。</p></article><article class="card"><div class="num">來客數</div><strong>TC，來了多少人</strong><p>人來了沒有，先跟金額分開看。</p></article><article class="card"><div class="num">客單價</div><strong>每人平均花多少</strong><p>營收除以來客數。口徑要全公司一樣。</p></article><article class="card"><div class="num">成長率</div><strong>跟上一期比</strong><p>長還是縮。比的期間要先講清楚。</p></article></div><div class="callout"><strong>MAPE 用一句話：</strong>預測跟實際差多少百分比。</div>
-      <div class="footer"><span>AIDC｜大數據分析方法論</span><span>11 / 12</span></div>
+      <div class="footer"><span>AI發展顧問</span><span>11 / 12</span></div>
     </section>
 
     <section class="slide" id="s12" data-title="最小可行">

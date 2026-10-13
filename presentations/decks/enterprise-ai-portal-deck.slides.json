@@ -19,7 +19,7 @@
       "flowSteps": [],
       "table": null,
       "callouts": [],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "1 / 11"
     },
     {
@@ -65,7 +65,7 @@
       "callouts": [
         "結論：需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "2 / 11"
     },
     {
@@ -85,7 +85,7 @@
       "table": null,
       "callouts": [],
       "archSvgHtml": "<svg class=\"arch-svg\" viewBox=\"0 0 1120 540\" xmlns=\"http://www.w3.org/2000/svg\">\n          <defs>\n            <marker id=\"arrowDown\" markerWidth=\"8\" markerHeight=\"8\" refX=\"4\" refY=\"4\" orient=\"auto\">\n              <path d=\"M0,0 L8,4 L0,8 Z\" class=\"arrow-head\"></path>\n            </marker>\n            <filter id=\"softShadow\" x=\"-4%\" y=\"-4%\" width=\"108%\" height=\"112%\">\n              <fedropshadow dx=\"0\" dy=\"2\" stdDeviation=\"3\" flood-opacity=\"0.18\"></fedropshadow>\n            </filter>\n          </defs>\n\n          <!-- 連線箭頭 -->\n          <line x1=\"560\" y1=\"88\" x2=\"560\" y2=\"108\" class=\"flow-line\" marker-end=\"url(#arrowDown)\"></line>\n          <line x1=\"560\" y1=\"188\" x2=\"560\" y2=\"208\" class=\"flow-line\" marker-end=\"url(#arrowDown)\"></line>\n          <line x1=\"560\" y1=\"318\" x2=\"560\" y2=\"338\" class=\"flow-line\" marker-end=\"url(#arrowDown)\"></line>\n          <line x1=\"560\" y1=\"428\" x2=\"560\" y2=\"448\" class=\"flow-line\" marker-end=\"url(#arrowDown)\"></line>\n\n          <!-- L1 使用者 -->\n          <g filter=\"url(#softShadow)\">\n            <rect x=\"40\" y=\"8\" width=\"1040\" height=\"80\" rx=\"14\" class=\"svg-panel\"></rect>\n            <rect x=\"52\" y=\"28\" width=\"28\" height=\"40\" rx=\"8\" class=\"layer-badge\"></rect>\n            <text x=\"66\" y=\"53\" text-anchor=\"middle\" class=\"layer-badge-t\">1</text>\n            <text x=\"96\" y=\"42\" class=\"svg-label\">使用者</text>\n            <text x=\"96\" y=\"60\" class=\"svg-sub\">統一入口體驗</text>\n            <rect x=\"250\" y=\"26\" width=\"220\" height=\"44\" rx=\"12\" class=\"chip-portal\" stroke-width=\"1.5\"></rect>\n            <text x=\"360\" y=\"53\" text-anchor=\"middle\" class=\"svg-chip-text chip-portal-t\">企業 AI 入口網站</text>\n            <rect x=\"490\" y=\"26\" width=\"140\" height=\"44\" rx=\"12\" class=\"chip-portal\" stroke-width=\"1.5\"></rect>\n            <text x=\"560\" y=\"53\" text-anchor=\"middle\" class=\"svg-chip-text chip-portal-t\">Chatbot</text>\n            <rect x=\"650\" y=\"26\" width=\"140\" height=\"44\" rx=\"12\" class=\"chip-portal\" stroke-width=\"1.5\"></rect>\n            <text x=\"720\" y=\"53\" text-anchor=\"middle\" class=\"svg-chip-text chip-portal-t\">行動 App</text>\n            <circle cx=\"920\" cy=\"48\" r=\"14\" class=\"chip-portal\" stroke-width=\"1.5\"></circle>\n            <text x=\"920\" y=\"53\" text-anchor=\"middle\" class=\"svg-icon\">🌐</text>\n            <circle cx=\"960\" cy=\"48\" r=\"14\" class=\"chip-portal\" stroke-width=\"1.5\"></circle>\n            <text x=\"960\" y=\"53\" text-anchor=\"middle\" class=\"svg-icon\">💬</text>\n            <circle cx=\"1000\" cy=\"48\" r=\"14\" class=\"chip-portal\" stroke-width=\"1.5\"></circle>\n            <text x=\"1000\" y=\"53\" text-anchor=\"middle\" class=\"svg-icon\">📱</text>\n          </g>\n\n          <!-- L2 編排層 -->\n          <g filter=\"url(#softShadow)\">\n            <rect x=\"40\" y=\"108\" width=\"1040\" height=\"80\" rx=\"14\" class=\"svg-panel\"></rect>\n            <rect x=\"52\" y=\"128\" width=\"28\" height=\"40\" rx=\"8\" class=\"layer-badge\"></rect>\n            <text x=\"66\" y=\"153\" text-anchor=\"middle\" class=\"layer-badge-t\">2</text>\n            <text x=\"96\" y=\"142\" class=\"svg-label\">編排層</text>\n            <text x=\"96\" y=\"160\" class=\"svg-sub\">AI Orchestrator</text>\n            <rect x=\"250\" y=\"126\" width=\"148\" height=\"44\" rx=\"12\" class=\"chip-orch\" stroke-width=\"1.5\"></rect>\n            <text x=\"324\" y=\"153\" text-anchor=\"middle\" class=\"svg-chip-text chip-orch-t\">身分驗證與權限</text>\n            <rect x=\"412\" y=\"126\" width=\"148\" height=\"44\" rx=\"12\" class=\"chip-orch\" stroke-width=\"1.5\"></rect>\n            <text x=\"486\" y=\"153\" text-anchor=\"middle\" class=\"svg-chip-text chip-orch-t\">提示工程 Prompt</text>\n            <rect x=\"574\" y=\"126\" width=\"148\" height=\"44\" rx=\"12\" class=\"chip-orch\" stroke-width=\"1.5\"></rect>\n            <text x=\"648\" y=\"153\" text-anchor=\"middle\" class=\"svg-chip-text chip-orch-t\">Agent 工作流</text>\n            <rect x=\"736\" y=\"126\" width=\"128\" height=\"44\" rx=\"12\" class=\"chip-orch\" stroke-width=\"1.5\"></rect>\n            <text x=\"800\" y=\"153\" text-anchor=\"middle\" class=\"svg-chip-text chip-orch-t\">模型路由</text>\n            <rect x=\"878\" y=\"126\" width=\"128\" height=\"44\" rx=\"12\" class=\"chip-orch\" stroke-width=\"1.5\"></rect>\n            <text x=\"942\" y=\"153\" text-anchor=\"middle\" class=\"svg-chip-text chip-orch-t\">回應優化</text>\n          </g>\n\n          <!-- L3 模型與資料 -->\n          <g filter=\"url(#softShadow)\">\n            <rect x=\"40\" y=\"208\" width=\"1040\" height=\"110\" rx=\"14\" class=\"svg-panel\"></rect>\n            <rect x=\"52\" y=\"243\" width=\"28\" height=\"40\" rx=\"8\" class=\"layer-badge\"></rect>\n            <text x=\"66\" y=\"268\" text-anchor=\"middle\" class=\"layer-badge-t\">3</text>\n            <text x=\"96\" y=\"257\" class=\"svg-label\">模型與資料</text>\n            <text x=\"96\" y=\"275\" class=\"svg-sub\">混合部署底座</text>\n\n            <rect x=\"250\" y=\"226\" width=\"200\" height=\"74\" rx=\"12\" class=\"chip-cloud\" stroke-width=\"1.8\"></rect>\n            <text x=\"350\" y=\"255\" text-anchor=\"middle\" class=\"svg-chip-lg chip-cloud-t\">☁ Cloudflare</text>\n            <text x=\"350\" y=\"278\" text-anchor=\"middle\" class=\"svg-sub chip-cloud-t\">雲端邊緣與服務</text>\n\n            <rect x=\"470\" y=\"226\" width=\"220\" height=\"74\" rx=\"12\" class=\"chip-onprem\" stroke-width=\"1.8\"></rect>\n            <text x=\"580\" y=\"255\" text-anchor=\"middle\" class=\"svg-chip-lg chip-onprem-t\">🖥 企業內部 Server</text>\n            <text x=\"580\" y=\"278\" text-anchor=\"middle\" class=\"svg-sub chip-onprem-t\">地端私有推論</text>\n\n            <rect x=\"710\" y=\"226\" width=\"160\" height=\"74\" rx=\"12\" class=\"chip-data\" stroke-width=\"1.8\"></rect>\n            <text x=\"790\" y=\"255\" text-anchor=\"middle\" class=\"svg-chip-lg chip-data-t\">🗄 企業資料庫</text>\n            <text x=\"790\" y=\"278\" text-anchor=\"middle\" class=\"svg-sub chip-data-t\">SQL / 文件 / 日誌</text>\n\n            <rect x=\"890\" y=\"226\" width=\"150\" height=\"74\" rx=\"12\" class=\"chip-data\" stroke-width=\"1.8\"></rect>\n            <text x=\"965\" y=\"255\" text-anchor=\"middle\" class=\"svg-chip-lg chip-data-t\">✦ LLM</text>\n            <text x=\"965\" y=\"278\" text-anchor=\"middle\" class=\"svg-sub chip-data-t\">大型語言模型</text>\n          </g>\n\n          <!-- L4 分析回饋 -->\n          <g filter=\"url(#softShadow)\">\n            <rect x=\"40\" y=\"338\" width=\"1040\" height=\"90\" rx=\"14\" class=\"svg-panel\"></rect>\n            <rect x=\"52\" y=\"363\" width=\"28\" height=\"40\" rx=\"8\" class=\"layer-badge\"></rect>\n            <text x=\"66\" y=\"388\" text-anchor=\"middle\" class=\"layer-badge-t\">4</text>\n            <text x=\"96\" y=\"377\" class=\"svg-label\">分析回饋</text>\n            <text x=\"96\" y=\"395\" class=\"svg-sub\">閉環產出</text>\n\n            <rect x=\"250\" y=\"356\" width=\"130\" height=\"54\" rx=\"12\" class=\"chip-out\" stroke-width=\"1.5\"></rect>\n            <text x=\"315\" y=\"388\" text-anchor=\"middle\" class=\"svg-chip-text chip-out-t\">文件問答</text>\n            <rect x=\"400\" y=\"356\" width=\"130\" height=\"54\" rx=\"12\" class=\"chip-out\" stroke-width=\"1.5\"></rect>\n            <text x=\"465\" y=\"388\" text-anchor=\"middle\" class=\"svg-chip-text chip-out-t\">資產分析</text>\n            <rect x=\"550\" y=\"356\" width=\"130\" height=\"54\" rx=\"12\" class=\"chip-out\" stroke-width=\"1.5\"></rect>\n            <text x=\"615\" y=\"388\" text-anchor=\"middle\" class=\"svg-chip-text chip-out-t\">維運建議</text>\n\n            <rect x=\"700\" y=\"356\" width=\"340\" height=\"54\" rx=\"12\" class=\"svg-panel-soft\"></rect>\n            <text x=\"870\" y=\"378\" text-anchor=\"middle\" class=\"svg-flow-text\">生成 → 分析 → 預測 → 建議 → 自動執行</text>\n            <text x=\"870\" y=\"398\" text-anchor=\"middle\" class=\"svg-chip-text\">可稽核的智慧服務閉環</text>\n          </g>\n\n          <!-- L5 價值 -->\n          <g filter=\"url(#softShadow)\">\n            <rect x=\"40\" y=\"448\" width=\"1040\" height=\"80\" rx=\"14\" class=\"svg-panel\"></rect>\n            <rect x=\"52\" y=\"468\" width=\"28\" height=\"40\" rx=\"8\" class=\"layer-badge\"></rect>\n            <text x=\"66\" y=\"493\" text-anchor=\"middle\" class=\"layer-badge-t\">5</text>\n            <text x=\"96\" y=\"482\" class=\"svg-label\">價值</text>\n            <text x=\"96\" y=\"500\" class=\"svg-sub\">場景 × 產業</text>\n\n            <rect x=\"250\" y=\"466\" width=\"220\" height=\"44\" rx=\"12\" class=\"chip-val\" stroke-width=\"1.5\"></rect>\n            <text x=\"360\" y=\"493\" text-anchor=\"middle\" class=\"svg-chip-text chip-val-t\">六大企業場景</text>\n            <rect x=\"490\" y=\"466\" width=\"220\" height=\"44\" rx=\"12\" class=\"chip-val\" stroke-width=\"1.5\"></rect>\n            <text x=\"600\" y=\"493\" text-anchor=\"middle\" class=\"svg-chip-text chip-val-t\">六大產業應用</text>\n            <rect x=\"730\" y=\"466\" width=\"276\" height=\"44\" rx=\"12\" class=\"chip-val\" stroke-width=\"1.5\"></rect>\n            <text x=\"868\" y=\"493\" text-anchor=\"middle\" class=\"svg-chip-text chip-val-t\">混合部署與資安治理</text>\n          </g>\n        </svg>",
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "3 / 11"
     },
     {
@@ -143,7 +143,7 @@
       "callouts": [
         "設計原則：體驗在前端分流，治理與模型呼叫一律經編排器(Orchestrator)，避免旁路繞過權限。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "4 / 11"
     },
     {
@@ -185,7 +185,7 @@
       "callouts": [
         "主管重點：編排層是平台「作業系統」— 沒有它，模型與資料再多也只是分散試點。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "5 / 11"
     },
     {
@@ -231,7 +231,7 @@
       "callouts": [
         "策略：一般知識與產能型任務可走雲端；個資／營業機密／高合規場景預設走私有 NIM，並由模型路由統一決策。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "6 / 11"
     },
     {
@@ -281,7 +281,7 @@
       "callouts": [
         "治理提醒：先定義資料分級與允許用途，再接模型；否則入口越方便，外洩風險越高。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "7 / 11"
     },
     {
@@ -346,7 +346,7 @@
       ],
       "table": null,
       "callouts": [],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "8 / 11"
     },
     {
@@ -416,7 +416,7 @@
       "callouts": [
         "落地建議：先選 1–2 個痛點明確、資料權限清楚的場景做 PoC，再複製編排與治理模式。"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "9 / 11"
     },
     {
@@ -471,7 +471,7 @@
         ]
       ],
       "callouts": [],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "10 / 11"
     },
     {
@@ -523,7 +523,7 @@
       "callouts": [
         "建議下一步： ① 選定 PoC 場景與成功指標 ② 畫定資料邊界與敏感分級 ③ 建立編排／權限／稽核最小治理 ④ 決定雲端與私有模型分工原則"
       ],
-      "footerBrand": "企業 AI 整合平台",
+      "footerBrand": "AI發展顧問",
       "footerPage": "11 / 11"
     }
   ]

@@ -69,7 +69,7 @@
       "pipeline": "none",
       "htmlRebuild": "off",
       "sourceFlavor": "fyh-deck-chrome",
-      "note": "fyh-deck-chrome。不是本次遷移目標。線上 /deck/assets/* 不在 git，合併部署前必須先同步那些靜態檔。",
+      "note": "fyh-deck-chrome。不是本次遷移目標。deck.html 引用的 /deck/assets/deck-chrome.css、deck-chrome.js、dachan-logo.png 於 2026-10-13 在 myppt.aidc.work 為 404，倉庫無檔可同步。",
       "createdAt": "2026-09-14T04:44:45.634Z",
       "updatedAt": "2026-09-14T06:04:55.938Z"
     },
