@@ -211,6 +211,14 @@
     .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
     .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
     .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(14px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { border-color: var(--accent); text-decoration: underline; }
     @media (max-width: 760px) {
       .slide { aspect-ratio: auto; min-height: calc(100vh - var(--header-h) - 40px); overflow: auto; padding: 20px 16px 44px; }
       .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
@@ -219,6 +227,7 @@
       .table { display: block; overflow-x: auto; }
       .footer { left: 16px; right: 16px; }
       #deck-header .brand { display: none; }
+      .slide-links { position: static; margin-top: 10px; }
     }
     @media print {
       #deck-header, #narration-panel { display: none !important; }
@@ -303,7 +312,7 @@
 <rect class="ly" x="0" y="288" width="1200" height="84" rx="14"/><text class="t1" x="28" y="340">4 權限</text><text class="t2" x="210" y="340">誰能看、誰能改、誰能核准</text><text class="t3" x="640" y="340">例：同事報修、總務改狀態、主管看全部</text>
 <rect class="ly-ai" x="0" y="384" width="1200" height="84" rx="14"/><text class="t1" x="28" y="436">5 AI Agent</text><text class="t2" x="210" y="436">在規則裡讀資料、整理、草擬</text><text class="t3" x="640" y="436">例：口語整理成欄位、建議分類，不結案</text>
 <line class="ln" x1="620" y1="12" x2="620" y2="456"/>
-</g></svg></div><div class="callout">少任何一層，就還不是可上線系統。AI Agent 是放在前四層上面的一層，不是地基。</div>
+</g></svg></div><div class="callout">少任何一層，就還不是可上線系統。AI Agent 是放在前四層上面的一層，不是地基。</div><p class="slide-links"><a href="https://aidc.work/blog/new-member-article-deck" target="_blank" rel="noopener noreferrer">專有名詞</a></p>
       <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>9 / 32</span></div>
     </section>
 
