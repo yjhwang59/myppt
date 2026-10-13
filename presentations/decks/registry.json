@@ -103,8 +103,12 @@
       "deckId": "ai-agent-course-week01-ai-system-concepts",
       "title": "第 1 週｜AI 系統開發概念與專案選題",
       "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 1 週。企業AI內訓 2026-10-14 起。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
       "createdAt": "2026-10-06T11:10:00.000Z",
-      "updatedAt": "2026-10-06T11:10:00.000Z"
+      "updatedAt": "2026-10-13T02:45:00.000Z"
     },
     {
       "deckId": "pccu-1151-bigdata-2026-10-17",
