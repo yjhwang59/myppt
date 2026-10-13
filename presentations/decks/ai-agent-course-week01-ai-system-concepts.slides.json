@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "deckId": "ai-agent-course-week01-ai-system-concepts",
   "title": "第 1 週｜AI 系統開發概念與專案選題",
   "sourceType": "html",
@@ -12,138 +12,104 @@
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "8 週課程 · 第 1 週",
+      "kicker": "AI 系統開發入門班 · 第 1 週（共 8 週）",
       "h1": "AI 系統開發概念\n與專案選題",
       "h2": "",
-      "lead": "建立 AI 系統共通語言與 Vibe Coding 觀念，選定 8 週可完成的小系統。產出：一頁式專案提案。",
-      "stamp": "",
+      "lead": "不用寫程式，先學會把一個工作問題，講成「可上線的小系統」。今天結束帶走：一頁式專案提案。",
+      "stamp": "企業AI內訓 · 2026-10-14（三）起 · 19:00–22:00 · 臺北市中山區民生東路三段10號7樓 · 黃燕忠｜AI發展顧問",
       "cards": [],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "1 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "1 / 32"
     },
     {
       "slideId": "s2",
       "index": 2,
-      "title": "八週位置",
-      "layout": "cards",
+      "title": "八週地圖",
+      "layout": "table",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "課程位置",
+      "eyebrow": "00 / 課程位置",
+      "kicker": "",
       "h1": "",
-      "h2": "這是 8 週裡的第 1 週",
+      "h2": "8 週從需求到上線：今天這一頁，是後面 7 週的地基",
       "lead": "",
       "stamp": "",
-      "cards": [
-        {
-          "num": "1 / 8",
-          "tag": null,
-          "tagClass": null,
-          "heading": "本週",
-          "paragraph": "建立共通語言，把題目收到 8 週做得出來的大小。",
-          "bullets": []
-        },
-        {
-          "num": "產出",
-          "tag": null,
-          "tagClass": null,
-          "heading": "一頁式專案提案",
-          "paragraph": "今天結束要帶得走的東西。不是程式。",
-          "bullets": []
-        },
-        {
-          "num": "W2–W8",
-          "tag": null,
-          "tagClass": null,
-          "heading": "後續週次",
-          "paragraph": "標題以課堂公告為準。這份簡報只標出第 1 週，不預寫後面每週的名稱。",
-          "bullets": []
-        }
-      ],
+      "cards": [],
       "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "課程頁上的體驗場次：2026/10/08（週四）19:00–21:30，「從不會寫程式，到完成自己的 AI Agent 系統」免費體驗。"
+      "table": [
+        [
+          "週次",
+          "主題",
+          "產出",
+          "會用到提案的哪一格"
+        ],
+        [
+          "W1",
+          "AI 系統開發概念與專案選題",
+          "一頁式專案提案",
+          "全部（今天）"
+        ],
+        [
+          "W2",
+          "使用者流程與前端設計",
+          "Wireframe／頁面規劃",
+          "使用者、流程"
+        ],
+        [
+          "W3",
+          "Vibe Coding 基礎實作",
+          "可瀏覽的首版頁面",
+          "題目、輸出"
+        ],
+        [
+          "W4",
+          "表單設計與資料驗證",
+          "可送出資料的表單流程",
+          "輸入、驗收標準"
+        ],
+        [
+          "W5",
+          "資料儲存與後端 API",
+          "可儲存資料的系統",
+          "資料（CRUD）"
+        ],
+        [
+          "W6",
+          "後台列表與資料管理",
+          "基本管理後台",
+          "權限（RBAC）"
+        ],
+        [
+          "W7",
+          "測試、修正與部署準備",
+          "可部署版本",
+          "人工確認點、驗收標準"
+        ],
+        [
+          "W8",
+          "部署上線與成果發表",
+          "上線作品與發表回饋",
+          "8 週里程碑"
+        ]
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "2 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "callouts": [
+        "提案寫得越清楚，後面每一週越好做：W2 起每週都會回頭看這一頁。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "2 / 32"
     },
     {
       "slideId": "s3",
       "index": 3,
-      "title": "學習目標",
-      "layout": "cards-two",
+      "title": "九個學習點",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "今天結束時",
+      "eyebrow": "00 / 今天的 9 個學習點",
+      "kicker": "",
       "h1": "",
-      "h2": "你要帶走的四件事",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "1",
-          "tag": null,
-          "tagClass": null,
-          "heading": "分得清三種用法",
-          "paragraph": "AI 對話、AI 功能、可上線的 AI 系統，不要混著叫。",
-          "bullets": []
-        },
-        {
-          "num": "2",
-          "tag": null,
-          "tagClass": null,
-          "heading": "說得出系統行為",
-          "paragraph": "用五層架構，加上 CRUD、API、RBAC，描述一個小系統。",
-          "bullets": []
-        },
-        {
-          "num": "3",
-          "tag": null,
-          "tagClass": null,
-          "heading": "走得完一輪迭代",
-          "paragraph": "生成 → 驗證 → 修正。並且知道哪些步驟要人確認。",
-          "bullets": []
-        },
-        {
-          "num": "4",
-          "tag": null,
-          "tagClass": null,
-          "heading": "交得出一頁提案",
-          "paragraph": "題目小到 8 週做完，九個欄位都填得下去。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "3 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s4",
-      "index": 4,
-      "title": "三章地圖",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "今天的三章",
-      "h1": "",
-      "h2": "先有語言，再談工具，最後才選題",
+      "h2": "三章、九個點，最後收成一頁提案",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -154,9 +120,9 @@
           "heading": "什麼是 AI 系統",
           "paragraph": "",
           "bullets": [
-            "01-1-1 對話、功能、可上線系統",
-            "01-1-2 介面、後端、資料、權限、AI Agent",
-            "01-1-3 CRUD、API、RBAC"
+            "01-1-1 區分 AI 對話、AI 功能與可上線的 AI 系統",
+            "01-1-2 介面、後端、資料、權限與 AI Agent 五層架構",
+            "01-1-3 用 CRUD、API、RBAC 描述系統行為"
           ]
         },
         {
@@ -166,9 +132,9 @@
           "heading": "AI 工具與 Vibe Coding",
           "paragraph": "",
           "bullets": [
-            "01-2-1 工具的角色與限制",
-            "01-2-2 生成 → 驗證 → 修正",
-            "01-2-3 去識別化與人工確認"
+            "01-2-1 AI 工具在開發流程中的角色與限制",
+            "01-2-2 迭代循環：生成 → 驗證 → 修正",
+            "01-2-3 去識別化與高風險步驟保留人工確認"
           ]
         },
         {
@@ -178,134 +144,100 @@
           "heading": "選題與 MVP 範圍",
           "paragraph": "",
           "bullets": [
-            "01-3-1 從工作問題找題目",
-            "01-3-2 使用者、流程、輸入輸出、不做事項",
-            "01-3-3 一頁提案與講師回饋"
+            "01-3-1 從工作問題找到專案題目",
+            "01-3-2 定義使用者、流程、輸入輸出與不做事項",
+            "01-3-3 完成一頁式專案提案並接受講師回饋"
           ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "這堂課說的 MVP，是 8 週內可以示範完的主流程，不是功能做滿。"
+        "MVP：8 週內可以示範完的一條主流程，不是功能做滿。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "4 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "3 / 32"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "今天怎麼走",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 今天怎麼走",
+      "kicker": "",
+      "h1": "",
+      "h2": "3 小時（19:00–22:00）：三章、三個練習、一張提案",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "時段",
+          "分鐘",
+          "內容",
+          "動手做"
+        ],
+        [
+          "19:00–19:10",
+          "10′",
+          "開場：8 週地圖、今天產出、課堂規矩",
+          "兩人一組，決定誰先當駕駛"
+        ],
+        [
+          "19:10–19:45",
+          "35′",
+          "01-1 什麼是 AI 系統",
+          "小測驗 2′＋練習 A：寫下你的系統行為 8′"
+        ],
+        [
+          "19:45–20:20",
+          "35′",
+          "01-2 AI 工具與 Vibe Coding",
+          "看示範＋練習 B：改寫成可驗證的指令 12′"
+        ],
+        [
+          "20:20–20:30",
+          "10′",
+          "休息",
+          ""
+        ],
+        [
+          "20:30–21:25",
+          "55′",
+          "01-3 選題與 MVP 範圍",
+          "練習 C：寫一頁式提案 28′＋互評 10′"
+        ],
+        [
+          "21:25–21:50",
+          "25′",
+          "講師回饋（01-3-3）",
+          "每人 2′：三句話說提案，講師當場回饋"
+        ],
+        [
+          "21:50–22:00",
+          "10′",
+          "作業說明與討論、下週預告",
+          "現場確認作業怎麼改，有問題當場問"
+        ]
+      ],
+      "callouts": [
+        "練習與回饋都在課堂上完成：作業是修改提案，下週課堂上一起檢討。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "4 / 32"
     },
     {
       "slideId": "s5",
       "index": 5,
-      "title": "01-1-1 說明",
-      "layout": "cards",
+      "title": "課堂規矩",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-1 · 什麼是 AI 系統",
+      "eyebrow": "00 / 課堂規矩",
+      "kicker": "",
       "h1": "",
-      "h2": "區分 AI 對話、AI 功能與可上線的 AI 系統",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "對話",
-          "tag": null,
-          "tagClass": null,
-          "heading": "答案留在這一則聊天",
-          "paragraph": "你問一句，它答一句。沒有固定的使用者、存下來的單據，也沒有誰能核准。",
-          "bullets": []
-        },
-        {
-          "num": "功能",
-          "tag": null,
-          "tagClass": null,
-          "heading": "畫面上有一個 AI 按鈕",
-          "paragraph": "例如「幫我草擬」。方便，但整件事還沒有流程，也還沒有權限。",
-          "bullets": []
-        },
-        {
-          "num": "系統",
-          "tag": null,
-          "tagClass": null,
-          "heading": "同事下週還能用同一套",
-          "paragraph": "有介面、後端、資料、權限，以及被規定好能做什麼的 AI Agent。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "這堂課要做的是第三種的縮小版。聊天很有用，但聊天紀錄本身不是系統。"
-      ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "5 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s6",
-      "index": 6,
-      "title": "01-1-1 例子",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-1 · 例子 · 請假",
-      "h1": "",
-      "h2": "同一件請假，三種層次差在哪",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "問「年假怎麼算？」",
-          "paragraph": "你自己看答案。這次申請沒有被留下，主管也看不到。",
-          "bullets": []
-        },
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "旁邊有「幫我寫理由」",
-          "paragraph": "理由是草稿。還沒有人核准，也還沒寫進紀錄。",
-          "bullets": []
-        },
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "送出、留下、等人核准",
-          "paragraph": "員工送出申請，AI 檢查必填是否齊，主管核准後才算完成。AI 不能自己核准。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "分辨方式：關掉畫面之後，這件事還在不在？誰還能接著處理？"
-      ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "6 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s7",
-      "index": 7,
-      "title": "01-1-2 說明",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-2 · 什麼是 AI 系統",
-      "h1": "",
-      "h2": "介面、後端、資料、權限與 AI Agent",
+      "h2": "先講好三件事，每週開場都會再提醒",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -313,127 +245,250 @@
           "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "介面",
-          "paragraph": "人看得到、點得到的畫面。表單、清單、對話框都算。",
-          "bullets": []
+          "heading": "只用虛構或去識別化資料",
+          "paragraph": "",
+          "bullets": [
+            "真實客戶、員工、薪資、合約不貼進 AI",
+            "不確定能不能貼，就當作不能",
+            "誤貼了：馬上停、刪掉那段對話、告訴講師"
+          ]
         },
         {
           "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "後端",
-          "paragraph": "收到請求、照規則處理、把結果送回去的那一段。",
-          "bullets": []
+          "heading": "AI 產出要人核對",
+          "paragraph": "",
+          "bullets": [
+            "「看起來對」不算數",
+            "規定、期限、金額回原文查",
+            "AI 自己猜的地方，請它標「假設」"
+          ]
         },
         {
           "num": "3",
           "tag": null,
           "tagClass": null,
-          "heading": "資料",
-          "paragraph": "單據與名單被存下來的地方。關掉畫面還在。",
-          "bullets": []
-        },
-        {
-          "num": "4",
-          "tag": null,
-          "tagClass": null,
-          "heading": "權限",
-          "paragraph": "誰能申請、誰能核准、誰只能看自己的。",
-          "bullets": []
-        },
-        {
-          "num": "5",
-          "tag": null,
-          "tagClass": null,
-          "heading": "AI Agent",
-          "paragraph": "在規則裡讀資料、整理、草擬。不取代權限。",
-          "bullets": []
+          "heading": "駕駛／領航輪流",
+          "paragraph": "",
+          "bullets": [
+            "兩人一組：駕駛操作 AI，領航念需求、檢查輸出",
+            "每個練習換手一次",
+            "比較新的同學先當領航"
+          ]
         }
       ],
       "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "少任何一層，就還不是這堂課說的可上線系統。"
+      "table": [],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "5 / 32"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "01-1 章節頁",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "01-1 · 35 分鐘（19:10–19:45）",
+      "h1": "什麼是 AI 系統",
+      "h2": "",
+      "lead": "對話、功能、系統差在哪；五層架構；用 CRUD、API、RBAC 講清楚系統行為。",
+      "stamp": "01-1-1 三種層次＋小測驗 10′ · 01-1-2 五層架構 10′ · 01-1-3 CRUD／API／RBAC 7′ · 練習 A 8′",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "6 / 32"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "01-1-1 三種層次",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "01-1-1 / 三種層次 · 8′",
+      "kicker": "",
+      "h1": "",
+      "h2": "區分 AI 對話、AI 功能與可上線的 AI 系統",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "看哪裡",
+          "AI 對話",
+          "AI 功能",
+          "可上線的 AI 系統"
+        ],
+        [
+          "請假的例子",
+          "問 AI「年假怎麼算？」",
+          "表單旁有「幫我寫理由」",
+          "送出 → AI 檢查必填 → 主管核准 → 寫入紀錄"
+        ],
+        [
+          "業務的例子",
+          "請 AI 想報價信怎麼寫",
+          "客戶管理系統裡的「AI 摘要」按鈕",
+          "報價申請 → AI 草擬 → 主管核價 → 寄出留存"
+        ],
+        [
+          "關掉畫面之後",
+          "答案只在這則聊天",
+          "草稿不一定有存",
+          "單據還在，狀態查得到"
+        ],
+        [
+          "誰能接著處理",
+          "只有你",
+          "只有你",
+          "主管、同事依角色接手"
+        ],
+        [
+          "誰決定能不能做",
+          "沒有人",
+          "跟著原系統",
+          "權限規則，AI 也要遵守"
+        ]
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "7 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "callouts": [
+        "分辨一句話：關掉畫面之後，這件事還在不在？誰還能接著處理？"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "7 / 32"
     },
     {
       "slideId": "s8",
       "index": 8,
-      "title": "01-1-2 例子",
-      "layout": "cards",
+      "title": "01-1-1 小測驗",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-2 · 例子 · 報修",
+      "eyebrow": "01-1-1 / 小測驗 · 2′",
+      "kicker": "",
       "h1": "",
-      "h2": "報修助理怎麼對上五層",
+      "h2": "這三個情境，各是哪一種？",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": "介面",
+          "num": "A",
           "tag": null,
           "tagClass": null,
-          "heading": "報修表單、進度頁",
-          "paragraph": "同事描述哪裡壞了，之後看處理到哪。",
+          "heading": "報銷系統多了「AI 讀發票」",
+          "paragraph": "按一下，AI 從發票照片填好金額和日期。報銷流程本來就在原系統裡。",
           "bullets": []
         },
         {
-          "num": "後端",
+          "num": "B",
           "tag": null,
           "tagClass": null,
-          "heading": "建立工單、通知維修",
-          "paragraph": "把表單收下來，讓該看的人看得到。",
+          "heading": "客服詢問單",
+          "paragraph": "客戶送出詢問，AI 草擬回覆，客服確認後送出，主管看得到每週統計。",
           "bullets": []
         },
         {
-          "num": "資料",
+          "num": "C",
           "tag": null,
           "tagClass": null,
-          "heading": "地點、描述、狀態、時間",
-          "paragraph": "沒有這些，電話講完就沒有紀錄。",
-          "bullets": []
-        },
-        {
-          "num": "權限",
-          "tag": null,
-          "tagClass": null,
-          "heading": "三種人，三種能做的事",
-          "paragraph": "同事可報修。維修人員可改狀態。主管可看全部。",
-          "bullets": []
-        },
-        {
-          "num": "AI Agent",
-          "tag": null,
-          "tagClass": null,
-          "heading": "整理與建議，不結案",
-          "paragraph": "把口語整理成欄位、建議分類。不直接關閉工單。",
+          "heading": "業務把客訴貼進聊天 AI",
+          "paragraph": "請它想想怎麼回。回完就關掉，沒有留下紀錄，也沒人接手。",
           "bullets": []
         }
       ],
       "flowSteps": [],
-      "table": null,
-      "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "8 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "table": [],
+      "callouts": [
+        "答案：A 功能、B 系統、C 對話（而且客訴要先去識別化）。判斷依據：有沒有存下來的資料、流程與權限。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "8 / 32"
     },
     {
       "slideId": "s9",
       "index": 9,
-      "title": "01-1-3 說明",
-      "layout": "cards",
+      "title": "01-1-2 五層架構",
+      "layout": "arch-svg",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-3 · 什麼是 AI 系統",
+      "eyebrow": "01-1-2 / 五層架構 · 10′",
+      "kicker": "",
+      "h1": "",
+      "h2": "介面、後端、資料、權限與 AI Agent：以設備報修為例",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "少任何一層，就還不是可上線系統。AI Agent 是放在前四層上面的一層，不是地基。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "9 / 32",
+      "archSvgHtml": "<svg viewBox=\"0 0 1200 470\" xmlns=\"http://www.w3.org/2000/svg\">\n<g font-family=\"inherit\">\n<rect class=\"ly\" x=\"0\" y=\"0\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"52\">1 介面</text><text class=\"t2\" x=\"210\" y=\"52\">人看得到、點得到的畫面</text><text class=\"t3\" x=\"640\" y=\"52\">例：報修表單、進度頁</text>\n<rect class=\"ly\" x=\"0\" y=\"96\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"148\">2 後端</text><text class=\"t2\" x=\"210\" y=\"148\">收到請求，照規則處理、送回結果</text><text class=\"t3\" x=\"640\" y=\"148\">例：建立工單、通知總務</text>\n<rect class=\"ly\" x=\"0\" y=\"192\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"244\">3 資料</text><text class=\"t2\" x=\"210\" y=\"244\">單據存下來，關掉畫面還在</text><text class=\"t3\" x=\"640\" y=\"244\">例：地點、設備、描述、狀態、時間</text>\n<rect class=\"ly\" x=\"0\" y=\"288\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"340\">4 權限</text><text class=\"t2\" x=\"210\" y=\"340\">誰能看、誰能改、誰能核准</text><text class=\"t3\" x=\"640\" y=\"340\">例：同事報修、總務改狀態、主管看全部</text>\n<rect class=\"ly-ai\" x=\"0\" y=\"384\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"436\">5 AI Agent</text><text class=\"t2\" x=\"210\" y=\"436\">在規則裡讀資料、整理、草擬</text><text class=\"t3\" x=\"640\" y=\"436\">例：口語整理成欄位、建議分類，不結案</text>\n<line class=\"ln\" x1=\"620\" y1=\"12\" x2=\"620\" y2=\"456\"/>\n</g></svg>"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "01-1-2 真實例子",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "01-1-2 / 真實例子",
+      "kicker": "",
+      "h1": "",
+      "h2": "AIDC.work 網站怎麼分層？換成你的題目，問同樣的問題",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "層",
+          "AIDC.work 的做法",
+          "換成你的題目，要問"
+        ],
+        [
+          "介面",
+          "公開網站、會員區、管理後台三種畫面",
+          "誰看哪一個畫面？"
+        ],
+        [
+          "後端",
+          "收表單時先驗證格式、限制送出頻率，再寄通知",
+          "收到資料後，照什麼規則處理？"
+        ],
+        [
+          "資料",
+          "諮詢、會員、課程報名分開存，重要變更留稽核紀錄",
+          "哪些單據要存？改了要不要留紀錄？"
+        ],
+        [
+          "權限",
+          "會員只看自己的紀錄；管理員走另一個入口，每個管理動作再檢查一次",
+          "誰能看全部？誰只能看自己的？"
+        ],
+        [
+          "AI Agent",
+          "這份架構沒有列出 AI 元件：先有前四層，AI 才有地方放",
+          "AI 在哪一步幫忙？不能碰哪一步？"
+        ]
+      ],
+      "callouts": [
+        "畫面藏起按鈕不等於安全：每個敏感動作，後端都要再檢查一次權限。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "10 / 32"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "01-1-3 CRUD／API／RBAC",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "01-1-3 / 三個詞 · 7′",
+      "kicker": "",
       "h1": "",
       "h2": "用 CRUD、API、RBAC 描述系統行為",
       "lead": "",
@@ -452,7 +507,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "介面請後端做的事",
-          "paragraph": "雙方說好的請求。例如「送出請假」是一個，「查我的請假」是另一個。今天先寫白話，不必寫網址。",
+          "paragraph": "雙方說好的請求。「送出請假」是一個，「查我的請假」是另一個。今天寫白話，不必寫網址。",
           "bullets": []
         },
         {
@@ -465,27 +520,80 @@
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "還不會寫程式也沒關係。先把行為講出來，後面請 AI 產生畫面才有依據。"
+        "還不會寫程式沒關係：先把行為講出來，W3 請 AI 產生畫面時才有依據。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "9 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "11 / 32"
     },
     {
-      "slideId": "s10",
-      "index": 10,
+      "slideId": "s12",
+      "index": 12,
       "title": "01-1-3 例子",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "01-1-3 / 例子 · 客戶詢問助理",
+      "kicker": "",
+      "h1": "",
+      "h2": "一張表同時講完 CRUD、API 與 RBAC",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "動作（API 請求）",
+          "客戶",
+          "客服",
+          "主管",
+          "AI Agent"
+        ],
+        [
+          "建立詢問（C）",
+          "可以",
+          "可代客戶建立",
+          "—",
+          "—"
+        ],
+        [
+          "列出詢問（R）",
+          "只看自己的",
+          "看全部未結案",
+          "看全部＋每週統計",
+          "讀被指派的那一則"
+        ],
+        [
+          "儲存回覆（U）",
+          "—",
+          "確認後送出",
+          "可以",
+          "只能存成草稿"
+        ],
+        [
+          "結案（取代刪除 D）",
+          "—",
+          "可以",
+          "可以",
+          "不可以"
+        ]
+      ],
+      "callouts": [
+        "表格的每一列就是一個 API；每一欄就是一個角色。主管看得到全部，不代表要代客服回覆。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "12 / 32"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "練習 A",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-1-3 · 例子 · 客戶詢問",
+      "eyebrow": "01-1 / 練習 A · 8′",
+      "kicker": "",
       "h1": "",
-      "h2": "把客戶詢問助理說成行為",
+      "h2": "把你的工作寫成「系統行為」",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -493,49 +601,64 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "四個動詞",
+          "heading": "填這四行",
           "paragraph": "",
           "bullets": [
-            "建立：客戶送出一則詢問",
-            "讀取：客服看未回覆；客戶只看自己的",
-            "更新：客服儲存回覆；AI 可以先草擬",
-            "刪除：這 8 週不做。改成把狀態更新為結案"
+            "我的單據是＿＿（例如：報修單、請假單）",
+            "建立、讀取、更新各寫一句；刪除通常改成「結案」或「取消」",
+            "角色有＿＿，各自能做什麼",
+            "AI 只能做＿＿，不能做＿＿"
           ]
         },
         {
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "角色與請求",
+          "heading": "範例：會議室預約",
           "paragraph": "",
           "bullets": [
-            "角色：客戶、客服、主管",
-            "請求：建立詢問",
-            "請求：列出詢問",
-            "請求：儲存回覆草稿"
+            "單據：一筆預約（會議室、日期、時段、借用人）",
+            "建立預約、讀取當天時段、更新改期；不刪除，改成取消",
+            "角色：同事預約、行政管理全部、主管看使用率",
+            "AI：提醒時段衝突、建議空房；不能替人取消別人的預約"
           ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "這裡的 API 是「雙方說好的請求」，不是要你今天寫出網址。主管看得到全部，不代表主管要代客服回覆。"
+        "寫在提案草稿上，01-3 會直接用到。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "10 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "13 / 32"
     },
     {
-      "slideId": "s11",
-      "index": 11,
-      "title": "01-2-1 說明",
+      "slideId": "s14",
+      "index": 14,
+      "title": "01-2 章節頁",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "01-2 · 35 分鐘（19:45–20:20）",
+      "h1": "AI 工具與 Vibe Coding",
+      "h2": "",
+      "lead": "用白話請 AI 產出，再由你驗證與修正。AI 是共同作者，不是驗收的人。",
+      "stamp": "01-2-1 角色與限制 5′ · 01-2-2 迭代循環＋示範 10′＋練習 B 12′ · 01-2-3 去識別化 8′",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "14 / 32"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "01-2-1 角色與限制",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-1 · AI 工具與 Vibe Coding",
+      "eyebrow": "01-2-1 / 角色與限制 · 5′",
+      "kicker": "",
       "h1": "",
       "h2": "AI 工具在開發流程中的角色與限制",
       "lead": "",
@@ -550,7 +673,8 @@
           "bullets": [
             "把白話收成欄位、畫面說明、檢查問題",
             "用你聽得懂的話解釋名詞",
-            "依照你寫清楚的範圍，改出下一版"
+            "依照你寫清楚的範圍，改出下一版",
+            "自己挑錯：列出它做了哪些假設"
           ]
         },
         {
@@ -562,80 +686,113 @@
           "bullets": [
             "猜你沒寫出來的公司規則",
             "代替你決定這 8 週做不做",
-            "代替主管核准，或保證第一次就對"
+            "代替主管核准，或保證第一次就對",
+            "當成規定、期限、價格的最終答案"
           ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "AI 工具是共同作者，不是驗收的人。驗收始終是你。"
+        "AI 是共同作者，不是驗收的人；它講得越有把握，越要回原文查證。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "11 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "15 / 32"
     },
     {
-      "slideId": "s12",
-      "index": 12,
-      "title": "01-2-1 例子",
-      "layout": "cards",
+      "slideId": "s16",
+      "index": 16,
+      "title": "01-2-2 迭代循環",
+      "layout": "flow",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-1 · 例子 · 請假助理",
+      "eyebrow": "01-2-2 / 迭代循環",
+      "kicker": "",
       "h1": "",
-      "h2": "同一張請假單，人和工具怎麼分",
+      "h2": "Vibe Coding：生成 → 驗證 → 修正，一輪只改一件事",
       "lead": "",
       "stamp": "",
-      "cards": [
+      "cards": [],
+      "flowSteps": [
         {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "規則與決定",
-          "paragraph": "有哪些假別、誰能核准、什麼情況不能送出。這些要你寫出來。",
-          "bullets": []
+          "title": "說清楚",
+          "description": "寫出使用者、流程、輸入輸出，以及這次不做什麼。"
         },
         {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "草稿與缺口",
-          "paragraph": "列出欄位草稿，指出你還沒寫「誰能核准」，再依你的更正重寫一版。",
-          "bullets": []
+          "title": "生成",
+          "description": "請 AI 產出欄位、畫面說明或流程。"
         },
         {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "沒寫就不要猜",
-          "paragraph": "特休怎麼計算若沒寫進說明，工具不該自己假設一套算法。",
-          "bullets": []
+          "title": "驗證",
+          "description": "對照真實工作與驗收標準：誰用、輸入什麼、哪裡要人看過。"
+        },
+        {
+          "title": "修正",
+          "description": "只改這一輪發現的一件事，再生成下一版。"
         }
       ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "12 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "table": [],
+      "callouts": [
+        "不是一次生成就完成。每一輪只改一件事，你才知道是哪一句話讓結果變好。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "16 / 32"
     },
     {
-      "slideId": "s13",
-      "index": 13,
-      "title": "01-2-2 說明",
-      "layout": "cards",
+      "slideId": "s17",
+      "index": 17,
+      "title": "01-2-2 示範",
+      "layout": "table",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-2 · AI 工具與 Vibe Coding",
+      "eyebrow": "01-2-2 / 講師示範 · 10′",
+      "kicker": "",
       "h1": "",
-      "h2": "迭代循環：生成 → 驗證 → 修正",
+      "h2": "同一個請假題目，三輪怎麼越改越準",
+      "lead": "示意流程：現場實際輸出每次不同，重點是「每輪發現什麼、改了哪一句」。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "回合",
+          "你給 AI 的話",
+          "驗證時發現",
+          "下一輪只改一件事"
+        ],
+        [
+          "第 1 輪",
+          "幫我做一個請假系統。",
+          "多出薪資計算、出差、補休，範圍爆掉",
+          "加上「這次不做」清單"
+        ],
+        [
+          "第 2 輪",
+          "員工申請特休或事假，主管核准；不做薪資、出差、補休。",
+          "流程寫了「AI 自動核准三天內的假單」",
+          "寫明「核准只能由主管按」"
+        ],
+        [
+          "第 3 輪",
+          "……核准只能由主管按；AI 只檢查必填。請列出畫面欄位。",
+          "欄位齊了，但沒擋「結束日早於開始日」",
+          "補一條檢查規則與驗收標準"
+        ]
+      ],
+      "callouts": [
+        "把每一輪的「發現」記下來：這就是你之後寫驗收標準的材料。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "17 / 32"
+    },
+    {
+      "slideId": "s18",
+      "index": 18,
+      "title": "練習 B",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "01-2-2 / 練習 B · 12′",
+      "kicker": "",
+      "h1": "",
+      "h2": "把一句模糊的話，改成可驗證的指令",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -643,89 +800,48 @@
           "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "生成",
-          "paragraph": "用一段寫清楚範圍的話，請 AI 產出欄位或流程。",
+          "heading": "先不要這樣說",
+          "paragraph": "「幫我做一個報修系統。」範圍、使用者、誰能結案都沒說，AI 只能用猜的。",
           "bullets": []
         },
         {
           "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "驗證",
-          "paragraph": "對照真實工作：誰用、輸入什麼、輸出什麼、哪裡要人看過。",
+          "heading": "改成可驗證的",
+          "paragraph": "同事填寫報修（地點、設備、描述）。AI 只整理成欄位並建議分類。總務指派與結案。不做採購與費用。請列出畫面欄位。",
           "bullets": []
         },
         {
           "num": "3",
           "tag": null,
           "tagClass": null,
-          "heading": "修正",
-          "paragraph": "只改這一輪發現的一件事，再生成下一版。",
-          "bullets": []
+          "heading": "再寫一條驗收標準",
+          "paragraph": "",
+          "bullets": [
+            "假設（Given）：工單狀態是「處理中」",
+            "當（When）：同事打開進度頁",
+            "則（Then）：看到處理人與最後更新時間",
+            "例外：AI 不能把狀態改成「已結案」"
+          ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "不是一次生成就完成。每一輪只改一件事，你才知道是哪一句話讓結果變好。"
+        "駕駛貼提示詞；領航拿驗收標準檢查 AI 的回覆，至少找出一處要改的地方。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "13 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "18 / 32"
     },
     {
-      "slideId": "s14",
-      "index": 14,
-      "title": "01-2-2 練習",
+      "slideId": "s19",
+      "index": 19,
+      "title": "01-2-3 去識別化與人工確認",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-2 · 練習",
-      "h1": "",
-      "h2": "把一句模糊的話改成可驗證的指令",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "先不要這樣說",
-          "paragraph": "「幫我做一個請假系統。」",
-          "bullets": []
-        },
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "改成可驗證的",
-          "paragraph": "員工申請特休或事假。主管核准後才寫入。AI 只檢查日期與假別有沒有填。請列出畫面欄位。不要加核准以外的功能。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "接著自己寫三個驗證問題：誰可以送出？缺日期時是提醒還是直接送出？核准的人是誰，AI 能不能代按？"
-      ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "14 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s15",
-      "index": 15,
-      "title": "01-2-3 說明",
-      "layout": "cards-two",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-3 · AI 工具與 Vibe Coding",
+      "eyebrow": "01-2-3 / 資料與確認 · 8′",
+      "kicker": "",
       "h1": "",
       "h2": "去識別化，高風險步驟保留人工確認",
       "lead": "",
@@ -735,89 +851,116 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "去識別化",
-          "paragraph": "貼給 AI 之前，拿掉認得出個人的資料：姓名、員工編號、電話、Email、客戶名稱、薪資、病歷。",
-          "bullets": []
+          "heading": "貼給 AI 之前：去識別化",
+          "paragraph": "",
+          "bullets": [
+            "姓名換成員工 A、客戶 B",
+            "電話、Email、身分證字號、員工編號刪掉",
+            "金額保留規模，改成假數字",
+            "薪資、病歷、合約內容不貼"
+          ]
         },
         {
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "人按最後一下",
-          "paragraph": "送出、核准、刪除、對外寄信、改權限、動到錢或個資。",
-          "bullets": []
+          "heading": "最後一下：由人按",
+          "paragraph": "",
+          "bullets": [
+            "送出、核准",
+            "對外寄信或回覆客戶",
+            "刪除資料、修改權限",
+            "動到錢或個資"
+          ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
         "高風險不是「AI 不准碰」，是「AI 不准自己按最後一下」。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "15 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "19 / 32"
     },
     {
-      "slideId": "s16",
-      "index": 16,
+      "slideId": "s20",
+      "index": 20,
       "title": "01-2-3 例子",
-      "layout": "cards-two",
+      "layout": "table",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-2-3 · 例子",
+      "eyebrow": "01-2-3 / 例子",
+      "kicker": "",
       "h1": "",
-      "h2": "草擬可以，送出要人",
+      "h2": "同一張表：AI 先做到哪裡，人一定要按哪一下",
       "lead": "",
       "stamp": "",
-      "cards": [
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "可請 AI 做",
-          "paragraph": "",
-          "bullets": [
-            "把報修的口語整理成欄位",
-            "草擬一則客戶回覆",
-            "指出請假單缺了哪一格"
-          ]
-        },
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "必須人確認",
-          "paragraph": "",
-          "bullets": [
-            "關閉報修工單",
-            "把回覆寄給客戶",
-            "核准這張請假單"
-          ]
-        }
-      ],
+      "cards": [],
       "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "若要把真實單據貼進對話，先把姓名和電話換成員工 A、客戶 B。"
+      "table": [
+        [
+          "情境",
+          "AI 可以先做",
+          "人一定要按的最後一下"
+        ],
+        [
+          "設備報修",
+          "口語整理成欄位、建議分類與急迫度",
+          "指派維修、結案"
+        ],
+        [
+          "客戶詢問",
+          "草擬回覆、找出類似的舊問答",
+          "寄出回覆"
+        ],
+        [
+          "請假申請",
+          "檢查缺哪一格、日期合不合理",
+          "主管核准"
+        ],
+        [
+          "業務報價",
+          "依價目表試算報價草稿",
+          "主管核價、寄給客戶"
+        ],
+        [
+          "費用報銷",
+          "讀發票填金額與日期",
+          "會計核銷、撥款"
+        ]
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "16 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "callouts": [
+        "AI 講得很有把握時最危險：規定、期限、稅率、價格，以公司公告或官方原文為準。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "20 / 32"
     },
     {
-      "slideId": "s17",
-      "index": 17,
-      "title": "01-3-1 說明",
+      "slideId": "s21",
+      "index": 21,
+      "title": "01-3 章節頁",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "01-3 · 55 分鐘（休息 10′ 後，20:30–21:25）",
+      "h1": "選題與 MVP 範圍",
+      "h2": "",
+      "lead": "從真實工作問題找題目，收小到 8 週做得完，寫成一頁提案。",
+      "stamp": "01-3-1 找題目 7′ · 01-3-2 範圍卡＋MVP 10′ · 01-3-3 練習 C 寫提案 28′＋互評 10′ · 21:25 起講師回饋 25′",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "21 / 32"
+    },
+    {
+      "slideId": "s22",
+      "index": 22,
+      "title": "01-3-1 找題目",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-1 · 選題與 MVP 範圍",
+      "eyebrow": "01-3-1 / 找題目 · 7′",
+      "kicker": "",
       "h1": "",
       "h2": "從工作問題找到專案題目",
       "lead": "",
@@ -827,12 +970,12 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "適合拿來當題目的問題",
+          "heading": "好題目的四個訊號",
           "paragraph": "",
           "bullets": [
-            "常常重複",
-            "規則大致固定",
-            "現在靠記憶或群組訊息",
+            "常常重複：每週都會發生好幾次",
+            "規則大致固定，說得出來",
+            "現在靠記憶、Excel 或群組訊息",
             "做錯了，有人在後面補"
           ]
         },
@@ -840,147 +983,93 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "先收小",
-          "paragraph": "題目要小到 8 週做得出一段可以示範的主流程。",
+          "heading": "把痛點收成一句題目",
+          "paragraph": "句型：【誰】用【這個小系統】做【一件事】，只做到【哪裡】。例：「報修常漏接」→「設備報修工單助理：只做報修建立與狀態追蹤」。",
           "bullets": []
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "痛點是起點。箭頭右邊、小到可以示範的那一句，才是題目。"
+        "痛點是起點；小到 8 週可以示範的那一句，才是題目。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "17 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "22 / 32"
     },
     {
-      "slideId": "s18",
-      "index": 18,
+      "slideId": "s23",
+      "index": 23,
       "title": "01-3-1 例子",
-      "layout": "cards",
+      "layout": "table",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-1 · 例子",
+      "eyebrow": "01-3-1 / 例子 · 六個部門",
+      "kicker": "",
       "h1": "",
-      "h2": "三個工作問題，怎麼收成題目",
+      "h2": "日常工作裡的痛點，怎麼收成 8 週題目",
       "lead": "",
       "stamp": "",
-      "cards": [
-        {
-          "num": "請假",
-          "tag": null,
-          "tagClass": null,
-          "heading": "群組裡常被漏看",
-          "paragraph": "題目：請假申請助理。只處理申請與核准。",
-          "bullets": []
-        },
-        {
-          "num": "報修",
-          "tag": null,
-          "tagClass": null,
-          "heading": "電話講完沒有紀錄",
-          "paragraph": "題目：報修工單助理。只處理建立與狀態。",
-          "bullets": []
-        },
-        {
-          "num": "詢問",
-          "tag": null,
-          "tagClass": null,
-          "heading": "同一類問題問很多次",
-          "paragraph": "題目：客戶詢問助理。只草擬回覆，不直接寄出。",
-          "bullets": []
-        }
-      ],
+      "cards": [],
       "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "三個都是內部小工具。選一個你真的遇過的，不要三個一起做。"
+      "table": [
+        [
+          "部門",
+          "現在的痛點",
+          "收小後的題目",
+          "這次只做"
+        ],
+        [
+          "人資",
+          "請假在群組裡常被漏看",
+          "請假申請助理",
+          "申請與主管核准"
+        ],
+        [
+          "總務",
+          "報修電話講完沒有紀錄",
+          "設備報修工單助理",
+          "建立工單與狀態追蹤"
+        ],
+        [
+          "客服",
+          "同一類問題被問很多次",
+          "客戶詢問助理",
+          "草擬回覆，不直接寄出"
+        ],
+        [
+          "業務",
+          "報價每次從舊檔案改",
+          "報價草稿助理",
+          "依價目表產草稿，主管核價"
+        ],
+        [
+          "行政",
+          "會議室常被重複預約",
+          "會議室預約助理",
+          "預約與時段衝突提醒"
+        ],
+        [
+          "財務",
+          "報銷單常缺附件",
+          "報銷檢查助理",
+          "檢查必填與附件，不核銷"
+        ]
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "18 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "callouts": [
+        "選一個你真的遇過的，不要三個一起做。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "23 / 32"
     },
     {
-      "slideId": "s19",
-      "index": 19,
-      "title": "01-3-2 說明",
-      "layout": "cards",
+      "slideId": "s24",
+      "index": 24,
+      "title": "01-3-2 範圍卡",
+      "layout": "cards-six",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-2 · 選題與 MVP 範圍",
+      "eyebrow": "01-3-2 / 範圍卡＋MVP · 10′",
+      "kicker": "",
       "h1": "",
       "h2": "定義使用者、流程、輸入輸出與不做事項",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "使用者",
-          "tag": null,
-          "tagClass": null,
-          "heading": "誰按、誰看、誰核准",
-          "paragraph": "至少分出申請的人與確認的人。",
-          "bullets": []
-        },
-        {
-          "num": "流程",
-          "tag": null,
-          "tagClass": null,
-          "heading": "從開始到結束",
-          "paragraph": "每一步標出是 AI 做，還是人做。",
-          "bullets": []
-        },
-        {
-          "num": "輸入",
-          "tag": null,
-          "tagClass": null,
-          "heading": "人交給系統什麼",
-          "paragraph": "少到主流程跑得起來就好。",
-          "bullets": []
-        },
-        {
-          "num": "輸出",
-          "tag": null,
-          "tagClass": null,
-          "heading": "系統交還什麼",
-          "paragraph": "人看完知道下一步是誰的事。",
-          "bullets": []
-        },
-        {
-          "num": "不做",
-          "tag": null,
-          "tagClass": null,
-          "heading": "這 8 週明確不做",
-          "paragraph": "用來阻止範圍變大。寫得出來，題目才算小。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "19 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s20",
-      "index": 20,
-      "title": "01-3-2 例子",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-2 · 例子 · 請假助理",
-      "h1": "",
-      "h2": "一張範圍卡長這樣",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -989,7 +1078,15 @@
           "tag": null,
           "tagClass": null,
           "heading": "使用者",
-          "paragraph": "員工申請，主管核准。",
+          "paragraph": "誰按、誰看、誰核准。至少分出申請的人與確認的人。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "使用者故事",
+          "paragraph": "身為【角色】，我想要【做什麼】，以便【得到什麼好處】。",
           "bullets": []
         },
         {
@@ -997,7 +1094,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "流程",
-          "paragraph": "填單 → AI 檢查必填 → 主管核准 → 寫入紀錄。",
+          "paragraph": "從開始到結束，每一步標出是 AI 做，還是人做。",
           "bullets": []
         },
         {
@@ -1005,7 +1102,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "輸入",
-          "paragraph": "假別、日期、理由。",
+          "paragraph": "人交給系統什麼。少到主流程跑得起來就好。",
           "bullets": []
         },
         {
@@ -1013,7 +1110,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "輸出",
-          "paragraph": "一張看得到狀態的請假單。",
+          "paragraph": "系統交還什麼。人看完知道下一步是誰的事。",
           "bullets": []
         },
         {
@@ -1021,32 +1118,76 @@
           "tag": null,
           "tagClass": null,
           "heading": "不做事項",
-          "paragraph": "不算薪資、不串其他系統、不讓 AI 核准、不處理補休與出差。",
+          "paragraph": "這 8 週明確不做。寫得出來，題目才算小。",
           "bullets": []
         }
       ],
       "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "這張卡還沒有程式。它已經夠讓別人判斷：8 週做不做得完。"
-      ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "20 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "table": [],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "24 / 32"
     },
     {
-      "slideId": "s21",
-      "index": 21,
-      "title": "01-3-3 說明",
+      "slideId": "s25",
+      "index": 25,
+      "title": "01-3-2 範圍卡例子",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "01-3-2 / 例子 · 請假申請助理",
+      "kicker": "",
+      "h1": "",
+      "h2": "一張範圍卡長這樣",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "格子",
+          "請假申請助理"
+        ],
+        [
+          "使用者",
+          "員工申請、主管核准、人資查詢"
+        ],
+        [
+          "使用者故事",
+          "身為員工，我想要線上送出請假，以便不用在群組裡追主管有沒有看到"
+        ],
+        [
+          "流程",
+          "填單 → AI 檢查必填與日期 → 主管核准 → 寫入紀錄"
+        ],
+        [
+          "輸入／輸出",
+          "假別、日期、理由 → 一張看得到狀態的請假單"
+        ],
+        [
+          "驗收標準",
+          "假設主管尚未核准，當員工查看，則狀態顯示「待核准」，不寫入出勤紀錄"
+        ],
+        [
+          "不做事項",
+          "不算薪資、不串打卡系統、不讓 AI 核准、不處理補休與出差"
+        ]
+      ],
+      "callouts": [
+        "這張卡還沒有程式，但已經夠讓別人判斷：8 週做不做得完。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "25 / 32"
+    },
+    {
+      "slideId": "s26",
+      "index": 26,
+      "title": "01-3-2 MVP 排序",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-3 · 選題與 MVP 範圍",
+      "eyebrow": "01-3-2 / MVP 排序",
+      "kicker": "",
       "h1": "",
-      "h2": "完成一頁式專案提案，並接受講師回饋",
+      "h2": "功能想太多？用 MoSCoW 排出這次先做什麼",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -1054,51 +1195,158 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "一頁要回答的事",
+          "heading": "四個籃子",
           "paragraph": "",
           "bullets": [
-            "做給誰",
-            "痛點是什麼",
-            "AI 做到哪裡",
-            "人在哪裡確認",
-            "8 週做不做得完"
+            "Must：少了它，主流程跑不動",
+            "Should：很重要，但可以晚一點",
+            "Could：有更好，有空再說",
+            "Won't this time：這次明確不做"
           ]
         },
         {
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "請講師只看三件事",
+          "heading": "放進 Must 前，問三個問題",
           "paragraph": "",
           "bullets": [
-            "題目是否太寬",
-            "不做事項是否夠清楚",
-            "人工確認點有沒有漏"
+            "用假資料就能示範嗎？",
+            "不是工程師，8 週用 AI 工具做得出來嗎？",
+            "少了它，使用者還能走完一次主流程嗎？"
           ]
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "提案不是程式。它讓講師不用翻很多頁，就能告訴你範圍要不要再收小。"
+        "Won't 籃子裡的東西，直接抄進提案的「不做事項」。AI 的排序只是參考，決定是你的。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "21 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "26 / 32"
     },
     {
-      "slideId": "s22",
-      "index": 22,
-      "title": "01-3-3 練習",
-      "layout": "cards",
+      "slideId": "s27",
+      "index": 27,
+      "title": "提案範本",
+      "layout": "table",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "01-3-3 · 練習",
+      "eyebrow": "01-3-3 / 一頁式專案提案",
+      "kicker": "",
       "h1": "",
-      "h2": "用三句話請講師回饋",
+      "h2": "九個欄位，一頁寫完（範例：設備報修工單助理）",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "欄位",
+          "要寫什麼",
+          "範例"
+        ],
+        [
+          "1 題目",
+          "一句話，8 週做得完",
+          "設備報修工單助理：只做報修建立與狀態追蹤"
+        ],
+        [
+          "2 使用者",
+          "誰按、誰看、誰核准",
+          "同事報修；總務指派與改狀態；主管看全部"
+        ],
+        [
+          "3 痛點",
+          "現在怎麼做、哪裡卡住",
+          "電話或群組報修，講完沒紀錄，進度要一直問"
+        ],
+        [
+          "4 流程",
+          "開始到結束，標出 AI 與人",
+          "填單 → AI 整理欄位 → 總務指派 → 處理 → 總務結案"
+        ],
+        [
+          "5 輸入／輸出",
+          "人交進來什麼、系統交回什麼",
+          "地點、設備、描述、照片 → 有編號與狀態的工單"
+        ],
+        [
+          "6 AI 負責什麼",
+          "只寫被允許的步驟",
+          "口語整理成欄位、建議分類與急迫度"
+        ],
+        [
+          "7 人工確認點",
+          "最後一下由人按，至少兩個",
+          "指派維修、結案"
+        ],
+        [
+          "8 不做事項",
+          "至少三條",
+          "不串採購、不算費用、不讓 AI 結案、不做手機 App"
+        ],
+        [
+          "9 里程碑",
+          "對到課程 8 週",
+          "W2 畫面 → W4 表單 → W5 存資料 → W8 上線 Demo"
+        ]
+      ],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "27 / 32"
+    },
+    {
+      "slideId": "s28",
+      "index": 28,
+      "title": "練習 C",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "01-3-3 / 練習 C · 38′（20:47–21:25）",
+      "kicker": "",
+      "h1": "",
+      "h2": "現在就寫出你的一頁提案",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "選題 3′",
+          "description": "從練習 A 或六個部門例子挑一個，寫成一句題目。"
+        },
+        {
+          "title": "範圍卡 8′",
+          "description": "填使用者、故事、流程、輸入輸出、不做事項。"
+        },
+        {
+          "title": "寫成一頁 17′",
+          "description": "照九欄範本寫；第 9 格先寫 W2、W5、W8 三個點。"
+        },
+        {
+          "title": "兩兩互評 10′",
+          "description": "對方只找一個「8 週做不完」的地方，你把它寫進不做事項。"
+        },
+        {
+          "title": "講師回饋 25′",
+          "description": "21:25 起每人 2′，用三句話說提案，講師當場回饋。"
+        }
+      ],
+      "table": [],
+      "callouts": [
+        "卡住了？就用請假、報修或客戶詢問其中一個題目，先把九格寫完。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "28 / 32"
+    },
+    {
+      "slideId": "s29",
+      "index": 29,
+      "title": "講師回饋",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "01-3-3 / 講師回饋 · 25′（21:25–21:50）",
+      "kicker": "",
+      "h1": "",
+      "h2": "每人 2 分鐘：用三句話請講師回饋",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -1128,83 +1376,121 @@
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "若有一句填不出來，先不要加新功能。回到範圍卡，把那一格補上。"
+        "講師只看三件事：題目是否太寬、不做事項是否清楚、人工確認點有沒有漏。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "22 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "29 / 32"
     },
     {
-      "slideId": "s23",
-      "index": 23,
-      "title": "課堂練習",
-      "layout": "cards-two",
+      "slideId": "s30",
+      "index": 30,
+      "title": "8 週里程碑",
+      "layout": "flow",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "課堂練習",
+      "eyebrow": "01-3-3 / 範本第 9 格",
+      "kicker": "",
       "h1": "",
-      "h2": "現在就寫出提案的前半",
+      "h2": "把你的題目放進 8 週：以設備報修工單助理為例",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "W1 提案",
+          "description": "九欄寫完，範圍定稿"
+        },
+        {
+          "title": "W2 畫面",
+          "description": "畫出報修表單與進度頁"
+        },
+        {
+          "title": "W3 首版",
+          "description": "頁面可以點、可以看"
+        },
+        {
+          "title": "W4 表單",
+          "description": "必填與照片檢查"
+        },
+        {
+          "title": "W5 存資料",
+          "description": "工單存得下來、查得到"
+        },
+        {
+          "title": "W6 後台",
+          "description": "總務看列表、改狀態"
+        },
+        {
+          "title": "W7 測試",
+          "description": "照驗收標準測一次"
+        },
+        {
+          "title": "W8 上線",
+          "description": "用真實流程 Demo"
+        }
+      ],
+      "table": [],
+      "callouts": [
+        "排不進 8 週，通常是題目還太大：先刪功能，再寫里程碑。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "30 / 32"
+    },
+    {
+      "slideId": "s31",
+      "index": 31,
+      "title": "今天帶走三句話",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "99 / 收尾",
+      "kicker": "",
+      "h1": "",
+      "h2": "今天帶走的三句話",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": null,
+          "num": "01-1",
           "tag": null,
           "tagClass": null,
-          "heading": "1. 選一個小問題",
-          "paragraph": "用你工作裡反覆出現的事。一時想不到，就用請假、報修、客戶詢問其中一個。",
+          "heading": "關掉畫面還在，才叫系統",
+          "paragraph": "有資料、有流程、有權限，同事下週還能接著用。",
           "bullets": []
         },
         {
-          "num": null,
+          "num": "01-2",
           "tag": null,
           "tagClass": null,
-          "heading": "2. 先填六格",
-          "paragraph": "題目、使用者、痛點、流程、輸入／輸出、AI 負責什麼。",
+          "heading": "AI 生成，你驗證",
+          "paragraph": "一輪只改一件事；最後一下由人按，資料先去識別化。",
           "bullets": []
         },
         {
-          "num": null,
+          "num": "01-3",
           "tag": null,
           "tagClass": null,
-          "heading": "3. 跟同學交換",
-          "paragraph": "請對方只找一個「這 8 週做不完」的地方。",
-          "bullets": []
-        },
-        {
-          "num": null,
-          "tag": null,
-          "tagClass": null,
-          "heading": "4. 寫進不做事項",
-          "paragraph": "把那個地方收進範圍。練習的成品是一頁裡能看懂的範圍，不是程式。",
+          "heading": "「不做」寫得出來，才算小",
+          "paragraph": "一頁提案講清楚做給誰、做到哪裡、這次不做什麼。",
           "bullets": []
         }
       ],
       "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "23 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "31 / 32"
     },
     {
-      "slideId": "s24",
-      "index": 24,
-      "title": "提案範本",
-      "layout": "cards",
+      "slideId": "s32",
+      "index": 32,
+      "title": "作業與下週",
+      "layout": "cards-two",
       "hero": false,
-      "eyebrow": "",
-      "kicker": "一頁式專案提案",
+      "eyebrow": "99 / 作業說明與討論 · 10′（21:50–22:00）",
+      "kicker": "",
       "h1": "",
-      "h2": "九個欄位，一頁寫完",
+      "h2": "作業是修改提案，下週課堂上一起檢討",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -1212,192 +1498,42 @@
           "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "題目",
-          "paragraph": "這 8 週要做的小系統，一句話。",
+          "heading": "必做｜完成九欄提案",
+          "paragraph": "九個欄位都寫完；人工確認點至少兩個，不做事項至少三條。",
           "bullets": []
         },
         {
           "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "使用者",
-          "paragraph": "誰按、誰看、誰核准。",
+          "heading": "必做｜補兩條驗收標準",
+          "paragraph": "用「假設／當／則」寫：一條正常情況、一條例外情況。",
           "bullets": []
         },
         {
           "num": "3",
           "tag": null,
           "tagClass": null,
-          "heading": "痛點",
-          "paragraph": "現在怎麼做、哪裡卡住。",
+          "heading": "選做｜請 AI 挑錯",
+          "paragraph": "把提案貼給 AI（先去識別化），請它列出你沒寫清楚的地方，至少改一處並記下來。",
           "bullets": []
         },
         {
           "num": "4",
           "tag": null,
           "tagClass": null,
-          "heading": "流程",
-          "paragraph": "從開始到結束，標出 AI 與人。",
-          "bullets": []
-        },
-        {
-          "num": "5",
-          "tag": null,
-          "tagClass": null,
-          "heading": "輸入／輸出",
-          "paragraph": "人交進來什麼，系統交回去什麼。",
-          "bullets": []
-        },
-        {
-          "num": "6",
-          "tag": null,
-          "tagClass": null,
-          "heading": "AI 負責什麼",
-          "paragraph": "只寫被允許的步驟，例如檢查、整理、草擬。",
-          "bullets": []
-        },
-        {
-          "num": "7",
-          "tag": null,
-          "tagClass": null,
-          "heading": "人工確認點",
-          "paragraph": "送出、核准、寄出這類最後一下。",
-          "bullets": []
-        },
-        {
-          "num": "8",
-          "tag": null,
-          "tagClass": null,
-          "heading": "不做事項",
-          "paragraph": "這 8 週明確不做的事，至少寫三條。",
-          "bullets": []
-        },
-        {
-          "num": "9",
-          "tag": null,
-          "tagClass": null,
-          "heading": "8 週里程碑",
-          "paragraph": "你的專案怎麼分段做完。下一頁說明怎麼填。",
+          "heading": "下週 W2｜使用者流程與前端設計",
+          "paragraph": "把提案的「流程」畫成頁面：Wireframe／頁面規劃。請帶修改後的提案來。",
           "bullets": []
         }
       ],
       "flowSteps": [],
-      "table": null,
-      "callouts": [],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "24 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s25",
-      "index": 25,
-      "title": "里程碑怎麼填",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "範本第 9 格 · 8 週里程碑",
-      "h1": "",
-      "h2": "寫的是你的專案，不是課程每週標題",
-      "lead": "後續週次的課程名稱以課堂公告為準。這一格只寫你的小系統打算怎麼分段做完，課堂上可以再改。",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "前段",
-          "tag": null,
-          "tagClass": null,
-          "heading": "範圍定稿",
-          "paragraph": "一頁提案可以給人看。",
-          "bullets": []
-        },
-        {
-          "num": "中段",
-          "tag": null,
-          "tagClass": null,
-          "heading": "主流程可示範",
-          "paragraph": "可以點給人看，先不含全部例外。",
-          "bullets": []
-        },
-        {
-          "num": "後段",
-          "tag": null,
-          "tagClass": null,
-          "heading": "資料、權限、AI",
-          "paragraph": "AI 只做被允許的步驟。",
-          "bullets": []
-        },
-        {
-          "num": "最後",
-          "tag": null,
-          "tagClass": null,
-          "heading": "自己走完一次",
-          "paragraph": "準備用真實流程示範，不是只展示對話。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
+      "table": [],
       "callouts": [
-        "四段寫不出來，通常是題目還太大。先刪功能，再寫里程碑。"
+        "作業在課堂上討論：現在先確認怎麼改，下週開場帶修改後的提案，課堂上一起檢討。"
       ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "25 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
-    },
-    {
-      "slideId": "s26",
-      "index": 26,
-      "title": "作業",
-      "layout": "cards",
-      "hero": false,
-      "eyebrow": "",
-      "kicker": "本週交付",
-      "h1": "",
-      "h2": "作業：完成一頁式專案提案",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "1",
-          "tag": null,
-          "tagClass": null,
-          "heading": "九個欄位都寫完",
-          "paragraph": "題目、使用者、痛點、流程、輸入／輸出、AI 負責什麼、人工確認點、不做事項、8 週里程碑。",
-          "bullets": []
-        },
-        {
-          "num": "2",
-          "tag": null,
-          "tagClass": null,
-          "heading": "兩個確認點、三條不做",
-          "paragraph": "人工確認點至少兩個。不做事項至少三條。",
-          "bullets": []
-        },
-        {
-          "num": "3",
-          "tag": null,
-          "tagClass": null,
-          "heading": "帶來接受回饋",
-          "paragraph": "用三句話請講師看：題目是否太寬、不做事項是否夠清楚、確認點有沒有漏。",
-          "bullets": []
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "若還沒有自己的工作問題，就用請假、報修或客戶詢問其中一個，寫完這一頁。"
-      ],
-      "footerBrand": "AI Agent 系統課 · 第 1 週",
-      "footerPage": "26 / 26",
-      "phases": [],
-      "facts": [],
-      "slideFooter": "",
-      "opUrls": []
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "32 / 32"
     }
   ]
 }
