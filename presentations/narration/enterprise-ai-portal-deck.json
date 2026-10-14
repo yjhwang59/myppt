@@ -33,16 +33,16 @@
         "svgLabels": [],
         "callouts": []
       },
-      "script": "各位主管好，這份簡報的主題是「企業 AI 入口網整合平台架構」。以統一入口與編排器(Orchestrator)串接雲端生成式 AI 與私有 GPU 推論，把企業資料轉成可治理、可落地的智慧服務。理解這一頁後，下一頁我們會進入「為什麼現在」。",
-      "estimatedSeconds": 30,
+      "script": "各位主管，今天我們將探討「企業 AI 入口網整合平台架構」。這個平台的核心目的是透過統一的入口與編排器（Orchestrator），有效串接雲端生成式 AI 與私有 GPU 推論。如此一來，我們能將企業資料轉化為可治理、可落地的智慧服務。\n\n首先，這個平台能夠整合多種 AI 資源，讓企業在數位轉型過程中更加靈活與高效。其次，透過編排器的功能，我們可以簡化資料處理流程，提升業務運作的效率，並確保資料的治理與安全性。最後，這樣的架構不僅能支持當前的需求，還具備未來擴展的潛力，為企業持續創新提供支持。\n\n接下來，我們將深入探討為什麼現在是實施這一方案的最佳時機。",
+      "estimatedSeconds": 60,
       "status": "audio_ready",
       "voice": {
         "provider": "openai",
-        "voiceId": "nova",
+        "voiceId": "echo",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s01.mp3",
-      "audioDurationSeconds": 21.3,
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s01.mp3",
+      "audioDurationSeconds": 54.5,
       "presenter": {
         "name": "default",
         "avatarVideoUrl": null
@@ -50,10 +50,10 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-08-31T05:52:32.766Z",
-      "approvedAt": "2026-08-31T06:43:39.288Z",
-      "approvedBy": "reviewer",
-      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+      "generatedAt": "2026-08-31T08:53:08.831Z",
+      "approvedAt": "2026-08-31T09:06:40.837Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": null
     },
     {
       "slideId": "s2",
@@ -92,15 +92,15 @@
           "結論：需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。"
         ]
       },
-      "script": "接下來這一頁，我們來看「為什麼現在」。散落的試點與工具無法形成組織能力；先統一入口與編排層，再談擴張場景。這頁有三個重點。第一，資料孤島(Data Silo)：SOP、合約、ERP／ITSM、監控日誌與外部 API 分屬不同系統，問答與報表難以跨來源組裝。。第二，多模型與成本失控：雲端模型與私有推論各走各的；缺少模型路由(Model Routing)與權限控管，試點難以規模化。。第三，資安與導入成本：敏感資料不宜一律上雲；合規、稽核與 Agent 自動化需要中央治理，而非各部門自建黑盒。。需要「統一企業 AI 入口」＋「AI 整合平台編排層」，才能同時兼顧體驗、治理與混合部署。理解這一頁後，下一頁我們會進入「架構總覽」。",
-      "estimatedSeconds": 68,
-      "status": "audio_ready",
+      "script": "在當前的商業環境中，為什麼我們需要一個統一的企業 AI 入口？由於散落的試點與工具無法形成組織的整體能力，因此，我們必須先統一入口與編排層，然後再談擴張使用場景(Use Case)。這樣的做法能有效解決多系統、多模型與多風險的挑戰。\n\n首先，資料孤島的問題非常突出，像是 SOP、合約、ERP／ITSM、監控日誌與外部 API 等資料分散在不同系統中，使得問答與報表難以跨來源組裝。其次，雲端模型與私有推論各自運行，缺乏模型路由與權限控管，導致試點無法擴大規模，這會造成成本失控的風險。最後，敏感資料的資安問題也不容忽視，合規、稽核與 Agent 自動化需要中央治理，而非各部門自行建立黑盒。\n\n總結來說，我們需要一個「統一企業 AI 入口」以及「AI 整合平台編排層」，才能同時兼顧使用者體驗、治理與混合部署。接下來，我們將進一步探討整體架構的概覽。",
+      "estimatedSeconds": 80,
+      "status": "stale",
       "voice": {
         "provider": "openai",
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s02.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s02.mp3",
       "audioDurationSeconds": 55.2,
       "presenter": {
         "name": "default",
@@ -109,10 +109,10 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-08-31T05:52:32.768Z",
-      "approvedAt": "2026-08-31T06:43:39.290Z",
-      "approvedBy": "reviewer",
-      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+      "generatedAt": "2026-08-31T09:09:42.108Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
     },
     {
       "slideId": "s3",
@@ -176,16 +176,16 @@
         ],
         "callouts": []
       },
-      "script": "接下來這一頁，我們來看「架構總覽」。架構上，我們依序看：1、使用者、統一入口體驗、企業 AI 入口網站、Chatbot、行動 App、🌐、💬。理解這一頁後，下一頁我們會進入「使用者入口」。",
-      "estimatedSeconds": 30,
+      "script": "現在我們將深入了解企業 AI 入口網整合平台的架構總覽。這個架構是由五個層次組成，從使用者入口到產業價值，形成一個完整的生態系統。\n\n首先，最上層是「使用者」，我們提供統一的入口體驗，包括企業 AI 入口網站、Chatbot 和行動 App，讓使用者能夠方便地存取各種資源。接下來是「編排層」，這一層的功能是整合各種 AI 技術，包含身分驗證與權限管理、提示工程、Agent 工作流，以及模型路由和回應優化，確保使用者的需求能夠被有效滿足。\n\n第三層是「模型與資料」，這裡我們結合了雲端服務與企業內部伺服器，支持混合部署，並整合各類資料庫，像是 SQL、文件和日誌，讓大型語言模型（LLM）能夠發揮其最大效能。接著是「分析回饋」層，這裡我們建立了一個閉環產出系統，能夠進行文件問答、資產分析和維運建議，實現生成、分析、預測、建議及自動執行的過程，確保服務的可稽核性。\n\n最後，我們的架構旨在創造「價值」，通過六大企業場景與六大產業應用，實現混合部署與資安治理的最佳化。這樣的架構不僅提升了使用者體驗，也強化了企業的治理能力。接下來，我們將探討使用者入口的具體實現。",
+      "estimatedSeconds": 104,
       "status": "audio_ready",
       "voice": {
         "provider": "openai",
-        "voiceId": "nova",
+        "voiceId": "echo",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s03.mp3",
-      "audioDurationSeconds": 15.8,
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s03.mp3",
+      "audioDurationSeconds": 94.2,
       "presenter": {
         "name": "default",
         "avatarVideoUrl": null
@@ -193,10 +193,10 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-08-31T05:52:32.768Z",
-      "approvedAt": "2026-08-31T06:43:39.290Z",
-      "approvedBy": "reviewer",
-      "generationNotes": "無 OPENAI_API_KEY，使用 template 草稿"
+      "generatedAt": "2026-08-31T09:12:37.343Z",
+      "approvedAt": "2026-08-31T09:15:39.717Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": null
     },
     {
       "slideId": "s4",
@@ -255,7 +255,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s04.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s04.mp3",
       "audioDurationSeconds": 36,
       "presenter": {
         "name": "default",
@@ -319,7 +319,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s05.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s05.mp3",
       "audioDurationSeconds": 52.8,
       "presenter": {
         "name": "default",
@@ -381,7 +381,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s06.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s06.mp3",
       "audioDurationSeconds": 32.3,
       "presenter": {
         "name": "default",
@@ -447,7 +447,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s07.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s07.mp3",
       "audioDurationSeconds": 29.8,
       "presenter": {
         "name": "default",
@@ -525,7 +525,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s08.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s08.mp3",
       "audioDurationSeconds": 29.3,
       "presenter": {
         "name": "default",
@@ -599,7 +599,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s09.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s09.mp3",
       "audioDurationSeconds": 39.4,
       "presenter": {
         "name": "default",
@@ -676,7 +676,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s10.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s10.mp3",
       "audioDurationSeconds": 34.7,
       "presenter": {
         "name": "default",
@@ -744,7 +744,7 @@
         "voiceId": "nova",
         "speed": 1
       },
-      "audioUrl": "narration/audio/s11.mp3",
+      "audioUrl": "narration/audio/enterprise-ai-portal-deck/s11.mp3",
       "audioDurationSeconds": 32,
       "presenter": {
         "name": "default",
@@ -761,7 +761,9 @@
   ],
   "meta": {
     "lastExtractedAt": "2026-08-31T06:33:54.360Z",
-    "totalEstimatedSeconds": 472,
+    "totalEstimatedSeconds": 588,
     "ttsCostEstimateUsd": 0.0317
-  }
+  },
+  "title": "企業 AI 入口網整合平台架構",
+  "sourceType": "html"
 }

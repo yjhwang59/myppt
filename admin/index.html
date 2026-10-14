@@ -3,32 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>簡報後台 · AI-EIP</title>
+  <title>myPPT簡報工作室</title>
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-  <header class="topbar">
-    <h1>簡報後台</h1>
-    <div class="topbar-actions">
-      <input id="admin-secret" type="password" placeholder="ADMIN_SECRET" />
-      <button type="button" id="btn-connect">連線</button>
-      <button type="button" id="btn-rebuild">Rebuild HTML</button>
+  <section id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-mark" aria-hidden="true">AI</div>
+      <h1>myPPT簡報工作室</h1>
+      <p class="login-lead">使用 Google 帳號登入，管理簡報庫與講稿</p>
+      <p id="login-error" class="login-error hidden" role="alert"></p>
+      <p id="login-setup" class="login-hint hidden">尚未設定 Google 登入。請在本機 .env 填入 GOOGLE_CLIENT_ID 與 GOOGLE_ALLOWED_EMAILS。</p>
+      <button type="button" id="google-btn" class="google-login-btn hidden">使用 Google 帳號登入</button>
+      <label class="remember hidden" id="login-remember-wrap">
+        <input type="checkbox" id="login-remember" checked />
+        保持登入 30 天
+      </label>
     </div>
-  </header>
+  </section>
 
-  <main class="layout">
-    <aside class="slide-list-panel">
-      <div class="panel-head">
-        <strong>Slides</strong>
-        <button type="button" id="btn-reload">重新載入</button>
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <div class="brand">
+        <h1>myPPT簡報工作室</h1>
+        <a href="?">簡報庫</a>
       </div>
-      <ul id="slide-list"></ul>
-    </aside>
+      <div class="topbar-actions">
+        <span id="admin-user-label" class="user-chip"></span>
+        <button type="button" id="btn-logout">登出</button>
+      </div>
+    </header>
 
-    <section class="editor-panel">
-      <div class="panel-head">
-        <strong id="editor-title">選擇左側 slide</strong>
+    <section id="view-library" class="view hidden">
+      <div class="library-head">
+        <div>
+          <h2>簡報庫</h2>
+          <p class="muted library-lead">管理分類、上架與簡報目錄。講稿與語音仍在工作室完成。</p>
+          <p id="remote-note" class="muted library-lead hidden">線上可改這一簡報的頁面、講稿與語音。新增簡報與分類仍請用本機工作室。</p>
+        </div>
+      </div>
+      <nav class="library-tabs" aria-label="簡報庫分頁">
+        <button type="button" class="library-tab active" data-library-tab="decks">簡報</button>
+        <button type="button" class="library-tab" data-library-tab="categories">分類</button>
+      </nav>
+
+      <div id="library-decks">
+      <div class="library-toolbar">
+        <input id="deck-search" type="search" placeholder="搜尋標題、deckId、分類、狀態…" />
+        <select id="deck-status-filter" aria-label="狀態篩選">
+          <option value="all" selected>全部</option>
+          <option value="listed">上架中</option>
+          <option value="unlisted">未上架</option>
+          <option value="in_progress">進行中</option>
+          <option value="published">已發布</option>
+          <option value="stale">語音過期</option>
+        </select>
+        <select id="deck-category-filter" aria-label="分類篩選">
+          <option value="all">全部分類</option>
+        </select>
+        <details id="deck-column-settings" class="column-settings">
+          <summary>欄位設定</summary>
+          <div id="deck-column-settings-list" class="column-settings-list"></div>
+        </details>
+        <button type="button" id="btn-reload-decks">重新載入</button>
+        <button type="button" id="btn-show-upload" class="primary">＋ 新增簡報</button>
+      </div>
+      <div id="upload-panel" class="upload-panel hidden">
+        <div class="import-tabs" role="tablist">
+          <button type="button" class="import-tab active" data-import-tab="url" role="tab" aria-selected="true">從網址</button>
+          <button type="button" class="import-tab" data-import-tab="file" role="tab" aria-selected="false">上傳檔案</button>
+        </div>
+        <div id="import-pane-url" class="import-pane">
+          <label class="upload-url">來源網址
+            <input id="upload-source-url" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="貼上 https://fyh.aidc.work/docs/….html" />
+          </label>
+          <p id="upload-url-hint" class="muted upload-hint">貼上後會自動解碼檔名並填入標題。</p>
+        </div>
+        <div id="import-pane-file" class="import-pane hidden">
+          <div id="drop-zone" class="drop-zone">
+            <p>拖放 HTML 或 PDF 簡報到此，或點擊選擇檔案</p>
+            <input id="file-input" type="file" accept=".html,.htm,.pdf" />
+          </div>
+        </div>
+        <div class="upload-fields">
+          <label>標題 <input id="upload-title" type="text" placeholder="簡報標題" /></label>
+          <label>deckId <input id="upload-deck-id" type="text" placeholder="中文檔名可留空由系統產生" pattern="[a-z0-9]+(-[a-z0-9]+)*" /></label>
+          <label>分類
+            <select id="upload-category"></select>
+          </label>
+          <label>排序 <input id="upload-sort" type="number" value="0" /></label>
+          <label class="checkbox"><input id="upload-listed" type="checkbox" />上架到公開簡報庫</label>
+          <label class="checkbox"><input id="upload-overwrite" type="checkbox" />覆寫既有 deckId</label>
+          <button type="button" id="btn-upload" class="primary">匯入</button>
+        </div>
+        <p id="library-status" class="status library-status"></p>
+      </div>
+      <div id="deck-table-wrap" class="deck-table-wrap">
+        <table class="deck-table" id="deck-table">
+          <thead>
+            <tr id="deck-table-head"></tr>
+          </thead>
+          <tbody id="deck-table-body"></tbody>
+        </table>
+        <p id="deck-table-empty" class="muted table-empty hidden">尚無簡報，請從網址匯入或上傳 HTML／PDF。</p>
+      </div>
+      <div id="deck-pagination" class="list-pagination"></div>
+      </div>
+
+      <div id="library-categories" class="hidden">
+        <div class="library-toolbar">
+          <input id="category-search" type="search" placeholder="搜尋名稱、代碼、說明…" />
+          <select id="category-status-filter" aria-label="分類狀態">
+            <option value="active" selected>啟用中</option>
+            <option value="all">全部</option>
+            <option value="inactive">僅停用</option>
+          </select>
+          <details id="category-column-settings" class="column-settings">
+            <summary>欄位設定</summary>
+            <div id="category-column-settings-list" class="column-settings-list"></div>
+          </details>
+          <button type="button" id="btn-reload-categories">重新載入</button>
+          <button type="button" id="btn-add-category" class="primary">＋ 新增分類</button>
+        </div>
+        <div class="deck-table-wrap">
+          <table class="deck-table" id="category-table">
+            <thead>
+              <tr id="category-table-head"></tr>
+            </thead>
+            <tbody id="category-table-body"></tbody>
+          </table>
+          <p id="category-table-empty" class="muted table-empty hidden">尚無分類。</p>
+        </div>
+        <div id="category-pagination" class="list-pagination"></div>
+      </div>
+    </section>
+
+    <dialog id="deck-edit-dialog" class="deck-dialog">
+      <form id="deck-edit-form">
+        <h3>編輯簡報</h3>
+        <label>標題 <input id="edit-deck-title" type="text" required /></label>
+        <p class="muted hint" id="edit-deck-id-label"></p>
+        <label>分類 <select id="edit-deck-category"></select></label>
+        <label>摘要 <textarea id="edit-deck-summary" rows="3" placeholder="公開卡片摘要，留空則使用首頁導言"></textarea></label>
+        <label>排序 <input id="edit-deck-sort" type="number" value="0" /></label>
+        <label class="checkbox"><input id="edit-deck-listed" type="checkbox" />上架到公開簡報庫</label>
+        <div class="dialog-actions">
+          <button type="button" id="btn-edit-cancel">取消</button>
+          <button type="submit" class="primary">儲存</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="category-dialog" class="deck-dialog">
+      <form id="category-form">
+        <h3 id="category-dialog-title">新增分類</h3>
+        <label>名稱 <input id="category-name" type="text" required /></label>
+        <label>代碼 <input id="category-id" type="text" required pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="architecture" /></label>
+        <label>說明 <textarea id="category-description" rows="2"></textarea></label>
+        <label>排序 <input id="category-sort" type="number" value="0" /></label>
+        <label class="checkbox"><input id="category-active" type="checkbox" checked />啟用</label>
+        <div class="dialog-actions">
+          <button type="button" id="btn-category-cancel">取消</button>
+          <button type="submit" class="primary">儲存</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="category-reassign-dialog" class="deck-dialog">
+      <form id="category-reassign-form">
+        <h3>此分類仍有簡報</h3>
+        <p id="reassign-message" class="muted"></p>
+        <label>改派到
+          <select id="reassign-target"></select>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" id="btn-reassign-cancel">取消</button>
+          <button type="submit" class="primary">改派並刪除</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Studio view -->
+    <section id="view-studio" class="view hidden">
+      <nav class="stepper" id="stepper" aria-label="流程進度">
+        <span data-step="upload">上傳</span>
+        <span data-step="scripts">講稿</span>
+        <span data-step="edit">編輯與試播</span>
+        <span data-step="audio">全份語音</span>
+        <span data-step="publish">發布</span>
+      </nav>
+
+      <div class="studio-head">
+        <div>
+          <strong id="studio-title">—</strong>
+          <span id="studio-meta" class="muted"></span>
+        </div>
         <div class="toolbar">
+          <label>LLM
+            <select id="llm-model"></select>
+          </label>
+          <input id="llm-model-custom" type="text" class="llm-custom-input hidden" placeholder="自訂 model id" />
           <label>聲音
             <select id="voice-gender">
               <option value="female">女聲</option>
@@ -36,44 +210,122 @@
             </select>
           </label>
           <select id="voice-id"></select>
-          <button type="button" id="btn-save">儲存內容</button>
-          <button type="button" id="btn-regen-script">重生講稿</button>
-          <button type="button" id="btn-synth">重生語音</button>
         </div>
+        <details id="my-voice-panel" class="my-voice hidden">
+          <summary>我的聲音</summary>
+          <p class="muted hint">先逐字唸同意句，再錄 10–30 秒自然講話。同意句必須是簡體原文，OpenAI 沒有繁體版本。</p>
+          <p id="consent-phrase" class="consent-phrase">我是此声音的拥有者并授权OpenAI使用此声音创建语音合成模型</p>
+          <div class="btn-row">
+            <button type="button" id="btn-record-consent">錄同意句</button>
+            <button type="button" id="btn-record-sample">錄聲音樣本</button>
+          </div>
+          <p id="my-voice-status" class="muted"></p>
+        </details>
       </div>
 
-      <form id="slide-form" class="slide-form">
-        <label>標題 data-title<input name="title" type="text" /></label>
-        <label>eyebrow<input name="eyebrow" type="text" /></label>
-        <label>kicker<input name="kicker" type="text" /></label>
-        <label>h1<textarea name="h1" rows="2"></textarea></label>
-        <label>h2<input name="h2" type="text" /></label>
-        <label>lead<textarea name="lead" rows="3"></textarea></label>
-        <label>stamp<input name="stamp" type="text" /></label>
-        <label>callout<textarea name="callout" rows="2"></textarea></label>
+      <main class="layout studio-layout">
+        <aside class="slide-list-panel">
+          <div class="panel-head">
+            <strong>投影片</strong>
+            <button type="button" id="btn-reload">重新載入</button>
+          </div>
+          <ul id="slide-list"></ul>
+        </aside>
 
-        <fieldset>
-          <legend>Cards</legend>
-          <div id="cards-editor"></div>
-          <button type="button" id="btn-add-card">+ Card</button>
-        </fieldset>
+        <div class="studio-split" id="studio-split">
+        <section class="editor-panel">
+          <div class="panel-head">
+            <strong id="editor-title">選擇左側投影片</strong>
+            <span id="slide-content-badge" class="slide-badge hidden"></span>
+          </div>
 
-        <fieldset>
-          <legend>講稿 script</legend>
-          <textarea id="script" rows="8"></textarea>
-          <button type="button" id="btn-save-script">儲存講稿</button>
-        </fieldset>
-      </form>
+          <fieldset class="script-fieldset">
+            <legend>講稿</legend>
+            <textarea id="script" rows="14" placeholder="此頁講稿…"></textarea>
+            <div class="btn-row script-actions">
+              <button type="button" id="btn-save-script">儲存講稿</button>
+              <button type="button" id="btn-regen-script">重生本頁講稿</button>
+              <button type="button" id="btn-undo-script" class="hidden" disabled>回復上一版</button>
+              <button type="button" id="btn-preview-tts" class="primary">試播此頁</button>
+              <button type="button" id="btn-synth">寫入正式語音</button>
+            </div>
+            <audio id="preview-audio" controls class="preview-audio"></audio>
+          </fieldset>
 
-      <p id="status" class="status"></p>
+          <details id="source-transcript-panel" class="advanced source-transcript-panel">
+            <summary>參考文字稿（生成講稿時優先對照）</summary>
+            <p class="muted hint">可貼上整份講稿或筆記；生成時會依本頁投影片對應改寫。參考稿只給生成講稿用，不會出現在公開簡報。</p>
+            <textarea id="source-transcript" rows="8" placeholder="貼上原始文字稿…"></textarea>
+            <div class="btn-row">
+              <span id="source-transcript-meta" class="muted"></span>
+              <button type="button" id="btn-save-transcript">儲存參考稿</button>
+              <label class="file-btn">
+                上傳 .txt / .md
+                <input id="transcript-file" type="file" accept=".txt,.md" hidden />
+              </label>
+            </div>
+            <label class="checkbox batch-vision">
+              <input id="batch-vision-high" type="checkbox" />
+              生成全部講稿時使用高解析 vision（較準但較貴）
+            </label>
+          </details>
+
+          <details id="advanced-fields" class="advanced">
+            <summary>進階：投影片欄位（僅 HTML）</summary>
+            <form id="slide-form" class="slide-form">
+              <label>標題 data-title<input name="title" type="text" /></label>
+              <label>eyebrow<input name="eyebrow" type="text" /></label>
+              <label>kicker<input name="kicker" type="text" /></label>
+              <label>h1<textarea name="h1" rows="2"></textarea></label>
+              <label>h2<input name="h2" type="text" /></label>
+              <label>lead<textarea name="lead" rows="3"></textarea></label>
+              <label>stamp<input name="stamp" type="text" /></label>
+              <label>callout<textarea name="callout" rows="2"></textarea></label>
+              <fieldset>
+                <legend>Cards</legend>
+                <div id="cards-editor"></div>
+                <button type="button" id="btn-add-card">+ Card</button>
+              </fieldset>
+              <button type="button" id="btn-save">儲存內容並 rebuild</button>
+            </form>
+          </details>
+
+          <p id="status" class="status"></p>
+        </section>
+
+        <div id="studio-resizer" class="studio-resizer" role="separator" aria-orientation="vertical" aria-label="調整預覽區寬度" tabindex="0"></div>
+
+        <section class="preview-panel">
+          <div class="panel-head">
+            <strong>投影片預覽</strong>
+            <div class="preview-zoom-controls">
+              <button type="button" id="btn-preview-zoom-out" title="縮小">−</button>
+              <span id="preview-zoom-label">100%</span>
+              <button type="button" id="btn-preview-zoom-in" title="放大">+</button>
+              <button type="button" id="btn-preview-fit" title="完整顯示投影片">適合</button>
+            </div>
+          </div>
+          <div id="preview-viewport" class="preview-viewport" tabindex="0">
+            <div id="preview-scaler" class="preview-scaler">
+              <iframe id="preview" title="deck preview"></iframe>
+              <img id="page-image" class="page-image hidden" alt="PDF 頁預覽" />
+            </div>
+          </div>
+        </section>
+        </div>
+      </main>
+
+      <footer class="action-bar">
+        <button type="button" id="btn-gen-all-scripts">生成全部講稿</button>
+        <button type="button" id="btn-synth-all" class="primary">生成全部語音</button>
+        <button type="button" id="btn-open-deck">整份試播</button>
+        <button type="button" id="btn-publish">上傳正式環境</button>
+        <div id="publish-result" class="publish-result hidden"></div>
+        <div id="job-progress" class="job-progress hidden"></div>
+      </footer>
     </section>
+  </div>
 
-    <section class="preview-panel">
-      <div class="panel-head"><strong>即時預覽</strong></div>
-      <iframe id="preview" title="deck preview" src="/enterprise-ai-portal-deck.html"></iframe>
-    </section>
-  </main>
-
-  <script src="admin.js"></script>
+  <script type="module" src="admin.js"></script>
 </body>
 </html>

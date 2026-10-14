@@ -1,0 +1,771 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-work-system-architecture",
+  "deckPath": "aidc-work-system-architecture.html",
+  "title": "AIDC.work 系統架構",
+  "sourceType": "html",
+  "promptVersion": "1.0.0",
+  "modelVersion": "gpt-4o",
+  "voice": {
+    "provider": "openai",
+    "voiceId": "onyx",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "02968c004686d9c5aeb913966bb31684ed94146536f2f1093161a851752f7f04",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "AIDC.work · Architecture Workshop",
+        "headings": [
+          "從顧問網站到可營運的會員與課程平台"
+        ],
+        "lead": "用 AIDC.work 理解 Next.js 全端架構、業務資料流、認證邊界與安全發布。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "大家好，歡迎來到今天的簡報，我們將探討「從顧問網站到可營運的會員與課程平台」。在這次的工作坊中，我們將深入了解 AIDC.work 的全端架構，特別是如何利用 Next.js 來構建我們的系統。 \n\n首先，我們會針對業務資料流進行分析，這將幫助我們理解用戶在平台上的互動方式。接著，我們會討論認證邊界，這對於確保用戶資料的安全性至關重要。最後，我們將探討安全發布的策略，以確保我們的系統在運行過程中能夠保持穩定與安全。\n\n接下來，我們將進入學習目標的部分，讓我們一起深入了解這些關鍵概念，為後續的討論做好準備。",
+      "estimatedSeconds": 55,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:21.906Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "學習目標",
+      "sourceHash": "4564482d54e775a2aa39708bdd981257819b5bc68b8c52fb1367b3e659ba8b08",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "01 · Learning goals",
+        "headings": [
+          "先看懂「為什麼」，再看技術"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "顧問品牌官網，也是長期內容與客戶互動資產。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "前台、會員、後台、資料庫與外部服務如何分工。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "諮詢、課程報名與訪客轉會員如何串接。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "哪些設計能公開教學，哪些資訊必須保留在內部。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "架構核心：一個 Next.js 應用承接 UI、Server Components、Route Handlers 與認證，再以 Prisma 存取 PostgreSQL。"
+        ]
+      },
+      "script": "在這一頁，我們將探討學習目標，重點是先理解「為什麼」，再深入技術層面。首先，我們的顧問品牌官網不僅是展示平台，更是長期內容與客戶互動的重要資產。接下來，我們需要明白前台、會員、後台、資料庫與外部服務之間的分工如何運作，以確保整體架構的流暢性。\n\n此外，我們也會探討諮詢、課程報名與如何將訪客轉換為會員的串接過程，這對於提升業務效率至關重要。最後，我們必須辨別哪些設計元素可以公開教學，哪些資訊則必須保留在內部，以保障商業機密。\n\n這些學習目標將幫助我們更好地理解架構核心：一個 Next.js 應用承接 UI、Server Components、Route Handlers 與認證，再以 Prisma 存取 PostgreSQL。接下來，我們將進一步分析系統脈絡，讓我們一起深入探討。",
+      "estimatedSeconds": 73,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:24.505Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "系統脈絡",
+      "sourceHash": "a20b2319a80c7f8066fff74d212d229e84f9937e2f898096f15f2b432de2b4d3",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "02 · System context",
+        "headings": [
+          "誰使用系統？系統連到哪裡？"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "內容網站、會員、諮詢、課程報名、Email 通知、管理後台。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "myLinux 的 VM 儀表板、監控與 OAuth gateway 屬於另一個 repository。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "在這一頁，我們將探討系統的脈絡，了解誰在使用這個系統，以及它連接到哪些其他組件。首先，我們的系統涵蓋了多個功能，包括內容網站、會員管理、諮詢服務、課程報名、Email 通知以及管理後台，這些都是用戶日常互動的重要部分。這些功能的整合，讓我們的系統能夠提供更完整的服務體驗。\n\n接下來，我們也需要注意到，myLinux 的虛擬機(VM)儀表板、監控系統以及 OAuth gateway，這些組件則屬於另一個 repository，顯示出我們系統的多樣性與靈活性。這樣的架構不僅提升了系統的可擴展性，還能更好地滿足不同用戶的需求。\n\n接下來，我們將深入探討分層架構，了解各層之間的關聯與功能。",
+      "estimatedSeconds": 63,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:26.959Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "分層架構",
+      "sourceHash": "5aa429f0e82d0d13711583f6f49a2f65097573175cf90cf12418d1e6419913f6",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "03 · Layered architecture",
+        "headings": [
+          "由畫面一路走到資料庫"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來，我們將探討系統的分層架構。這一架構的設計理念是從使用者介面一路延伸到資料庫，確保每一層都能有效地處理和傳遞資訊。首先，最上層是使用者介面，這是用戶與系統互動的地方，提供直觀的操作體驗。接著，系統會將用戶的請求傳遞到中間層，這一層負責商業邏輯的處理，確保資料的正確性和一致性。最後，資料會被送往底層的資料庫進行存儲和檢索。\n\n這樣的分層架構不僅提升了系統的可維護性，也使得未來的擴展變得更加靈活。透過這樣的設計，我們能夠更快地應對市場需求的變化，並持續優化用戶體驗。接下來，我們將進一步了解路由地圖，看看系統如何在不同層之間進行有效的資料傳遞。",
+      "estimatedSeconds": 61,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:29.334Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "路由地圖",
+      "sourceHash": "e7a3dac00058176ba3684dcb1cd2f38e43bbb192373996f379ab1fcef0f26267",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "04 · Route map",
+        "headings": [
+          "同一套 App Router，三種使用情境"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "/ /about /services/blog /cases /templates/courses /booking",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "/login /member/member/bookings/member/enrollments/member/profile",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "/admin/login/admin/bookings/admin/course-*/admin/members",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "頁面保護只是 UX；真正的授權必須在每個管理 API 內再次執行 requireAdmin()。"
+        ]
+      },
+      "script": "接下來，我們將探討路由地圖的設計。這一頁的重點在於同一套 App Router，能夠適應三種不同的使用情境。首先，我們有針對一般用戶的路由，包含了如 /about、/services、/blog、/cases、/templates/courses 以及 /booking 等頁面，這些都是用戶日常使用的主要路徑。\n\n接著，針對會員的路由設計，我們提供了 /login、/member/member/bookings、/member/enrollments 以及 /member/profile 等功能，這些路由確保會員能夠順利管理自己的帳戶和預約。\n\n最後，我們也考量到了管理員的需求，設計了如 /admin/login、/admin/bookings、/admin/course-* 以及 /admin/members 等路由，這些路由專為管理員所設計，讓他們能夠有效地管理系統。\n\n值得注意的是，頁面保護只是用戶體驗的一部分，真正的授權必須在每個管理 API 內再次執行 requireAdmin() 的檢查。這樣的設計確保了系統的安全性和穩定性。接下來，我們將進一步探討資料模型的架構。",
+      "estimatedSeconds": 105,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:32.143Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "資料模型",
+      "sourceHash": "3049b87882db732dabc997b399ccdb967f59fa8dc680eed1f49ecb276f247481",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "05 · Data model",
+        "headings": [
+          "資料模型圍繞三條主線"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "會員與第三方帳號分離；AdminUser 為獨立身分。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "留言、狀態、Email 回覆與每次聯絡歷程。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "方案、班期、週次、報名與稽核紀錄。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來，我們將探討資料模型的架構。這個模型圍繞著三條主線，首先，會員與第三方帳號是分離的，而 AdminUser 則是一個獨立的身份，這樣的設計可以提高系統的安全性與管理效率。其次，資料模型中包含了留言、狀態、Email 回覆以及每次聯絡的歷程，這些資訊的整合有助於我們更好地追蹤與管理客戶互動。最後，我們還考量到方案、班期、週次、報名與稽核紀錄等重要資料，這些元素的串聯不僅能提升使用者體驗，還能確保我們的業務運作更加順暢。接下來，我們將進一步了解諮詢流程，這將是我們優化客戶服務的重要環節。",
+      "estimatedSeconds": 54,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:34.168Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "諮詢流程",
+      "sourceHash": "07a12c020d9c4d94fd8064f2eb4aa20d098a93d6753391c8442bc742e747320d",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "06 · Inquiry flow",
+        "headings": [
+          "訪客先完成任務，再邀請成為會員"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "訪客不必先選時段、不必先登入；表單只收處理諮詢所需資料。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "管理員查看內容、套用回覆範本、寄信，並將結果寫入聯絡歷程。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "今天我們要介紹的主題是諮詢流程。首先，訪客在進行諮詢時，並不需要先選擇時間或登入系統，而是可以直接填寫表單，這樣能夠快速收集處理諮詢所需的資料。這樣的設計不僅提升了使用者的體驗，也降低了進入門檻。\n\n接下來，當訪客提交表單後，管理員會查看內容，並根據需要套用回覆範本來進行回覆。這樣的流程不僅提升了效率，還能確保每位訪客都能獲得一致且專業的回應。此外，管理員在寄送回覆後，會將聯絡歷程記錄下來，這樣可以隨時追蹤和管理客戶的需求。\n\n這一流程的設計旨在讓訪客能夠輕鬆完成諮詢，並在合適的時機邀請他們成為會員。接下來，我們將探討課程與轉會員的相關內容。",
+      "estimatedSeconds": 60,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:36.534Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "課程與轉會員",
+      "sourceHash": "ad3d7dd9d2e41f24522c41ef83f18e2f1b9ad90e5430e24f8f99d4ffccad3135",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "07 · Enrollment & conversion",
+        "headings": [
+          "報名、會員與歷史紀錄如何連起來"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "完成報名後才看到會員 CTA，姓名與 Email 自動帶入。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "相同 Email 提交時直接寫入 memberId。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "一小時簽章 token 同時驗證紀錄、Email 與有效期限，不只靠 Email。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "在這一頁，我們要探討課程報名與轉會員的流程如何緊密結合。首先，當訪客完成報名後，系統會自動顯示會員的呼籲行動（CTA），並且姓名與電子郵件會自動填入，這樣可以提升轉換率。接著，若訪客使用相同的電子郵件提交資料，系統會直接將該資料寫入會員ID，簡化了過程，讓用戶體驗更加流暢。最後，我們使用一小時的簽章token來同時驗證紀錄、電子郵件及有效期限，這樣不僅僅依賴電子郵件的驗證，還能確保整個過程的安全性與可靠性。接下來，我們將進一步討論認證與授權的相關內容。",
+      "estimatedSeconds": 51,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:39.817Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "認證與授權",
+      "sourceHash": "8a7799d928bcb475277d371335d7e3b8e159fd1d95e4340e79d982a0b6f9e85a",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "08 · Authentication & authorization",
+        "headings": [
+          "會員與管理員：入口分開，底層可共用觀念"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來，我們要探討「認證與授權」的部分。這一頁的重點在於會員與管理員之間的入口設計。首先，我們將會員與管理員的進入點分開，這樣能夠提供更清晰的使用體驗，避免混淆。同時，底層的系統架構卻可以共用相同的概念，這樣不僅提高了系統的靈活性，還能降低維護成本。\n\n透過這種設計，我們能夠確保不同角色的使用者在進入系統時，能夠獲得符合其需求的功能與資訊。這樣的分開設計也有助於加強安全性，確保只有授權的使用者能夠訪問特定的資源。\n\n接下來，我們將進一步討論系統的可靠性，這是整體架構中不可或缺的一環。希望大家能夠保持關注，讓我們一起深入了解這個關鍵主題。",
+      "estimatedSeconds": 59,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:41.803Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "可靠性",
+      "sourceHash": "b26ab813df7ff5cff5cfcdbee1d07fb536a9ce38692930cf3a9ba06b8da969f7",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "09 · Reliability",
+        "headings": [
+          "外部服務慢或失敗時，網站仍要可用"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "Blog、案例與模板以 Markdown/MDX 內容為主。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "課程查詢逾時時改用靜態 seeds，避免整頁失效。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "主要交易成功後寄信；寄送結果另行追蹤。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "容量、重複報名與會員認領使用 transaction 或條件更新。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "教學重點：fallback 是可預期的降級，不應被記成未處理的 Console Error；真正錯誤仍需結構化監控與告警。"
+        ]
+      },
+      "script": "在這一頁，我們要探討系統的可靠性。首先，當外部服務出現延遲或失敗時，我們的網站仍然必須保持可用性。這是確保用戶體驗的重要一環。\n\n接下來，我們的內容管理主要以 Blog、案例與模板為 Markdown/MDX 格式為主，這樣可以提高內容的靈活性與可維護性。當課程查詢超時時，我們會改用靜態 seeds，這樣可以避免整頁失效，確保用戶仍能獲得必要的信息。此外，主要交易成功後，我們會寄送確認信，並對寄送結果進行追蹤，這樣可以增強用戶的信任感。\n\n最後，在處理容量、重複報名以及會員認領時，我們會使用 transaction 或條件更新的方式，確保系統的穩定性和準確性。值得注意的是，fallback 應被視為可預期的降級，而不應被記錄為未處理的 Console Error，真正的錯誤仍需進行結構化的監控與告警。\n\n接下來，我們將進入部署的部分，探討如何將這些可靠性措施實際應用於系統中。",
+      "estimatedSeconds": 84,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:44.140Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "部署",
+      "sourceHash": "7c009b4990e8d227176e09f0590e512758bb1d3139c0ad67031555273d08f6f8",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "10 · Deployment",
+        "headings": [
+          "從 Git 到正式網站的執行路徑"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "安裝依賴、產生 Prisma Client、執行 Next build。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "Node container 啟動 Next.js，服務內部 port 80。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "由部署環境注入，絕不打包進 image、HTML 或 Blog。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來我們來談談部署的過程。部署是將我們的應用從開發環境轉移到正式網站的關鍵步驟。首先，我們需要安裝依賴，並生成 Prisma Client，然後執行 Next build，這是確保應用能夠正常運行的基礎。接著，Node container 將啟動 Next.js，並在服務內部的 port 80 上提供服務，這樣用戶就可以順利訪問我們的網站。\n\n值得注意的是，所有的配置和環境變數都會由部署環境注入，而不是直接打包進 image、HTML 或 Blog 中。這樣的做法不僅能夠保持應用的靈活性，還能提高安全性，避免敏感信息的洩露。\n\n總結來說，部署的過程中每一步都至關重要，確保我們的應用能夠穩定、安全地運行。接下來，我們將進一步探討安全評估的相關內容。",
+      "estimatedSeconds": 69,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:46.616Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "安全評估",
+      "sourceHash": "9bbb83fba0adf6aefe8351bd6bf087ed146a95d4c0fd006bcd003ce1f1764a0c",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "11 · Security review",
+        "headings": [
+          "這份簡報能公開嗎？可以，但要分級"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "高階分層、一般路由分類、技術棧、匿名化流程、通用安全原則。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "精確部署拓樸、內部 port、管理入口細節、資料表欄位與防護閾值。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "Secret、token、真實 DB host、Client ID、管理員帳號、內網 IP、備份位置。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "安全不是靠隱藏架構；但公開內容不應替攻擊者完成資產盤點，也不可暴露可直接使用的憑證或內部定位資訊。"
+        ]
+      },
+      "script": "各位同仁，接下來我們將探討安全評估的重點。首先，這份簡報是可以公開的，但必須進行分級管理，以確保資訊的安全性。\n\n我們的安全評估涵蓋了幾個重要層面。第一，高階分層與一般路由的分類，以及技術棧和匿名化流程，這些都是保障系統安全的基礎。第二，精確的部署拓樸，內部 port 的管理，還有資料表欄位與防護閾值，這些細節能有效降低潛在的風險。\n\n此外，我們還必須注意一些敏感資訊的保護，包括 Secret、token、真實的資料庫主機、Client ID、管理員帳號、內網 IP 以及備份位置。這些資訊若遭到洩露，可能會對我們的系統造成嚴重威脅。\n\n最後，我想強調一點，安全並不僅僅依賴於隱藏架構，公開的內容不應該幫助攻擊者完成資產盤點，也不能暴露可直接使用的憑證或內部定位資訊。接下來，我們將進一步評估 Blog 的安全性，謝謝大家。",
+      "estimatedSeconds": 78,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:49.162Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "Blog 評估",
+      "sourceHash": "42b39bd8086b29a5479de23172f5d76429507732603fb7b50106a071723f6e42",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "12 · Blog potential",
+        "headings": [
+          "很適合改寫成 Blog，但不是直接貼上"
+        ],
+        "lead": "建議文章標題：〈從顧問官網到會員與課程平台：AIDC.work 的 Next.js 模組化單體架構〉",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來，我們來探討 Blog 評估的部分。這份內容非常適合改寫成 Blog，但需要注意的是，並不是將內容直接貼上。建議的文章標題為「從顧問官網到會員與課程平台：AIDC.work 的 Next.js 模組化單體架構」。這個標題能夠有效地吸引讀者的注意，並且清楚地傳達出文章的主題。\n\n透過這樣的方式，我們不僅能夠分享我們的架構設計，還能夠讓讀者了解我們在實踐中的經驗與學習。這不僅有助於提升我們的品牌形象，還能夠增強與潛在客戶的連結。接下來，我們將進入結論部分，總結今天的重點並呼籲大家採取行動。",
+      "estimatedSeconds": 53,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:51.589Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "結論",
+      "sourceHash": "0b97c7f1abda15997a652859478992c66a230c1f44d8666c3aa5a1ac4ac5b803",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "13 · Takeaways",
+        "headings": [
+          "三個帶得走的架構觀念"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "訪客先諮詢或報名，再低摩擦轉會員，兼顧轉換率與資料連續性。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "每個敏感 API 都要重新驗證身分、權限與紀錄所有權。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "資料庫、OAuth、Email 都可能暫時失敗；需要 fallback、稽核與可操作回饋。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "下一步：將本簡報改寫為 Blog 時，進行一次「公開資訊紅隊檢查」，並建立公開版架構圖，不直接截取內部設定畫面。"
+        ]
+      },
+      "script": "在這一頁，我們總結了三個關鍵的架構觀念，讓我們能夠更好地應用於未來的專案中。首先，訪客在進行諮詢或報名後，應該能夠低摩擦地轉為會員，這樣不僅能提升轉換率，還能確保資料的連續性。這對於用戶體驗來說至關重要。\n\n接下來，每個敏感的 API 都必須重新驗證身分和權限，並且記錄所有權限的使用情況。這不僅能增強系統的安全性，也能在發生問題時追溯責任。\n\n最後，我們必須意識到資料庫、OAuth 和 Email 等系統可能會暫時失敗，因此需要設計有效的 fallback 機制，並進行稽核，提供可操作的回饋，確保系統的穩定性和可靠性。\n\n在未來的步驟中，當我們將本簡報改寫為 Blog 時，建議進行一次「公開資訊紅隊檢查」，並建立公開版的架構圖，避免直接截取內部設定畫面。這樣不僅能提升透明度，也能增強用戶的信任感。",
+      "estimatedSeconds": 75,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T06:21:54.049Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-09-02T06:19:37.319Z",
+    "totalEstimatedSeconds": 940,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

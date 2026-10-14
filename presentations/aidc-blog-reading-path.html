@@ -1,0 +1,776 @@
+<!DOCTYPE html><html lang="zh-Hant" data-deck-id="aidc-blog-reading-path"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="會員專屬：AIDC.work 46 篇 Blog 依七分類排出推薦閱讀順序，標示有無簡報與站內連結。">
+  <title>AIDC.work Blog 分類與閱讀路徑</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2.5vh 2vw 8vh;
+      zoom: var(--deck-fs, 1);
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: 86vh;
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.catalog { padding-bottom: 58px; }
+    h1 {
+      font-size: clamp(48px, 6vw, 88px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: clamp(34px, 3.7vw, 58px);
+      margin: 0.1em 0 0.65em;
+      line-height: 1.12;
+    }
+    h2.tight {
+      font-size: clamp(26px, 2.8vw, 40px);
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: clamp(20px, 1.7vw, 28px);
+      margin: 0.15em 0 0.4em;
+    }
+    p, li {
+      font-size: clamp(16px, 1.35vw, 23px);
+      line-height: 1.58;
+    }
+    a { color: var(--brand); }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: clamp(12px, 1.1vw, 16px);
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: clamp(22px, 2vw, 32px);
+    }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 28px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card ol {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+    .card li {
+      font-size: clamp(13px, 1.05vw, 17px);
+      line-height: 1.42;
+    }
+    .num {
+      font-size: clamp(30px, 4vw, 58px);
+      font-weight: 900;
+      color: var(--brand);
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .flow.two-rows { grid-template-columns: repeat(5, 1fr); }
+    .step {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      min-height: 100px;
+      padding: 12px;
+      border: 2px solid #8fcac1;
+      border-radius: 17px;
+      background: #fff;
+      font-size: clamp(13px, 1.05vw, 18px);
+      font-weight: 800;
+    }
+    .callout {
+      padding: 18px 24px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: clamp(18px, 1.5vw, 25px);
+    }
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(12px, 1vw, 16px);
+    }
+    .matrix th, .matrix td {
+      border: 1px solid var(--line);
+      padding: 6px 9px;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .matrix th {
+      background: #e9f7f5;
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .matrix td:first-child, .matrix th:first-child {
+      width: 2.4em;
+      text-align: center;
+    }
+    .matrix td:nth-child(3), .matrix th:nth-child(3) {
+      width: 72px;
+      min-width: 72px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .badge.pub { background: #e6f6f3; color: #1d6b64; }
+    .badge.mem { background: #fff4e7; color: #b15b12; }
+    .badge.none { background: #eef2f5; color: #607286; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .controls {
+      position: fixed;
+      z-index: 40;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #17324df2;
+      color: #fff;
+      box-shadow: 0 8px 26px #0004;
+      transition: opacity .2s, transform .2s;
+    }
+    .controls.collapsed {
+      padding: 6px 10px;
+      gap: 0;
+    }
+    .controls.collapsed .ctrl-main {
+      display: none;
+    }
+    .controls button {
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: #ffffff1f;
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .controls button.wide {
+      width: auto;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .controls button:hover,
+    .controls button:focus-visible {
+      outline: 3px solid #fff;
+      background: var(--brand);
+    }
+    .ctrl-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ctrl-sep {
+      width: 1px;
+      height: 22px;
+      background: #ffffff33;
+      flex-shrink: 0;
+    }
+    .fs-label {
+      min-width: 42px;
+      text-align: center;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+      opacity: 0.9;
+    }
+    .bar {
+      width: min(18vw, 180px);
+      height: 5px;
+      background: #ffffff33;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      background: #78d8cb;
+    }
+    .count {
+      min-width: 58px;
+      text-align: center;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .hint {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: 64px;
+      transform: translateX(-50%);
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: #17324df2;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+      max-width: min(90vw, 420px);
+      text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: 12px 12px 80px; }
+      .slide {
+        width: 100%;
+        min-height: calc(100vh - 100px);
+        max-height: none;
+        aspect-ratio: auto;
+      }
+      .grid, .grid.two, .flow, .flow.two-rows, .split {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .flow, .flow.two-rows, .split {
+        grid-template-columns: 1fr;
+      }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck {
+        display: block;
+        padding: 0;
+        zoom: 1 !important;
+      }
+      .slide {
+        display: block !important;
+        width: 16in;
+        height: 9in;
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        overflow: hidden;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      .controls, .hint { display: none !important; }
+    }
+  </style>
+<style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#3b82f6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+</style></head>
+<body>
+  <main class="deck">
+    <section class="slide active" data-title="封面">
+      <p class="kicker">AIDC.work · 閱讀路徑</p>
+      <div class="mark"></div>
+      <h1>Blog 分類與<br>推薦閱讀路徑</h1>
+      <p class="lead">46 篇文章、七個正式分類：先選角色路徑，再依分類表往下讀。簡報標示公開／會員／無。</p>
+      <div class="footer"><span>Jack Y. J. Hwang</span><span>1 / 12</span></div>
+    </section>
+
+    <section class="slide" data-title="七分類">
+      <p class="kicker">TAXONOMY</p>
+      <h2>成長路徑，不是新聞流</h2>
+      <div class="flow">
+        <div class="step">AI 工具應用</div>
+        <div class="step">AI 開發入門</div>
+        <div class="step">Vibe Coding</div>
+        <div class="step">AI 系統開發</div>
+        <div class="step">AI Agent 工作流</div>
+        <div class="step">企業 AI 落地</div>
+      </div>
+      <div class="callout" style="margin-top:18px">「實戰資源」另收可重用的範本、清單與教學簡報，不插入主成長路徑。</div>
+      <div class="footer"><span>AIDC.work</span><span>2 / 12</span></div>
+    </section>
+
+    <section class="slide" data-title="角色路徑">
+      <p class="kicker">THREE TRACKS</p>
+      <h2>先選一條路，不必一次讀 46 篇</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h3>主管／導入</h3>
+          <ol>
+            <li>主管五問</li>
+            <li>流程盤點</li>
+            <li>AI 時代 PDCA</li>
+            <li>週報 3 分鐘</li>
+            <li>CEO Workshop</li>
+            <li>上路學程</li>
+          </ol>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h3>AI Builder</h3>
+          <ol>
+            <li>系統詞彙地圖</li>
+            <li>非工程師也能開始</li>
+            <li>三工具怎麼選</li>
+            <li>Cursor 安裝路徑</li>
+            <li>GitHub 5W1H</li>
+            <li>Vibe Coding 工作流</li>
+          </ol>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h3>系統／Agent</h3>
+          <ol>
+            <li>SRS 與 Go／No-Go</li>
+            <li>AISDLC</li>
+            <li>Cursor 系統開發</li>
+            <li>AGENTS.md</li>
+            <li>LINE 分身助理</li>
+            <li>Agent Debug Gate</li>
+          </ol>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work</span><span>3 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="工具與 Vibe">
+      <p class="kicker">CATALOG 1</p>
+      <h2 class="tight">AI 工具應用 · Vibe Coding</h2>
+      <div class="split">
+        <table class="matrix">
+          <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><a href="/blog/chatgpt-work-vs-codex">ChatGPT Work vs Codex</a></td><td><span class="badge none">無</span></td></tr>
+            <tr><td>2</td><td><a href="/blog/chatgpt-work-enterprise-logo-aidc-work">ChatGPT Work 設計企業 Logo</a></td><td><span class="badge none">無</span></td></tr>
+            <tr><td>3</td><td><a href="/blog/chatgpt-sites-lpms-prototype">ChatGPT Sites 與 LPMS 原型</a></td><td><span class="badge none">無</span></td></tr>
+          </tbody>
+        </table>
+        <table class="matrix">
+          <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><a href="/blog/cursor-codex-github-ai-dev-workflow">Cursor／Codex／GitHub 工作流</a></td><td><span class="badge none">無</span></td></tr>
+            <tr><td>2</td><td><a href="/blog/cursor-grok-45-prompt-to-ship">Grok：從需求到可發布</a> · <a href="/presentations/cursor-grok-45-prompt-to-ship.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+            <tr><td>3</td><td><a href="/blog/cursor-grok-misdiagnosis-admin-dashboard">Dashboard 誤判反省</a></td><td><span class="badge none">無</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:14px;color:var(--muted);font-size:clamp(14px,1.1vw,18px)">左欄為工具選擇與實作；右欄為可重複的 AI 協作開發節奏。</p>
+      <div class="footer"><span>AIDC.work</span><span>4 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="開發入門">
+      <p class="kicker">CATALOG 2 · AI 開發入門</p>
+      <h2 class="tight">從詞彙地圖到第一套工作流</h2>
+      <table class="matrix">
+        <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a href="/blog/new-member-article">系統詞彙地圖（會員）</a> · <a href="/blog/new-member-article-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+          <tr><td>2</td><td><a href="/blog/non-programmer-ai-system-development">非工程師也能開始</a> · <a href="/presentations/non-programmer-ai-system-development.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>3</td><td><a href="/blog/cursor-codex-claude-beginner-choice">Cursor／Codex／Claude 怎麼選</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>4</td><td><a href="/blog/cursor-beginner-no-github-required">Cursor 不必先裝 GitHub</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>5</td><td><a href="/blog/cursor-learn-course-guide">Cursor Learn 怎麼讀</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>6</td><td><a href="/blog/vscode-codex-claude-ai-builder-starter-guide">VS Code＋Codex／Claude（會員）</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>7</td><td><a href="/blog/ai-project-github-gh-auth-login-5w1h">GitHub gh auth login</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>8</td><td><a href="/blog/ai-system-development-cta-and-cohort">CTA 與 Cohort</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>9</td><td><a href="/blog/big-data-analytics-intro-glossary">大數據分析名詞</a> · <a href="/presentations/big-data-analytics-intro-glossary.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+        </tbody>
+      </table>
+      <div class="footer"><span>AIDC.work</span><span>5 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="系統開發">
+      <p class="kicker">CATALOG 3 · AI 系統開發</p>
+      <h2 class="tight">生命週期、架構、權限、部署</h2>
+      <table class="matrix">
+        <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a href="/blog/ai-system-development-lifecycle-aisdlc">AISDLC 九階段</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>2</td><td><a href="/blog/ai-feasibility-srs-mvp-stage-gate">SRS 與 Go／No-Go</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>3</td><td><a href="/blog/sku-mapping-yoy-ai-system-development-lab">SKU Mapping Lab</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>4</td><td><a href="/blog/cursor-multi-root-workspace-fit">Multi-root 工作區適配</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>5</td><td><a href="/blog/aidc-work-nextjs-modular-monolith-architecture">AIDC.work 模組化單體</a> · <a href="/presentations/aidc-work-system-architecture.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>6</td><td><a href="/blog/rbac-architecture-guide">RBAC 權限架構（會員）</a> · <a href="/blog/rbac-architecture-guide-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+          <tr><td>7</td><td><a href="/blog/from-vibe-coding-to-agentic-engineering-google-day-1">Agentic Engineering（會員）</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>8</td><td><a href="/blog/codex-github-cloudflare-ai-system-mvp">Codex＋Cloudflare MVP（會員）</a> · <a href="/presentations/codex-github-cloudflare-ai-system-mvp.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+        </tbody>
+      </table>
+      <div class="footer"><span>AIDC.work</span><span>6 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="Agent 工作流">
+      <p class="kicker">CATALOG 4 · AI Agent 工作流</p>
+      <h2 class="tight">從 AGENTS.md 到可治理 Agent</h2>
+      <table class="matrix">
+        <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a href="/blog/agents-md-codex-claude-cursor-guide">AGENTS.md 怎麼讀</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>2</td><td><a href="/blog/cursor-ai-system-development-guide">Cursor 系統開發指南（會員）</a> · <a href="/blog/cursor-ai-system-development-guide-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+          <tr><td>3</td><td><a href="/blog/cursor-agents-window-ide-project-switching-guide">Agents Window 切換（會員）</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>4</td><td><a href="/blog/cursor-agent-mobile-mybike-github-cloudflare">手機指揮 Cloud Agent</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>5</td><td><a href="/blog/personalized-blog-ai-agents-workflow">Blog Agents 生成流程</a> · <a href="/presentations/personalized-blog-ai-agents-workflow.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>6</td><td><a href="/blog/customer-complaint-workflow-to-ai-agent">客服申訴 Agent（會員）</a> · <a href="/presentations/customer-complaint-ai-agent.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>7</td><td><a href="/blog/threads-algorithm-ai-agent-conversation-marketing">Threads 對話行銷</a> · <a href="/presentations/threads-algorithm-ai-agent-conversation-marketing.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>8</td><td><a href="/blog/cursor-line-calendar-agent-hitl">LINE Calendar HITL</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>9</td><td><a href="/blog/ai-agent-root-cause-debugging-readiness-gate">Agent Debug Gate（會員）</a></td><td><span class="badge none">無</span></td></tr>
+        </tbody>
+      </table>
+      <div class="footer"><span>AIDC.work</span><span>7 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="落地（上）">
+      <p class="kicker">CATALOG 5A · 企業 AI 落地</p>
+      <h2 class="tight">先問對問題，再談工具與班期</h2>
+      <table class="matrix">
+        <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a href="/blog/five-questions-managers-must-ask-in-ai-era">主管必須思考的五件事</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>2</td><td><a href="/blog/ai-adoption-start-with-process-inventory">先盤點流程，不要先買工具</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>3</td><td><a href="/blog/ai-era-pdca-value-loop">AI 時代的 PDCA</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>4</td><td><a href="/blog/from-goal-management-to-work-system-design">目標管理到工作系統</a></td><td><span class="badge none">無</span></td></tr>
+          <tr><td>5</td><td><a href="/blog/weekly-project-status-report-3-minute-decision">週報 3 分鐘決策</a> · <a href="/presentations/weekly-project-status-report-3-minute-decision.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+          <tr><td>6</td><td><a href="/blog/weekly-report-prompt-vs-skill">週報 Prompt vs Skill</a> · <a href="/presentations/weekly-report-prompt-vs-skill.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+        </tbody>
+      </table>
+      <div class="footer"><span>AIDC.work</span><span>8 / 12</span></div>
+    </section>
+
+    <section class="slide catalog" data-title="落地與資源">
+      <p class="kicker">CATALOG 5B · 實戰資源</p>
+      <h2 class="tight">學程簡介、現場 Agent、可重用資源</h2>
+      <div class="split">
+        <table class="matrix">
+          <thead><tr><th>序</th><th>Blog 名稱</th><th>簡報</th></tr></thead>
+          <tbody>
+            <tr><td>7</td><td><a href="/blog/ceo-ai-workshop-3-hour">CEO 3 小時 Workshop</a> · <a href="/presentations/ceo-ai-workshop-3-hour.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+            <tr><td>8</td><td><a href="/blog/ai-agent-system-development-intro">Agent 與系統開發導論</a> · <a href="/presentations/ai-agent-system-development-intro.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+            <tr><td>9</td><td><a href="/blog/enterprise-ai-on-road">企業 AI 上路學程</a> · <a href="/presentations/enterprise-ai-on-road.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+            <tr><td>10</td><td><a href="/blog/enterprise-ai-implementation-four-modules">落地四模組學程</a></td><td><span class="badge none">無</span></td></tr>
+            <tr><td>11</td><td><a href="/blog/enterprise-line-group-clone-assistant">LINE 分身助理（會員）</a> · <a href="/blog/enterprise-line-group-clone-assistant-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+            <tr><td>12</td><td><a href="/blog/commodity-ai-data-decision-system">大宗物資決策系統（會員）</a> · <a href="/blog/commodity-ai-data-decision-system-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+          </tbody>
+        </table>
+        <table class="matrix">
+          <thead><tr><th>序</th><th>實戰資源</th><th>簡報</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><a href="/blog/ai-system-development-final-presentation">期末專題發表</a> · <a href="/presentations/ai-system-development-final-presentation.html">簡報</a></td><td><span class="badge pub">公開</span></td></tr>
+            <tr><td>2</td><td><a href="/blog/cloudflare-api-token-account-id-wrangler-deploy">Cloudflare Token（會員）</a> · <a href="/blog/cloudflare-api-token-account-id-wrangler-deploy-deck">簡報</a></td><td><span class="badge mem">會員</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footer"><span>AIDC.work</span><span>9 / 12</span></div>
+    </section>
+
+    <section class="slide" data-title="怎麼開簡報">
+      <p class="kicker">ACCESS</p>
+      <h2>公開簡報與會員簡報不是同一扇門</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>公開</h3>
+          <p>路徑 <code>/presentations/檔名.html</code>。匿名可開，適合課堂投影。</p>
+        </div>
+        <div class="card">
+          <h3>會員</h3>
+          <p>路徑 <code>/blog/slug-deck</code>。檔案不在公開目錄，未登入會被擋下。</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:18px">文章可否公開、簡報是否會員，可以不同。以完整表的「有無簡報」與實際連結為準。</div>
+      <div class="footer"><span>AIDC.work</span><span>10 / 12</span></div>
+    </section>
+
+    <section class="slide" data-title="先讀七篇">
+      <p class="kicker">START HERE</p>
+      <h2>跨分類先讀這七篇</h2>
+      <div class="grid two">
+        <div class="card">
+          <ol>
+            <li><a href="/blog/new-member-article">系統詞彙地圖</a>（會員）</li>
+            <li><a href="/blog/five-questions-managers-must-ask-in-ai-era">主管必須思考的五件事</a></li>
+            <li><a href="/blog/non-programmer-ai-system-development">非工程師也能開始</a></li>
+            <li><a href="/blog/ai-adoption-start-with-process-inventory">先盤點流程</a></li>
+          </ol>
+        </div>
+        <div class="card">
+          <ol start="5">
+            <li><a href="/blog/ai-feasibility-srs-mvp-stage-gate">SRS 與 Go／No-Go</a></li>
+            <li><a href="/blog/ai-system-development-lifecycle-aisdlc">AISDLC 九階段</a></li>
+            <li><a href="/blog/cursor-ai-system-development-guide">Cursor 系統開發指南</a>（會員）</li>
+          </ol>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px">這七篇覆蓋詞彙、管理判斷、入門可行性與系統生命週期，再依角色路徑往下走。</div>
+      <div class="footer"><span>AIDC.work</span><span>11 / 12</span></div>
+    </section>
+
+    <section class="slide" data-title="行動">
+      <p class="kicker">NEXT STEP</p>
+      <h2>用完整表查，用路徑讀</h2>
+      <p class="lead">簡報是地圖；46 列完整標題與連結在會員文章。</p>
+      <p><strong>延伸閱讀：</strong><a href="/blog/aidc-blog-reading-path">完整分類與閱讀順序表</a> · <a href="/courses">課程一覽</a> · <a href="/booking">預約諮詢</a></p>
+      <div class="footer"><span>AIDC.work · Enterprise AI Development</span><span>12 / 12</span></div>
+    </section>
+  </main>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <nav class="controls" id="controls" aria-label="簡報控制">
+    <div class="ctrl-main">
+      <button id="prev" type="button" aria-label="上一頁" title="上一頁（←）">←</button>
+      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+      <div class="count" id="count">1 / 12</div>
+      <button id="next" type="button" aria-label="下一頁" title="下一頁（→）">→</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="fs-down" type="button" aria-label="縮小字體" title="縮小字體（-）">A−</button>
+      <span class="fs-label" id="fs-label" aria-live="polite">100%</span>
+      <button id="fs-up" type="button" aria-label="放大字體" title="放大字體（+）">A+</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="full" type="button" aria-label="全頁顯示" title="全頁顯示／離開（F）">⛶</button>
+      <button id="pdf" type="button" class="wide" aria-label="匯出為 PDF" title="匯出為 PDF（P）">PDF</button>
+    </div>
+    <button id="toggle-ui" type="button" aria-label="收合或展開工具列" title="收合／展開工具列（H）" aria-expanded="true">▾</button>
+  </nav>
+  <script>
+    const DECK_TITLE = "AIDC.work Blog 分類與閱讀路徑";
+    const FS_STEPS = [0.85, 0.925, 1, 1.1, 1.2];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("count");
+    const barEl = document.getElementById("bar");
+    const controls = document.getElementById("controls");
+    const toggleUi = document.getElementById("toggle-ui");
+    const fsLabel = document.getElementById("fs-label");
+    const hintEl = document.getElementById("hint");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--deck-fs", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      document.title = `${slides[index].dataset.title}｜${DECK_TITLE}`;
+      history.replaceState(null, "", `#${index + 1}`);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      controls.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    document.getElementById("prev").onclick = () => show(index - 1);
+    document.getElementById("next").onclick = () => show(index + 1);
+    document.getElementById("fs-down").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("fs-up").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("full").onclick = () => toggleFullscreen();
+    document.getElementById("pdf").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!controls.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!controls.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+      const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.getElementById("full").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const requested = Number(new URLSearchParams(location.search).get("slide") || location.hash.slice(1));
+    show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+  </script>
+
+
+<aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="aidc-blog-reading-path">
+  <header>
+    <div class="header-left">
+      <strong>講者模式</strong>
+      <span id="narration-status">載入中…</span>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+      <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+    </div>
+  <button type="button" id="btn-narration" title="講者模式 (N)">講者</button></header>
+  <div id="narration-avatar" aria-hidden="true"></div>
+  <p id="narration-script">載入講稿…</p>
+  <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+  <div class="narration-controls">
+    <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+    <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+    <button type="button" id="narration-stop" title="停止">⏹</button>
+    <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+  </div>
+  <div class="narration-settings">
+    <label><input type="checkbox" id="narration-auto-advance" checked="">播完自動翻頁</label>
+    <label><input type="checkbox" id="narration-auto-play-next" checked="">翻頁後自動播放</label>
+    <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+    <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+  </div>
+</aside><script src="narration/deck-narration-player.js"></script></body></html>

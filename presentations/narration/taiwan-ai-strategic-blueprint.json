@@ -1,0 +1,657 @@
+{
+  "version": "1.0.0",
+  "deckId": "taiwan-ai-strategic-blueprint",
+  "deckPath": "taiwan-ai-strategic-blueprint.html",
+  "title": "台灣 AI 戰略藍圖",
+  "sourceType": "pdf",
+  "promptVersion": "1.0.0",
+  "modelVersion": "gpt-4o",
+  "voice": {
+    "provider": "openai",
+    "voiceId": "echo",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "第 1 頁",
+      "sourceHash": "36b26d784ee6c7f5189d01fcfb187662d00592082e30eb7425a905e8d0b5eda0",
+      "extractedContent": {
+        "eyebrow": "01 / 第 1 頁",
+        "kicker": "",
+        "headings": [
+          "第 1 頁"
+        ],
+        "lead": "第 1 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p01.png"
+      },
+      "script": "大家好，今天我們將介紹AI未來發展與臺灣戰略意義，這份簡報是來自于簡立峰博士的專題演講；再由黃老師應用Gemini Notebook, Cursor 加上 OpenAI的API 生成的語音投影片；希望能經由本次濃縮的內容(也可以用聽的), 讓大家快速了解AI的發展趨勢, AI對台灣企業軟體及AI主權的影響, 以及我們的因應之道; 接下來就開始介紹簡博士的精彩演講內容。",
+      "estimatedSeconds": 39,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s01.mp3",
+      "audioDurationSeconds": 32.4,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T05:55:37.189Z",
+      "approvedAt": "2026-09-01T08:16:30.663Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": null
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "第 2 頁",
+      "sourceHash": "b098c60ffdb013f32c5a259fddb4f9eb07e006bc540bffd3fe309ab356a86b57",
+      "extractedContent": {
+        "eyebrow": "02 / 第 2 頁",
+        "kicker": "",
+        "headings": [
+          "第 2 頁"
+        ],
+        "lead": "第 2 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p02.png"
+      },
+      "script": "首先我們要先探討的是人工智慧(AI)的三階段演化。第一是「連結(Connection)」階段，這是智慧型手機時代的「低頭族」現象，象徵著人們與科技的初步互動。接下來進入第二「陪伴(Companionship)」階段，AI不僅具備情緒價值，還能進行對話，成為我們的AI朋友。到了第三階段，我們來到「代理(Action/Agent)」階段，這是AI具備規劃與執行能力的時代，從只動口的被動顧問，進化為\"使命必逹\"可完成工作的主動型代理人。\n這三階段傳達的重點是，AI不再只是工具，而是能夠主動執行任務的夥伴。接下來，我們將深入拆解 AI 代理架構。",
+      "estimatedSeconds": 60,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s02.mp3",
+      "audioDurationSeconds": 47.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:32:52.295Z",
+      "approvedAt": "2026-09-01T08:23:21.741Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "第 3 頁",
+      "sourceHash": "301c42b0aa99823ac80220f8fd8f63bea6b3c1088842e3a2add6709461bc9638",
+      "extractedContent": {
+        "eyebrow": "03 / 第 3 頁",
+        "kicker": "",
+        "headings": [
+          "第 3 頁"
+        ],
+        "lead": "第 3 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p03.png"
+      },
+      "script": "在這一頁我們要來拆解 AI 代理架構(Deconstructing AI Agents)。在這個架構中，中央核心是大型語言模型(Large Language Model - LLM)，它就像是系統的大腦核心，負責處理主要的運算與分析。接下來，我們看到左邊記憶(Memory)的部分，它的功能是記住用戶喜好與限制，確保系統能夠提供個性化的服務。再來是右邊技能與標準作業程序(Skills & SOPs)，這部分負責接收人類的高階指令並執行，確保操作的精確性與一致性。下方是外部工具(Tools)，這些工具調用外部資源，例如訂票系統，來完成更複雜的任務。\n這個架構要傳達的重點是，AI 代理的運作是由多個關鍵組成部分協同合作，來實現智能化的功能。接下來，我們將進一步探討AI時代軟體開發的角色反轉。",
+      "estimatedSeconds": 74,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s03.mp3",
+      "audioDurationSeconds": 60.6,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:33:51.729Z",
+      "approvedAt": "2026-09-01T08:16:41.200Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "第 4 頁",
+      "sourceHash": "1ab22d79e3238a7d35642c1237aa42f8303f5cf86c853ff3f0bfffd00c133185",
+      "extractedContent": {
+        "eyebrow": "04 / 第 4 頁",
+        "kicker": "",
+        "headings": [
+          "第 4 頁"
+        ],
+        "lead": "第 4 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p04.png"
+      },
+      "script": "這一頁我們要探討的是「軟體開發的角色反轉(The Role Reversal in Software Development)」。在過去，人類主要負責寫程式（Humans write code），這是一種寫作的過程。然而，隨著科技的進步，現在以及未來的趨勢是AI寫程式，而人類則擔任指導與編輯的角色（AI codes, humans direct & edit）。這種轉變不僅是一個技術上的里程碑，例如AI在世界程式設計大賽中成功解出所有題目，更影響了職場的需求。初階工程師的需求下降了25%，而具有豐富經驗的資深工程師需求則增加了20%。這些變化顯示出AI技術對於軟體開發行業的深遠影響。接下來，我們將探討這些變化對於整體產業的意義。",
+      "estimatedSeconds": 68,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s04.mp3",
+      "audioDurationSeconds": 53.3,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:34:56.518Z",
+      "approvedAt": "2026-09-01T08:16:47.817Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "第 5 頁",
+      "sourceHash": "117fba0f848cd3fb5fc87f73e582d7571f707e97d0e6f634566f9eafa10bbd07",
+      "extractedContent": {
+        "eyebrow": "05 / 第 5 頁",
+        "kicker": "",
+        "headings": [
+          "第 5 頁"
+        ],
+        "lead": "第 5 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p05.png"
+      },
+      "script": "這一頁我們要討論的是「產業的顛覆矩陣(The Industry Disruption Matrix)」。首先，在製藥(Pharma)領域，藥物即軟體(Drug as a Service/Software)的概念正在興起。像莫德納(Moderna)這樣的公司，利用人工智慧在六週內產出個人化疫苗，這顯示了AI在加速藥物開發上的潛力。接下來是專業服務(Professional Services)，依成果計價(Outcome-based Pricing)的模式正在改變傳統的收費方式。隨著AI協助前期分析，律師與顧問的工時減少，商業模式需要重新定義。最後，在電子商務(E-commerce)方面，代理商務(Agentic Commerce)的崛起預示著未來的變革。預估到2030年，AI代理將主導20%的電商交易，並在2028年主導80%的B2B採購。這些變化將深刻影響各行各業。接下來，我們將探討第六頁的內容。",
+      "estimatedSeconds": 88,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s05.mp3",
+      "audioDurationSeconds": 61.2,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:36:28.739Z",
+      "approvedAt": "2026-09-01T08:16:53.296Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "第 6 頁",
+      "sourceHash": "0a02c1e75c655a8e6094347f3f68342b93a574f7209819956187ff1ba19e7440",
+      "extractedContent": {
+        "eyebrow": "06 / 第 6 頁",
+        "kicker": "",
+        "headings": [
+          "第 6 頁"
+        ],
+        "lead": "第 6 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p06.png"
+      },
+      "script": "這頁要傳達的重點是，2026年的硬體趨勢將從「訓練(Training)」逐步轉向「推論(Inference)」。目前市場上，訓練與推論的比例約為1:1，但預計在未來四到五年內，推論將佔據80%的市場份額，而訓練僅剩20%。這種轉變的關鍵時刻被稱為「黃金交叉(The Golden Cross)」。核心觀點在於，隨著市場從單一廠商走向多元化，這將為台灣的代工廠帶來更廣大且安全的代工商機。接下來，我們將探討算力經濟與主權AI。",
+      "estimatedSeconds": 47,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s06.mp3",
+      "audioDurationSeconds": 37.9,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:38:14.590Z",
+      "approvedAt": "2026-09-01T08:16:59.247Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "第 7 頁",
+      "sourceHash": "63ff0ef59af88fb79945b9bc1a3db9c25a208ed209f4e384efcbb53c0992c93e",
+      "extractedContent": {
+        "eyebrow": "07 / 第 7 頁",
+        "kicker": "",
+        "headings": [
+          "第 7 頁"
+        ],
+        "lead": "第 7 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p07.png"
+      },
+      "script": "這一頁要探討的是「算力經濟與主權AI(Compute Economy & Sovereign AI)」。首先，我們看到硬體貶值的問題，購買GPU的成本在6年內迅速歸零，這是由於技術快速迭代所致。接下來是算力經濟的概念，透過租用Token來持續使用最新的算力，這被視為現代的新「電力」。在企業AI落地模式方面，我們有雲端開源模型(Open-source Cloud)和企業級AI伺服器機櫃(Enterprise AI Server Racks)，這些都將成為台灣硬體業下一個類似PC的巨大商機。接下來，我們將進一步探討這些模式如何在實際中應用。",
+      "estimatedSeconds": 58,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s07.mp3",
+      "audioDurationSeconds": 42.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:39:17.614Z",
+      "approvedAt": "2026-09-01T08:17:03.080Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "第 8 頁",
+      "sourceHash": "e2ffa10f976956a8b7959c0a5752a90db76760184283075d0812e5a27d948f75",
+      "extractedContent": {
+        "eyebrow": "08 / 第 8 頁",
+        "kicker": "",
+        "headings": [
+          "第 8 頁"
+        ],
+        "lead": "第 8 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p08.png"
+      },
+      "script": "這頁要傳達的重點是台灣在全球市場中的絕對優勢。首先，我們看到台灣的龐大資本(Massive Capital)，台股市值突破150兆，躍升為全球第五大股市。這顯示出台灣在資本市場上的強大實力。其次，台灣作為戰略核心(Strategic Core)，成為美國隊(Team USA)不可或缺的核心代工廠，承接去中化後的龐大產能。這不僅強化了台灣在全球供應鏈中的地位，也為未來的合作奠定了基礎。最後，戰略機會(Strategic Opportunity)強調資本操作與併購的重要性，我們必須利用滿溢的資金，在全球進行技術與人才的併購，為未來做好準備。接下來，我們將探討台灣在全球供應鏈中的關鍵角色。",
+      "estimatedSeconds": 65,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s08.mp3",
+      "audioDurationSeconds": 53.4,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:39:32.002Z",
+      "approvedAt": "2026-09-01T08:17:06.274Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "第 9 頁",
+      "sourceHash": "8dab8f5391c32cfcd4d4f4048798436de33fa4337474861d010f51d04e1d29bb",
+      "extractedContent": {
+        "eyebrow": "09 / 第 9 頁",
+        "kicker": "",
+        "headings": [
+          "第 9 頁"
+        ],
+        "lead": "第 9 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p09.png"
+      },
+      "script": "這一頁展示了BTSNC供應鏈矩陣，強調台灣在全球供應鏈中的關鍵角色。首先，基礎層是製造整合(Manufacturing Integration)，由鴻海(Foxconn)主導，專注於降低成本的全球製造網與伺服器組裝。接下來是能源管理(Energy & Power)，由台達電(Delta)負責，致力於提升AI資料中心的能源效率。第三層是邊緣運算(Edge AI)，由聯發科(MediaTek)提供支援，專注於終端裝置與邊緣設備的AI晶片。最頂層是晶片代工(Foundry)，由台積電(TSMC)領導，作為全球最先進製程的核心。這頁要傳達的重點是，台灣在每一層級皆具備世界級領導地位。接下來，我們將探討台灣少子化的問題與數位轉型和荷蘭模式。",
+      "estimatedSeconds": 70,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s09.mp3",
+      "audioDurationSeconds": 53.3,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:39:53.813Z",
+      "approvedAt": "2026-09-01T08:17:10.076Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "第 10 頁",
+      "sourceHash": "646723cf580ac09f79963adc084ee65e35609fd3ba78d063bc5c5f92d39d63b4",
+      "extractedContent": {
+        "eyebrow": "10 / 第 10 頁",
+        "kicker": "",
+        "headings": [
+          "第 10 頁"
+        ],
+        "lead": "第 10 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p10.png"
+      },
+      "script": "這一頁我們要探討如何透過數位轉型和荷蘭模式來解決少子化的挑戰。首先，我們面臨的痛點是人口結構老化與新生兒數量大幅下降，這對未來的勞動力供應構成了嚴峻挑戰。為此，我們可以借鑒荷蘭模式，將研發總部留在台灣，並在全球進行佈局生產，這樣不僅能保持台灣的創新優勢，還能透過全球化的製造, 來提升競爭力。此外，透過AI和虛擬實境(Virtual Reality)進行遠端管理，能有效提升效率。AI作為勞動力的完美補充，將重新定義「台灣人」的角色，讓我們在全球化的舞台上更具優勢。接下來，我們將進一步探討AI時代職場的新結構。",
+      "estimatedSeconds": 56,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s10.mp3",
+      "audioDurationSeconds": 51.4,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:41:13.884Z",
+      "approvedAt": "2026-09-01T08:17:13.772Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "第 11 頁",
+      "sourceHash": "dcce8033fcf4a24370a099356fd36bf3526bd5618a9b1e079668131ab6f5eb74",
+      "extractedContent": {
+        "eyebrow": "11 / 第 11 頁",
+        "kicker": "",
+        "headings": [
+          "第 11 頁"
+        ],
+        "lead": "第 11 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p11.png"
+      },
+      "script": "這一頁主要探討了職場的新結構：混編團隊，強調人類員工與AI數位員工的協作。\n在這個架構中，經理負責管理人類員工和AI數位員工。高薪腦力密集職位因為AI的高效益，面臨著極大的衝擊，容易被取代。而低薪勞力密集職位則因為人類的靈活性和AI替換成本過高，暫時較為安全。\n這提醒我們，未來每位員工都需要學習如何與AI合作，甚至是建立專屬的AI代理人(類似養小鬼 AI Agent)。接下來，我們將進一步探討這些變革對職場以及大學教育-專案導向學習的影響。",
+      "estimatedSeconds": 48,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s11.mp3",
+      "audioDurationSeconds": 44.1,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:42:31.534Z",
+      "approvedAt": "2026-09-01T08:17:17.283Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "第 12 頁",
+      "sourceHash": "c0ad50c903295a5eb846402702d4772eb604d8ea904083a4899dec761f26328b",
+      "extractedContent": {
+        "eyebrow": "12 / 第 12 頁",
+        "kicker": "",
+        "headings": [
+          "第 12 頁"
+        ],
+        "lead": "第 12 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p12.png"
+      },
+      "script": "這一頁的重點在於大學教育的重構，特別是雙導師體系與雙同學體系的介紹。在雙導師體系中，人類老師(Human Teacher)負責引導與啟發，而AI老師(AI Teacher)則專注於傳授專業知識。另一方面，雙同學體系中，人類同學(Human Peer)培養社交與團隊合作能力，而AI同學(AI Peer)則模擬未來職場的協作環境。這些元素共同構成專案導向學習(Project-Based Learning, PBL)的核心方法，強調在情境中應用知識的重要性。以上是Gemini Notebook摘錄的精簡內容；\n接下來，我們將列擧20個AI技術與架構的核心關鍵詞, 來複習本次簡報的內容",
+      "estimatedSeconds": 63,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s12.mp3",
+      "audioDurationSeconds": 47.4,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:44:28.954Z",
+      "approvedAt": "2026-09-01T08:17:21.272Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "第 13 頁",
+      "sourceHash": "901a9f205f96612bd25c0d59f3113a921c228cca997b449e343f0c2c66ea251e",
+      "extractedContent": {
+        "eyebrow": "13 / 第 13 頁",
+        "kicker": "",
+        "headings": [
+          "第 13 頁"
+        ],
+        "lead": "第 13 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p13.png"
+      },
+      "script": "這頁我們要複習的是 AI 技術與架構的核心關鍵詞。首先，我們有語言模型(Language Model)，這是許多自然語言處理應用的基礎。接下來2是變形金剛架構(Transformer)，這是現代 AI 模型中不可或缺的技術。第三點是 AI 代理或 AI 代辦(AI Agent)，這些是執行特定任務的智能系統。第四是大型語言模型(Large Language Model, LLM)，它們能夠處理和生成大量文本。第五是長期任務(Long Horizon Task)，這涉及需要長時間規劃和執行的任務。第六點是技能或標準作業程序(Skill/SOP)，這是確保 AI 系統能夠一致執行任務的關鍵。最後，第7是邊緣 AI(Edge AI)，這是將 AI 能力推向設備端對端的重要發展。\n這7個名詞共同構成了現代 AI 技術的基礎元素。接下來，我們將進一步複習產業與商業模式的應用名詞。",
+      "estimatedSeconds": 81,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s13.mp3",
+      "audioDurationSeconds": 63.7,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:46:57.374Z",
+      "approvedAt": "2026-09-01T08:17:25.963Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "第 14 頁",
+      "sourceHash": "7fdca221906c304b95e5a5201f8a7c0f7610fdd3d561937a14fced69a6c3e497",
+      "extractedContent": {
+        "eyebrow": "14 / 第 14 頁",
+        "kicker": "",
+        "headings": [
+          "第 14 頁"
+        ],
+        "lead": "第 14 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p14.png"
+      },
+      "script": "這一頁我們要複習的是核心關鍵字詞庫中的產業與商業模式。第8，我們看到「藥物即軟體(Drug as a Software)」，這是一個將藥物數位化的創新概念。接下來9是「代理商務(Agentic Commerce)」，這種模式強調智能代理在商務中的應用。然後是10「依成果計價(Outcome-based Pricing)」，這是一種根據實際成果來定價的策略。接著是11「軟體即服務(SaaS - Software as a Service)」，這曾經是現代商業的主流, 在AI時代將面臨嚴柯的挑戰。後面第12到第14核心關鍵字是「算力經濟(Compute Economy)」、「AI 推論(AI Inference)」及「AI 訓練(AI Training)」，這些都是推動人工智慧技術發展的重要元素。\n最後，我們將複習有關主權AI戰略與教育框架的核心關鍵字。",
+      "estimatedSeconds": 81,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s14.mp3",
+      "audioDurationSeconds": 57.8,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-01T06:49:13.823Z",
+      "approvedAt": "2026-09-01T08:17:30.907Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "第 15 頁",
+      "sourceHash": "d6e6ff4e710a89add6cab34bf74f4ba791959d68fbd2091a1cb97e5e8bd2b222",
+      "extractedContent": {
+        "eyebrow": "15 / 第 15 頁",
+        "kicker": "",
+        "headings": [
+          "第 15 頁"
+        ],
+        "lead": "第 15 頁",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "taiwan-ai-strategic-blueprint/pages/p15.png"
+      },
+      "script": "終於，我們來到簡報的最後，這頁要複習的重點是核心關鍵字詞庫--主權AI戰略與教育框架。首先，談到15「主權AI(Sovereign AI)」，這是指在技術與數據上擁有自主權的人工智慧發展。接著16是「荷蘭模式(The Netherlands Model)」，這是一種強調創新與全球合作的經濟模式，值得我們借鑒。再來17是「資本操作(Capital Operation)」，這涉及如何有效管理與運用資本以促進科技進步。然後，18是AI時代的教育方式:「專案導向學習(Project-Based Learning, PBL)」，這是一種以實際專案為基礎的學習方法，能培養學生的實踐能力。19提到「代工供應鏈(Foundry Supply Chain)」，這是AI未來發展的重要領域，最後20是人人都要有「數位分身/數位孿生(Digital Twin)」，這是一種數位化技術，能夠在虛擬環境中模擬實體資產的行為。\n以上，這20個重要的關鍵字詞, 讓我們快速了解這份簡報的重點，期待大家能夠在實踐中靈活運用。\n感謝各位的參與，也讓我們一起與簡立峰博士以及黃老師, 用AI大幅提昇自己的能力, 共創美好的未來！",
+      "estimatedSeconds": 108,
+      "status": "audio_ready",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "echo",
+        "speed": 1
+      },
+      "audioUrl": "narration/audio/taiwan-ai-strategic-blueprint/s15.mp3",
+      "audioDurationSeconds": 84.9,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-09-02T05:49:20.638Z",
+      "approvedAt": "2026-09-02T06:00:25.615Z",
+      "approvedBy": "admin-ui",
+      "generationNotes": "vision:high, with-source-transcript"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-09-01T05:55:12.899Z",
+    "totalEstimatedSeconds": 1006,
+    "ttsCostEstimateUsd": 0.1358,
+    "publishedAt": "2026-09-01T08:19:41.318Z",
+    "publishedUrl": "https://ai-eip.service168.workers.dev/taiwan-ai-strategic-blueprint.html"
+  }
+}

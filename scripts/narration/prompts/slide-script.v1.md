@@ -13,7 +13,9 @@
 - `slideTitle`: data-title
 - `prevSlideSummary`: 前一頁一句摘要（首頁為空）
 - `nextSlideTitle`: 下一頁標題（末頁為空）
-- `extractedContent`: JSON，含 headings、lead、cards、table、svgLabels、callouts
+- `extractedContent`: JSON，含 headings、lead、cards、table、svgLabels、callouts、pageImageUrl
+- `sourceTranscript`（可選）: 講者上傳或貼上的整份原始文字稿
+- `slideImage`（可選）: PDF 投影片頁面 PNG，由 vision 模型解讀
 
 ## Output rules
 
@@ -24,6 +26,7 @@
 5. 不可使用 Markdown、項目符號或頁碼；輸出純文字一段。
 6. 架構圖頁需依層次由上到下的順序講述。
 7. 若內容不足，可補充「這頁要傳達的重點是…」但不可捏造事實。
+8. 若有原始文字稿，優先對齊該頁對應段落；若有投影片圖像，以圖上可見內容為準。
 
 ## Status workflow
 

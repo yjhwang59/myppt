@@ -2,9 +2,14 @@
  * Deck narration player — audio now, avatar/video later via MediaRenderer.
  */
 (function () {
-  const MANIFEST_URL = "narration/enterprise-ai-portal-deck.json";
   const panel = document.getElementById("narration-panel");
   if (!panel) return;
+
+  const deckId =
+    document.documentElement.getAttribute("data-deck-id") ||
+    panel.getAttribute("data-deck-id") ||
+    "enterprise-ai-portal-deck";
+  const MANIFEST_URL = `narration/${deckId}.json`;
 
   const els = {
     script: document.getElementById("narration-script"),

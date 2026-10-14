@@ -1,0 +1,596 @@
+{
+  "version": "1.0.0",
+  "deckId": "fyhgoogle-2026-w38",
+  "deckPath": "fyhgoogle-2026-w38.html",
+  "title": "fyhGoogle｜W38 週報｜3 分鐘決策版",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "d2efdcb4717f12631e6e4d20818b0c5beb8729d1ce491d87b67cc4fe21798c94",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "2026-W38 · 2026-09-14 ~ 2026-09-21",
+        "headings": [
+          "fyhGoogle｜營運中台週報"
+        ],
+        "lead": "B2B 與供應商主檔已入版，日結 P0 仍未動。",
+        "stamp": "🟡 Attention · 對象：經營主管 · 約 3 分鐘",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "現況",
+      "sourceHash": "719d06d390e665e15e733481a32efc83481b28104b3482aded50c3d6df868f86",
+      "extractedContent": {
+        "eyebrow": "02 / 現況",
+        "kicker": "",
+        "headings": [
+          "Where are we?"
+        ],
+        "lead": "正式上線、持續發版。日常生產預估、工廠備料、門市驗收、購物車、B2B 與客服可營運；不是完整財務 ERP。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "操作面功能",
+            "paragraph": "五版 v0.1.148→0.1.153。W37 未提交 B2B 已入 main；供應商／品項主檔可操作。",
+            "bullets": []
+          },
+          {
+            "heading": "日結／庫存／營收口徑",
+            "paragraph": "Roadmap R1–R3 無程式進展。Plan 3 未完成項不得對外宣稱上線。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "本週焦點：把 B2B 工作台收斂進正式機，並讓採購 P0 主檔可維護。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "成果",
+      "sourceHash": "ff9e57054905a616f0aa5acc407a5cad358ddfce4412451b271f8e034495fd2f",
+      "extractedContent": {
+        "eyebrow": "03 / 本週成果",
+        "kicker": "",
+        "headings": [
+          "可驗證結果（≤3）"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "B2B 可列印、粒／包入版",
+            "paragraph": "報價／價表列印與售價單位進 v0.1.150–152。W37 未提交訂單工作台已收斂。",
+            "bullets": []
+          },
+          {
+            "heading": "供應商主檔可操作",
+            "paragraph": "採購模組紅→黃（紅 5→4）。PO／驗收閉環仍未做，不可宣稱採購完成。",
+            "bullets": []
+          },
+          {
+            "heading": "客服＋營運通",
+            "paragraph": "案件可改資料、Shop 新單／取消內部通知；營運通現況簡報入庫（W37 P2）。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "未列入：GitHub PR #7（仍 OPEN）、未提交生產計畫／副商品、Roadmap R1–R3。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "指標",
+      "sourceHash": "3aefcc61394b2fc45d57c721949bf4ed2e224438fa4bb6268da8bae1b849ef96",
+      "extractedContent": {
+        "eyebrow": "04 / 指標",
+        "kicker": "",
+        "headings": [
+          "Plan vs Actual"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "指標",
+            "目標",
+            "實際",
+            "偏差說明"
+          ],
+          [
+            "W37 P1 B2B 發版",
+            "進 main 或凍結",
+            "✅ v0.1.150–152",
+            "選項 A 已執行"
+          ],
+          [
+            "W37 P2 營運通",
+            "HTML／About 入庫",
+            "✅ 09-14 f4d5818",
+            "正式機可見性未登入抽樣"
+          ],
+          [
+            "W37 P3 P0 三題",
+            "會議或書面延期",
+            "未見書面證據",
+            "日結口徑仍未裁定"
+          ],
+          [
+            "前端版本",
+            "可持續發版",
+            "0.1.148 → 0.1.153",
+            "五版；153 功能抽樣待確認"
+          ],
+          [
+            "正式機",
+            "HTTP 200",
+            "200（09-21）",
+            "僅首頁；pytest／GitLab 尚未取得"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "風險",
+      "sourceHash": "41e4086d68b654ba106bbe58742043423802f9c03e60e2632ef476173fc4c4de",
+      "extractedContent": {
+        "eyebrow": "05 / 風險",
+        "kicker": "",
+        "headings": [
+          "RAG 與阻礙"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "項目",
+            "狀態",
+            "影響",
+            "需要誰"
+          ],
+          [
+            "未提交工作樹再膨脹（生產計畫／分貨、副商品進銷存）",
+            "🟡",
+            "與 W37 同一模式；下次 deploy 易混入未驗收變更",
+            "開發負責人或指定 Owner（待確認）"
+          ],
+          [
+            "日結鎖帳／權威庫存／官方營收口徑未裁定",
+            "🔴",
+            "R1–R3 無法開工；跨頁數字可能對不起來",
+            "經營主管＋業務（待確認）"
+          ],
+          [
+            "分貨矩陣仍不寫回出貨 Sheets",
+            "🟡",
+            "計畫量 vs 實出量靠人工；不可宣稱出貨閉環",
+            "業務確認是否本季做 R5"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "決策1",
+      "sourceHash": "e17165731d5f145e7c408668bbd4a911f3d6f03fbe4c8d063019d7b2721c9aa8",
+      "extractedContent": {
+        "eyebrow": "06 / 待決策",
+        "kicker": "",
+        "headings": [
+          "D01 生產計畫 WIP vs 副商品"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "未提交變更搶同一週產能",
+            "paragraph": "",
+            "bullets": [
+              "A：先收斂發版（生產計畫與副商品拆兩版）",
+              "B：凍結 WIP，轉回日結／庫存（仍缺業務定義）",
+              "建議：A · 期限：2026-09-24"
+            ]
+          },
+          {
+            "heading": "不決策",
+            "paragraph": "與 W37 相同：下次 deploy 卡住，或把半成品帶上正式機。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "W37 同一題已選 A 並完成 B2B 入版；本週模式重現，需再拍一次板。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "決策2",
+      "sourceHash": "bd29c9a6aa0f38bc46b814a729ccdd3b2a9e8781e930e582bbad0f97d8343b4f",
+      "extractedContent": {
+        "eyebrow": "07 / 待決策",
+        "kicker": "",
+        "headings": [
+          "D02 日結／庫存／營收口徑（延續）"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "官方口徑仍未裁定",
+            "paragraph": "",
+            "bullets": [
+              "A：排業務裁定（鎖什麼、庫存以誰為準、營收哪套）",
+              "B：本季只做操作面，書面承認非財務 ERP",
+              "建議：要可信數字選 A；否則書面選 B"
+            ]
+          },
+          {
+            "heading": "不決策",
+            "paragraph": "儀表板多口徑持續；完成度紅燈列無法翻轉。禁止口頭當已完成。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "W37 D02 無書面證據。期限：待確認（建議 W39 內有會議紀錄或書面延期）。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "下週",
+      "sourceHash": "0ba1605d725051396b61b34ad467b7d530f25225b5c1645026af2375fafa8b5b",
+      "extractedContent": {
+        "eyebrow": "08 / 下週承諾",
+        "kicker": "",
+        "headings": [
+          "W39 可驗收交付"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "收斂 WIP",
+            "description": "生產計畫／分貨與副商品：pytest 過並進 main，或書面凍結；禁止混版。"
+          },
+          {
+            "title": "處理 PR #7",
+            "description": "大分類同比：合併、關閉，或註明與已上線門市分類 MTD 的關係。"
+          },
+          {
+            "title": "P0 書面化",
+            "description": "會議紀錄或「本季不做日結鎖帳」書面；禁止口頭當已完成。"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [
+          "Owner 無證據則待確認。期間：2026-09-21 ~ 2026-09-27。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "脈絡",
+      "sourceHash": "eb07b296c92e5250da6e3529938d47c2c1d24ef6f40a98f2b477c8aec36838ce",
+      "extractedContent": {
+        "eyebrow": "09 / 相關專案",
+        "kicker": "",
+        "headings": [
+          "依賴與風險（非本週成果）"
+        ],
+        "lead": "本工作區僅開啟 fyhGoogle；本週提交未點名 sibling repo。",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "專案",
+            "關係",
+            "本週跨 repo 風險"
+          ],
+          [
+            "KDS2026",
+            "門市維度廚房 KPI，非 ERP 日結",
+            "🟢 勿把 KDS 匯入寫成 fyh 日結"
+          ],
+          [
+            "Workforce",
+            "雙軌人力：fyh iframe vs Supabase 排班",
+            "🟡 打卡權威來源仍待業務確認"
+          ],
+          [
+            "myVideo",
+            "用 FYH 商品圖；管線不屬本 repo",
+            "🟢 商品圖 ≠ 影片管線上線"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-09-21T05:48:01.653Z",
+    "totalEstimatedSeconds": 0,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

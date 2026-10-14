@@ -2,23 +2,26 @@ import fs from "node:fs";
 import path from "node:path";
 import { hashContent } from "./hash.js";
 import {
-  AUDIO_DIR,
   DEFAULT_VOICE,
   MANIFEST_PATH,
   MANIFEST_VERSION,
   PROMPT_VERSION,
   audioRelativeUrl,
+  deckAudioDir,
+  deckPreviewAudioDir,
+  manifestPath,
 } from "./paths.js";
 import { summarizeSlide } from "./extract.js";
 
-export function readManifest(manifestPath = MANIFEST_PATH) {
-  if (!fs.existsSync(manifestPath)) return null;
-  return JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+export function readManifest(filePath = MANIFEST_PATH) {
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
-export function writeManifest(manifest, manifestPath = MANIFEST_PATH) {
-  fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
-  fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+export function writeManifest(manifest, filePath) {
+  const out = filePath || (manifest?.deckId ? manifestPath(manifest.deckId) : MANIFEST_PATH);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 }
 
 export function createEmptySlideRecord(slide) {
@@ -51,6 +54,9 @@ export function mergeExtractedSlides({
   deckPath,
   extractedSlides,
   existingManifest = null,
+  title = null,
+  sourceType = null,
+  sourceFlavor = null,
 }) {
   const byId = new Map((existingManifest?.slides || []).map((s) => [s.slideId, s]));
 
@@ -82,6 +88,9 @@ export function mergeExtractedSlides({
     version: MANIFEST_VERSION,
     deckId,
     deckPath,
+    title: title || existingManifest?.title || deckId,
+    sourceType: sourceType || existingManifest?.sourceType || "html",
+    sourceFlavor: sourceFlavor || existingManifest?.sourceFlavor || null,
     promptVersion: PROMPT_VERSION,
     modelVersion: existingManifest?.modelVersion ?? null,
     voice: existingManifest?.voice ?? { ...DEFAULT_VOICE },
@@ -91,6 +100,8 @@ export function mergeExtractedSlides({
       lastExtractedAt: new Date().toISOString(),
       totalEstimatedSeconds: slides.reduce((sum, s) => sum + (s.estimatedSeconds || 0), 0),
       ttsCostEstimateUsd: existingManifest?.meta?.ttsCostEstimateUsd ?? 0,
+      publishedAt: existingManifest?.meta?.publishedAt ?? null,
+      publishedUrl: existingManifest?.meta?.publishedUrl ?? null,
     },
   };
 }
@@ -114,19 +125,25 @@ export function buildGenerationContext(manifest, slideIndex) {
   const next = slideIndex < slides.length - 1 ? slides[slideIndex + 1] : null;
 
   return {
-    deckTitle: "企業 AI 入口網整合平台架構",
+    deckTitle: manifest.title || manifest.deckId || "簡報",
     slideTotal: slides.length,
     prevSlideSummary: prev ? summarizeSlide(prev) : "",
     nextSlideTitle: next?.title || "",
   };
 }
 
-export function ensureAudioDir() {
-  fs.mkdirSync(AUDIO_DIR, { recursive: true });
+export function ensureAudioDir(deckId) {
+  if (deckId) {
+    fs.mkdirSync(deckAudioDir(deckId), { recursive: true });
+    fs.mkdirSync(deckPreviewAudioDir(deckId), { recursive: true });
+  } else {
+    fs.mkdirSync(path.dirname(deckAudioDir("x")), { recursive: true });
+  }
 }
 
-export function setSlideAudioReady(slide, durationSeconds) {
-  slide.audioUrl = audioRelativeUrl(slide.slideId);
+export function setSlideAudioReady(slide, durationSeconds, deckId) {
+  const id = deckId || slide._deckId;
+  slide.audioUrl = id ? audioRelativeUrl(id, slide.slideId) : audioRelativeUrl(slide.slideId);
   slide.audioDurationSeconds = durationSeconds;
   slide.status = "audio_ready";
 }
@@ -143,4 +160,15 @@ export function recalcManifestMeta(manifest) {
     0
   );
   return manifest;
+}
+
+/** Mark audio stale when script changes after audio_ready. */
+export function markScriptEdited(slide) {
+  slide.approvedAt = null;
+  slide.approvedBy = null;
+  if (slide.status === "audio_ready" || slide.audioUrl) {
+    slide.status = "stale";
+  } else {
+    slide.status = "pending_review";
+  }
 }

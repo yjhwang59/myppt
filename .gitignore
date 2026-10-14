@@ -4,5 +4,6 @@ node_modules/
 *.wav
 data/
 presentations/temp_script.js
+presentations/narration/audio/*/preview/
 .wrangler/
 .dev.vars

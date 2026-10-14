@@ -1,4 +1,5 @@
 import { estimateSecondsFromScript } from "./extract.js";
+import { buildSlidePrompt, buildSystemPrompt } from "./prompt-body.js";
 
 function joinParts(parts) {
   return parts.filter(Boolean).join("");
@@ -23,7 +24,7 @@ export function generateTemplateScript(slide, context) {
       ? `各位主管好，這份簡報的主題是「${title}」。`
       : `接下來這一頁，我們來看「${slide.title}」。`;
 
-  const leadPart = c.lead ? c.lead : "";
+  const leadPart = c.lead && !/^第 \d+ 頁$/.test(c.lead.trim()) ? c.lead : "";
 
   let body = "";
   if (c.cards?.length) {
@@ -61,12 +62,33 @@ export function generateTemplateScript(slide, context) {
   return joinParts([opening, leadPart, body, callout, closing]).replace(/\s+/g, " ").trim();
 }
 
+function buildUserMessage(userPrompt, pageImageDataUrl, visionDetail) {
+  if (!pageImageDataUrl) {
+    return { role: "user", content: userPrompt };
+  }
+  return {
+    role: "user",
+    content: [
+      { type: "text", text: userPrompt },
+      {
+        type: "image_url",
+        image_url: {
+          url: pageImageDataUrl,
+          detail: visionDetail === "low" ? "low" : "high",
+        },
+      },
+    ],
+  };
+}
+
 export async function generateScriptWithLlm(slide, context, options = {}) {
-  const { buildSlidePrompt, buildSystemPrompt } = await import("./prompt.js");
   const apiKey = options.apiKey || process.env.OPENAI_API_KEY;
   const model = options.model || process.env.NARRATION_LLM_MODEL || "gpt-4o-mini";
   const timeoutMs = Number(options.timeoutMs || process.env.NARRATION_LLM_TIMEOUT_MS || 60000);
   const maxRetries = Number(options.maxRetries || process.env.NARRATION_LLM_MAX_RETRIES || 2);
+  const sourceTranscript = options.sourceTranscript || "";
+  const pageImageDataUrl = options.pageImageDataUrl || null;
+  const visionDetail = options.visionDetail || "high";
 
   if (!apiKey) {
     const script = generateTemplateScript(slide, context);
@@ -78,6 +100,11 @@ export async function generateScriptWithLlm(slide, context, options = {}) {
     };
   }
 
+  let promptContract = options.promptContract;
+  if (!promptContract) {
+    const { loadPromptContract } = await import("./prompt.js");
+    promptContract = loadPromptContract();
+  }
   const userPrompt = buildSlidePrompt({
     deckTitle: context.deckTitle,
     slideIndex: slide.index,
@@ -87,7 +114,17 @@ export async function generateScriptWithLlm(slide, context, options = {}) {
     prevSlideSummary: context.prevSlideSummary,
     nextSlideTitle: context.nextSlideTitle,
     extractedContent: slide.extractedContent,
+    sourceTranscript,
+    hasSlideImage: Boolean(pageImageDataUrl),
+    promptContract,
   });
+
+  const systemPrompt = buildSystemPrompt({
+    hasSlideImage: Boolean(pageImageDataUrl),
+    hasSourceTranscript: Boolean(sourceTranscript?.trim()),
+  });
+
+  const userMessage = buildUserMessage(userPrompt, pageImageDataUrl, visionDetail);
 
   let lastError;
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
@@ -104,8 +141,8 @@ export async function generateScriptWithLlm(slide, context, options = {}) {
           model,
           temperature: 0.4,
           messages: [
-            { role: "system", content: buildSystemPrompt() },
-            { role: "user", content: userPrompt },
+            { role: "system", content: systemPrompt },
+            userMessage,
           ],
         }),
         signal: controller.signal,
@@ -121,11 +158,15 @@ export async function generateScriptWithLlm(slide, context, options = {}) {
       const script = (data.choices?.[0]?.message?.content || "").trim();
       if (!script) throw new Error("LLM 回傳空講稿");
 
+      const notes = [];
+      if (pageImageDataUrl) notes.push(`vision:${visionDetail}`);
+      if (sourceTranscript?.trim()) notes.push("with-source-transcript");
+
       return {
         script,
         estimatedSeconds: estimateSecondsFromScript(script),
         modelVersion: model,
-        generationNotes: null,
+        generationNotes: notes.length ? notes.join(", ") : null,
       };
     } catch (err) {
       clearTimeout(timer);

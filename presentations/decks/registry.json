@@ -1,0 +1,145 @@
+{
+  "version": 2,
+  "decks": [
+    {
+      "deckId": "enterprise-ai-portal-deck",
+      "title": "企業 AI 入口網整合平台架構",
+      "sourceType": "html",
+      "createdAt": "2026-08-31T08:12:19.302Z",
+      "updatedAt": "2026-09-14T09:14:46.081Z",
+      "categoryId": "architecture",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "test-upload-deck",
+      "title": "測試上傳簡報",
+      "sourceType": "html",
+      "createdAt": "2026-08-31T08:14:11.241Z",
+      "updatedAt": "2026-08-31T08:14:11.241Z",
+      "categoryId": "internal",
+      "listed": false,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "test-pdf-deck",
+      "title": "PDF Test",
+      "sourceType": "pdf",
+      "createdAt": "2026-08-31T08:15:00.055Z",
+      "updatedAt": "2026-08-31T08:15:00.055Z",
+      "categoryId": "internal",
+      "listed": false,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "taiwan-ai-strategic-blueprint",
+      "title": "台灣 AI 戰略藍圖",
+      "sourceType": "pdf",
+      "createdAt": "2026-09-01T05:55:12.902Z",
+      "updatedAt": "2026-09-01T08:19:41.324Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "aidc-work-system-architecture",
+      "title": "AIDC.work 系統架構",
+      "sourceType": "html",
+      "createdAt": "2026-09-02T06:19:37.321Z",
+      "updatedAt": "2026-09-02T06:19:37.321Z",
+      "categoryId": "architecture",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "deck",
+      "title": "FYH-營運通系統現況-主管會議簡報",
+      "sourceType": "html",
+      "createdAt": "2026-09-14T04:44:45.634Z",
+      "updatedAt": "2026-09-14T06:04:55.938Z",
+      "categoryId": "internal",
+      "listed": false,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "fyhgoogle-2026-w37",
+      "title": "fyhGoogle｜2026-W37 週報｜主管會議",
+      "sourceType": "html",
+      "createdAt": "2026-09-14T06:59:42.464Z",
+      "updatedAt": "2026-09-14T06:59:42.464Z",
+      "categoryId": "internal",
+      "listed": false,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "aidc-blog-reading-path",
+      "title": "Blog 分類與閱讀路徑",
+      "sourceType": "html",
+      "createdAt": "2026-09-14T09:33:58.414Z",
+      "updatedAt": "2026-10-03T01:28:06.354Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "fyh-bigdata-production-forecast",
+      "title": "fyhGoogle｜巨量資料分析｜次日生產預估",
+      "sourceType": "html",
+      "createdAt": "2026-09-20T22:22:54.704Z",
+      "updatedAt": "2026-09-20T22:22:54.704Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "fyhgoogle-2026-w38",
+      "title": "fyhGoogle｜W38 週報｜3 分鐘決策版",
+      "sourceType": "html",
+      "createdAt": "2026-09-21T05:45:55.896Z",
+      "updatedAt": "2026-09-21T05:48:01.654Z",
+      "categoryId": "internal",
+      "listed": false,
+      "sortOrder": 0,
+      "summary": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "architecture",
+      "name": "架構",
+      "description": "",
+      "sortOrder": 10,
+      "isActive": true
+    },
+    {
+      "id": "strategy",
+      "name": "戰略與閱讀",
+      "description": "",
+      "sortOrder": 20,
+      "isActive": true
+    },
+    {
+      "id": "bigdata",
+      "name": "巨量資料",
+      "description": "",
+      "sortOrder": 30,
+      "isActive": true
+    },
+    {
+      "id": "internal",
+      "name": "內部",
+      "description": "週報與測試，預設不上架",
+      "sortOrder": 90,
+      "isActive": true
+    }
+  ]
+}

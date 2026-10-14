@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "deckId": "test-pdf-deck",
+  "title": "PDF Test",
+  "sourceType": "pdf",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "Speaker Studio PDF Test",
+      "layout": "pdf-page",
+      "lead": "Speaker Studio PDF Test",
+      "pageImageUrl": "test-pdf-deck/pages/p01.png"
+    }
+  ]
+}

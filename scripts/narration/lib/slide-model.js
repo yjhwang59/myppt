@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import * as cheerio from "cheerio";
-import { extractSlideContent } from "./extract.js";
+import { detectSourceFlavor, extractSlideContent } from "./extract.js";
 
 function cleanText(text) {
   return (text || "").replace(/\s+/g, " ").replace(/\u00a0/g, " ").trim();
@@ -19,7 +19,9 @@ export function detectLayout($, el) {
   const $el = $(el);
   if ($el.hasClass("hero")) return "hero";
   if ($el.find(".arch-svg-wrap").length) return "arch-svg";
+  if ($el.find(".phase-line").length) return "phases";
   if ($el.find("table.table").length && !$el.find(".grid .card").length) return "table";
+  if ($el.find(".facts").length) return "facts";
   if ($el.find(".flow-step").length >= 3 && $el.find(".grid .card").length === 0) return "flow";
   if ($el.find(".grid.six").length) return "cards-six";
   if ($el.find(".grid.three").length) return "cards-three";
@@ -73,13 +75,29 @@ export function migrateSlideFromHtml($, el, index, total) {
     flowSteps: content.flowSteps,
     table: content.table,
     callouts: content.callouts,
+    phases: content.phases || [],
+    facts: content.facts || [],
+    slideFooter: content.slideFooter || "",
+    opUrls: content.opUrls || [],
   };
+
+  if (!slide.cards.length && slide.phases.length) {
+    slide.cards = slide.phases.map((p) => ({
+      num: null,
+      tag: null,
+      tagClass: p.tone || null,
+      heading: p.heading,
+      paragraph: p.paragraph,
+      bullets: [],
+    }));
+  }
 
   if (layout === "arch-svg") {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
   }
 
-  slide.footerBrand = cleanText($el.find(".footer span").first().text()) || "企業 AI 整合平台";
+  slide.footerBrand =
+    cleanText($el.find(".footer span").first().text()) || content.slideFooter || "企業 AI 整合平台";
   slide.footerPage = `${index + 1} / ${total}`;
   return slide;
 }
@@ -189,6 +207,8 @@ export function migrateDeckHtml(html, deckId) {
     version: "1.0.0",
     deckId,
     title: "企業 AI 入口網｜整合平台架構",
+    sourceType: "html",
+    sourceFlavor: detectSourceFlavor(html),
     slides,
   };
 }

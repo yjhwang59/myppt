@@ -1,0 +1,756 @@
+{
+  "version": "1.0.0",
+  "deckId": "deck",
+  "title": "FYH-營運通系統現況-主管會議簡報",
+  "sourceType": "html",
+  "sourceFlavor": "fyh-deck-chrome",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "主管會議簡報 v1.0 · 2026-09-14",
+      "kicker": "",
+      "h1": "",
+      "h2": "福圓號營運通系統現況與切換進度",
+      "lead": "營運通已撐分析、電商、人力、客服；生產與出貨仍平行作業。 庫存管理開發中、採購管理評估中——請勿當成已全面切換或已完成閉環。",
+      "stamp": "對象：經營主管 · 營運 · 工廠 · 資訊 口頭約 8–10 分鐘；F 整頁、A± 調字級",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "準據：docs/FYH_系統功能說明與操作手冊.md · 正式機 fyh.aidc.work"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "準據：docs/FYH_系統功能說明與操作手冊.md · 正式機 fyh.aidc.work",
+      "opUrls": [],
+      "footerBrand": "準據：docs/FYH_系統功能說明與操作手冊.md · 正式機 fyh.aidc.work",
+      "footerPage": "1 / 12"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "議程",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "02 / 今日議程",
+      "kicker": "",
+      "h1": "",
+      "h2": "12 頁 · 四種狀態＋優先序＋名詞表",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "① 定位與判準",
+          "paragraph": "",
+          "bullets": [
+            "營運通是什麼、不是什麼",
+            "正式上線／平行作業／開發中／評估中"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "② 模組現況",
+          "paragraph": "",
+          "bullets": [
+            "已在用、雙軌、還在做、還在評",
+            "庫存開發中、採購評估中"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "③ 建議優先序",
+          "paragraph": "口徑治理、庫存結存、分貨銜接、託運說法（非正式承諾）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "④ KPI 與用語",
+          "paragraph": "營收須標口徑；名詞表對齊平行作業、權威結存、占位(stub)",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "舊「綠黃紅完成度」簡報仍保留給開發對帳，本份是主管決策版"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "舊「綠黃紅完成度」簡報仍保留給開發對帳，本份是主管決策版",
+      "opUrls": [],
+      "footerBrand": "舊「綠黃紅完成度」簡報仍保留給開發對帳，本份是主管決策版",
+      "footerPage": "2 / 12"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "定位",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "03 / 營運通是什麼",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一套 Web 入口，不是財務總帳",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "是什麼",
+          "paragraph": "把 Google Sheets 日報、Dudoo POS、工廠出貨、SD 訂單、天氣集中後，門市／工廠／總部／電商／客服在 同一套營運通 做查詢、驗證、預估與日常作業。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "不是什麼（請勿當成已上線）",
+          "paragraph": "不做總帳、應收應付與採購結案；沒有可信即時庫存結餘；沒有每日 22:00 日結鎖帳；GSC 原料採購與行政總務尚未建置。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "看數字時先記住",
+          "paragraph": "營收有多套口徑(Sheets 日報、Dudoo 交易／明細／發票、Premium hybrid)。跨頁勿硬加總。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "公開入口 https://fyh.aidc.work · 側欄依帳號權限顯示"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "公開入口 https://fyh.aidc.work · 側欄依帳號權限顯示",
+      "opUrls": [],
+      "footerBrand": "公開入口 https://fyh.aidc.work · 側欄依帳號權限顯示",
+      "footerPage": "3 / 12"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "四狀態",
+      "layout": "phases",
+      "hero": false,
+      "eyebrow": "04 / 狀態定義",
+      "kicker": "",
+      "h1": "",
+      "h2": "用切換進度說話，不用綠黃紅分數",
+      "lead": "成熟度方向：評估中 → 開發中 → 平行作業 → 正式上線。文件規劃 ≠ 上線。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": "g",
+          "heading": "正式上線",
+          "paragraph": "營運通已是日常入口，舊流程已退場或僅備援。可對外說「已在用」。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": "y",
+          "heading": "已完成（平行作業）",
+          "paragraph": "功能可跑、資料可存，仍與 Excel／Sheets／舊流程雙軌，尚未全面切換。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": "b",
+          "heading": "開發中",
+          "paragraph": "有作業面，閉環未完成，持續開發。不可宣稱整域已上線。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": "r",
+          "heading": "評估中",
+          "paragraph": "需求／設計評估中。不可宣稱時程，也不可說已完成。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "庫存不因「驗收已可操作」升為上線或平行作業"
+      ],
+      "phases": [
+        {
+          "heading": "正式上線",
+          "paragraph": "營運通已是日常入口，舊流程已退場或僅備援。可對外說「已在用」。",
+          "tone": "g"
+        },
+        {
+          "heading": "已完成（平行作業）",
+          "paragraph": "功能可跑、資料可存，仍與 Excel／Sheets／舊流程雙軌，尚未全面切換。",
+          "tone": "y"
+        },
+        {
+          "heading": "開發中",
+          "paragraph": "有作業面，閉環未完成，持續開發。不可宣稱整域已上線。",
+          "tone": "b"
+        },
+        {
+          "heading": "評估中",
+          "paragraph": "需求／設計評估中。不可宣稱時程，也不可說已完成。",
+          "tone": "r"
+        }
+      ],
+      "facts": [],
+      "slideFooter": "庫存不因「驗收已可操作」升為上線或平行作業",
+      "opUrls": [],
+      "footerBrand": "庫存不因「驗收已可操作」升為上線或平行作業",
+      "footerPage": "4 / 12"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "總覽",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "05 / 模組總覽",
+      "kicker": "",
+      "h1": "",
+      "h2": "16 項 · 上線 8／平行 2／開發 3／評估 3",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "營運通模組",
+          "狀態",
+          "一句話"
+        ],
+        [
+          "行銷分析、電商、B2B、人力、客服、備品、平台、專案",
+          "正式上線",
+          "日常入口已在營運通"
+        ],
+        [
+          "生產預估與工廠",
+          "平行作業",
+          "可跑，仍與 Excel／師傅流程雙軌"
+        ],
+        [
+          "出貨運輸",
+          "平行作業",
+          "車次／匯入可用；分貨仍接人工 Sheets"
+        ],
+        [
+          "庫存管理",
+          "開發中",
+          "驗收可用；盤點／報廢／調撥無權威結存"
+        ],
+        [
+          "會員單一視圖、宅配託運接通",
+          "開發中",
+          "三軌未整合；黑貓 API 仍為占位(stub)"
+        ],
+        [
+          "採購管理、行政總務、促銷主檔",
+          "評估中",
+          "不可宣稱已完成或已排期"
+        ]
+      ],
+      "callouts": [
+        "細項見後頁；開發用綠黃紅分數見完成度簡報"
+      ],
+      "phases": [],
+      "facts": [
+        {
+          "value": "8",
+          "label": "正式上線"
+        },
+        {
+          "value": "2",
+          "label": "已完成 · 平行作業"
+        },
+        {
+          "value": "3",
+          "label": "開發中"
+        },
+        {
+          "value": "3",
+          "label": "評估中"
+        }
+      ],
+      "slideFooter": "細項見後頁；開發用綠黃紅分數見完成度簡報",
+      "opUrls": [],
+      "footerBrand": "細項見後頁；開發用綠黃紅分數見完成度簡報",
+      "footerPage": "5 / 12"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "正式上線",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "06 / 正式上線",
+      "kicker": "",
+      "h1": "",
+      "h2": "可對外說「已在用」",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "模組",
+          "日常用途",
+          "操作入口"
+        ],
+        [
+          "行銷分析",
+          "Premium、營收總表、速報、完售",
+          "?view=dudoo_sales_premium"
+        ],
+        [
+          "電子商務",
+          "店取／宅配／DoSuper",
+          "/shop、/admin/shop-orders"
+        ],
+        [
+          "B2B 客戶價",
+          "價表瀑布、Portal",
+          "/admin/b2b-customers"
+        ],
+        [
+          "人力管理",
+          "排班、請假、出勤",
+          "/workforce/schedule"
+        ],
+        [
+          "客服申訴",
+          "公開填寫＋後台簽核 MVP",
+          "/admin/customer-service"
+        ],
+        [
+          "門市備品",
+          "已取代 Google 表單",
+          "/store/supplies"
+        ],
+        [
+          "平台與設定",
+          "登入、權限、選單、匯入中心",
+          "/?view=import_automation"
+        ],
+        [
+          "專案管理",
+          "Agile 看板、內部回饋",
+          "/admin/agile/projects"
+        ]
+      ],
+      "callouts": [
+        "上線 ≠ 零缺口（例：客服通知仍弱；營收跨頁勿混加）"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "上線 ≠ 零缺口（例：客服通知仍弱；營收跨頁勿混加）",
+      "opUrls": [
+        "主管主入口 /?view=dudoo_sales_premium → Dudoo Sales Premium"
+      ],
+      "footerBrand": "上線 ≠ 零缺口（例：客服通知仍弱；營收跨頁勿混加）",
+      "footerPage": "6 / 12"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "平行作業",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 已完成（平行作業）",
+      "kicker": "",
+      "h1": "",
+      "h2": "功能可跑，尚未全面切換",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "生產預估與工廠",
+          "paragraph": "預估、爐盤、麵糰、包子、雙軌 BOM 可日常操作；目前與 Excel／師傅流程平行作業，尚未全面取代。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "出貨運輸",
+          "paragraph": "車次／司機／工廠出貨匯入可用。分貨矩陣不會自動寫入出貨單；排車仍全人工。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "次日預估",
+          "description": "人工按執行 · 無排程"
+        },
+        {
+          "title": "工廠備料",
+          "description": "爐盤／麵糰／BOM"
+        },
+        {
+          "title": "分貨矩陣",
+          "description": "需求分配 · 不寫出貨"
+        },
+        {
+          "title": "Sheets 出貨",
+          "description": "人工總計表仍是來源"
+        }
+      ],
+      "table": null,
+      "callouts": [
+        "P0 斷點：計畫量與實出量只能事後人工對帳"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "P0 斷點：計畫量與實出量只能事後人工對帳",
+      "opUrls": [
+        "操作入口 /?view=production_plan → /?view=factory_production_calculation → /admin/trip-planning"
+      ],
+      "footerBrand": "P0 斷點：計畫量與實出量只能事後人工對帳",
+      "footerPage": "7 / 12"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "開發中",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "08 / 開發中",
+      "kicker": "",
+      "h1": "",
+      "h2": "庫存管理為主 · 驗收可跑、結存未完成",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "庫存不因驗收已完成而升等",
+          "paragraph": "驗收是庫存域內已可日常操作的子流程；整域仍列開發中。沒有可信即時庫存，請勿對外宣稱「庫存已上線」。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [
+        [
+          "模組",
+          "已有",
+          "缺什麼"
+        ],
+        [
+          "庫存管理",
+          "驗收狀態機完整；盤點／報廢／調撥有單據",
+          "流水未彙總成權威結存(Authoritative Stock)；盤點理論量不含報廢／調撥"
+        ],
+        [
+          "會員／客戶單一視圖",
+          "shop 會員、B2B 客戶、客服案件各有入口",
+          "三軌未整合；客戶 360／RFM 未落地"
+        ],
+        [
+          "宅配託運接通",
+          "運費規則、單據列印、宅配工作台",
+          "黑貓託運 API 仍為占位(stub)；運單號人工填"
+        ]
+      ],
+      "callouts": [
+        "盤點／報廢／調撥：/store/inventory、/store/loss、/store/transfer"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "盤點／報廢／調撥：/store/inventory、/store/loss、/store/transfer",
+      "opUrls": [
+        "驗收入口 /store/receiving 門市 ｜ 總部 /?view=store_receiving_monitor"
+      ],
+      "footerBrand": "盤點／報廢／調撥：/store/inventory、/store/loss、/store/transfer",
+      "footerPage": "8 / 12"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "評估中",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "09 / 評估中",
+      "kicker": "",
+      "h1": "",
+      "h2": "不可宣稱已完成，也不可承諾時程",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "採購管理列為評估中",
+          "paragraph": "設計文件可參考，但營運通尚未進入開發排程。會議若要啟動，請先拍板範圍（試點原料 vs 本季不做），再回寫 Roadmap。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [
+        [
+          "模組",
+          "現況",
+          "容易誤認"
+        ],
+        [
+          "採購管理",
+          "GSC 工廠 BOM 可展開原料需求；無採購單(PO)、無供應商主檔",
+          "BOM 展開 ≠ 採購閉環；DoSuper 代售進貨 ≠ 原料採購"
+        ],
+        [
+          "行政總務",
+          "設備報修、耗材領用、維修追蹤 0 實作",
+          "門市備品已上線，不算總務；/feedback 是內部開發回饋"
+        ],
+        [
+          "促銷／檔期主檔",
+          "無主檔；行銷分析不靠檔期表",
+          "促銷不得寫入商品主檔／SKU 定義"
+        ]
+      ],
+      "callouts": [
+        "日結鎖帳中心亦未落地，併入建議優先序，不列本頁「已在評的產品模組」"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "日結鎖帳中心亦未落地，併入建議優先序，不列本頁「已在評的產品模組」",
+      "opUrls": [],
+      "footerBrand": "日結鎖帳中心亦未落地，併入建議優先序，不列本頁「已在評的產品模組」",
+      "footerPage": "9 / 12"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "優先序",
+      "layout": "phases",
+      "hero": false,
+      "eyebrow": "10 / 建議優先序",
+      "kicker": "",
+      "h1": "",
+      "h2": "非正式承諾 · 會議後回寫 Roadmap",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "刻意不做（除非另案拍板）",
+          "paragraph": "完整應收／開票總帳、行政總務、會員 360 大重構、採購全面開工。採購仍為評估中。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "本頁非 SLA；優先序變更請同步手冊 §12"
+      ],
+      "phases": [
+        {
+          "heading": "① 口徑＋日結前置",
+          "paragraph": "統一營收口徑；匯入失敗可追；日結檢核草案。讓數字可跨頁對齊。",
+          "tone": null
+        },
+        {
+          "heading": "② 庫存結存",
+          "paragraph": "異動流水 → 日結結餘；帳面含報廢／調撥。對齊庫存「開發中」閉環。",
+          "tone": null
+        },
+        {
+          "heading": "③ 分貨→出貨",
+          "paragraph": "矩陣半自動銜接出貨單／車次，收斂生產與出貨的平行作業。",
+          "tone": null
+        },
+        {
+          "heading": "④ 託運說法",
+          "paragraph": "黑貓由占位(stub)升為可託運，或書面維持人工、不對外宣稱接通。",
+          "tone": null
+        }
+      ],
+      "facts": [],
+      "slideFooter": "本頁非 SLA；優先序變更請同步手冊 §12",
+      "opUrls": [],
+      "footerBrand": "本頁非 SLA；優先序變更請同步手冊 §12",
+      "footerPage": "10 / 12"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "KPI",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "11 / KPI 速查",
+      "kicker": "",
+      "h1": "",
+      "h2": "看數字先標口徑",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "KPI",
+          "計算",
+          "建議入口",
+          "注意"
+        ],
+        [
+          "月營收",
+          "Σ Dudoo 或 Σ 日報（須標口徑）",
+          "Premium、營收總表",
+          "跨頁勿混加"
+        ],
+        [
+          "環比成長",
+          "(本期 − 上月同期) ÷ |上月同期|",
+          "Premium MTD",
+          "同期 ≠ 整月"
+        ],
+        [
+          "同比成長",
+          "(本期 − 去年同期) ÷ |去年同期|",
+          "Premium",
+          "hybrid 切日影響 YoY"
+        ],
+        [
+          "日均營收",
+          "月營收 ÷ 營業天數（扣公休）",
+          "Premium",
+          "日均 MoM 用上月整月"
+        ],
+        [
+          "客單價／來客",
+          "營收÷筆數；筆數÷營業日",
+          "Premium",
+          "受作廢過濾影響"
+        ],
+        [
+          "回存率",
+          "庫存 ÷ 進貨（或工廠出貨）",
+          "常溫品檢核",
+          "進貨口徑 ≠ 實收"
+        ],
+        [
+          "完售時間",
+          "銷量累計達基準之時刻",
+          "完售矩陣",
+          "可切進貨／工廠出貨"
+        ],
+        [
+          "預估誤差",
+          "回測 MAPE",
+          "參數調優",
+          "無日常看板"
+        ]
+      ],
+      "callouts": [
+        "客服 SLA 見客服儀表板；通知派送仍弱"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "客服 SLA 見客服儀表板；通知派送仍弱",
+      "opUrls": [],
+      "footerBrand": "客服 SLA 見客服儀表板；通知派送仍弱",
+      "footerPage": "11 / 12"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "名詞表",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "12 / 中英文名詞解釋",
+      "kicker": "",
+      "h1": "",
+      "h2": "會議常用語",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "英文",
+          "中文",
+          "英意",
+          "中文解釋"
+        ],
+        [
+          "parallel run",
+          "平行作業",
+          "dual process, not cutover",
+          "新舊流程雙軌；功能完成但不代表已全面切換"
+        ],
+        [
+          "authoritative stock",
+          "權威結存",
+          "trusted on-hand balance",
+          "以異動流水彙總的帳面庫存；目前尚無日結結餘"
+        ],
+        [
+          "stub",
+          "占位",
+          "placeholder, not connected",
+          "黑貓託運 API 僅占位；運費／單據可印，託運未接通"
+        ],
+        [
+          "revenue basis",
+          "營收口徑",
+          "which source you sum",
+          "Sheets／Dudoo 交易／明細／發票／hybrid；跨頁勿硬加總"
+        ],
+        [
+          "allocation matrix",
+          "分貨矩陣",
+          "demand split by store",
+          "工廠備料算出的需求分配；不會自動寫入出貨單"
+        ],
+        [
+          "daily close",
+          "日結鎖帳",
+          "lock after checks",
+          "統一檢核與鎖定；22:00 只是出貨表清空時窗，不是鎖帳"
+        ]
+      ],
+      "callouts": [
+        "口語：中文(English) · 準據手冊 2026-09-14 · 以程式為準更新"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "口語：中文(English) · 準據手冊 2026-09-14 · 以程式為準更新",
+      "opUrls": [
+        "About /about/fc-operations-decision-intro ｜開發用完成度 3 分鐘 ／ 完整版"
+      ],
+      "footerBrand": "口語：中文(English) · 準據手冊 2026-09-14 · 以程式為準更新",
+      "footerPage": "12 / 12"
+    }
+  ]
+}

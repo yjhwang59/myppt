@@ -1,0 +1,115 @@
+{
+  "version": "1.0.0",
+  "deckId": "test-upload-deck",
+  "deckPath": "test-upload-deck.html",
+  "title": "測試上傳簡報",
+  "sourceType": "html",
+  "promptVersion": "1.0.0",
+  "modelVersion": "gpt-4o-mini",
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "2670ce5fb4b7f22eedd97dc6f90540e867bf44817e198a85b1e3351ef045dd0d",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "",
+        "headings": [
+          "測試簡報"
+        ],
+        "lead": "第一頁說明",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "各位同仁，大家好！今天我們的簡報主題是「測試上傳簡報」。在這個簡報中，我們將探討一些重要的重點，讓大家對即將進行的內容有更清晰的了解。接下來，我們會深入分析這個測試的目的及其重要性，以及我們希望達成的目標。請大家保持關注，接下來的頁面將會提供更詳細的資訊，讓我們一起來看看這些重點吧！",
+      "estimatedSeconds": 32,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T08:16:03.098Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "重點",
+      "sourceHash": "1c68763364e838624cbfe081a33fbecdf9c08ba1f60e5e6935bcf4628290c55c",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "",
+        "headings": [
+          "第二頁"
+        ],
+        "lead": "重點內容",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "卡片",
+            "paragraph": "說明",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "接下來，我們將重點放在這份簡報的核心內容上。首先，我們要強調的是這頁所傳達的重點是「重點內容」。這些重點將幫助我們更清楚地理解整體議題。接著，我們有一個卡片，裡面包含了相關的說明，這些說明將進一步支持我們的討論與分析。最後，這些重點不僅是我們當前簡報的基礎，也將為未來的計畫奠定重要的基石。現在，讓我們總結一下，這份簡報的重點將引導我們進一步的行動與決策。希望大家能夠把這些重點記住，並在接下來的討論中提出您的看法與建議。",
+      "estimatedSeconds": 47,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-08-31T08:16:06.546Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-08-31T08:14:11.239Z",
+    "totalEstimatedSeconds": 79,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

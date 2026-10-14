@@ -1,8 +1,35 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ai-eip",
+  "main": "worker/index.js",
   "compatibility_date": "2026-08-31",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  },
   "assets": {
-    "directory": "./presentations"
-  }
+    "directory": "./presentations",
+    "binding": "ASSETS",
+    "run_worker_first": ["/admin", "/admin/*", "/api/*", "/*.html", "/narration/*"]
+  },
+  "r2_buckets": [
+    {
+      "binding": "STUDIO",
+      "bucket_name": "myppt-studio"
+    }
+  ],
+  "rules": [
+    {
+      "type": "Text",
+      "globs": ["../admin/*.js", "../admin/*.css", "../scripts/narration/prompts/*.md"],
+      "fallthrough": true
+    }
+  ],
+  "routes": [
+    { "pattern": "myppt.aidc.work", "custom_domain": true }
+  ]
 }

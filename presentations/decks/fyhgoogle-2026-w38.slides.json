@@ -1,0 +1,406 @@
+{
+  "version": "1.0.0",
+  "deckId": "fyhgoogle-2026-w38",
+  "title": "fyhGoogle｜W38 週報｜3 分鐘決策版",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "2026-W38 · 2026-09-14 ~ 2026-09-21",
+      "h1": "fyhGoogle｜營運中台週報",
+      "h2": "fyhGoogle｜營運中台週報",
+      "lead": "B2B 與供應商主檔已入版，日結 P0 仍未動。",
+      "stamp": "🟡 Attention · 對象：經營主管 · 約 3 分鐘",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "1 / 9"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "現況",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "02 / 現況",
+      "kicker": "",
+      "h1": "",
+      "h2": "Where are we?",
+      "lead": "正式上線、持續發版。日常生產預估、工廠備料、門市驗收、購物車、B2B 與客服可營運；不是完整財務 ERP。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "已推進",
+          "tag": null,
+          "tagClass": null,
+          "heading": "操作面功能",
+          "paragraph": "五版 v0.1.148→0.1.153。W37 未提交 B2B 已入 main；供應商／品項主檔可操作。",
+          "bullets": []
+        },
+        {
+          "num": "未動",
+          "tag": null,
+          "tagClass": null,
+          "heading": "日結／庫存／營收口徑",
+          "paragraph": "Roadmap R1–R3 無程式進展。Plan 3 未完成項不得對外宣稱上線。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "本週焦點：把 B2B 工作台收斂進正式機，並讓採購 P0 主檔可維護。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "2 / 9"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "成果",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "03 / 本週成果",
+      "kicker": "",
+      "h1": "",
+      "h2": "可驗證結果（≤3）",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "B2B 可列印、粒／包入版",
+          "paragraph": "報價／價表列印與售價單位進 v0.1.150–152。W37 未提交訂單工作台已收斂。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "供應商主檔可操作",
+          "paragraph": "採購模組紅→黃（紅 5→4）。PO／驗收閉環仍未做，不可宣稱採購完成。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "客服＋營運通",
+          "paragraph": "案件可改資料、Shop 新單／取消內部通知；營運通現況簡報入庫（W37 P2）。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "未列入：GitHub PR #7（仍 OPEN）、未提交生產計畫／副商品、Roadmap R1–R3。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "3 / 9"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "指標",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "04 / 指標",
+      "kicker": "",
+      "h1": "",
+      "h2": "Plan vs Actual",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "指標",
+          "目標",
+          "實際",
+          "偏差說明"
+        ],
+        [
+          "W37 P1 B2B 發版",
+          "進 main 或凍結",
+          "✅ v0.1.150–152",
+          "選項 A 已執行"
+        ],
+        [
+          "W37 P2 營運通",
+          "HTML／About 入庫",
+          "✅ 09-14 f4d5818",
+          "正式機可見性未登入抽樣"
+        ],
+        [
+          "W37 P3 P0 三題",
+          "會議或書面延期",
+          "未見書面證據",
+          "日結口徑仍未裁定"
+        ],
+        [
+          "前端版本",
+          "可持續發版",
+          "0.1.148 → 0.1.153",
+          "五版；153 功能抽樣待確認"
+        ],
+        [
+          "正式機",
+          "HTTP 200",
+          "200（09-21）",
+          "僅首頁；pytest／GitLab 尚未取得"
+        ]
+      ],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "4 / 9"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "風險",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "05 / 風險",
+      "kicker": "",
+      "h1": "",
+      "h2": "RAG 與阻礙",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "狀態",
+          "影響",
+          "需要誰"
+        ],
+        [
+          "未提交工作樹再膨脹（生產計畫／分貨、副商品進銷存）",
+          "🟡",
+          "與 W37 同一模式；下次 deploy 易混入未驗收變更",
+          "開發負責人或指定 Owner（待確認）"
+        ],
+        [
+          "日結鎖帳／權威庫存／官方營收口徑未裁定",
+          "🔴",
+          "R1–R3 無法開工；跨頁數字可能對不起來",
+          "經營主管＋業務（待確認）"
+        ],
+        [
+          "分貨矩陣仍不寫回出貨 Sheets",
+          "🟡",
+          "計畫量 vs 實出量靠人工；不可宣稱出貨閉環",
+          "業務確認是否本季做 R5"
+        ]
+      ],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "5 / 9"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "決策1",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "06 / 待決策",
+      "kicker": "",
+      "h1": "",
+      "h2": "D01 生產計畫 WIP vs 副商品",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "D01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "未提交變更搶同一週產能",
+          "paragraph": "",
+          "bullets": [
+            "A：先收斂發版（生產計畫與副商品拆兩版）",
+            "B：凍結 WIP，轉回日結／庫存（仍缺業務定義）",
+            "建議：A · 期限：2026-09-24"
+          ]
+        },
+        {
+          "num": "代價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "不決策",
+          "paragraph": "與 W37 相同：下次 deploy 卡住，或把半成品帶上正式機。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "W37 同一題已選 A 並完成 B2B 入版；本週模式重現，需再拍一次板。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "6 / 9"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "決策2",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 待決策",
+      "kicker": "",
+      "h1": "",
+      "h2": "D02 日結／庫存／營收口徑（延續）",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "D02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "官方口徑仍未裁定",
+          "paragraph": "",
+          "bullets": [
+            "A：排業務裁定（鎖什麼、庫存以誰為準、營收哪套）",
+            "B：本季只做操作面，書面承認非財務 ERP",
+            "建議：要可信數字選 A；否則書面選 B"
+          ]
+        },
+        {
+          "num": "代價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "不決策",
+          "paragraph": "儀表板多口徑持續；完成度紅燈列無法翻轉。禁止口頭當已完成。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "W37 D02 無書面證據。期限：待確認（建議 W39 內有會議紀錄或書面延期）。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "7 / 9"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "下週",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "08 / 下週承諾",
+      "kicker": "",
+      "h1": "",
+      "h2": "W39 可驗收交付",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "收斂 WIP",
+          "description": "生產計畫／分貨與副商品：pytest 過並進 main，或書面凍結；禁止混版。"
+        },
+        {
+          "title": "處理 PR #7",
+          "description": "大分類同比：合併、關閉，或註明與已上線門市分類 MTD 的關係。"
+        },
+        {
+          "title": "P0 書面化",
+          "description": "會議紀錄或「本季不做日結鎖帳」書面；禁止口頭當已完成。"
+        }
+      ],
+      "table": null,
+      "callouts": [
+        "Owner 無證據則待確認。期間：2026-09-21 ~ 2026-09-27。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "8 / 9"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "脈絡",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "09 / 相關專案",
+      "kicker": "",
+      "h1": "",
+      "h2": "依賴與風險（非本週成果）",
+      "lead": "本工作區僅開啟 fyhGoogle；本週提交未點名 sibling repo。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "專案",
+          "關係",
+          "本週跨 repo 風險"
+        ],
+        [
+          "KDS2026",
+          "門市維度廚房 KPI，非 ERP 日結",
+          "🟢 勿把 KDS 匯入寫成 fyh 日結"
+        ],
+        [
+          "Workforce",
+          "雙軌人力：fyh iframe vs Supabase 排班",
+          "🟡 打卡權威來源仍待業務確認"
+        ],
+        [
+          "myVideo",
+          "用 FYH 商品圖；管線不屬本 repo",
+          "🟢 商品圖 ≠ 影片管線上線"
+        ]
+      ],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "fyhGoogle",
+      "footerPage": "9 / 9"
+    }
+  ]
+}

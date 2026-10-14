@@ -1,6 +1,6 @@
 {
-  "name": "ai-eip",
-  "version": "1.0.0",
+  "name": "myppt",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Enterprise AI portal deck with narration pipeline",
@@ -13,18 +13,25 @@
     "narration:pipeline": "node scripts/narration/run-pipeline.js",
     "narration:fix-audio-urls": "node scripts/narration/fix-audio-urls.js",
     "migrate:slides": "node scripts/narration/migrate-slides.js",
+    "migrate:audio": "node scripts/narration/migrate-audio-paths.js",
     "build:deck": "node scripts/narration/build-deck.js",
+    "import:html": "node scripts/import-html-deck.js",
     "dev": "node server/index.js",
+    "test": "node --test scripts/narration/lib/extract.test.js server/lib/html-import.test.js server/lib/registry.test.js server/lib/session.test.js presentations/catalog.test.js admin/parse-source-url.test.js worker/login-bridge.test.js worker/catalog.test.js worker/google-id-token.test.js worker/slide-patch.test.js worker/speech.test.js worker/studio-store.test.js",
     "deploy": "wrangler deploy"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^1.0.8",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "google-auth-library": "^11.1.0",
+    "multer": "^2.3.0",
+    "pdfjs-dist": "^6.3.289"
   },
   "devDependencies": {
     "wrangler": "^4.127.1"

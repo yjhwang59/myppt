@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-Hant" data-deck-id="aidc-work-system-architecture"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AIDC.work 系統架構教學簡報：Next.js、Prisma、會員、預約、課程與安全設計。">
+  <title>AIDC.work 系統架構教學</title>
+  <style>
+    :root {
+      --ink: #102a43;
+      --muted: #52667a;
+      --brand: #0f766e;
+      --brand-dark: #134e4a;
+      --accent: #ea580c;
+      --sky: #e6fffb;
+      --paper: #f7fafc;
+      --line: #cbd5e1;
+      --danger: #b42318;
+      --warning: #9a6700;
+      --success: #067647;
+      --shadow: 0 20px 60px rgba(16, 42, 67, .14);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #dbe5ec; color: var(--ink); }
+    body { font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; overflow: hidden; }
+    button, a { font: inherit; }
+    .deck { min-height: 100vh; display: grid; place-items: center; padding: 2.5vh 2vw 8vh; }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: 86vh;
+      overflow: auto;
+      position: relative;
+      padding: clamp(28px, 4vw, 64px);
+      border: 1px solid rgba(15, 118, 110, .18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(20, 184, 166, .14), transparent 30%),
+        linear-gradient(135deg, #fff 0%, #f8fbfc 68%, #effaf8 100%);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; animation: enter .28s ease-out; }
+    @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .kicker { color: var(--brand); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: clamp(12px, 1.1vw, 18px); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 1050px; font-size: clamp(42px, 6vw, 86px); line-height: 1.03; letter-spacing: -.04em; }
+    h2 { font-size: clamp(30px, 3.5vw, 54px); line-height: 1.12; letter-spacing: -.025em; margin-bottom: .7em; }
+    h3 { font-size: clamp(18px, 1.55vw, 26px); margin-bottom: .45em; }
+    p, li { font-size: clamp(15px, 1.25vw, 21px); line-height: 1.6; }
+    .lead { max-width: 980px; color: var(--muted); font-size: clamp(20px, 2vw, 32px); }
+    .small { color: var(--muted); font-size: clamp(12px, 1vw, 16px); }
+    .tag { display: inline-flex; align-items: center; gap: .4em; padding: .42em .72em; border-radius: 999px; background: var(--sky); color: var(--brand-dark); font-weight: 750; font-size: clamp(12px, 1vw, 16px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .grid-2, .grid-3, .grid-4 { display: grid; gap: clamp(14px, 1.7vw, 26px); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.92); padding: clamp(16px, 1.7vw, 26px); }
+    .card.tint { border-color: #99d5ce; background: #f0fdfa; }
+    .card.warn { border-color: #f4c86a; background: #fffbeb; }
+    .card.risk { border-color: #f1a7a1; background: #fff5f4; }
+    .card strong { color: var(--brand-dark); }
+    .metric { font-size: clamp(30px, 4vw, 60px); font-weight: 850; color: var(--brand); line-height: 1; }
+    .diagram { display: grid; gap: 14px; align-items: stretch; }
+    .node { border: 2px solid #9ccbc6; border-radius: 15px; background: #fff; padding: 14px 16px; text-align: center; font-weight: 750; }
+    .node.primary { background: var(--brand-dark); border-color: var(--brand-dark); color: white; }
+    .node.external { border-style: dashed; background: #f8fafc; }
+    .arrow { display: grid; place-items: center; min-height: 28px; color: var(--accent); font-weight: 900; font-size: 24px; }
+    .flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; }
+    .flow .step { min-height: 100px; display: grid; place-items: center; padding: 12px; border-radius: 15px; border: 1px solid #9ccbc6; background: white; text-align: center; font-weight: 750; font-size: clamp(12px, 1vw, 16px); }
+    .flow .chev { color: var(--accent); text-align: center; font-size: 24px; font-weight: 900; }
+    .layers { display: grid; gap: 10px; }
+    .layer { display: grid; grid-template-columns: 160px 1fr; gap: 18px; align-items: center; padding: 14px 18px; border-radius: 15px; background: white; border: 1px solid var(--line); }
+    .layer b { color: var(--brand-dark); }
+    .route-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    code { padding: .15em .35em; border-radius: 6px; background: #eaf2f6; color: #124e58; font-family: ui-monospace, Consolas, monospace; }
+    .matrix { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1vw, 16px); }
+    .matrix th, .matrix td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+    .matrix th { background: #e9f7f5; color: var(--brand-dark); }
+    .yes { color: var(--success); font-weight: 800; }
+    .no { color: var(--danger); font-weight: 800; }
+    .caution { color: var(--warning); font-weight: 800; }
+    .callout { border-left: 6px solid var(--accent); background: #fff7ed; border-radius: 8px 16px 16px 8px; padding: 18px 22px; }
+    .footer { position: absolute; left: clamp(28px, 4vw, 64px); right: clamp(28px, 4vw, 64px); bottom: 20px; display: flex; justify-content: space-between; color: #718096; font-size: 12px; }
+    .controls { position: fixed; z-index: 20; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 999px; background: rgba(15, 37, 51, .92); color: white; box-shadow: 0 8px 26px rgba(0,0,0,.22); }
+    .controls button { width: 38px; height: 38px; border: 0; border-radius: 50%; background: rgba(255,255,255,.12); color: white; cursor: pointer; }
+    .controls button:hover, .controls button:focus-visible { background: var(--brand); outline: 3px solid white; }
+    .progress { width: min(24vw, 240px); height: 5px; border-radius: 5px; background: rgba(255,255,255,.2); overflow: hidden; }
+    .progress > span { display: block; height: 100%; width: 0; background: #5eead4; transition: width .2s ease; }
+    .slide-number { min-width: 68px; text-align: center; font-variant-numeric: tabular-nums; font-size: 13px; }
+    .title-mark { width: 100px; height: 10px; border-radius: 9px; background: linear-gradient(90deg, var(--brand), #2dd4bf, var(--accent)); margin: 30px 0; }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; color: var(--muted); font-size: 14px; }
+    .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 3px; background: var(--brand); }
+    .legend span:nth-child(2)::before { background: var(--accent); }
+    .legend span:nth-child(3)::before { background: #64748b; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: 12px 12px 80px; }
+      .slide { width: 100%; min-height: calc(100vh - 100px); max-height: none; aspect-ratio: auto; border-radius: 18px; }
+      .grid-3, .grid-4, .route-map { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .flow .chev { transform: rotate(90deg); }
+      .layer { grid-template-columns: 1fr; gap: 5px; }
+      .footer { position: static; margin-top: 24px; }
+    }
+    @media (max-width: 600px) { .grid-2, .grid-3, .grid-4, .route-map { grid-template-columns: 1fr; } }
+    @media print {
+      body { overflow: visible; background: white; }
+      .deck { display: block; padding: 0; }
+      .slide { display: block !important; width: 100%; max-height: none; min-height: 100vh; aspect-ratio: 16 / 9; border: 0; border-radius: 0; box-shadow: none; page-break-after: always; overflow: hidden; }
+      .controls { display: none; }
+    }
+  </style>
+<style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#3b82f6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+</style></head>
+<body>
+  <main class="deck" aria-live="polite">
+    <section class="slide active" data-title="封面">
+      <p class="kicker">AIDC.work · Architecture Workshop</p>
+      <div class="title-mark"></div>
+      <h1>從顧問網站到<br>可營運的會員與課程平台</h1>
+      <p class="lead">用 AIDC.work 理解 Next.js 全端架構、業務資料流、認證邊界與安全發布。</p>
+      <div class="tags" style="margin-top: 34px">
+        <span class="tag">Next.js App Router</span><span class="tag">TypeScript</span><span class="tag">Prisma + PostgreSQL</span><span class="tag">OAuth</span><span class="tag">Docker</span>
+      </div>
+      <div class="footer"><span>方向鍵切換 · P 列印</span><span>1 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="學習目標">
+      <p class="kicker">01 · Learning goals</p><h2>先看懂「為什麼」，再看技術</h2>
+      <div class="grid-4">
+        <div class="card tint"><div class="metric">1</div><h3>定位</h3><p>顧問品牌官網，也是長期內容與客戶互動資產。</p></div>
+        <div class="card"><div class="metric">2</div><h3>邊界</h3><p>前台、會員、後台、資料庫與外部服務如何分工。</p></div>
+        <div class="card"><div class="metric">3</div><h3>流程</h3><p>諮詢、課程報名與訪客轉會員如何串接。</p></div>
+        <div class="card warn"><div class="metric">4</div><h3>安全</h3><p>哪些設計能公開教學，哪些資訊必須保留在內部。</p></div>
+      </div>
+      <div class="callout" style="margin-top: 26px"><strong>架構核心：</strong>一個 Next.js 應用承接 UI、Server Components、Route Handlers 與認證，再以 Prisma 存取 PostgreSQL。</div>
+      <div class="footer"><span>AIDC.work 系統架構</span><span>2 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="系統脈絡">
+      <p class="kicker">02 · System context</p><h2>誰使用系統？系統連到哪裡？</h2>
+      <div class="diagram" style="grid-template-columns: 1fr 1.4fr 1fr; margin-top: 10px">
+        <div class="diagram"><div class="node">訪客</div><div class="node">會員</div><div class="node">管理員</div></div>
+        <div class="diagram"><div class="arrow">→</div><div class="node primary" style="padding: 34px 18px">AIDC.work<br><span style="font-weight: 500; opacity:.8">網站 · 會員 · 預約 · 課程 · Admin CMS</span></div><div class="arrow">→</div></div>
+        <div class="diagram"><div class="node external">PostgreSQL</div><div class="node external">Google / LINE OAuth</div><div class="node external">Resend Email</div></div>
+      </div>
+      <div class="grid-2" style="margin-top: 28px">
+        <div class="card"><h3>本專案負責</h3><p>內容網站、會員、諮詢、課程報名、Email 通知、管理後台。</p></div>
+        <div class="card warn"><h3>不在本專案</h3><p>myLinux 的 VM 儀表板、監控與 OAuth gateway 屬於另一個 repository。</p></div>
+      </div>
+      <div class="footer"><span>Context boundary</span><span>3 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="分層架構">
+      <p class="kicker">03 · Layered architecture</p><h2>由畫面一路走到資料庫</h2>
+      <div class="layers">
+        <div class="layer"><b>Presentation</b><span>React、Server/Client Components、Tailwind CSS、響應式與無障礙介面</span></div>
+        <div class="layer"><b>Application</b><span>Next.js App Router、頁面組合、redirect、狀態轉換與業務流程</span></div>
+        <div class="layer"><b>API Boundary</b><span>Route Handlers、Zod validation、rate limit、權限檢查、JSON response</span></div>
+        <div class="layer"><b>Domain &amp; Auth</b><span>會員／管理員 Session、OAuth state、visitor claim、Email orchestration</span></div>
+        <div class="layer"><b>Data Access</b><span>Prisma Client、transaction、soft archive、audit log</span></div>
+        <div class="layer"><b>Infrastructure</b><span>PostgreSQL、Resend、OAuth Provider、Docker、Cloudflare Tunnel</span></div>
+      </div>
+      <p class="small" style="margin-top:18px">這是模組化單體（modular monolith）：部署單純，仍以清楚模組邊界避免全部耦合在一起。</p>
+      <div class="footer"><span>Modular monolith</span><span>4 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="路由地圖">
+      <p class="kicker">04 · Route map</p><h2>同一套 App Router，三種使用情境</h2>
+      <div class="route-map">
+        <div class="card tint"><h3>公開網站</h3><p><code>/</code> <code>/about</code> <code>/services</code><br><code>/blog</code> <code>/cases</code> <code>/templates</code><br><code>/courses</code> <code>/booking</code></p><p class="small">SEO、品牌內容與低摩擦表單。</p></div>
+        <div class="card"><h3>會員區</h3><p><code>/login</code> <code>/member</code><br><code>/member/bookings</code><br><code>/member/enrollments</code><br><code>/member/profile</code></p><p class="small">只讀取當前 Member 所擁有的紀錄。</p></div>
+        <div class="card warn"><h3>管理後台</h3><p><code>/admin/login</code><br><code>/admin/bookings</code><br><code>/admin/course-*</code><br><code>/admin/members</code></p><p class="small">middleware + API 的雙層驗證。</p></div>
+      </div>
+      <div class="callout" style="margin-top: 28px">頁面保護只是 UX；真正的授權必須在每個管理 API 內再次執行 <code>requireAdmin()</code>。</div>
+      <div class="footer"><span>App Router</span><span>5 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="資料模型">
+      <p class="kicker">05 · Data model</p><h2>資料模型圍繞三條主線</h2>
+      <div class="grid-3">
+        <div class="card tint"><h3>身分</h3><div class="node">Member</div><div class="arrow">↓</div><div class="node">MemberOAuthAccount</div><p class="small">會員與第三方帳號分離；AdminUser 為獨立身分。</p></div>
+        <div class="card"><h3>諮詢</h3><div class="node">Booking</div><div class="arrow">↓</div><div class="node">BookingContactRecord</div><p class="small">留言、狀態、Email 回覆與每次聯絡歷程。</p></div>
+        <div class="card warn"><h3>課程</h3><div class="node">CourseProgram → Cohort → Session</div><div class="arrow">↓</div><div class="node">Enrollment → AuditLog</div><p class="small">方案、班期、週次、報名與稽核紀錄。</p></div>
+      </div>
+      <p class="small" style="margin-top: 20px">關鍵策略：報名使用 soft archive；重要狀態與付款變更記錄操作者、時間、前值與後值。</p>
+      <div class="footer"><span>Prisma schema</span><span>6 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="諮詢流程">
+      <p class="kicker">06 · Inquiry flow</p><h2>訪客先完成任務，再邀請成為會員</h2>
+      <div class="flow">
+        <div class="step">選擇討論主題<br>補充需求</div><div class="chev">›</div>
+        <div class="step">Zod 驗證<br>Rate limit</div><div class="chev">›</div>
+        <div class="step">建立 Booking<br>寄管理員通知</div><div class="chev">›</div>
+        <div class="step">完成頁邀請<br>建立會員</div>
+      </div>
+      <div class="grid-2" style="margin-top: 32px">
+        <div class="card tint"><h3>低摩擦</h3><p>訪客不必先選時段、不必先登入；表單只收處理諮詢所需資料。</p></div>
+        <div class="card"><h3>後台閉環</h3><p>管理員查看內容、套用回覆範本、寄信，並將結果寫入聯絡歷程。</p></div>
+      </div>
+      <div class="footer"><span>Inquiry journey</span><span>7 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="課程與轉會員">
+      <p class="kicker">07 · Enrollment &amp; conversion</p><h2>報名、會員與歷史紀錄如何連起來</h2>
+      <div class="flow">
+        <div class="step">選擇 Program<br>與 Cohort</div><div class="chev">›</div>
+        <div class="step">防止相同 Email<br>重複報名</div><div class="chev">›</div>
+        <div class="step">建立 Enrollment<br>PENDING</div><div class="chev">›</div>
+        <div class="step">簽章 Claim<br>綁定會員</div>
+      </div>
+      <div class="grid-3" style="margin-top: 30px">
+        <div class="card"><h3>訪客</h3><p>完成報名後才看到會員 CTA，姓名與 Email 自動帶入。</p></div>
+        <div class="card tint"><h3>已登入會員</h3><p>相同 Email 提交時直接寫入 <code>memberId</code>。</p></div>
+        <div class="card warn"><h3>安全認領</h3><p>一小時簽章 token 同時驗證紀錄、Email 與有效期限，不只靠 Email。</p></div>
+      </div>
+      <div class="footer"><span>Visitor → Member</span><span>8 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="認證與授權">
+      <p class="kicker">08 · Authentication &amp; authorization</p><h2>會員與管理員：入口分開，底層可共用觀念</h2>
+      <table class="matrix">
+        <thead><tr><th>面向</th><th>會員</th><th>管理員</th></tr></thead>
+        <tbody>
+          <tr><td>入口</td><td><code>/login</code></td><td><code>/admin/login</code></td></tr>
+          <tr><td>登入方式</td><td>Email、Google、LINE</td><td>Email、Google allowlist</td></tr>
+          <tr><td>Session</td><td>獨立 HttpOnly cookie</td><td>獨立 HttpOnly cookie</td></tr>
+          <tr><td>授權</td><td><code>requireMember()</code> + 所有權條件</td><td>middleware + <code>requireAdmin()</code></td></tr>
+          <tr><td>Redirect</td><td>只允許站內且禁止 `/admin`</td><td>只允許 `/admin/*`</td></tr>
+        </tbody>
+      </table>
+      <div class="tags" style="margin-top:22px"><span class="tag">HttpOnly</span><span class="tag">Secure in production</span><span class="tag">SameSite=Lax</span><span class="tag">OAuth state</span><span class="tag">Password hash</span></div>
+      <div class="footer"><span>Trust boundaries</span><span>9 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="可靠性">
+      <p class="kicker">09 · Reliability</p><h2>外部服務慢或失敗時，網站仍要可用</h2>
+      <div class="grid-4">
+        <div class="card tint"><h3>Static-first</h3><p>Blog、案例與模板以 Markdown/MDX 內容為主。</p></div>
+        <div class="card"><h3>DB fallback</h3><p>課程查詢逾時時改用靜態 seeds，避免整頁失效。</p></div>
+        <div class="card"><h3>Email 非同步</h3><p>主要交易成功後寄信；寄送結果另行追蹤。</p></div>
+        <div class="card warn"><h3>交易一致性</h3><p>容量、重複報名與會員認領使用 transaction 或條件更新。</p></div>
+      </div>
+      <div class="callout" style="margin-top: 28px"><strong>教學重點：</strong>fallback 是可預期的降級，不應被記成未處理的 Console Error；真正錯誤仍需結構化監控與告警。</div>
+      <div class="footer"><span>Graceful degradation</span><span>10 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="部署">
+      <p class="kicker">10 · Deployment</p><h2>從 Git 到正式網站的執行路徑</h2>
+      <div class="flow">
+        <div class="step">GitHub<br>main</div><div class="chev">›</div>
+        <div class="step">NUC 拉取程式<br>Docker build</div><div class="chev">›</div>
+        <div class="step">Prisma<br>migrate deploy</div><div class="chev">›</div>
+        <div class="step">Cloudflare Tunnel<br>對外服務</div>
+      </div>
+      <div class="grid-3" style="margin-top: 32px">
+        <div class="card"><h3>Build stage</h3><p>安裝依賴、產生 Prisma Client、執行 Next build。</p></div>
+        <div class="card tint"><h3>Runtime</h3><p>Node container 啟動 Next.js，服務內部 port 80。</p></div>
+        <div class="card warn"><h3>Secrets</h3><p>由部署環境注入，絕不打包進 image、HTML 或 Blog。</p></div>
+      </div>
+      <div class="footer"><span>Docker + NUC</span><span>11 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="安全評估">
+      <p class="kicker">11 · Security review</p><h2>這份簡報能公開嗎？可以，但要分級</h2>
+      <div class="grid-3">
+        <div class="card tint"><h3 class="yes">可公開</h3><p>高階分層、一般路由分類、技術棧、匿名化流程、通用安全原則。</p></div>
+        <div class="card warn"><h3 class="caution">需模糊化</h3><p>精確部署拓樸、內部 port、管理入口細節、資料表欄位與防護閾值。</p></div>
+        <div class="card risk"><h3 class="no">不可公開</h3><p>Secret、token、真實 DB host、Client ID、管理員帳號、內網 IP、備份位置。</p></div>
+      </div>
+      <div class="callout" style="margin-top: 28px">安全不是靠隱藏架構；但公開內容不應替攻擊者完成資產盤點，也不可暴露可直接使用的憑證或內部定位資訊。</div>
+      <div class="footer"><span>Publication threat model</span><span>12 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="Blog 評估">
+      <p class="kicker">12 · Blog potential</p><h2>很適合改寫成 Blog，但不是直接貼上</h2>
+      <table class="matrix">
+        <thead><tr><th>評估</th><th>結論</th><th>改寫方式</th></tr></thead>
+        <tbody>
+          <tr><td>讀者價值</td><td class="yes">高</td><td>用「顧問網站如何演進成營運平台」作故事主線。</td></tr>
+          <tr><td>SEO</td><td class="yes">高</td><td>聚焦 Next.js 全端架構、會員轉換、Admin CRUD。</td></tr>
+          <tr><td>可讀性</td><td class="caution">需改寫</td><td>圖轉為 SVG/PNG；每張投影片擴寫成 2–4 個段落。</td></tr>
+          <tr><td>安全性</td><td class="caution">可控</td><td>移除精確部署與身分資訊，保留抽象安全設計。</td></tr>
+          <tr><td>維護性</td><td class="caution">需版本註記</td><td>標示架構版本與日期，避免文章長期失真。</td></tr>
+        </tbody>
+      </table>
+      <p class="lead" style="margin-top: 24px">建議文章標題：〈從顧問官網到會員與課程平台：AIDC.work 的 Next.js 模組化單體架構〉</p>
+      <div class="footer"><span>Editorial assessment</span><span>13 / 14</span></div>
+    </section>
+
+    <section class="slide" data-title="結論">
+      <p class="kicker">13 · Takeaways</p><h2>三個帶得走的架構觀念</h2>
+      <div class="grid-3">
+        <div class="card tint"><div class="metric">01</div><h3>先完成任務</h3><p>訪客先諮詢或報名，再低摩擦轉會員，兼顧轉換率與資料連續性。</p></div>
+        <div class="card"><div class="metric">02</div><h3>UI 不是安全邊界</h3><p>每個敏感 API 都要重新驗證身分、權限與紀錄所有權。</p></div>
+        <div class="card warn"><div class="metric">03</div><h3>為失敗設計</h3><p>資料庫、OAuth、Email 都可能暫時失敗；需要 fallback、稽核與可操作回饋。</p></div>
+      </div>
+      <div class="callout" style="margin-top: 30px"><strong>下一步：</strong>將本簡報改寫為 Blog 時，進行一次「公開資訊紅隊檢查」，並建立公開版架構圖，不直接截取內部設定畫面。</div>
+      <p style="margin-top: 22px"><strong>延伸閱讀：</strong><a href="/blog/aidc-work-nextjs-modular-monolith-architecture">從顧問官網到會員與課程平台：AIDC.work 的 Next.js 模組化單體架構</a></p>
+      <div class="footer"><span>AIDC.work · Architecture Workshop</span><span>14 / 14</span></div>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="簡報控制">
+    <button id="prev" type="button" aria-label="上一張">←</button>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <span id="slideNumber" class="slide-number">1 / 14</span>
+    <button id="next" type="button" aria-label="下一張">→</button>
+  </nav>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const counter = document.getElementById('slideNumber');
+    const progress = document.getElementById('progressBar');
+    let current = Math.max(0, Math.min(slides.length - 1, Number(location.hash.slice(1)) - 1 || 0));
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+      counter.textContent = `${current + 1} / ${slides.length}`;
+      progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+      document.title = `${slides[current].dataset.title}｜AIDC.work 系統架構`;
+      history.replaceState(null, '', `#${current + 1}`);
+      slides[current].scrollTop = 0;
+    }
+
+    document.getElementById('prev').addEventListener('click', () => show(current - 1));
+    document.getElementById('next').addEventListener('click', () => show(current + 1));
+    addEventListener('keydown', (event) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+      if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+      if (event.key === 'Home') show(0);
+      if (event.key === 'End') show(slides.length - 1);
+      if (event.key.toLowerCase() === 'p') print();
+    });
+    addEventListener('hashchange', () => show(Number(location.hash.slice(1)) - 1 || 0));
+    show(current);
+  </script>
+
+
+<aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="aidc-work-system-architecture">
+  <header>
+    <div class="header-left">
+      <strong>講者模式</strong>
+      <span id="narration-status">載入中…</span>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+      <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+    </div>
+  <button type="button" id="btn-narration" title="講者模式 (N)">講者</button></header>
+  <div id="narration-avatar" aria-hidden="true"></div>
+  <p id="narration-script">載入講稿…</p>
+  <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+  <div class="narration-controls">
+    <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+    <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+    <button type="button" id="narration-stop" title="停止">⏹</button>
+    <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+  </div>
+  <div class="narration-settings">
+    <label><input type="checkbox" id="narration-auto-advance" checked="">播完自動翻頁</label>
+    <label><input type="checkbox" id="narration-auto-play-next" checked="">翻頁後自動播放</label>
+    <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+    <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+  </div>
+</aside><script src="narration/deck-narration-player.js"></script></body></html>

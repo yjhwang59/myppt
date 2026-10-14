@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "deckId": "test-pdf-deck",
+  "deckPath": "test-pdf-deck.html",
+  "title": "PDF Test",
+  "sourceType": "pdf",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "Speaker Studio PDF Test",
+      "sourceHash": "3005a951576297e4e3bc33b11d4233e38469c9cc28d372b4f96f8f4e4391733b",
+      "extractedContent": {
+        "eyebrow": "01 / Speaker Studio PDF Test",
+        "kicker": "",
+        "headings": [
+          "Speaker Studio PDF Test"
+        ],
+        "lead": "Speaker Studio PDF Test",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "pageImageUrl": "test-pdf-deck/pages/p01.png"
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-08-31T08:15:00.052Z",
+    "totalEstimatedSeconds": 0,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

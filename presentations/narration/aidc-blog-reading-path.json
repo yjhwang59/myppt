@@ -1,0 +1,642 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-blog-reading-path",
+  "deckPath": "aidc-blog-reading-path.html",
+  "title": "Blog 分類與閱讀路徑",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "9dddc6ee1ea0f4267919dec3cba4f7e3b56a0dc3ef01b210f46f0985cd30786d",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "AIDC.work · 會員專屬",
+        "headings": [
+          "Blog 分類與推薦閱讀路徑"
+        ],
+        "lead": "46 篇文章、七個正式分類：先選角色路徑，再依分類表往下讀。簡報標示公開／會員／無。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "七分類",
+      "sourceHash": "00da9df4d0595826a47c5d5b53aaa9d2699aa3a1826dd616e092b22875ea2e33",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "TAXONOMY",
+        "headings": [
+          "成長路徑，不是新聞流"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "「實戰資源」另收可重用的範本、清單與教學簡報，不插入主成長路徑。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "角色路徑",
+      "sourceHash": "e93cfe3e28bc3ca236637b2d19543e53dc9730232d4503f8de256c3cdd470122",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "THREE TRACKS",
+        "headings": [
+          "先選一條路，不必一次讀 46 篇"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "01",
+            "paragraph": "",
+            "bullets": [
+              "主管五問",
+              "流程盤點",
+              "AI 時代 PDCA",
+              "週報 3 分鐘",
+              "CEO Workshop",
+              "上路學程"
+            ]
+          },
+          {
+            "heading": "02",
+            "paragraph": "",
+            "bullets": [
+              "系統詞彙地圖",
+              "非工程師也能開始",
+              "三工具怎麼選",
+              "Cursor 安裝路徑",
+              "GitHub 5W1H",
+              "Vibe Coding 工作流"
+            ]
+          },
+          {
+            "heading": "03",
+            "paragraph": "",
+            "bullets": [
+              "SRS 與 Go／No-Go",
+              "AISDLC",
+              "Cursor 系統開發",
+              "AGENTS.md",
+              "LINE 分身助理",
+              "Agent Debug Gate"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "工具與 Vibe",
+      "sourceHash": "92b4b38ba1074034a0e9da176181ba026b7bebce717af177682f45fa1f7bdee4",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 1",
+        "headings": [
+          "AI 工具應用 · Vibe Coding"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "開發入門",
+      "sourceHash": "e65772d3c235df2957df3ee8e6e96660b0f1fb5472bb1437eb66f80de42c9e81",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 2 · AI 開發入門",
+        "headings": [
+          "從詞彙地圖到第一套工作流"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "系統開發",
+      "sourceHash": "1e248e8320d56cb64e21dda2fbec47bbc5f4bc67ac07204d9a1db86a43b638ef",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 3 · AI 系統開發",
+        "headings": [
+          "生命週期、架構、權限、部署"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "Agent 工作流",
+      "sourceHash": "927c48019c1dff79267b059408f3e8510f4deb2cff75e0aa1751ce4c07537080",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 4 · AI Agent 工作流",
+        "headings": [
+          "從 AGENTS.md 到可治理 Agent"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "落地（上）",
+      "sourceHash": "9552a9f8c249bea880b902e846c656a77c8c353f70b7d95b3773be05cdbaf567",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 5A · 企業 AI 落地",
+        "headings": [
+          "先問對問題，再談工具與班期"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "落地與資源",
+      "sourceHash": "9bd046d2bbd09424a652f32f681cb9cdd677e0428ab8913adcafe52496b624a9",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "CATALOG 5B · 實戰資源",
+        "headings": [
+          "學程簡介、現場 Agent、可重用資源"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "怎麼開簡報",
+      "sourceHash": "edfa2bf937811d1c1bdd29bc2b70772badcfbb948c254b249e88471ff6e5e826",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "ACCESS",
+        "headings": [
+          "公開簡報與會員簡報不是同一扇門"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "路徑 /presentations/檔名.html。匿名可開，適合課堂投影。",
+            "bullets": []
+          },
+          {
+            "heading": "",
+            "paragraph": "路徑 /blog/slug-deck。檔案不在公開目錄，未登入會被擋下。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "文章可否公開、簡報是否會員，可以不同。以完整表的「有無簡報」與實際連結為準。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "先讀七篇",
+      "sourceHash": "08966aa387e9d08f2e4725f90cfb793d8d33b56ec906751db0e1a1b4765437f0",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "START HERE",
+        "headings": [
+          "跨分類先讀這七篇"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "",
+            "paragraph": "",
+            "bullets": [
+              "系統詞彙地圖（會員）",
+              "主管必須思考的五件事",
+              "非工程師也能開始",
+              "先盤點流程"
+            ]
+          },
+          {
+            "heading": "",
+            "paragraph": "",
+            "bullets": [
+              "SRS 與 Go／No-Go",
+              "AISDLC 九階段",
+              "Cursor 系統開發指南（會員）"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "這七篇覆蓋詞彙、管理判斷、入門可行性與系統生命週期，再依角色路徑往下走。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "行動",
+      "sourceHash": "837e56f6ec8992aaa7dad3c4e3209dfdafc94e46ae93c316a12fc8e5977ab33a",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "NEXT STEP",
+        "headings": [
+          "用完整表查，用路徑讀"
+        ],
+        "lead": "簡報是地圖；46 列完整標題與連結在會員文章。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": null,
+      "estimatedSeconds": null,
+      "status": "empty",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": null,
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": null
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-09-14T09:33:58.395Z",
+    "totalEstimatedSeconds": 0,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

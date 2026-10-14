@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "deckId": "test-upload-deck",
+  "title": "測試上傳簡報",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "",
+      "kicker": "",
+      "h1": "測試簡報",
+      "h2": "測試簡報",
+      "lead": "第一頁說明",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "企業 AI 整合平台",
+      "footerPage": "1 / 2"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "重點",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "",
+      "kicker": "",
+      "h1": "",
+      "h2": "第二頁",
+      "lead": "重點內容",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "卡片",
+          "paragraph": "說明",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "企業 AI 整合平台",
+      "footerPage": "2 / 2"
+    }
+  ],
+  "sourceType": "html"
+}

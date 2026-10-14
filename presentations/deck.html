@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="zh-Hant" data-deck-id="deck"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="福圓號營運通系統現況：正式上線、已完成平行作業、開發中、評估中四種模組狀態；庫存開發中、採購評估中">
+    <title>營運通系統現況 | 主管會議簡報</title>
+    <link rel="stylesheet" href="/deck/assets/deck-chrome.css">
+    <style>
+      :root {
+        --indigo: #4338ca;
+        --indigo-soft: #eef2ff;
+      }
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .fact {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--slate-soft);
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .fact.g { background: var(--teal-soft); border-color: #99f6e4; }
+      .fact.y { background: var(--amber-soft); border-color: #fcd34d; }
+      .fact.b { background: var(--indigo-soft); border-color: #c7d2fe; }
+      .fact.r { background: var(--rose-soft); border-color: #fecdd3; }
+      .fact b {
+        display: block;
+        font-size: calc(28px * var(--deck-type-scale));
+        line-height: 1.15;
+      }
+      .fact.g b { color: var(--teal); }
+      .fact.y b { color: var(--amber); }
+      .fact.b b { color: var(--indigo); }
+      .fact.r b { color: var(--rose); }
+      .fact span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: calc(13px * var(--deck-type-scale));
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2em;
+        border-radius: 999px;
+        padding: 2px 10px;
+        font-weight: 800;
+        font-size: calc(12px * var(--deck-type-scale));
+        white-space: nowrap;
+      }
+      .st-g { background: var(--teal-soft); color: var(--teal); }
+      .st-y { background: var(--amber-soft); color: var(--amber); }
+      .st-b { background: var(--indigo-soft); color: var(--indigo); }
+      .st-r { background: var(--rose-soft); color: var(--rose); }
+      .flow {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        margin-top: clamp(14px, 2vw, 22px);
+        padding: 16px 12px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #ecfdf5 0%, #f8fafc 52%, #fffbeb 100%);
+        border: 1px solid #cbd5e1;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      }
+      .flow-step {
+        position: relative;
+        flex: 1 1 0;
+        min-width: 0;
+        border: 1px solid #cbd5e1;
+        border-radius: 14px;
+        background: white;
+        padding: 16px 10px 14px;
+        text-align: center;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+      }
+      .flow-step::before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; left: 0;
+        height: 4px;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(90deg, var(--teal), #34d399);
+      }
+      .flow-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px; height: 26px;
+        margin-bottom: 6px;
+        border-radius: 50%;
+        background: var(--teal-soft);
+        color: var(--teal);
+        font-size: calc(12px * var(--deck-type-scale));
+        font-weight: 800;
+      }
+      .flow-step strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--teal);
+        font-size: calc(16px * var(--deck-type-scale));
+        font-weight: 800;
+        line-height: 1.2;
+      }
+      .flow-desc {
+        display: block;
+        color: var(--ink);
+        font-size: calc(13px * var(--deck-type-scale));
+        font-weight: 600;
+        line-height: 1.45;
+      }
+      .flow-step.risk::before {
+        background: linear-gradient(90deg, var(--amber), #fbbf24);
+      }
+      .flow-step.risk {
+        border-color: #fcd34d;
+        background: #fffbeb;
+      }
+      .flow-step.risk .flow-num { background: var(--amber-soft); color: var(--amber); }
+      .flow-step.risk strong { color: var(--amber); }
+      .flow-arrow {
+        position: relative;
+        flex: 0 0 28px;
+        align-self: center;
+        height: 2px;
+        margin: 0 2px;
+      }
+      .flow-arrow::before {
+        content: "";
+        position: absolute;
+        top: 50%; right: 8px; left: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #94a3b8, var(--teal));
+        transform: translateY(-50%);
+      }
+      .flow-arrow::after {
+        content: "";
+        position: absolute;
+        top: 50%; right: 0;
+        width: 0; height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 9px solid var(--teal);
+        transform: translateY(-50%);
+      }
+      .flow.flow-dense { padding: 14px 8px; }
+      .flow.flow-dense .flow-step { padding: 12px 6px 10px; }
+      .flow.flow-dense .flow-step strong {
+        font-size: calc(14px * var(--deck-type-scale));
+      }
+      .flow.flow-dense .flow-desc {
+        font-size: calc(12px * var(--deck-type-scale));
+      }
+      .flow.flow-dense .flow-arrow { flex-basis: 20px; }
+      .phase-line {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 9px;
+        margin-top: 14px;
+      }
+      .phase {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+        background: white;
+      }
+      .phase.g { background: var(--teal-soft); border-color: #99f6e4; }
+      .phase.y { background: var(--amber-soft); border-color: #fcd34d; }
+      .phase.b { background: var(--indigo-soft); border-color: #c7d2fe; }
+      .phase.r { background: var(--rose-soft); border-color: #fecdd3; }
+      .phase strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: calc(15px * var(--deck-type-scale));
+      }
+      .phase.g strong { color: var(--teal); }
+      .phase.y strong { color: var(--amber); }
+      .phase.b strong { color: var(--indigo); }
+      .phase.r strong { color: var(--rose); }
+      .phase p {
+        margin: 0;
+        color: var(--ink);
+        font-size: calc(13px * var(--deck-type-scale));
+        line-height: 1.55;
+      }
+      #s5 .table,
+      #s6 .table,
+      #s11 .table,
+      #s12 .table {
+        font-size: calc(clamp(13px, 1.2vw, 15px) * var(--deck-type-scale));
+      }
+      #s8 .table,
+      #s9 .table {
+        font-size: calc(clamp(14px, 1.3vw, 16px) * var(--deck-type-scale));
+      }
+      body.deck-presenting .slide > .eyebrow,
+      body.deck-presenting .slide.hero .hero-copy .eyebrow {
+        font-size: calc(20px * var(--deck-type-scale));
+        letter-spacing: 0.12em;
+      }
+      @media (max-width: 900px) {
+        .facts, .phase-line { grid-template-columns: 1fr 1fr; }
+        .flow { flex-wrap: wrap; gap: 10px; }
+        .flow-arrow { display: none; }
+        .flow-step { min-width: 44%; flex: 1 1 calc(50% - 10px); }
+      }
+    </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#3b82f6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+</style></head>
+  <body>
+    <header id="deck-header">
+      <div class="toolbar">
+        <div class="toolbar-start">
+          <img class="toolbar-brand-logo" src="/deck/assets/dachan-logo.png" alt="大成" width="56" height="56">
+          <div class="brand">
+            <p>FYH OPS</p>
+            <h1>營運通系統現況 — 主管會議簡報</h1>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="nav-group" aria-label="簡報導覽">
+            <button class="button" type="button" id="btn-header-toggle" aria-expanded="true" aria-controls="header-panel">收合導覽</button>
+            <button class="button" type="button" id="btn-prev" aria-label="上一頁">← 上一頁</button>
+            <span class="slide-counter" id="slide-counter" aria-live="polite">1 / 12</span>
+            <button class="button" type="button" id="btn-next" aria-label="下一頁">下一頁 →</button>
+            <button class="button" type="button" id="btn-toc" aria-expanded="true" aria-controls="pager">目錄</button>
+            <button class="button primary" type="button" id="btn-present" aria-pressed="false">整頁顯示</button>
+          </div>
+          <div class="toolbar-secondary">
+            <a class="button" href="https://fyh.aidc.work/about/fc-operations-decision-intro">返回關於本系統</a>
+            <a class="button primary" href="https://fyh.aidc.work/?view=dudoo_sales_premium">Premium 營收</a>
+            <button class="button" type="button" onclick="window.print()">列印／匯出 PDF</button>
+          </div>
+        </div>
+      </div>
+      <div class="header-panel" id="header-panel">
+        <nav class="pager" aria-label="簡報目錄" id="pager"></nav>
+        <div class="progress-wrap" aria-hidden="true">
+          <div class="progress-bar"><span id="progress" style="width:8%"></span></div>
+        </div>
+      </div>
+    <button type="button" id="btn-narration" title="講者模式 (N)">講者</button></header>
+
+    <main id="deck">
+      <section class="slide hero" id="s1" data-title="封面">
+        <div class="hero-head">
+          <div class="hero-copy">
+            <p class="eyebrow">主管會議簡報 v1.0 · 2026-09-14</p>
+            <h2>福圓號營運通<br>系統現況與切換進度</h2>
+          </div>
+        </div>
+        <p class="lead">
+          營運通已撐<strong>分析、電商、人力、客服</strong>；生產與出貨仍<strong>平行作業</strong>。
+          <strong>庫存管理開發中、採購管理評估中</strong>——請勿當成已全面切換或已完成閉環。
+        </p>
+        <span class="stamp">對象：經營主管 · 營運 · 工廠 · 資訊　口頭約 8–10 分鐘；F 整頁、A± 調字級</span>
+        <footer>準據：<code>docs/FYH_系統功能說明與操作手冊.md</code> · 正式機 <a href="https://fyh.aidc.work">fyh.aidc.work</a></footer>
+      </section>
+
+      <section class="slide" id="s2" data-title="議程">
+        <p class="eyebrow">02 / 今日議程</p>
+        <h2>12 頁 · 四種狀態＋優先序＋名詞表</h2>
+        <div class="grid two">
+          <div class="card">
+            <strong>① 定位與判準</strong>
+            <ul>
+              <li>營運通是什麼、不是什麼</li>
+              <li>正式上線／平行作業／開發中／評估中</li>
+            </ul>
+          </div>
+          <div class="card decision">
+            <strong>② 模組現況</strong>
+            <ul>
+              <li>已在用、雙軌、還在做、還在評</li>
+              <li>庫存開發中、採購評估中</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid two" style="margin-top:12px">
+          <div class="card">
+            <strong>③ 建議優先序</strong>
+            <p>口徑治理、庫存結存、分貨銜接、託運說法（非正式承諾）</p>
+          </div>
+          <div class="card">
+            <strong>④ KPI 與用語</strong>
+            <p>營收須標口徑；名詞表對齊平行作業、權威結存、占位(stub)</p>
+          </div>
+        </div>
+        <footer>舊「綠黃紅完成度」簡報仍保留給開發對帳，本份是主管決策版</footer>
+      </section>
+
+      <section class="slide" id="s3" data-title="定位">
+        <p class="eyebrow">03 / 營運通是什麼</p>
+        <h2>同一套 Web 入口，不是財務總帳</h2>
+        <div class="grid two">
+          <div class="card decision">
+            <strong>是什麼</strong>
+            <p>把 Google Sheets 日報、Dudoo POS、工廠出貨、SD 訂單、天氣集中後，門市／工廠／總部／電商／客服在 <strong>同一套營運通</strong> 做查詢、驗證、預估與日常作業。</p>
+          </div>
+          <div class="card warning">
+            <strong>不是什麼（請勿當成已上線）</strong>
+            <p>不做總帳、應收應付與採購結案；沒有可信即時庫存結餘；沒有每日 22:00 日結鎖帳；GSC 原料採購與行政總務尚未建置。</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <strong>看數字時先記住</strong>
+          <p>營收有多套口徑(Sheets 日報、Dudoo 交易／明細／發票、Premium hybrid)。<strong>跨頁勿硬加總。</strong></p>
+        </div>
+        <footer>公開入口 https://fyh.aidc.work · 側欄依帳號權限顯示</footer>
+      </section>
+
+      <section class="slide" id="s4" data-title="四狀態">
+        <p class="eyebrow">04 / 狀態定義</p>
+        <h2>用切換進度說話，不用綠黃紅分數</h2>
+        <div class="phase-line">
+          <div class="phase g">
+            <strong>正式上線</strong>
+            <p>營運通已是日常入口，舊流程已退場或僅備援。可對外說「已在用」。</p>
+          </div>
+          <div class="phase y">
+            <strong>已完成（平行作業）</strong>
+            <p>功能可跑、資料可存，仍與 Excel／Sheets／舊流程雙軌，尚未全面切換。</p>
+          </div>
+          <div class="phase b">
+            <strong>開發中</strong>
+            <p>有作業面，閉環未完成，持續開發。不可宣稱整域已上線。</p>
+          </div>
+          <div class="phase r">
+            <strong>評估中</strong>
+            <p>需求／設計評估中。不可宣稱時程，也不可說已完成。</p>
+          </div>
+        </div>
+        <p class="lead" style="margin-top:14px">
+          成熟度方向：評估中 → 開發中 → 平行作業 → 正式上線。文件規劃 ≠ 上線。
+        </p>
+        <footer>庫存不因「驗收已可操作」升為上線或平行作業</footer>
+      </section>
+
+      <section class="slide" id="s5" data-title="總覽">
+        <p class="eyebrow">05 / 模組總覽</p>
+        <h2>16 項 · 上線 8／平行 2／開發 3／評估 3</h2>
+        <div class="facts">
+          <div class="fact g"><b>8</b><span>正式上線</span></div>
+          <div class="fact y"><b>2</b><span>已完成 · 平行作業</span></div>
+          <div class="fact b"><b>3</b><span>開發中</span></div>
+          <div class="fact r"><b>3</b><span>評估中</span></div>
+        </div>
+        <table class="table" style="margin-top:12px">
+          <thead>
+            <tr><th>營運通模組</th><th>狀態</th><th>一句話</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>行銷分析、電商、B2B、人力、客服、備品、平台、專案</td><td><span class="status st-g">正式上線</span></td><td>日常入口已在營運通</td></tr>
+            <tr><td>生產預估與工廠</td><td><span class="status st-y">平行作業</span></td><td>可跑，仍與 Excel／師傅流程雙軌</td></tr>
+            <tr><td>出貨運輸</td><td><span class="status st-y">平行作業</span></td><td>車次／匯入可用；分貨仍接人工 Sheets</td></tr>
+            <tr><td>庫存管理</td><td><span class="status st-b">開發中</span></td><td>驗收可用；盤點／報廢／調撥無權威結存</td></tr>
+            <tr><td>會員單一視圖、宅配託運接通</td><td><span class="status st-b">開發中</span></td><td>三軌未整合；黑貓 API 仍為占位(stub)</td></tr>
+            <tr><td>採購管理、行政總務、促銷主檔</td><td><span class="status st-r">評估中</span></td><td>不可宣稱已完成或已排期</td></tr>
+          </tbody>
+        </table>
+        <footer>細項見後頁；開發用綠黃紅分數見完成度簡報</footer>
+      </section>
+
+      <section class="slide" id="s6" data-title="正式上線">
+        <p class="eyebrow">06 / 正式上線</p>
+        <h2>可對外說「已在用」</h2>
+        <table class="table">
+          <thead>
+            <tr><th>模組</th><th>日常用途</th><th>操作入口</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>行銷分析</td><td>Premium、營收總表、速報、完售</td><td><code>?view=dudoo_sales_premium</code></td></tr>
+            <tr><td>電子商務</td><td>店取／宅配／DoSuper</td><td><a href="https://fyh.aidc.work/shop">/shop</a>、<a href="https://fyh.aidc.work/admin/shop-orders">/admin/shop-orders</a></td></tr>
+            <tr><td>B2B 客戶價</td><td>價表瀑布、Portal</td><td><a href="https://fyh.aidc.work/admin/b2b-customers">/admin/b2b-customers</a></td></tr>
+            <tr><td>人力管理</td><td>排班、請假、出勤</td><td><a href="https://fyh.aidc.work/workforce/schedule">/workforce/schedule</a></td></tr>
+            <tr><td>客服申訴</td><td>公開填寫＋後台簽核 MVP</td><td><a href="https://fyh.aidc.work/admin/customer-service">/admin/customer-service</a></td></tr>
+            <tr><td>門市備品</td><td>已取代 Google 表單</td><td><a href="https://fyh.aidc.work/store/supplies">/store/supplies</a></td></tr>
+            <tr><td>平台與設定</td><td>登入、權限、選單、匯入中心</td><td><a href="https://fyh.aidc.work/?view=import_automation">/?view=import_automation</a></td></tr>
+            <tr><td>專案管理</td><td>Agile 看板、內部回饋</td><td><a href="https://fyh.aidc.work/admin/agile/projects">/admin/agile/projects</a></td></tr>
+          </tbody>
+        </table>
+        <p class="op-url" style="margin-top:12px">
+          <span class="op-label">主管主入口</span>
+          <a href="https://fyh.aidc.work/?view=dudoo_sales_premium">/?view=dudoo_sales_premium</a>
+          <span>→ Dudoo Sales Premium</span>
+        </p>
+        <footer>上線 ≠ 零缺口（例：客服通知仍弱；營收跨頁勿混加）</footer>
+      </section>
+
+      <section class="slide" id="s7" data-title="平行作業">
+        <p class="eyebrow">07 / 已完成（平行作業）</p>
+        <h2>功能可跑，尚未全面切換</h2>
+        <div class="flow flow-dense">
+          <div class="flow-step">
+            <span class="flow-num">1</span>
+            <strong>次日預估</strong>
+            <span class="flow-desc">人工按執行 · 無排程</span>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step">
+            <span class="flow-num">2</span>
+            <strong>工廠備料</strong>
+            <span class="flow-desc">爐盤／麵糰／BOM</span>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step risk">
+            <span class="flow-num">3</span>
+            <strong>分貨矩陣</strong>
+            <span class="flow-desc">需求分配 · 不寫出貨</span>
+          </div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-step risk">
+            <span class="flow-num">4</span>
+            <strong>Sheets 出貨</strong>
+            <span class="flow-desc">人工總計表仍是來源</span>
+          </div>
+        </div>
+        <div class="grid two" style="margin-top:12px">
+          <div class="card">
+            <strong>生產預估與工廠</strong>
+            <p>預估、爐盤、麵糰、包子、雙軌 BOM 可日常操作；目前與 Excel／師傅流程<strong>平行作業</strong>，尚未全面取代。</p>
+          </div>
+          <div class="card decision">
+            <strong>出貨運輸</strong>
+            <p>車次／司機／工廠出貨匯入可用。分貨矩陣<strong>不會</strong>自動寫入出貨單；排車仍全人工。</p>
+          </div>
+        </div>
+        <p class="op-url" style="margin-top:10px">
+          <span class="op-label">操作入口</span>
+          <a href="https://fyh.aidc.work/?view=production_plan">/?view=production_plan</a>
+          <span>→</span>
+          <a href="https://fyh.aidc.work/?view=factory_production_calculation">/?view=factory_production_calculation</a>
+          <span>→</span>
+          <a href="https://fyh.aidc.work/admin/trip-planning">/admin/trip-planning</a>
+        </p>
+        <footer>P0 斷點：計畫量與實出量只能事後人工對帳</footer>
+      </section>
+
+      <section class="slide" id="s8" data-title="開發中">
+        <p class="eyebrow">08 / 開發中</p>
+        <h2>庫存管理為主 · 驗收可跑、結存未完成</h2>
+        <table class="table">
+          <thead>
+            <tr><th>模組</th><th>已有</th><th>缺什麼</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>庫存管理</td>
+              <td>驗收狀態機完整；盤點／報廢／調撥有單據</td>
+              <td>流水未彙總成權威結存(Authoritative Stock)；盤點理論量不含報廢／調撥</td>
+            </tr>
+            <tr>
+              <td>會員／客戶單一視圖</td>
+              <td>shop 會員、B2B 客戶、客服案件各有入口</td>
+              <td>三軌未整合；客戶 360／RFM 未落地</td>
+            </tr>
+            <tr>
+              <td>宅配託運接通</td>
+              <td>運費規則、單據列印、宅配工作台</td>
+              <td>黑貓託運 API 仍為占位(stub)；運單號人工填</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card warning" style="margin-top:12px">
+          <strong>庫存不因驗收已完成而升等</strong>
+          <p>驗收是庫存域內已可日常操作的子流程；整域仍列<strong>開發中</strong>。沒有可信即時庫存，請勿對外宣稱「庫存已上線」。</p>
+        </div>
+        <p class="op-url" style="margin-top:10px">
+          <span class="op-label">驗收入口</span>
+          <a href="https://fyh.aidc.work/store/receiving">/store/receiving</a>
+          <span>門市　｜　總部</span>
+          <a href="https://fyh.aidc.work/?view=store_receiving_monitor">/?view=store_receiving_monitor</a>
+        </p>
+        <footer>盤點／報廢／調撥：<code>/store/inventory</code>、<code>/store/loss</code>、<code>/store/transfer</code></footer>
+      </section>
+
+      <section class="slide" id="s9" data-title="評估中">
+        <p class="eyebrow">09 / 評估中</p>
+        <h2>不可宣稱已完成，也不可承諾時程</h2>
+        <table class="table">
+          <thead>
+            <tr><th>模組</th><th>現況</th><th>容易誤認</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>採購管理</td>
+              <td>GSC 工廠 BOM 可展開原料需求；無採購單(PO)、無供應商主檔</td>
+              <td>BOM 展開 ≠ 採購閉環；DoSuper 代售進貨 ≠ 原料採購</td>
+            </tr>
+            <tr>
+              <td>行政總務</td>
+              <td>設備報修、耗材領用、維修追蹤 0 實作</td>
+              <td>門市備品已上線，<strong>不算</strong>總務；<code>/feedback</code> 是內部開發回饋</td>
+            </tr>
+            <tr>
+              <td>促銷／檔期主檔</td>
+              <td>無主檔；行銷分析不靠檔期表</td>
+              <td>促銷不得寫入商品主檔／SKU 定義</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card warning" style="margin-top:12px">
+          <strong>採購管理列為評估中</strong>
+          <p>設計文件可參考，但營運通尚未進入開發排程。會議若要啟動，請先拍板範圍（試點原料 vs 本季不做），再回寫 Roadmap。</p>
+        </div>
+        <footer>日結鎖帳中心亦未落地，併入建議優先序，不列本頁「已在評的產品模組」</footer>
+      </section>
+
+      <section class="slide" id="s10" data-title="優先序">
+        <p class="eyebrow">10 / 建議優先序</p>
+        <h2>非正式承諾 · 會議後回寫 Roadmap</h2>
+        <div class="phase-line">
+          <div class="phase">
+            <strong>① 口徑＋日結前置</strong>
+            <p>統一營收口徑；匯入失敗可追；日結檢核草案。讓數字可跨頁對齊。</p>
+          </div>
+          <div class="phase">
+            <strong>② 庫存結存</strong>
+            <p>異動流水 → 日結結餘；帳面含報廢／調撥。對齊庫存「開發中」閉環。</p>
+          </div>
+          <div class="phase">
+            <strong>③ 分貨→出貨</strong>
+            <p>矩陣半自動銜接出貨單／車次，收斂生產與出貨的平行作業。</p>
+          </div>
+          <div class="phase">
+            <strong>④ 託運說法</strong>
+            <p>黑貓由占位(stub)升為可託運，或書面維持人工、不對外宣稱接通。</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <strong>刻意不做（除非另案拍板）</strong>
+          <p>完整應收／開票總帳、行政總務、會員 360 大重構、採購全面開工。採購仍為<strong>評估中</strong>。</p>
+        </div>
+        <footer>本頁非 SLA；優先序變更請同步手冊 §12</footer>
+      </section>
+
+      <section class="slide" id="s11" data-title="KPI">
+        <p class="eyebrow">11 / KPI 速查</p>
+        <h2>看數字先標口徑</h2>
+        <table class="table">
+          <thead>
+            <tr><th>KPI</th><th>計算</th><th>建議入口</th><th>注意</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>月營收</td><td>Σ Dudoo 或 Σ 日報（須標口徑）</td><td>Premium、營收總表</td><td>跨頁勿混加</td></tr>
+            <tr><td>環比成長</td><td>(本期 − 上月同期) ÷ |上月同期|</td><td>Premium MTD</td><td>同期 ≠ 整月</td></tr>
+            <tr><td>同比成長</td><td>(本期 − 去年同期) ÷ |去年同期|</td><td>Premium</td><td>hybrid 切日影響 YoY</td></tr>
+            <tr><td>日均營收</td><td>月營收 ÷ 營業天數（扣公休）</td><td>Premium</td><td>日均 MoM 用上月整月</td></tr>
+            <tr><td>客單價／來客</td><td>營收÷筆數；筆數÷營業日</td><td>Premium</td><td>受作廢過濾影響</td></tr>
+            <tr><td>回存率</td><td>庫存 ÷ 進貨（或工廠出貨）</td><td>常溫品檢核</td><td>進貨口徑 ≠ 實收</td></tr>
+            <tr><td>完售時間</td><td>銷量累計達基準之時刻</td><td>完售矩陣</td><td>可切進貨／工廠出貨</td></tr>
+            <tr><td>預估誤差</td><td>回測 MAPE</td><td>參數調優</td><td>無日常看板</td></tr>
+          </tbody>
+        </table>
+        <footer>客服 SLA 見客服儀表板；通知派送仍弱</footer>
+      </section>
+
+      <section class="slide" id="s12" data-title="名詞表">
+        <p class="eyebrow">12 / 中英文名詞解釋</p>
+        <h2>會議常用語</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>英文</th>
+              <th>中文</th>
+              <th>英意</th>
+              <th>中文解釋</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>parallel run</td>
+              <td>平行作業</td>
+              <td>dual process, not cutover</td>
+              <td>新舊流程雙軌；功能完成但不代表已全面切換</td>
+            </tr>
+            <tr>
+              <td>authoritative stock</td>
+              <td>權威結存</td>
+              <td>trusted on-hand balance</td>
+              <td>以異動流水彙總的帳面庫存；目前尚無日結結餘</td>
+            </tr>
+            <tr>
+              <td>stub</td>
+              <td>占位</td>
+              <td>placeholder, not connected</td>
+              <td>黑貓託運 API 僅占位；運費／單據可印，託運未接通</td>
+            </tr>
+            <tr>
+              <td>revenue basis</td>
+              <td>營收口徑</td>
+              <td>which source you sum</td>
+              <td>Sheets／Dudoo 交易／明細／發票／hybrid；跨頁勿硬加總</td>
+            </tr>
+            <tr>
+              <td>allocation matrix</td>
+              <td>分貨矩陣</td>
+              <td>demand split by store</td>
+              <td>工廠備料算出的需求分配；不會自動寫入出貨單</td>
+            </tr>
+            <tr>
+              <td>daily close</td>
+              <td>日結鎖帳</td>
+              <td>lock after checks</td>
+              <td>統一檢核與鎖定；22:00 只是出貨表清空時窗，不是鎖帳</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="op-url" style="margin-top:10px">
+          <span class="op-label">About</span>
+          <a href="https://fyh.aidc.work/about/fc-operations-decision-intro">/about/fc-operations-decision-intro</a>
+          <span>｜開發用完成度</span>
+          <a href="https://fyh.aidc.work/docs/fyh-module-completeness-brief-deck.html">3 分鐘</a>
+          <span>／</span>
+          <a href="https://fyh.aidc.work/docs/fyh-module-completeness-deck.html">完整版</a>
+        </p>
+        <footer>口語：中文(English) · 準據手冊 2026-09-14 · 以程式為準更新</footer>
+      </section>
+    </main>
+    <script src="/deck/assets/deck-chrome.js"></script>
+  
+
+<aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="deck">
+  <header>
+    <div class="header-left">
+      <strong>講者模式</strong>
+      <span id="narration-status">載入中…</span>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+      <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+    </div>
+  </header>
+  <div id="narration-avatar" aria-hidden="true"></div>
+  <p id="narration-script">載入講稿…</p>
+  <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+  <div class="narration-controls">
+    <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+    <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+    <button type="button" id="narration-stop" title="停止">⏹</button>
+    <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+  </div>
+  <div class="narration-settings">
+    <label><input type="checkbox" id="narration-auto-advance" checked="">播完自動翻頁</label>
+    <label><input type="checkbox" id="narration-auto-play-next" checked="">翻頁後自動播放</label>
+    <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+    <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+  </div>
+</aside><script src="narration/deck-narration-player.js"></script></body></html>

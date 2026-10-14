@@ -13,7 +13,9 @@ import {
 } from "./lib/manifest.js";
 import {
   audioAbsolutePath,
+  DECK_ID,
   MANIFEST_PATH,
+  manifestPath,
 } from "./lib/paths.js";
 import {
   getTtsAdapter,
@@ -25,12 +27,14 @@ const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const slideFilter = args.find((a) => a.startsWith("--slide="))?.split("=")[1];
 const force = args.includes("--force");
+const deckId = args.find((a) => a.startsWith("--deck="))?.split("=")[1] || DECK_ID;
 
 const budgetUsd = Number(process.env.NARRATION_TTS_BUDGET_USD || 5);
 const maxRetries = Number(process.env.NARRATION_TTS_MAX_RETRIES || 2);
 
-const { manifest } = loadAndValidateManifest(MANIFEST_PATH);
-ensureAudioDir();
+const mPath = manifestPath(deckId);
+const { manifest } = loadAndValidateManifest(mPath);
+ensureAudioDir(deckId);
 
 const provider = dryRun ? "dry-run" : (process.env.NARRATION_TTS_PROVIDER || "openai");
 const adapter = await getTtsAdapter(provider);
@@ -39,7 +43,7 @@ const eligible = manifest.slides.filter((s) => {
   if (slideFilter && s.slideId !== slideFilter) return false;
   if (!s.script) return false;
   if (!force && s.status === "audio_ready" && s.audioUrl) return false;
-  return s.status === "approved" || s.status === "audio_failed";
+  return s.status === "approved" || s.status === "audio_failed" || s.status === "stale";
 });
 
 if (!eligible.length) {
@@ -58,7 +62,7 @@ for (const slide of eligible) {
     break;
   }
 
-  const outPath = audioAbsolutePath(slide.slideId);
+  const outPath = audioAbsolutePath(deckId, slide.slideId);
   const voice = slide.voice || manifest.voice;
   console.log(`TTS ${slide.slideId} → ${outPath} (${provider})`);
 
@@ -71,7 +75,7 @@ for (const slide of eligible) {
         speed: voice.speed ?? 1.0,
         outputPath: outPath,
       });
-      setSlideAudioReady(slide, result.durationSeconds);
+      setSlideAudioReady(slide, result.durationSeconds, deckId);
       spent += result.costUsd;
       success++;
       lastErr = null;
