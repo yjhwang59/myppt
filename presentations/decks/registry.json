@@ -182,6 +182,21 @@
       "summary": ""
     },
     {
+      "deckId": "ai-agent-course-week02-user-flow-frontend-design",
+      "title": "第 2 週｜使用者流程與前端設計",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 2 週。企業AI內訓 2026-10-21 18:30–21:30。案例：大躍 Northgo 中文詢價助理。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-10-14T21:40:00.000Z",
+      "updatedAt": "2026-10-14T21:40:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-10-17",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-17",
       "sourceType": "html",

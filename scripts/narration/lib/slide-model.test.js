@@ -21,3 +21,12 @@ test("links round-trip through render and migrate", () => {
   const back = migrateSlideFromHtml($, $(".slide").get(0), 0, 1);
   assert.deepEqual(back.links, slide.links);
 });
+
+test("arch-svg aria-label is configurable and defaults to the legacy label", () => {
+  const base = { slideId: "s1", index: 1, title: "t", layout: "arch-svg", h2: "h", archSvgHtml: "<svg></svg>", cards: [], callouts: [] };
+  assert.match(renderSlideHtml(base, 1), /aria-label="企業 AI 五層架構圖"/);
+  const html = renderSlideHtml({ ...base, archSvgLabel: "頁面導覽圖" }, 1);
+  assert.match(html, /aria-label="頁面導覽圖"/);
+  const $ = cheerio.load(html, { decodeEntities: false });
+  assert.equal(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).archSvgLabel, "頁面導覽圖");
+});

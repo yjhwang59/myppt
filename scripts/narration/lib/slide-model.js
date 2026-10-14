@@ -99,6 +99,8 @@ export function migrateSlideFromHtml($, el, index, total) {
 
   if (layout === "arch-svg") {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
+    const label = $el.find(".arch-svg-wrap").attr("aria-label");
+    if (label && label !== "企業 AI 五層架構圖") slide.archSvgLabel = label;
   }
 
   slide.footerBrand =
@@ -171,7 +173,7 @@ export function renderSlideHtml(slide, total) {
     body += slide.lead ? `<p class="lead">${escapeHtml(slide.lead)}</p>` : "";
 
     if (slide.layout === "arch-svg") {
-      body += `<div class="arch-svg-wrap" role="img" aria-label="企業 AI 五層架構圖">${slide.archSvgHtml || ""}</div>`;
+      body += `<div class="arch-svg-wrap" role="img" aria-label="${escapeHtml(slide.archSvgLabel || "企業 AI 五層架構圖")}">${slide.archSvgHtml || ""}</div>`;
     } else if (slide.layout === "flow") {
       body += `<div class="flow" role="list">${slide.flowSteps
         .map(
