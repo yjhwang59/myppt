@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>myPPT簡報工作室</title>
-  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
 </head>
 <body>
   <section id="login-screen" class="login-screen">
@@ -42,6 +42,13 @@
           <p id="remote-note" class="muted library-lead hidden">線上可改這一簡報的頁面、講稿與語音。新增簡報與分類仍請用本機工作室。</p>
         </div>
       </div>
+      <aside id="library-voice" class="library-voice hidden">
+        <div>
+          <strong>我的聲音</strong>
+          <p id="library-voice-summary" class="muted">尚未建立。錄一次之後，每一份簡報都可以用這個聲音。</p>
+        </div>
+        <button type="button" id="btn-open-voice" class="primary">設定聲音</button>
+      </aside>
       <nav class="library-tabs" aria-label="簡報庫分頁">
         <button type="button" class="library-tab active" data-library-tab="decks">簡報</button>
         <button type="button" class="library-tab" data-library-tab="categories">分類</button>
@@ -211,16 +218,13 @@
           </label>
           <select id="voice-id"></select>
         </div>
-        <details id="my-voice-panel" class="my-voice hidden">
-          <summary>我的聲音</summary>
-          <p class="muted hint">先逐字唸同意句，再錄 10–30 秒自然講話。同意句必須是簡體原文，OpenAI 沒有繁體版本。</p>
-          <p id="consent-phrase" class="consent-phrase">我是此声音的拥有者并授权OpenAI使用此声音创建语音合成模型</p>
-          <div class="btn-row">
-            <button type="button" id="btn-record-consent">錄同意句</button>
-            <button type="button" id="btn-record-sample">錄聲音樣本</button>
+        <div id="my-voice-panel" class="my-voice hidden">
+          <div>
+            <strong>我的聲音</strong>
+            <span id="studio-voice-summary" class="muted">尚未建立</span>
           </div>
-          <p id="my-voice-status" class="muted"></p>
-        </details>
+          <button type="button" id="btn-open-voice-studio">設定並套用到全部簡報</button>
+        </div>
       </div>
 
       <main class="layout studio-layout">
@@ -324,8 +328,57 @@
         <div id="job-progress" class="job-progress hidden"></div>
       </footer>
     </section>
+
+    <dialog id="voice-dialog" class="voice-dialog">
+      <form method="dialog">
+        <div class="voice-dialog-head">
+          <div>
+            <h3>我的聲音</h3>
+            <p class="muted">錄一次即可。套用之後，每一份簡報的試播與新語音都用這個聲音。</p>
+          </div>
+          <button type="button" id="btn-close-voice" class="voice-close" aria-label="關閉">關閉</button>
+        </div>
+        <ol class="voice-steps" aria-label="建立聲音的步驟">
+          <li><button type="button" data-voice-step="consent">1 同意句</button></li>
+          <li><button type="button" data-voice-step="sample">2 聲音樣本</button></li>
+          <li><button type="button" data-voice-step="apply">3 套用</button></li>
+        </ol>
+
+        <section id="voice-pane-consent">
+          <p>請用麥克風逐字唸下面這句。OpenAI 只接受這段簡體原文。</p>
+          <p class="voice-gloss">意思是：我是此聲音的擁有者，並授權 OpenAI 使用此聲音建立語音合成模型。</p>
+          <p id="consent-phrase" class="consent-phrase">我是此声音的拥有者并授权OpenAI使用此声音创建语音合成模型</p>
+        </section>
+        <section id="voice-pane-sample" class="hidden">
+          <p>用平常講課的聲音，連續說 10–30 秒。可以講今天要教的內容，不必再唸同意句。</p>
+        </section>
+        <section id="voice-pane-apply" class="hidden">
+          <p>套用後，簡報庫裡每一份的新語音都會用這個聲音。已經生成的 mp3 不會自動替換，要在該簡報按「生成全部語音」才會重錄。</p>
+          <button type="button" id="btn-apply-voice" class="primary">套用到全部簡報</button>
+        </section>
+
+        <div id="voice-capture">
+          <label id="voice-mic-label">麥克風
+            <select id="voice-mic"></select>
+          </label>
+          <div id="voice-meter" class="voice-meter hidden" aria-hidden="true"><i id="voice-meter-bar"></i></div>
+          <p id="voice-timer" class="voice-timer hidden">0:00</p>
+          <audio id="voice-preview" class="preview-audio hidden" controls></audio>
+          <div class="btn-row">
+            <button type="button" id="btn-record-voice" class="primary">開始錄同意句</button>
+            <button type="button" id="btn-use-voice" class="hidden">使用這段</button>
+            <button type="button" id="btn-redo-voice" class="hidden">重錄</button>
+            <label class="file-btn" id="voice-upload-label">改上傳音檔
+              <input id="voice-file" type="file" accept="audio/*,.webm,.wav,.mp3,.m4a,.ogg,.flac" hidden />
+            </label>
+          </div>
+          <p class="muted hint">若麥克風無法啟動，請關掉其他占用麥克風的程式，或改上傳 wav、mp3、m4a。</p>
+        </div>
+        <p id="voice-status" class="voice-status" role="status"></p>
+      </form>
+    </dialog>
   </div>
 
-  <script type="module" src="admin.js"></script>
+  <script type="module" src="/admin/admin.js"></script>
 </body>
 </html>

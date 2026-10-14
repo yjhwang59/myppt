@@ -58,17 +58,78 @@ export async function writeBytes(bucket, key, bytes, contentType) {
   await bucket.put(key, bytes, { httpMetadata: { contentType } });
 }
 
+export function emptyNarrationFromSlides(deckData, deckId) {
+  const voice = { provider: "openai", voiceId: "nova", speed: 1 };
+  const slides = Array.isArray(deckData?.slides) ? deckData.slides : [];
+  return {
+    version: "1.0.0",
+    deckId,
+    deckPath: `${deckId}.html`,
+    title: deckData?.title || deckId,
+    sourceType: deckData?.sourceType || "html",
+    sourceFlavor: deckData?.sourceFlavor || null,
+    promptVersion: "1.0.0",
+    modelVersion: null,
+    voice,
+    presenter: { name: "default", avatarVideoUrl: null },
+    slides: slides.map((slide, index) => ({
+      slideId: slide.slideId || `s${index + 1}`,
+      index: slide.index || index + 1,
+      title: slide.title || `第 ${index + 1} 頁`,
+      sourceHash: null,
+      extractedContent: {
+        eyebrow: slide.eyebrow || "",
+        kicker: slide.kicker || "",
+        headings: [slide.h1, slide.h2, slide.title].filter(Boolean),
+        lead: slide.lead || "",
+        stamp: slide.stamp || "",
+        cards: slide.cards || [],
+        table: slide.table || null,
+        flowSteps: slide.flowSteps || [],
+        callouts: slide.callouts || [],
+      },
+      script: null,
+      estimatedSeconds: null,
+      status: "empty",
+      voice: { ...voice },
+      audioUrl: null,
+      audioDurationSeconds: null,
+      presenter: { name: "default", avatarVideoUrl: null },
+      avatarVideoUrl: null,
+      captionsUrl: null,
+      cuePoints: [],
+      generatedAt: null,
+      approvedAt: null,
+      approvedBy: null,
+      generationNotes: null,
+    })),
+  };
+}
+
 export async function ensureStudioDraft(bucket, deckId, fetchAsset) {
   const keys = studioKeys(deckId);
   if (await bucket.head(keys.html)) return { seeded: false };
   const html = await fetchAsset(`/${deckId}.html`);
-  const narration = await fetchAsset(`/narration/${deckId}.json`);
-  if (!html || !narration) {
+  if (!html) {
     const error = new Error("讀不到簡報原稿");
     error.status = 404;
     throw error;
   }
   const slides = await fetchAsset(`/decks/${deckId}.slides.json`);
+  let narration = await fetchAsset(`/narration/${deckId}.json`);
+  if (!narration) {
+    let deckData = { deckId, slides: [] };
+    if (slides) {
+      try {
+        deckData = JSON.parse(slides);
+      } catch {
+        const error = new Error("投影片資料不是有效的 JSON");
+        error.status = 500;
+        throw error;
+      }
+    }
+    narration = `${JSON.stringify(emptyNarrationFromSlides(deckData, deckId), null, 2)}\n`;
+  }
   await writeText(bucket, keys.html, html, "text/html; charset=utf-8");
   await writeText(
     bucket,
@@ -174,4 +235,63 @@ export function clipTranscript(raw) {
     truncated = true;
   }
   return { text, truncated, charCount: text.length };
+}
+
+export function voiceProfileView(profile) {
+  const value = profile && typeof profile === "object" ? profile : {};
+  const voiceId = value.voiceId || null;
+  return {
+    name: value.name || "我的聲音",
+    consentReady: Boolean(value.consentId),
+    ready: Boolean(voiceId),
+    voiceId,
+    defaultForAll: Boolean(value.defaultForAll && voiceId),
+    updatedAt: value.updatedAt || null,
+  };
+}
+
+export function assignDeckVoice(current, voiceId, scope, speed) {
+  return {
+    ...(current || {}),
+    provider: "openai",
+    voiceId,
+    speed: Number(speed) || Number(current?.speed) || 1,
+    scope: scope === "global" ? "global" : "deck",
+  };
+}
+
+export function nextVoiceAssignment(current, profile) {
+  const voice = current || {};
+  if (!profile?.defaultForAll || !profile.voiceId) return { changed: false, voice };
+  if (voice.scope === "deck") return { changed: false, voice };
+  const already = voice.voiceId === profile.voiceId && voice.scope === "global";
+  if (already) return { changed: false, voice };
+  const factory = !voice.voiceId || voice.voiceId === "nova";
+  if (!factory && voice.scope !== "global") return { changed: false, voice };
+  return {
+    changed: true,
+    voice: assignDeckVoice(voice, profile.voiceId, "global", voice.speed),
+  };
+}
+
+export async function adoptGlobalVoice(bucket, deckId) {
+  let profile = null;
+  try {
+    profile = await readJson(bucket, VOICE_KEY);
+  } catch {
+    return { changed: false };
+  }
+  const keys = studioKeys(deckId);
+  let manifest = null;
+  try {
+    manifest = await readJson(bucket, keys.narration);
+  } catch {
+    return { changed: false };
+  }
+  if (!manifest) return { changed: false };
+  const next = nextVoiceAssignment(manifest.voice, profile);
+  if (!next.changed) return { changed: false };
+  manifest.voice = next.voice;
+  await writeJson(bucket, keys.narration, manifest);
+  return { changed: true, voice: manifest.voice };
 }

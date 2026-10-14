@@ -19,9 +19,12 @@ import {
   ensureStudioDraft,
   isValidDeckId,
   publishStudioDraft,
+  adoptGlobalVoice,
+  assignDeckVoice,
   readJson,
   studioKeys,
   transcriptPayload,
+  voiceProfileView,
   writeBytes,
   writeJson,
   writeText,
@@ -222,6 +225,10 @@ export async function handleStudioApi(request, env, session, promptContract) {
   const { pathname } = url;
 
   try {
+    if (method === "GET" && pathname === "/api/voice") {
+      return json(voiceProfileView(await readVoiceProfile(env.STUDIO)));
+    }
+    if (method === "PUT" && pathname === "/api/voice") return await updateVoiceDefault(request, env);
     if (method === "POST" && pathname === "/api/voice/consent") return await createConsent(request, env);
     if (method === "POST" && pathname === "/api/voice/sample") return await createSample(request, env);
   } catch (err) {
@@ -237,6 +244,7 @@ export async function handleStudioApi(request, env, session, promptContract) {
 
   try {
     await ensureStudioDraft(env.STUDIO, deckId, (path) => fetchAsset(request, env, path));
+    await adoptGlobalVoice(env.STUDIO, deckId);
     return await routeDeck(request, env, promptContract, deckId, rest, method, url);
   } catch (err) {
     return fail(err);
@@ -314,7 +322,8 @@ async function putVoice(request, bucket, deckId) {
   const { manifest, keys } = await loadDraft(bucket, deckId);
   const profile = await readVoiceProfile(bucket);
   const voiceId = resolveStudioVoiceId(body.voiceId, profile?.voiceId);
-  manifest.voice = { ...(manifest.voice || {}), provider: "openai", voiceId, speed: Number(body.speed) || manifest.voice?.speed || 1 };
+  const scope = body.scope === "global" ? "global" : "deck";
+  manifest.voice = assignDeckVoice(manifest.voice, voiceId, scope, body.speed);
   await writeJson(bucket, keys.narration, manifest);
   return json({ ok: true, voice: manifest.voice });
 }
@@ -515,6 +524,21 @@ async function publishDeck(request, env, deckId, url) {
   return json({ ok: true, url: result.narration.meta.publishedUrl, copiedAudio: result.copied });
 }
 
+async function updateVoiceDefault(request, env) {
+  const body = await request.json().catch(() => ({}));
+  const profile = (await readVoiceProfile(env.STUDIO)) || { name: "我的聲音" };
+  if (!profile.voiceId) {
+    const error = new Error("請先完成同意句與聲音樣本");
+    error.status = 400;
+    throw error;
+  }
+  profile.defaultForAll = body.defaultForAll !== false;
+  profile.name = profile.name || "我的聲音";
+  profile.updatedAt = new Date().toISOString();
+  await writeJson(env.STUDIO, VOICE_KEY, profile);
+  return json(voiceProfileView(profile));
+}
+
 async function createConsent(request, env) {
   const { bytes, mime } = await readAudioFile(request);
   if (bytes.byteLength < 1000) {
@@ -567,5 +591,6 @@ export async function customVoiceOption(env) {
   if (!env.STUDIO) return null;
   const profile = await readVoiceProfile(env.STUDIO);
   if (!profile?.voiceId) return null;
-  return { id: profile.voiceId, label: profile.name || "我的聲音", custom: true };
+  const label = profile.defaultForAll ? "我的聲音（全部簡報預設）" : profile.name || "我的聲音";
+  return { id: profile.voiceId, label, custom: true };
 }

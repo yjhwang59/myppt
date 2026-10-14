@@ -62,6 +62,8 @@ const state = {
   sourceType: "html",
   sourceFlavor: null,
   studioVoice: { gender: "female", voiceId: "nova" },
+  voiceProfile: null,
+  voiceUi: { step: "consent", phase: "idle" },
   cloudStudio: false,
   previewToken: 0,
   llmModel: "gpt-4o-mini",
@@ -172,9 +174,30 @@ const els = {
   gender: document.getElementById("voice-gender"),
   voiceId: document.getElementById("voice-id"),
   myVoicePanel: document.getElementById("my-voice-panel"),
-  myVoiceStatus: document.getElementById("my-voice-status"),
-  recordConsent: document.getElementById("btn-record-consent"),
-  recordSample: document.getElementById("btn-record-sample"),
+  libraryVoice: document.getElementById("library-voice"),
+  libraryVoiceSummary: document.getElementById("library-voice-summary"),
+  studioVoiceSummary: document.getElementById("studio-voice-summary"),
+  openVoice: document.getElementById("btn-open-voice"),
+  openVoiceStudio: document.getElementById("btn-open-voice-studio"),
+  voiceDialog: document.getElementById("voice-dialog"),
+  closeVoice: document.getElementById("btn-close-voice"),
+  voicePaneConsent: document.getElementById("voice-pane-consent"),
+  voicePaneSample: document.getElementById("voice-pane-sample"),
+  voicePaneApply: document.getElementById("voice-pane-apply"),
+  voiceCaptureBox: document.getElementById("voice-capture"),
+  voiceMicLabel: document.getElementById("voice-mic-label"),
+  voiceMic: document.getElementById("voice-mic"),
+  voiceMeter: document.getElementById("voice-meter"),
+  voiceMeterBar: document.getElementById("voice-meter-bar"),
+  voiceTimer: document.getElementById("voice-timer"),
+  voicePreview: document.getElementById("voice-preview"),
+  recordVoice: document.getElementById("btn-record-voice"),
+  useVoice: document.getElementById("btn-use-voice"),
+  redoVoice: document.getElementById("btn-redo-voice"),
+  voiceUploadLabel: document.getElementById("voice-upload-label"),
+  voiceFile: document.getElementById("voice-file"),
+  applyVoice: document.getElementById("btn-apply-voice"),
+  voiceStatus: document.getElementById("voice-status"),
   llmModel: document.getElementById("llm-model"),
   llmModelCustom: document.getElementById("llm-model-custom"),
   preview: document.getElementById("preview"),
@@ -549,6 +572,11 @@ function getSelectedLlmModel() {
   return els.llmModel.value || state.llmModel;
 }
 
+function voiceScopeForSelection(voiceId) {
+  if (state.voiceProfile?.defaultForAll && state.voiceProfile.voiceId === voiceId) return "global";
+  return "deck";
+}
+
 async function persistStudioVoice() {
   if (!state.deckId) return;
   try {
@@ -557,6 +585,7 @@ async function persistStudioVoice() {
       body: JSON.stringify({
         gender: state.studioVoice.gender,
         voiceId: state.studioVoice.voiceId,
+        scope: voiceScopeForSelection(state.studioVoice.voiceId),
       }),
     });
   } catch {
@@ -1355,14 +1384,29 @@ async function enterApp(email, extras = {}) {
   const localStudio = location.hostname === "localhost" || location.hostname === "127.0.0.1";
   els.remoteNote?.classList.toggle("hidden", localStudio || !state.cloudStudio);
   els.myVoicePanel?.classList.toggle("hidden", !state.cloudStudio);
+  els.libraryVoice?.classList.toggle("hidden", !state.cloudStudio);
+  if (state.cloudStudio) {
+    try {
+      await refreshVoiceProfile();
+    } catch {
+      /* 聲音設定讀取失敗時仍可進入簡報庫 */
+    }
+  }
   loadVisibleColumns();
   loadCategoryColumns();
   renderColumnSettings();
   renderCategoryColumnSettings();
   await loadCategories();
   await loadDecks();
-  if (initialDeck) await openStudio(initialDeck);
-  else showLibrary();
+  if (initialDeck) {
+    try {
+      await openStudio(initialDeck);
+    } catch (err) {
+      setStatus(err.message);
+    }
+    return;
+  }
+  showLibrary();
   setStatus("已連線");
 }
 
@@ -1816,43 +1860,354 @@ els.voiceId?.addEventListener("change", () => {
   persistStudioVoice();
 });
 
-let voiceRecorder = null;
+const voiceCapture = {
+  recorder: null,
+  stream: null,
+  chunks: [],
+  timer: 0,
+  tick: 0,
+  startedAt: 0,
+  audioContext: null,
+  meterFrame: 0,
+  mime: "",
+  elapsed: 0,
+  blob: null,
+  objectUrl: "",
+};
 
-function setMyVoiceStatus(message) {
-  if (els.myVoiceStatus) els.myVoiceStatus.textContent = message || "";
-  if (message) setStatus(message);
+function voiceSummary(profile) {
+  if (!profile?.ready) {
+    if (profile?.consentReady) return "同意句已錄好。再錄 10–30 秒自然講話，就能用在全部簡報。";
+    return "尚未建立。錄一次之後，每一份簡報都可以用這個聲音。";
+  }
+  if (profile.defaultForAll) return "已是全部簡報的預設聲音。已生成的 mp3 要重新生成才會換成新聲音。";
+  return "聲音已建立，還沒套用到簡報。";
 }
 
-async function recordVoiceClip(button, idleLabel) {
-  if (voiceRecorder) voiceRecorder.recorder.stop();
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  const mime = typeof MediaRecorder !== "undefined" && MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "";
-  const recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
-  const chunks = [];
+function setVoiceMessage(message, tone) {
+  if (!els.voiceStatus) return;
+  els.voiceStatus.textContent = message || "";
+  els.voiceStatus.classList.toggle("is-error", tone === "error");
+}
+
+function renderVoiceSurfaces() {
+  const text = voiceSummary(state.voiceProfile);
+  if (els.libraryVoiceSummary) els.libraryVoiceSummary.textContent = text;
+  if (els.studioVoiceSummary) els.studioVoiceSummary.textContent = text;
+  renderVoiceDialog();
+}
+
+async function refreshVoiceProfile() {
+  if (!state.cloudStudio) return;
+  const [profile, voices] = await Promise.all([api("/api/voice"), api("/api/voices")]);
+  state.voiceProfile = profile;
+  state.voices = voices.voices || [];
+  if (els.voiceId) applyStudioVoiceToUi();
+  renderVoiceSurfaces();
+}
+
+function describeMicError(err) {
+  const name = err?.name || "";
+  const message = String(err?.message || "");
+  if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+    return "這個瀏覽器不能直接錄音。請改上傳音檔。";
+  }
+  if (!window.isSecureContext || name === "SecurityError") {
+    return "這個頁面不能開麥克風。請改上傳音檔。";
+  }
+  if (name === "NotAllowedError" || name === "PermissionDeniedError") {
+    return "瀏覽器沒有麥克風權限。請點網址列的鎖頭，把麥克風改成允許後再試。";
+  }
+  if (name === "NotFoundError" || name === "DevicesNotFoundError") {
+    return "找不到麥克風。請接上麥克風，或改上傳音檔。";
+  }
+  if (name === "NotReadableError" || /could not start audio source/i.test(message)) {
+    return "麥克風沒有啟動。它可能被其他程式占用，或這支裝置無法錄音。請關掉其他使用麥克風的分頁後再試，或改上傳音檔。";
+  }
+  if (name === "OverconstrainedError") return "這支麥克風不符合錄音設定。請換一支，或改上傳音檔。";
+  if (name === "AbortError") return "錄音被中斷。請再試一次。";
+  return "無法啟動麥克風。請再試一次，或改上傳音檔。";
+}
+
+function formatClock(seconds) {
+  const total = Math.max(0, Math.round(seconds));
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, "0")}`;
+}
+
+function pickRecorderMime() {
+  if (typeof MediaRecorder === "undefined" || typeof MediaRecorder.isTypeSupported !== "function") return "";
+  return ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"].find((type) =>
+    MediaRecorder.isTypeSupported(type)
+  ) || "";
+}
+
+function audioFilename(kind, blob) {
+  const type = blob.type || "";
+  const ext = type.includes("mp4") || type.includes("m4a") || type.includes("aac")
+    ? "m4a"
+    : type.includes("wav")
+      ? "wav"
+      : type.includes("mpeg") || type.includes("mp3")
+        ? "mp3"
+        : type.includes("ogg")
+          ? "ogg"
+          : "webm";
+  return `${kind}.${ext}`;
+}
+
+function clipAccepted(kind, blob, elapsed) {
+  if (kind === "sample") return elapsed >= 10 || (elapsed === 0 && blob.size >= 8000);
+  return elapsed >= 3 || (elapsed === 0 && blob.size >= 1000);
+}
+
+function clearVoiceReview() {
+  if (voiceCapture.objectUrl) URL.revokeObjectURL(voiceCapture.objectUrl);
+  voiceCapture.objectUrl = "";
+  voiceCapture.blob = null;
+  voiceCapture.elapsed = 0;
+  if (els.voicePreview) {
+    els.voicePreview.pause();
+    els.voicePreview.removeAttribute("src");
+    els.voicePreview.classList.add("hidden");
+  }
+}
+
+async function releaseVoiceCapture() {
+  cancelAnimationFrame(voiceCapture.meterFrame);
+  clearInterval(voiceCapture.tick);
+  clearTimeout(voiceCapture.timer);
+  const recorder = voiceCapture.recorder;
+  const stream = voiceCapture.stream;
+  const ctx = voiceCapture.audioContext;
+  voiceCapture.recorder = null;
+  voiceCapture.stream = null;
+  voiceCapture.audioContext = null;
+  if (recorder && recorder.state !== "inactive") {
+    await new Promise((resolve) => {
+      recorder.addEventListener("stop", resolve, { once: true });
+      try {
+        recorder.stop();
+      } catch {
+        resolve();
+      }
+    });
+  }
+  stream?.getTracks().forEach((track) => track.stop());
+  ctx?.close().catch(() => {});
+}
+
+async function openMic(deviceId) {
+  if (!navigator.mediaDevices?.getUserMedia) {
+    const error = new Error("mediaDevices unavailable");
+    error.name = "NotSupportedError";
+    throw error;
+  }
+  const processed = { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 };
+  const plain = { echoCancellation: false, noiseSuppression: false, autoGainControl: false };
+  const attempts = [];
+  if (deviceId) attempts.push({ audio: { ...processed, deviceId: { exact: deviceId } } });
+  attempts.push({ audio: processed });
+  attempts.push({ audio: plain });
+  attempts.push({ audio: true });
+  let last = new Error("Could not start audio source");
+  last.name = "NotReadableError";
+  for (const constraints of attempts) {
+    try {
+      return await navigator.mediaDevices.getUserMedia(constraints);
+    } catch (err) {
+      last = err;
+      if (err?.name === "NotAllowedError" || err?.name === "PermissionDeniedError") throw err;
+    }
+  }
+  throw last;
+}
+
+function startMeter(stream) {
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return;
+  const ctx = new Ctx();
+  const analyser = ctx.createAnalyser();
+  analyser.fftSize = 256;
+  ctx.createMediaStreamSource(stream).connect(analyser);
+  voiceCapture.audioContext = ctx;
+  const data = new Uint8Array(analyser.fftSize);
+  const draw = () => {
+    analyser.getByteTimeDomainData(data);
+    let sum = 0;
+    for (const value of data) {
+      const sample = (value - 128) / 128;
+      sum += sample * sample;
+    }
+    const level = Math.min(1, Math.sqrt(sum / data.length) * 4);
+    if (els.voiceMeterBar) els.voiceMeterBar.style.width = `${Math.round(level * 100)}%`;
+    voiceCapture.meterFrame = requestAnimationFrame(draw);
+  };
+  voiceCapture.meterFrame = requestAnimationFrame(draw);
+}
+
+function setVoiceReview(blob, elapsed) {
+  clearVoiceReview();
+  voiceCapture.blob = blob;
+  voiceCapture.elapsed = elapsed;
+  voiceCapture.objectUrl = URL.createObjectURL(blob);
+  if (els.voicePreview) {
+    els.voicePreview.src = voiceCapture.objectUrl;
+    els.voicePreview.classList.remove("hidden");
+  }
+  state.voiceUi.phase = "review";
+  const kind = state.voiceUi.step === "sample" ? "sample" : "consent";
+  if (!clipAccepted(kind, blob, elapsed)) {
+    const need = kind === "sample" ? "至少 10 秒" : "完整唸出同意句";
+    setVoiceMessage(`這段太短，請${need}後再使用。`, "error");
+  } else {
+    setVoiceMessage("先聽一次。沒問題再按「使用這段」。");
+  }
+  renderVoiceDialog();
+}
+
+function finishVoiceCapture() {
+  const recorder = voiceCapture.recorder;
+  if (!recorder || recorder.state === "inactive") return;
+  const elapsed = (performance.now() - voiceCapture.startedAt) / 1000;
+  recorder.onstop = () => {
+    const blob = new Blob(voiceCapture.chunks, { type: voiceCapture.mime || "audio/webm" });
+    voiceCapture.stream?.getTracks().forEach((track) => track.stop());
+    voiceCapture.recorder = null;
+    voiceCapture.stream = null;
+    clearInterval(voiceCapture.tick);
+    clearTimeout(voiceCapture.timer);
+    cancelAnimationFrame(voiceCapture.meterFrame);
+    voiceCapture.audioContext?.close().catch(() => {});
+    voiceCapture.audioContext = null;
+    setVoiceReview(blob, elapsed);
+  };
+  try {
+    recorder.stop();
+  } catch (err) {
+    setVoiceMessage(describeMicError(err), "error");
+    state.voiceUi.phase = "idle";
+    renderVoiceDialog();
+  }
+}
+
+async function startVoiceCapture(kind) {
+  await releaseVoiceCapture();
+  clearVoiceReview();
+  const stream = await openMic(els.voiceMic?.value || "");
+  const mime = pickRecorderMime();
+  let recorder;
+  try {
+    recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+  } catch (err) {
+    stream.getTracks().forEach((track) => track.stop());
+    throw err;
+  }
+  voiceCapture.chunks = [];
+  voiceCapture.mime = recorder.mimeType || mime || "audio/webm";
+  voiceCapture.stream = stream;
+  voiceCapture.recorder = recorder;
+  voiceCapture.startedAt = performance.now();
+  voiceCapture.elapsed = 0;
   recorder.ondataavailable = (event) => {
-    if (event.data?.size) chunks.push(event.data);
+    if (event.data?.size) voiceCapture.chunks.push(event.data);
   };
-  const done = new Promise((resolve) => {
-    recorder.onstop = () => {
-      stream.getTracks().forEach((track) => track.stop());
-      clearTimeout(voiceRecorder?.timer);
-      button.textContent = idleLabel;
-      voiceRecorder = null;
-      resolve(new Blob(chunks, { type: "audio/webm" }));
-    };
+  try {
+    recorder.start(250);
+  } catch {
+    recorder.start();
+  }
+  startMeter(stream);
+  state.voiceUi.step = kind;
+  state.voiceUi.phase = "recording";
+  voiceCapture.tick = setInterval(() => {
+    voiceCapture.elapsed = (performance.now() - voiceCapture.startedAt) / 1000;
+    if (els.voiceTimer) els.voiceTimer.textContent = formatClock(voiceCapture.elapsed);
+  }, 200);
+  voiceCapture.timer = setTimeout(() => {
+    if (voiceCapture.recorder?.state === "recording") finishVoiceCapture();
+  }, 30000);
+  renderVoiceDialog();
+  loadMicDevices().catch(() => {});
+}
+
+async function loadMicDevices() {
+  if (!els.voiceMic || !navigator.mediaDevices?.enumerateDevices) return;
+  const devices = (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind === "audioinput");
+  const current = els.voiceMic.value;
+  els.voiceMic.innerHTML = "";
+  devices.forEach((device, index) => {
+    const option = document.createElement("option");
+    option.value = device.deviceId;
+    option.textContent = device.label || `麥克風 ${index + 1}`;
+    if (device.deviceId === current) option.selected = true;
+    els.voiceMic.appendChild(option);
   });
-  button.textContent = "停止錄音";
-  voiceRecorder = {
-    recorder,
-    button,
-    timer: setTimeout(() => {
-      if (recorder.state !== "inactive") recorder.stop();
-    }, 30000),
-    done,
-  };
-  recorder.start();
-  setMyVoiceStatus("錄音中，再按一次停止（最多 30 秒）");
-  return done;
+  const labeled = devices.some((device) => device.label);
+  els.voiceMicLabel?.classList.toggle("hidden", devices.length < 2 && !labeled);
+}
+
+function renderVoiceDialog() {
+  const profile = state.voiceProfile;
+  const step = state.voiceUi.step;
+  const phase = state.voiceUi.phase;
+  const recording = phase === "recording";
+  const review = phase === "review";
+  const uploading = phase === "uploading";
+  els.voicePaneConsent?.classList.toggle("hidden", step !== "consent");
+  els.voicePaneSample?.classList.toggle("hidden", step !== "sample");
+  els.voicePaneApply?.classList.toggle("hidden", step !== "apply");
+  els.voiceCaptureBox?.classList.toggle("hidden", step === "apply");
+  els.voiceMeter?.classList.toggle("hidden", !recording);
+  els.voiceTimer?.classList.toggle("hidden", !recording);
+  if (recording && els.voiceTimer) els.voiceTimer.textContent = formatClock(voiceCapture.elapsed);
+  if (els.recordVoice) {
+    els.recordVoice.textContent = recording
+      ? `停止 ${formatClock(voiceCapture.elapsed)}`
+      : step === "sample"
+        ? "開始錄聲音樣本"
+        : "開始錄同意句";
+    els.recordVoice.disabled = uploading;
+  }
+  const kind = step === "sample" ? "sample" : "consent";
+  const acceptable = review && voiceCapture.blob && clipAccepted(kind, voiceCapture.blob, voiceCapture.elapsed);
+  els.useVoice?.classList.toggle("hidden", !review);
+  els.redoVoice?.classList.toggle("hidden", !review);
+  if (els.useVoice) els.useVoice.disabled = !acceptable || uploading;
+  els.voiceUploadLabel?.classList.toggle("hidden", recording || uploading);
+  if (els.applyVoice) {
+    els.applyVoice.disabled = !profile?.ready || uploading;
+    els.applyVoice.textContent = uploading && step === "apply" ? "套用中…" : "套用到全部簡報";
+  }
+  document.querySelectorAll("[data-voice-step]").forEach((button) => {
+    const name = button.dataset.voiceStep;
+    button.classList.toggle("active", name === step);
+    button.classList.toggle("done", (name === "consent" && profile?.consentReady) || (name === "sample" && profile?.ready) || (name === "apply" && profile?.defaultForAll));
+    button.disabled = recording || uploading;
+  });
+}
+
+function preferredVoiceStep(profile) {
+  if (!profile?.consentReady) return "consent";
+  if (!profile.ready) return "sample";
+  return "apply";
+}
+
+async function openVoiceDialog() {
+  if (!state.voiceProfile) {
+    try {
+      await refreshVoiceProfile();
+    } catch (err) {
+      setVoiceMessage(err.message || "讀不到聲音設定", "error");
+    }
+  }
+  if (state.voiceUi.phase !== "recording") {
+    state.voiceUi.step = preferredVoiceStep(state.voiceProfile);
+    state.voiceUi.phase = "idle";
+    clearVoiceReview();
+  }
+  renderVoiceDialog();
+  loadMicDevices().catch(() => {});
+  els.voiceDialog?.showModal();
 }
 
 async function uploadVoiceClip(path, blob, filename) {
@@ -1861,41 +2216,163 @@ async function uploadVoiceClip(path, blob, filename) {
   return api(path, { method: "POST", body });
 }
 
-els.recordConsent?.addEventListener("click", async () => {
-  if (voiceRecorder?.button === els.recordConsent) {
-    voiceRecorder.recorder.stop();
+async function submitVoiceClip() {
+  const kind = state.voiceUi.step === "sample" ? "sample" : "consent";
+  const blob = voiceCapture.blob;
+  if (!blob || !clipAccepted(kind, blob, voiceCapture.elapsed)) return;
+  state.voiceUi.phase = "uploading";
+  renderVoiceDialog();
+  setVoiceMessage(kind === "sample" ? "建立我的聲音…" : "上傳同意句…");
+  try {
+    const data = await uploadVoiceClip(kind === "sample" ? "/api/voice/sample" : "/api/voice/consent", blob, audioFilename(kind, blob));
+    await refreshVoiceProfile();
+    clearVoiceReview();
+    state.voiceUi.phase = "idle";
+    state.voiceUi.step = kind === "consent" ? "sample" : "apply";
+    if (kind === "sample" && data.voiceId) {
+      state.studioVoice.voiceId = data.voiceId;
+      applyStudioVoiceToUi();
+    }
+    setVoiceMessage(kind === "consent" ? "同意句已建立。接著錄 10–30 秒自然講話。" : "我的聲音已建立。可以套用到全部簡報。");
+    renderVoiceDialog();
+  } catch (err) {
+    state.voiceUi.phase = "review";
+    setVoiceMessage(err.message || "上傳失敗", "error");
+    renderVoiceDialog();
+  }
+}
+
+async function applyVoiceToAllDecks() {
+  if (state.voiceUi.phase === "uploading") return;
+  if (!state.voiceProfile?.ready) {
+    setVoiceMessage("請先完成同意句與聲音樣本。", "error");
+    return;
+  }
+  state.voiceUi.step = "apply";
+  state.voiceUi.phase = "uploading";
+  renderVoiceDialog();
+  try {
+    state.voiceProfile = await api("/api/voice", {
+      method: "PUT",
+      body: JSON.stringify({ defaultForAll: true }),
+    });
+    if (!state.decks.length) await loadDecks();
+    const ids = state.decks.map((deck) => deck.deckId).filter(Boolean);
+    let failed = 0;
+    for (let index = 0; index < ids.length; index += 1) {
+      setVoiceMessage(`正在套用 ${index + 1}/${ids.length}`);
+      try {
+        await api(`/api/decks/${ids[index]}/voice`, {
+          method: "PUT",
+          body: JSON.stringify({ voiceId: state.voiceProfile.voiceId, scope: "global" }),
+        });
+      } catch {
+        failed += 1;
+      }
+    }
+    await refreshVoiceProfile();
+    if (state.deckId) state.studioVoice.voiceId = state.voiceProfile.voiceId;
+    if (state.deckId) await loadSlides();
+    state.voiceUi.phase = "idle";
+    const done = ids.length - failed;
+    const summary = !ids.length
+      ? "已設為預設聲音。簡報庫目前是空的，之後開啟的簡報會用它。"
+      : failed
+        ? `已套用 ${done} 份，${failed} 份讀不到原稿。`
+        : `已套用到 ${done} 份簡報。之後的試播與新語音都會用我的聲音。`;
+    setVoiceMessage(summary);
+    setStatus(summary);
+    renderVoiceDialog();
+  } catch (err) {
+    state.voiceUi.phase = "idle";
+    setVoiceMessage(err.message || "套用失敗", "error");
+    renderVoiceDialog();
+  }
+}
+
+async function readFileDuration(file) {
+  const url = URL.createObjectURL(file);
+  try {
+    const audio = new Audio();
+    audio.preload = "metadata";
+    return await new Promise((resolve) => {
+      audio.onloadedmetadata = () => resolve(Number.isFinite(audio.duration) ? audio.duration : 0);
+      audio.onerror = () => resolve(0);
+      audio.src = url;
+    });
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+els.openVoice?.addEventListener("click", () => openVoiceDialog());
+els.openVoiceStudio?.addEventListener("click", () => openVoiceDialog());
+els.closeVoice?.addEventListener("click", () => els.voiceDialog?.close());
+els.voiceDialog?.addEventListener("close", () => {
+  if (voiceCapture.recorder) voiceCapture.recorder.onstop = null;
+  releaseVoiceCapture();
+  if (state.voiceUi.phase !== "uploading") state.voiceUi.phase = "idle";
+});
+els.voiceDialog?.addEventListener("click", (event) => {
+  const step = event.target.closest?.("[data-voice-step]")?.dataset.voiceStep;
+  if (!step || state.voiceUi.phase === "recording" || state.voiceUi.phase === "uploading") return;
+  if (step === "sample" && !state.voiceProfile?.consentReady) {
+    setVoiceMessage("請先錄同意句。", "error");
+    return;
+  }
+  if (step === "apply" && !state.voiceProfile?.ready) {
+    setVoiceMessage("請先錄聲音樣本。", "error");
+    return;
+  }
+  state.voiceUi.step = step;
+  state.voiceUi.phase = "idle";
+  clearVoiceReview();
+  renderVoiceDialog();
+});
+els.recordVoice?.addEventListener("click", async () => {
+  if (state.voiceUi.phase === "recording") {
+    finishVoiceCapture();
+    return;
+  }
+  const kind = state.voiceUi.step === "sample" ? "sample" : "consent";
+  if (kind === "sample" && !state.voiceProfile?.consentReady) {
+    setVoiceMessage("請先錄同意句。", "error");
+    state.voiceUi.step = "consent";
+    renderVoiceDialog();
     return;
   }
   try {
-    const blob = await recordVoiceClip(els.recordConsent, "錄同意句");
-    setMyVoiceStatus("上傳同意句…");
-    await uploadVoiceClip("/api/voice/consent", blob, "consent.webm");
-    setMyVoiceStatus("同意句已建立。接著錄 10–30 秒聲音樣本。");
+    setVoiceMessage(kind === "sample" ? "錄音中。用平常說話的音量講 10–30 秒，再按停止。" : "錄音中。請逐字唸出同意句，再按停止。");
+    await startVoiceCapture(kind);
   } catch (err) {
-    if (els.recordConsent) els.recordConsent.textContent = "錄同意句";
-    setMyVoiceStatus(err.message || "無法錄音");
+    await releaseVoiceCapture();
+    state.voiceUi.phase = "idle";
+    setVoiceMessage(describeMicError(err), "error");
+    renderVoiceDialog();
   }
 });
-
-els.recordSample?.addEventListener("click", async () => {
-  if (voiceRecorder?.button === els.recordSample) {
-    voiceRecorder.recorder.stop();
+els.useVoice?.addEventListener("click", () => {
+  if (state.voiceUi.phase === "uploading") return;
+  submitVoiceClip();
+});
+els.redoVoice?.addEventListener("click", async () => {
+  await releaseVoiceCapture();
+  clearVoiceReview();
+  state.voiceUi.phase = "idle";
+  setVoiceMessage("");
+  renderVoiceDialog();
+});
+els.applyVoice?.addEventListener("click", () => applyVoiceToAllDecks());
+els.voiceFile?.addEventListener("change", async () => {
+  const file = els.voiceFile.files?.[0];
+  els.voiceFile.value = "";
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) {
+    setVoiceMessage("音檔超過 10MB。", "error");
     return;
   }
-  try {
-    const blob = await recordVoiceClip(els.recordSample, "錄聲音樣本");
-    setMyVoiceStatus("建立我的聲音…");
-    const data = await uploadVoiceClip("/api/voice/sample", blob, "sample.webm");
-    const voices = await api("/api/voices");
-    state.voices = voices.voices || [];
-    state.studioVoice.voiceId = data.voiceId;
-    applyStudioVoiceToUi();
-    persistStudioVoice();
-    setMyVoiceStatus("我的聲音已可選用。");
-  } catch (err) {
-    if (els.recordSample) els.recordSample.textContent = "錄聲音樣本";
-    setMyVoiceStatus(err.message || "無法建立聲音");
-  }
+  const elapsed = await readFileDuration(file);
+  setVoiceReview(file, elapsed);
 });
 
 els.llmModel?.addEventListener("change", () => {
