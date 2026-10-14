@@ -1,0 +1,475 @@
+{
+  "version": "1.0.0",
+  "deckId": "etl-big-data-methodology",
+  "title": "大數據分析方法論：ETL 不是搬資料",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "大數據分析方法論｜課堂投影",
+      "h1": "ETL 不是搬資料",
+      "h2": "從大數據分析方法論看萃取、轉換、載入",
+      "lead": "把分散、髒亂的資料，變成可以做報表、做預測、給 AI 用的資料資產。",
+      "stamp": "依 AIDC 教學整理，查核 2026-10-05　·　←→ 翻頁　·　F 全螢幕　·　12 頁",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "1 / 12"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "三個字",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "02 / 先記這三個字",
+      "kicker": "",
+      "h1": "",
+      "h2": "ETL＝蒐集、清理、整合、準備",
+      "lead": "少了這段，後面的 Dashboard 和 AI 都是在猜。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "E",
+          "tag": null,
+          "tagClass": null,
+          "heading": "萃取 Extract",
+          "paragraph": "從各處把資料拿出來。",
+          "bullets": []
+        },
+        {
+          "num": "T",
+          "tag": null,
+          "tagClass": null,
+          "heading": "轉換 Transform",
+          "paragraph": "清乾淨、對得上、算得出指標。",
+          "bullets": []
+        },
+        {
+          "num": "L",
+          "tag": null,
+          "tagClass": null,
+          "heading": "載入 Load",
+          "paragraph": "放進倉儲、資料超市或分析庫。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "2 / 12"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "方法論",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "03 / 先於寫程式",
+      "kicker": "",
+      "h1": "",
+      "h2": "方法論先於寫程式",
+      "lead": "六步走完，才知道程式該寫在哪。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        { "title": "業務問題", "description": "要回答什麼" },
+        { "title": "看懂資料", "description": "長什麼樣" },
+        { "title": "準備資料", "description": "ETL 主場" },
+        { "title": "分析建模", "description": "這時才算" },
+        { "title": "驗證可信", "description": "敢不敢給人看" },
+        { "title": "排程上線", "description": "給人用" }
+      ],
+      "table": null,
+      "callouts": [
+        "ETL 主要卡在第 2、3、6 步，但會決定後面準不準。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "3 / 12"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "白板流程",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "04 / 先畫再寫",
+      "kicker": "",
+      "h1": "",
+      "h2": "一條能畫在白板上的流程",
+      "lead": "來源進來，先停在暫存，洗完才進正式的地方。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        { "title": "來源", "description": "系統裡原有的" },
+        { "title": "萃取", "description": "先拿出來" },
+        { "title": "暫存", "description": "Staging" },
+        { "title": "轉換", "description": "清、對、算" },
+        { "title": "倉儲", "description": "超市或資料湖" },
+        { "title": "使用", "description": "報表、模型、API" }
+      ],
+      "table": null,
+      "callouts": [
+        "不要一進來就寫進正式分析表。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "4 / 12"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "每次搬多少",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "05 / 萃取",
+      "kicker": "",
+      "h1": "",
+      "h2": "每次先問：要搬多少",
+      "lead": "來源很雜：資料庫、Excel／CSV、API、Log、感測、Google 表、電商 SaaS。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "全量",
+          "tag": null,
+          "tagClass": null,
+          "heading": "小資料或第一次",
+          "paragraph": "整包搬走，適合建置，不適合天天跑。",
+          "bullets": []
+        },
+        {
+          "num": "增量",
+          "tag": null,
+          "tagClass": null,
+          "heading": "正式營運的預設",
+          "paragraph": "只抓新增與異動。updated_at > 上次執行",
+          "bullets": []
+        },
+        {
+          "num": "CDC",
+          "tag": null,
+          "tagClass": null,
+          "heading": "追變更本身",
+          "paragraph": "異動很勤的表，跟著變更走。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "記得分頁、限流、失敗重試，而且每次都寫 log。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "5 / 12"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "暫存層",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "06 / 為什麼要 Staging",
+      "kicker": "",
+      "h1": "",
+      "h2": "暫存層是黑盒子錄影",
+      "lead": "不是多餘的一張表。洗錯了，正式表還在。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        { "title": "留原始", "description": "來源長怎樣" },
+        { "title": "不污染", "description": "洗錯停在這裡" },
+        { "title": "可重跑", "description": "失敗再來一次" },
+        { "title": "能對帳", "description": "搬入和洗完" },
+        { "title": "系統分開", "description": "來源歸來源" }
+      ],
+      "table": null,
+      "callouts": [
+        "正式分析表不要當草稿。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "6 / 12"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "轉換",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 成敗在這裡",
+      "kicker": "",
+      "h1": "",
+      "h2": "轉換才是成敗",
+      "lead": "搬得動不算完成。清得乾淨、對得上、算得出來，才算。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "八個動作",
+          "tag": null,
+          "tagClass": null,
+          "heading": "洗到可以拿來算",
+          "paragraph": "",
+          "bullets": [
+            "空值、重複先清掉",
+            "日期、幣別講同一種話",
+            "代碼要對上名稱",
+            "多張表 JOIN 得起來",
+            "做成日、月彙總",
+            "算出毛利率、成長率",
+            "金額不能是負的",
+            "最後再去重一次"
+          ]
+        },
+        {
+          "num": "六問",
+          "tag": null,
+          "tagClass": null,
+          "heading": "資料品質過不過",
+          "paragraph": "",
+          "bullets": [
+            "完整：該有的有沒有",
+            "正確：數字真不真",
+            "一致：同一件事同一種寫法",
+            "唯一：同一筆不要出現兩次",
+            "及時：現在看還算新鮮",
+            "合法：能不能這樣用"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "這關沒過，後面的模型只是算得很認真的錯。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "7 / 12"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "載入",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "08 / 載入",
+      "kicker": "",
+      "h1": "",
+      "h2": "放錯地方，重跑就變兩筆",
+      "lead": "倉儲給管理報表，資料超市給部門，資料湖留原始，向量庫給 RAG。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "Append",
+          "tag": null,
+          "tagClass": null,
+          "heading": "只往後加",
+          "paragraph": "流水、log。舊的不要改。",
+          "bullets": []
+        },
+        {
+          "num": "Upsert",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有就更新",
+          "paragraph": "訂單、會員、商品。同一筆還是同一筆。",
+          "bullets": []
+        },
+        {
+          "num": "Overwrite",
+          "tag": null,
+          "tagClass": null,
+          "heading": "整表覆蓋",
+          "paragraph": "小主檔、每日快照。表不大才這樣做。",
+          "bullets": []
+        },
+        {
+          "num": "慢變",
+          "tag": null,
+          "tagClass": null,
+          "heading": "歷史要留著",
+          "paragraph": "價格、等級不能直接蓋掉。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "同一筆訂單，不能因為重跑就變成兩筆。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "8 / 12"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "星狀模型",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "09 / 主管也聽得懂",
+      "kicker": "",
+      "h1": "",
+      "h2": "中間是事實，周圍是切法",
+      "lead": "先畫一顆星。先不要展開全部欄位。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "事實",
+          "tag": null,
+          "tagClass": null,
+          "heading": "發生了什麼",
+          "paragraph": "賣了多少、多少錢。這張表記事件。",
+          "bullets": []
+        },
+        {
+          "num": "維度",
+          "tag": null,
+          "tagClass": null,
+          "heading": "從哪個角度切",
+          "paragraph": "門市、商品、日期。拿來切片。",
+          "bullets": []
+        },
+        {
+          "num": "例子",
+          "tag": null,
+          "tagClass": null,
+          "heading": "fact_sales",
+          "paragraph": "掛上 store、product、date。一顆星就夠。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "主管要聽的是：賣了什麼、在哪裡、哪一天。不是欄位清單。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "9 / 12"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "ETL 或 ELT",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "10 / 先洗還是先倒",
+      "kicker": "",
+      "h1": "",
+      "h2": "先洗再入，還是先倒再洗",
+      "lead": "實務多半混著做：Raw → Staging → Transform → 整理好的表 → 分析。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "ETL",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先洗再入倉",
+          "paragraph": "傳統倉儲。品質要先過關，才進得去。",
+          "bullets": []
+        },
+        {
+          "num": "ELT",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先倒進去再洗",
+          "paragraph": "雲端倉儲、dbt 這條路。彈性大，治理不能省。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "ELT 很彈性；治理不夠，資料湖會變成資料沼澤。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "10 / 12"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "門市銷售",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "11 / 走完一輪",
+      "kicker": "",
+      "h1": "",
+      "h2": "用門市銷售把同一條線走完",
+      "lead": "來源：POS、商品主檔、門市主檔、天氣、促銷。還是來源 → 萃取 → 暫存 → 轉換 → 倉儲 → 報表。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "營收",
+          "tag": null,
+          "tagClass": null,
+          "heading": "賣了多少錢",
+          "paragraph": "這段期間、這家門市的金額。",
+          "bullets": []
+        },
+        {
+          "num": "來客數",
+          "tag": null,
+          "tagClass": null,
+          "heading": "TC，來了多少人",
+          "paragraph": "人來了沒有，先跟金額分開看。",
+          "bullets": []
+        },
+        {
+          "num": "客單價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "每人平均花多少",
+          "paragraph": "營收除以來客數。口徑要全公司一樣。",
+          "bullets": []
+        },
+        {
+          "num": "成長率",
+          "tag": null,
+          "tagClass": null,
+          "heading": "跟上一期比",
+          "paragraph": "長還是縮。比的期間要先講清楚。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "MAPE 用一句話：預測跟實際差多少百分比。"
+      ],
+      "footerBrand": "AIDC｜大數據分析方法論",
+      "footerPage": "11 / 12"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "最小可行",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "12 / 怎麼算做完",
+      "kicker": "",
+      "h1": "",
+      "h2": "八步都在，才算最小可行",
+      "lead": "做到這裡，業務資料才變成可分析、可決策、可自動化的資產。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        { "title": "來源", "description": "接哪裡" },
+        { "title": "萃取", "description": "腳本" },
+        { "title": "暫存", "description": "原樣留下" },
+        { "title": "轉換", "description": "清完對完" },
+        { "title": "目標表", "description": "給分析查" },
+        { "title": "排程", "description": "自己跑" },
+        { "title": "日誌", "description": "這批成功沒" },
+        { "title": "看板", "description": "Dashboard" }
+      ],
+      "table": null,
+      "callouts": [
+        "做完還要三條：先有問題再搬；失敗要告警（Email／LINE）；同一指標只准一種算法。"
+      ],
+      "footerBrand": "完整講義見 Google 文件 https://docs.google.com/document/d/1tQD6GkIk89JJATEArNft49Eegn-5Ym3RJZTI1PwoTLw/edit",
+      "footerPage": "12 / 12"
+    }
+  ]
+}

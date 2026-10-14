@@ -1,6 +1,6 @@
-# AIDC 簡報庫
+# AIDC 簡報庫（myppt）
 
-企業 AI 教學與架構簡報分享平台。公開站提供精選 HTML／PDF 簡報清單；講稿、TTS 與 myPPT簡報工作室留在本機。
+企業 AI 教學與架構簡報分享平台。公開站提供精選 HTML／PDF 簡報清單；已上架簡報可在線上工作室改頁、生成講稿與語音。新增簡報與分類仍用本機工作室。
 
 ## Public site (Cloudflare Workers)
 
@@ -8,6 +8,7 @@ Static decks are served from `presentations/` via Workers static assets.
 
 - Public catalog: `https://myppt.aidc.work/`
 - Individual deck: `https://myppt.aidc.work/{deckId}.html`
+- Catalog: `/decks/registry.json`
 
 The homepage lists curated decks only. Test decks (`test-*`), FYH weekly reports (`fyhgoogle-*`), and the generic `deck` id are not shown in the catalog, but their files remain reachable by direct URL.
 

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-deck-id="aidc-blog-weekly-learning-2026-09-21">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AIDC.work Blog 每週學習簡報基準快照（2026-09-21）：6 分類學習地圖與推薦閱讀，含完整 https://aidc.work 連結。">
+  <title>AIDC.work Blog 每週學習簡報（基準快照）</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2.5vh 2vw 8vh;
+      zoom: var(--deck-fs, 1);
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: 86vh;
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.catalog { padding-bottom: 58px; }
+    h1 {
+      font-size: clamp(42px, 5.2vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: clamp(28px, 3.2vw, 48px);
+      margin: 0.1em 0 0.55em;
+      line-height: 1.15;
+    }
+    h2.tight {
+      font-size: clamp(24px, 2.6vw, 36px);
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: clamp(18px, 1.55vw, 26px);
+      margin: 0.15em 0 0.35em;
+    }
+    p, li {
+      font-size: clamp(15px, 1.25vw, 21px);
+      line-height: 1.52;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: clamp(12px, 1.1vw, 16px);
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: clamp(20px, 1.8vw, 28px);
+    }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 22px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card ol, .card ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .card li {
+      font-size: clamp(13px, 1.05vw, 17px);
+      line-height: 1.4;
+      margin: 0.22em 0;
+    }
+    .num {
+      font-size: clamp(26px, 3.2vw, 46px);
+      font-weight: 900;
+      color: var(--brand);
+    }
+    .callout {
+      padding: 14px 20px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: clamp(16px, 1.35vw, 22px);
+    }
+    .reading {
+      margin: 0;
+      padding-left: 1.25em;
+      columns: 1;
+    }
+    .reading li {
+      font-size: clamp(13px, 1.08vw, 17.5px);
+      line-height: 1.42;
+      margin: 0.35em 0;
+      break-inside: avoid;
+    }
+    .reading .meta {
+      color: var(--muted);
+      font-size: 0.92em;
+    }
+    .reading .deck-link {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .controls {
+      position: fixed;
+      z-index: 40;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #17324df2;
+      color: #fff;
+      box-shadow: 0 8px 26px #0004;
+      transition: opacity .2s, transform .2s;
+    }
+    .controls.collapsed { padding: 6px 10px; gap: 0; }
+    .controls.collapsed .ctrl-main { display: none; }
+    .controls button {
+      width: 36px; height: 36px; border: 0; border-radius: 50%;
+      background: #ffffff1f; color: #fff; cursor: pointer; font-size: 15px;
+      line-height: 1; flex-shrink: 0;
+    }
+    .controls button.wide {
+      width: auto; padding: 0 12px; border-radius: 999px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .controls button:hover, .controls button:focus-visible {
+      outline: 3px solid #fff; background: var(--brand);
+    }
+    .ctrl-main { display: flex; align-items: center; gap: 8px; }
+    .ctrl-sep { width: 1px; height: 22px; background: #ffffff33; flex-shrink: 0; }
+    .fs-label {
+      min-width: 42px; text-align: center; font-size: 12px;
+      font-variant-numeric: tabular-nums; opacity: 0.9;
+    }
+    .bar {
+      width: min(18vw, 180px); height: 5px; background: #ffffff33;
+      border-radius: 8px; overflow: hidden;
+    }
+    .bar span { display: block; height: 100%; background: #78d8cb; }
+    .count {
+      min-width: 58px; text-align: center; font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .hint {
+      position: fixed; z-index: 50; left: 50%; bottom: 64px;
+      transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
+      background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
+      pointer-events: none; transition: opacity .2s;
+      max-width: min(90vw, 420px); text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    .pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: 12px;
+    }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: 12px 12px 80px; }
+      .slide {
+        width: 100%; min-height: calc(100vh - 100px);
+        max-height: none; aspect-ratio: auto;
+      }
+      .grid, .grid.two, .grid.six { grid-template-columns: 1fr 1fr; }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .grid.six { grid-template-columns: 1fr; }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { display: block; padding: 0; zoom: 1 !important; }
+      .slide {
+        display: block !important; width: 16in; height: 9in;
+        min-height: 0; max-height: none; aspect-ratio: auto;
+        overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+        page-break-after: always; break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      .controls, .hint { display: none !important; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide active" id="s1" data-title="封面">
+      <p class="kicker">AIDC.work · WEEKLY LEARNING</p>
+      <div class="mark"></div>
+      <h1>Blog 每週學習簡報<br>（基準快照）</h1>
+      <p class="lead">公開內容 72 篇（文章＋教學簡報）· 6 個學習分類 · 建立地圖、對照未來每週更新。</p>
+      <p><span class="pill">日期 2026-09-21（台北）</span>　<span class="pill">本週無新增／更新</span></p>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>1 / 18</div>
+    </section>
+    <section class="slide" id="s2" data-title="本週更新">
+      <p class="kicker">WEEKLY DELTA</p>
+      <h2>本週更新總覽</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>狀態</h3>
+          <p><strong>本週無新增／更新</strong>（基準快照建立）</p>
+          <p>第一次手動跑；全部公開貼文視為基準目錄。</p>
+        </div>
+        <div class="card">
+          <h3>站內分類（參考）</h3>
+          <p>企業 AI 落地、AI 系統開發、AI 開發入門、AI Agent 工作流、Vibe Coding、AI 工具應用、實戰資源、簡報。</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px">官方另有「46 篇 Blog 閱讀地圖」簡報（會員導讀）；本快照以公開 72 項為準。</div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>2 / 18</div>
+    </section>
+    <section class="slide" id="s3" data-title="學習地圖">
+      <p class="kicker">LEARNING MAP</p>
+      <h2>六個學習分類</h2>
+      <p class="lead" style="margin-top:0;margin-bottom:14px;font-size:clamp(16px,1.3vw,22px)">原則：淺→深、概念→實作、文章→配套簡報</p>
+      <div class="grid six">
+        <div class="card"><div class="num">01</div><h3>入門概念／管理思維</h3><p>11</p></div>
+        <div class="card"><div class="num">02</div><h3>企業 AI 落地與目標管理</h3><p>18</p></div>
+        <div class="card"><div class="num">03</div><h3>AI 系統開發生命週期</h3><p>12</p></div>
+        <div class="card"><div class="num">04</div><h3>工具與人機協作實作</h3><p>18</p></div>
+        <div class="card"><div class="num">05</div><h3>平台／架構案例</h3><p>7</p></div>
+        <div class="card"><div class="num">06</div><h3>導讀簡報與其他教材</h3><p>6</p></div>
+      </div>
+      <p style="margin-top:12px;color:var(--muted)">合計 72（不重複）。下列推薦閱讀為各分類精選清單（含配套簡報連結）。</p>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>3 / 18</div>
+    </section>
+    <section class="slide" id="s4" data-title="分類 1｜目標">
+      <p class="kicker">分類 1｜入門概念／管理思維</p>
+      <h2 class="tight">學習目標</h2>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>建立共同語言（名詞、邊界、驗收）</li>
+            <li>釐清「會用工具 ≠ 完成系統」</li>
+            <li>主管決策框架＋PDCA 價值循環</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>建議讀法</h3>
+          <p>先文後簡報；名詞兩篇擇一精讀即可。</p>
+          <p>適合：新成員、主管、非工程師啟動 AI 專案。</p>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>4 / 18</div>
+    </section>
+    <section class="slide catalog" id="s5" data-title="分類 1｜閱讀 A">
+      <p class="kicker">分類 1｜入門概念／管理思維</p>
+      <h2 class="tight">推薦閱讀（1–6）</h2>
+      <ol class="reading" start="1"><li><a href="https://aidc.work/blog/non-programmer-ai-system-development">不會寫程式，也可以做 AI 系統開發嗎？</a> <a class="deck-link" href="https://aidc.work/blog/non-programmer-ai-system-development-deck">配套簡報</a> <span class="meta">（先定問題／驗收／風險）</span></li>
+<li><a href="https://aidc.work/blog/new-member-article">AI 系統開發必懂中英專有名詞</a> <a class="deck-link" href="https://aidc.work/blog/new-member-article-deck">配套簡報</a> <span class="meta">（前後端／CRUD／RBAC／Agent）</span></li>
+<li><a href="https://aidc.work/blog/AI%20%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC%E5%BF%85%E9%A0%88%E7%9F%A5%E9%81%93%E7%9A%84%E4%B8%AD%E8%8B%B1%E5%B0%88%E6%9C%89%E5%90%8D%E8%A9%9E%EF%BC%9A%E5%BE%9E%E5%89%8D%E7%AB%AF%E3%80%81%E5%BE%8C%E7%AB%AF%E5%88%B0%20CRUD%E3%80%81RBAC%E3%80%81API%20%E8%88%87%20AI%20Agent">AI 系統開發必須知道的中英專有名詞（精簡版）</a> <span class="meta">（同主題精簡指南）</span></li>
+<li><a href="https://aidc.work/blog/big-data-analytics-intro-glossary">大數據／巨量資料分析簡介</a> <a class="deck-link" href="https://aidc.work/blog/big-data-analytics-intro-glossary-deck">配套簡報</a> <span class="meta">（何時才需要 Hadoop／Spark）</span></li>
+<li><a href="https://aidc.work/blog/five-questions-managers-must-ask-in-ai-era">AI 時代，主管必須思考的五件事</a> <span class="meta">（問題／分工／治理／責任／衡量）</span></li>
+<li><a href="https://aidc.work/blog/ai-era-pdca-value-loop">AI 時代的 PDCA</a> <span class="meta">（做成可驗證價值引擎）</span></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>5 / 18</div>
+    </section>
+    <section class="slide catalog" id="s6" data-title="分類 1｜閱讀 B">
+      <p class="kicker">分類 1｜入門概念／管理思維</p>
+      <h2 class="tight">推薦閱讀（7–11）</h2>
+      <ol class="reading" start="7"><li><a href="https://aidc.work/blog/cursor-codex-claude-beginner-choice">Cursor、Codex、Claude Code 怎麼選？</a> <span class="meta">（初學者 2026 決策）</span></li>
+<li><a href="https://aidc.work/blog/cursor-beginner-no-github-required">初學 Cursor 一定要先裝 GitHub 嗎？</a> <span class="meta">（第一天就能改）</span></li>
+<li><a href="https://aidc.work/blog/cursor-learn-course-guide">Cursor Learn 怎麼讀</a> <span class="meta">（官方免費課架構）</span></li>
+<li><a href="https://aidc.work/blog/vscode-codex-claude-ai-builder-starter-guide">VS Code + Codex／Claude Code 新手入門</a> <span class="meta">（第一套工作流）</span></li>
+<li><a href="https://aidc.work/blog/ai-project-github-gh-auth-login-5w1h">AI 專案如何連接 GitHub？（gh auth login）</a> <span class="meta">（5W1H 安全登入）</span></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>6 / 18</div>
+    </section>
+    <section class="slide" id="s7" data-title="分類 2｜目標">
+      <p class="kicker">分類 2｜企業 AI 落地與目標管理</p>
+      <h2 class="tight">學習目標</h2>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>先盤點流程，再選工具</li>
+            <li>Goal→OKR／KPI→可執行 AI 工作流</li>
+            <li>週報／Workshop／現場助理可落地節奏</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>這分類回答什麼</h3>
+          <p>怎麼把「想導入 AI」變成每週可驗收的行動與決策節奏。</p>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>7 / 18</div>
+    </section>
+    <section class="slide catalog" id="s8" data-title="分類 2｜閱讀 A">
+      <p class="kicker">分類 2｜企業 AI 落地與目標管理</p>
+      <h2 class="tight">推薦閱讀（1–6）</h2>
+      <ol class="reading" start="1"><li><a href="https://aidc.work/blog/ai-adoption-start-with-process-inventory">企業導入 AI 的第一步：盤點流程</a></li>
+<li><a href="https://aidc.work/blog/from-goal-management-to-work-system-design">從目標管理到工作系統設計（OKR／KPI）</a></li>
+<li><a href="https://aidc.work/blog/enterprise-ai-on-road">企業 AI 上路學程：會用、會管、會建</a> <a class="deck-link" href="https://aidc.work/blog/enterprise-ai-on-road-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/ceo-ai-workshop-3-hour">CEO AI Workshop：3 小時到 30 天行動計畫</a> <a class="deck-link" href="https://aidc.work/blog/ceo-ai-workshop-3-hour-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/enterprise-ai-intro-deck">企業 AI 導論｜90–120 分鐘（簡報）</a></li>
+<li><a href="https://aidc.work/blog/weekly-project-status-report-3-minute-decision">每週專案進度報告怎麼寫？（3 分鐘決策）</a> <a class="deck-link" href="https://aidc.work/blog/weekly-project-status-report-3-minute-decision-deck">配套簡報</a></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>8 / 18</div>
+    </section>
+    <section class="slide catalog" id="s9" data-title="分類 2｜閱讀 B">
+      <p class="kicker">分類 2｜企業 AI 落地與目標管理</p>
+      <h2 class="tight">推薦閱讀（7–11）</h2>
+      <ol class="reading" start="7"><li><a href="https://aidc.work/blog/aidc-weekly-project-3min-decision-brief">3 分鐘決策型週報（Brief）</a></li>
+<li><a href="https://aidc.work/blog/weekly-report-prompt-vs-skill">從週報 Prompt 到 Skill</a> <a class="deck-link" href="https://aidc.work/blog/weekly-report-prompt-vs-skill-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/enterprise-line-group-clone-assistant">企業 LINE 群分身助理</a> <a class="deck-link" href="https://aidc.work/blog/enterprise-line-group-clone-assistant-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/commodity-ai-data-decision-system">課程簡介｜大宗物資資料分析與決策系統</a> <a class="deck-link" href="https://aidc.work/blog/commodity-ai-data-decision-system-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/brief-w29-pnl-agentic-ai">AI 三分鐘｜W29｜試點要對上損益</a></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>9 / 18</div>
+    </section>
+    <section class="slide" id="s10" data-title="分類 3｜目標">
+      <p class="kicker">分類 3｜AI 系統開發生命週期</p>
+      <h2 class="tight">學習目標</h2>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>用 AISDLC 九階段取代「只寫 Prompt」</li>
+            <li>SRS→可行性→Go／No-Go→MVP→部署</li>
+            <li>資料治理與驗收證據（Lab）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>關鍵轉變</h3>
+          <p>從「叫 AI 寫程式」到「可門禁、可部署、可驗收」的系統開發。</p>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>10 / 18</div>
+    </section>
+    <section class="slide catalog" id="s11" data-title="分類 3｜閱讀">
+      <p class="kicker">分類 3｜AI 系統開發生命週期</p>
+      <h2 class="tight">推薦閱讀</h2>
+      <ol class="reading" start="1"><li><a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc">AI SDLC（AISDLC）九階段</a></li>
+<li><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate">不要急著叫 AI 寫程式：SRS／Go／No-Go</a></li>
+<li><a href="https://aidc.work/blog/codex-github-cloudflare-ai-system-mvp">從 SRS 到部署：Codex＋GitHub＋Cloudflare MVP</a> <a class="deck-link" href="https://aidc.work/blog/codex-github-cloudflare-ai-system-mvp-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/from-vibe-coding-to-agentic-engineering-google-day-1">從 Vibe Coding 邁向 Agentic Engineering</a></li>
+<li><a href="https://aidc.work/blog/env-env-local-development-deployment-guide">.env 與 .env.local</a></li>
+<li><a href="https://aidc.work/blog/sku-mapping-yoy-ai-system-development-lab">Lab 01：SKU Mapping 與同比／環比</a></li>
+<li><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit">Cursor Multi-root 適配檢查</a></li>
+<li><a href="https://aidc.work/blog/ai-system-development-final-presentation">AI 系統開發期末專題發表</a> <a class="deck-link" href="https://aidc.work/blog/ai-system-development-final-presentation-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/cloudflare-api-token-account-id-wrangler-deploy">Cloudflare API Token 與 Account ID</a> <a class="deck-link" href="https://aidc.work/blog/cloudflare-api-token-account-id-wrangler-deploy-deck">配套簡報</a></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>11 / 18</div>
+    </section>
+    <section class="slide" id="s12" data-title="分類 4｜目標">
+      <p class="kicker">分類 4｜工具與人機協作實作</p>
+      <h2 class="tight">學習目標</h2>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>選對工具：ChatGPT Work／Codex／Cursor／Grok</li>
+            <li>從模糊需求→可發布功能→誤診反省</li>
+            <li>Agent 工作流：治理、Debug、多裝置協作</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>實作重點</h3>
+          <p>先把一件事做完並可發布；再用反省與 Debug Gate 提高穩定度。</p>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>12 / 18</div>
+    </section>
+    <section class="slide catalog" id="s13" data-title="分類 4｜閱讀 A">
+      <p class="kicker">分類 4｜工具與人機協作實作</p>
+      <h2 class="tight">推薦閱讀（1–8）</h2>
+      <ol class="reading" start="1"><li><a href="https://aidc.work/blog/chatgpt-work-vs-codex">ChatGPT Work vs. Codex</a></li>
+<li><a href="https://aidc.work/blog/chatgpt-work-enterprise-logo-aidc-work">ChatGPT Work 設計企業 Logo</a></li>
+<li><a href="https://aidc.work/blog/chatgpt-sites-lpms-prototype">ChatGPT Sites（LPMS 原型）</a></li>
+<li><a href="https://aidc.work/blog/cursor-codex-github-ai-dev-workflow">Cursor、Codex、GitHub AI 開發工作流</a></li>
+<li><a href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship">Cursor + Grok 4.5 實戰</a> <a class="deck-link" href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/cursor-grok-misdiagnosis-admin-dashboard">Cursor + Grok 反省：Admin 誤判</a></li>
+<li><a href="https://aidc.work/blog/cursor-ai-system-development-guide">如何正確使用 Cursor 做 AI 系統開發</a> <a class="deck-link" href="https://aidc.work/blog/cursor-ai-system-development-guide-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/agents-md-codex-claude-cursor-guide">AGENTS.md 是什麼？</a></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>13 / 18</div>
+    </section>
+    <section class="slide catalog" id="s14" data-title="分類 4｜閱讀 B">
+      <p class="kicker">分類 4｜工具與人機協作實作</p>
+      <h2 class="tight">推薦閱讀（9–15）</h2>
+      <ol class="reading" start="9"><li><a href="https://aidc.work/blog/cursor-agents-window-ide-project-switching-guide">Agents Window／IDE／Cloud Agent 切換</a></li>
+<li><a href="https://aidc.work/blog/cursor-agent-mobile-mybike-github-cloudflare">用手機指揮 Cursor Agent 建站（mybike）</a></li>
+<li><a href="https://aidc.work/blog/personalized-blog-ai-agents-workflow">個人化 Blog AI Agents 生成流程</a> <a class="deck-link" href="https://aidc.work/blog/personalized-blog-ai-agents-workflow-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok">Grok Bot vs. Cursor Grok</a> <span class="meta">（完整學習版需登入會員）</span></li>
+<li><a href="https://aidc.work/blog/customer-complaint-workflow-to-ai-agent">從客服申訴流程到 AI Agent</a> <a class="deck-link" href="https://aidc.work/blog/customer-complaint-ai-agent-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/ai-agent-root-cause-debugging-readiness-gate">AI Agent Debug 實戰</a></li>
+<li><a href="https://aidc.work/blog/ai-agent-system-development-intro-deck">AI Agent 與系統開發導論（簡報）</a></li></ol>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>14 / 18</div>
+    </section>
+    <section class="slide catalog" id="s15" data-title="分類 5｜目標與閱讀">
+      <p class="kicker">分類 5｜平台／架構案例</p>
+      <h2 class="tight">學習目標＋推薦閱讀</h2>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>看真實平台如何演進（內容站→會員／課程）</li>
+            <li>RBAC、ERD、建置規劃與安全邊界</li>
+            <li>對照自身 MVP 架構選擇</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ol class="reading" start="1"><li><a href="https://aidc.work/blog/aidc-work-nextjs-modular-monolith-architecture">Next.js 模組化單體架構</a></li>
+<li><a href="https://aidc.work/blog/aidc-work-system-architecture-deck">AIDC.work 系統架構教學（簡報）</a></li>
+<li><a href="https://aidc.work/blog/aidc-work-system-build-plan-deck">AIDC.work 系統建置規劃書（簡報）</a></li>
+<li><a href="https://aidc.work/blog/rbac-architecture-guide">RBAC 權限架構完全指南</a> <a class="deck-link" href="https://aidc.work/blog/rbac-architecture-guide-deck">配套簡報</a></li>
+<li><a href="https://aidc.work/blog/course-management-system-deck">課程管理系統教學（簡報）</a></li></ol>
+        </div>
+      </div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>15 / 18</div>
+    </section>
+    <section class="slide catalog" id="s16" data-title="分類 6｜教材">
+      <p class="kicker">分類 6｜導讀簡報與其他教材</p>
+      <h2 class="tight">導讀與延伸教材</h2>
+      <ol class="reading" start="1"><li><a href="https://aidc.work/blog/aidc-blog-reading-path-deck">Blog 分類與推薦閱讀順序（官方地圖）</a></li>
+<li><a href="https://aidc.work/blog/big-data-mining-analysis-pbl-deck">巨量資料挖掘與分析｜PBL 課綱</a></li>
+<li><a href="https://aidc.work/blog/threads-algorithm-ai-agent-conversation-marketing-deck">Threads × AI Agent：對話行銷</a></li>
+<li><a href="https://aidc.work/blog/huang-yen-chung-profile-deck">黃燕忠｜個人簡介</a></li></ol>
+      <div class="callout" style="margin-top:14px">官方閱讀地圖：亦可對照 myppt 上的 <a href="https://myppt.aidc.work/aidc-blog-reading-path.html">aidc-blog-reading-path</a>。</div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>16 / 18</div>
+    </section>
+    <section class="slide" id="s17" data-title="怎麼用">
+      <p class="kicker">HOW TO USE</p>
+      <h2>建議下週重點／怎麼用</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>對照更新</h3>
+          <p>下週五重抓 blog，diff 基準快照 → 標「本週新增／更新」。</p>
+        </div>
+        <div class="card">
+          <h3>本週建議精讀（3+1）</h3>
+          <ol>
+            <li><a href="https://aidc.work/blog/five-questions-managers-must-ask-in-ai-era">主管五件事</a></li>
+            <li><a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc">AISDLC</a></li>
+            <li><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate">SRS／Go-No-Go</a></li>
+            <li><a href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship">Cursor＋Grok 實戰</a></li>
+          </ol>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:14px">用法：每分類選 1 文＋其配套簡報；週會可用「3 分鐘決策週報」結構回報。</div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>17 / 18</div>
+    </section>
+    <section class="slide" id="s18" data-title="行動">
+      <p class="kicker">NEXT STEP</p>
+      <h2>從地圖出發，每週只推進一格</h2>
+      <p class="lead">這份簡報是基準快照；之後每週只看「新增／更新」與精讀 3+1。</p>
+      <p><strong>清單頁：</strong><a href="https://aidc.work/blog">https://aidc.work/blog</a>
+     　· <strong>簡報篩選：</strong><a href="https://aidc.work/blog?type=presentation">https://aidc.work/blog?type=presentation</a></p>
+      <div class="callout" style="margin-top:16px">用語偏好：學習分組請統一使用「分類」。</div>
+      <div class="footer"><span>AIDC.work · 基準快照 2026-09-21</span>18 / 18</div>
+    </section>
+  </main>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <nav class="controls" id="controls" aria-label="簡報控制">
+    <div class="ctrl-main">
+      <button id="prev" type="button" aria-label="上一頁" title="上一頁（←）">←</button>
+      <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+      <div class="count" id="count">1 / 18</div>
+      <button id="next" type="button" aria-label="下一頁" title="下一頁（→）">→</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="fs-down" type="button" aria-label="縮小字體" title="縮小字體（-）">A−</button>
+      <span class="fs-label" id="fs-label" aria-live="polite">100%</span>
+      <button id="fs-up" type="button" aria-label="放大字體" title="放大字體（+）">A+</button>
+      <span class="ctrl-sep" aria-hidden="true"></span>
+      <button id="full" type="button" aria-label="全頁顯示" title="全頁顯示／離開（F）">⛶</button>
+      <button id="pdf" type="button" class="wide" aria-label="匯出為 PDF" title="匯出為 PDF（P）">PDF</button>
+    </div>
+    <button id="toggle-ui" type="button" aria-label="收合或展開工具列" title="收合／展開工具列（H）" aria-expanded="true">▾</button>
+  </nav>
+  <script>
+
+    const DECK_TITLE = "AIDC.work Blog 每週學習簡報（基準快照）";
+    const FS_STEPS = [0.85, 0.925, 1, 1.1, 1.2];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("count");
+    const barEl = document.getElementById("bar");
+    const controls = document.getElementById("controls");
+    const toggleUi = document.getElementById("toggle-ui");
+    const fsLabel = document.getElementById("fs-label");
+    const hintEl = document.getElementById("hint");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--deck-fs", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      const t = slides[index].dataset.title || "";
+      document.title = t ? `${t}｜${DECK_TITLE}` : DECK_TITLE;
+      history.replaceState(null, "", `#${slides[index].id || (index + 1)}`);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      controls.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    document.getElementById("prev").onclick = () => show(index - 1);
+    document.getElementById("next").onclick = () => show(index + 1);
+    document.getElementById("fs-down").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("fs-up").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("full").onclick = () => toggleFullscreen();
+    document.getElementById("pdf").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!controls.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!controls.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+      const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.getElementById("full").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const hash = location.hash.replace(/^#/, "");
+    const byId = slides.findIndex((s) => s.id === hash);
+    if (byId >= 0) show(byId);
+    else {
+      const requested = Number(new URLSearchParams(location.search).get("slide") || hash);
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+    }
+
+  </script>
+</body>
+</html>

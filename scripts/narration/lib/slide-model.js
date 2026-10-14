@@ -91,6 +91,11 @@ export function migrateSlideFromHtml($, el, index, total) {
       bullets: [],
     }));
   }
+  const links = $el
+    .find(".slide-links a")
+    .toArray()
+    .map((a) => ({ label: cleanText($(a).text()), href: $(a).attr("href") || "" }));
+  if (links.length) slide.links = links;
 
   if (layout === "arch-svg") {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
@@ -109,6 +114,22 @@ function renderCallout(text) {
     return `<div class="callout"><strong>${escapeHtml(label)}：</strong>${escapeHtml(rest.join("："))}</div>`;
   }
   return `<div class="callout">${escapeHtml(text)}</div>`;
+}
+
+function safeHref(href) {
+  const value = String(href || "").trim();
+  return /^(https?:\/\/|\/|#)/i.test(value) ? value : "";
+}
+
+/** Optional slide.links: [{ label, href }] → one row of external links (new tab). */
+export function renderLinks(links) {
+  const items = (links || [])
+    .map((l) => ({ label: l?.label, href: safeHref(l?.href) }))
+    .filter((l) => l.label && l.href);
+  if (!items.length) return "";
+  return `<p class="slide-links">${items
+    .map((l) => `<a href="${escapeHtml(l.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label)}</a>`)
+    .join("")}</p>`;
 }
 
 function renderCard(card, extraClass = "") {
@@ -181,6 +202,7 @@ export function renderSlideHtml(slide, total) {
     }
 
     if (slide.callouts?.[0]) body += renderCallout(slide.callouts[0]);
+    body += renderLinks(slide.links);
   }
 
   return `    <section class="slide${heroClass}${active}" id="${escapeHtml(slide.slideId)}" data-title="${escapeHtml(slide.title)}">

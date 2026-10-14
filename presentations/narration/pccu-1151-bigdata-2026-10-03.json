@@ -1,0 +1,828 @@
+{
+  "version": "1.0.0",
+  "deckId": "pccu-1151-bigdata-2026-10-03",
+  "deckPath": "pccu-1151-bigdata-2026-10-03.html",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "黃燕忠",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "a44f60b5185fde19bcf5358ee7268e3b90eb50eb69aa124de6b6f49e0e1b2fe4",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "文化大學推廣部｜1151 碩專｜2026-10-03 週六 13:10",
+        "headings": [
+          "巨量資料挖掘與分析課前簡報"
+        ],
+        "lead": "作業二回饋 → PBL 工作室｜把檢查表推進到真正能驗的專案。今天講清楚 W3–W6、AISDLC，以及 Grok Bot 在這門課已經怎麼用。",
+        "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · ←→ 翻頁 · F 全螢幕 · 13 頁 · 16:9",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "各位好，我是黃燕忠。今天這堂不是再開一堆理論，而是把大家從「檢查表」推進到真正的 PBL。等一下會講三件事：W3 到 W6 到底在驗什麼、AISDLC 怎麼對上這門課，以及 Grok Bot 在巨量分析裡我們已經怎麼用——當作你們的參考實例，不是叫大家照抄工具。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "今日流程",
+      "sourceHash": "4d73fdb2554ba5d310ec89318b450664037b075e879670d043eec1cd36e55ec2",
+      "extractedContent": {
+        "eyebrow": "02 / 今日流程",
+        "kicker": "",
+        "headings": [
+          "先對齊班級狀況，再進工作室"
+        ],
+        "lead": "共通講評不點名、不公布分數。後半段只秀「可點開的東西」。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "班級共通講評",
+            "paragraph": "去名化觀察。好的留下、缺口對齊品質門，不互相比分數。",
+            "bullets": []
+          },
+          {
+            "heading": "W3–W6 × AISDLC",
+            "paragraph": "週次不是文號。把品質門對上 AI 軟體生命週期。",
+            "bullets": []
+          },
+          {
+            "heading": "Grok Bot 真實用法",
+            "paragraph": "評分、盤點、教材、去識別案例——參考實例，不是叫大家照抄工具。",
+            "bullets": []
+          },
+          {
+            "heading": "工作室＋四件＋Q&A",
+            "paragraph": "30 秒 demo、抽查三硬門檻；下週繳件與補件預約。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "抽查三格：基線、系統、證據。有寫程式經驗可以超前深度，但不能跳過門檻。"
+        ]
+      },
+      "script": "流程很單純：先十分鐘講班級共通狀況，不點名、不公布分數。接著把 W3 到 W6 跟 AISDLC 講清楚，再秀幾個 Grok Bot 的真實用法。後半段進工作室：每人三十秒，只秀「可點開的東西」。我會抽查三格——基線、系統、證據。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "學習目標",
+      "sourceHash": "ef356c5d1ae1a23b48f26b2241b3aa7ead27c446e02f2082303d637a9f660a8a",
+      "extractedContent": {
+        "eyebrow": "03 / 本週學習目標",
+        "kicker": "",
+        "headings": [
+          "離開教室前，要能指出自己卡在哪一扇門"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "W3–W6 在證明什麼",
+            "paragraph": "不是為了填週次。每一道門對應「痛點可重算／做得出來／不是運氣／敢給人看」。",
+            "bullets": []
+          },
+          {
+            "heading": "對上 AISDLC",
+            "paragraph": "Discover → Define → Design → Develop → Deploy → Diagnose。作業與週次要掛得上去。",
+            "bullets": []
+          },
+          {
+            "heading": "看懂人機分工",
+            "paragraph": "Grok Bot 可以當助教／工程師起草；你仍是業主。口徑、退件、分數不是 Bot 的。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "離開教室前，你要能回答：我現在卡在基線、系統，還是證據？有寫程式經驗的同學可以超前，但超前的是深度，不是跳過門檻。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "W3–W6 品質門",
+      "sourceHash": "7f22a74aa4a3950244959c77a6791ee6b818f6d7519519c7d1166d2106cb4e90",
+      "extractedContent": {
+        "eyebrow": "04 / W3–W6 是什麼",
+        "kicker": "",
+        "headings": [
+          "品質門，不是官僚文號"
+        ],
+        "lead": "有開發經驗可走軌道 F 加碼，但每週仍先過這四道門。系統很炫、基線是空的，一樣條件式或退件。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "證明「現在有多痛」",
+            "paragraph": "",
+            "bullets": [
+              "數字＋期間＋口徑＋來源",
+              "別人照著能重算",
+              "目標值不是基線；「希望變快」不算"
+            ]
+          },
+          {
+            "heading": "證明「做得出來」",
+            "paragraph": "",
+            "bullets": [
+              "輸入 → 處理 → 輸出",
+              "外面附三到五行跑法",
+              "流程圖不算系統"
+            ]
+          },
+          {
+            "heading": "證明「不是運氣」",
+            "paragraph": "",
+            "bullets": [
+              "同一組輸入重跑，結果對得起來",
+              "有對照集，不是剛好跑一次",
+              "對齊 Deploy 的驗收邊界"
+            ]
+          },
+          {
+            "heading": "證明「敢給人看」",
+            "paragraph": "",
+            "bullets": [
+              "前後對照＋限制／失敗一頁",
+              "檔案給得出去、可重跑",
+              "期中≈W4–W5；期末≈W6"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "很多人會問：老師你幹嘛弄 W3、W4？那不是文號，是品質門。W3，基線定稿。你要用數字講出現在有多痛：數字、期間、口徑、來源，別人照著能重算。目標值不是基線，「希望變快」不算。W4，最小可跑系統。不必華麗，但要有輸入、處理、輸出，外面附三到五行跑法。流程圖不算。W5，固定驗收集。證明不是剛好跑一次運氣好；同一組輸入重跑，結果要對得起來。W6，證據包。前後對照、限制與失敗寫一頁，檔案給得出去。敢給人看，才叫專案。有經驗走軌道 F 可以加碼，但每週我還是先看這四道門。系統很炫、基線是空的，一樣條件式或退件。",
+      "estimatedSeconds": 56,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "三硬門檻與 5V",
+      "sourceHash": "e5aacf98e8621a2dbd03993eda38978345f8a201708818147b51ec3344cfb289",
+      "extractedContent": {
+        "eyebrow": "05 / 三硬門檻 × 5V",
+        "kicker": "",
+        "headings": [
+          "沒過門，就還不能叫專案"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "對 W3",
+            "paragraph": "正式上傳缺基線退件。數字、期間、口徑、來源要齊，別人能重算。",
+            "bullets": []
+          },
+          {
+            "heading": "對 W4",
+            "paragraph": "可執行檔／notebook，有輸入處理輸出與跑法。聊天截圖與流程圖都不算。",
+            "bullets": []
+          },
+          {
+            "heading": "對 W5–W6",
+            "paragraph": "固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。",
+            "bullets": []
+          },
+          {
+            "heading": "5V 最低標",
+            "paragraph": "",
+            "bullets": [
+              "Volume／Velocity／Variety／Veracity／Value",
+              "至少三項要標「有」",
+              "Value、Veracity 不得為「無」",
+              "沒有可點開的檔，最多只能標「弱」，不要空勾「有」"
+            ]
+          },
+          {
+            "heading": "記住這三句",
+            "paragraph": "沒有基線的 AI 叫聊天；沒有系統的分析叫作業；沒有證據的 Demo 叫表演。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "再說一次口號：沒有基線的 AI 叫聊天；沒有系統的分析叫作業；沒有證據的 Demo 叫表演。5V 至少三項要「有」，Value 跟 Veracity 不能是「無」。重點是：沒有可點開的檔，最多只能標「弱」，不要再空勾「有」。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "AISDLC",
+      "sourceHash": "a586078546d5a17ffd803ef1d13673057786d0516be6577880fdd747e8c5f148",
+      "extractedContent": {
+        "eyebrow": "06 / AISDLC",
+        "kicker": "",
+        "headings": [
+          "AI Software Development Life Cycle"
+        ],
+        "lead": "本課用法：把 AI／資料專案當可治理的產品，不是一次 Demo。六步都要留下可重跑產物。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "Discover",
+            "description": "找痛點與使用者"
+          },
+          {
+            "title": "Define",
+            "description": "基線與成功指標 → W3"
+          },
+          {
+            "title": "Design",
+            "description": "資料、模型、人機覆核"
+          },
+          {
+            "title": "Develop",
+            "description": "最小可跑路徑 → W4"
+          },
+          {
+            "title": "Deploy",
+            "description": "驗收與上線邊界"
+          },
+          {
+            "title": "Diagnose",
+            "description": "監測、失敗、回饋 → W5–W6"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [
+          "人機分工：AI 可以大幅加速 Develop；Define 的數字與 Diagnose 的誠實失敗說明，一定是你的責任。"
+        ]
+      },
+      "script": "AISDLC，我這邊用的意思是 AI 軟體生命週期——把 AI、資料專案當可治理的產品，不是一次 Demo。六步很直白：Discover 找痛點；Define 定基線與成功指標，對我們的 W3；Design 設計資料、模型、人機覆核；Develop 做出最小可跑，對 W4；Deploy 定驗收與上線邊界；Diagnose 監測失敗與回饋，對 W5、W6。AI 可以大幅加速 Develop，但 Define 的數字跟 Diagnose 的誠實失敗說明，一定是你的責任。這就是人機分工。",
+      "estimatedSeconds": 50,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "AISDLC 對照本課",
+      "sourceHash": "23b4bfb8720d8b3d39c1b1cf94a7f108e832d3167b26c4400e21603f38312ad5",
+      "extractedContent": {
+        "eyebrow": "07 / 對照本課交付",
+        "kicker": "",
+        "headings": [
+          "作業一、作業二，已經走在生命週期上"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "AISDLC",
+            "本課對應",
+            "你要留下的東西"
+          ],
+          [
+            "Discover",
+            "作業一 Use Case／需求盤點",
+            "痛點、使用者、為什麼值得做"
+          ],
+          [
+            "Define",
+            "作業二 5V 表 → W3",
+            "基線數字＋期間＋口徑＋來源"
+          ],
+          [
+            "Design／Develop",
+            "接下來幾週 → W4",
+            "可執行檔、notebook、跑法"
+          ],
+          [
+            "Deploy",
+            "W5 固定驗收集",
+            "同一輸入可重跑、權限／脫敏邊界"
+          ],
+          [
+            "Diagnose",
+            "W6 證據包",
+            "限制頁、前後對照、下週只改一件事"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "課堂先練「小而可驗」：企業以後還有版本、稽核、權限；現在先把三硬門檻做實。"
+        ]
+      },
+      "script": "作業一的 Use Case，其實就是 Discover。作業二的 5V 表，開始進 Define。接下來幾週，你們要用可執行檔把 Design、Develop 做實，再用驗收集跟限制頁把 Deploy、Diagnose 補齊。企業以後還有版本、稽核、權限——課堂我們先練「小而可驗」。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "Grok Bot 參考實例",
+      "sourceHash": "feb3418a06164ceb70b28ded4f2a4cae690fba6428ed216e0d8e1fb18d68b35b",
+      "extractedContent": {
+        "eyebrow": "08 / Grok Bot × 巨量分析",
+        "kicker": "",
+        "headings": [
+          "這門課已經發生的事，不是行銷故事"
+        ],
+        "lead": "給你們當樣式。Bot 產草稿與清單；口徑、退件、成績，講師裁決。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "5V＋硬門檻草評語",
+            "paragraph": "依檢查表與三硬門檻起草評語，分數由講師確認。這叫人機覆核，不是自動打分數。",
+            "bullets": []
+          },
+          {
+            "heading": "Drive → 去名化回饋",
+            "paragraph": "讀作業夾，整理班級共通講評與個人可貼評語，避免全班互相比分數。",
+            "bullets": []
+          },
+          {
+            "heading": "模板與週五課前簡報",
+            "paragraph": "5V 空白／填寫範例、繳件四件說明，以及週五自動產課前簡報。",
+            "bullets": []
+          },
+          {
+            "heading": "「北風烘焙」",
+            "paragraph": "企業案改寫成教學用案例，保護客戶還能上課。你們看到的是可教的版本。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "模式：Bot drafts；instructor owns 口徑／退件／分數。你們用工具也一樣——AI 加速，業主負責。"
+        ]
+      },
+      "script": "這不是廣告，是這門課已經發生的事，給你們當樣式。第一，評分治理：Bot 依 5V 跟三硬門檻草評語，分數我來確認——這叫人機覆核。第二，作業盤點：它讀 Drive 作業夾，整理去名化班級講評跟個人評語，避免全班互相比分數。第三，教材生產：檢查表模板、繳件四件說明、甚至週五自動產課前簡報。第四，去識別：企業案改寫成教學用的「北風烘焙」，保護客戶還能上課。你們看得到模式：Bot 產草稿跟清單，口徑、退件、成績，講師裁決。",
+      "estimatedSeconds": 45,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "學生 AI 工具規則",
+      "sourceHash": "783a68599fd71723a02cc7f703bca36568ab416198742420f0922a9d35b6356d",
+      "extractedContent": {
+        "eyebrow": "09 / 學生怎麼用 AI",
+        "kicker": "",
+        "headings": [
+          "Cursor／Claude／Codex／Grok 都可以，繳的是可跑產物"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "拿來做事",
+            "paragraph": "",
+            "bullets": [
+              "寫程式、清資料、生 notebook、當場 demo",
+              "加速 Develop，把路走完",
+              "註明哪段是 AI 生的、你改了什麼、怎麼驗收"
+            ]
+          },
+          {
+            "heading": "沒有可點開的檔",
+            "paragraph": "",
+            "bullets": [
+              "只交聊天截圖或「AI 說系統如下」",
+              "每次重跑答案都變",
+              "基線數字與失敗說明丟給模型編"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "對齊 AISDLC：AI 幫你 Develop；Define 的數字跟 Diagnose 的誠實失敗說明，還是你的。"
+        ]
+      },
+      "script": "Cursor、Claude、Codex、Grok 都可以用來寫程式、清資料、demo。但繳交一定要有專案檔、跑法、固定樣例。聊天截圖不算系統。請註明哪段是 AI 生的、你改了什麼、怎麼驗收。對齊 AISDLC：AI 幫你 Develop；基線跟失敗說明還是你的。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "作業二觀察",
+      "sourceHash": "9c7e8e0a8efd318c8b92fc2fd9678accfe34dabe70951f1055c12a1755cca2dc",
+      "extractedContent": {
+        "eyebrow": "10 / 作業二共通觀察（去名化）",
+        "kicker": "",
+        "headings": [
+          "好的留下；缺口還是那幾扇門"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "已有組交出可重跑數字",
+            "paragraph": "",
+            "bullets": [
+              "而且敢寫自己沒達 KPI",
+              "這才是證據，不是表演",
+              "有開發經驗的組，深度可以再加，門檻不能少"
+            ]
+          },
+          {
+            "heading": "先補品質門",
+            "paragraph": "",
+            "bullets": [
+              "「有」跟「待補」混用",
+              "基線缺三位一體（數字／期間／口徑／來源）",
+              "證據檔沒進繳交夾",
+              "敘事跑在實作前面；系統停在流程圖"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "所以下週：先補品質門，架構炫不炫排後面。"
+        ]
+      },
+      "script": "好的一面：已經有組交出可重跑數字，而且敢寫自己沒達 KPI——這才是證據。共通缺口還是那幾個：有跟待補混用、基線缺三位一體、檔案沒進繳交夾、敘事跑在實作前面。所以下週請先補品質門，架構炫不炫排後面。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "下週四件",
+      "sourceHash": "6aa1b803191080cfc14bbc4058278d9ddba6f6b8b22c38cb8e1aebd563130ec0",
+      "extractedContent": {
+        "eyebrow": "11 / 下週統一繳件",
+        "kicker": "",
+        "headings": [
+          "就四件。不要交長報告裝忙"
+        ],
+        "lead": "模板在課程 Drive《下週繳件四件｜說明＋模板＋範例》。照填就好。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "數字＋期間＋口徑＋來源",
+            "paragraph": "別人照著能重算。目標值另寫，不要跟基線混在同一格。",
+            "bullets": []
+          },
+          {
+            "heading": "輸入 → 處理 → 輸出＋跑法",
+            "paragraph": "notebook 或專案檔都可以。外面附三到五行怎麼跑。",
+            "bullets": []
+          },
+          {
+            "heading": "未達標＋截圖／CSV＋下一件",
+            "paragraph": "失敗寫一頁。沒達標不可恥；不敢寫才會被退。",
+            "bullets": []
+          },
+          {
+            "heading": "封面要找得到人",
+            "paragraph": "檔名與封面一致。助教與 Bot 盤點都靠這一頁對得上。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "就四件：基線表、可執行檔、限制頁、姓名學號。模板在 Drive，照填就好。不要交長報告裝忙。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "工作室",
+      "sourceHash": "745c1a9297b1bf5dccf19188f4c76e4e5cb768962121398a481a31bd5ca0368c",
+      "extractedContent": {
+        "eyebrow": "12 / 課堂工作室",
+        "kicker": "",
+        "headings": [
+          "三十秒，只講「這週多了什麼可點開的」"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "可點開，不是可口述",
+            "paragraph": "打開檔、跑一次、指到數字或輸出。流程圖請收起來。",
+            "bullets": []
+          },
+          {
+            "heading": "基線／系統／證據",
+            "paragraph": "S 軌先穩過門。F 軌過門再加碼。炫技不能換空白基線。",
+            "bullets": []
+          },
+          {
+            "heading": "下課前約 10 分鐘",
+            "paragraph": "一對一優先談基線。需要約的同學下課前跟我說。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "開始前先問自己：我等一下要打開的，是基線表、可跑檔，還是限制頁？"
+        ]
+      },
+      "script": "等等三十秒，只講「我這週多了什麼可點開的」。我抽三格。S 軌先穩，F 軌過門再加碼。需要補件的，下課前跟我約十分鐘，優先談基線。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "收尾",
+      "sourceHash": "36456057c86736e61b767bd558c66749c7c681152b1593b344a37a00a52a5452",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "下課前記住 · myppt.aidc.work",
+        "headings": [
+          "三句口號帶走"
+        ],
+        "lead": "",
+        "stamp": "簡報已上到 myppt.aidc.work，方便回家複習。下週五 14:00 自動產下一份課前簡報。講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": []
+      },
+      "script": "最後記口號三句。簡報也會上到 myppt.aidc.work，方便你們回家複習。好，我們開始工作室。",
+      "estimatedSeconds": 30,
+      "status": "approved",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-02T08:50:00.000Z",
+      "approvedAt": "2026-10-02T08:50:00.000Z",
+      "approvedBy": "instructor",
+      "generationNotes": "課前口語講稿（繁中），對齊 2026-10-03 上傳講稿"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-10-02T08:50:00.000Z",
+    "totalEstimatedSeconds": 451,
+    "ttsCostEstimateUsd": 0
+  }
+}

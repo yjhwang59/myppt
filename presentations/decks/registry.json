@@ -110,6 +110,87 @@
       "listed": false,
       "sortOrder": 0,
       "summary": ""
+    },
+    {
+      "deckId": "aidc-blog-weekly-learning-2026-09-21",
+      "title": "AIDC.work Blog 每週學習簡報（基準快照）",
+      "sourceType": "html",
+      "createdAt": "2026-09-21T00:29:39.458Z",
+      "updatedAt": "2026-09-21T00:29:39.458Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "pccu-1151-bigdata-2026-10-03",
+      "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-03",
+      "sourceType": "html",
+      "createdAt": "2026-10-03T00:00:00.000Z",
+      "updatedAt": "2026-10-03T00:00:00.000Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "aidc-blog-weekly-learning-2026-10-02",
+      "title": "AIDC.work Blog 每週學習簡報（2026-10-02）",
+      "sourceType": "html",
+      "createdAt": "2026-10-02T15:30:00.000Z",
+      "updatedAt": "2026-10-02T15:30:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "etl-big-data-methodology",
+      "title": "大數據分析方法論：ETL 不是搬資料",
+      "sourceType": "html",
+      "createdAt": "2026-10-05T00:00:00.000Z",
+      "updatedAt": "2026-10-05T00:00:00.000Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "agentic-ai-security-four-layer-framework",
+      "title": "企業 Agentic AI 四層資安治理框架",
+      "sourceType": "html",
+      "createdAt": "2026-10-05T06:50:00.000Z",
+      "updatedAt": "2026-10-05T06:50:00.000Z",
+      "categoryId": "architecture",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "ai-agent-course-week01-ai-system-concepts",
+      "title": "第 1 週｜AI 系統開發概念與專案選題",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 1 週。企業AI內訓 2026-10-14 起。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-10-06T11:10:00.000Z",
+      "updatedAt": "2026-10-14T02:40:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
+    },
+    {
+      "deckId": "pccu-1151-bigdata-2026-10-17",
+      "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-17",
+      "sourceType": "html",
+      "createdAt": "2026-10-12T23:46:00.000Z",
+      "updatedAt": "2026-10-12T23:46:00.000Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": ""
     }
   ],
   "categories": [
