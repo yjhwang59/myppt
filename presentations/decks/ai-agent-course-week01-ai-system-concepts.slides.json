@@ -15,14 +15,14 @@
       "kicker": "AI 系統開發入門班 · 第 1 週（共 8 週）",
       "h1": "AI 系統開發概念\n與專案選題",
       "h2": "",
-      "lead": "不用寫程式，先學會把一個工作問題，講成「可上線的小系統」。今天結束帶走：一頁式專案提案。",
+      "lead": "不用寫程式，先學會把一個工作問題，講成「可上線的小系統」。今晚案例：大躍 Northgo 官網。帶走：一頁式專案提案。",
       "stamp": "企業AI內訓 · 2026-10-14（三）起 · 19:00–22:00 · 臺北市中山區民生東路三段10號7樓 · 黃燕忠｜AI發展顧問",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "1 / 32"
+      "footerPage": "1 / 34"
     },
     {
       "slideId": "s2",
@@ -98,7 +98,7 @@
         "提案寫得越清楚，後面每一週越好做：W2 起每週都會回頭看這一頁。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "2 / 32"
+      "footerPage": "2 / 34"
     },
     {
       "slideId": "s3",
@@ -156,7 +156,7 @@
         "MVP：8 週內可以示範完的一條主流程，不是功能做滿。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "3 / 32"
+      "footerPage": "3 / 34"
     },
     {
       "slideId": "s4",
@@ -189,13 +189,13 @@
           "19:10–19:45",
           "35′",
           "01-1 什麼是 AI 系統",
-          "小測驗 2′＋練習 A：寫下你的系統行為 8′"
+          "案例 5′＋練習 A：拆解 Northgo 官網 8′"
         ],
         [
           "19:45–20:20",
           "35′",
           "01-2 AI 工具與 Vibe Coding",
-          "看示範＋練習 B：改寫成可驗證的指令 12′"
+          "示範＋練習 B：把「改官網」寫成可驗證指令 12′"
         ],
         [
           "20:20–20:30",
@@ -207,7 +207,7 @@
           "20:30–21:25",
           "55′",
           "01-3 選題與 MVP 範圍",
-          "練習 C：寫一頁式提案 28′＋互評 10′"
+          "練習 C：寫 Northgo 官網改善提案 28′＋互評 10′"
         ],
         [
           "21:25–21:50",
@@ -223,10 +223,10 @@
         ]
       ],
       "callouts": [
-        "練習與回饋都在課堂上完成：作業是修改提案，下週課堂上一起檢討。"
+        "同一個案例貫穿三個練習：大躍 Northgo 官網（www.northgo.com）。作業是修改提案，下週課堂上一起檢討。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "4 / 32"
+      "footerPage": "4 / 34"
     },
     {
       "slideId": "s5",
@@ -282,7 +282,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "5 / 32"
+      "footerPage": "5 / 34"
     },
     {
       "slideId": "s6",
@@ -295,13 +295,13 @@
       "h1": "什麼是 AI 系統",
       "h2": "",
       "lead": "對話、功能、系統差在哪；五層架構；用 CRUD、API、RBAC 講清楚系統行為。",
-      "stamp": "01-1-1 三種層次＋小測驗 10′ · 01-1-2 五層架構 10′ · 01-1-3 CRUD／API／RBAC 7′ · 練習 A 8′",
+      "stamp": "01-1-1 三種層次＋小測驗 8′ · 01-1-2 五層架構 8′ · 01-1-3 CRUD／API／RBAC 6′ · 案例 5′ · 練習 A 8′",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "6 / 32"
+      "footerPage": "6 / 34"
     },
     {
       "slideId": "s7",
@@ -309,7 +309,7 @@
       "title": "01-1-1 三種層次",
       "layout": "table",
       "hero": false,
-      "eyebrow": "01-1-1 / 三種層次 · 8′",
+      "eyebrow": "01-1-1 / 三種層次 · 6′",
       "kicker": "",
       "h1": "",
       "h2": "區分 AI 對話、AI 功能與可上線的 AI 系統",
@@ -359,7 +359,7 @@
         "分辨一句話：關掉畫面之後，這件事還在不在？誰還能接著處理？"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "7 / 32"
+      "footerPage": "7 / 34"
     },
     {
       "slideId": "s8",
@@ -405,7 +405,7 @@
         "答案：A 功能、B 系統、C 對話（而且客訴要先去識別化）。判斷依據：有沒有存下來的資料、流程與權限。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "8 / 32"
+      "footerPage": "8 / 34"
     },
     {
       "slideId": "s9",
@@ -413,7 +413,7 @@
       "title": "01-1-2 五層架構",
       "layout": "arch-svg",
       "hero": false,
-      "eyebrow": "01-1-2 / 五層架構 · 10′",
+      "eyebrow": "01-1-2 / 五層架構 · 8′",
       "kicker": "",
       "h1": "",
       "h2": "介面、後端、資料、權限與 AI Agent：以設備報修為例",
@@ -426,7 +426,7 @@
         "少任何一層，就還不是可上線系統。AI Agent 是放在前四層上面的一層，不是地基。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "9 / 32",
+      "footerPage": "9 / 34",
       "archSvgHtml": "<svg viewBox=\"0 0 1200 470\" xmlns=\"http://www.w3.org/2000/svg\">\n<g font-family=\"inherit\">\n<rect class=\"ly\" x=\"0\" y=\"0\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"52\">1 介面</text><text class=\"t2\" x=\"210\" y=\"52\">人看得到、點得到的畫面</text><text class=\"t3\" x=\"640\" y=\"52\">例：報修表單、進度頁</text>\n<rect class=\"ly\" x=\"0\" y=\"96\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"148\">2 後端</text><text class=\"t2\" x=\"210\" y=\"148\">收到請求，照規則處理、送回結果</text><text class=\"t3\" x=\"640\" y=\"148\">例：建立工單、通知總務</text>\n<rect class=\"ly\" x=\"0\" y=\"192\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"244\">3 資料</text><text class=\"t2\" x=\"210\" y=\"244\">單據存下來，關掉畫面還在</text><text class=\"t3\" x=\"640\" y=\"244\">例：地點、設備、描述、狀態、時間</text>\n<rect class=\"ly\" x=\"0\" y=\"288\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"340\">4 權限</text><text class=\"t2\" x=\"210\" y=\"340\">誰能看、誰能改、誰能核准</text><text class=\"t3\" x=\"640\" y=\"340\">例：同事報修、總務改狀態、主管看全部</text>\n<rect class=\"ly-ai\" x=\"0\" y=\"384\" width=\"1200\" height=\"84\" rx=\"14\"/><text class=\"t1\" x=\"28\" y=\"436\">5 AI Agent</text><text class=\"t2\" x=\"210\" y=\"436\">在規則裡讀資料、整理、草擬</text><text class=\"t3\" x=\"640\" y=\"436\">例：口語整理成欄位、建議分類，不結案</text>\n<line class=\"ln\" x1=\"620\" y1=\"12\" x2=\"620\" y2=\"456\"/>\n</g></svg>",
       "links": [
         {
@@ -485,7 +485,7 @@
         "畫面藏起按鈕不等於安全：每個敏感動作，後端都要再檢查一次權限。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "10 / 32"
+      "footerPage": "10 / 34"
     },
     {
       "slideId": "s11",
@@ -493,7 +493,7 @@
       "title": "01-1-3 CRUD／API／RBAC",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "01-1-3 / 三個詞 · 7′",
+      "eyebrow": "01-1-3 / 三個詞 · 6′",
       "kicker": "",
       "h1": "",
       "h2": "用 CRUD、API、RBAC 描述系統行為",
@@ -531,7 +531,7 @@
         "還不會寫程式沒關係：先把行為講出來，W3 請 AI 產生畫面時才有依據。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "11 / 32"
+      "footerPage": "11 / 34"
     },
     {
       "slideId": "s12",
@@ -588,18 +588,120 @@
         "表格的每一列就是一個 API；每一欄就是一個角色。主管看得到全部，不代表要代客服回覆。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "12 / 32"
+      "footerPage": "12 / 34"
     },
     {
       "slideId": "s13",
       "index": 13,
+      "title": "案例 Northgo 官網現況",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "案例 / 大躍 Northgo 官網 · 5′",
+      "kicker": "",
+      "h1": "",
+      "h2": "www.northgo.com 現況：我們實際看到什麼",
+      "lead": "2026-10-14 實測，只列看得到的事實；看不到的留給練習 A 去問。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "面向",
+          "觀察"
+        ],
+        [
+          "對象與服務",
+          "B2B 國際物流：海空運承攬、專案物流、倉儲、船務代理；台北總部＋台中、高雄、洛杉磯、胡志明、東京、大阪"
+        ],
+        [
+          "主要行動",
+          "每頁都有「Enquire now」，導到聯絡頁的英文詢價表單"
+        ],
+        [
+          "詢價表單",
+          "8 個必填（名、姓、公司、Email、電話、國家、訊息、同意條款）；手機上送出鈕在約 2.5 個畫面下方"
+        ],
+        [
+          "多語系",
+          "有中／日／越切換，但中文版只有首頁大標題是中文；日、越文版內容仍是英文"
+        ],
+        [
+          "SEO 基本",
+          "首頁標題只有「Northgo」；檢查的頁面都沒有 meta description；sitemap.xml 404"
+        ],
+        [
+          "連結",
+          "頁尾「News」連到 /news，回應 404"
+        ],
+        [
+          "手機與速度",
+          "手機無橫向捲動；首頁約 30 個請求、約 1.2 MB，CDN 快取，載入約 1 秒（單次實測）"
+        ]
+      ],
+      "callouts": [
+        "首頁看不到電話或 Email，要點進聯絡頁才有；表單送出後誰接手，前台看不出來。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "13 / 34",
+      "links": []
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "案例 改善機會",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "案例 / 從觀察到題目",
+      "kicker": "",
+      "h1": "",
+      "h2": "三個改善機會：今晚的練習從這裡選",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1 · 最適合 MVP",
+          "tag": null,
+          "tagClass": null,
+          "heading": "中文詢價表單＋AI 分流",
+          "paragraph": "必填從 8 個收到 5 個，中文標籤與確認訊息。AI 摘要需求、建議服務別，草擬回覆給窗口確認。",
+          "bullets": []
+        },
+        {
+          "num": "2 · 要先整理 FAQ",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 常見問題助理",
+          "paragraph": "只根據官網服務內容回答；答不出來就引導到詢價表單。答案範圍要人審過才上線。",
+          "bullets": []
+        },
+        {
+          "num": "3 · 比較像維護",
+          "tag": null,
+          "tagClass": null,
+          "heading": "SEO 與多語基本修正",
+          "paragraph": "補標題與描述、sitemap、修 /news 404、翻譯中文版。AI 可草擬文案，人審後上線。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "練習 A 拆官網、練習 B 寫可驗證指令、練習 C 寫一頁提案，都用這個案例。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "14 / 34",
+      "links": []
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
       "title": "練習 A",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "01-1 / 練習 A · 8′",
+      "eyebrow": "01-1 / 練習 A · 8′ · 案例 Northgo",
       "kicker": "",
       "h1": "",
-      "h2": "把你的工作寫成「系統行為」",
+      "h2": "把 Northgo 官網拆成五層、CRUD 與角色",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -607,40 +709,40 @@
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "填這四行",
+          "heading": "看得到的（前台）",
           "paragraph": "",
           "bullets": [
-            "我的單據是＿＿（例如：報修單、請假單）",
-            "建立、讀取、更新各寫一句；刪除通常改成「結案」或「取消」",
-            "角色有＿＿，各自能做什麼",
-            "AI 只能做＿＿，不能做＿＿"
+            "介面：首頁、四個服務頁、聯絡頁詢價表單",
+            "建立：訪客送出一筆詢價（現在 8 個必填）",
+            "讀取：訪客看服務說明與七個據點資訊",
+            "角色：訪客／潛在客戶，語言有英、中、日、越"
           ]
         },
         {
           "num": null,
           "tag": null,
           "tagClass": null,
-          "heading": "範例：會議室預約",
+          "heading": "看不到、要問大躍的（後台）",
           "paragraph": "",
           "bullets": [
-            "單據：一筆預約（會議室、日期、時段、借用人）",
-            "建立預約、讀取當天時段、更新改期；不刪除，改成取消",
-            "角色：同事預約、行政管理全部、主管看使用率",
-            "AI：提醒時段衝突、建議空房；不能替人取消別人的預約"
+            "後端與資料：詢價送到哪裡？誰收？存多久？",
+            "更新：誰把詢價標成「已回覆」？有沒有編號？",
+            "權限：各據點、各服務窗口只看自己的詢價嗎？",
+            "AI Agent：哪一步可以幫忙？哪一步不能碰（報價）？"
           ]
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "寫在提案草稿上，01-3 會直接用到。"
+        "兩人一組寫在提案草稿上；右欄的問題，就是你訪談客戶時要問的。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "13 / 32"
+      "footerPage": "15 / 34"
     },
     {
-      "slideId": "s14",
-      "index": 14,
+      "slideId": "s16",
+      "index": 16,
       "title": "01-2 章節頁",
       "layout": "hero",
       "hero": true,
@@ -655,11 +757,11 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "14 / 32"
+      "footerPage": "16 / 34"
     },
     {
-      "slideId": "s15",
-      "index": 15,
+      "slideId": "s17",
+      "index": 17,
       "title": "01-2-1 角色與限制",
       "layout": "cards-two",
       "hero": false,
@@ -703,11 +805,11 @@
         "AI 是共同作者，不是驗收的人；它講得越有把握，越要回原文查證。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "15 / 32"
+      "footerPage": "17 / 34"
     },
     {
-      "slideId": "s16",
-      "index": 16,
+      "slideId": "s18",
+      "index": 18,
       "title": "01-2-2 迭代循環",
       "layout": "flow",
       "hero": false,
@@ -741,11 +843,11 @@
         "不是一次生成就完成。每一輪只改一件事，你才知道是哪一句話讓結果變好。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "16 / 32"
+      "footerPage": "18 / 34"
     },
     {
-      "slideId": "s17",
-      "index": 17,
+      "slideId": "s19",
+      "index": 19,
       "title": "01-2-2 示範",
       "layout": "table",
       "hero": false,
@@ -787,18 +889,18 @@
         "把每一輪的「發現」記下來：這就是你之後寫驗收標準的材料。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "17 / 32"
+      "footerPage": "19 / 34"
     },
     {
-      "slideId": "s18",
-      "index": 18,
+      "slideId": "s20",
+      "index": 20,
       "title": "練習 B",
       "layout": "cards-three",
       "hero": false,
       "eyebrow": "01-2-2 / 練習 B · 12′",
       "kicker": "",
       "h1": "",
-      "h2": "把一句模糊的話，改成可驗證的指令",
+      "h2": "把「改善官網」改成可驗證的指令（Northgo 聯絡頁）",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -807,7 +909,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "先不要這樣說",
-          "paragraph": "「幫我做一個報修系統。」範圍、使用者、誰能結案都沒說，AI 只能用猜的。",
+          "paragraph": "「幫我把官網改好一點。」給誰、改哪一頁、怎樣算好都沒說，AI 只能用猜的。",
           "bullets": []
         },
         {
@@ -815,7 +917,7 @@
           "tag": null,
           "tagClass": null,
           "heading": "改成可驗證的",
-          "paragraph": "同事填寫報修（地點、設備、描述）。AI 只整理成欄位並建議分類。總務指派與結案。不做採購與費用。請列出畫面欄位。",
+          "paragraph": "在中文版聯絡頁做一張中文詢價表單：必填只留公司、聯絡人、Email、需求服務、訊息。送出後依服務寄給對應窗口，並回一封中文確認信。不改其他頁面。",
           "bullets": []
         },
         {
@@ -825,24 +927,24 @@
           "heading": "再寫一條驗收標準",
           "paragraph": "",
           "bullets": [
-            "假設（Given）：工單狀態是「處理中」",
-            "當（When）：同事打開進度頁",
-            "則（Then）：看到處理人與最後更新時間",
-            "例外：AI 不能把狀態改成「已結案」"
+            "假設：訪客用手機開中文聯絡頁",
+            "當：填完 5 個必填並送出",
+            "則：看到中文確認訊息，對應窗口收到通知",
+            "例外：Email 格式錯誤時中文提示，不送出"
           ]
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "駕駛貼提示詞；領航拿驗收標準檢查 AI 的回覆，至少找出一處要改的地方。"
+        "領航拿驗收標準檢查 AI 的回覆；現況（英文表單、8 個必填）就是對照組。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "18 / 32"
+      "footerPage": "20 / 34"
     },
     {
-      "slideId": "s19",
-      "index": 19,
+      "slideId": "s21",
+      "index": 21,
       "title": "01-2-3 去識別化與人工確認",
       "layout": "cards-two",
       "hero": false,
@@ -886,11 +988,11 @@
         "高風險不是「AI 不准碰」，是「AI 不准自己按最後一下」。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "19 / 32"
+      "footerPage": "21 / 34"
     },
     {
-      "slideId": "s20",
-      "index": 20,
+      "slideId": "s22",
+      "index": 22,
       "title": "01-2-3 例子",
       "layout": "table",
       "hero": false,
@@ -938,11 +1040,11 @@
         "AI 講得很有把握時最危險：規定、期限、稅率、價格，以公司公告或官方原文為準。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "20 / 32"
+      "footerPage": "22 / 34"
     },
     {
-      "slideId": "s21",
-      "index": 21,
+      "slideId": "s23",
+      "index": 23,
       "title": "01-3 章節頁",
       "layout": "hero",
       "hero": true,
@@ -957,11 +1059,11 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "21 / 32"
+      "footerPage": "23 / 34"
     },
     {
-      "slideId": "s22",
-      "index": 22,
+      "slideId": "s24",
+      "index": 24,
       "title": "01-3-1 找題目",
       "layout": "cards-two",
       "hero": false,
@@ -1000,11 +1102,11 @@
         "痛點是起點；小到 8 週可以示範的那一句，才是題目。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "22 / 32"
+      "footerPage": "24 / 34"
     },
     {
-      "slideId": "s23",
-      "index": 23,
+      "slideId": "s25",
+      "index": 25,
       "title": "01-3-1 例子",
       "layout": "table",
       "hero": false,
@@ -1064,11 +1166,11 @@
         "選一個你真的遇過的，不要三個一起做。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "23 / 32"
+      "footerPage": "25 / 34"
     },
     {
-      "slideId": "s24",
-      "index": 24,
+      "slideId": "s26",
+      "index": 26,
       "title": "01-3-2 範圍卡",
       "layout": "cards-six",
       "hero": false,
@@ -1132,11 +1234,11 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "24 / 32"
+      "footerPage": "26 / 34"
     },
     {
-      "slideId": "s25",
-      "index": 25,
+      "slideId": "s27",
+      "index": 27,
       "title": "01-3-2 範圍卡例子",
       "layout": "table",
       "hero": false,
@@ -1182,11 +1284,11 @@
         "這張卡還沒有程式，但已經夠讓別人判斷：8 週做不做得完。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "25 / 32"
+      "footerPage": "27 / 34"
     },
     {
-      "slideId": "s26",
-      "index": 26,
+      "slideId": "s28",
+      "index": 28,
       "title": "01-3-2 MVP 排序",
       "layout": "cards-two",
       "hero": false,
@@ -1229,18 +1331,18 @@
         "Won't 籃子裡的東西，直接抄進提案的「不做事項」。AI 的排序只是參考，決定是你的。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "26 / 32"
+      "footerPage": "28 / 34"
     },
     {
-      "slideId": "s27",
-      "index": 27,
+      "slideId": "s29",
+      "index": 29,
       "title": "提案範本",
       "layout": "table",
       "hero": false,
       "eyebrow": "01-3-3 / 一頁式專案提案",
       "kicker": "",
       "h1": "",
-      "h2": "九個欄位，一頁寫完（範例：設備報修工單助理）",
+      "h2": "九個欄位，一頁寫完（範例：Northgo 中文詢價助理）",
       "lead": "",
       "stamp": "",
       "cards": [],
@@ -1254,70 +1356,70 @@
         [
           "1 題目",
           "一句話，8 週做得完",
-          "設備報修工單助理：只做報修建立與狀態追蹤"
+          "Northgo 中文詢價助理：只做中文詢價表單、AI 分流與回覆草稿"
         ],
         [
           "2 使用者",
           "誰按、誰看、誰核准",
-          "同事報修；總務指派與改狀態；主管看全部"
+          "潛在客戶送出；各服務窗口回覆；主管看全部"
         ],
         [
           "3 痛點",
           "現在怎麼做、哪裡卡住",
-          "電話或群組報修，講完沒紀錄，進度要一直問"
+          "中文版內容仍是英文；8 個必填，手機要滑 2.5 個畫面才送出"
         ],
         [
           "4 流程",
           "開始到結束，標出 AI 與人",
-          "填單 → AI 整理欄位 → 總務指派 → 處理 → 總務結案"
+          "填中文表單 → AI 摘要並建議服務別 → 寄給窗口 → 窗口改 AI 草稿 → 寄出"
         ],
         [
           "5 輸入／輸出",
           "人交進來什麼、系統交回什麼",
-          "地點、設備、描述、照片 → 有編號與狀態的工單"
+          "公司、聯絡人、Email、服務、需求描述 → 有編號與狀態的詢價單＋確認信"
         ],
         [
           "6 AI 負責什麼",
           "只寫被允許的步驟",
-          "口語整理成欄位、建議分類與急迫度"
+          "摘要需求、建議服務分類、草擬回覆；不報價"
         ],
         [
           "7 人工確認點",
           "最後一下由人按，至少兩個",
-          "指派維修、結案"
+          "回覆與報價由窗口確認後寄出；分類有疑問由人改"
         ],
         [
           "8 不做事項",
           "至少三條",
-          "不串採購、不算費用、不讓 AI 結案、不做手機 App"
+          "不做線上報價、不串貨況或 ERP、不改英文版其他頁、不做日／越文"
         ],
         [
           "9 里程碑",
           "對到課程 8 週",
-          "W2 畫面 → W4 表單 → W5 存資料 → W8 上線 Demo"
+          "W2 表單畫面 → W4 驗證 → W5 存詢價 → W6 窗口後台 → W8 Demo"
         ]
       ],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "27 / 32"
+      "footerPage": "29 / 34"
     },
     {
-      "slideId": "s28",
-      "index": 28,
+      "slideId": "s30",
+      "index": 30,
       "title": "練習 C",
       "layout": "flow",
       "hero": false,
       "eyebrow": "01-3-3 / 練習 C · 38′（20:47–21:25）",
       "kicker": "",
       "h1": "",
-      "h2": "現在就寫出你的一頁提案",
+      "h2": "現在就寫出你的一頁提案（Northgo 官網改善）",
       "lead": "",
       "stamp": "",
       "cards": [],
       "flowSteps": [
         {
           "title": "選題 3′",
-          "description": "從練習 A 或六個部門例子挑一個，寫成一句題目。"
+          "description": "從案例三個改善機會挑一個（或用自己的題目），寫成一句題目。"
         },
         {
           "title": "範圍卡 8′",
@@ -1338,14 +1440,14 @@
       ],
       "table": [],
       "callouts": [
-        "卡住了？就用請假、報修或客戶詢問其中一個題目，先把九格寫完。"
+        "卡住了？就用「Northgo 中文詢價助理」，先把九格寫完。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "28 / 32"
+      "footerPage": "30 / 34"
     },
     {
-      "slideId": "s29",
-      "index": 29,
+      "slideId": "s31",
+      "index": 31,
       "title": "講師回饋",
       "layout": "cards-three",
       "hero": false,
@@ -1387,18 +1489,18 @@
         "講師只看三件事：題目是否太寬、不做事項是否清楚、人工確認點有沒有漏。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "29 / 32"
+      "footerPage": "31 / 34"
     },
     {
-      "slideId": "s30",
-      "index": 30,
+      "slideId": "s32",
+      "index": 32,
       "title": "8 週里程碑",
       "layout": "flow",
       "hero": false,
       "eyebrow": "01-3-3 / 範本第 9 格",
       "kicker": "",
       "h1": "",
-      "h2": "把你的題目放進 8 週：以設備報修工單助理為例",
+      "h2": "把你的題目放進 8 週：以 Northgo 中文詢價助理為例",
       "lead": "",
       "stamp": "",
       "cards": [],
@@ -1409,7 +1511,7 @@
         },
         {
           "title": "W2 畫面",
-          "description": "畫出報修表單與進度頁"
+          "description": "中文表單與確認頁"
         },
         {
           "title": "W3 首版",
@@ -1417,15 +1519,15 @@
         },
         {
           "title": "W4 表單",
-          "description": "必填與照片檢查"
+          "description": "必填與 Email 格式檢查"
         },
         {
           "title": "W5 存資料",
-          "description": "工單存得下來、查得到"
+          "description": "詢價存得下來、有編號"
         },
         {
           "title": "W6 後台",
-          "description": "總務看列表、改狀態"
+          "description": "窗口看列表、改狀態"
         },
         {
           "title": "W7 測試",
@@ -1441,11 +1543,11 @@
         "排不進 8 週，通常是題目還太大：先刪功能，再寫里程碑。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "30 / 32"
+      "footerPage": "32 / 34"
     },
     {
-      "slideId": "s31",
-      "index": 31,
+      "slideId": "s33",
+      "index": 33,
       "title": "今天帶走三句話",
       "layout": "cards-three",
       "hero": false,
@@ -1485,11 +1587,11 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "31 / 32"
+      "footerPage": "33 / 34"
     },
     {
-      "slideId": "s32",
-      "index": 32,
+      "slideId": "s34",
+      "index": 34,
       "title": "作業與下週",
       "layout": "cards-two",
       "hero": false,
@@ -1539,7 +1641,7 @@
         "作業在課堂上討論：現在先確認怎麼改，下週開場帶修改後的提案，課堂上一起檢討。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "32 / 32"
+      "footerPage": "34 / 34"
     }
   ]
 }
