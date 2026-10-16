@@ -18,15 +18,15 @@
       "slideId": "s1",
       "index": 1,
       "title": "封面",
-      "sourceHash": "d97cc871904e65951f5c58beb7a36cdc870759944a00bb47dd61e6186df4f56b",
+      "sourceHash": "749f85e85d0b626453aa39b283947cacc3a1739b2177ca707b285aa5a08324d3",
       "extractedContent": {
         "eyebrow": "",
-        "kicker": "文化大學推廣部｜1151 碩專班｜2026-10-17 週六",
+        "kicker": "文化大學推廣部｜1151 碩專班｜2026-10-17 週六 13:10｜W5",
         "headings": [
-          "2026-10-17｜巨量1151課前簡報"
+          "2026-10-17｜巨量1151 W5 · 固定驗收集"
         ],
-        "lead": "巨量資料挖掘與分析。本週新繳件資料較少，採『複習＋PBL 工作室』版。",
-        "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · ←→ 翻頁 · F 全螢幕 · 12 頁 · 16:9",
+        "lead": "巨量資料挖掘與分析。本週新繳件資料偏薄，採『複習＋PBL 工作室』版。",
+        "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · W5 · AISDLC Deploy · ←→ 翻頁 · F 全螢幕 · 12 頁 · 16:9",
         "cards": [],
         "table": null,
         "flowSteps": [
@@ -39,8 +39,8 @@
             "description": "SRS 共通觀察"
           },
           {
-            "title": "W4",
-            "description": "最小可跑系統"
+            "title": "W5",
+            "description": "固定驗收集"
           },
           {
             "title": "工作室",
@@ -52,10 +52,14 @@
           }
         ],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "各位好，我是黃燕忠。今天是十月十日、第四週。本週新繳的作業比較少，所以這堂改成複習加 PBL 工作室。等一下先回顧上週，再看作業三 SRS 的共通觀察，接著把 W4 最小可跑系統講清楚。後半段各組 demo、我抽查基線、系統、證據，最後用下課檢查清單收尾。",
-      "estimatedSeconds": 30,
+      "script": "各位好，我是黃燕忠。今天是十月十七日、第五週，下午一點十分。主題是固定驗收集，對上 AISDLC 的 Deploy。本週新繳的作業資料偏薄，所以這堂改成複習加 PBL 工作室。等一下先回顧上週，再看作業三 SRS 的共通觀察，接著把固定驗收集怎麼鎖住講清楚。後半段各組 demo、我抽查基線、系統、證據，最後用下課檢查清單收尾。",
+      "estimatedSeconds": 35,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -71,7 +75,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -80,39 +84,43 @@
       "slideId": "s2",
       "index": 2,
       "title": "學習目標",
-      "sourceHash": "b972181a263138c36d10f8d4be8ae3e797644860aa25cb0d0d3e1f91e195429d",
+      "sourceHash": "5efa262d7a4d894330c644b0c30885bb36ee9b020d20afe4dfef7f1209e36cc3",
       "extractedContent": {
         "eyebrow": "02 / 本週學習目標",
         "kicker": "",
         "headings": [
-          "從 SRS 走到最小可跑，而且能跟基線對上"
+          "鎖住固定驗收集：同一組輸入，重跑才算數"
         ],
         "lead": "",
         "stamp": "",
         "cards": [
           {
-            "heading": "SRS → 最小可跑系統",
-            "paragraph": "挑一個功能需求，切出最短的輸入、處理、輸出。文件停在 SRS，這週還不算做完。",
+            "heading": "鎖定固定驗收集",
+            "paragraph": "把樣例 CSV 或那一組輸入凍結、標上版本。這週之後不再默默換檔。",
             "bullets": []
           },
           {
-            "heading": "可重跑的跑法",
-            "paragraph": "外面附三到五行。換一台電腦、換一個人，照著跑要得到同一份輸出。",
+            "heading": "同一組輸入可重現",
+            "paragraph": "重跑要得到同一份輸出。跑法寫三到五行，換一台電腦、換一個人，照著能重現。",
             "bullets": []
           },
           {
-            "heading": "用基線對照",
-            "paragraph": "系統輸出跟現況基線比一個指標。沒有對照，就還不知道有沒有比較好。",
+            "heading": "準備 W6 證據包",
+            "paragraph": "記下預期輸出，以及跟基線比的那一個指標。下週要收成敢給人看的證據包。",
             "bullets": []
           }
         ],
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "這週只要帶走三件事。第一，SRS 不要停在文件，要走到一個最小可跑系統，從一個功能需求切最短路徑。第二，跑法要短，三到五行，別人換一台電腦也能重跑，而且得到同一份輸出。第三，輸出要跟你的現況基線比一個指標。離開教室前，你要能指出：最小路徑是哪個功能需求、怎麼重跑、比的是哪個指標。",
-      "estimatedSeconds": 31,
+      "script": "這週只要帶走三件事。第一，把固定驗收集鎖住，樣例 CSV 或那一組輸入要凍結、標上版本，之後不能默默換檔。第二，同一組輸入重跑，要得到同一份輸出；跑法寫三到五行，別人照著能重現。第三，為下週的證據包做準備：預期輸出寫下來，並且跟基線比一個指標。離開教室前，你要能指出驗收集是哪一份、哪個版本，重跑得到什麼，比的是哪個指標。",
+      "estimatedSeconds": 35,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -128,7 +136,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -137,12 +145,12 @@
       "slideId": "s3",
       "index": 3,
       "title": "W3–W6",
-      "sourceHash": "f7170028a34e2b1e8d6fe243cf8d0d3323891080c5cafffcb28324603a079a18",
+      "sourceHash": "32b5e831c3a6b05f41797858c21bcdf9f07e786b72c923b782994b15c1fe3695",
       "extractedContent": {
         "eyebrow": "03 / W3–W6 的意義",
         "kicker": "",
         "headings": [
-          "四道品質門，本週停在最小可跑"
+          "四道品質門，本週停在固定驗收集"
         ],
         "lead": "複習用。週次不是文號，是你要交出的證明。",
         "stamp": "",
@@ -157,7 +165,7 @@
             ]
           },
           {
-            "heading": "本週：證明做得出來",
+            "heading": "上週：證明做得出來",
             "paragraph": "",
             "bullets": [
               "固定樣例進、輸出表出",
@@ -166,7 +174,7 @@
             ]
           },
           {
-            "heading": "證明不是運氣",
+            "heading": "本週：證明不是運氣",
             "paragraph": "",
             "bullets": [
               "同一組輸入重跑，結果對得起來",
@@ -175,7 +183,7 @@
             ]
           },
           {
-            "heading": "證明敢給人看",
+            "heading": "下週：證明敢給人看",
             "paragraph": "",
             "bullets": [
               "前後對照＋限制／失敗一頁",
@@ -187,9 +195,13 @@
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "先複習四道門。W3 是基線定稿，用數字、期間、口徑、來源講出現在有多痛，別人照著能重算。W4 就是本週，最小可跑系統，證明做得出來；流程圖不算。W5 是固定驗收集，同一組輸入重跑，結果要對得起來，證明不是剛好一次。W6 是證據包，前後對照和限制寫清楚，敢給人看才叫專案。",
+      "script": "先複習四道門。W3 是基線定稿，用數字、期間、口徑、來源講出現在有多痛，別人照著能重算。W4 是上週，最小可跑系統，證明做得出來；流程圖不算。W5 就是本週，固定驗收集，同一組輸入重跑，結果要對得起來，證明不是剛好一次。W6 是證據包，前後對照和限制寫清楚，敢給人看才叫專案。",
       "estimatedSeconds": 30,
       "status": "draft",
       "voice": {
@@ -206,7 +218,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -215,7 +227,7 @@
       "slideId": "s4",
       "index": 4,
       "title": "三硬門檻與 5V",
-      "sourceHash": "85518669d97728f1ba4d42801c5a593ad63078c6fcf49c229170443fb38c1a63",
+      "sourceHash": "dfdfaae491977f3bac5afdd80eb8cb975e402d442927b71fcc44288a92b2610d",
       "extractedContent": {
         "eyebrow": "04 / 三硬門檻 × 5V",
         "kicker": "",
@@ -231,13 +243,13 @@
             "bullets": []
           },
           {
-            "heading": "對 W4 · 本週",
+            "heading": "對 W4 · 上週",
             "paragraph": "可執行檔或 notebook，有輸入、處理、輸出與跑法。聊天截圖與流程圖都不算。",
             "bullets": []
           },
           {
-            "heading": "對 W5–W6",
-            "paragraph": "固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。",
+            "heading": "對 W5 · 本週",
+            "paragraph": "固定驗收集可重跑；預期輸出與基線指標寫下來。W6 再收成證據包，限制與失敗仍要一頁。",
             "bullets": []
           },
           {
@@ -260,10 +272,14 @@
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "三硬門檻對上這幾週：基線對 W3，系統對 W4，證據對 W5 和 W6。5V 是 Volume 資料量、Velocity 更新速度、Variety 資料型態、Veracity 可不可信、Value 有沒有用。至少三項要標得了「有」，Value 和 Veracity 不能是無。沒有可點開的檔，最多只能標弱。缺基線的模型，先不要談。",
-      "estimatedSeconds": 33,
+      "script": "三硬門檻對上這幾週：基線對 W3，系統對上週的 W4，證據對本週的 W5，並接到 W6。固定驗收集要可重跑，預期輸出和基線指標寫下來，限制與失敗仍要一頁。5V 是 Volume 資料量、Velocity 更新速度、Variety 資料型態、Veracity 可不可信、Value 有沒有用。至少三項要標得了「有」，Value 和 Veracity 不能是無。沒有可點開的檔，最多只能標弱。缺基線的模型，先不要談。",
+      "estimatedSeconds": 43,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -279,7 +295,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -288,7 +304,7 @@
       "slideId": "s5",
       "index": 5,
       "title": "AISDLC 週次對照",
-      "sourceHash": "9fa33ded43bf652cd868afbb2d92a0d8588f23581cb21cb48443981d09482d13",
+      "sourceHash": "e975908a4abac213ab202edc93aeecc79b40ca6ba54fae3c16ffbdac45423a14",
       "extractedContent": {
         "eyebrow": "05 / AISDLC × 週次",
         "kicker": "",
@@ -315,12 +331,12 @@
             "SRS＋基線"
           ],
           [
-            "W4 · 本週",
+            "W4",
             "Develop",
             "最小可跑系統"
           ],
           [
-            "W5",
+            "W5 · 本週",
             "Deploy",
             "上線前的固定驗收集"
           ],
@@ -333,11 +349,15 @@
         "flowSteps": [],
         "svgLabels": [],
         "callouts": [
-          "本週停在 Develop：先把最小系統跑起來。Define 的數字與 Diagnose 的失敗說明，仍是你的責任。"
-        ]
+          "本週停在 Deploy：把固定驗收集鎖住，同一組輸入重跑要對得起來。Develop 的最小系統與 Diagnose 的失敗說明，仍是你的責任。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "AISDLC 六步：Discover、Define、Design、Develop、Deploy、Diagnose。對到週次是這樣：第一、二週做需求盤點和 Use Case；第三週是 SRS 加基線；本週第四週做最小系統；第五週是上線前的固定驗收集；第六週把證據包收齊。AI 可以加速 Develop，但基線數字和失敗說明還是你的責任。",
-      "estimatedSeconds": 36,
+      "script": "AISDLC 六步：Discover、Define、Design、Develop、Deploy、Diagnose。對到週次是這樣：第一、二週做需求盤點和 Use Case；第三週是 SRS 加基線；第四週 Develop，做最小可跑系統；本週第五週是 Deploy，上線前的固定驗收集；第六週 Diagnose，把證據包收齊。這週停在 Deploy：同一組輸入重跑要對得起來。最小系統和失敗說明，還是你的責任。",
+      "estimatedSeconds": 44,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -353,7 +373,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -362,14 +382,14 @@
       "slideId": "s6",
       "index": 6,
       "title": "作業三 SRS 觀察",
-      "sourceHash": "2eb48ba229e34ea712e8ec6bbd624ed8481def6617d691c60e278f10841bbcae",
+      "sourceHash": "5448ebd1db2f55042f48dabf142160abb905e1160a6d8c23e1c8af27f75e9845",
       "extractedContent": {
         "eyebrow": "06 / 作業三 SRS 共通觀察（去名化）",
         "kicker": "",
         "headings": [
           "六項看齊了沒有；缺口仍是那幾類"
         ],
-        "lead": "不點名、不公布個人分數。只講班級共通的地方。",
+        "lead": "不點名、不公布個人分數。本週沒有新的繳件夾，沿用作業三的班級共通觀察。",
         "stamp": "",
         "cards": [
           {
@@ -408,10 +428,14 @@
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "作業三看的是 SRS 六項：使用者與管理者、功能需求、非功能需求、資料與系統、權限與人工核准、成功失敗和停止條件。共通問題有四類：缺現況基線數字；指標口徑前後不一致，例如 R 平方；題目要避開博弈和投注建議；5V 還待補。做得好的，是六項齊，而且驗收條件量得出來。這裡不點名，也不公布個人分數。",
-      "estimatedSeconds": 32,
+      "script": "本週沒有新的繳件夾，所以作業三的觀察沿用，仍然去名化，不點名、也不公布個人分數。SRS 六項是：使用者與管理者、功能需求、非功能需求、資料與系統、權限與人工核准、成功失敗和停止條件。共通問題有四類：缺現況基線數字；指標口徑前後不一致，例如 R 平方；題目要避開博弈和投注建議；5V 還待補。做得好的，是六項齊，驗收條件量得出來，成功、失敗、停止寫得具體。",
+      "estimatedSeconds": 38,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -427,7 +451,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -435,35 +459,35 @@
     {
       "slideId": "s7",
       "index": 7,
-      "title": "W4 怎麼做",
-      "sourceHash": "5879bed8267fdbb60654598e0a77d6130aca406eb67e99f323b0e3e80406658b",
+      "title": "W5 怎麼做",
+      "sourceHash": "f8571e920deae362e537021ceeb8cc010efeda9cd8ffb1ded2938680d94b1957",
       "extractedContent": {
-        "eyebrow": "07 / W4 最小可跑系統",
+        "eyebrow": "07 / W5 固定驗收集",
         "kicker": "",
         "headings": [
-          "從一個 FR 切開，跑完一條最短路徑"
+          "凍結樣例、版本化，預期輸出寫下來"
         ],
         "lead": "",
         "stamp": "",
         "cards": [
           {
-            "heading": "只留一個 FR",
-            "paragraph": "其餘功能需求先標「這週不做」。路徑要短到這週跑得完。",
+            "heading": "CSV 或一組輸入",
+            "paragraph": "這週起這份就是驗收集。不再默默換成另一份資料。",
             "bullets": []
           },
           {
-            "heading": "CSV → 模型／規則 → 輸出表",
-            "paragraph": "樣例檔固定。不要每次換一份資料，還說結果不一樣。",
+            "heading": "換檔要留紀錄",
+            "paragraph": "檔名或版本號留得下來。要換，就記一筆，不能靜默覆蓋。",
             "bullets": []
           },
           {
-            "heading": "只比一個指標",
-            "paragraph": "口徑寫清楚，而且跟前面作業用同一套定義。",
+            "heading": "再對一個基線指標",
+            "paragraph": "記下重跑應該得到的輸出，以及跟基線比的那一個指標。口徑跟前面作業同一套。",
             "bullets": []
           },
           {
-            "heading": "失敗也要寫出來",
-            "paragraph": "沒達標、資料不夠、不能上線的原因，集中一頁。",
+            "heading": "別人照著能重現",
+            "paragraph": "寫下怎麼重跑。換一台電腦、換一個人，要得到同一份輸出。",
             "bullets": []
           }
         ],
@@ -471,11 +495,15 @@
         "flowSteps": [],
         "svgLabels": [],
         "callouts": [
-          "不算跑完：只有流程圖，或只有聊天截圖。要有進得去的樣例、出得來的表、以及三到五行跑法。"
-        ]
+          "不算驗收：每次偷偷換一份資料，或只跑過一次就收工。同一組輸入，重跑才算數。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "最小可跑系統這樣做。先從一個功能需求切最短路徑，其他先標這週不做。準備一份固定的樣例 CSV，進模型或規則，出來一張輸出表。然後只跟基線比一個指標，口徑要跟前面作業同一套。最後用一頁寫失敗和限制。只有流程圖或聊天截圖，都不算這條路徑跑完。",
-      "estimatedSeconds": 30,
+      "script": "固定驗收集這樣做。第一，凍結一份樣例 CSV，或凍結那一組輸入，這週起不再默默替換。第二，版本化：檔名或版本號留得下來，換檔要記一筆，不能靜默覆蓋。第三，記下預期輸出，以及跟基線比的那一個指標，口徑跟前面作業同一套。第四，跑法寫三到五行，換一台電腦、換一個人，照著要得到同一份輸出。只跑過一次，或每次偷偷換資料，都不算驗收。同一組輸入，重跑才算數。",
+      "estimatedSeconds": 38,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -491,7 +519,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -500,7 +528,7 @@
       "slideId": "s8",
       "index": 8,
       "title": "Grok Bot 參考實例",
-      "sourceHash": "8f2747665a93dcee4f9378e489653a2ce6999e56287fd2b64ffd4f0a0ad225e8",
+      "sourceHash": "81779b7b5a31e1852ec5116ac5c6c5009ded5caab0923e8504c2d23d8cc9d5fe",
       "extractedContent": {
         "eyebrow": "08 / Grok Bot × 巨量分析",
         "kicker": "",
@@ -527,7 +555,7 @@
           },
           {
             "heading": "去識別化範例",
-            "paragraph": "隔日麵包需求預測。同一條線走基線 → 最小系統 → 證據，不放真實客戶資料。",
+            "paragraph": "隔日麵包需求預測。同一條線走基線 → 最小系統 → 固定驗收集，不放真實客戶資料。",
             "bullets": []
           }
         ],
@@ -536,10 +564,14 @@
         "svgLabels": [],
         "callouts": [
           "人工核准與可追溯：這就是 SRS「權限／人工核准」的示範。建議要留得下是誰核准的，Bot 不能自己把草稿改成成績。"
-        ]
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "給你們一個這門課已經在用的參考。Grok Bot 當助教，每週讀 Drive 作業夾，依 5V、三硬門檻和 SRS 六項產生評分建議，但一定待我覆核，不會自動變成成績。週五會產出課前簡報和講稿，雲端代理再把 HTML 送上並開 pull request，合併前看得到改了什麼。這就是人工核准，而且走得到紀錄，對上 SRS 的權限與人工核准。北風烘焙是去識別化範例：隔日麵包需求預測，一樣走基線、系統、證據，不放真實客戶資料。",
-      "estimatedSeconds": 44,
+      "script": "給你們一個這門課已經在用的參考。Grok Bot 當助教，每週讀 Drive 作業夾，依 5V、三硬門檻和 SRS 六項產生評分建議，但一定待我覆核，不會自動變成成績。週五會產出課前簡報和講稿，雲端代理再把 HTML 送上並開 pull request，合併前看得到改了什麼。這就是人工核准，而且走得到紀錄。北風烘焙是去識別化範例：隔日麵包需求預測，同一條線走基線、最小系統、固定驗收集，不放真實客戶資料。",
+      "estimatedSeconds": 43,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -555,7 +587,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -564,7 +596,7 @@
       "slideId": "s9",
       "index": 9,
       "title": "AI 工具繳交規範",
-      "sourceHash": "12fa4f07df85115ea6e3912e5732306722e5558ffd4414f251251c7c92268a24",
+      "sourceHash": "c60b256d2ccc00181277f158721e095c518c04b7a0304fae4194f2b6742dc129",
       "extractedContent": {
         "eyebrow": "09 / AI 工具繳交規範",
         "kicker": "",
@@ -580,7 +612,7 @@
             "bullets": [
               "必交專案檔",
               "可重跑的 3–5 行跑法",
-              "固定樣例的輸入＋輸出",
+              "固定驗收集的輸入＋預期輸出",
               "註明 AI 產生段落，以及你怎麼驗收"
             ]
           },
@@ -589,7 +621,7 @@
             "paragraph": "",
             "bullets": [
               "只有聊天截圖",
-              "不可重現的輸出",
+              "默默換掉驗收集",
               "每次重跑答案都不一樣"
             ]
           },
@@ -617,10 +649,14 @@
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "AI 工具這門課允許 Cursor、Claude、Codex、Grok Bot。要交的是專案檔、三到五行可重跑的跑法、固定樣例的輸入和輸出，並且註明哪一段是 AI 產生的、你怎麼驗收。只有聊天截圖，或每次重跑結果都不一樣，不算過關。繳件四件：基線數字表一頁、可執行檔或 notebook 含跑法、一頁限制與失敗、封面姓名學號。",
-      "estimatedSeconds": 35,
+      "script": "AI 工具這門課允許 Cursor、Claude、Codex、Grok Bot。要交的是專案檔、三到五行可重跑的跑法、固定驗收集的輸入和預期輸出，並且註明哪一段是 AI 產生的、你怎麼驗收。只有聊天截圖、默默換掉驗收集，或每次重跑結果都不一樣，不算過關。繳件四件：基線數字表一頁、可執行檔或 notebook 含跑法、一頁限制與失敗、封面姓名學號。",
+      "estimatedSeconds": 37,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -636,7 +672,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -645,7 +681,7 @@
       "slideId": "s10",
       "index": 10,
       "title": "PBL 雙軌",
-      "sourceHash": "6b73e34c273aa047d8cd7c72b9a73b43721af4fbe7f25c5a023e7e37b4cc52b2",
+      "sourceHash": "ee59ef723466e34d38ce97920b2833f6ef65c17695fc67042516895e49475840",
       "extractedContent": {
         "eyebrow": "10 / PBL 雙軌",
         "kicker": "",
@@ -661,8 +697,8 @@
             "bullets": [
               "基線表：數字＋期間＋口徑＋來源",
               "一條最小可跑路徑",
-              "固定樣例、跑法、一個對照指標",
-              "限制／失敗寫一頁"
+              "驗收集已凍結、版本化，跑法 3–5 行",
+              "一個指標對基線；限制／失敗寫一頁"
             ]
           },
           {
@@ -681,10 +717,14 @@
         "svgLabels": [],
         "callouts": [
           "超前換到的是展示與分享。不會因為做得比較深，就提早放期末分。門檻空白，加碼也不計。"
-        ]
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "PBL 兩條軌。S 軌求穩，先把必過項做完：基線、一條最小路徑、固定樣例和跑法、一個對照指標、限制頁。F 軌是過了門檻再加碼，例如多指標基線、真實 API 或排程、CI 或儀表板、A/B 或回測。超前可以換展示和分享，不會因此提早給期末分數。門檻是空白的，加碼也不計。",
-      "estimatedSeconds": 30,
+      "script": "PBL 兩條軌。S 軌求穩，先把必過項做完：基線、一條最小路徑、已凍結並版本化的驗收集、三到五行跑法、一個對照指標、限制頁。F 軌是過了門檻再加碼，例如多指標基線、真實 API 或排程、CI 或儀表板、A/B 或回測。超前可以換展示和分享，不會因此提早給期末分數。門檻是空白的，加碼也不計。",
+      "estimatedSeconds": 31,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -700,7 +740,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -709,7 +749,7 @@
       "slideId": "s11",
       "index": 11,
       "title": "本週作業與工作室",
-      "sourceHash": "34afc15d112594061ed34f2eb42e515a56f43ae70575c0cd6745b96008f6aff0",
+      "sourceHash": "7d834f8ba3265cd1a56670bfe080d22fe429e31396afd3b5872ac52dd4bbc799",
       "extractedContent": {
         "eyebrow": "11 / 本週作業與工作室",
         "kicker": "",
@@ -726,7 +766,7 @@
           },
           {
             "heading": "組別 demo",
-            "paragraph": "打開檔、跑一次、指到輸出。口述流程圖請收起來。",
+            "paragraph": "打開檔、用固定驗收集重跑一次、指到輸出。口述流程圖請收起來。",
             "bullets": []
           },
           {
@@ -739,10 +779,14 @@
         "flowSteps": [],
         "svgLabels": [],
         "callouts": [
-          "W5 前繳：最小可跑系統＋固定樣例輸入與輸出＋跑法＋與基線比較一個指標。"
-        ]
+          "W6 前：固定驗收集＋重跑證明＋與基線比較一個指標。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "等一下工作室這樣走。我先做短講評，仍然去名化，不公布個人分數。各組 demo 三分鐘，打開檔、跑一次、指到輸出。我會抽查基線、系統、證據。W5 之前要繳的是：最小可跑系統、固定樣例的輸入與輸出、跑法，以及跟基線比較的一個指標。",
+      "script": "等一下工作室這樣走。我先做短講評，仍然去名化，不公布個人分數。各組 demo 三分鐘：打開檔、用固定驗收集重跑一次、指到輸出。我會抽查基線、系統、證據，三格都要指得到。W6 之前要準備的是：固定驗收集、重跑證明，以及跟基線比較的一個指標。",
       "estimatedSeconds": 30,
       "status": "draft",
       "voice": {
@@ -759,7 +803,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
@@ -768,7 +812,7 @@
       "slideId": "s12",
       "index": 12,
       "title": "下課檢查清單",
-      "sourceHash": "732ca6fd2f7b50ac6fec29a371da259c03f01c4022afbf839e6d880708b5ddd0",
+      "sourceHash": "b653da005fef8bd711822ba7856776056ce49a909d2b074376e4cb03273a4117",
       "extractedContent": {
         "eyebrow": "12 / 下課檢查清單",
         "kicker": "",
@@ -779,20 +823,20 @@
         "stamp": "",
         "cards": [
           {
-            "heading": "先對得上，再離席",
+            "heading": "先鎖住，再離席",
             "paragraph": "",
             "bullets": [
-              "基線表還在：數字、期間、口徑、來源",
-              "最小路徑對得上一個 FR",
-              "固定樣例進得去，輸出表出得來"
+              "驗收集已凍結並標上版本，沒有默默換檔",
+              "同一組輸入重跑，輸出對得上預期",
+              "跟基線比過一個指標，口徑前後一致"
             ]
           },
           {
             "heading": "別人重跑得了，才算數",
             "paragraph": "",
             "bullets": [
-              "跑法 3–5 行，重跑得到同一份輸出",
-              "跟基線比過一個指標，口徑前後一致",
+              "跑法 3–5 行，換人換機仍得到同一份輸出",
+              "基線表還在：數字、期間、口徑、來源",
               "限制／失敗寫了一頁；封面有姓名學號"
             ]
           }
@@ -800,9 +844,13 @@
         "table": null,
         "flowSteps": [],
         "svgLabels": [],
-        "callouts": []
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
       },
-      "script": "下課前對六項。基線表有數字、期間、口徑、來源。最小路徑對得上一個功能需求。固定樣例進得去、輸出表出得來。跑法三到五行，重跑得到同一份輸出。跟基線比過一個指標，口徑前後一致。限制和失敗寫了一頁，封面有姓名學號。口號帶走：先有基線，再談模型；能重跑，才算數。",
+      "script": "下課前對一下。驗收集已凍結並標上版本，沒有默默換檔。同一組輸入重跑，輸出對得上預期。跟基線比過一個指標，口徑前後一致。跑法三到五行，別人照著能重現。基線表還在：數字、期間、口徑、來源。限制和失敗寫了一頁，封面有姓名學號。口號帶走：同一組輸入，重跑才算數；先有基線，再談模型。",
       "estimatedSeconds": 30,
       "status": "draft",
       "voice": {
@@ -819,15 +867,15 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-09T06:00:00.000Z",
+      "generatedAt": "2026-10-16T06:20:00.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中）。講師覆核前不視為核准稿。"
     }
   ],
   "meta": {
-    "lastExtractedAt": "2026-10-09T06:00:00.000Z",
-    "totalEstimatedSeconds": 391,
+    "lastExtractedAt": "2026-10-16T06:20:00.000Z",
+    "totalEstimatedSeconds": 434,
     "ttsCostEstimateUsd": 0
   }
 }

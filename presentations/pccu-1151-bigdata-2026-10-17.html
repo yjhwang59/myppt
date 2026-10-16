@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="文化大學推廣部「巨量資料挖掘與分析」1151 碩專班｜2026-10-17 課前簡報：複習 W3–W6、作業三 SRS 共通觀察、W4 最小可跑系統與 PBL 工作室。講師：黃燕忠。">
-  <title>2026-10-17｜巨量1151｜課前簡報</title>
+  <meta name="description" content="文化大學推廣部「巨量資料挖掘與分析」1151 碩專班｜2026-10-17 課前簡報：W5 固定驗收集（AISDLC Deploy）、複習 W3–W6、作業三 SRS 共通觀察與 PBL 工作室。講師：黃燕忠。">
+  <title>2026-10-17｜巨量1151｜W5 固定驗收集</title>
   <style>
     :root {
       --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
@@ -219,9 +219,10 @@
   <main id="deck">
 
     <section class="slide hero active" id="s1" data-title="封面">
-      <p class="kicker">文化大學推廣部｜1151 碩專班｜2026-10-17 週六</p>
-      <h1>2026-10-17｜巨量1151<br>課前簡報</h1>
-      <p class="lead">巨量資料挖掘與分析。本週新繳件資料較少，採『複習＋PBL 工作室』版。</p>
+      <p class="kicker">文化大學推廣部｜1151 碩專班｜2026-10-17 週六 13:10｜W5</p>
+      <h1>2026-10-17｜巨量1151<br>
+W5 · 固定驗收集</h1>
+      <p class="lead">巨量資料挖掘與分析。本週新繳件資料偏薄，採『複習＋PBL 工作室』版。</p>
       <div class="flow" role="list">
         <div class="flow-step" role="listitem">
           <div class="flow-num">1</div>
@@ -237,8 +238,8 @@
         <div class="flow-arrow" aria-hidden="true"></div>
         <div class="flow-step gate" role="listitem">
           <div class="flow-num">3</div>
-          <strong>W4</strong>
-          <p class="flow-desc">最小可跑系統</p>
+          <strong>W5</strong>
+          <p class="flow-desc">固定驗收集</p>
         </div>
         <div class="flow-arrow" aria-hidden="true"></div>
         <div class="flow-step" role="listitem">
@@ -253,7 +254,7 @@
           <p class="flow-desc">下課檢查清單</p>
         </div>
       </div>
-      <p class="stamp">講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問　·　←→ 翻頁　·　F 全螢幕　·　12 頁 · 16:9</p>
+      <p class="stamp">講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問　·　W5 · AISDLC Deploy　·　←→ 翻頁　·　F 全螢幕　·　12 頁 · 16:9</p>
       <div class="footer">
         <span class="instructor">AIDC.work 黃老師</span>
         <span>1 / 12</span>
@@ -262,25 +263,25 @@
 
     <section class="slide" id="s2" data-title="學習目標">
       <p class="eyebrow">02 / 本週學習目標</p>
-      <h2>從 SRS 走到最小可跑，而且能跟基線對上</h2>
+      <h2>鎖住固定驗收集：同一組輸入，重跑才算數</h2>
       <div class="grid three">
         <article class="card">
           <div class="num">01</div>
-          <strong>SRS → 最小可跑系統</strong>
-          <p>挑一個功能需求，切出最短的輸入、處理、輸出。文件停在 SRS，這週還不算做完。</p>
+          <strong>鎖定固定驗收集</strong>
+          <p>把樣例 CSV 或那一組輸入凍結、標上版本。這週之後不再默默換檔。</p>
         </article>
         <article class="card">
           <div class="num">02</div>
-          <strong>可重跑的跑法</strong>
-          <p>外面附三到五行。換一台電腦、換一個人，照著跑要得到同一份輸出。</p>
+          <strong>同一組輸入可重現</strong>
+          <p>重跑要得到同一份輸出。跑法寫三到五行，換一台電腦、換一個人，照著能重現。</p>
         </article>
         <article class="card">
           <div class="num">03</div>
-          <strong>用基線對照</strong>
-          <p>系統輸出跟現況基線比一個指標。沒有對照，就還不知道有沒有比較好。</p>
+          <strong>準備 W6 證據包</strong>
+          <p>記下預期輸出，以及跟基線比的那一個指標。下週要收成敢給人看的證據包。</p>
         </article>
       </div>
-      <div class="pitch">離開教室要能說：最小路徑是<strong>哪個 FR</strong>、跑法<strong>怎麼重跑</strong>、跟基線比的是<strong>哪一個指標</strong>。</div>
+      <div class="pitch">離開教室要能說：驗收集是<strong>哪一份、哪個版本</strong>、重跑<strong>得到什麼輸出</strong>、跟基線比的是<strong>哪一個指標</strong>。</div>
       <div class="footer">
         <span class="instructor">AIDC.work 黃老師</span>
         <span>2 / 12</span>
@@ -289,7 +290,7 @@
 
     <section class="slide" id="s3" data-title="W3–W6">
       <p class="eyebrow">03 / W3–W6 的意義</p>
-      <h2>四道品質門，本週停在最小可跑</h2>
+      <h2>四道品質門，本週停在固定驗收集</h2>
       <p class="lead">複習用。週次不是文號，是你要交出的證明。</p>
       <div class="grid four">
         <article class="card">
@@ -303,7 +304,7 @@
         </article>
         <article class="card">
           <div class="num">W4 · 最小可跑系統</div>
-          <strong>本週：證明做得出來</strong>
+          <strong>上週：證明做得出來</strong>
           <ul>
             <li>固定樣例進、輸出表出</li>
             <li>外面附三到五行跑法</li>
@@ -312,7 +313,7 @@
         </article>
         <article class="card">
           <div class="num">W5 · 固定驗收集</div>
-          <strong>證明不是運氣</strong>
+          <strong>本週：證明不是運氣</strong>
           <ul>
             <li>同一組輸入重跑，結果對得起來</li>
             <li>有對照，不是剛好跑一次</li>
@@ -321,7 +322,7 @@
         </article>
         <article class="card">
           <div class="num">W6 · 證據包</div>
-          <strong>證明敢給人看</strong>
+          <strong>下週：證明敢給人看</strong>
           <ul>
             <li>前後對照＋限制／失敗一頁</li>
             <li>檔案給得出去、可重跑</li>
@@ -346,13 +347,13 @@
         </article>
         <article class="card">
           <div class="num">系統</div>
-          <strong>對 W4 · 本週</strong>
+          <strong>對 W4 · 上週</strong>
           <p>可執行檔或 notebook，有輸入、處理、輸出與跑法。聊天截圖與流程圖都不算。</p>
         </article>
         <article class="card">
           <div class="num">證據</div>
-          <strong>對 W5–W6</strong>
-          <p>固定驗收集可重跑；限制與失敗寫一頁。敢給人看，才叫專案。</p>
+          <strong>對 W5 · 本週</strong>
+          <p>固定驗收集可重跑；預期輸出與基線指標寫下來。W6 再收成證據包，限制與失敗仍要一頁。</p>
         </article>
       </div>
       <div class="grid two">
@@ -401,12 +402,12 @@
             <td>SRS＋基線</td>
           </tr>
           <tr>
-            <td><strong>W4 · 本週</strong></td>
+            <td><strong>W4</strong></td>
             <td>Develop</td>
             <td>最小可跑系統</td>
           </tr>
           <tr>
-            <td><strong>W5</strong></td>
+            <td><strong>W5 · 本週</strong></td>
             <td>Deploy</td>
             <td>上線前的固定驗收集</td>
           </tr>
@@ -417,7 +418,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="callout"><strong>本週停在 Develop：</strong>先把最小系統跑起來。Define 的數字與 Diagnose 的失敗說明，仍是你的責任。</div>
+      <div class="callout"><strong>本週停在 Deploy：</strong>把固定驗收集鎖住，同一組輸入重跑要對得起來。Develop 的最小系統與 Diagnose 的失敗說明，仍是你的責任。</div>
       <div class="footer">
         <span class="instructor">AIDC.work 黃老師</span>
         <span>5 / 12</span>
@@ -427,7 +428,7 @@
     <section class="slide" id="s6" data-title="作業三 SRS 觀察">
       <p class="eyebrow">06 / 作業三 SRS 共通觀察（去名化）</p>
       <h2>六項看齊了沒有；缺口仍是那幾類</h2>
-      <p class="lead">不點名、不公布個人分數。只講班級共通的地方。</p>
+      <p class="lead">不點名、不公布個人分數。本週沒有新的繳件夾，沿用作業三的班級共通觀察。</p>
       <div class="grid three">
         <article class="card">
           <div class="num">SRS 六項</div>
@@ -468,32 +469,32 @@
       </div>
     </section>
 
-    <section class="slide" id="s7" data-title="W4 怎麼做">
-      <p class="eyebrow">07 / W4 最小可跑系統</p>
-      <h2>從一個 FR 切開，跑完一條最短路徑</h2>
+    <section class="slide" id="s7" data-title="W5 怎麼做">
+      <p class="eyebrow">07 / W5 固定驗收集</p>
+      <h2>凍結樣例、版本化，預期輸出寫下來</h2>
       <div class="grid four">
         <article class="card">
-          <div class="num">1 · 切路徑</div>
-          <strong>只留一個 FR</strong>
-          <p>其餘功能需求先標「這週不做」。路徑要短到這週跑得完。</p>
+          <div class="num">1 · 凍結樣例</div>
+          <strong>CSV 或一組輸入</strong>
+          <p>這週起這份就是驗收集。不再默默換成另一份資料。</p>
         </article>
         <article class="card">
-          <div class="num">2 · 固定樣例</div>
-          <strong>CSV → 模型／規則 → 輸出表</strong>
-          <p>樣例檔固定。不要每次換一份資料，還說結果不一樣。</p>
+          <div class="num">2 · 版本化</div>
+          <strong>換檔要留紀錄</strong>
+          <p>檔名或版本號留得下來。要換，就記一筆，不能靜默覆蓋。</p>
         </article>
         <article class="card">
-          <div class="num">3 · 對基線</div>
-          <strong>只比一個指標</strong>
-          <p>口徑寫清楚，而且跟前面作業用同一套定義。</p>
+          <div class="num">3 · 預期輸出</div>
+          <strong>再對一個基線指標</strong>
+          <p>記下重跑應該得到的輸出，以及跟基線比的那一個指標。口徑跟前面作業同一套。</p>
         </article>
         <article class="card">
-          <div class="num">4 · 限制一頁</div>
-          <strong>失敗也要寫出來</strong>
-          <p>沒達標、資料不夠、不能上線的原因，集中一頁。</p>
+          <div class="num">4 · 跑法 3–5 行</div>
+          <strong>別人照著能重現</strong>
+          <p>寫下怎麼重跑。換一台電腦、換一個人，要得到同一份輸出。</p>
         </article>
       </div>
-      <div class="callout"><strong>不算跑完：</strong>只有流程圖，或只有聊天截圖。要有進得去的樣例、出得來的表、以及三到五行跑法。</div>
+      <div class="callout"><strong>不算驗收：</strong>每次偷偷換一份資料，或只跑過一次就收工。同一組輸入，重跑才算數。</div>
       <div class="footer">
         <span class="instructor">AIDC.work 黃老師</span>
         <span>7 / 12</span>
@@ -523,7 +524,7 @@
         <article class="card">
           <div class="num">D · 北風烘焙</div>
           <strong>去識別化範例</strong>
-          <p>隔日麵包需求預測。同一條線走基線 → 最小系統 → 證據，不放真實客戶資料。</p>
+          <p>隔日麵包需求預測。同一條線走基線 → 最小系統 → 固定驗收集，不放真實客戶資料。</p>
         </article>
       </div>
       <div class="callout"><strong>人工核准與可追溯：</strong>這就是 SRS「權限／人工核准」的示範。建議要留得下是誰核准的，Bot 不能自己把草稿改成成績。</div>
@@ -543,7 +544,7 @@
           <ul>
             <li>必交專案檔</li>
             <li>可重跑的 3–5 行跑法</li>
-            <li>固定樣例的輸入＋輸出</li>
+            <li>固定驗收集的輸入＋預期輸出</li>
             <li>註明 AI 產生段落，以及你怎麼驗收</li>
           </ul>
         </article>
@@ -552,7 +553,7 @@
           <strong>不能重現，就不算交</strong>
           <ul>
             <li>只有聊天截圖</li>
-            <li>不可重現的輸出</li>
+            <li>默默換掉驗收集</li>
             <li>每次重跑答案都不一樣</li>
           </ul>
         </article>
@@ -595,8 +596,8 @@
           <ul>
             <li>基線表：數字＋期間＋口徑＋來源</li>
             <li>一條最小可跑路徑</li>
-            <li>固定樣例、跑法、一個對照指標</li>
-            <li>限制／失敗寫一頁</li>
+            <li>驗收集已凍結、版本化，跑法 3–5 行</li>
+            <li>一個指標對基線；限制／失敗寫一頁</li>
           </ul>
         </article>
         <article class="card">
@@ -629,7 +630,7 @@
         <article class="card">
           <div class="num">3 分鐘</div>
           <strong>組別 demo</strong>
-          <p>打開檔、跑一次、指到輸出。口述流程圖請收起來。</p>
+          <p>打開檔、用固定驗收集重跑一次、指到輸出。口述流程圖請收起來。</p>
         </article>
         <article class="card">
           <div class="num">抽查</div>
@@ -637,7 +638,7 @@
           <p>三格都要指得到。缺一格，這週就還在補門，不在加碼。</p>
         </article>
       </div>
-      <div class="callout"><strong>W5 前繳：</strong>最小可跑系統＋固定樣例輸入與輸出＋跑法＋與基線比較一個指標。</div>
+      <div class="callout"><strong>W6 前：</strong>固定驗收集＋重跑證明＋與基線比較一個指標。</div>
       <div class="footer">
         <span class="instructor">AIDC.work 黃老師</span>
         <span>11 / 12</span>
@@ -649,27 +650,27 @@
       <h2>走之前對一下這六項</h2>
       <div class="grid two">
         <article class="card">
-          <div class="num">系統與基線</div>
-          <strong>先對得上，再離席</strong>
+          <div class="num">驗收集</div>
+          <strong>先鎖住，再離席</strong>
           <ul>
-            <li>基線表還在：數字、期間、口徑、來源</li>
-            <li>最小路徑對得上一個 FR</li>
-            <li>固定樣例進得去，輸出表出得來</li>
+            <li>驗收集已凍結並標上版本，沒有默默換檔</li>
+            <li>同一組輸入重跑，輸出對得上預期</li>
+            <li>跟基線比過一個指標，口徑前後一致</li>
           </ul>
         </article>
         <article class="card">
           <div class="num">跑法與證據</div>
           <strong>別人重跑得了，才算數</strong>
           <ul>
-            <li>跑法 3–5 行，重跑得到同一份輸出</li>
-            <li>跟基線比過一個指標，口徑前後一致</li>
+            <li>跑法 3–5 行，換人換機仍得到同一份輸出</li>
+            <li>基線表還在：數字、期間、口徑、來源</li>
             <li>限制／失敗寫了一頁；封面有姓名學號</li>
           </ul>
         </article>
       </div>
       <div class="slogan-stack">
+        <p>同一組輸入，重跑才算數</p>
         <p>先有基線，再談模型</p>
-        <p>能重跑，才算數</p>
       </div>
       <p class="mini-note">課後複習：myppt.aidc.work／pccu-1151-bigdata-2026-10-17.html</p>
       <div class="footer">
