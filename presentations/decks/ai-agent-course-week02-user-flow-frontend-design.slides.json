@@ -1241,7 +1241,13 @@
         "Wireframe 用灰階方框就好：今天比的是流程清楚，不是好不好看。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "27 / 34"
+      "footerPage": "27 / 34",
+      "links": [
+        {
+          "label": "參考答案：Wireframe 範例",
+          "href": "/examples/ai-agent-course-week02-northgo-wireframe.html"
+        }
+      ]
     },
     {
       "slideId": "s28",
