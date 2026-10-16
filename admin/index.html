@@ -243,6 +243,14 @@
             <span id="slide-content-badge" class="slide-badge hidden"></span>
           </div>
 
+          <fieldset id="slide-content" class="slide-content">
+            <legend>投影片內容</legend>
+            <form id="slide-form" class="slide-form"></form>
+            <div class="btn-row">
+              <button type="button" id="btn-save">儲存投影片內容</button>
+            </div>
+          </fieldset>
+
           <fieldset class="script-fieldset">
             <legend>講稿</legend>
             <textarea id="script" rows="14" placeholder="此頁講稿…"></textarea>
@@ -272,26 +280,6 @@
               <input id="batch-vision-high" type="checkbox" />
               生成全部講稿時使用高解析 vision（較準但較貴）
             </label>
-          </details>
-
-          <details id="advanced-fields" class="advanced">
-            <summary>進階：投影片欄位（僅 HTML）</summary>
-            <form id="slide-form" class="slide-form">
-              <label>標題 data-title<input name="title" type="text" /></label>
-              <label>eyebrow<input name="eyebrow" type="text" /></label>
-              <label>kicker<input name="kicker" type="text" /></label>
-              <label>h1<textarea name="h1" rows="2"></textarea></label>
-              <label>h2<input name="h2" type="text" /></label>
-              <label>lead<textarea name="lead" rows="3"></textarea></label>
-              <label>stamp<input name="stamp" type="text" /></label>
-              <label>callout<textarea name="callout" rows="2"></textarea></label>
-              <fieldset>
-                <legend>Cards</legend>
-                <div id="cards-editor"></div>
-                <button type="button" id="btn-add-card">+ Card</button>
-              </fieldset>
-              <button type="button" id="btn-save">儲存內容並 rebuild</button>
-            </form>
           </details>
 
           <p id="status" class="status"></p>

@@ -55,7 +55,7 @@ registerTtsProvider("openai", async () => ({
       return {
         outputPath,
         durationSeconds,
-        costUsd: estimateTtsCostUsd(text),
+        costUsd: estimateTtsCostUsd(text, "openai"),
         provider: "openai",
       };
     } finally {

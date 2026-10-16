@@ -7,3 +7,7 @@ presentations/temp_script.js
 presentations/narration/audio/*/preview/
 .wrangler/
 .dev.vars
+
+# Personal voice-clone source audio. Keep the instructions file.
+recordings/*
+!recordings/README.md

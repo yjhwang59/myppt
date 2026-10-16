@@ -677,6 +677,11 @@ fieldset {
   margin: 12px 0;
 }
 .script-fieldset { border-color: #3b82f6; }
+.slide-content { border-color: #38bdf8; }
+.table-editor { overflow: auto; }
+.table-editor table { width: 100%; border-collapse: collapse; }
+.table-editor td { padding: 2px; vertical-align: top; }
+.table-editor input { min-width: 72px; }
 .card-row {
   border: 1px dashed #475569;
   border-radius: 8px;

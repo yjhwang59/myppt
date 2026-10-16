@@ -1,6 +1,6 @@
 {
   "name": "myppt",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "type": "module",
   "description": "Enterprise AI portal deck with narration pipeline",
@@ -9,6 +9,7 @@
     "narration:generate": "node scripts/narration/generate-scripts.js",
     "narration:approve": "node scripts/narration/approve-scripts.js",
     "narration:tts": "node scripts/narration/synthesize-audio.js",
+    "narration:clone-voice": "node scripts/narration/clone-voice.js",
     "narration:validate": "node scripts/narration/validate-manifest.js",
     "narration:pipeline": "node scripts/narration/run-pipeline.js",
     "narration:fix-audio-urls": "node scripts/narration/fix-audio-urls.js",
@@ -17,7 +18,7 @@
     "build:deck": "node scripts/narration/build-deck.js",
     "import:html": "node scripts/import-html-deck.js",
     "dev": "node server/index.js",
-    "test": "node --test scripts/narration/lib/extract.test.js server/lib/html-import.test.js server/lib/registry.test.js server/lib/session.test.js presentations/catalog.test.js admin/parse-source-url.test.js worker/login-bridge.test.js worker/catalog.test.js worker/google-id-token.test.js worker/slide-patch.test.js worker/speech.test.js worker/studio-store.test.js",
+    "test": "node --test scripts/narration/lib/extract.test.js server/lib/html-import.test.js server/lib/registry.test.js server/lib/session.test.js presentations/catalog.test.js admin/parse-source-url.test.js worker/login-bridge.test.js worker/catalog.test.js worker/google-id-token.test.js worker/slide-patch.test.js worker/speech.test.js worker/studio-store.test.js scripts/narration/lib/tts/elevenlabs.test.js",
     "deploy": "wrangler deploy"
   },
   "engines": {

@@ -1,0 +1,2487 @@
+{
+  "version": "1.0.0",
+  "deckId": "enterprise-ai-intro",
+  "deckPath": "enterprise-ai-intro.html",
+  "title": "企業 AI 導論｜90–120 分鐘",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "default",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "b50e758f5733b954051d93e1b02743fd1532bca415801323758d3b97c0b59427",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "AIDC.work・企業內訓混班・第 0 堂",
+        "headings": [
+          "企業 AI 導論"
+        ],
+        "lead": "90 到 120 分鐘，只講、不操作。先把話說齊，預設走進 4 週、12 小時的上路學程。",
+        "stamp": "Jack Y. J. Hwang・Enterprise AI Development Consultant",
+        "cards": [
+          {
+            "heading": "分鐘核心場",
+            "paragraph": "共同語言、三個案例、承諾卡。",
+            "bullets": []
+          },
+          {
+            "heading": "再加主管層",
+            "paragraph": "多一段五問、5R，和 15 分鐘問答。",
+            "bullets": []
+          },
+          {
+            "heading": "預設先上路",
+            "paragraph": "先走同一條流程，再談要不要建系統。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "大家好。今天這堂是企業 AI 導論，給混班的第零堂。學員不用開筆電。九十分鐘是核心場，會把共同語言、三個案例和承諾卡走完。若排到一百二十分鐘，會再加一段主管旁聽和問答。我們預設接下來走進四週、十二小時的上路學程。先把話說齊，再決定要不要一起走。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "不是工具課",
+      "sourceHash": "87d082561b1cb29ec9efdcbbe58fd20df18de031a0bf6489665f9089190fcba4",
+      "extractedContent": {
+        "eyebrow": "02・開場",
+        "kicker": "",
+        "headings": [
+          "今天不是再上一堂工具課"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "AI 工具",
+            "paragraph": "讓你個人做得快一點。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 工作流",
+            "paragraph": "把跨步驟的流程改順。",
+            "bullets": []
+          },
+          {
+            "heading": "Agent／系統",
+            "paragraph": "做成以後還跑得動、查得過。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "目標：從「我會用 ChatGPT」，走到「我們怎麼把 AI 做成控得住的成果」。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "今天不是再上一堂工具課。AI 工具問的是，能不能讓我個人做得快一點。工作流問的是，哪一條流程值得改。Agent 和系統問的是，能不能重複做、被人覆核，而且維運得下去。目標很單純，從我會用 ChatGPT，走到我們怎麼把 AI 做成控得住的成果。下一頁先講今天做什麼、不做什麼。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "學習契約",
+      "sourceHash": "7758f36226b0c1ec98b3644c5bf94e734e3aa3f6b3296b450f0d77c9fa86d4ec",
+      "extractedContent": {
+        "eyebrow": "03・今天的約定",
+        "kicker": "",
+        "headings": [
+          "今天做這些，這些先不做"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "今天做",
+            "paragraph": "",
+            "bullets": [
+              "把工具、工作流、Agent、系統講清楚",
+              "用三個已經上線的系統來對照",
+              "寫出一條去掉個資的流程",
+              "用承諾卡確認要不要參加 4 週上路"
+            ]
+          },
+          {
+            "heading": "今天不做",
+            "paragraph": "",
+            "bullets": [
+              "不開 Cursor、不寫程式",
+              "不比較模型價目，也不列採購清單",
+              "不現場比賽誰的提示詞比較厲害",
+              "不承諾下課就能上線"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "這一堂我們做四件事。把工具、工作流、Agent、系統講清楚。用三個已經上線的系統對照。寫出一條去掉個資的流程。再用承諾卡確認要不要參加四週上路。今天不開 Cursor、不寫程式、不比價目、不比賽提示詞，也不承諾下課就能上線。學員不開筆電，公開頁由我來操作。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "時程與互動",
+      "sourceHash": "d04180eb7175a46eee7cb5f92f38d1385d11331c98845021db32b9766f9dad10",
+      "extractedContent": {
+        "eyebrow": "04・時間先鎖死",
+        "kicker": "",
+        "headings": [
+          "以聽講為主，互動只有三處"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "時間怎麼分（分鐘）",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "現場怎麼參與",
+            "paragraph": "不開筆電、不做實作。其餘時間聽講、做筆記就好。",
+            "bullets": [
+              "舉手：現況五題，大約 90 秒",
+              "寫卡：一句流程，並確認 4 週",
+              "120 分場：再加 2 分鐘靜默寫，以及 15 分鐘問答"
+            ]
+          }
+        ],
+        "table": [
+          [
+            "段落",
+            "90",
+            "120",
+            "互動"
+          ],
+          [
+            "開場＋舉手",
+            "10",
+            "10",
+            "舉手"
+          ],
+          [
+            "共同語言＋三個案例",
+            "58",
+            "60",
+            "—"
+          ],
+          [
+            "主管五問＋5R",
+            "—",
+            "12",
+            "靜默寫"
+          ],
+          [
+            "地圖＋承諾卡",
+            "20",
+            "20",
+            "填卡"
+          ],
+          [
+            "問答",
+            "課後",
+            "15",
+            "口頭"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "控時：地圖和承諾卡不能刪。超時就改看截圖。問答不能吃掉結尾。90 分場在第 18 頁講完，跳到第 26 頁。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "時間先鎖死。開場加舉手，兩種場次都是十分鐘。共同語言加三個案例，九十分場是五十八分鐘，一百二十分場是六十分鐘。主管五問和五 R 只有一百二十分場，十二分鐘，其中有兩分鐘靜默寫。地圖加承諾卡，兩種場次都是二十分鐘，這段不能刪。問答在九十分場改課後，一百二十分場留十五分鐘，而且不能吃掉結尾。超時就改看截圖。九十分場在第十八頁講完，請跳到第二十六頁。",
+      "estimatedSeconds": 38,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "現況快問",
+      "sourceHash": "f10a6eb2045a6fb95eb11a7987e96942dcd8d28d0f254fbdef8206d58c92b788",
+      "extractedContent": {
+        "eyebrow": "05・90 秒",
+        "kicker": "",
+        "headings": [
+          "我們現在在哪一層？請舉手"
+        ],
+        "lead": "先記住現況。等一下填承諾卡，會再回來用這五題。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "已經在用",
+            "paragraph": "生成式 AI",
+            "bullets": []
+          },
+          {
+            "heading": "有場景",
+            "paragraph": "部門講得出要改哪件事",
+            "bullets": []
+          },
+          {
+            "heading": "有負責人",
+            "paragraph": "具名，不是大家一起看著辦",
+            "bullets": []
+          },
+          {
+            "heading": "有規則",
+            "paragraph": "資料或權限怎麼進、怎麼停",
+            "bullets": []
+          },
+          {
+            "heading": "有證據",
+            "paragraph": "說得出什麼叫做成",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "請用九十秒舉手，先不要討論個案。五題是：已經在用生成式 AI、部門有明確場景、有具名的負責人、有資料或權限規則、有成功證據。先記住現況，等一下填承諾卡會再回來。舉手就好。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "一句話",
+      "sourceHash": "8d1518505d2045174c871959b638d0ad0cec0f04b8d4474ef0ea5aaeb399b3e9",
+      "extractedContent": {
+        "eyebrow": "06・共同語言",
+        "kicker": "",
+        "headings": [
+          "先記住這一句"
+        ],
+        "lead": "ChatGPT 會回答。AI Agent 會依目標使用工具做事。AI 系統讓這件事可以重複、可以覆核、可以維運。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "企業缺的通常不是更強的模型，而是把這三層接起來的方法。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "先記住這一句。ChatGPT 會回答。AI Agent 會依目標使用工具做事。AI 系統讓這件事可以重複、可以覆核、可以維運。企業缺的通常不是更強的模型，而是把這三層接起來的方法。會回答，還不等於會執行，更不等於能營運。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "五層階梯",
+      "sourceHash": "dd51a1f37167f77b38731149421f79338e3c5bf924505e08a1617f856de4cf8f",
+      "extractedContent": {
+        "eyebrow": "07・共同語言",
+        "kicker": "",
+        "headings": [
+          "不是每個問題都需要 Agent"
+        ],
+        "lead": "越往右越複雜，整合、治理和維運成本也一起增加。請選最簡單、但還足以驗證價值的那一層。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "提示詞",
+            "description": "Prompt"
+          },
+          {
+            "title": "AI 工具",
+            "description": "AI Tool"
+          },
+          {
+            "title": "工作流",
+            "description": "Workflow"
+          },
+          {
+            "title": "AI Agent",
+            "description": "會用工具做事"
+          },
+          {
+            "title": "AI 系統",
+            "description": "AI System"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "從提示詞、AI 工具、工作流、AI Agent 到 AI 系統，複雜度、整合、治理和維運成本會一起增加。不是每個問題都需要 Agent。請選最簡單、但還足以驗證價值的那一層。越往右，不是越高級，是越貴、越難顧。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "四型對照",
+      "sourceHash": "e733b96201ab4b427735c37ca6ef741c74644f7a1ee2ccda8b9b4fb094b1996d",
+      "extractedContent": {
+        "eyebrow": "08・共同語言",
+        "kicker": "",
+        "headings": [
+          "工具會回應。副駕駛會協助。Agent 會執行。"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "型態",
+            "它在做什麼",
+            "聽得懂的例子",
+            "要守住什麼"
+          ],
+          [
+            "提示詞／工具",
+            "產生",
+            "請 AI 寫週報草稿",
+            "資料要分級，人改完才送出"
+          ],
+          [
+            "工作流",
+            "自動化",
+            "收集、摘要、再送審",
+            "規則、例外、誰按送出"
+          ],
+          [
+            "AI Agent",
+            "執行",
+            "讀檔、查資料、呼叫介面、停下",
+            "權限、停止條件、稽核"
+          ],
+          [
+            "AI 系統",
+            "營運",
+            "會員、預約、知識庫可以一直跑",
+            "身分、監控、退回、知識更新"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "這是共同語言，不是採購規格。副駕駛是在你做事時旁邊協助，決定權仍在人。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "用四個動詞記住。提示詞或工具是產生，例如寫週報草稿，人改完才送出。工作流是自動化，例如收集、摘要、再送審。Agent 是執行，會讀檔、查資料、呼叫介面，也必須能停下。系統是營運，讓會員、預約、知識庫可以持續跑。副駕駛是在你做事時旁邊協助，決定權仍在人。這是共同語言，不是採購規格。",
+      "estimatedSeconds": 31,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "六種能力",
+      "sourceHash": "790b5ecac5b34eb1940186c8139431e0a3a4b38d3e5702b661e6788d9d2e30e9",
+      "extractedContent": {
+        "eyebrow": "09・先問工作，再問工具",
+        "kicker": "",
+        "headings": [
+          "這件工作需要哪種能力？"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "產生",
+            "paragraph": "Generate",
+            "bullets": []
+          },
+          {
+            "heading": "擷取",
+            "paragraph": "Extract",
+            "bullets": []
+          },
+          {
+            "heading": "濃縮",
+            "paragraph": "Summarize",
+            "bullets": []
+          },
+          {
+            "heading": "分類",
+            "paragraph": "Classify",
+            "bullets": []
+          },
+          {
+            "heading": "分析",
+            "paragraph": "Analyze",
+            "bullets": []
+          },
+          {
+            "heading": "呼叫工具",
+            "paragraph": "Act",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "這六種用來發想，不要用來堆功能。能力定了，再問要用哪個工具。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "先問這件工作需要哪種能力：產生、擷取、濃縮、分類、分析，或呼叫工具。這六種用來發想，不要用來堆功能。能力定了，再問要用哪個工具。先選工作，再選工具。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "Agent 迴路",
+      "sourceHash": "acfe449f5346c85d7f6746ba430b9dfbd12ab71540841b56369ab0f1b1c17f0d",
+      "extractedContent": {
+        "eyebrow": "10・Agent 怎麼做事",
+        "kicker": "",
+        "headings": [
+          "AI Agent 要有目標、工具和回饋"
+        ],
+        "lead": "記成：目標、上下文、判斷、工具、行動、回饋。沒有停止條件，就不要讓它自己做下去。",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "目標",
+            "description": "Goal"
+          },
+          {
+            "title": "上下文",
+            "description": "Context"
+          },
+          {
+            "title": "判斷＋工具",
+            "description": "Reason + Tools"
+          },
+          {
+            "title": "看結果再調整",
+            "description": "Observe"
+          },
+          {
+            "title": "停下或人審",
+            "description": "Stop / Review"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "AI Agent 不是一段很長的提示詞。它要有目標、上下文、判斷和工具、看結果再調整，以及停止或人工覆核。可以記成目標、上下文、判斷、工具、行動、回饋。沒有停止條件，就不要讓它自己做下去。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "金句",
+      "sourceHash": "4af61a79aa1cc4748a409635d9bce2bcefaa6f2b4a6a67ed400e0d8c2fdd2156",
+      "extractedContent": {
+        "eyebrow": "11・先帶走兩句",
+        "kicker": "",
+        "headings": [
+          "兩句話就夠用"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "先選層級",
+            "paragraph": "不是每個問題都需要 Agent。",
+            "bullets": []
+          },
+          {
+            "heading": "再選放手程度",
+            "paragraph": "自動化程度，應該和決策風險成反比。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "好的 AI 不是完全自己做主，而是控得住、驗得過、改得動。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "兩句話就夠用。不是每個問題都需要 Agent。自動化程度，應該和決策風險成反比。好的 AI 不是完全自己做主，而是控得住、驗得過、改得動。下一頁開始看我們自己的三個系統。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "案例地圖",
+      "sourceHash": "e4b50e147c41906b6d0fa05e9b02796450a6ecace383032d4fad23162c782e36",
+      "extractedContent": {
+        "eyebrow": "12・我們自己的系統",
+        "kicker": "",
+        "headings": [
+          "三個系統，對上三層問題"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "aidc.work",
+            "paragraph": "用 Agent 開發系統：內容、預約、課程、評量。",
+            "bullets": []
+          },
+          {
+            "heading": "myAssist",
+            "paragraph": "把 Agent 做成服務：LINE、固定問答、檢索增強、人工覆核。",
+            "bullets": []
+          },
+          {
+            "heading": "LPMS",
+            "paragraph": "怎麼證明做對：關卡、評分規準、看得到的證據。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "這三個都是內部或自有系統，用來展示方法，不是客戶委託案件。現場只看公開頁，或事先準備的合成流程。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "接下來用三個我們自己的系統，對三層問題。aidc.work 說明怎麼用 Agent 開發系統。myAssist 說明怎麼把 Agent 做成可以營運的服務。LPMS 說明怎麼用關卡和評分規準證明做對。這些是內部和自有系統，不是客戶委託案件。現場只看公開頁或合成流程。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "案例 A",
+      "sourceHash": "196453f0b0bb6422de282ee14f4093065590096d851902266bf6a72b72a38412",
+      "extractedContent": {
+        "eyebrow": "13・案例 A・aidc.work",
+        "kicker": "",
+        "headings": [
+          "Agent 是開發同事，交出去的是系統"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "原本卡在哪",
+            "paragraph": "一個人要同時做官網、內容、預約、課程和評量。再買一個聊天工具，解不了營運。",
+            "bullets": []
+          },
+          {
+            "heading": "後來怎麼做成系統",
+            "paragraph": "把規格和專案指引交給 Agent，當成穩定的上下文，再經由 Git、建置、Docker，變成可以維運的服務。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "文件先講清楚",
+            "description": ""
+          },
+          {
+            "title": "Agent 改程式",
+            "description": ""
+          },
+          {
+            "title": "Git 裡審過",
+            "description": ""
+          },
+          {
+            "title": "公開網站跑得起來",
+            "description": ""
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "案例 A 是 aidc.work。原本卡住的是，一個人要同時做官網、內容、預約、課程和評量，再買一個聊天工具解不了營運。做法是把規格和專案指引交給 Agent，當成穩定的上下文，再經由 Git、建置和 Docker，變成可以維運的網站。順序是文件先講清楚、Agent 改程式、Git 裡審過、公開網站跑得起來。現場只走課程或預約的公開頁。",
+      "estimatedSeconds": 36,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "案例 A 教學點",
+      "sourceHash": "ed7b3bf126c6fc0a1e385b7ea75670ba641d895d287772812c4837f9cb8ac06e",
+      "extractedContent": {
+        "eyebrow": "14・案例 A・教學點",
+        "kicker": "",
+        "headings": [
+          "畫面點得動，還不是系統"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "Agent 做哪一段",
+            "paragraph": "讀程式庫、改多個檔案、跑指令、提出差異。",
+            "bullets": []
+          },
+          {
+            "heading": "人做哪一段",
+            "paragraph": "選題、審範圍、驗收、承擔上線責任。",
+            "bullets": []
+          },
+          {
+            "heading": "系統多了什麼",
+            "paragraph": "身分、內容生命週期、預約、課程、評量。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "用日常說話跟 AI 一起寫程式，可以加快第一版。真正能營運，靠的是邊界、測試和維運。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "畫面點得動，還不是系統。Agent 負責讀程式庫、改多個檔案、跑指令、提出差異。人負責選題、審範圍、驗收，以及上線以後的責任。系統多出來的是身分、內容生命週期、預約、課程和評量。用日常說話跟 AI 一起寫程式，可以加快第一版。真正能營運，靠的是邊界、測試和維運。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "案例 B",
+      "sourceHash": "f84ff7622500d2075626a14b730920ba974c6063af475a27c9128a5603977926",
+      "extractedContent": {
+        "eyebrow": "15・案例 B・myAssist",
+        "kicker": "",
+        "headings": [
+          "Agent 要包在系統裡，才營運得了"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "為什麼不是官網聊天框",
+            "paragraph": "LINE 的事件通知、知識更新、成本和答錯的風險，跟官網內容管理不是同一件事。",
+            "bullets": []
+          },
+          {
+            "heading": "知識怎麼更新",
+            "paragraph": "公開內容單向同步進知識庫。回答時引用公開網址，不把模型的答案寫回權威來源。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "通道策略",
+            "description": ""
+          },
+          {
+            "title": "安全過濾",
+            "description": ""
+          },
+          {
+            "title": "固定問答",
+            "description": "FAQ"
+          },
+          {
+            "title": "檢索後再答",
+            "description": "RAG"
+          },
+          {
+            "title": "模型再轉人工",
+            "description": ""
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "案例 B 是 myAssist。順序是通道策略、安全過濾、固定問答、檢索後再答，最後才到模型，而且要能轉人工。它不是官網聊天框。LINE 的事件通知、知識更新、成本和答錯的風險，跟官網內容管理不是同一件事。公開內容可以單向同步進知識庫。回答時引用公開網址，不把模型的答案寫回權威來源。現場不投影對話原文。",
+      "estimatedSeconds": 33,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s16",
+      "index": 16,
+      "title": "案例 B 治理",
+      "sourceHash": "3d22e554300a4f509f8c3ad9f5cdfdb90fed71cd970985f1b7d119ea4c2387ed",
+      "extractedContent": {
+        "eyebrow": "16・人要留在迴路裡",
+        "kicker": "",
+        "headings": [
+          "風險越高，人的控制越強"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "AI 可以直接做",
+            "paragraph": "可逆、看得到過程，例如固定問答。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 建議，人核准",
+            "paragraph": "回覆草稿、知識摘要。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 分析，人決定",
+            "paragraph": "報價、承諾時程、敏感決策。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "不知道就交給人工。固定問答要對得上；檢索增強必須有來源；沒有來源，就不能當成事實。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "風險越高，人的控制越強。低風險、可逆、看得到過程的，例如固定問答，可以讓 AI 執行。中風險先出建議再核准。高風險，例如報價、承諾時程或敏感決策，AI 只分析，人來決定。不知道就交給人工。固定問答要對得上。檢索增強必須有來源。沒有來源，就不能當成事實。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
+      "title": "案例 C",
+      "sourceHash": "d56c3c13341bed8da02e335df7fda471dafb6d7de95cb052f7890ea580947b94",
+      "extractedContent": {
+        "eyebrow": "17・案例 C・LPMS",
+        "kicker": "",
+        "headings": [
+          "不要讓 AI 自己證明自己做對了"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "關卡和評分規準",
+            "paragraph": "專題不是感覺好用就算。驗收要寫成看得到的證據：範圍、覆核點、失敗怎麼辦。",
+            "bullets": []
+          },
+          {
+            "heading": "帶回企業怎麼用",
+            "paragraph": "Agent 很容易只解釋最顯眼的警告，而不是根因。要能追過程、對照、從頭到尾驗證。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "Agent 產出",
+            "description": ""
+          },
+          {
+            "title": "另外評估",
+            "description": ""
+          },
+          {
+            "title": "通過或沒過的證據",
+            "description": ""
+          },
+          {
+            "title": "人審、重試或停止",
+            "description": ""
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "案例 C 是 LPMS。不要讓 AI 自己證明自己做對了。流程是 Agent 產出、另外評估、通過或沒過的證據，然後人審、重試或停止。關卡和評分規準把驗收寫成看得到的證據：範圍、覆核點、失敗怎麼辦。Agent 很容易只解釋最顯眼的警告，而不是根因。評量在 aidc.work 裡面，不展示學員個資。",
+      "estimatedSeconds": 31,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s18",
+      "index": 18,
+      "title": "案例四句",
+      "sourceHash": "1b5a2c1652c9e6d920c71af445dd0d407ee3577cd92b5ea79a3f796a2c042687",
+      "extractedContent": {
+        "eyebrow": "18・案例怎麼講",
+        "kicker": "",
+        "headings": [
+          "每則案例只講四句"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "原本卡在哪",
+            "paragraph": "哪一項工作做不下去？",
+            "bullets": []
+          },
+          {
+            "heading": "為什麼不是聊天工具",
+            "paragraph": "再買一個對話框，解不了什麼？",
+            "bullets": []
+          },
+          {
+            "heading": "誰做哪一段",
+            "paragraph": "Agent 做哪段、人做哪段？",
+            "bullets": []
+          },
+          {
+            "heading": "什麼算過關",
+            "paragraph": "證據在哪，何時要停下？",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "90 分場：下一頁請跳到第 26 頁，四週主路徑。120 分場：繼續第 19 頁。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "每則案例只講四句。原本卡在什麼工作。為什麼不是再買聊天工具。Agent 做哪段、人做哪段。什麼證據算過關，以及何時停下。把這四句帶回自己的部門流程。九十分場下一頁請跳到第二十六頁，四週主路徑。一百二十分場繼續第十九頁。內部系統不是客戶專案。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s19",
+      "index": 19,
+      "title": "選配入口",
+      "sourceHash": "d2479da6e1c384b24c77b3cff02524f2b43a909d8beafdecd1e6e6bc7ad9eb5c",
+      "extractedContent": {
+        "eyebrow": "19・選配・120 分場",
+        "kicker": "",
+        "headings": [
+          "接下來 12 分鐘：主管旁聽"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "主管五問",
+            "paragraph": "問題、分工、資料、責任、證據。",
+            "bullets": []
+          },
+          {
+            "heading": "5R 過濾",
+            "paragraph": "這條流程值不值得優先。",
+            "bullets": []
+          },
+          {
+            "heading": "寫一句流程",
+            "paragraph": "誰、什麼情境、卡在哪。承諾卡會用到。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "這不是三小時的高階工作坊，也不做 30 天計畫。90 分場請直接跳到第 26 頁。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "一百二十分場接下來十二分鐘，是主管旁聽。三件事：主管五問、五 R 過濾、寫一句流程。這不是三小時的高階工作坊，也不做三十天計畫。九十分場請直接跳到第二十六頁。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s20",
+      "index": 20,
+      "title": "主管五問",
+      "sourceHash": "6b8672a36ec18ef4388f05965574b91af1943dc2ead05b80213a4f2531145ac2",
+      "extractedContent": {
+        "eyebrow": "20・主管旁聽",
+        "kicker": "",
+        "headings": [
+          "主管不必寫程式，但要判斷五件事"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "問題",
+            "paragraph": "要解決哪個看得到的工作問題？",
+            "bullets": []
+          },
+          {
+            "heading": "分工",
+            "paragraph": "人和 AI 各做哪一段？",
+            "bullets": []
+          },
+          {
+            "heading": "資料",
+            "paragraph": "什麼能進、什麼不能進？",
+            "bullets": []
+          },
+          {
+            "heading": "責任",
+            "paragraph": "出錯時誰覆核、誰承擔？",
+            "bullets": []
+          },
+          {
+            "heading": "證據",
+            "paragraph": "用什麼基準證明有價值？",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "導入 AI 是管理制度的一部分，不是資訊部門單獨的技術計畫。這是旁聽，不是當場決策會議。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "主管不必寫程式，但要判斷五件事。要解決哪個看得到的工作問題。人和 AI 各做哪一段。什麼資料能進、什麼不能進。出錯時誰覆核、誰承擔。用什麼基準證明有價值。導入 AI 是管理制度的一部分，不是資訊部門單獨的技術計畫。這是旁聽，不是當場決策會議。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s21",
+      "index": 21,
+      "title": "5R 過濾",
+      "sourceHash": "5fee5cba2b2c3489dcc7a2a84642284e3bac4a58d4fdd09a42a0a23424c00089",
+      "extractedContent": {
+        "eyebrow": "21・先過濾機會",
+        "kicker": "",
+        "headings": [
+          "5R：這條流程值不值得優先"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "重複做",
+            "paragraph": "Repeat",
+            "bullets": []
+          },
+          {
+            "heading": "要大量閱讀",
+            "paragraph": "Read",
+            "bullets": []
+          },
+          {
+            "heading": "要大量寫報告",
+            "paragraph": "Report",
+            "bullets": []
+          },
+          {
+            "heading": "規則明確",
+            "paragraph": "Rule",
+            "bullets": []
+          },
+          {
+            "heading": "需要分析判斷",
+            "paragraph": "Reason",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "適合 AI，不等於值得優先投資。價值低、做不起來的題目，不要因為新穎就做。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "用五個 R 看這條流程值不值得優先。重複做、要大量閱讀、要大量寫報告、規則明確、需要分析判斷。適合 AI，不等於值得優先投資。價值低、做不起來的題目，不要因為新穎就做。之後再依價值、可行性、風險粗排。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s22",
+      "index": 22,
+      "title": "靜默寫流程",
+      "sourceHash": "8c389842b488e351b64c1b1b0954d74a546d628d7826d9f504bbe108da8237cb",
+      "extractedContent": {
+        "eyebrow": "22・安靜寫・2 分鐘",
+        "kicker": "",
+        "headings": [
+          "寫出你的一條流程"
+        ],
+        "lead": "一句話就好。等一下承諾卡用同一句。不要寫客戶真名。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "哪個角色",
+            "paragraph": "是誰在做這件事？",
+            "bullets": []
+          },
+          {
+            "heading": "什麼時候",
+            "paragraph": "什麼事情一發生，就要做？",
+            "bullets": []
+          },
+          {
+            "heading": "卡在哪",
+            "paragraph": "時間、錯誤、找資料，還是覆核？",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "現在安靜寫兩分鐘，不要互相討論。只寫一句：誰、在什麼情境、卡在哪。可以是時間、錯誤、找資料，或覆核。等一下承諾卡用同一句。不要寫客戶真名。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s23",
+      "index": 23,
+      "title": "去識別化",
+      "sourceHash": "16beb552a6284d5db02aba1bebdeda56c7fd4a313e8062559439a24146bc9ad8",
+      "extractedContent": {
+        "eyebrow": "23・安全・先把身分拿掉",
+        "kicker": "",
+        "headings": [
+          "課堂和課間都要去識別化"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "可以這樣寫",
+            "paragraph": "",
+            "bullets": [
+              "公司稱「甲公司」",
+              "部門用「A 部門、B 部門」",
+              "合成訂單、假的電子郵件"
+            ]
+          },
+          {
+            "heading": "不要這樣寫",
+            "paragraph": "",
+            "bullets": [
+              "姓名、身分證、客戶編號",
+              "還沒公開的策略、合約原文",
+              "把正式個資貼進外部 AI"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "從第一週起，我們走同一條主流程。今天先把句子寫乾淨。若課前已跟 Sponsor 宣讀過，這頁可以略講。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "課堂和課間都要把身分拿掉。可以說甲公司、A 部門、合成訂單、假的電子郵件。不可以寫姓名、身分證、客戶編號、還沒公開的策略、合約原文，也不要把正式個資貼進外部 AI。從第一週起我們走同一條主流程。今天先把句子寫乾淨。若課前已經跟 Sponsor 宣讀過，這頁可以略講。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s24",
+      "index": 24,
+      "title": "常見反對",
+      "sourceHash": "5eab51811876369a5f285792ee29a21439aef104ef34518d4caf58a8fa6d22d5",
+      "extractedContent": {
+        "eyebrow": "24・先對齊再上路",
+        "kicker": "",
+        "headings": [
+          "四句常見反對，先講開"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "沒資料",
+            "paragraph": "先用去掉個資的樣本和公開規則驗證流程，再談接正式資料庫。",
+            "bullets": []
+          },
+          {
+            "heading": "要先選模型",
+            "paragraph": "先鎖問題和驗收。模型是可以替換的一層。",
+            "bullets": []
+          },
+          {
+            "heading": "要先買平台",
+            "paragraph": "4 週先證明一條可以演示、而且必覆核的工作流，再談平台採購。",
+            "bullets": []
+          },
+          {
+            "heading": "主管沒時間",
+            "paragraph": "主管旁聽並定邊界。Champion 把同一條流程跑完。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "四句常見反對，先對齊再上路。沒資料：先用去掉個資的樣本和公開規則驗證流程，再談接正式資料庫。要先選模型：先鎖問題和驗收，模型是可以替換的一層。要先買平台：四週先證明一條可以演示、而且必覆核的工作流，再談採購。主管沒時間：主管旁聽並定邊界，由 Champion 把同一條流程跑完。反對是風險訊號，不是否決理由。",
+      "estimatedSeconds": 34,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s25",
+      "index": 25,
+      "title": "備援截圖",
+      "sourceHash": "ad32748f92b7dac9ca9462fd5b6d2f0204abaa75a85771e16121284d30f62f4d",
+      "extractedContent": {
+        "eyebrow": "25・示範備援",
+        "kicker": "",
+        "headings": [
+          "公開頁打不開，就改看截圖"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "aidc.work",
+            "paragraph": "課程、預約頁的截圖，仍講那四句。",
+            "bullets": []
+          },
+          {
+            "heading": "myAssist",
+            "paragraph": "架構圖加上合成的固定問答；不進後台。",
+            "bullets": []
+          },
+          {
+            "heading": "LPMS",
+            "paragraph": "關卡和評分規準的合成示意；沒有個資。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "備援可以插在案例時段。不要為了救示範，而吃掉地圖和承諾卡。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "如果公開頁打不開，就改看事先準備的靜態截圖。aidc.work 用課程和預約頁的截圖，仍講那四句。myAssist 用架構圖和合成的固定問答，不進後台。LPMS 用關卡和評分規準的合成示意，沒有個資。備援可以插在案例時段，不要為了救示範而吃掉地圖和承諾卡。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s26",
+      "index": 26,
+      "title": "四週主路徑",
+      "sourceHash": "2bf84b0de447497ed3062a5acba8ada03d766a2853bd1d637565ada68802d1c8",
+      "extractedContent": {
+        "eyebrow": "26・地圖・預設路徑 A",
+        "kicker": "",
+        "headings": [
+          "會用、會管、會建｜4 週 12 小時"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "帶走什麼",
+            "paragraph": "使用規範、可以重做的任務、90 天節奏，以及一條可以演示、而且必須覆核的流程。",
+            "bullets": []
+          },
+          {
+            "heading": "誰適合",
+            "paragraph": "混班種子加上主管旁聽。資訊同仁派一個人開權限即可。先上路，再決定要不要建系統。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "第 1 週",
+            "description": "規則與選題"
+          },
+          {
+            "title": "第 2 週",
+            "description": "真實任務上路"
+          },
+          {
+            "title": "第 3 週",
+            "description": "流程與停損"
+          },
+          {
+            "title": "第 4 週",
+            "description": "最小工作流"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "預設路徑是四週、十二小時的上路學程。第一週規則和選題，第二週真實任務上路，第三週流程和停損，第四週最小工作流。帶走的是使用規範、可以重做的任務、九十天節奏，以及一條可以演示、而且必須覆核的流程。適合混班種子和主管旁聽。資訊同仁派一個人開權限即可。先上路，再決定要不要建系統。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s27",
+      "index": 27,
+      "title": "5–6 週選配",
+      "sourceHash": "e4bd6fd4e85f465e714edfa8f3c73ec68f9d156e4c3894bd997899a05efa5242",
+      "extractedContent": {
+        "eyebrow": "27・地圖・還是那 12 小時",
+        "kicker": "",
+        "headings": [
+          "可以拉成 5 到 6 週，深度不變"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "5 週",
+            "paragraph": "第 1 到第 3 週上課。第 4 週之前加一週，準備環境和去掉個資的資料，再上原來的第 4 週。",
+            "bullets": []
+          },
+          {
+            "heading": "6 週",
+            "paragraph": "四堂課，加上一週作業彩排，再加上一週內部發表，或用評量方式檢核。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "上課時數仍是 12 小時。沒有作業，第 4 週很難從「會問」走到可以演示。這是把節奏放慢，不是另開一條更深的課。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "同一套十二小時可以拉成五週或六週，深度不變。五週是在最後一堂前加一週，準備環境和去掉個資的資料。六週再加一週作業彩排，和一週內部發表或評量式檢核。上課時數仍是十二小時。沒有作業，第四週很難從會問走到可以演示。這是把節奏放慢，不是另開一條更深的課。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s28",
+      "index": 28,
+      "title": "8 週升級",
+      "sourceHash": "91b5ef12e923fc84c2bd8a726f965d917aa4ecab343860256d422f7a18c80f42",
+      "extractedContent": {
+        "eyebrow": "28・升級，不是當場二選一",
+        "kicker": "",
+        "headings": [
+          "若要 8 週：兩種誠實選項"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "路徑 B｜24 小時",
+            "paragraph": "8 週每週 3 小時陪跑，或 4 次 6 小時整天班。給 Champion 和資訊種子，從問題定義走到可演示的單一系統或 Agent 最小版。",
+            "bullets": []
+          },
+          {
+            "heading": "8 週系統開發入門班",
+            "paragraph": "要做出可部署小系統的人另開班：選題、表單、介面到部署。這不是上路學程的加長版。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "人分成兩群時，主班走 4 週；升級班另開 2 到 6 人。禁止同一教室兩套深度。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "若要八週，有兩種誠實選項，不當場二選一。路徑 B 是二十四小時，八週每週三小時陪跑，或四次六小時整天班，給 Champion 和資訊種子，從問題定義走到可演示的單一系統或 Agent 最小版。另一條是八週系統開發入門班，給要做出可部署小系統的人，從選題、表單、介面到部署，不是上路學程的加長版。主班走四週。升級班另開兩到六人。禁止同一教室兩套深度。",
+      "estimatedSeconds": 37,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s29",
+      "index": 29,
+      "title": "承諾卡",
+      "sourceHash": "2e80fff54da786f48d9d2cb3c8cc4e838231871031742301bcf452d729dee57e",
+      "extractedContent": {
+        "eyebrow": "29・承諾卡・兩分鐘",
+        "kicker": "",
+        "headings": [
+          "先寫流程，再確認要不要參加 4 週"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "欄位",
+            "怎麼填"
+          ],
+          [
+            "角色",
+            "主管／Champion／業務或專業／資訊"
+          ],
+          [
+            "一條流程",
+            "誰、在什麼情境、卡在哪（一句話）"
+          ],
+          [
+            "參加第 1–4 週",
+            "是／需主管同意／旁聽"
+          ],
+          [
+            "課間工時",
+            "每週不到 1 小時／大約 1 小時／2 小時以上"
+          ],
+          [
+            "最大卡關",
+            "沒有負責人／資料不能出／權限／不會選題"
+          ],
+          [
+            "加選興趣（可空白）",
+            "路徑 B／8 週系統班／先上完 4 週再說"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "承諾卡是需求訊號，不是當場簽約。開班仍要 Sponsor、名單，以及去識別化規則。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "現在用兩分鐘填卡。先寫角色和一條流程：誰、在什麼情境、卡在哪。再確認能不能參加前四週、每週課間工時、最大卡關。有興趣了解路徑 B 或系統班可以另註，也可以空白。這張卡是需求訊號，不是當場簽約。開班仍要 Sponsor、名單和去識別化規則。紙本或 Mentimeter 都可以。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s30",
+      "index": 30,
+      "title": "Sponsor 規則",
+      "sourceHash": "26db60796734fa7b08f02282ccaca14b3cf62bad474d35218049593b719006b2",
+      "extractedContent": {
+        "eyebrow": "30・跟 Sponsor 先講好",
+        "kicker": "",
+        "headings": [
+          "開班前先講好這三條"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "開 4 週上路",
+            "paragraph": "這一場預設走路徑 A。就算很多人對路徑 B 有興趣，也先上路，結束後再募集升級。",
+            "bullets": []
+          },
+          {
+            "heading": "路徑 B 或系統班",
+            "paragraph": "要有負責人、資訊種子，以及每週 2 到 4 小時作業。2 到 6 人種子另開，不併進主班。",
+            "bullets": []
+          },
+          {
+            "heading": "同一教室兩套深度",
+            "paragraph": "不要一邊做規範任務，一邊做系統的最小版本。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "跟 Sponsor 事前講好三條。預設開四週上路。路徑 B 或系統班要有負責人、資訊種子，以及每週兩到四小時作業，兩到六人種子另開，不併進主班。禁止同一教室一邊做規範任務、一邊做系統最小版。兩週內回覆是否開第一週。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s31",
+      "index": 31,
+      "title": "下一步",
+      "sourceHash": "cc546c1a8fa991fbede6fce2d7844e32355f6c62c0d879dd76a521dd26014261",
+      "extractedContent": {
+        "eyebrow": "31・下一步",
+        "kicker": "",
+        "headings": [
+          "把承諾卡收成可以排課的下一步"
+        ],
+        "lead": "預約諮詢 · 課程一覽 · AI 導入訪談",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "導論講義",
+            "paragraph": "說明文章",
+            "bullets": []
+          },
+          {
+            "heading": "路徑 A 課綱",
+            "paragraph": "12 小時上路學程",
+            "bullets": []
+          },
+          {
+            "heading": "升級課綱",
+            "paragraph": "四模組 · 系統班",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "先把範圍做小，驗證做快，再把真的有效的部分放大。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "最後把承諾卡收成可以排課的下一步。講義、四週上路學程和升級課綱都在畫面上。若要討論包班或開班條件，用預約諮詢，也可以看課程一覽和導入訪談。先把範圍做小，驗證做快，再把真的有效的部分放大。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s32",
+      "index": 32,
+      "title": "結構化問答",
+      "sourceHash": "e349c283b0f2f437fd43bb5c516e8fafc4c3f47ab4952fb08a867824ab883308",
+      "extractedContent": {
+        "eyebrow": "32・問答・120 分場 15 分鐘",
+        "kicker": "",
+        "headings": [
+          "一題一答；其餘寫便利貼，課後再回"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "選題",
+            "paragraph": "這題該用工具，還是該用 Agent？",
+            "bullets": []
+          },
+          {
+            "heading": "資料",
+            "paragraph": "什麼可以進外部模型？",
+            "bullets": []
+          },
+          {
+            "heading": "組織",
+            "paragraph": "誰當負責人、誰當 Champion？",
+            "bullets": []
+          },
+          {
+            "heading": "時程",
+            "paragraph": "何時開第 1 週、誰簽 Sponsor？",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "90 分場：這頁改成便利貼，課後再回，不要延長。地圖和承諾卡的時間已經鎖死。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "一百二十分場留十五分鐘問答。一題一答，其餘寫在便利貼，課後回。題目收成四類：選題、資料、組織、時程。九十分場這頁改成便利貼，課後再回，不要延長。地圖和承諾卡的時間已經鎖死。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s33",
+      "index": 33,
+      "title": "名詞：怎麼跟 AI 說話",
+      "sourceHash": "cc7a182c8a812cb775b435779ccec6aa997c44d3e425abea0dd7f985365cff37",
+      "extractedContent": {
+        "eyebrow": "33・附錄・時間不夠可以不投影",
+        "kicker": "",
+        "headings": [
+          "怎麼跟 AI 說話"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "提示詞 Prompt",
+            "paragraph": "你寫給 AI 的指示：要做什麼、用什麼格式、不要做什麼。",
+            "bullets": []
+          },
+          {
+            "heading": "大型語言模型 LLM",
+            "paragraph": "會依上下文接話和寫稿。ChatGPT 背後就是這一類。",
+            "bullets": []
+          },
+          {
+            "heading": "ChatGPT",
+            "paragraph": "會回答，不會自己把工作做完並留下紀錄。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 工具 AI Tool",
+            "paragraph": "加快個人產出。人改完才送出。",
+            "bullets": []
+          },
+          {
+            "heading": "副駕駛 Copilot",
+            "paragraph": "在旁邊給建議。決定權仍在人。",
+            "bullets": []
+          },
+          {
+            "heading": "工作流 Workflow",
+            "paragraph": "把步驟串起來。規則和例外要先講好。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "最後四頁是專有名詞，給學員課後看。時間不夠可以不投影。這一頁是提示詞、大型語言模型、ChatGPT、AI 工具、副駕駛，以及工作流。提示詞是你寫給 AI 的指示。大型語言模型會依上下文接話。ChatGPT 會回答，不會自己把工作做完。工具加快個人產出。副駕駛在旁邊建議，決定權在人。工作流是把步驟串起來。",
+      "estimatedSeconds": 33,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s34",
+      "index": 34,
+      "title": "名詞：做事與系統",
+      "sourceHash": "efde874fbdd89a0eb8cb81d43eb966398751d4a845ee5d1776cdc64044338cf0",
+      "extractedContent": {
+        "eyebrow": "34・附錄",
+        "kicker": "",
+        "headings": [
+          "做事與系統"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "AI Agent",
+            "paragraph": "有目標、會用工具、看結果再調整，而且必須能停下或交給人審。",
+            "bullets": []
+          },
+          {
+            "heading": "Agent 迴路",
+            "paragraph": "目標、上下文、判斷、工具、行動、回饋。沒有停止條件就不要讓它自己做下去。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 系統",
+            "paragraph": "讓同一件事可以重複做、被人覆核、被維運。",
+            "bullets": []
+          },
+          {
+            "heading": "檢索增強生成 RAG",
+            "paragraph": "先找出有出處的段落再回答。沒有來源就不能當成事實。",
+            "bullets": []
+          },
+          {
+            "heading": "固定問答 FAQ",
+            "paragraph": "對得上就直接回，不必每次都讓模型自由發揮。",
+            "bullets": []
+          },
+          {
+            "heading": "人在迴路 HITL",
+            "paragraph": "風險高的步驟必須有人看過。AI 不能自己拍板。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "這一頁是 Agent、它的迴路、AI 系統、檢索增強生成、固定問答，以及人在迴路。Agent 有目標、會用工具，而且要能停下。迴路是目標、上下文、判斷、工具、行動、回饋。系統讓事情可以重複、覆核、維運。檢索增強是先找出有出處的段落再回答，沒有來源就不能當成事實。固定問答對得上就直接回。風險高的步驟必須有人看過。",
+      "estimatedSeconds": 34,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s35",
+      "index": 35,
+      "title": "名詞：做出來",
+      "sourceHash": "6c3951ba913bbac646d338aaa4c53e5148bb2e0cff06369a3a88cebfb1fe4f89",
+      "extractedContent": {
+        "eyebrow": "35・附錄",
+        "kicker": "",
+        "headings": [
+          "做出來會碰到的詞"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "API",
+            "paragraph": "系統跟系統講話的門口，例如讓 Agent 去查資料。",
+            "bullets": []
+          },
+          {
+            "heading": "Webhook",
+            "paragraph": "外面有新事件時主動通知我們。LINE 訊息進來就是這樣。",
+            "bullets": []
+          },
+          {
+            "heading": "Git",
+            "paragraph": "紀錄改了什麼、誰審過。需要時可以退回上一版。",
+            "bullets": []
+          },
+          {
+            "heading": "Docker",
+            "paragraph": "把服務包成可以重複啟動的環境。",
+            "bullets": []
+          },
+          {
+            "heading": "Vibe Coding",
+            "paragraph": "用日常說話跟 AI 一起改程式，加快第一版。能營運仍靠邊界、測試和維運。",
+            "bullets": []
+          },
+          {
+            "heading": "最小可演示版本 MVP",
+            "paragraph": "能當場看、能驗證價值的最小一版，不是一次做完整系統。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "這一頁是做出來會碰到的詞。API 是系統跟系統講話的門口。Webhook 是外面有新事件時主動通知我們，LINE 訊息進來就是這樣。Git 紀錄改了什麼、誰審過。Docker 把服務包成可以重複啟動的環境。Vibe Coding 是用日常說話跟 AI 一起改程式，加快第一版。MVP 是能當場演示、能驗證價值的最小一版。",
+      "estimatedSeconds": 33,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    },
+    {
+      "slideId": "s36",
+      "index": 36,
+      "title": "名詞：把關與課堂用語",
+      "sourceHash": "8961e96ef9e1309e2e822fdfd45cbf21f2fa69f078c73113f58882718e5caaeb",
+      "extractedContent": {
+        "eyebrow": "36・附錄",
+        "kicker": "",
+        "headings": [
+          "把關與課堂用語"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "關卡 Gate",
+            "paragraph": "過關檢查點。範圍、覆核點、失敗怎麼辦，都要寫成看得到的證據。",
+            "bullets": []
+          },
+          {
+            "heading": "評分規準 Rubric",
+            "paragraph": "事先講好怎樣算通過、怎樣算沒過。",
+            "bullets": []
+          },
+          {
+            "heading": "內容管理 CMS",
+            "paragraph": "管網站文章的後台。跟 LINE 的知識更新不是同一件事。",
+            "bullets": []
+          },
+          {
+            "heading": "六種能力",
+            "paragraph": "產生、擷取、濃縮、分類、分析、呼叫工具。用來發想，不是採購清單。",
+            "bullets": []
+          },
+          {
+            "heading": "5R",
+            "paragraph": "重複、大量閱讀、大量報告、規則明確、分析判斷。用來判斷值不值得優先。",
+            "bullets": []
+          },
+          {
+            "heading": "去識別化",
+            "paragraph": "把能認出特定人的資料拿掉或換成假資料，再進課堂或外部 AI。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "最後一頁。關卡是過關檢查點，範圍、覆核點、失敗怎麼辦都要寫成看得到的證據。評分規準是事先講好怎樣算通過。內容管理是管網站文章的後台，跟 LINE 的知識更新不是同一件事。六種能力用來發想，不是採購清單。五 R 用來判斷流程值不值得優先。去識別化是把能認出特定人的資料拿掉，再進課堂或外部 AI。名詞表到這裡。謝謝大家。",
+      "estimatedSeconds": 34,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "default",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-15T09:15:41.799Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "繁中口語修飾後上稿"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-10-15T09:15:12.235Z",
+    "totalEstimatedSeconds": 1124,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

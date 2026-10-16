@@ -2,6 +2,7 @@
 import "dotenv/config";
 import fs from "node:fs";
 import "./lib/tts/openai-adapter.js";
+import "./lib/tts/elevenlabs-adapter.js";
 import "./lib/tts/dry-run-adapter.js";
 import {
   ensureAudioDir,
@@ -19,7 +20,9 @@ import {
 } from "./lib/paths.js";
 import {
   getTtsAdapter,
-  estimateManifestTtsCost,
+  estimateTtsCostUsd,
+  isSlideEligibleForTts,
+  resolveNarrationProvider,
 } from "./lib/tts/index.js";
 import { loadAndValidateManifest } from "./lib/validate.js";
 
@@ -36,18 +39,16 @@ const mPath = manifestPath(deckId);
 const { manifest } = loadAndValidateManifest(mPath);
 ensureAudioDir(deckId);
 
-const provider = dryRun ? "dry-run" : (process.env.NARRATION_TTS_PROVIDER || "openai");
-const adapter = await getTtsAdapter(provider);
+const adapters = new Map();
+async function adapterFor(name) {
+  if (!adapters.has(name)) adapters.set(name, await getTtsAdapter(name));
+  return adapters.get(name);
+}
 
-const eligible = manifest.slides.filter((s) => {
-  if (slideFilter && s.slideId !== slideFilter) return false;
-  if (!s.script) return false;
-  if (!force && s.status === "audio_ready" && s.audioUrl) return false;
-  return s.status === "approved" || s.status === "audio_failed" || s.status === "stale";
-});
+const eligible = manifest.slides.filter((s) => isSlideEligibleForTts(s, { force, slideFilter }));
 
 if (!eligible.length) {
-  console.log("沒有符合條件的頁面。請先 approve 講稿，或使用 --slide=sN");
+  console.log("沒有符合條件的頁面。請先 approve 講稿，已有音訊請加 --force，或使用 --slide=sN");
   process.exit(0);
 }
 
@@ -56,14 +57,19 @@ let success = 0;
 let failed = 0;
 
 for (const slide of eligible) {
-  const est = estimateManifestTtsCost({ slides: [slide] });
+  const provider = resolveNarrationProvider({ dryRun, slide, manifest });
+  const pricedProvider = provider === "dry-run"
+    ? (slide.voice?.provider || manifest.voice?.provider || "openai")
+    : provider;
+  const est = estimateTtsCostUsd(slide.script, pricedProvider);
   if (!dryRun && spent + est > budgetUsd) {
     console.warn(`⚠ 已達 TTS 預算上限 $${budgetUsd}，停止於 ${slide.slideId}`);
     break;
   }
 
   const outPath = audioAbsolutePath(deckId, slide.slideId);
-  const voice = slide.voice || manifest.voice;
+  const voice = slide.voice || manifest.voice || {};
+  const adapter = await adapterFor(provider);
   console.log(`TTS ${slide.slideId} → ${outPath} (${provider})`);
 
   let lastErr;

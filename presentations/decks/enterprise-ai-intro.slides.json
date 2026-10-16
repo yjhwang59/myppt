@@ -1,0 +1,1997 @@
+{
+  "version": "1.0.0",
+  "deckId": "enterprise-ai-intro",
+  "title": "企業 AI 導論｜90–120 分鐘",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "AIDC.work・企業內訓混班・第 0 堂",
+      "h1": "企業 AI 導論",
+      "h2": "企業 AI 導論",
+      "lead": "90 到 120 分鐘，只講、不操作。先把話說齊，預設走進 4 週、12 小時的上路學程。",
+      "stamp": "Jack Y. J. Hwang・Enterprise AI Development Consultant",
+      "cards": [
+        {
+          "num": "90",
+          "tag": null,
+          "tagClass": null,
+          "heading": "分鐘核心場",
+          "paragraph": "共同語言、三個案例、承諾卡。",
+          "bullets": []
+        },
+        {
+          "num": "120",
+          "tag": null,
+          "tagClass": null,
+          "heading": "再加主管層",
+          "paragraph": "多一段五問、5R，和 15 分鐘問答。",
+          "bullets": []
+        },
+        {
+          "num": "4 週",
+          "tag": null,
+          "tagClass": null,
+          "heading": "預設先上路",
+          "paragraph": "先走同一條流程，再談要不要建系統。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "學員不開筆電",
+      "footerPage": "1 / 36"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "不是工具課",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "02・開場",
+      "kicker": "",
+      "h1": "",
+      "h2": "今天不是再上一堂工具課",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 工具",
+          "paragraph": "讓你個人做得快一點。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 工作流",
+          "paragraph": "把跨步驟的流程改順。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Agent／系統",
+          "paragraph": "做成以後還跑得動、查得過。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "目標：從「我會用 ChatGPT」，走到「我們怎麼把 AI 做成控得住的成果」。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "工具 → 工作流 → 做得到的能力",
+      "footerPage": "2 / 36"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "學習契約",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "03・今天的約定",
+      "kicker": "",
+      "h1": "",
+      "h2": "今天做這些，這些先不做",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "今天做",
+          "paragraph": "",
+          "bullets": [
+            "把工具、工作流、Agent、系統講清楚",
+            "用三個已經上線的系統來對照",
+            "寫出一條去掉個資的流程",
+            "用承諾卡確認要不要參加 4 週上路"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "今天不做",
+          "paragraph": "",
+          "bullets": [
+            "不開 Cursor、不寫程式",
+            "不比較模型價目，也不列採購清單",
+            "不現場比賽誰的提示詞比較厲害",
+            "不承諾下課就能上線"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "學員不開筆電；公開頁由講師操作",
+      "footerPage": "3 / 36"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "時程與互動",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04・時間先鎖死",
+      "kicker": "",
+      "h1": "",
+      "h2": "以聽講為主，互動只有三處",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "時間怎麼分（分鐘）",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "現場怎麼參與",
+          "paragraph": "不開筆電、不做實作。其餘時間聽講、做筆記就好。",
+          "bullets": [
+            "舉手：現況五題，大約 90 秒",
+            "寫卡：一句流程，並確認 4 週",
+            "120 分場：再加 2 分鐘靜默寫，以及 15 分鐘問答"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [
+        [
+          "段落",
+          "90",
+          "120",
+          "互動"
+        ],
+        [
+          "開場＋舉手",
+          "10",
+          "10",
+          "舉手"
+        ],
+        [
+          "共同語言＋三個案例",
+          "58",
+          "60",
+          "—"
+        ],
+        [
+          "主管五問＋5R",
+          "—",
+          "12",
+          "靜默寫"
+        ],
+        [
+          "地圖＋承諾卡",
+          "20",
+          "20",
+          "填卡"
+        ],
+        [
+          "問答",
+          "課後",
+          "15",
+          "口頭"
+        ]
+      ],
+      "callouts": [
+        "控時：地圖和承諾卡不能刪。超時就改看截圖。問答不能吃掉結尾。90 分場在第 18 頁講完，跳到第 26 頁。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "120 分場接著走第 19–25 頁",
+      "footerPage": "4 / 36"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "現況快問",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "05・90 秒",
+      "kicker": "",
+      "h1": "",
+      "h2": "我們現在在哪一層？請舉手",
+      "lead": "先記住現況。等一下填承諾卡，會再回來用這五題。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "已經在用",
+          "paragraph": "生成式 AI",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有場景",
+          "paragraph": "部門講得出要改哪件事",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有負責人",
+          "paragraph": "具名，不是大家一起看著辦",
+          "bullets": []
+        },
+        {
+          "num": "4",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有規則",
+          "paragraph": "資料或權限怎麼進、怎麼停",
+          "bullets": []
+        },
+        {
+          "num": "5",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有證據",
+          "paragraph": "說得出什麼叫做成",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "舉手就好，先不討論個案細節",
+      "footerPage": "5 / 36"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "一句話",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "06・共同語言",
+      "kicker": "",
+      "h1": "",
+      "h2": "先記住這一句",
+      "lead": "ChatGPT 會回答。AI Agent 會依目標使用工具做事。AI 系統讓這件事可以重複、可以覆核、可以維運。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "企業缺的通常不是更強的模型，而是把這三層接起來的方法。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "會回答，還不等於會執行，更不等於能營運",
+      "footerPage": "6 / 36"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "五層階梯",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "07・共同語言",
+      "kicker": "",
+      "h1": "",
+      "h2": "不是每個問題都需要 Agent",
+      "lead": "越往右越複雜，整合、治理和維運成本也一起增加。請選最簡單、但還足以驗證價值的那一層。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "提示詞",
+          "description": "Prompt"
+        },
+        {
+          "title": "AI 工具",
+          "description": "AI Tool"
+        },
+        {
+          "title": "工作流",
+          "description": "Workflow"
+        },
+        {
+          "title": "AI Agent",
+          "description": "會用工具做事"
+        },
+        {
+          "title": "AI 系統",
+          "description": "AI System"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "選剛剛好的那一層",
+      "footerPage": "7 / 36"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "四型對照",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "08・共同語言",
+      "kicker": "",
+      "h1": "",
+      "h2": "工具會回應。副駕駛會協助。Agent 會執行。",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "型態",
+          "它在做什麼",
+          "聽得懂的例子",
+          "要守住什麼"
+        ],
+        [
+          "提示詞／工具",
+          "產生",
+          "請 AI 寫週報草稿",
+          "資料要分級，人改完才送出"
+        ],
+        [
+          "工作流",
+          "自動化",
+          "收集、摘要、再送審",
+          "規則、例外、誰按送出"
+        ],
+        [
+          "AI Agent",
+          "執行",
+          "讀檔、查資料、呼叫介面、停下",
+          "權限、停止條件、稽核"
+        ],
+        [
+          "AI 系統",
+          "營運",
+          "會員、預約、知識庫可以一直跑",
+          "身分、監控、退回、知識更新"
+        ]
+      ],
+      "callouts": [
+        "這是共同語言，不是採購規格。副駕駛是在你做事時旁邊協助，決定權仍在人。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "Copilot 不是 Agent",
+      "footerPage": "8 / 36"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "六種能力",
+      "layout": "cards-six",
+      "hero": false,
+      "eyebrow": "09・先問工作，再問工具",
+      "kicker": "",
+      "h1": "",
+      "h2": "這件工作需要哪種能力？",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "產生",
+          "paragraph": "Generate",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "擷取",
+          "paragraph": "Extract",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "濃縮",
+          "paragraph": "Summarize",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "分類",
+          "paragraph": "Classify",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "分析",
+          "paragraph": "Analyze",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "呼叫工具",
+          "paragraph": "Act",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "這六種用來發想，不要用來堆功能。能力定了，再問要用哪個工具。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "產生・擷取・濃縮・分類・分析・呼叫工具",
+      "footerPage": "9 / 36"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "Agent 迴路",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "10・Agent 怎麼做事",
+      "kicker": "",
+      "h1": "",
+      "h2": "AI Agent 要有目標、工具和回饋",
+      "lead": "記成：目標、上下文、判斷、工具、行動、回饋。沒有停止條件，就不要讓它自己做下去。",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "目標",
+          "description": "Goal"
+        },
+        {
+          "title": "上下文",
+          "description": "Context"
+        },
+        {
+          "title": "判斷＋工具",
+          "description": "Reason + Tools"
+        },
+        {
+          "title": "看結果再調整",
+          "description": "Observe"
+        },
+        {
+          "title": "停下或人審",
+          "description": "Stop / Review"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "做 → 看結果 → 調整 → 停下",
+      "footerPage": "10 / 36"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "金句",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "11・先帶走兩句",
+      "kicker": "",
+      "h1": "",
+      "h2": "兩句話就夠用",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "先選層級",
+          "paragraph": "不是每個問題都需要 Agent。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "再選放手程度",
+          "paragraph": "自動化程度，應該和決策風險成反比。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "好的 AI 不是完全自己做主，而是控得住、驗得過、改得動。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "控得住・驗得過・改得動",
+      "footerPage": "11 / 36"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "案例地圖",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "12・我們自己的系統",
+      "kicker": "",
+      "h1": "",
+      "h2": "三個系統，對上三層問題",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "A",
+          "tag": null,
+          "tagClass": null,
+          "heading": "aidc.work",
+          "paragraph": "用 Agent 開發系統：內容、預約、課程、評量。",
+          "bullets": []
+        },
+        {
+          "num": "B",
+          "tag": null,
+          "tagClass": null,
+          "heading": "myAssist",
+          "paragraph": "把 Agent 做成服務：LINE、固定問答、檢索增強、人工覆核。",
+          "bullets": []
+        },
+        {
+          "num": "C",
+          "tag": null,
+          "tagClass": null,
+          "heading": "LPMS",
+          "paragraph": "怎麼證明做對：關卡、評分規準、看得到的證據。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "這三個都是內部或自有系統，用來展示方法，不是客戶委託案件。現場只看公開頁，或事先準備的合成流程。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "內部系統不是客戶專案",
+      "footerPage": "12 / 36"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "案例 A",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "13・案例 A・aidc.work",
+      "kicker": "",
+      "h1": "",
+      "h2": "Agent 是開發同事，交出去的是系統",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "原本卡在哪",
+          "paragraph": "一個人要同時做官網、內容、預約、課程和評量。再買一個聊天工具，解不了營運。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "後來怎麼做成系統",
+          "paragraph": "把規格和專案指引交給 Agent，當成穩定的上下文，再經由 Git、建置、Docker，變成可以維運的服務。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "文件先講清楚",
+          "description": ""
+        },
+        {
+          "title": "Agent 改程式",
+          "description": ""
+        },
+        {
+          "title": "Git 裡審過",
+          "description": ""
+        },
+        {
+          "title": "公開網站跑得起來",
+          "description": ""
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "現場只走課程或預約的公開頁",
+      "footerPage": "13 / 36"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "案例 A 教學點",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "14・案例 A・教學點",
+      "kicker": "",
+      "h1": "",
+      "h2": "畫面點得動，還不是系統",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Agent 做哪一段",
+          "paragraph": "讀程式庫、改多個檔案、跑指令、提出差異。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "人做哪一段",
+          "paragraph": "選題、審範圍、驗收、承擔上線責任。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "系統多了什麼",
+          "paragraph": "身分、內容生命週期、預約、課程、評量。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "用日常說話跟 AI 一起寫程式，可以加快第一版。真正能營運，靠的是邊界、測試和維運。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "公開對照：課程、預約、文章",
+      "footerPage": "14 / 36"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "案例 B",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "15・案例 B・myAssist",
+      "kicker": "",
+      "h1": "",
+      "h2": "Agent 要包在系統裡，才營運得了",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "為什麼不是官網聊天框",
+          "paragraph": "LINE 的事件通知、知識更新、成本和答錯的風險，跟官網內容管理不是同一件事。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "知識怎麼更新",
+          "paragraph": "公開內容單向同步進知識庫。回答時引用公開網址，不把模型的答案寫回權威來源。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "通道策略",
+          "description": ""
+        },
+        {
+          "title": "安全過濾",
+          "description": ""
+        },
+        {
+          "title": "固定問答",
+          "description": "FAQ"
+        },
+        {
+          "title": "檢索後再答",
+          "description": "RAG"
+        },
+        {
+          "title": "模型再轉人工",
+          "description": ""
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "現場用架構圖和合成問答，不投影對話原文",
+      "footerPage": "15 / 36"
+    },
+    {
+      "slideId": "s16",
+      "index": 16,
+      "title": "案例 B 治理",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "16・人要留在迴路裡",
+      "kicker": "",
+      "h1": "",
+      "h2": "風險越高，人的控制越強",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "低",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 可以直接做",
+          "paragraph": "可逆、看得到過程，例如固定問答。",
+          "bullets": []
+        },
+        {
+          "num": "中",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 建議，人核准",
+          "paragraph": "回覆草稿、知識摘要。",
+          "bullets": []
+        },
+        {
+          "num": "高",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 分析，人決定",
+          "paragraph": "報價、承諾時程、敏感決策。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "不知道就交給人工。固定問答要對得上；檢索增強必須有來源；沒有來源，就不能當成事實。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "停下、留下狀態、再升級給人",
+      "footerPage": "16 / 36"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
+      "title": "案例 C",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "17・案例 C・LPMS",
+      "kicker": "",
+      "h1": "",
+      "h2": "不要讓 AI 自己證明自己做對了",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "關卡和評分規準",
+          "paragraph": "專題不是感覺好用就算。驗收要寫成看得到的證據：範圍、覆核點、失敗怎麼辦。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "帶回企業怎麼用",
+          "paragraph": "Agent 很容易只解釋最顯眼的警告，而不是根因。要能追過程、對照、從頭到尾驗證。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "Agent 產出",
+          "description": ""
+        },
+        {
+          "title": "另外評估",
+          "description": ""
+        },
+        {
+          "title": "通過或沒過的證據",
+          "description": ""
+        },
+        {
+          "title": "人審、重試或停止",
+          "description": ""
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "評量在 aidc.work 裡；不展示學員個資",
+      "footerPage": "17 / 36"
+    },
+    {
+      "slideId": "s18",
+      "index": 18,
+      "title": "案例四句",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "18・案例怎麼講",
+      "kicker": "",
+      "h1": "",
+      "h2": "每則案例只講四句",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "原本卡在哪",
+          "paragraph": "哪一項工作做不下去？",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "為什麼不是聊天工具",
+          "paragraph": "再買一個對話框，解不了什麼？",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "誰做哪一段",
+          "paragraph": "Agent 做哪段、人做哪段？",
+          "bullets": []
+        },
+        {
+          "num": "4",
+          "tag": null,
+          "tagClass": null,
+          "heading": "什麼算過關",
+          "paragraph": "證據在哪，何時要停下？",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "90 分場：下一頁請跳到第 26 頁，四週主路徑。120 分場：繼續第 19 頁。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "把這四句帶回自己的部門流程",
+      "footerPage": "18 / 36"
+    },
+    {
+      "slideId": "s19",
+      "index": 19,
+      "title": "選配入口",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "19・選配・120 分場",
+      "kicker": "",
+      "h1": "",
+      "h2": "接下來 12 分鐘：主管旁聽",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "主管五問",
+          "paragraph": "問題、分工、資料、責任、證據。",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "5R 過濾",
+          "paragraph": "這條流程值不值得優先。",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "寫一句流程",
+          "paragraph": "誰、什麼情境、卡在哪。承諾卡會用到。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "這不是三小時的高階工作坊，也不做 30 天計畫。90 分場請直接跳到第 26 頁。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "選配是第 19 到 25 頁",
+      "footerPage": "19 / 36"
+    },
+    {
+      "slideId": "s20",
+      "index": 20,
+      "title": "主管五問",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "20・主管旁聽",
+      "kicker": "",
+      "h1": "",
+      "h2": "主管不必寫程式，但要判斷五件事",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "問題",
+          "paragraph": "要解決哪個看得到的工作問題？",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "分工",
+          "paragraph": "人和 AI 各做哪一段？",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "資料",
+          "paragraph": "什麼能進、什麼不能進？",
+          "bullets": []
+        },
+        {
+          "num": "4",
+          "tag": null,
+          "tagClass": null,
+          "heading": "責任",
+          "paragraph": "出錯時誰覆核、誰承擔？",
+          "bullets": []
+        },
+        {
+          "num": "5",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證據",
+          "paragraph": "用什麼基準證明有價值？",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "導入 AI 是管理制度的一部分，不是資訊部門單獨的技術計畫。這是旁聽，不是當場決策會議。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "主管定邊界，不在這堂拍板採購",
+      "footerPage": "20 / 36"
+    },
+    {
+      "slideId": "s21",
+      "index": 21,
+      "title": "5R 過濾",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "21・先過濾機會",
+      "kicker": "",
+      "h1": "",
+      "h2": "5R：這條流程值不值得優先",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "重複做",
+          "paragraph": "Repeat",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "要大量閱讀",
+          "paragraph": "Read",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "要大量寫報告",
+          "paragraph": "Report",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "規則明確",
+          "paragraph": "Rule",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "需要分析判斷",
+          "paragraph": "Reason",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "適合 AI，不等於值得優先投資。價值低、做不起來的題目，不要因為新穎就做。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "之後再依價值、可行性、風險粗排",
+      "footerPage": "21 / 36"
+    },
+    {
+      "slideId": "s22",
+      "index": 22,
+      "title": "靜默寫流程",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "22・安靜寫・2 分鐘",
+      "kicker": "",
+      "h1": "",
+      "h2": "寫出你的一條流程",
+      "lead": "一句話就好。等一下承諾卡用同一句。不要寫客戶真名。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "誰",
+          "tag": null,
+          "tagClass": null,
+          "heading": "哪個角色",
+          "paragraph": "是誰在做這件事？",
+          "bullets": []
+        },
+        {
+          "num": "情境",
+          "tag": null,
+          "tagClass": null,
+          "heading": "什麼時候",
+          "paragraph": "什麼事情一發生，就要做？",
+          "bullets": []
+        },
+        {
+          "num": "卡點",
+          "tag": null,
+          "tagClass": null,
+          "heading": "卡在哪",
+          "paragraph": "時間、錯誤、找資料，還是覆核？",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "安靜寫，先不互相討論",
+      "footerPage": "22 / 36"
+    },
+    {
+      "slideId": "s23",
+      "index": 23,
+      "title": "去識別化",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "23・安全・先把身分拿掉",
+      "kicker": "",
+      "h1": "",
+      "h2": "課堂和課間都要去識別化",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以這樣寫",
+          "paragraph": "",
+          "bullets": [
+            "公司稱「甲公司」",
+            "部門用「A 部門、B 部門」",
+            "合成訂單、假的電子郵件"
+          ]
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "不要這樣寫",
+          "paragraph": "",
+          "bullets": [
+            "姓名、身分證、客戶編號",
+            "還沒公開的策略、合約原文",
+            "把正式個資貼進外部 AI"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "從第一週起，我們走同一條主流程。今天先把句子寫乾淨。若課前已跟 Sponsor 宣讀過，這頁可以略講。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "去識別化：拿掉能認出特定人的資料",
+      "footerPage": "23 / 36"
+    },
+    {
+      "slideId": "s24",
+      "index": 24,
+      "title": "常見反對",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "24・先對齊再上路",
+      "kicker": "",
+      "h1": "",
+      "h2": "四句常見反對，先講開",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "沒資料",
+          "paragraph": "先用去掉個資的樣本和公開規則驗證流程，再談接正式資料庫。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "要先選模型",
+          "paragraph": "先鎖問題和驗收。模型是可以替換的一層。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "要先買平台",
+          "paragraph": "4 週先證明一條可以演示、而且必覆核的工作流，再談平台採購。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "主管沒時間",
+          "paragraph": "主管旁聽並定邊界。Champion 把同一條流程跑完。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "反對是風險訊號，不是否決理由",
+      "footerPage": "24 / 36"
+    },
+    {
+      "slideId": "s25",
+      "index": 25,
+      "title": "備援截圖",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "25・示範備援",
+      "kicker": "",
+      "h1": "",
+      "h2": "公開頁打不開，就改看截圖",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "A",
+          "tag": null,
+          "tagClass": null,
+          "heading": "aidc.work",
+          "paragraph": "課程、預約頁的截圖，仍講那四句。",
+          "bullets": []
+        },
+        {
+          "num": "B",
+          "tag": null,
+          "tagClass": null,
+          "heading": "myAssist",
+          "paragraph": "架構圖加上合成的固定問答；不進後台。",
+          "bullets": []
+        },
+        {
+          "num": "C",
+          "tag": null,
+          "tagClass": null,
+          "heading": "LPMS",
+          "paragraph": "關卡和評分規準的合成示意；沒有個資。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "備援可以插在案例時段。不要為了救示範，而吃掉地圖和承諾卡。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "講師課前備好離線圖",
+      "footerPage": "25 / 36"
+    },
+    {
+      "slideId": "s26",
+      "index": 26,
+      "title": "四週主路徑",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "26・地圖・預設路徑 A",
+      "kicker": "",
+      "h1": "",
+      "h2": "會用、會管、會建｜4 週 12 小時",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "帶走什麼",
+          "paragraph": "使用規範、可以重做的任務、90 天節奏，以及一條可以演示、而且必須覆核的流程。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "誰適合",
+          "paragraph": "混班種子加上主管旁聽。資訊同仁派一個人開權限即可。先上路，再決定要不要建系統。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "第 1 週",
+          "description": "規則與選題"
+        },
+        {
+          "title": "第 2 週",
+          "description": "真實任務上路"
+        },
+        {
+          "title": "第 3 週",
+          "description": "流程與停損"
+        },
+        {
+          "title": "第 4 週",
+          "description": "最小工作流"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "12 小時上路學程",
+      "footerPage": "26 / 36"
+    },
+    {
+      "slideId": "s27",
+      "index": 27,
+      "title": "5–6 週選配",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "27・地圖・還是那 12 小時",
+      "kicker": "",
+      "h1": "",
+      "h2": "可以拉成 5 到 6 週，深度不變",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "5 週",
+          "paragraph": "第 1 到第 3 週上課。第 4 週之前加一週，準備環境和去掉個資的資料，再上原來的第 4 週。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "6 週",
+          "paragraph": "四堂課，加上一週作業彩排，再加上一週內部發表，或用評量方式檢核。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "上課時數仍是 12 小時。沒有作業，第 4 週很難從「會問」走到可以演示。這是把節奏放慢，不是另開一條更深的課。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "深度不變，只是週數拉開",
+      "footerPage": "27 / 36"
+    },
+    {
+      "slideId": "s28",
+      "index": 28,
+      "title": "8 週升級",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "28・升級，不是當場二選一",
+      "kicker": "",
+      "h1": "",
+      "h2": "若要 8 週：兩種誠實選項",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "路徑 B｜24 小時",
+          "paragraph": "8 週每週 3 小時陪跑，或 4 次 6 小時整天班。給 Champion 和資訊種子，從問題定義走到可演示的單一系統或 Agent 最小版。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "8 週系統開發入門班",
+          "paragraph": "要做出可部署小系統的人另開班：選題、表單、介面到部署。這不是上路學程的加長版。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "人分成兩群時，主班走 4 週；升級班另開 2 到 6 人。禁止同一教室兩套深度。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "先上路，再募集升級",
+      "footerPage": "28 / 36"
+    },
+    {
+      "slideId": "s29",
+      "index": 29,
+      "title": "承諾卡",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "29・承諾卡・兩分鐘",
+      "kicker": "",
+      "h1": "",
+      "h2": "先寫流程，再確認要不要參加 4 週",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "欄位",
+          "怎麼填"
+        ],
+        [
+          "角色",
+          "主管／Champion／業務或專業／資訊"
+        ],
+        [
+          "一條流程",
+          "誰、在什麼情境、卡在哪（一句話）"
+        ],
+        [
+          "參加第 1–4 週",
+          "是／需主管同意／旁聽"
+        ],
+        [
+          "課間工時",
+          "每週不到 1 小時／大約 1 小時／2 小時以上"
+        ],
+        [
+          "最大卡關",
+          "沒有負責人／資料不能出／權限／不會選題"
+        ],
+        [
+          "加選興趣（可空白）",
+          "路徑 B／8 週系統班／先上完 4 週再說"
+        ]
+      ],
+      "callouts": [
+        "承諾卡是需求訊號，不是當場簽約。開班仍要 Sponsor、名單，以及去識別化規則。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "紙本或 Mentimeter",
+      "footerPage": "29 / 36"
+    },
+    {
+      "slideId": "s30",
+      "index": 30,
+      "title": "Sponsor 規則",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "30・跟 Sponsor 先講好",
+      "kicker": "",
+      "h1": "",
+      "h2": "開班前先講好這三條",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "預設",
+          "tag": null,
+          "tagClass": null,
+          "heading": "開 4 週上路",
+          "paragraph": "這一場預設走路徑 A。就算很多人對路徑 B 有興趣，也先上路，結束後再募集升級。",
+          "bullets": []
+        },
+        {
+          "num": "加選",
+          "tag": null,
+          "tagClass": null,
+          "heading": "路徑 B 或系統班",
+          "paragraph": "要有負責人、資訊種子，以及每週 2 到 4 小時作業。2 到 6 人種子另開，不併進主班。",
+          "bullets": []
+        },
+        {
+          "num": "禁止",
+          "tag": null,
+          "tagClass": null,
+          "heading": "同一教室兩套深度",
+          "paragraph": "不要一邊做規範任務，一邊做系統的最小版本。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "兩週內回覆要不要開第 1 週",
+      "footerPage": "30 / 36"
+    },
+    {
+      "slideId": "s31",
+      "index": 31,
+      "title": "下一步",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "31・下一步",
+      "kicker": "",
+      "h1": "",
+      "h2": "把承諾卡收成可以排課的下一步",
+      "lead": "預約諮詢 · 課程一覽 · AI 導入訪談",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "導論講義",
+          "paragraph": "說明文章",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "路徑 A 課綱",
+          "paragraph": "12 小時上路學程",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "升級課綱",
+          "paragraph": "四模組 · 系統班",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "先把範圍做小，驗證做快，再把真的有效的部分放大。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "aidc.work",
+      "footerPage": "31 / 36"
+    },
+    {
+      "slideId": "s32",
+      "index": 32,
+      "title": "結構化問答",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "32・問答・120 分場 15 分鐘",
+      "kicker": "",
+      "h1": "",
+      "h2": "一題一答；其餘寫便利貼，課後再回",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "選題",
+          "paragraph": "這題該用工具，還是該用 Agent？",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "資料",
+          "paragraph": "什麼可以進外部模型？",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "組織",
+          "paragraph": "誰當負責人、誰當 Champion？",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "時程",
+          "paragraph": "何時開第 1 週、誰簽 Sponsor？",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "90 分場：這頁改成便利貼，課後再回，不要延長。地圖和承諾卡的時間已經鎖死。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "問答不能吃掉結尾",
+      "footerPage": "32 / 36"
+    },
+    {
+      "slideId": "s33",
+      "index": 33,
+      "title": "名詞：怎麼跟 AI 說話",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "33・附錄・時間不夠可以不投影",
+      "kicker": "",
+      "h1": "",
+      "h2": "怎麼跟 AI 說話",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "提示詞 Prompt",
+          "paragraph": "你寫給 AI 的指示：要做什麼、用什麼格式、不要做什麼。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "大型語言模型 LLM",
+          "paragraph": "會依上下文接話和寫稿。ChatGPT 背後就是這一類。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "ChatGPT",
+          "paragraph": "會回答，不會自己把工作做完並留下紀錄。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 工具 AI Tool",
+          "paragraph": "加快個人產出。人改完才送出。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "副駕駛 Copilot",
+          "paragraph": "在旁邊給建議。決定權仍在人。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "工作流 Workflow",
+          "paragraph": "把步驟串起來。規則和例外要先講好。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "留給課後對照",
+      "footerPage": "33 / 36"
+    },
+    {
+      "slideId": "s34",
+      "index": 34,
+      "title": "名詞：做事與系統",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "34・附錄",
+      "kicker": "",
+      "h1": "",
+      "h2": "做事與系統",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI Agent",
+          "paragraph": "有目標、會用工具、看結果再調整，而且必須能停下或交給人審。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Agent 迴路",
+          "paragraph": "目標、上下文、判斷、工具、行動、回饋。沒有停止條件就不要讓它自己做下去。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 系統",
+          "paragraph": "讓同一件事可以重複做、被人覆核、被維運。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "檢索增強生成 RAG",
+          "paragraph": "先找出有出處的段落再回答。沒有來源就不能當成事實。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "固定問答 FAQ",
+          "paragraph": "對得上就直接回，不必每次都讓模型自由發揮。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "人在迴路 HITL",
+          "paragraph": "風險高的步驟必須有人看過。AI 不能自己拍板。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "會做事的要能停下",
+      "footerPage": "34 / 36"
+    },
+    {
+      "slideId": "s35",
+      "index": 35,
+      "title": "名詞：做出來",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "35・附錄",
+      "kicker": "",
+      "h1": "",
+      "h2": "做出來會碰到的詞",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "API",
+          "paragraph": "系統跟系統講話的門口，例如讓 Agent 去查資料。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Webhook",
+          "paragraph": "外面有新事件時主動通知我們。LINE 訊息進來就是這樣。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Git",
+          "paragraph": "紀錄改了什麼、誰審過。需要時可以退回上一版。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Docker",
+          "paragraph": "把服務包成可以重複啟動的環境。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Vibe Coding",
+          "paragraph": "用日常說話跟 AI 一起改程式，加快第一版。能營運仍靠邊界、測試和維運。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "最小可演示版本 MVP",
+          "paragraph": "能當場看、能驗證價值的最小一版，不是一次做完整系統。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "先做出能看的最小一版",
+      "footerPage": "35 / 36"
+    },
+    {
+      "slideId": "s36",
+      "index": 36,
+      "title": "名詞：把關與課堂用語",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "36・附錄",
+      "kicker": "",
+      "h1": "",
+      "h2": "把關與課堂用語",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "關卡 Gate",
+          "paragraph": "過關檢查點。範圍、覆核點、失敗怎麼辦，都要寫成看得到的證據。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "評分規準 Rubric",
+          "paragraph": "事先講好怎樣算通過、怎樣算沒過。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "內容管理 CMS",
+          "paragraph": "管網站文章的後台。跟 LINE 的知識更新不是同一件事。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "六種能力",
+          "paragraph": "產生、擷取、濃縮、分類、分析、呼叫工具。用來發想，不是採購清單。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "5R",
+          "paragraph": "重複、大量閱讀、大量報告、規則明確、分析判斷。用來判斷值不值得優先。",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "去識別化",
+          "paragraph": "把能認出特定人的資料拿掉或換成假資料，再進課堂或外部 AI。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "名詞表到這裡",
+      "footerPage": "36 / 36"
+    }
+  ]
+}

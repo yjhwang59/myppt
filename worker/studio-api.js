@@ -110,8 +110,10 @@ function markScriptEdited(slide) {
 
 function touchNarration(narration, slide) {
   const extracted = { ...(narration.extractedContent || {}) };
+  if (slide.eyebrow != null) extracted.eyebrow = slide.eyebrow;
   if (slide.kicker != null) extracted.kicker = slide.kicker;
   if (slide.lead != null) extracted.lead = slide.lead;
+  if (slide.stamp != null) extracted.stamp = slide.stamp;
   const headings = [slide.h1, slide.h2].map((item) => String(item || "").replace(/\n/g, " ").trim()).filter(Boolean);
   if (headings.length) extracted.headings = headings;
   if (Array.isArray(slide.callouts)) extracted.callouts = slide.callouts;
@@ -122,6 +124,10 @@ function touchNarration(narration, slide) {
       bullets: card.bullets || [],
     }));
   }
+  if (Array.isArray(slide.flowSteps)) extracted.flowSteps = slide.flowSteps;
+  if (Array.isArray(slide.table)) extracted.table = slide.table;
+  if (Array.isArray(slide.phases)) extracted.phases = slide.phases;
+  if (Array.isArray(slide.facts)) extracted.facts = slide.facts;
   narration.extractedContent = extracted;
   narration.title = slide.title || narration.title;
   const nextHash = hashContent(extracted);
@@ -145,6 +151,8 @@ function applySlideFields(slide, incoming) {
     flowSteps: incoming.flowSteps ?? slide.flowSteps,
     table: incoming.table ?? slide.table,
     callouts: incoming.callouts ?? slide.callouts,
+    phases: incoming.phases ?? slide.phases,
+    facts: incoming.facts ?? slide.facts,
   };
 }
 

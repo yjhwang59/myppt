@@ -31,6 +31,7 @@ import {
   applyGeneratedScript,
 } from "../scripts/narration/lib/manifest.js";
 import { readSlidesJson, writeSlidesJson, patchDeckHtml } from "../scripts/narration/lib/slide-model.js";
+import { patchSlideHtml } from "../worker/slide-patch.js";
 import { extractDeckFromFile, estimateSecondsFromScript, shouldSkipHtmlPatch } from "../scripts/narration/lib/extract.js";
 import { fetchRemoteHtml, titleFromHtml } from "./lib/html-import.js";
 import { persistHtmlDeck } from "./lib/persist-html-deck.js";
@@ -39,7 +40,9 @@ import { listLlmModels, resolveLlmModel } from "./lib/llm-models.js";
 import { readSourceTranscript, writeSourceTranscript } from "./lib/transcript.js";
 import { generateSlideScript } from "./lib/script-generation.js";
 import "../scripts/narration/lib/tts/openai-adapter.js";
+import "../scripts/narration/lib/tts/elevenlabs-adapter.js";
 import { getTtsAdapter, estimateTtsCostUsd } from "../scripts/narration/lib/tts/index.js";
+import { resolveSynthesisTarget } from "../scripts/narration/lib/clone-voice.js";
 import { importPdfToPages, pdfPagesToExtracted } from "./lib/pdf-import.js";
 import {
   listDecks,
@@ -161,22 +164,11 @@ function loadCombinedSlide(deckId, slideId) {
   return { deckData, slide, manifest, narration };
 }
 
-function rebuildDeck(deckId) {
+function refreshManifestFromHtml(deckId) {
   const { slidesPath, deckHtml, manifestFile } = getDeckPaths(deckId);
   if (!fs.existsSync(deckHtml)) throw new Error("deck html not found");
 
   const deckData = fs.existsSync(slidesPath) ? readSlidesJson(slidesPath) : null;
-  if (deckData) {
-    const html = fs.readFileSync(deckHtml, "utf8");
-    if (
-      deckData.sourceType !== "pdf" &&
-      html.includes('<main id="deck">') &&
-      !shouldSkipHtmlPatch(deckData, html)
-    ) {
-      fs.writeFileSync(deckHtml, patchDeckHtml(html, deckData), "utf8");
-    }
-  }
-
   const extracted = extractDeckFromFile(deckHtml);
   const existing = readManifest(manifestFile);
   const manifest = mergeExtractedSlides({
@@ -191,6 +183,25 @@ function rebuildDeck(deckId) {
   recalcManifestMeta(manifest);
   writeManifest(manifest, manifestFile);
   return manifest;
+}
+
+function rebuildDeck(deckId) {
+  const { slidesPath, deckHtml } = getDeckPaths(deckId);
+  if (!fs.existsSync(deckHtml)) throw new Error("deck html not found");
+
+  const deckData = fs.existsSync(slidesPath) ? readSlidesJson(slidesPath) : null;
+  if (deckData) {
+    const html = fs.readFileSync(deckHtml, "utf8");
+    if (
+      deckData.sourceType !== "pdf" &&
+      html.includes('<main id="deck">') &&
+      !shouldSkipHtmlPatch(deckData, html)
+    ) {
+      fs.writeFileSync(deckHtml, patchDeckHtml(html, deckData), "utf8");
+    }
+  }
+
+  return refreshManifestFromHtml(deckId);
 }
 
 function cleanupUpload(file) {
@@ -559,7 +570,7 @@ app.get("/api/decks/:deckId/slides/:slideId", auth, (req, res) => {
 
 app.put("/api/decks/:deckId/slides/:slideId", auth, (req, res) => {
   const { deckId, slideId } = req.params;
-  const { slidesPath } = getDeckPaths(deckId);
+  const { slidesPath, deckHtml } = getDeckPaths(deckId);
   if (!fs.existsSync(slidesPath)) return res.status(404).json({ error: "slides.json not found（PDF 簡報請只改講稿）" });
   const deckData = readSlidesJson(slidesPath);
   if (deckData.sourceType === "pdf") {
@@ -567,25 +578,41 @@ app.put("/api/decks/:deckId/slides/:slideId", auth, (req, res) => {
   }
   const idx = deckData.slides.findIndex((s) => s.slideId === slideId);
   if (idx < 0) return res.status(404).json({ error: "slide not found" });
+  if (!fs.existsSync(deckHtml)) return res.status(404).json({ error: "deck html not found" });
 
   const incoming = req.body || {};
-  deckData.slides[idx] = {
-    ...deckData.slides[idx],
-    title: incoming.title ?? deckData.slides[idx].title,
-    eyebrow: incoming.eyebrow ?? deckData.slides[idx].eyebrow,
-    kicker: incoming.kicker ?? deckData.slides[idx].kicker,
-    h1: incoming.h1 ?? deckData.slides[idx].h1,
-    h2: incoming.h2 ?? deckData.slides[idx].h2,
-    lead: incoming.lead ?? deckData.slides[idx].lead,
-    stamp: incoming.stamp ?? deckData.slides[idx].stamp,
-    cards: incoming.cards ?? deckData.slides[idx].cards,
-    flowSteps: incoming.flowSteps ?? deckData.slides[idx].flowSteps,
-    table: incoming.table ?? deckData.slides[idx].table,
-    callouts: incoming.callouts ?? deckData.slides[idx].callouts,
+  const previous = deckData.slides[idx];
+  const next = {
+    ...previous,
+    title: incoming.title ?? previous.title,
+    eyebrow: incoming.eyebrow ?? previous.eyebrow,
+    kicker: incoming.kicker ?? previous.kicker,
+    h1: incoming.h1 ?? previous.h1,
+    h2: incoming.h2 ?? previous.h2,
+    lead: incoming.lead ?? previous.lead,
+    stamp: incoming.stamp ?? previous.stamp,
+    cards: incoming.cards ?? previous.cards,
+    flowSteps: incoming.flowSteps ?? previous.flowSteps,
+    table: incoming.table ?? previous.table,
+    callouts: incoming.callouts ?? previous.callouts,
+    phases: incoming.phases ?? previous.phases,
+    facts: incoming.facts ?? previous.facts,
   };
+  deckData.slides[idx] = next;
   writeSlidesJson(slidesPath, deckData);
-  const manifest = rebuildDeck(deckId);
-  res.json({ ok: true, slide: deckData.slides[idx], manifestStatus: manifest.slides[idx]?.status });
+  const html = fs.readFileSync(deckHtml, "utf8");
+  fs.writeFileSync(
+    deckHtml,
+    patchSlideHtml(html, {
+      index: next.index || idx + 1,
+      slideId,
+      previous,
+      next,
+    }),
+    "utf8"
+  );
+  const manifest = refreshManifestFromHtml(deckId);
+  res.json({ ok: true, slide: next, manifestStatus: manifest.slides.find((s) => s.slideId === slideId)?.status });
 });
 
 app.put("/api/decks/:deckId/slides/:slideId/script", auth, (req, res) => {
@@ -675,22 +702,29 @@ app.post("/api/decks/:deckId/generate-scripts", auth, async (req, res) => {
 app.post("/api/decks/:deckId/slides/:slideId/preview-tts", auth, async (req, res) => {
   const { deckId, slideId } = req.params;
   const gender = req.body?.gender;
-  const voiceId = resolveVoiceId(gender, req.body?.voiceId);
   const mPath = manifestPath(deckId);
   const manifest = readManifest(mPath);
   const slide = manifest?.slides?.find((s) => s.slideId === slideId);
   if (!slide) return res.status(404).json({ error: "slide not found" });
   const script = req.body?.script ?? slide.script;
   if (!script) return res.status(400).json({ error: "script is empty" });
+  const cloned = resolveSynthesisTarget({
+    manifest,
+    slide,
+    requestedVoiceId: req.body?.voiceId,
+    speed: Number(req.body?.speed || slide.voice?.speed || 1),
+  });
+  const voiceId = cloned ? cloned.voiceId : resolveVoiceId(gender, req.body?.voiceId);
+  const provider = cloned?.provider || process.env.NARRATION_TTS_PROVIDER || "openai";
 
   ensureAudioDir(deckId);
   const outPath = previewAudioAbsolutePath(deckId, slideId);
-  const adapter = await getTtsAdapter(process.env.NARRATION_TTS_PROVIDER || "openai");
+  const adapter = await getTtsAdapter(provider);
   try {
     const result = await adapter.synthesize({
       text: script,
       voiceId,
-      speed: Number(req.body?.speed || slide.voice?.speed || 1),
+      speed: cloned ? cloned.speed : Number(req.body?.speed || slide.voice?.speed || 1),
       outputPath: outPath,
     });
     const url = `${previewAudioRelativeUrl(deckId, slideId)}?t=${Date.now()}`;
@@ -709,25 +743,31 @@ app.post("/api/decks/:deckId/slides/:slideId/preview-tts", auth, async (req, res
 app.post("/api/decks/:deckId/slides/:slideId/synthesize", auth, async (req, res) => {
   const { deckId, slideId } = req.params;
   const gender = req.body?.gender;
-  const voiceId = resolveVoiceId(gender, req.body?.voiceId);
   const mPath = manifestPath(deckId);
   const manifest = readManifest(mPath);
   const slide = manifest?.slides?.find((s) => s.slideId === slideId);
   if (!slide) return res.status(404).json({ error: "slide not found" });
   if (!slide.script) return res.status(400).json({ error: "script is empty" });
 
+  const cloned = resolveSynthesisTarget({
+    manifest,
+    slide,
+    requestedVoiceId: req.body?.voiceId,
+    speed: Number(req.body?.speed || slide.voice?.speed || 1),
+  });
+  const voiceId = cloned ? cloned.voiceId : resolveVoiceId(gender, req.body?.voiceId);
   slide.voice = {
     ...(slide.voice || manifest.voice),
-    provider: "openai",
+    provider: cloned?.provider || "openai",
     voiceId,
-    speed: Number(req.body?.speed || 1),
+    speed: cloned ? cloned.speed : Number(req.body?.speed || 1),
   };
   slide.status = "approved";
   slide.approvedAt = new Date().toISOString();
   slide.approvedBy = "admin-ui";
 
   ensureAudioDir(deckId);
-  const adapter = await getTtsAdapter(process.env.NARRATION_TTS_PROVIDER || "openai");
+  const adapter = await getTtsAdapter(slide.voice.provider);
   const outPath = audioAbsolutePath(deckId, slideId);
   try {
     const result = await adapter.synthesize({
@@ -756,7 +796,8 @@ app.post("/api/decks/:deckId/synthesize-all", auth, (req, res) => {
 
   const force = Boolean(req.body?.force);
   const gender = req.body?.gender;
-  const voiceId = req.body?.voiceId ? resolveVoiceId(gender, req.body.voiceId) : null;
+  const requestedVoiceId = req.body?.voiceId ? resolveVoiceId(gender, req.body.voiceId) : null;
+  const deckClone = resolveSynthesisTarget({ manifest, requestedVoiceId });
 
   const eligible = manifest.slides.filter((s) => {
     if (!s.script) return false;
@@ -764,7 +805,8 @@ app.post("/api/decks/:deckId/synthesize-all", auth, (req, res) => {
     return true;
   });
 
-  const costEstimate = eligible.reduce((sum, s) => sum + estimateTtsCostUsd(s.script), 0);
+  const costProvider = deckClone?.provider || manifest.voice?.provider || "openai";
+  const costEstimate = eligible.reduce((sum, s) => sum + estimateTtsCostUsd(s.script, costProvider), 0);
   const job = createJob("synthesize-all", deckId, eligible.length);
   res.status(202).json({
     jobId: job.id,
@@ -774,26 +816,45 @@ app.post("/api/decks/:deckId/synthesize-all", auth, (req, res) => {
 
   runJob(job.id, async (report) => {
     ensureAudioDir(deckId);
-    const adapter = await getTtsAdapter(process.env.NARRATION_TTS_PROVIDER || "openai");
     const budgetUsd = Number(process.env.NARRATION_TTS_BUDGET_USD || 5);
     let spent = manifest.meta?.ttsCostEstimateUsd || 0;
     let success = 0;
     let failed = 0;
 
-    if (voiceId) {
-      manifest.voice = { ...(manifest.voice || {}), provider: "openai", voiceId };
+    if (deckClone) {
+      manifest.voice = {
+        provider: "elevenlabs",
+        voiceId: deckClone.voiceId,
+        speed: manifest.voice?.speed ?? 1,
+      };
+    } else if (requestedVoiceId) {
+      manifest.voice = { ...(manifest.voice || {}), provider: "openai", voiceId: requestedVoiceId };
     }
 
     for (let i = 0; i < eligible.length; i++) {
       const slide = eligible[i];
       report(i, eligible.length, `TTS ${slide.slideId}`);
-      const vid = voiceId || slide.voice?.voiceId || manifest.voice?.voiceId || "nova";
-      slide.voice = { ...(slide.voice || manifest.voice), provider: "openai", voiceId: vid, speed: slide.voice?.speed || 1 };
+      const slideClone = resolveSynthesisTarget({
+        manifest,
+        slide,
+        requestedVoiceId,
+        speed: slide.voice?.speed,
+      });
+      const vid = slideClone
+        ? slideClone.voiceId
+        : (requestedVoiceId || slide.voice?.voiceId || manifest.voice?.voiceId || "nova");
+      slide.voice = {
+        ...(slide.voice || manifest.voice),
+        provider: slideClone?.provider || "openai",
+        voiceId: vid,
+        speed: slideClone?.speed || slide.voice?.speed || 1,
+      };
       slide.status = "approved";
       slide.approvedAt = new Date().toISOString();
       slide.approvedBy = "admin-ui";
 
-      const est = estimateTtsCostUsd(slide.script);
+      const est = estimateTtsCostUsd(slide.script, slide.voice.provider);
+      const adapter = await getTtsAdapter(slide.voice.provider);
       if (spent + est > budgetUsd) {
         setSlideAudioFailed(slide, `超過 TTS 預算 $${budgetUsd}`);
         failed++;

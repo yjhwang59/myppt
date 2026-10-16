@@ -158,8 +158,7 @@ const els = {
   reload: document.getElementById("btn-reload"),
   list: document.getElementById("slide-list"),
   form: document.getElementById("slide-form"),
-  cardsEditor: document.getElementById("cards-editor"),
-  addCard: document.getElementById("btn-add-card"),
+  slideContent: document.getElementById("slide-content"),
   script: document.getElementById("script"),
   save: document.getElementById("btn-save"),
   saveScript: document.getElementById("btn-save-script"),
@@ -216,7 +215,6 @@ const els = {
   previewAudio: document.getElementById("preview-audio"),
   status: document.getElementById("status"),
   editorTitle: document.getElementById("editor-title"),
-  advanced: document.getElementById("advanced-fields"),
   genAllScripts: document.getElementById("btn-gen-all-scripts"),
   synthAll: document.getElementById("btn-synth-all"),
   openDeck: document.getElementById("btn-open-deck"),
@@ -453,8 +451,8 @@ function updateScriptActions() {
 
   if (els.save && state.sourceType !== "pdf") {
     const saveContentLabel = contentDirty
-      ? "儲存內容並 rebuild（語音將過期）"
-      : "儲存內容並 rebuild";
+      ? "儲存投影片內容（未儲存）"
+      : "儲存投影片內容";
     if (!els.save.classList.contains("btn-loading")) {
       els.save.textContent = saveContentLabel;
       els.save.dataset.defaultLabel = saveContentLabel;
@@ -1019,26 +1017,123 @@ async function loadCategories() {
   renderCategories();
 }
 
-function renderCards(cards = []) {
-  els.cardsEditor.innerHTML = "";
-  cards.forEach((card, i) => {
-    const div = document.createElement("div");
-    div.className = "card-row";
-    div.innerHTML = `
-      <label>heading<input data-i="${i}" data-k="heading" value="${escapeAttr(card.heading || "")}"></label>
-      <label>paragraph<textarea data-i="${i}" data-k="paragraph">${escapeHtml(card.paragraph || "")}</textarea></label>
-      <label>bullets (每行一項)<textarea data-i="${i}" data-k="bullets">${escapeHtml((card.bullets || []).join("\n"))}</textarea></label>
-      <button type="button" data-remove="${i}">刪除 card</button>`;
-    els.cardsEditor.appendChild(div);
-  });
-  els.cardsEditor.querySelectorAll("[data-remove]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const slide = currentSlide();
-      slide.cards.splice(Number(btn.dataset.remove), 1);
-      renderCards(slide.cards);
-      updateScriptActions();
-    });
-  });
+function filled(value) {
+  return String(value ?? "").trim().length > 0;
+}
+
+function heroHeadingDuplicate(slide) {
+  if (slide.layout !== "hero" || !filled(slide.h1) || !filled(slide.h2)) return false;
+  const compact = (value) => String(value).replace(/\s+/g, "");
+  return compact(slide.h1) === compact(slide.h2);
+}
+
+function textInput(name, label, value, multiline = false) {
+  if (multiline) {
+    return `<label>${label}<textarea name="${name}" rows="3">${escapeHtml(value || "")}</textarea></label>`;
+  }
+  return `<label>${label}<input name="${name}" type="text" value="${escapeAttr(value || "")}"></label>`;
+}
+
+function taggedFields(attr, index, fields) {
+  return fields
+    .filter((field) => field.show)
+    .map((field) => {
+      const control = field.multiline
+        ? `<textarea data-${attr}="${index}" data-k="${field.key}" rows="${field.rows || 3}">${escapeHtml(field.value || "")}</textarea>`
+        : `<input data-${attr}="${index}" data-k="${field.key}" type="text" value="${escapeAttr(field.value || "")}">`;
+      return `<label>${field.label}${control}</label>`;
+    })
+    .join("");
+}
+
+function renderSlideContent(slide) {
+  if (!els.form) return;
+  if (state.sourceType === "pdf" || !slide) {
+    els.form.innerHTML = "";
+    return;
+  }
+  const parts = [textInput("title", "標題", slide.title || "")];
+  if (filled(slide.eyebrow)) parts.push(textInput("eyebrow", "眉題", slide.eyebrow));
+  if (filled(slide.kicker)) parts.push(textInput("kicker", "導語", slide.kicker));
+  if (filled(slide.h1)) parts.push(textInput("h1", "主標題", slide.h1, true));
+  if (filled(slide.h2) && !heroHeadingDuplicate(slide)) parts.push(textInput("h2", "頁標題", slide.h2));
+  if (filled(slide.lead)) parts.push(textInput("lead", "導言", slide.lead, true));
+  if (filled(slide.stamp)) parts.push(textInput("stamp", "戳記", slide.stamp, true));
+  if (filled(slide.callouts?.[0])) parts.push(textInput("callout", "提示", slide.callouts[0], true));
+
+  if (slide.layout !== "phases" && Array.isArray(slide.cards)) {
+    const cards = slide.cards
+      .map((card, i) => {
+        const body = taggedFields("card", i, [
+          { key: "num", label: "編號", value: card.num, show: filled(card.num) },
+          { key: "heading", label: "標題", value: card.heading, show: filled(card.heading) },
+          { key: "paragraph", label: "內文", value: card.paragraph, show: filled(card.paragraph), multiline: true },
+          {
+            key: "bullets",
+            label: "項目（每行一項）",
+            value: (card.bullets || []).join("\n"),
+            show: (card.bullets || []).some(filled),
+            multiline: true,
+          },
+        ]);
+        return body ? `<div class="card-row">${body}</div>` : "";
+      })
+      .join("");
+    if (cards) parts.push(`<fieldset><legend>卡片</legend>${cards}</fieldset>`);
+  }
+
+  if (Array.isArray(slide.flowSteps)) {
+    const steps = slide.flowSteps
+      .map((step, i) => {
+        const body = taggedFields("flow", i, [
+          { key: "title", label: `步驟 ${i + 1}`, value: step.title, show: filled(step.title) },
+          { key: "description", label: "說明", value: step.description, show: filled(step.description), multiline: true },
+        ]);
+        return body ? `<div class="card-row">${body}</div>` : "";
+      })
+      .join("");
+    if (steps) parts.push(`<fieldset><legend>流程</legend>${steps}</fieldset>`);
+  }
+
+  if (Array.isArray(slide.table) && slide.table.length) {
+    const rows = slide.table
+      .map((row, r) => {
+        const cells = (row || [])
+          .map((cell, c) => `<td><input data-table="${r}" data-c="${c}" type="text" value="${escapeAttr(cell || "")}"></td>`)
+          .join("");
+        return `<tr>${cells}</tr>`;
+      })
+      .join("");
+    parts.push(`<fieldset><legend>表格</legend><div class="table-editor"><table>${rows}</table></div></fieldset>`);
+  }
+
+  if (Array.isArray(slide.phases)) {
+    const phases = slide.phases
+      .map((phase, i) => {
+        const body = taggedFields("phase", i, [
+          { key: "heading", label: `階段 ${i + 1}`, value: phase.heading, show: filled(phase.heading) },
+          { key: "paragraph", label: "內文", value: phase.paragraph, show: filled(phase.paragraph), multiline: true },
+        ]);
+        return body ? `<div class="card-row">${body}</div>` : "";
+      })
+      .join("");
+    if (phases) parts.push(`<fieldset><legend>階段</legend>${phases}</fieldset>`);
+  }
+
+  if (Array.isArray(slide.facts)) {
+    const facts = slide.facts
+      .map((fact, i) => {
+        const body = taggedFields("fact", i, [
+          { key: "value", label: "數字", value: fact.value, show: filled(fact.value) },
+          { key: "label", label: "標籤", value: fact.label, show: filled(fact.label) },
+        ]);
+        return body ? `<div class="card-row">${body}</div>` : "";
+      })
+      .join("");
+    if (facts) parts.push(`<fieldset><legend>數據</legend>${facts}</fieldset>`);
+  }
+
+  els.form.innerHTML = parts.join("");
 }
 
 function renderList() {
@@ -1185,17 +1280,7 @@ function selectSlide(slideId) {
   if (!slide) return;
   renderList();
   els.editorTitle.textContent = `${slide.slideId} · ${slide.title}`;
-  if (els.form) {
-    els.form.title.value = slide.title || "";
-    els.form.eyebrow.value = slide.eyebrow || "";
-    els.form.kicker.value = slide.kicker || "";
-    els.form.h1.value = slide.h1 || "";
-    els.form.h2.value = slide.h2 || "";
-    els.form.lead.value = slide.lead || "";
-    els.form.stamp.value = slide.stamp || "";
-    els.form.callout.value = (slide.callouts && slide.callouts[0]) || "";
-    renderCards(slide.cards || []);
-  }
+  renderSlideContent(slide);
   els.script.value = slide.script || "";
   snapshotContentBaseline();
   refreshPreview();
@@ -1203,35 +1288,57 @@ function selectSlide(slideId) {
   updateScriptActions();
 }
 
-function collectCards() {
-  const slide = currentSlide();
-  const cards = (slide.cards || []).map((c) => ({ ...c }));
-  els.cardsEditor.querySelectorAll("[data-k]").forEach((el) => {
-    const i = Number(el.dataset.i);
-    const k = el.dataset.k;
-    if (k === "bullets") {
-      cards[i].bullets = el.value.split("\n").map((s) => s.trim()).filter(Boolean);
+function readOptional(name) {
+  const el = els.form?.querySelector(`[name="${name}"]`);
+  if (!el) return undefined;
+  return el.value.trim();
+}
+
+function collectTagged(attr, source) {
+  if (!els.form?.querySelector(`[data-${attr}]`)) return undefined;
+  const rows = (source || []).map((row) => ({ ...row, bullets: row.bullets ? [...row.bullets] : row.bullets }));
+  els.form.querySelectorAll(`[data-${attr}]`).forEach((el) => {
+    const i = Number(el.dataset[attr]);
+    const key = el.dataset.k;
+    if (!rows[i] || !key) return;
+    if (key === "bullets") {
+      rows[i].bullets = el.value.split("\n").map((line) => line.trim()).filter(Boolean);
     } else {
-      cards[i][k] = el.value;
+      rows[i][key] = el.value.trim();
     }
   });
-  return cards;
+  return rows;
+}
+
+function collectTable(source) {
+  if (!els.form?.querySelector("[data-table]")) return undefined;
+  const table = (source || []).map((row) => [...row]);
+  els.form.querySelectorAll("[data-table]").forEach((el) => {
+    const row = Number(el.dataset.table);
+    const col = Number(el.dataset.c);
+    if (!table[row]) return;
+    table[row][col] = el.value.trim();
+  });
+  return table;
 }
 
 function collectPayload() {
-  return {
-    title: els.form.title.value.trim(),
-    eyebrow: els.form.eyebrow.value.trim(),
-    kicker: els.form.kicker.value.trim(),
-    h1: els.form.h1.value.trim(),
-    h2: els.form.h2.value.trim(),
-    lead: els.form.lead.value.trim(),
-    stamp: els.form.stamp.value.trim(),
-    callouts: els.form.callout.value.trim() ? [els.form.callout.value.trim()] : [],
-    cards: collectCards(),
-    flowSteps: currentSlide()?.flowSteps || [],
-    table: currentSlide()?.table || null,
+  const slide = currentSlide() || {};
+  const payload = {
+    title: readOptional("title") ?? slide.title ?? "",
+    cards: collectTagged("card", slide.cards),
+    flowSteps: collectTagged("flow", slide.flowSteps),
+    table: collectTable(slide.table),
+    phases: collectTagged("phase", slide.phases),
+    facts: collectTagged("fact", slide.facts),
   };
+  for (const key of ["eyebrow", "kicker", "h1", "h2", "lead", "stamp"]) {
+    const value = readOptional(key);
+    if (value !== undefined) payload[key] = value;
+  }
+  const callout = readOptional("callout");
+  if (callout !== undefined) payload.callouts = callout ? [callout] : [];
+  return payload;
 }
 
 async function loadSourceTranscript() {
@@ -1269,10 +1376,7 @@ async function loadSlides() {
   els.studioTitle.textContent = data.title || state.deckId;
   const flavor = state.sourceFlavor && state.sourceFlavor !== "ai-eip-native" ? ` · ${state.sourceFlavor}` : "";
   els.studioMeta.textContent = `${state.deckId} · ${state.sourceType}${flavor} · ${state.slides.length} 頁 · ${state.llmModel}`;
-  els.advanced.classList.toggle("hidden", state.sourceType === "pdf");
-  if (els.save) {
-    els.save.textContent = state.sourceFlavor === "fyh-deck-chrome" ? "儲存欄位（不改畫面）" : "儲存內容並 rebuild";
-  }
+  els.slideContent?.classList.toggle("hidden", state.sourceType === "pdf");
   await loadSourceTranscript();
   if (!state.currentId && state.slides.length) selectSlide(state.slides[0].slideId);
   else {
@@ -1605,7 +1709,7 @@ els.save?.addEventListener("click", async () => {
     await loadSlides();
     snapshotContentBaseline();
     updateScriptActions();
-    setStatus(state.cloudStudio || state.sourceFlavor === "fyh-deck-chrome" ? "內容已儲存" : "內容已儲存並 rebuild");
+    setStatus("內容已寫回投影片");
   } catch (err) {
     setStatus(err.message);
   } finally {
@@ -2446,15 +2550,6 @@ els.previewViewport?.addEventListener(
 els.script?.addEventListener("input", () => updateScriptActions());
 
 els.form?.addEventListener("input", () => updateScriptActions());
-els.cardsEditor?.addEventListener("input", () => updateScriptActions());
-
-els.addCard?.addEventListener("click", () => {
-  const slide = currentSlide();
-  slide.cards = slide.cards || [];
-  slide.cards.push({ heading: "", paragraph: "", bullets: [] });
-  renderCards(slide.cards);
-  updateScriptActions();
-});
 
 function loadCategoryColumns() {
   try {

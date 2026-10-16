@@ -1,0 +1,921 @@
+<!DOCTYPE html><html lang="zh-Hant" data-theme="light" data-deck-id="enterprise-ai-intro"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="企業 AI 導論：混班 90–120 分鐘純演講。建立共同語言，用自有系統對照，預設進入 4 週 12 小時上路學程。">
+  <title>企業 AI 導論｜90–120 分鐘</title>
+  <style>
+    /* A−／A＋只改 --font-scale。投影片外框不隨字級變。全螢幕才用 --deck-scale。禁止 zoom。 */
+    :root {
+      --bg: #e7f2ee; --panel: #17324d; --panel-text: #fff; --card: #fff; --card-2: #f4faf8;
+      --text: #17324d; --muted: #607286; --line: #cbded9; --accent: #368f88;
+      --header-h: 52px; --radius: 14px; --shadow: 0 18px 50px rgba(23,50,77,.16);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: linear-gradient(160deg, #fff, #f5faf8);
+      --hero-bg: radial-gradient(900px 420px at 100% 0, rgba(99,194,181,.35), transparent 50%), linear-gradient(160deg, #fff, #eef8f6);
+      --flow-bg: linear-gradient(90deg, #eef8f6, #fff8ef);
+      --kicker-bg: #e5f6f3; --kicker-border: #b7e0d8; --kicker-text: #1f6f68;
+      --num-bg: #e5f6f3; --num-text: #1f6f68;
+      --callout-bg: #fff4e7; --callout-border: #ed9b48; --callout-text: #6b3d12; --callout-strong: #17324d;
+      --good: #eef8f6; --good-line: #8fcac1; --risk: #fff6f6; --risk-line: #e7b0b6;
+      --progress-track: rgba(255,255,255,.28);
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --panel-text: #e8eef9; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #5eead4;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #121b2e, #0c1424);
+      --hero-bg: radial-gradient(800px 420px at 90% 0, rgba(45,212,191,.2), transparent 55%), linear-gradient(160deg, #10192c, #0b1220);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.28), rgba(30,41,59,.35));
+      --kicker-bg: rgba(45,212,191,.14); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(237,155,72,.14); --callout-border: rgba(237,155,72,.55); --callout-text: #ffedd5; --callout-strong: #fff;
+      --good: rgba(16,185,129,.12); --good-line: rgba(52,211,153,.45); --risk: rgba(244,63,94,.1); --risk-line: rgba(251,113,133,.45);
+      --progress-track: #1a2740;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: 16px;
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 14px;
+      background: var(--panel); color: var(--panel-text); border-bottom: 1px solid transparent;
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover, body.presenting #deck-header:focus-within { opacity: 1; }
+    #deck-header .brand { font-weight: 750; font-size: 14px; white-space: nowrap; }
+    #deck-header .brand span { color: #7ddecf; }
+    #progress { flex: 1; height: 6px; background: var(--progress-track); border-radius: 999px; overflow: hidden; min-width: 48px; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #5eead4, #ed9b48); }
+    .toolbar { display: flex; align-items: center; gap: 6px; }
+    .toolbar button {
+      appearance: none; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.1);
+      color: var(--panel-text); border-radius: 10px; min-width: 36px; height: 34px; padding: 0 10px;
+      font-size: 14px; cursor: pointer;
+    }
+    .toolbar button:hover, .toolbar button:focus-visible { outline: 2px solid #fff; background: var(--accent); border-color: transparent; }
+    #slide-counter, #type-scale-label { min-width: 58px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }
+    #deck { min-height: 100%; display: flex; justify-content: center; align-items: flex-start; padding: calc(var(--header-h) + 16px) 16px 20px; }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 28px 36px 46px; position: relative; overflow: auto;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .kicker, .eyebrow {
+      margin: 0 0 8px; color: var(--kicker-text); font-weight: 750; letter-spacing: .04em;
+      font-size: calc(13px * var(--font-scale));
+    }
+    h1 { margin: 0 0 10px; font-size: calc(40px * var(--font-scale)); line-height: 1.12; letter-spacing: -.03em; }
+    h2 { margin: 0 0 10px; font-size: calc(28px * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(18px * var(--font-scale)); line-height: 1.45; max-width: 58em; }
+    .stamp { margin-top: 14px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .mark { width: 88px; height: 8px; border-radius: 8px; margin: 12px 0 16px; background: linear-gradient(90deg, var(--accent), #63c2b5, #ed9b48); }
+    .footer {
+      position: absolute; left: 36px; right: 36px; bottom: 14px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer a { color: var(--accent); }
+    .grid { display: grid; gap: 10px; margin-top: 12px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: repeat(4, 1fr); }
+    .grid.five { grid-template-columns: repeat(5, 1fr); }
+    .grid.six { grid-template-columns: repeat(6, 1fr); }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; min-width: 0;
+    }
+    .card.good { background: var(--good); border-color: var(--good-line); }
+    .card.risk { background: var(--risk); border-color: var(--risk-line); }
+    .card > strong, .card h3 {
+      display: block; margin: 0 0 4px; font-size: calc(16px * var(--font-scale)); line-height: 1.3; font-weight: 750;
+    }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(14px * var(--font-scale)); line-height: 1.4; }
+    .card ul, .card ol { margin: 4px 0 0; padding-left: 1.15em; }
+    .card li + li { margin-top: 3px; }
+    .num {
+      display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px;
+      margin-bottom: 6px; padding: 0 6px; border-radius: 8px; background: var(--num-bg); color: var(--num-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 800;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 14px; border-radius: 12px; border-left: 6px solid var(--callout-border);
+      background: var(--callout-bg); color: var(--callout-text); font-size: calc(15px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow { display: flex; align-items: stretch; gap: 6px; margin-top: 12px; padding: 10px; border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); }
+    .flow-step { flex: 1; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; border-top: 3px solid var(--accent); }
+    .flow-num {
+      width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--accent); color: #fff; font-size: calc(12px * var(--font-scale)); font-weight: 800; margin-bottom: 6px;
+    }
+    .flow-step strong { display: block; font-size: calc(14px * var(--font-scale)); margin-bottom: 2px; line-height: 1.3; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); line-height: 1.35; }
+    .flow-arrow { width: 14px; flex: 0 0 14px; align-self: center; height: 2px; background: #7d93a6; position: relative; }
+    .flow-arrow::after { content: ""; position: absolute; right: -1px; top: -4px; border: 5px solid transparent; border-left-color: #7d93a6; }
+    table.table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: calc(13px * var(--font-scale)); }
+    table.table th, table.table td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+    table.table th { color: var(--text); background: var(--num-bg); }
+    table.table td { color: var(--muted); }
+    a { color: var(--accent); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide.active {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; max-height: none; aspect-ratio: auto; border-radius: 0;
+    }
+    @media (max-width: 900px) {
+      .grid.five, .grid.six, .grid.four { grid-template-columns: 1fr 1fr; }
+      .flow { flex-wrap: wrap; }
+      .flow-arrow { display: none; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; overflow: hidden; transform: none !important; position: relative !important; }
+    }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand">企業 AI 導論 <span>·</span> 90–120 分鐘</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題（T）">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體，不縮放投影片（Ctrl+-）">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體，不縮放投影片（Ctrl+=）">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
+      <span id="slide-counter">1 / 36</span>
+      <button type="button" id="btn-next" title="下一頁（→）">›</button>
+      <button type="button" id="btn-present" title="全螢幕（F）">⛶</button>
+      <button type="button" id="btn-narration" title="講稿（N）" aria-pressed="false">講稿</button>
+      <button type="button" id="btn-print" title="列印（P）">列印</button>
+    </div>
+  </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">AIDC.work・企業內訓混班・第 0 堂</p>
+      <div class="mark"></div>
+      <h1>企業 AI 導論</h1>
+      <p class="lead">90 到 120 分鐘，只講、不操作。先把話說齊，預設走進 4 週、12 小時的上路學程。</p>
+      <div class="grid three">
+        <article class="card"><div class="num">90</div><strong>分鐘核心場</strong><p>共同語言、三個案例、承諾卡。</p></article>
+        <article class="card"><div class="num">120</div><strong>再加主管層</strong><p>多一段五問、5R，和 15 分鐘問答。</p></article>
+        <article class="card"><div class="num">4 週</div><strong>預設先上路</strong><p>先走同一條流程，再談要不要建系統。</p></article>
+      </div>
+      <p class="stamp">Jack Y. J. Hwang・Enterprise AI Development Consultant</p>
+      <div class="footer"><span>學員不開筆電</span><span>1 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="不是工具課">
+      <p class="eyebrow">02・開場</p>
+      <h2>今天不是再上一堂工具課</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">01</div><strong>AI 工具</strong><p>讓你個人做得快一點。</p><p>可以幫我做什麼？</p></article>
+        <article class="card"><div class="num">02</div><strong>AI 工作流</strong><p>把跨步驟的流程改順。</p><p>哪一條流程值得改？</p></article>
+        <article class="card good"><div class="num">03</div><strong>Agent／系統</strong><p>做成以後還跑得動、查得過。</p><p>怎麼重複做、覆核、維運？</p></article>
+      </div>
+      <div class="callout"><strong>目標：</strong>從「我會用 ChatGPT」，走到「我們怎麼把 AI 做成控得住的成果」。</div>
+      <div class="footer"><span>工具 → 工作流 → 做得到的能力</span><span>2 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="學習契約">
+      <p class="eyebrow">03・今天的約定</p>
+      <h2>今天做這些，這些先不做</h2>
+      <div class="grid two">
+        <article class="card good"><strong>今天做</strong><ul>
+          <li>把工具、工作流、Agent、系統講清楚</li>
+          <li>用三個已經上線的系統來對照</li>
+          <li>寫出一條去掉個資的流程</li>
+          <li>用承諾卡確認要不要參加 4 週上路</li>
+        </ul></article>
+        <article class="card risk"><strong>今天不做</strong><ul>
+          <li>不開 Cursor、不寫程式</li>
+          <li>不比較模型價目，也不列採購清單</li>
+          <li>不現場比賽誰的提示詞比較厲害</li>
+          <li>不承諾下課就能上線</li>
+        </ul></article>
+      </div>
+      <div class="footer"><span>學員不開筆電；公開頁由講師操作</span><span>3 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="時程與互動">
+      <p class="eyebrow">04・時間先鎖死</p>
+      <h2>以聽講為主，互動只有三處</h2>
+      <div class="grid two">
+        <article class="card"><strong>時間怎麼分（分鐘）</strong>
+          <table class="table"><thead><tr><th>段落</th><th>90</th><th>120</th><th>互動</th></tr></thead><tbody>
+            <tr><td>開場＋舉手</td><td>10</td><td>10</td><td>舉手</td></tr>
+            <tr><td>共同語言＋三個案例</td><td>58</td><td>60</td><td>—</td></tr>
+            <tr><td>主管五問＋5R</td><td>—</td><td>12</td><td>靜默寫</td></tr>
+            <tr><td>地圖＋承諾卡</td><td>20</td><td>20</td><td>填卡</td></tr>
+            <tr><td>問答</td><td>課後</td><td>15</td><td>口頭</td></tr>
+          </tbody></table>
+        </article>
+        <article class="card good"><strong>現場怎麼參與</strong><ul>
+          <li>舉手：現況五題，大約 90 秒</li>
+          <li>寫卡：一句流程，並確認 4 週</li>
+          <li>120 分場：再加 2 分鐘靜默寫，以及 15 分鐘問答</li>
+        </ul><p>不開筆電、不做實作。其餘時間聽講、做筆記就好。</p></article>
+      </div>
+      <div class="callout"><strong>控時：</strong>地圖和承諾卡不能刪。超時就改看截圖。問答不能吃掉結尾。90 分場在第 18 頁講完，跳到第 26 頁。</div>
+      <div class="footer"><span>120 分場接著走第 19–25 頁</span><span>4 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="現況快問">
+      <p class="eyebrow">05・90 秒</p>
+      <h2>我們現在在哪一層？請舉手</h2>
+      <div class="grid five">
+        <article class="card"><div class="num">1</div><strong>已經在用</strong><p>生成式 AI</p></article>
+        <article class="card"><div class="num">2</div><strong>有場景</strong><p>部門講得出要改哪件事</p></article>
+        <article class="card"><div class="num">3</div><strong>有負責人</strong><p>具名，不是大家一起看著辦</p></article>
+        <article class="card"><div class="num">4</div><strong>有規則</strong><p>資料或權限怎麼進、怎麼停</p></article>
+        <article class="card"><div class="num">5</div><strong>有證據</strong><p>說得出什麼叫做成</p></article>
+      </div>
+      <p class="lead" style="margin-top:12px">先記住現況。等一下填承諾卡，會再回來用這五題。</p>
+      <div class="footer"><span>舉手就好，先不討論個案細節</span><span>5 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="一句話">
+      <p class="eyebrow">06・共同語言</p>
+      <h2>先記住這一句</h2>
+      <p class="lead">ChatGPT 會回答。AI Agent 會依目標使用工具做事。AI 系統讓這件事可以重複、可以覆核、可以維運。</p>
+      <div class="callout">企業缺的通常不是更強的模型，而是把這三層接起來的方法。</div>
+      <div class="footer"><span>會回答，還不等於會執行，更不等於能營運</span><span>6 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="五層階梯">
+      <p class="eyebrow">07・共同語言</p>
+      <h2>不是每個問題都需要 Agent</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>提示詞</strong><p class="flow-desc">Prompt</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>AI 工具</strong><p class="flow-desc">AI Tool</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>工作流</strong><p class="flow-desc">Workflow</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>AI Agent</strong><p class="flow-desc">會用工具做事</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">5</div><strong>AI 系統</strong><p class="flow-desc">AI System</p></div>
+      </div>
+      <p class="lead" style="margin-top:12px">越往右越複雜，整合、治理和維運成本也一起增加。請選最簡單、但還足以驗證價值的那一層。</p>
+      <div class="footer"><span>選剛剛好的那一層</span><span>7 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="四型對照">
+      <p class="eyebrow">08・共同語言</p>
+      <h2>工具會回應。副駕駛會協助。Agent 會執行。</h2>
+      <table class="table"><thead><tr><th>型態</th><th>它在做什麼</th><th>聽得懂的例子</th><th>要守住什麼</th></tr></thead><tbody>
+        <tr><td>提示詞／工具</td><td>產生</td><td>請 AI 寫週報草稿</td><td>資料要分級，人改完才送出</td></tr>
+        <tr><td>工作流</td><td>自動化</td><td>收集、摘要、再送審</td><td>規則、例外、誰按送出</td></tr>
+        <tr><td>AI Agent</td><td>執行</td><td>讀檔、查資料、呼叫介面、停下</td><td>權限、停止條件、稽核</td></tr>
+        <tr><td>AI 系統</td><td>營運</td><td>會員、預約、知識庫可以一直跑</td><td>身分、監控、退回、知識更新</td></tr>
+      </tbody></table>
+      <div class="callout">這是共同語言，不是採購規格。副駕駛是在你做事時旁邊協助，決定權仍在人。</div>
+      <div class="footer"><span>Copilot 不是 Agent</span><span>8 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="六種能力">
+      <p class="eyebrow">09・先問工作，再問工具</p>
+      <h2>這件工作需要哪種能力？</h2>
+      <div class="grid six">
+        <article class="card"><strong>產生</strong><p>Generate</p></article>
+        <article class="card"><strong>擷取</strong><p>Extract</p></article>
+        <article class="card"><strong>濃縮</strong><p>Summarize</p></article>
+        <article class="card"><strong>分類</strong><p>Classify</p></article>
+        <article class="card"><strong>分析</strong><p>Analyze</p></article>
+        <article class="card good"><strong>呼叫工具</strong><p>Act</p></article>
+      </div>
+      <div class="callout">這六種用來發想，不要用來堆功能。能力定了，再問要用哪個工具。</div>
+      <div class="footer"><span>產生・擷取・濃縮・分類・分析・呼叫工具</span><span>9 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="Agent 迴路">
+      <p class="eyebrow">10・Agent 怎麼做事</p>
+      <h2>AI Agent 要有目標、工具和回饋</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>目標</strong><p class="flow-desc">Goal</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>上下文</strong><p class="flow-desc">Context</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>判斷＋工具</strong><p class="flow-desc">Reason + Tools</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>看結果再調整</strong><p class="flow-desc">Observe</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">5</div><strong>停下或人審</strong><p class="flow-desc">Stop / Review</p></div>
+      </div>
+      <p class="lead" style="margin-top:12px">記成：目標、上下文、判斷、工具、行動、回饋。沒有停止條件，就不要讓它自己做下去。</p>
+      <div class="footer"><span>做 → 看結果 → 調整 → 停下</span><span>10 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="金句">
+      <p class="eyebrow">11・先帶走兩句</p>
+      <h2>兩句話就夠用</h2>
+      <div class="grid two">
+        <article class="card good"><strong>先選層級</strong><p>不是每個問題都需要 Agent。</p></article>
+        <article class="card"><strong>再選放手程度</strong><p>自動化程度，應該和決策風險成反比。</p></article>
+      </div>
+      <div class="callout">好的 AI 不是完全自己做主，而是控得住、驗得過、改得動。</div>
+      <div class="footer"><span>控得住・驗得過・改得動</span><span>11 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="案例地圖">
+      <p class="eyebrow">12・我們自己的系統</p>
+      <h2>三個系統，對上三層問題</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">A</div><strong>aidc.work</strong><p>用 Agent 開發系統：內容、預約、課程、評量。</p></article>
+        <article class="card"><div class="num">B</div><strong>myAssist</strong><p>把 Agent 做成服務：LINE、固定問答、檢索增強、人工覆核。</p></article>
+        <article class="card"><div class="num">C</div><strong>LPMS</strong><p>怎麼證明做對：關卡、評分規準、看得到的證據。</p></article>
+      </div>
+      <div class="callout">這三個都是內部或自有系統，用來展示方法，不是客戶委託案件。現場只看公開頁，或事先準備的合成流程。</div>
+      <div class="footer"><span>內部系統不是客戶專案</span><span>12 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="案例 A">
+      <p class="eyebrow">13・案例 A・aidc.work</p>
+      <h2>Agent 是開發同事，交出去的是系統</h2>
+      <div class="grid two">
+        <article class="card"><strong>原本卡在哪</strong><p>一個人要同時做官網、內容、預約、課程和評量。再買一個聊天工具，解不了營運。</p></article>
+        <article class="card good"><strong>後來怎麼做成系統</strong><p>把規格和專案指引交給 Agent，當成穩定的上下文，再經由 Git、建置、Docker，變成可以維運的服務。</p></article>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>文件先講清楚</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>Agent 改程式</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>Git 裡審過</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>公開網站跑得起來</strong></div>
+      </div>
+      <div class="footer"><span>現場只走課程或預約的公開頁</span><span>13 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s14" data-title="案例 A 教學點">
+      <p class="eyebrow">14・案例 A・教學點</p>
+      <h2>畫面點得動，還不是系統</h2>
+      <div class="grid three">
+        <article class="card"><strong>Agent 做哪一段</strong><p>讀程式庫、改多個檔案、跑指令、提出差異。</p></article>
+        <article class="card"><strong>人做哪一段</strong><p>選題、審範圍、驗收、承擔上線責任。</p></article>
+        <article class="card"><strong>系統多了什麼</strong><p>身分、內容生命週期、預約、課程、評量。</p></article>
+      </div>
+      <div class="callout">用日常說話跟 AI 一起寫程式，可以加快第一版。真正能營運，靠的是邊界、測試和維運。</div>
+      <div class="footer"><span>公開對照：課程、預約、文章</span><span>14 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s15" data-title="案例 B">
+      <p class="eyebrow">15・案例 B・myAssist</p>
+      <h2>Agent 要包在系統裡，才營運得了</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>通道策略</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>安全過濾</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>固定問答</strong><p class="flow-desc">FAQ</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>檢索後再答</strong><p class="flow-desc">RAG</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">5</div><strong>模型再轉人工</strong></div>
+      </div>
+      <div class="grid two">
+        <article class="card"><strong>為什麼不是官網聊天框</strong><p>LINE 的事件通知、知識更新、成本和答錯的風險，跟官網內容管理不是同一件事。</p></article>
+        <article class="card good"><strong>知識怎麼更新</strong><p>公開內容單向同步進知識庫。回答時引用公開網址，不把模型的答案寫回權威來源。</p></article>
+      </div>
+      <div class="footer"><span>現場用架構圖和合成問答，不投影對話原文</span><span>15 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s16" data-title="案例 B 治理">
+      <p class="eyebrow">16・人要留在迴路裡</p>
+      <h2>風險越高，人的控制越強</h2>
+      <div class="grid three">
+        <article class="card good"><div class="num">低</div><strong>AI 可以直接做</strong><p>可逆、看得到過程，例如固定問答。</p></article>
+        <article class="card"><div class="num">中</div><strong>AI 建議，人核准</strong><p>回覆草稿、知識摘要。</p></article>
+        <article class="card risk"><div class="num">高</div><strong>AI 分析，人決定</strong><p>報價、承諾時程、敏感決策。</p></article>
+      </div>
+      <div class="callout">不知道就交給人工。固定問答要對得上；檢索增強必須有來源；沒有來源，就不能當成事實。</div>
+      <div class="footer"><span>停下、留下狀態、再升級給人</span><span>16 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s17" data-title="案例 C">
+      <p class="eyebrow">17・案例 C・LPMS</p>
+      <h2>不要讓 AI 自己證明自己做對了</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>Agent 產出</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>另外評估</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>通過或沒過的證據</strong></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>人審、重試或停止</strong></div>
+      </div>
+      <div class="grid two">
+        <article class="card"><strong>關卡和評分規準</strong><p>專題不是感覺好用就算。驗收要寫成看得到的證據：範圍、覆核點、失敗怎麼辦。</p></article>
+        <article class="card"><strong>帶回企業怎麼用</strong><p>Agent 很容易只解釋最顯眼的警告，而不是根因。要能追過程、對照、從頭到尾驗證。</p></article>
+      </div>
+      <div class="footer"><span>評量在 aidc.work 裡；不展示學員個資</span><span>17 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s18" data-title="案例四句">
+      <p class="eyebrow">18・案例怎麼講</p>
+      <h2>每則案例只講四句</h2>
+      <div class="grid four">
+        <article class="card"><div class="num">1</div><strong>原本卡在哪</strong><p>哪一項工作做不下去？</p></article>
+        <article class="card"><div class="num">2</div><strong>為什麼不是聊天工具</strong><p>再買一個對話框，解不了什麼？</p></article>
+        <article class="card"><div class="num">3</div><strong>誰做哪一段</strong><p>Agent 做哪段、人做哪段？</p></article>
+        <article class="card"><div class="num">4</div><strong>什麼算過關</strong><p>證據在哪，何時要停下？</p></article>
+      </div>
+      <div class="callout"><strong>90 分場：</strong>下一頁請跳到第 26 頁，四週主路徑。<strong>120 分場：</strong>繼續第 19 頁。</div>
+      <div class="footer"><span>把這四句帶回自己的部門流程</span><span>18 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s19" data-title="選配入口">
+      <p class="eyebrow">19・選配・120 分場</p>
+      <h2>接下來 12 分鐘：主管旁聽</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">01</div><strong>主管五問</strong><p>問題、分工、資料、責任、證據。</p></article>
+        <article class="card"><div class="num">02</div><strong>5R 過濾</strong><p>這條流程值不值得優先。</p></article>
+        <article class="card good"><div class="num">03</div><strong>寫一句流程</strong><p>誰、什麼情境、卡在哪。承諾卡會用到。</p></article>
+      </div>
+      <div class="callout">這不是三小時的高階工作坊，也不做 30 天計畫。90 分場請直接跳到第 26 頁。</div>
+      <div class="footer"><span>選配是第 19 到 25 頁</span><span>19 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s20" data-title="主管五問">
+      <p class="eyebrow">20・主管旁聽</p>
+      <h2>主管不必寫程式，但要判斷五件事</h2>
+      <div class="grid five">
+        <article class="card"><div class="num">1</div><strong>問題</strong><p>要解決哪個看得到的工作問題？</p></article>
+        <article class="card"><div class="num">2</div><strong>分工</strong><p>人和 AI 各做哪一段？</p></article>
+        <article class="card"><div class="num">3</div><strong>資料</strong><p>什麼能進、什麼不能進？</p></article>
+        <article class="card"><div class="num">4</div><strong>責任</strong><p>出錯時誰覆核、誰承擔？</p></article>
+        <article class="card"><div class="num">5</div><strong>證據</strong><p>用什麼基準證明有價值？</p></article>
+      </div>
+      <div class="callout">導入 AI 是管理制度的一部分，不是資訊部門單獨的技術計畫。這是旁聽，不是當場決策會議。</div>
+      <div class="footer"><span>主管定邊界，不在這堂拍板採購</span><span>20 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s21" data-title="5R 過濾">
+      <p class="eyebrow">21・先過濾機會</p>
+      <h2>5R：這條流程值不值得優先</h2>
+      <div class="grid five">
+        <article class="card"><strong>重複做</strong><p>Repeat</p></article>
+        <article class="card"><strong>要大量閱讀</strong><p>Read</p></article>
+        <article class="card"><strong>要大量寫報告</strong><p>Report</p></article>
+        <article class="card"><strong>規則明確</strong><p>Rule</p></article>
+        <article class="card"><strong>需要分析判斷</strong><p>Reason</p></article>
+      </div>
+      <div class="callout">適合 AI，不等於值得優先投資。價值低、做不起來的題目，不要因為新穎就做。</div>
+      <div class="footer"><span>之後再依價值、可行性、風險粗排</span><span>21 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s22" data-title="靜默寫流程">
+      <p class="eyebrow">22・安靜寫・2 分鐘</p>
+      <h2>寫出你的一條流程</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">誰</div><strong>哪個角色</strong><p>是誰在做這件事？</p></article>
+        <article class="card"><div class="num">情境</div><strong>什麼時候</strong><p>什麼事情一發生，就要做？</p></article>
+        <article class="card good"><div class="num">卡點</div><strong>卡在哪</strong><p>時間、錯誤、找資料，還是覆核？</p></article>
+      </div>
+      <p class="lead" style="margin-top:12px">一句話就好。等一下承諾卡用同一句。不要寫客戶真名。</p>
+      <div class="footer"><span>安靜寫，先不互相討論</span><span>22 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s23" data-title="去識別化">
+      <p class="eyebrow">23・安全・先把身分拿掉</p>
+      <h2>課堂和課間都要去識別化</h2>
+      <div class="grid two">
+        <article class="card good"><strong>可以這樣寫</strong><ul>
+          <li>公司稱「甲公司」</li>
+          <li>部門用「A 部門、B 部門」</li>
+          <li>合成訂單、假的電子郵件</li>
+        </ul></article>
+        <article class="card risk"><strong>不要這樣寫</strong><ul>
+          <li>姓名、身分證、客戶編號</li>
+          <li>還沒公開的策略、合約原文</li>
+          <li>把正式個資貼進外部 AI</li>
+        </ul></article>
+      </div>
+      <div class="callout">從第一週起，我們走同一條主流程。今天先把句子寫乾淨。若課前已跟 Sponsor 宣讀過，這頁可以略講。</div>
+      <div class="footer"><span>去識別化：拿掉能認出特定人的資料</span><span>23 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s24" data-title="常見反對">
+      <p class="eyebrow">24・先對齊再上路</p>
+      <h2>四句常見反對，先講開</h2>
+      <div class="grid four">
+        <article class="card"><strong>沒資料</strong><p>先用去掉個資的樣本和公開規則驗證流程，再談接正式資料庫。</p></article>
+        <article class="card"><strong>要先選模型</strong><p>先鎖問題和驗收。模型是可以替換的一層。</p></article>
+        <article class="card"><strong>要先買平台</strong><p>4 週先證明一條可以演示、而且必覆核的工作流，再談平台採購。</p></article>
+        <article class="card"><strong>主管沒時間</strong><p>主管旁聽並定邊界。Champion 把同一條流程跑完。</p></article>
+      </div>
+      <div class="footer"><span>反對是風險訊號，不是否決理由</span><span>24 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s25" data-title="備援截圖">
+      <p class="eyebrow">25・示範備援</p>
+      <h2>公開頁打不開，就改看截圖</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">A</div><strong>aidc.work</strong><p>課程、預約頁的截圖，仍講那四句。</p></article>
+        <article class="card"><div class="num">B</div><strong>myAssist</strong><p>架構圖加上合成的固定問答；不進後台。</p></article>
+        <article class="card"><div class="num">C</div><strong>LPMS</strong><p>關卡和評分規準的合成示意；沒有個資。</p></article>
+      </div>
+      <div class="callout">備援可以插在案例時段。不要為了救示範，而吃掉地圖和承諾卡。</div>
+      <div class="footer"><span>講師課前備好離線圖</span><span>25 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s26" data-title="四週主路徑">
+      <p class="eyebrow">26・地圖・預設路徑 A</p>
+      <h2>會用、會管、會建｜4 週 12 小時</h2>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><strong>第 1 週</strong><p class="flow-desc">規則與選題</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">2</div><strong>第 2 週</strong><p class="flow-desc">真實任務上路</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">3</div><strong>第 3 週</strong><p class="flow-desc">流程與停損</p></div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step"><div class="flow-num">4</div><strong>第 4 週</strong><p class="flow-desc">最小工作流</p></div>
+      </div>
+      <div class="grid two">
+        <article class="card good"><strong>帶走什麼</strong><p>使用規範、可以重做的任務、90 天節奏，以及一條可以演示、而且必須覆核的流程。</p></article>
+        <article class="card"><strong>誰適合</strong><p>混班種子加上主管旁聽。資訊同仁派一個人開權限即可。先上路，再決定要不要建系統。</p></article>
+      </div>
+      <div class="footer"><span><a href="/courses/enterprise-ai-on-road">12 小時上路學程</a></span><span>26 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s27" data-title="5–6 週選配">
+      <p class="eyebrow">27・地圖・還是那 12 小時</p>
+      <h2>可以拉成 5 到 6 週，深度不變</h2>
+      <div class="grid two">
+        <article class="card good"><strong>5 週</strong><p>第 1 到第 3 週上課。第 4 週之前加一週，準備環境和去掉個資的資料，再上原來的第 4 週。</p></article>
+        <article class="card"><strong>6 週</strong><p>四堂課，加上一週作業彩排，再加上一週內部發表，或用評量方式檢核。</p></article>
+      </div>
+      <div class="callout">上課時數仍是 12 小時。沒有作業，第 4 週很難從「會問」走到可以演示。這是把節奏放慢，不是另開一條更深的課。</div>
+      <div class="footer"><span>深度不變，只是週數拉開</span><span>27 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s28" data-title="8 週升級">
+      <p class="eyebrow">28・升級，不是當場二選一</p>
+      <h2>若要 8 週：兩種誠實選項</h2>
+      <div class="grid two">
+        <article class="card good"><strong>路徑 B｜24 小時</strong><p>8 週每週 3 小時陪跑，或 4 次 6 小時整天班。給 Champion 和資訊種子，從問題定義走到可演示的單一系統或 Agent 最小版。</p><p><a href="/courses/enterprise-ai-implementation-four-modules">四模組學程</a></p></article>
+        <article class="card"><strong>8 週系統開發入門班</strong><p>要做出可部署小系統的人另開班：選題、表單、介面到部署。這不是上路學程的加長版。</p><p><a href="/courses/ai-system-development-intro">系統開發入門班</a></p></article>
+      </div>
+      <div class="callout">人分成兩群時，主班走 4 週；升級班另開 2 到 6 人。禁止同一教室兩套深度。</div>
+      <div class="footer"><span>先上路，再募集升級</span><span>28 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s29" data-title="承諾卡">
+      <p class="eyebrow">29・承諾卡・兩分鐘</p>
+      <h2>先寫流程，再確認要不要參加 4 週</h2>
+      <table class="table"><thead><tr><th>欄位</th><th>怎麼填</th></tr></thead><tbody>
+        <tr><td>角色</td><td>主管／Champion／業務或專業／資訊</td></tr>
+        <tr><td>一條流程</td><td>誰、在什麼情境、卡在哪（一句話）</td></tr>
+        <tr><td>參加第 1–4 週</td><td>是／需主管同意／旁聽</td></tr>
+        <tr><td>課間工時</td><td>每週不到 1 小時／大約 1 小時／2 小時以上</td></tr>
+        <tr><td>最大卡關</td><td>沒有負責人／資料不能出／權限／不會選題</td></tr>
+        <tr><td>加選興趣（可空白）</td><td>路徑 B／8 週系統班／先上完 4 週再說</td></tr>
+      </tbody></table>
+      <div class="callout">承諾卡是需求訊號，不是當場簽約。開班仍要 Sponsor、名單，以及去識別化規則。</div>
+      <div class="footer"><span>紙本或 Mentimeter</span><span>29 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s30" data-title="Sponsor 規則">
+      <p class="eyebrow">30・跟 Sponsor 先講好</p>
+      <h2>開班前先講好這三條</h2>
+      <div class="grid three">
+        <article class="card good"><div class="num">預設</div><strong>開 4 週上路</strong><p>這一場預設走路徑 A。就算很多人對路徑 B 有興趣，也先上路，結束後再募集升級。</p></article>
+        <article class="card"><div class="num">加選</div><strong>路徑 B 或系統班</strong><p>要有負責人、資訊種子，以及每週 2 到 4 小時作業。2 到 6 人種子另開，不併進主班。</p></article>
+        <article class="card risk"><div class="num">禁止</div><strong>同一教室兩套深度</strong><p>不要一邊做規範任務，一邊做系統的最小版本。</p></article>
+      </div>
+      <div class="footer"><span>兩週內回覆要不要開第 1 週</span><span>30 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s31" data-title="下一步">
+      <p class="eyebrow">31・下一步</p>
+      <h2>把承諾卡收成可以排課的下一步</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">01</div><strong>導論講義</strong><p><a href="/blog/ai-agent-system-development-intro">說明文章</a></p></article>
+        <article class="card"><div class="num">02</div><strong>路徑 A 課綱</strong><p><a href="/courses/enterprise-ai-on-road">12 小時上路學程</a></p></article>
+        <article class="card"><div class="num">03</div><strong>升級課綱</strong><p><a href="/courses/enterprise-ai-implementation-four-modules">四模組</a> · <a href="/courses/ai-system-development-intro">系統班</a></p></article>
+      </div>
+      <p class="lead" style="margin-top:12px"><a href="/booking">預約諮詢</a> · <a href="/courses">課程一覽</a> · <a href="/ai-interview">AI 導入訪談</a></p>
+      <div class="callout">先把範圍做小，驗證做快，再把真的有效的部分放大。</div>
+      <div class="footer"><span>aidc.work</span><span>31 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s32" data-title="結構化問答">
+      <p class="eyebrow">32・問答・120 分場 15 分鐘</p>
+      <h2>一題一答；其餘寫便利貼，課後再回</h2>
+      <div class="grid four">
+        <article class="card"><strong>選題</strong><p>這題該用工具，還是該用 Agent？</p></article>
+        <article class="card"><strong>資料</strong><p>什麼可以進外部模型？</p></article>
+        <article class="card"><strong>組織</strong><p>誰當負責人、誰當 Champion？</p></article>
+        <article class="card"><strong>時程</strong><p>何時開第 1 週、誰簽 Sponsor？</p></article>
+      </div>
+      <div class="callout">90 分場：這頁改成便利貼，課後再回，不要延長。地圖和承諾卡的時間已經鎖死。</div>
+      <div class="footer"><span>問答不能吃掉結尾</span><span>32 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s33" data-title="名詞：怎麼跟 AI 說話">
+      <p class="eyebrow">33・附錄・時間不夠可以不投影</p>
+      <h2>怎麼跟 AI 說話</h2>
+      <div class="grid three">
+        <article class="card"><strong>提示詞 Prompt</strong><p>你寫給 AI 的指示：要做什麼、用什麼格式、不要做什麼。</p></article>
+        <article class="card"><strong>大型語言模型 LLM</strong><p>會依上下文接話和寫稿。ChatGPT 背後就是這一類。</p></article>
+        <article class="card"><strong>ChatGPT</strong><p>會回答，不會自己把工作做完並留下紀錄。</p></article>
+        <article class="card"><strong>AI 工具 AI Tool</strong><p>加快個人產出。人改完才送出。</p></article>
+        <article class="card"><strong>副駕駛 Copilot</strong><p>在旁邊給建議。決定權仍在人。</p></article>
+        <article class="card"><strong>工作流 Workflow</strong><p>把步驟串起來。規則和例外要先講好。</p></article>
+      </div>
+      <div class="footer"><span>留給課後對照</span><span>33 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s34" data-title="名詞：做事與系統">
+      <p class="eyebrow">34・附錄</p>
+      <h2>做事與系統</h2>
+      <div class="grid three">
+        <article class="card"><strong>AI Agent</strong><p>有目標、會用工具、看結果再調整，而且必須能停下或交給人審。</p></article>
+        <article class="card"><strong>Agent 迴路</strong><p>目標、上下文、判斷、工具、行動、回饋。沒有停止條件就不要讓它自己做下去。</p></article>
+        <article class="card"><strong>AI 系統</strong><p>讓同一件事可以重複做、被人覆核、被維運。</p></article>
+        <article class="card"><strong>檢索增強生成 RAG</strong><p>先找出有出處的段落再回答。沒有來源就不能當成事實。</p></article>
+        <article class="card"><strong>固定問答 FAQ</strong><p>對得上就直接回，不必每次都讓模型自由發揮。</p></article>
+        <article class="card"><strong>人在迴路 HITL</strong><p>風險高的步驟必須有人看過。AI 不能自己拍板。</p></article>
+      </div>
+      <div class="footer"><span>會做事的要能停下</span><span>34 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s35" data-title="名詞：做出來">
+      <p class="eyebrow">35・附錄</p>
+      <h2>做出來會碰到的詞</h2>
+      <div class="grid three">
+        <article class="card"><strong>API</strong><p>系統跟系統講話的門口，例如讓 Agent 去查資料。</p></article>
+        <article class="card"><strong>Webhook</strong><p>外面有新事件時主動通知我們。LINE 訊息進來就是這樣。</p></article>
+        <article class="card"><strong>Git</strong><p>紀錄改了什麼、誰審過。需要時可以退回上一版。</p></article>
+        <article class="card"><strong>Docker</strong><p>把服務包成可以重複啟動的環境。</p></article>
+        <article class="card"><strong>Vibe Coding</strong><p>用日常說話跟 AI 一起改程式，加快第一版。能營運仍靠邊界、測試和維運。</p></article>
+        <article class="card"><strong>最小可演示版本 MVP</strong><p>能當場看、能驗證價值的最小一版，不是一次做完整系統。</p></article>
+      </div>
+      <div class="footer"><span>先做出能看的最小一版</span><span>35 / 36</span></div>
+    </section>
+
+    <section class="slide" id="s36" data-title="名詞：把關與課堂用語">
+      <p class="eyebrow">36・附錄</p>
+      <h2>把關與課堂用語</h2>
+      <div class="grid three">
+        <article class="card"><strong>關卡 Gate</strong><p>過關檢查點。範圍、覆核點、失敗怎麼辦，都要寫成看得到的證據。</p></article>
+        <article class="card"><strong>評分規準 Rubric</strong><p>事先講好怎樣算通過、怎樣算沒過。</p></article>
+        <article class="card"><strong>內容管理 CMS</strong><p>管網站文章的後台。跟 LINE 的知識更新不是同一件事。</p></article>
+        <article class="card"><strong>六種能力</strong><p>產生、擷取、濃縮、分類、分析、呼叫工具。用來發想，不是採購清單。</p></article>
+        <article class="card"><strong>5R</strong><p>重複、大量閱讀、大量報告、規則明確、分析判斷。用來判斷值不值得優先。</p></article>
+        <article class="card"><strong>去識別化</strong><p>把能認出特定人的資料拿掉或換成假資料，再進課堂或外部 AI。</p></article>
+      </div>
+      <div class="footer"><span>名詞表到這裡</span><span>36 / 36</span></div>
+    </section>
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講稿" data-deck-id="enterprise-ai-intro">
+    <header>
+      <div class="header-left"><strong>講稿</strong><span id="narration-status">本頁講稿</span></div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講稿（N）" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="朗讀或暫停（R）">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label>語速 <input type="range" id="narration-rate" min="0.8" max="1.3" step="0.05" value="1"> <span id="narration-rate-value">1.00×</span></label>
+    </div>
+  </aside>
+  <style id="narration-chrome-css">
+    #narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(420px,calc(100vw - 32px));max-height:min(52vh,480px);overflow:auto;display:none;padding:12px 14px;background:#17324df2;color:#e8f4f1;border:1px solid rgba(255,255,255,.2);border-radius:16px}
+    #narration-panel.open{display:block}
+    #narration-panel.minimized{width:auto;max-height:none}
+    #narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings,#narration-panel.minimized #narration-progress{display:none}
+    #narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+    #narration-panel .icon-btn,.narration-controls button{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;cursor:pointer;padding:6px 10px}
+    #narration-status{font-size:12px;color:#d5e6e2}
+    #narration-script{margin:8px 0;font-size:15px;line-height:1.65;white-space:pre-wrap}
+    #narration-progress{height:4px;background:rgba(255,255,255,.2);border-radius:4px;overflow:hidden;margin:8px 0}
+    #narration-progress-bar{display:block;height:100%;width:0;background:#7ddecf}
+    .narration-controls{display:flex;gap:8px;margin:8px 0}
+    .narration-settings{font-size:12px;color:#d5e6e2}
+  </style>
+
+  <script type="application/json" id="deck-narration">
+{"slides":[
+{"title":"封面","script":"大家好。今天這堂是企業 AI 導論，給混班的第零堂。學員不用開筆電。九十分鐘是核心場，會把共同語言、三個案例和承諾卡走完。若排到一百二十分鐘，會再加一段主管旁聽和問答。我們預設接下來走進四週、十二小時的上路學程。先把話說齊，再決定要不要一起走。"},
+{"title":"不是工具課","script":"今天不是再上一堂工具課。AI 工具問的是，能不能讓我個人做得快一點。工作流問的是，哪一條流程值得改。Agent 和系統問的是，能不能重複做、被人覆核，而且維運得下去。目標很單純，從我會用 ChatGPT，走到我們怎麼把 AI 做成控得住的成果。下一頁先講今天做什麼、不做什麼。"},
+{"title":"學習契約","script":"這一堂我們做四件事。把工具、工作流、Agent、系統講清楚。用三個已經上線的系統對照。寫出一條去掉個資的流程。再用承諾卡確認要不要參加四週上路。今天不開 Cursor、不寫程式、不比價目、不比賽提示詞，也不承諾下課就能上線。學員不開筆電，公開頁由我來操作。"},
+{"title":"時程與互動","script":"時間先鎖死。開場加舉手，兩種場次都是十分鐘。共同語言加三個案例，九十分場是五十八分鐘，一百二十分場是六十分鐘。主管五問和五 R 只有一百二十分場，十二分鐘，其中有兩分鐘靜默寫。地圖加承諾卡，兩種場次都是二十分鐘，這段不能刪。問答在九十分場改課後，一百二十分場留十五分鐘，而且不能吃掉結尾。超時就改看截圖。九十分場在第十八頁講完，請跳到第二十六頁。"},
+{"title":"現況快問","script":"請用九十秒舉手，先不要討論個案。五題是：已經在用生成式 AI、部門有明確場景、有具名的負責人、有資料或權限規則、有成功證據。先記住現況，等一下填承諾卡會再回來。舉手就好。"},
+{"title":"一句話","script":"先記住這一句。ChatGPT 會回答。AI Agent 會依目標使用工具做事。AI 系統讓這件事可以重複、可以覆核、可以維運。企業缺的通常不是更強的模型，而是把這三層接起來的方法。會回答，還不等於會執行，更不等於能營運。"},
+{"title":"五層階梯","script":"從提示詞、AI 工具、工作流、AI Agent 到 AI 系統，複雜度、整合、治理和維運成本會一起增加。不是每個問題都需要 Agent。請選最簡單、但還足以驗證價值的那一層。越往右，不是越高級，是越貴、越難顧。"},
+{"title":"四型對照","script":"用四個動詞記住。提示詞或工具是產生，例如寫週報草稿，人改完才送出。工作流是自動化，例如收集、摘要、再送審。Agent 是執行，會讀檔、查資料、呼叫介面，也必須能停下。系統是營運，讓會員、預約、知識庫可以持續跑。副駕駛是在你做事時旁邊協助，決定權仍在人。這是共同語言，不是採購規格。"},
+{"title":"六種能力","script":"先問這件工作需要哪種能力：產生、擷取、濃縮、分類、分析，或呼叫工具。這六種用來發想，不要用來堆功能。能力定了，再問要用哪個工具。先選工作，再選工具。"},
+{"title":"Agent 迴路","script":"AI Agent 不是一段很長的提示詞。它要有目標、上下文、判斷和工具、看結果再調整，以及停止或人工覆核。可以記成目標、上下文、判斷、工具、行動、回饋。沒有停止條件，就不要讓它自己做下去。"},
+{"title":"金句","script":"兩句話就夠用。不是每個問題都需要 Agent。自動化程度，應該和決策風險成反比。好的 AI 不是完全自己做主，而是控得住、驗得過、改得動。下一頁開始看我們自己的三個系統。"},
+{"title":"案例地圖","script":"接下來用三個我們自己的系統，對三層問題。aidc.work 說明怎麼用 Agent 開發系統。myAssist 說明怎麼把 Agent 做成可以營運的服務。LPMS 說明怎麼用關卡和評分規準證明做對。這些是內部和自有系統，不是客戶委託案件。現場只看公開頁或合成流程。"},
+{"title":"案例 A","script":"案例 A 是 aidc.work。原本卡住的是，一個人要同時做官網、內容、預約、課程和評量，再買一個聊天工具解不了營運。做法是把規格和專案指引交給 Agent，當成穩定的上下文，再經由 Git、建置和 Docker，變成可以維運的網站。順序是文件先講清楚、Agent 改程式、Git 裡審過、公開網站跑得起來。現場只走課程或預約的公開頁。"},
+{"title":"案例 A 教學點","script":"畫面點得動，還不是系統。Agent 負責讀程式庫、改多個檔案、跑指令、提出差異。人負責選題、審範圍、驗收，以及上線以後的責任。系統多出來的是身分、內容生命週期、預約、課程和評量。用日常說話跟 AI 一起寫程式，可以加快第一版。真正能營運，靠的是邊界、測試和維運。"},
+{"title":"案例 B","script":"案例 B 是 myAssist。順序是通道策略、安全過濾、固定問答、檢索後再答，最後才到模型，而且要能轉人工。它不是官網聊天框。LINE 的事件通知、知識更新、成本和答錯的風險，跟官網內容管理不是同一件事。公開內容可以單向同步進知識庫。回答時引用公開網址，不把模型的答案寫回權威來源。現場不投影對話原文。"},
+{"title":"案例 B 治理","script":"風險越高，人的控制越強。低風險、可逆、看得到過程的，例如固定問答，可以讓 AI 執行。中風險先出建議再核准。高風險，例如報價、承諾時程或敏感決策，AI 只分析，人來決定。不知道就交給人工。固定問答要對得上。檢索增強必須有來源。沒有來源，就不能當成事實。"},
+{"title":"案例 C","script":"案例 C 是 LPMS。不要讓 AI 自己證明自己做對了。流程是 Agent 產出、另外評估、通過或沒過的證據，然後人審、重試或停止。關卡和評分規準把驗收寫成看得到的證據：範圍、覆核點、失敗怎麼辦。Agent 很容易只解釋最顯眼的警告，而不是根因。評量在 aidc.work 裡面，不展示學員個資。"},
+{"title":"案例四句","script":"每則案例只講四句。原本卡在什麼工作。為什麼不是再買聊天工具。Agent 做哪段、人做哪段。什麼證據算過關，以及何時停下。把這四句帶回自己的部門流程。九十分場下一頁請跳到第二十六頁，四週主路徑。一百二十分場繼續第十九頁。內部系統不是客戶專案。"},
+{"title":"選配入口","script":"一百二十分場接下來十二分鐘，是主管旁聽。三件事：主管五問、五 R 過濾、寫一句流程。這不是三小時的高階工作坊，也不做三十天計畫。九十分場請直接跳到第二十六頁。"},
+{"title":"主管五問","script":"主管不必寫程式，但要判斷五件事。要解決哪個看得到的工作問題。人和 AI 各做哪一段。什麼資料能進、什麼不能進。出錯時誰覆核、誰承擔。用什麼基準證明有價值。導入 AI 是管理制度的一部分，不是資訊部門單獨的技術計畫。這是旁聽，不是當場決策會議。"},
+{"title":"5R 過濾","script":"用五個 R 看這條流程值不值得優先。重複做、要大量閱讀、要大量寫報告、規則明確、需要分析判斷。適合 AI，不等於值得優先投資。價值低、做不起來的題目，不要因為新穎就做。之後再依價值、可行性、風險粗排。"},
+{"title":"靜默寫流程","script":"現在安靜寫兩分鐘，不要互相討論。只寫一句：誰、在什麼情境、卡在哪。可以是時間、錯誤、找資料，或覆核。等一下承諾卡用同一句。不要寫客戶真名。"},
+{"title":"去識別化","script":"課堂和課間都要把身分拿掉。可以說甲公司、A 部門、合成訂單、假的電子郵件。不可以寫姓名、身分證、客戶編號、還沒公開的策略、合約原文，也不要把正式個資貼進外部 AI。從第一週起我們走同一條主流程。今天先把句子寫乾淨。若課前已經跟 Sponsor 宣讀過，這頁可以略講。"},
+{"title":"常見反對","script":"四句常見反對，先對齊再上路。沒資料：先用去掉個資的樣本和公開規則驗證流程，再談接正式資料庫。要先選模型：先鎖問題和驗收，模型是可以替換的一層。要先買平台：四週先證明一條可以演示、而且必覆核的工作流，再談採購。主管沒時間：主管旁聽並定邊界，由 Champion 把同一條流程跑完。反對是風險訊號，不是否決理由。"},
+{"title":"備援截圖","script":"如果公開頁打不開，就改看事先準備的靜態截圖。aidc.work 用課程和預約頁的截圖，仍講那四句。myAssist 用架構圖和合成的固定問答，不進後台。LPMS 用關卡和評分規準的合成示意，沒有個資。備援可以插在案例時段，不要為了救示範而吃掉地圖和承諾卡。"},
+{"title":"四週主路徑","script":"預設路徑是四週、十二小時的上路學程。第一週規則和選題，第二週真實任務上路，第三週流程和停損，第四週最小工作流。帶走的是使用規範、可以重做的任務、九十天節奏，以及一條可以演示、而且必須覆核的流程。適合混班種子和主管旁聽。資訊同仁派一個人開權限即可。先上路，再決定要不要建系統。"},
+{"title":"5–6 週選配","script":"同一套十二小時可以拉成五週或六週，深度不變。五週是在最後一堂前加一週，準備環境和去掉個資的資料。六週再加一週作業彩排，和一週內部發表或評量式檢核。上課時數仍是十二小時。沒有作業，第四週很難從會問走到可以演示。這是把節奏放慢，不是另開一條更深的課。"},
+{"title":"8 週升級","script":"若要八週，有兩種誠實選項，不當場二選一。路徑 B 是二十四小時，八週每週三小時陪跑，或四次六小時整天班，給 Champion 和資訊種子，從問題定義走到可演示的單一系統或 Agent 最小版。另一條是八週系統開發入門班，給要做出可部署小系統的人，從選題、表單、介面到部署，不是上路學程的加長版。主班走四週。升級班另開兩到六人。禁止同一教室兩套深度。"},
+{"title":"承諾卡","script":"現在用兩分鐘填卡。先寫角色和一條流程：誰、在什麼情境、卡在哪。再確認能不能參加前四週、每週課間工時、最大卡關。有興趣了解路徑 B 或系統班可以另註，也可以空白。這張卡是需求訊號，不是當場簽約。開班仍要 Sponsor、名單和去識別化規則。紙本或 Mentimeter 都可以。"},
+{"title":"Sponsor 規則","script":"跟 Sponsor 事前講好三條。預設開四週上路。路徑 B 或系統班要有負責人、資訊種子，以及每週兩到四小時作業，兩到六人種子另開，不併進主班。禁止同一教室一邊做規範任務、一邊做系統最小版。兩週內回覆是否開第一週。"},
+{"title":"下一步","script":"最後把承諾卡收成可以排課的下一步。講義、四週上路學程和升級課綱都在畫面上。若要討論包班或開班條件，用預約諮詢，也可以看課程一覽和導入訪談。先把範圍做小，驗證做快，再把真的有效的部分放大。"},
+{"title":"結構化問答","script":"一百二十分場留十五分鐘問答。一題一答，其餘寫在便利貼，課後回。題目收成四類：選題、資料、組織、時程。九十分場這頁改成便利貼，課後再回，不要延長。地圖和承諾卡的時間已經鎖死。"},
+{"title":"名詞：怎麼跟 AI 說話","script":"最後四頁是專有名詞，給學員課後看。時間不夠可以不投影。這一頁是提示詞、大型語言模型、ChatGPT、AI 工具、副駕駛，以及工作流。提示詞是你寫給 AI 的指示。大型語言模型會依上下文接話。ChatGPT 會回答，不會自己把工作做完。工具加快個人產出。副駕駛在旁邊建議，決定權在人。工作流是把步驟串起來。"},
+{"title":"名詞：做事與系統","script":"這一頁是 Agent、它的迴路、AI 系統、檢索增強生成、固定問答，以及人在迴路。Agent 有目標、會用工具，而且要能停下。迴路是目標、上下文、判斷、工具、行動、回饋。系統讓事情可以重複、覆核、維運。檢索增強是先找出有出處的段落再回答，沒有來源就不能當成事實。固定問答對得上就直接回。風險高的步驟必須有人看過。"},
+{"title":"名詞：做出來","script":"這一頁是做出來會碰到的詞。API 是系統跟系統講話的門口。Webhook 是外面有新事件時主動通知我們，LINE 訊息進來就是這樣。Git 紀錄改了什麼、誰審過。Docker 把服務包成可以重複啟動的環境。Vibe Coding 是用日常說話跟 AI 一起改程式，加快第一版。MVP 是能當場演示、能驗證價值的最小一版。"},
+{"title":"名詞：把關與課堂用語","script":"最後一頁。關卡是過關檢查點，範圍、覆核點、失敗怎麼辦都要寫成看得到的證據。評分規準是事先講好怎樣算通過。內容管理是管網站文章的後台，跟 LINE 的知識更新不是同一件事。六種能力用來發想，不是採購清單。五 R 用來判斷流程值不值得優先。去識別化是把能認出特定人的資料拿掉，再進課堂或外部 AI。名詞表到這裡。謝謝大家。"}
+]}
+  </script>
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const LS_KEY = "aidc-enterprise-ai-intro-font-scale";
+      const narration = JSON.parse(document.getElementById("deck-narration").textContent);
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => {
+          s.classList.toggle("active", n === index);
+          s.setAttribute("aria-hidden", n === index ? "false" : "true");
+        });
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title || "") + "｜企業 AI 導論";
+        if (!options.skipHash && slides[index].id) history.replaceState(null, "", "#" + slides[index].id);
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: { index, slideId: slides[index].id, title: slides[index].dataset.title || "" }
+        }));
+      }
+
+      document.getElementById("btn-prev").addEventListener("click", () => show(index - 1));
+      document.getElementById("btn-next").addEventListener("click", () => show(index + 1));
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      document.getElementById("btn-present").addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+      document.addEventListener("deck:request-next", () => show(index + 1));
+      document.addEventListener("deck:request-prev", () => show(index - 1));
+      window.deckController = { show, getIndex: () => index };
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); show(index + 1); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); show(index - 1); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); document.getElementById("btn-present").click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+        else if (e.key === "n" || e.key === "N") { e.preventDefault(); document.getElementById("btn-narration").click(); }
+      });
+
+      const hash = (location.hash || "").replace(/^#/, "");
+      const start = slides.findIndex((s) => s.id === hash);
+      show(start >= 0 ? start : 0, { skipHash: start < 0 });
+
+      const panel = document.getElementById("narration-panel");
+      const scriptEl = document.getElementById("narration-script");
+      const statusEl = document.getElementById("narration-status");
+      const playBtn = document.getElementById("narration-play");
+      const barNarr = document.getElementById("narration-progress-bar");
+      const rateInput = document.getElementById("narration-rate");
+      const rateValue = document.getElementById("narration-rate-value");
+      const btnNarration = document.getElementById("btn-narration");
+
+      function setOpen(open) {
+        panel.classList.toggle("open", open);
+        panel.setAttribute("aria-hidden", open ? "false" : "true");
+        btnNarration.setAttribute("aria-pressed", open ? "true" : "false");
+        if (!open) panel.classList.remove("minimized");
+      }
+      function stopSpeech() {
+        if ("speechSynthesis" in window) speechSynthesis.cancel();
+        playBtn.textContent = "▶";
+        barNarr.style.width = "0";
+      }
+      function renderEmbedded() {
+        const slide = narration.slides[index];
+        scriptEl.textContent = slide?.script || "（此頁尚無講稿）";
+        statusEl.textContent = slide ? `${slide.title} · ${index + 1} / ${total}` : "無講稿";
+      }
+      function speakCurrent() {
+        const text = narration.slides[index]?.script;
+        if (!text || !("speechSynthesis" in window)) return;
+        if (speechSynthesis.speaking && !speechSynthesis.paused) { speechSynthesis.pause(); playBtn.textContent = "▶"; return; }
+        if (speechSynthesis.paused) { speechSynthesis.resume(); playBtn.textContent = "⏸"; return; }
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "zh-TW";
+        utter.rate = Number(rateInput.value || 1);
+        utter.onend = () => { playBtn.textContent = "▶"; barNarr.style.width = "100%"; };
+        utter.onboundary = (event) => {
+          if (text.length) barNarr.style.width = `${Math.min(100, (event.charIndex / text.length) * 100)}%`;
+        };
+        playBtn.textContent = "⏸";
+        speechSynthesis.speak(utter);
+      }
+      function wireStandalone() {
+        renderEmbedded();
+        document.addEventListener("deck:slidechange", () => { stopSpeech(); renderEmbedded(); });
+        btnNarration.addEventListener("click", () => setOpen(!panel.classList.contains("open")));
+        document.getElementById("narration-close").addEventListener("click", () => setOpen(false));
+        document.getElementById("narration-minimize").addEventListener("click", () => panel.classList.toggle("minimized"));
+        document.getElementById("narration-prev-seg").addEventListener("click", () => show(index - 1));
+        document.getElementById("narration-next-seg").addEventListener("click", () => show(index + 1));
+        playBtn.addEventListener("click", speakCurrent);
+        document.getElementById("narration-stop").addEventListener("click", stopSpeech);
+        rateInput.addEventListener("input", () => { rateValue.textContent = `${Number(rateInput.value).toFixed(2)}×`; });
+        window.addEventListener("keydown", (e) => {
+          if ((e.key === "r" || e.key === "R") && panel.classList.contains("open")) {
+            const tag = (e.target && e.target.tagName) || "";
+            if (tag === "INPUT" || tag === "TEXTAREA") return;
+            e.preventDefault();
+            speakCurrent();
+          }
+        });
+      }
+
+      fetch("narration/enterprise-ai-intro.json", { cache: "no-store" })
+        .then((res) => { if (!res.ok) throw new Error("no manifest"); })
+        .catch(() => wireStandalone());
+    })();
+  </script>
+
+
+<script src="narration/deck-narration-player.js"></script></body></html>
