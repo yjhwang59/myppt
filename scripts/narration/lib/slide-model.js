@@ -68,7 +68,7 @@ export function migrateSlideFromHtml($, el, index, total) {
     eyebrow: content.eyebrow,
     kicker: content.kicker,
     h1: ($el.find("h1").first().html() || "").replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, "").trim(),
-    h2: content.headings[1] || content.headings[0] || "",
+    h2: layout === "hero" ? "" : content.headings[1] || content.headings[0] || "",
     lead: content.lead,
     stamp: content.stamp,
     cards: extractCardsDetailed($, el),
@@ -245,4 +245,64 @@ export function buildDeckMainHtml(deckData) {
 export function patchDeckHtml(html, deckData) {
   const mainInner = buildDeckMainHtml(deckData);
   return html.replace(/<main id="deck">[\s\S]*?<\/main>/, `<main id="deck">\n${mainInner}\n  </main>`);
+}
+
+function projectSlideForRoundTrip(slide) {
+  const layout = slide.layout;
+  return {
+    slideId: slide.slideId,
+    index: slide.index,
+    title: slide.title,
+    layout,
+    hero: Boolean(slide.hero) || layout === "hero",
+    eyebrow: slide.eyebrow || "",
+    kicker: slide.kicker || "",
+    h1: slide.h1 || "",
+    h2: slide.h2 || "",
+    lead: slide.lead || "",
+    stamp: slide.stamp || "",
+    cards: (slide.cards || []).map((card) => ({
+      num: card.num || null,
+      tag: card.tag || null,
+      tagClass: card.tagClass || null,
+      heading: card.heading || "",
+      paragraph: card.paragraph || "",
+      bullets: [...(card.bullets || [])],
+    })),
+    flowSteps: (slide.flowSteps || []).map((step) => ({
+      title: step.title || "",
+      description: step.description || "",
+    })),
+    table: slide.table?.length ? slide.table : null,
+    callouts: [...(slide.callouts || [])],
+    links: (slide.links || []).map((link) => ({ label: link.label, href: link.href })),
+    footerBrand: slide.footerBrand || "企業 AI 整合平台",
+    footerPage: slide.footerPage || "",
+    archSvgHtml: layout === "arch-svg" ? slide.archSvgHtml || "" : "",
+    archSvgLabel: layout === "arch-svg" ? slide.archSvgLabel || "企業 AI 五層架構圖" : "",
+  };
+}
+
+/** Render slides to HTML and migrate them back. Returns field mismatches. */
+export function roundTripMismatches(deckData) {
+  const html = `<main id="deck">\n${buildDeckMainHtml(deckData)}\n  </main>`;
+  const $ = cheerio.load(html, { decodeEntities: false });
+  const els = $(".slide").toArray();
+  const back = els.map((el, i) => migrateSlideFromHtml($, el, i, els.length));
+  const mismatches = [];
+  for (let i = 0; i < deckData.slides.length; i++) {
+    const expected = projectSlideForRoundTrip(deckData.slides[i]);
+    const actual = projectSlideForRoundTrip(back[i] || {});
+    if (JSON.stringify(expected) !== JSON.stringify(actual)) {
+      mismatches.push({ slideId: deckData.slides[i].slideId || `s${i + 1}`, expected, actual });
+    }
+  }
+  if (back.length !== deckData.slides.length) {
+    mismatches.push({
+      slideId: "*",
+      expected: { count: deckData.slides.length },
+      actual: { count: back.length },
+    });
+  }
+  return mismatches;
 }

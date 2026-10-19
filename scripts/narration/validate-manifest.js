@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 import { loadAndValidateManifest } from "./lib/validate.js";
-import { MANIFEST_PATH } from "./lib/paths.js";
+import { DECK_ID, manifestPath } from "./lib/paths.js";
 import { estimateManifestTtsCost } from "./lib/tts/index.js";
 
-const { manifest, ok, errors } = loadAndValidateManifest(MANIFEST_PATH);
+const deckArg = process.argv.find((arg) => arg.startsWith("--deck="));
+const deckId = deckArg ? deckArg.slice("--deck=".length) : DECK_ID;
+const manifestFile = manifestPath(deckId);
+
+const { manifest, ok, errors } = loadAndValidateManifest(manifestFile);
 
 if (!ok) {
   console.error("✗ manifest 驗證失敗:");

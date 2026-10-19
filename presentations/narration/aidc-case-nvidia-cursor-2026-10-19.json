@@ -1,0 +1,204 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-case-nvidia-cursor-2026-10-19",
+  "deckPath": "aidc-case-nvidia-cursor-2026-10-19.html",
+  "title": "NVIDIA × Cursor：三萬工程師每天在用的 AI 寫程式",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "Jack 黃老師",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "1095006f7f5088d08837d4925e7b4598898154bae01bc8ad3484cad8c2b35e9e",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "案例 · 三頁",
+        "headings": [
+          "NVIDIA × Cursor：三萬工程師每天在用的 AI 寫程式"
+        ],
+        "lead": "今天只講公開出處。四個事實在下一頁，三個動作留在最後。",
+        "stamp": "2026-10-19",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "我是 Jack 黃老師。今天只用三頁。標題就是這句：NVIDIA 跟 Cursor，三萬名工程師每天都在用 AI 寫程式。我只講公開出處。下一頁四個事實。最後一頁三個動作。",
+      "estimatedSeconds": 30,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "Jack 黃老師",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-19T05:10:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "Jack 黃老師口語草稿，待審，未合成語音"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "四個出處",
+      "sourceHash": "efddcbcc33ab1716a3aa65b06e2fd7965ce206f4ea88feb3cb2c444b4169ca0d",
+      "extractedContent": {
+        "eyebrow": "02 / 四個出處",
+        "kicker": "",
+        "headings": [
+          "公開講過的，就這四件"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "時間",
+            "出處",
+            "講了什麼"
+          ],
+          [
+            "2025-10",
+            "黃仁勳，CNBC／Citadel",
+            "最喜歡的企業 AI 服務是 Cursor。工程師 100% 都有 AI 程式助理。"
+          ],
+          [
+            "2026-02-06",
+            "cursor.com/blog/nvidia",
+            "每天超過三萬名開發者。提交的程式碼變 3 倍。錯誤率持平。寫程式、審查、測試、除錯，到自訂規則與 MCP 的自動 git 流程，整段都用。"
+          ],
+          [
+            "2026-07-30",
+            "cursor.com/blog/benchmarkpartners",
+            "NVIDIA 被列為 Cursor Benchmark Partner。"
+          ],
+          [
+            "2026-08-13",
+            "Cursor 裡的 NVIDIA 外掛",
+            "300 多個簽過名的技能，含 CUDA、NeMo、cuOpt、Omniverse。"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "原話：My favorite enterprise AI service is Cursor... every one of our engineers, 100%, is now assisted by AI coders.（2025-10，CNBC／Citadel）"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "第一，2025 年 10 月。黃仁勳在 CNBC、Citadel 說，他最喜歡的企業 AI 服務是 Cursor。原話我留在這頁：My favorite enterprise AI service is Cursor. 他接著說，每一位工程師，百分之百，現在都有 AI 程式助理。第二，2026 年 2 月 6 日，Cursor 官網文章 cursor.com/blog/nvidia。超過三萬名 NVIDIA 開發者每天在用。送進去的程式碼變成三倍。錯誤率維持平穩。從寫程式、審查、測試、除錯，到用自訂規則和 MCP 串起來的自動 git 流程，整段生命週期都用上了。第三，2026 年 7 月 30 日，cursor.com/blog/benchmarkpartners。NVIDIA 被列為 Cursor Benchmark Partner。第四，2026 年 8 月 13 日。Cursor 裡的 NVIDIA 外掛，有三百多個簽過名的技能，含 CUDA、NeMo、cuOpt、Omniverse。",
+      "estimatedSeconds": 90,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "Jack 黃老師",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-19T05:10:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "Jack 黃老師口語草稿，待審，未合成語音"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "三個動作",
+      "sourceHash": "41c6713b20ed7f80146594c781f5fc06d340206f453827e330071caa5a228081",
+      "extractedContent": {
+        "eyebrow": "03 / 三個動作",
+        "kicker": "",
+        "headings": [
+          "聽完先做這三步"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "對原文",
+            "description": "打開 2026-02-06 那篇，自己核對每天使用、程式碼量、錯誤率。"
+          },
+          {
+            "title": "對團隊",
+            "description": "寫程式、審查、測試、除錯，哪一段還沒有 AI 幫忙。"
+          },
+          {
+            "title": "對技能",
+            "description": "做 CUDA、NeMo、cuOpt、Omniverse 的，去看 2026-08-13 的外掛和 300 多個簽過名的技能。"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "我是 Jack 黃老師。三頁看完，你做三步。第一，打開 2026 年 2 月 6 日那篇原文，自己核對每天使用、程式碼量和錯誤率。第二，對一下你的團隊，寫程式、審查、測試、除錯，哪一段還沒有 AI 幫忙。第三，如果你在做 CUDA、NeMo、cuOpt 或 Omniverse，去看 2026 年 8 月 13 日那個外掛，還有那三百多個簽過名的技能，再決定要不要試。",
+      "estimatedSeconds": 37,
+      "status": "pending_review",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "Jack 黃老師",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-19T05:10:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "Jack 黃老師口語草稿，待審，未合成語音"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-10-19T05:10:00.000Z",
+    "totalEstimatedSeconds": 157,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-case-nvidia-cursor-2026-10-19",
+  "title": "NVIDIA × Cursor：三萬工程師每天在用的 AI 寫程式",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "案例 · 三頁",
+      "h1": "NVIDIA × Cursor：\n三萬工程師每天在用的 AI 寫程式",
+      "h2": "",
+      "lead": "今天只講公開出處。四個事實在下一頁，三個動作留在最後。",
+      "stamp": "2026-10-19",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AI發展顧問",
+      "footerPage": "1 / 3"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "四個出處",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "02 / 四個出處",
+      "kicker": "",
+      "h1": "",
+      "h2": "公開講過的，就這四件",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        ["時間", "出處", "講了什麼"],
+        ["2025-10", "黃仁勳，CNBC／Citadel", "最喜歡的企業 AI 服務是 Cursor。工程師 100% 都有 AI 程式助理。"],
+        ["2026-02-06", "cursor.com/blog/nvidia", "每天超過三萬名開發者。提交的程式碼變 3 倍。錯誤率持平。寫程式、審查、測試、除錯，到自訂規則與 MCP 的自動 git 流程，整段都用。"],
+        ["2026-07-30", "cursor.com/blog/benchmarkpartners", "NVIDIA 被列為 Cursor Benchmark Partner。"],
+        ["2026-08-13", "Cursor 裡的 NVIDIA 外掛", "300 多個簽過名的技能，含 CUDA、NeMo、cuOpt、Omniverse。"]
+      ],
+      "callouts": [
+        "原話：My favorite enterprise AI service is Cursor... every one of our engineers, 100%, is now assisted by AI coders.（2025-10，CNBC／Citadel）"
+      ],
+      "links": [
+        { "label": "2026-02-06 原文", "href": "https://cursor.com/blog/nvidia" },
+        { "label": "Benchmark Partners", "href": "https://cursor.com/blog/benchmarkpartners" }
+      ],
+      "footerBrand": "AI發展顧問",
+      "footerPage": "2 / 3"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "三個動作",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "03 / 三個動作",
+      "kicker": "",
+      "h1": "",
+      "h2": "聽完先做這三步",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "對原文",
+          "description": "打開 2026-02-06 那篇，自己核對每天使用、程式碼量、錯誤率。"
+        },
+        {
+          "title": "對團隊",
+          "description": "寫程式、審查、測試、除錯，哪一段還沒有 AI 幫忙。"
+        },
+        {
+          "title": "對技能",
+          "description": "做 CUDA、NeMo、cuOpt、Omniverse 的，去看 2026-08-13 的外掛和 300 多個簽過名的技能。"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "AI發展顧問",
+      "footerPage": "3 / 3"
+    }
+  ]
+}

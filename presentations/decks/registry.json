@@ -217,6 +217,21 @@
       "summary": "",
       "createdAt": "2026-10-15T09:15:12.240Z",
       "updatedAt": "2026-10-15T09:15:12.240Z"
+    },
+    {
+      "deckId": "aidc-case-nvidia-cursor-2026-10-19",
+      "title": "NVIDIA × Cursor：三萬工程師每天在用的 AI 寫程式",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "三頁案例。只收四個公開出處。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。講稿為 Jack 黃老師口語草稿，status pending_review，尚未合成語音。",
+      "createdAt": "2026-10-19T05:00:00.000Z",
+      "updatedAt": "2026-10-19T05:00:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "三頁講完 NVIDIA 公開說過的 Cursor 用法，最後留三個動作。"
     }
   ],
   "categories": [
