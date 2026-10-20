@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Wireframe 範例｜Northgo 中文詢價助理（第 2 週練習 3）</title>
+<style>
+  :root { --ink:#1f2937; --muted:#6b7280; --line:#9ca3af; --soft:#e5e7eb; --bg:#f3f4f6; --paper:#fff; --hi:#111827; --note:#fefce8; --note-line:#a8a29e; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink); font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; font-size:16px; line-height:1.55; }
+  a { color:inherit; }
+  button, input, select, textarea { font:inherit; color:inherit; }
+  /* ---------- 範例外框（不是產品畫面） ---------- */
+  .wf-bar { position:sticky; top:0; z-index:20; background:#374151; color:#f9fafb; padding:8px 16px; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; }
+  .wf-bar strong { font-size:15px; }
+  .wf-bar .sub { font-size:13px; color:#d1d5db; }
+  .wf-tabs { display:flex; flex-wrap:wrap; gap:6px; margin-left:auto; }
+  .wf-tabs a { text-decoration:none; font-size:13px; padding:4px 10px; border:1px solid #6b7280; border-radius:999px; color:#f9fafb; }
+  .wf-tabs a.on { background:#f9fafb; color:#111827; border-color:#f9fafb; }
+  .wf-tools { display:flex; gap:12px; font-size:13px; align-items:center; }
+  .wf-tools label { display:flex; gap:4px; align-items:center; cursor:pointer; }
+  .wf-wrap { max-width:1280px; margin:0 auto; padding:16px; display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:16px; align-items:start; }
+  body.no-notes .wf-wrap { grid-template-columns:minmax(0,1fr); }
+  body.no-notes .notes, body.no-notes .pin { display:none !important; }
+  .screen { display:none; background:var(--paper); border:2px solid var(--line); border-radius:6px; min-height:540px; overflow:hidden; }
+  .screen.on { display:block; }
+  .screen-label { font-size:12px; color:var(--muted); padding:4px 12px; border-bottom:1px dashed var(--line); background:#fafafa; }
+  .notes { background:var(--note); border:1px solid var(--note-line); border-radius:6px; padding:12px 14px; position:sticky; top:64px; max-height:calc(100vh - 80px); overflow:auto; }
+  .notes h2 { font-size:16px; margin:0 0 8px; }
+  .notes ol { margin:0; padding-left:0; list-style:none; }
+  .notes li { padding:8px 0; border-top:1px dashed var(--note-line); font-size:14px; }
+  .notes li b { display:block; }
+  .notes .tag { display:inline-block; font-size:12px; border:1px solid var(--note-line); border-radius:4px; padding:0 6px; margin:4px 4px 0 0; background:#fff; }
+  .notes .sim { margin-top:10px; padding-top:10px; border-top:2px solid var(--note-line); font-size:14px; }
+  .pin { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; background:#fde047; border:1px solid #a16207; color:#422006; font-size:12px; font-weight:800; vertical-align:middle; margin-left:6px; flex:none; }
+  .ask { background:#fff; border:1px dashed #a16207; color:#713f12; border-radius:4px; padding:0 4px; font-size:.9em; white-space:nowrap; }
+  /* ---------- 低保真元件（灰階） ---------- */
+  .site-head { display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:2px solid var(--soft); }
+  .logo { border:2px solid var(--line); padding:4px 10px; font-weight:800; letter-spacing:.05em; }
+  .site-nav { display:flex; gap:16px; margin-left:auto; align-items:center; font-size:15px; }
+  .site-nav .navlinks { display:flex; gap:16px; }
+  .hamb { display:none; border:2px solid var(--line); background:#fff; padding:2px 8px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border:2px solid var(--hi); background:var(--hi); color:#fff; padding:10px 18px; border-radius:4px; text-decoration:none; cursor:pointer; font-weight:700; }
+  .btn.ghost { background:#fff; color:var(--hi); }
+  .btn[disabled] { opacity:.55; cursor:progress; }
+  .img { background:repeating-linear-gradient(45deg,#e5e7eb 0 12px,#f3f4f6 12px 24px); border:2px solid var(--soft); display:grid; place-items:center; color:var(--muted); font-size:14px; text-align:center; padding:12px; }
+  .pad { padding:20px 24px; }
+  h1.pg { font-size:28px; margin:0 0 6px; }
+  .lead { color:var(--muted); margin:0 0 16px; }
+  .box { border:2px solid var(--soft); border-radius:6px; padding:14px 16px; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; }
+  .field { display:flex; flex-direction:column; gap:4px; }
+  .field.full { grid-column:1 / -1; }
+  .field label, .field .lbl { font-weight:700; font-size:15px; display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+  .req { font-size:12px; border:1px solid var(--hi); border-radius:3px; padding:0 4px; }
+  .opt { font-size:12px; border:1px solid var(--line); color:var(--muted); border-radius:3px; padding:0 4px; }
+  input[type=text], input[type=email], input[type=tel], input[type=password], input[type=month], select, textarea { width:100%; border:2px solid var(--line); border-radius:4px; padding:9px 10px; background:#fff; }
+  textarea { min-height:96px; resize:vertical; }
+  #d-draft { min-height:170px; }
+  .checks { display:flex; flex-wrap:wrap; gap:8px 16px; }
+  .checks label { font-weight:400; display:flex; gap:6px; align-items:center; }
+  .err { color:#111; font-size:14px; font-weight:700; display:none; }
+  .err::before { content:"⚠ "; }
+  .field.bad input, .field.bad textarea, .field.bad .checks { border-color:#111; outline:3px solid #d1d5db; }
+  .field.bad .err { display:block; }
+  .banner { border:2px solid #111; background:#e5e7eb; padding:10px 14px; border-radius:4px; font-weight:700; display:none; margin-bottom:14px; }
+  .banner.on { display:block; }
+  .section-title { font-size:14px; color:var(--muted); font-weight:700; margin:18px 0 8px; border-bottom:1px dashed var(--line); }
+  .muted { color:var(--muted); font-size:14px; }
+  .terms { border:2px dashed var(--line); border-radius:4px; padding:10px 12px; font-size:14px; color:var(--muted); }
+  table.wt { width:100%; border-collapse:collapse; font-size:14px; }
+  .wt th, .wt td { border:1px solid var(--soft); padding:8px 10px; text-align:left; vertical-align:top; }
+  .wt th { background:#f9fafb; }
+  .wt tr.click { cursor:pointer; }
+  .wt tr.click:hover td { background:#f3f4f6; }
+  .st { display:inline-block; border:2px solid var(--hi); border-radius:999px; padding:0 8px; font-size:12px; font-weight:700; white-space:nowrap; }
+  .st.new { background:var(--hi); color:#fff; }
+  .st.late { border-style:dashed; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
+  .chip { border:2px solid var(--line); border-radius:999px; padding:2px 12px; background:#fff; cursor:pointer; font-size:14px; }
+  .chip.on { border-color:var(--hi); background:var(--hi); color:#fff; }
+  .cards { display:none; gap:10px; }
+  .icard { border:2px solid var(--soft); border-radius:6px; padding:10px 12px; display:block; text-decoration:none; }
+  .ai { border:2px dashed var(--hi); border-radius:6px; padding:12px 14px; position:relative; }
+  .ai::before { content:"AI 產出（草稿，需人確認）"; position:absolute; top:-11px; left:10px; background:#fff; padding:0 6px; font-size:12px; font-weight:800; }
+  .split { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .done-mark { width:64px; height:64px; border:3px solid var(--hi); border-radius:50%; display:grid; place-items:center; font-size:30px; margin-bottom:10px; }
+  .ov h2 { font-size:20px; margin:22px 0 8px; }
+  .ov h2:first-child { margin-top:0; }
+  .chk td:first-child { width:36px; text-align:center; }
+  .foot { border-top:2px solid var(--soft); padding:12px 16px; font-size:13px; color:var(--muted); }
+  /* ---------- RWD：手機（≤760px） ---------- */
+  @media (max-width: 760px) {
+    .wf-bar { position:static; padding:6px 10px; }
+    .wf-bar .sub { display:none; }
+    .wf-tabs a { padding:3px 8px; font-size:12px; }
+    .wf-wrap { grid-template-columns:minmax(0,1fr); padding:8px; }
+    .notes { position:static; max-height:none; }
+    .wf-tabs { margin-left:0; }
+    .site-nav .navlinks { display:none; }
+    .hamb { display:inline-block; }
+    .grid2, .split { grid-template-columns:1fr; }
+    .pad { padding:16px; }
+    h1.pg { font-size:22px; }
+    .home-hero .img { min-height:140px !important; }
+    .list-table { display:none; }
+    .cards { display:grid; }
+    .wt { font-size:13px; }
+    .ov .wt { display:block; overflow-x:auto; }
+    .btn.block-m { width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wf-bar">
+  <div><strong>Wireframe 範例｜Northgo 中文詢價助理</strong><br><span class="sub">第 2 週練習 3 參考答案（基本題＋進階題）· 低保真灰階 · 全部資料皆為虛構</span></div>
+  <nav class="wf-tabs" aria-label="畫面切換">
+    <a href="#overview" data-s="overview">0 旅程與頁面清單</a>
+    <a href="#home" data-s="home">1 中文首頁</a>
+    <a href="#form" data-s="form">2 詢價表單</a>
+    <a href="#done" data-s="done">3 送出完成</a>
+    <a href="#login" data-s="login">4 登入</a>
+    <a href="#list" data-s="list">5 詢價列表</a>
+    <a href="#detail" data-s="detail">6 詢價明細</a>
+  </nav>
+  <div class="wf-tools"><label><input type="checkbox" id="toggle-notes" checked> 顯示註解</label></div>
+</div>
+
+<div class="wf-wrap">
+<main>
+<!-- ================= 0 總覽 ================= -->
+<section class="screen ov" id="scr-overview" data-title="旅程與頁面清單">
+  <div class="screen-label">0 · 總覽（練習 1、2 的交付，練習 3 照這份畫）</div>
+  <div class="pad">
+    <h2>使用者旅程：潛在客戶用中文詢價<span class="pin">1</span></h2>
+    <table class="wt"><thead><tr><th>步驟</th><th>現在（W1 實測）</th><th>改善後</th><th>畫面</th></tr></thead><tbody>
+      <tr><td>1 進官網</td><td>首頁第一屏有「Enquire now」</td><td>中文首頁加「我要詢價」，手機版放在漢堡選單外</td><td>1 中文首頁</td></tr>
+      <tr><td>2 看中文內容</td><td><b>痛點</b>：中文版只有大標題是中文</td><td>本次只做詢價流程中文化（其他頁不在範圍）</td><td>—</td></tr>
+      <tr><td>3 找詢價入口</td><td>點「Enquire now」到英文聯絡頁</td><td>點「我要詢價」到中文表單</td><td>2 詢價表單</td></tr>
+      <tr><td>4 填表</td><td><b>痛點</b>：8 個必填；手機約 2.5 個畫面才到送出鈕</td><td>5 個必填；手機第一屏就看到表單開頭</td><td>2 詢價表單</td></tr>
+      <tr><td>5 送出</td><td><b>痛點</b>：英文確認訊息，不知道誰會回、多久回</td><td>中文確認＋詢價編號＋回覆時間（<span class="ask">待問大躍</span>）</td><td>3 送出完成</td></tr>
+    </tbody></table>
+    <h2>使用者旅程：服務窗口回覆（進階題）<span class="pin">2</span></h2>
+    <table class="wt"><thead><tr><th>步驟</th><th>誰做</th><th>內容</th><th>畫面</th></tr></thead><tbody>
+      <tr><td>1 收到詢價</td><td>系統</td><td>客戶送出後產生一筆「新進」詢價（交棒點）</td><td>5 詢價列表</td></tr>
+      <tr><td>2 分類</td><td>AI → 人</td><td>AI 建議服務別；判斷不出來就標「待人工分類」</td><td>6 詢價明細</td></tr>
+      <tr><td>3 回覆</td><td>人</td><td>窗口修改 AI 回覆草稿，按「確認寄出」</td><td>6 詢價明細</td></tr>
+      <tr><td>4 結案</td><td>人</td><td>狀態改為「已回覆」；太久沒回顯示「逾時」（期限 <span class="ask">待問大躍</span>）</td><td>5 詢價列表</td></tr>
+    </tbody></table>
+    <h2>例外路徑與系統回應<span class="pin">3</span></h2>
+    <table class="wt"><thead><tr><th>步驟</th><th>例外</th><th>系統怎麼回應</th></tr></thead><tbody>
+      <tr><td>填表</td><td>必填空白、Email 格式錯</td><td>欄位下方中文提示，不送出</td></tr>
+      <tr><td>送出</td><td>網路或伺服器錯誤</td><td>保留已填內容，顯示「送出失敗，請再試一次」</td></tr>
+      <tr><td>分流</td><td>AI 判斷不出服務別</td><td>標「待人工分類」，交給指定窗口（誰：<span class="ask">待問大躍</span>）</td></tr>
+      <tr><td>回覆</td><td>太久沒回</td><td>列表標示「逾時」</td></tr>
+    </tbody></table>
+    <h2>頁面清單（MVP 6 頁）<span class="pin">4</span></h2>
+    <table class="wt"><thead><tr><th>頁面</th><th>給誰</th><th>主要內容</th><th>從哪來 → 到哪去</th></tr></thead><tbody>
+      <tr><td><a href="#home">1 中文首頁</a></td><td>潛在客戶</td><td>現有內容，加一顆「我要詢價」</td><td>搜尋或網址 → 詢價表單</td></tr>
+      <tr><td><a href="#form">2 詢價表單頁</a></td><td>潛在客戶</td><td>5 個必填＋選填</td><td>首頁 → 送出完成</td></tr>
+      <tr><td><a href="#done">3 送出完成頁</a></td><td>潛在客戶</td><td>中文確認訊息、詢價編號</td><td>表單 → 回首頁</td></tr>
+      <tr><td><a href="#login">4 登入</a></td><td>窗口、主管</td><td>W6 再做，今天只畫框</td><td>→ 詢價列表</td></tr>
+      <tr><td><a href="#list">5 詢價列表</a></td><td>窗口、主管</td><td>依狀態篩選的詢價</td><td>登入 → 詢價明細</td></tr>
+      <tr><td><a href="#detail">6 詢價明細</a></td><td>服務窗口</td><td>客戶需求、AI 摘要與草稿、確認寄出</td><td>列表 → 回列表</td></tr>
+    </tbody></table>
+    <h2>驗收清單（領航逐項打勾）<span class="pin">5</span></h2>
+    <table class="wt chk"><thead><tr><th>✓</th><th>項目</th><th>怎麼驗</th><th>通過條件</th></tr></thead><tbody>
+      <tr><td><input type="checkbox" aria-label="主流程"></td><td>主流程</td><td>首頁 → 我要詢價 → 填表 → 送出</td><td>3 下以內到完成頁</td></tr>
+      <tr><td><input type="checkbox" aria-label="必填"></td><td>必填</td><td>空白直接按送出</td><td>5 個必填都有中文提示，不跳頁</td></tr>
+      <tr><td><input type="checkbox" aria-label="Email"></td><td>Email</td><td>輸入 abc</td><td>顯示格式錯誤，不送出</td></tr>
+      <tr><td><input type="checkbox" aria-label="載入"></td><td>載入</td><td>按送出</td><td>按鈕變「送出中…」且不能再按</td></tr>
+      <tr><td><input type="checkbox" aria-label="成功"></td><td>成功</td><td>送出完成</td><td>中文確認訊息＋詢價編號（示意）</td></tr>
+      <tr><td><input type="checkbox" aria-label="手機"></td><td>手機</td><td>瀏覽器寬度 390px</td><td>沒有左右捲動，第一屏看得到表單開頭</td></tr>
+      <tr><td><input type="checkbox" aria-label="人工確認"></td><td>人工確認</td><td>明細頁（進階題）</td><td>AI 草稿旁有「確認寄出」，不會自動寄出</td></tr>
+    </tbody></table>
+    <p class="muted">打勾只存在這個瀏覽器分頁，重新整理就會清掉。沒通過的項目寫進 W3 修正清單。</p>
+  </div>
+</section>
+
+<!-- ================= 1 首頁 ================= -->
+<section class="screen" id="scr-home" data-title="中文首頁">
+  <div class="screen-label">1 · 中文首頁（現有頁面，只加「我要詢價」）</div>
+  <header class="site-head">
+    <span class="logo">LOGO</span>
+    <nav class="site-nav" aria-label="網站導覽（示意）">
+      <span class="navlinks"><span>服務</span><span>關於我們</span><span>聯絡我們</span></span>
+      <a class="btn" href="#form">我要詢價</a><span class="pin">1</span>
+      <button class="hamb" type="button" aria-label="選單（示意）">☰</button>
+    </nav>
+  </header>
+  <div class="pad home-hero">
+    <div class="img" style="min-height:220px">現有首頁主視覺與內容<br>（本次不改，中文翻譯不在範圍）<span class="pin">2</span></div>
+    <div class="row" style="margin-top:16px; align-items:center">
+      <div style="flex:1; min-width:220px"><div class="box"><b>四項服務（現有）</b><br><span class="muted">海空運承攬・專案物流・倉儲物流・船務代理</span></div></div>
+      <a class="btn block-m" href="#form">我要詢價（中文）</a><span class="pin">3</span>
+    </div>
+  </div>
+  <div class="foot">頁尾（現有）</div>
+</section>
+
+<!-- ================= 2 表單 ================= -->
+<section class="screen" id="scr-form" data-title="詢價表單頁">
+  <div class="screen-label">2 · 詢價表單頁（5 個必填＋選填；手機單欄）</div>
+  <header class="site-head"><span class="logo">LOGO</span><nav class="site-nav"><a href="#home">← 回首頁</a></nav></header>
+  <div class="pad">
+    <h1 class="pg">中文詢價<span class="pin">1</span></h1>
+    <p class="lead">填寫 5 個必填欄位即可送出，服務窗口會以中文回覆。</p>
+    <div class="banner" id="form-fail" role="alert">送出失敗，請再試一次。你填的內容都還在。（有急事可來電：電話號碼 <span class="ask">待問大躍</span>）</div>
+    <form id="inq" novalidate>
+      <div class="section-title">必填（5 個）<span class="pin">2</span></div>
+      <div class="grid2">
+        <div class="field" data-f="company"><label for="f-company">公司 <span class="req">必填</span></label><input id="f-company" type="text" autocomplete="organization"><span class="err">請填寫公司名稱</span></div>
+        <div class="field" data-f="contact"><label for="f-contact">聯絡人 <span class="req">必填</span><span class="pin">3</span></label><input id="f-contact" type="text" autocomplete="name"><span class="err">請填寫聯絡人</span></div>
+        <div class="field" data-f="email"><label for="f-email">Email <span class="req">必填</span></label><input id="f-email" type="email" autocomplete="email" inputmode="email"><span class="err" id="email-err">請填寫 Email</span></div>
+        <div class="field" data-f="service"><span class="lbl">需求服務 <span class="req">必填，可複選</span></span>
+          <div class="checks" id="f-service">
+            <label><input type="checkbox" value="海空運承攬">海空運承攬</label>
+            <label><input type="checkbox" value="專案物流">專案物流</label>
+            <label><input type="checkbox" value="倉儲物流">倉儲物流</label>
+            <label><input type="checkbox" value="船務代理">船務代理</label>
+            <label><input type="checkbox" value="其他">其他</label>
+          </div><span class="err">請至少選一項服務</span></div>
+        <div class="field full" data-f="desc"><label for="f-desc">需求描述 <span class="req">必填</span></label><textarea id="f-desc" placeholder="例：貨物種類、起運地與目的地、數量（請勿填寫真實報價或機密）"></textarea><span class="err">請簡單描述需求</span></div>
+      </div>
+      <div class="section-title">選填（之後可補）<span class="pin">4</span></div>
+      <div class="grid2">
+        <div class="field"><label for="f-tel">電話 <span class="opt">選填</span></label><input id="f-tel" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-country">國家 <span class="opt">選填</span></label><select id="f-country"><option value="">請選擇</option><option>台灣</option><option>日本</option><option>越南</option><option>美國</option><option>其他</option></select></div>
+        <div class="field"><label for="f-month">預計出貨時間 <span class="opt">選填</span></label><input id="f-month" type="month"></div>
+      </div>
+      <div class="terms" style="margin-top:14px">同意條款區塊：是否保留、文字內容 <span class="ask">待問大躍（法務）</span>。Wireframe 先畫虛線框，不列入必填。<span class="pin">5</span></div>
+      <div style="margin-top:16px"><button class="btn block-m" type="submit" id="submit">送出詢價</button><span class="pin">6</span></div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= 3 完成 ================= -->
+<section class="screen" id="scr-done" data-title="送出完成頁">
+  <div class="screen-label">3 · 送出完成頁（成功狀態）</div>
+  <header class="site-head"><span class="logo">LOGO</span></header>
+  <div class="pad" role="status">
+    <div class="done-mark" aria-hidden="true">✓</div>
+    <h1 class="pg">已收到你的詢價<span class="pin">1</span></h1>
+    <p class="lead">詢價編號：<b id="done-no">Q-示意-0001</b>（示意）<span class="pin">2</span></p>
+    <div class="box">
+      <p style="margin:0 0 6px">服務窗口會以 Email 回覆，預計回覆時間：<span class="ask">待問大躍</span><span class="pin">3</span></p>
+      <p class="muted" style="margin:0">之後追問時，請提供上面的詢價編號。</p>
+    </div>
+    <div class="row" style="margin-top:16px"><a class="btn" href="#home">回首頁</a><a class="btn ghost" href="#form">再填一筆</a></div>
+  </div>
+</section>
+
+<!-- ================= 4 登入 ================= -->
+<section class="screen" id="scr-login" data-title="登入">
+  <div class="screen-label">4 · 登入（後台，W6 再做，今天只畫框）</div>
+  <header class="site-head"><span class="logo">LOGO</span><span class="muted" style="margin-left:auto">內部後台</span></header>
+  <div class="pad" style="max-width:440px">
+    <h1 class="pg">窗口登入<span class="pin">1</span></h1>
+    <div class="field" style="margin-bottom:12px"><label for="l-email">公司 Email</label><input id="l-email" type="email"></div>
+    <div class="field" style="margin-bottom:16px"><label for="l-pw">密碼</label><input id="l-pw" type="password"></div>
+    <a class="btn block-m" href="#list">登入（示意）</a>
+    <p class="muted">登入方式（帳密或公司帳號）<span class="ask">待問大躍</span><span class="pin">2</span></p>
+  </div>
+</section>
+
+<!-- ================= 5 列表 ================= -->
+<section class="screen" id="scr-list" data-title="詢價列表">
+  <div class="screen-label">5 · 詢價列表（桌面表格／手機卡片）</div>
+  <header class="site-head"><span class="logo">LOGO</span><span class="muted" style="margin-left:auto">服務窗口 A（虛構）· <a href="#login">登出</a></span></header>
+  <div class="pad">
+    <h1 class="pg">詢價列表<span class="pin">1</span></h1>
+    <div class="chips" role="group" aria-label="依狀態篩選">
+      <button class="chip on" data-k="all" type="button">全部</button>
+      <button class="chip" data-k="新進" type="button">新進</button>
+      <button class="chip" data-k="處理中" type="button">處理中</button>
+      <button class="chip" data-k="已回覆" type="button">已回覆</button>
+      <button class="chip" data-k="逾時" type="button">逾時</button><span class="pin">2</span>
+    </div>
+    <table class="wt list-table"><thead><tr><th>詢價編號＋狀態<span class="pin">3</span></th><th>公司</th><th>需求服務</th><th>送出時間</th><th>已等待</th><th>AI 摘要</th></tr></thead>
+      <tbody id="list-body"></tbody></table>
+    <div class="cards" id="list-cards"></div>
+    <p class="muted">權限：窗口只看自己服務別，還是看全部？<span class="ask">待問大躍</span><span class="pin">4</span>。主管看全部。資料皆為虛構。</p>
+  </div>
+</section>
+
+<!-- ================= 6 明細 ================= -->
+<section class="screen" id="scr-detail" data-title="詢價明細">
+  <div class="screen-label">6 · 詢價明細（AI 草稿＋人工確認寄出）</div>
+  <header class="site-head"><span class="logo">LOGO</span><nav class="site-nav"><a href="#list">← 回列表</a></nav></header>
+  <div class="pad">
+    <h1 class="pg"><span id="d-no">Q-示意-0001</span>｜<span id="d-co">客戶公司 A</span> <span class="st new" id="d-st">新進</span></h1>
+    <div class="split">
+      <div>
+        <div class="section-title">客戶原文（不經 AI 修改）<span class="pin">1</span></div>
+        <div class="box" id="d-raw"></div>
+        <div class="section-title">AI 摘要與建議分類<span class="pin">2</span></div>
+        <div class="ai"><p style="margin:0 0 8px" id="d-sum"></p>
+          <label class="lbl" for="d-svc">建議服務別（可改）</label>
+          <select id="d-svc"><option>海空運承攬</option><option>專案物流</option><option>倉儲物流</option><option>船務代理</option><option>待人工分類</option></select>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">AI 回覆草稿（窗口修改後才寄出）<span class="pin">3</span></div>
+        <div class="ai"><textarea id="d-draft" aria-label="AI 回覆草稿"></textarea>
+          <p class="muted" style="margin:6px 0 0">AI 不報價：價格與條件由窗口填寫。</p></div>
+        <div class="banner" id="d-sent" role="status">已寄出（示意）：狀態改為「已回覆」。Wireframe 不會真的寄信。</div>
+        <div class="row" style="margin-top:14px"><button class="btn" type="button" id="d-send">確認寄出</button><span class="pin">4</span><button class="btn ghost" type="button" id="d-manual">標為待人工分類</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<aside class="notes" aria-label="設計註解">
+  <h2 id="notes-title">註解</h2>
+  <ol id="notes-list"></ol>
+  <div class="sim" id="sim-box" hidden>
+    <b>狀態模擬（給驗收用）</b><br>
+    <label><input type="checkbox" id="sim-fail"> 下一次送出模擬「送出失敗」</label>
+  </div>
+</aside>
+</div>
+
+<script>
+(function () {
+  // 註解：每個畫面的編號說明，對應學習點（02-1-1～02-3-2）與驗收清單項目
+  var NOTES = {
+    overview: [
+      ["使用者旅程（潛在客戶）", "先看人怎麼走，痛點步驟就是改善機會；痛點都來自 W1 實測。", ["02-1-1"]],
+      ["服務窗口旅程與交棒點", "客戶送出 → 產生一筆詢價，就是前台交棒給後台的那一步。", ["02-1-1", "進階題"]],
+      ["例外路徑", "例外寫得出來，W4 表單驗證才有依據。", ["02-1-2"]],
+      ["頁面清單", "列得出「從哪來 → 到哪去」，導覽才算想清楚；MVP 只要 6 頁。", ["02-2-1"]],
+      ["驗收清單", "領航照這張表逐項打勾；沒通過的寫進 W3 修正清單。", ["驗收清單"]]
+    ],
+    home: [
+      ["「我要詢價」按鈕", "手機版放在漢堡選單外，一眼就找得到入口。", ["02-3-1", "驗收：主流程"]],
+      ["現有內容不改", "不做事項：不改英文版其他頁、不做全站翻譯，範圍才收得小。", ["02-2-1"]],
+      ["第二個入口", "看完服務介紹的人，不用回到最上面就能詢價。", ["02-1-1"]]
+    ],
+    form: [
+      ["中文標題與一句說明", "現況中文版聯絡頁的標籤與訊息都是英文；先讓客戶知道要填多少。", ["02-1-1"]],
+      ["必填只留 5 個、做決定的放前面", "現況 8 個必填；窗口回覆需要的是公司、聯絡人、Email、服務、需求。", ["02-2-2", "驗收：必填"]],
+      ["名＋姓合併成「聯絡人」", "少一欄就少一次輸入；現況拆成兩個必填欄。", ["02-2-2"]],
+      ["選填放後面", "電話、國家、預計出貨時間可以之後補，不擋送出。", ["02-2-2"]],
+      ["同意條款：虛線框", "要不要保留、文字內容待問大躍（法務），先不列入必填。", ["待問大躍"]],
+      ["送出鈕跟著最後一欄", "手機單欄由上往下；現況送出鈕約在 2.5 個畫面下方。按下後先變「送出中…」並停用。", ["02-3-1", "02-3-2", "驗收：載入", "驗收：手機"]]
+    ],
+    done: [
+      ["中文確認訊息", "現況成功訊息是英文「Thank you! Your submission has been received!」。", ["02-3-2", "驗收：成功"]],
+      ["詢價編號（示意）", "客戶之後追問有依據；編號規則 W5 再定。", ["02-3-2"]],
+      ["回覆時間", "多久回覆要大躍決定，不由我們假設。", ["待問大躍"]]
+    ],
+    login: [
+      ["後台入口", "W6 再做，今天只畫框，確認導覽接得上列表。", ["02-2-1"]],
+      ["登入方式", "帳密或公司帳號，待問大躍。", ["待問大躍"]]
+    ],
+    list: [
+      ["詢價列表", "窗口每天的起點：先看哪些要處理。", ["02-1-1"]],
+      ["依狀態篩選", "新進／處理中／已回覆／逾時；逾時期限待問大躍。", ["02-2-2", "02-1-2"]],
+      ["第一欄：編號＋狀態", "做決定需要的欄位放最前面；手機版改成卡片，只放編號、公司、狀態。", ["02-2-2", "02-3-1", "驗收：手機"]],
+      ["誰看得到哪些詢價", "RBAC：窗口只看自己服務別還是全部，待問大躍。", ["待問大躍"]]
+    ],
+    detail: [
+      ["客戶原文", "AI 摘要旁一定留原文，人可以對照。", ["02-1-1"]],
+      ["AI 摘要與建議分類（可改）", "AI 判斷不出來就選「待人工分類」（例外路徑）。", ["02-1-2", "進階題"]],
+      ["AI 回覆草稿", "虛線框代表 AI 產出；AI 不報價。", ["02-3-2", "進階題"]],
+      ["確認寄出：由人按", "最後一下由人按；Wireframe 只顯示「已寄出（示意）」，沒有任何寄信程式。", ["02-3-2", "驗收：人工確認"]]
+    ]
+  };
+  var ROWS = [
+    { no: "Q-示意-0003", st: "新進", co: "客戶公司 C", svc: "專案物流", time: "今天 09:12", wait: "2 小時", sum: "大型設備出口，需評估吊裝與包裝（虛構）", raw: "我們有一台大型設備要出口，想詢問專案物流的做法與需要準備的資料。（虛構）" },
+    { no: "Q-示意-0002", st: "處理中", co: "客戶公司 B", svc: "倉儲物流", time: "昨天 16:40", wait: "1 天", sum: "詢問短期倉儲與出貨前理貨（虛構）", raw: "下個月有一批貨需要短期存放約兩週，再分批出貨，想了解倉儲服務。（虛構）" },
+    { no: "Q-示意-0001", st: "逾時", co: "客戶公司 A", svc: "海空運承攬", time: "3 天前", wait: "3 天（期限待問大躍）", sum: "台灣出口兩個貨櫃到越南，想了解海運時程（虛構）", raw: "預計 11 月從台灣出口兩個貨櫃到越南，想了解海運的時程與要準備的文件。（虛構）" }
+  ];
+  var DRAFT = "客戶公司 您好：\n感謝您的詢價。我們已收到您的需求，負責窗口會再與您確認細節。\n（價格與條件由窗口填寫，AI 不報價）\n\n大躍 服務窗口（簽名待問大躍）";
+
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".wf-tabs a"));
+  var current = ROWS[2];
+
+  function renderNotes(id) {
+    var list = document.getElementById("notes-list");
+    var items = NOTES[id] || [];
+    document.getElementById("notes-title").textContent = "註解｜" + (document.getElementById("scr-" + id).dataset.title || "");
+    list.innerHTML = items.map(function (n, i) {
+      return '<li><span class="pin">' + (i + 1) + '</span> <b style="display:inline">' + n[0] + '</b><div>' + n[1] + '</div>' +
+        n[2].map(function (t) { return '<span class="tag">' + t + '</span>'; }).join("") + '</li>';
+    }).join("");
+    document.getElementById("sim-box").hidden = id !== "form";
+  }
+  function show(id) {
+    if (!document.getElementById("scr-" + id)) id = "overview";
+    screens.forEach(function (s) { s.classList.toggle("on", s.id === "scr-" + id); });
+    tabs.forEach(function (t) { t.classList.toggle("on", t.dataset.s === id); });
+    if (id === "detail") fillDetail(current);
+    renderNotes(id);
+    document.title = (document.getElementById("scr-" + id).dataset.title) + "｜Wireframe 範例｜Northgo 中文詢價助理";
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", function () { show(location.hash.slice(1)); });
+
+  document.getElementById("toggle-notes").addEventListener("change", function (e) {
+    document.body.classList.toggle("no-notes", !e.target.checked);
+  });
+
+  // ---------- 表單：驗證、送出中、成功、失敗 ----------
+  var form = document.getElementById("inq");
+  var submit = document.getElementById("submit");
+  var fail = document.getElementById("form-fail");
+  var seq = 3;
+  function setBad(name, bad) {
+    form.querySelector('[data-f="' + name + '"]').classList.toggle("bad", bad);
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    fail.classList.remove("on");
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var email = v("f-email");
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById("email-err").textContent = email ? "Email 格式不正確，例如 name@example.com" : "請填寫 Email";
+    var svc = form.querySelectorAll("#f-service input:checked").length > 0;
+    var checks = { company: !!v("f-company"), contact: !!v("f-contact"), email: emailOk, service: svc, desc: !!v("f-desc") };
+    var firstBad = null;
+    Object.keys(checks).forEach(function (k) { setBad(k, !checks[k]); if (!checks[k] && !firstBad) firstBad = k; });
+    if (firstBad) {
+      var el = form.querySelector('[data-f="' + firstBad + '"] input, [data-f="' + firstBad + '"] textarea');
+      if (el) el.focus();
+      return;
+    }
+    submit.disabled = true;
+    submit.textContent = "送出中…";
+    setTimeout(function () {
+      submit.disabled = false;
+      submit.textContent = "送出詢價";
+      if (document.getElementById("sim-fail").checked) {
+        document.getElementById("sim-fail").checked = false;
+        fail.classList.add("on");
+        fail.scrollIntoView({ block: "center" });
+        return;
+      }
+      seq += 1;
+      document.getElementById("done-no").textContent = "Q-示意-" + String(seq).padStart(4, "0");
+      form.reset();
+      location.hash = "#done";
+    }, 1000);
+  });
+  form.addEventListener("input", function (e) {
+    var f = e.target.closest(".field");
+    if (f && f.classList.contains("bad")) f.classList.remove("bad");
+  });
+
+  // ---------- 列表：篩選、表格與卡片 ----------
+  var filter = "all";
+  function stClass(st) { return st === "新進" ? "st new" : st === "逾時" ? "st late" : "st"; }
+  function renderList() {
+    var rows = ROWS.filter(function (r) { return filter === "all" || r.st === filter; });
+    document.getElementById("list-body").innerHTML = rows.map(function (r) {
+      return '<tr class="click" data-no="' + r.no + '"><td><b>' + r.no + '</b><br><span class="' + stClass(r.st) + '">' + r.st + '</span></td><td>' + r.co + '</td><td>' + r.svc + '</td><td>' + r.time + '</td><td>' + r.wait + '</td><td>' + r.sum + '</td></tr>';
+    }).join("") || '<tr><td colspan="6">沒有符合的詢價</td></tr>';
+    document.getElementById("list-cards").innerHTML = rows.map(function (r) {
+      return '<a class="icard" href="#detail" data-no="' + r.no + '"><b>' + r.no + '</b> <span class="' + stClass(r.st) + '">' + r.st + '</span><br>' + r.co + '</a>';
+    }).join("") || '<p class="muted">沒有符合的詢價</p>';
+  }
+  document.querySelector(".chips").addEventListener("click", function (e) {
+    var b = e.target.closest(".chip"); if (!b) return;
+    filter = b.dataset.k;
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"), function (c) { c.classList.toggle("on", c === b); });
+    renderList();
+  });
+  function pick(no) { current = ROWS.filter(function (r) { return r.no === no; })[0] || current; }
+  document.getElementById("list-body").addEventListener("click", function (e) {
+    var tr = e.target.closest("tr[data-no]"); if (!tr) return;
+    pick(tr.dataset.no); location.hash = "#detail";
+  });
+  document.getElementById("list-cards").addEventListener("click", function (e) {
+    var a = e.target.closest("[data-no]"); if (a) pick(a.dataset.no);
+  });
+
+  // ---------- 明細：AI 草稿＋人工確認 ----------
+  function fillDetail(r) {
+    document.getElementById("d-no").textContent = r.no;
+    document.getElementById("d-co").textContent = r.co;
+    var st = document.getElementById("d-st"); st.textContent = r.st; st.className = stClass(r.st);
+    document.getElementById("d-raw").textContent = r.raw;
+    document.getElementById("d-sum").textContent = "摘要：" + r.sum;
+    document.getElementById("d-svc").value = r.svc;
+    document.getElementById("d-draft").value = DRAFT.replace("客戶公司", r.co);
+    document.getElementById("d-sent").classList.toggle("on", r.st === "已回覆");
+  }
+  document.getElementById("d-send").addEventListener("click", function () {
+    current.st = "已回覆";
+    fillDetail(current); renderList();
+    document.getElementById("d-sent").classList.add("on");
+  });
+  document.getElementById("d-manual").addEventListener("click", function () {
+    document.getElementById("d-svc").value = "待人工分類";
+  });
+
+  renderList();
+  show((location.hash || "#overview").slice(1));
+})();
+</script>
+</body>
+</html>
