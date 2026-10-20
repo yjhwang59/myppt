@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-deck-id="hsingming-ai-dev-s2">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="興銘聯合會計師事務所 AI 系統開發內訓第 2 場：資料與流程、Cursor 上手（提前到第 2 場），加上 Grok Bot 第 2 週例行排程。全程使用虛構資料。">
+  <title>AI 系統開發內訓・第2場｜資料與流程＋Cursor 上手</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+      --code-bg: #12283d;
+      --code-ink: #e6f1ef;
+      --warn-bg: #fdecea;
+      --warn: #b6412f;
+      --header-h: 52px;
+      --panel: #fff;
+      --card: #f1f5f9;
+      --text: #0f172a;
+      --portal-bright: #0f766e;
+      --data: #0284c7;
+      --content-scale: 1;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: calc(var(--header-h) + 10px) 2vw 12px;
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - var(--header-h) - 22px);
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.hero {
+      background:
+        radial-gradient(circle at 92% 8%, #bde8dfcc, transparent 38%),
+        radial-gradient(circle at 6% 100%, #fde3c4aa, transparent 32%),
+        linear-gradient(135deg, #fff, #f5faf8);
+    }
+    h1 {
+      font-size: calc(clamp(42px, 5.2vw, 76px) * var(--content-scale));
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: calc(clamp(28px, 3.2vw, 48px) * var(--content-scale));
+      margin: 0.1em 0 0.55em;
+      line-height: 1.15;
+    }
+    h2.tight {
+      font-size: calc(clamp(24px, 2.6vw, 36px) * var(--content-scale));
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: calc(clamp(18px, 1.55vw, 26px) * var(--content-scale));
+      margin: 0.15em 0 0.35em;
+    }
+    p, li {
+      font-size: calc(clamp(15px, 1.25vw, 21px) * var(--content-scale));
+      line-height: 1.52;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: calc(clamp(12px, 1.1vw, 16px) * var(--content-scale));
+      margin: 0;
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: calc(clamp(20px, 1.8vw, 28px) * var(--content-scale));
+    }
+    .lead.sm { font-size: calc(clamp(15px, 1.3vw, 20px) * var(--content-scale)); margin: 0 0 12px; }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 22px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.four { grid-template-columns: repeat(4, 1fr); }
+    .grid.split { grid-template-columns: 5fr 7fr; align-items: start; }
+    .grid.split-r { grid-template-columns: 7fr 5fr; align-items: start; }
+    .stack { display: grid; gap: 12px; align-content: start; }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card strong {
+      display: block;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      line-height: 1.3;
+      margin: 0.1em 0 0.28em;
+    }
+    .card ol, .card ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .card li {
+      font-size: calc(clamp(13px, 1.05vw, 17px) * var(--content-scale));
+      line-height: 1.4;
+      margin: 0.22em 0;
+    }
+    .card p { margin: 0.15em 0; }
+    .card.warm { background: #fff8ef; border-color: #f3d3ad; }
+    .card.alert { background: var(--warn-bg); border-color: #f1b8ae; }
+    .num {
+      font-size: calc(clamp(26px, 3.2vw, 46px) * var(--content-scale));
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+    }
+    .num.sm { font-size: calc(clamp(18px, 1.7vw, 26px) * var(--content-scale)); }
+    .callout {
+      padding: 14px 20px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      margin-top: 14px;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: calc(12px * var(--content-scale));
+    }
+    .pill.o { background: #fdebd6; color: #9a5512; }
+    .pill.r { background: var(--warn-bg); color: var(--warn); }
+    .pill.lg { font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); padding: 4px 14px; margin: 0 6px 8px 0; }
+    .src {
+      font-size: calc(12px * var(--content-scale)); color: #708397; margin-top: 10px; line-height: 1.45;
+    }
+    .aisdlc-label {
+      margin: 10px 0 4px;
+      color: var(--brand);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .aisdlc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+    .aisdlc li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      padding: 6px 7px 7px;
+      border: 1px solid #9fd6cc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .aisdlc li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 16px;
+      z-index: 1;
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--brand);
+    }
+    .aisdlc b {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 3px;
+      border-radius: 50%;
+      background: #e6f6f3;
+      color: #1d6b64;
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1;
+    }
+    .aisdlc span {
+      display: block;
+      color: var(--ink);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .aisdlc small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1.3;
+    }
+    #s5 .grid.four { gap: 8px; }
+    #s5 .card { padding: 10px 12px; }
+    #s5 .card strong { font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
+    #s5 .callout { margin-top: 8px; padding: 8px 14px; font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); }
+    #s5 .src { margin-top: 4px; }
+    #s16 .closing {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    #s16 .closing .callout { margin: 0; flex: 1; }
+    a.survey-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: calc(16px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    a.survey-link:hover { color: #fff; text-decoration: none; filter: brightness(1.08); }
+    .slide.dense { padding: 26px 34px 52px; }
+    .slide.dense .card { padding: 10px 12px; }
+    .slide.dense .card p,
+    .slide.dense .card li { font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.38; }
+    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
+
+    /* ---- 時間表 ---- */
+    .timeline { display: grid; gap: 6px; }
+    .tl {
+      display: grid; grid-template-columns: 118px 46px 1fr; gap: 10px; align-items: center;
+      padding: 6px 12px; border-radius: 12px; background: #ffffffcc; border: 1px solid var(--line);
+      font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale));
+    }
+    .tl b { font-variant-numeric: tabular-nums; color: var(--ink); }
+    .tl .m { color: var(--muted); font-size: calc(12px * var(--content-scale)); }
+    .tl.hot { background: #e6f6f3; border-color: #9fd6cc; }
+    .tl.rest { background: #f4f6f7; color: var(--muted); }
+
+    /* ---- 狀態鏈 ---- */
+    .chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 2px; }
+    .chain span {
+      padding: 4px 12px; border-radius: 999px; background: #fff; border: 1px solid #9fd6cc;
+      font-weight: 700; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+    }
+    .chain i { font-style: normal; color: var(--brand); font-weight: 900; }
+
+    /* ---- 提示詞方塊（可複製） ---- */
+    .prompt {
+      position: relative;
+      border-radius: 16px;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      border: 1px solid #0b1a28;
+      overflow: hidden;
+    }
+    .prompt .ph {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 8px 12px 8px 16px; background: #0d1f30; font-size: calc(13px * var(--content-scale)); font-weight: 800;
+      letter-spacing: 0.02em; color: #9fe3d7;
+    }
+    .prompt pre {
+      margin: 0; padding: 12px 16px 14px;
+      white-space: pre-wrap; word-break: break-word;
+      font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      font-size: calc(clamp(13.5px, 1.12vw, 18px) * var(--content-scale)); line-height: 1.6;
+      max-height: var(--pmax, 44vh); overflow: auto;
+    }
+    .prompt pre .fill { color: #ffcf8f; }
+    .copy {
+      border: 0; border-radius: 999px; padding: 5px 12px; cursor: pointer;
+      background: #368f88; color: #fff; font-weight: 800; font-size: 12px;
+      font-family: inherit;
+    }
+    .copy:hover, .copy:focus-visible { background: #2a7771; outline: 2px solid #9fe3d7; }
+    .copy.done { background: #ed9b48; }
+    details.more {
+      border: 1px dashed #9fd6cc; border-radius: 14px; background: #ffffffcc; padding: 6px 12px;
+    }
+    details.more > summary {
+      cursor: pointer; font-weight: 800; color: #1d6b64; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+      padding: 4px 0; list-style: none;
+    }
+    details.more > summary::before { content: "▸ "; }
+    details.more[open] > summary::before { content: "▾ "; }
+    details.more .prompt { margin: 6px 0 6px; }
+    .mini { font-size: calc(clamp(12px, 0.95vw, 14px) * var(--content-scale)) !important; color: var(--muted); }
+
+    /* ---- 假對話 ---- */
+    .bubble {
+      padding: 12px 16px; border-radius: 16px; margin: 8px 0; max-width: 92%;
+      font-size: calc(clamp(14px, 1.15vw, 19px) * var(--content-scale)); line-height: 1.5;
+    }
+    .bubble.me { background: #e6f6f3; margin-left: auto; border-bottom-right-radius: 4px; }
+    .bubble.ai { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+    .stamp {
+      display: inline-block; transform: rotate(-4deg); border: 3px solid var(--warn); color: var(--warn);
+      padding: 2px 12px; border-radius: 10px; font-weight: 900; font-size: calc(clamp(14px, 1.2vw, 18px) * var(--content-scale));
+    }
+
+    /* ---- 表格 ---- */
+    table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: calc(clamp(13px, 1.1vw, 18px) * var(--content-scale)); }
+    table.plan th, table.plan td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.4; }
+    table.plan th { background: #e6f6f3; color: #1d6b64; }
+    table.plan tr:first-child th:first-child { border-top-left-radius: 12px; }
+    table.plan tr:first-child th:last-child { border-top-right-radius: 12px; }
+
+    /* ---- 講稿面板 ---- */
+    aside.notes { display: none; }
+    #notes-panel {
+      position: fixed; right: 16px; bottom: 16px; z-index: 60; width: min(380px, 92vw); max-height: 52vh;
+      overflow: auto; background: #17324df2; color: #eef6f4; border-radius: 14px; padding: 12px 14px;
+      box-shadow: 0 12px 40px #0006; font-size: 14px; line-height: 1.6; display: none;
+    }
+    #notes-panel.open { display: block; }
+    #notes-panel h4 { margin: 0 0 6px; font-size: 13px; color: #9fe3d7; letter-spacing: .06em; }
+
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck-header.collapsed .toolbar > :not(#btn-header-toggle) { display: none; }
+    .hint {
+      position: fixed; z-index: 50; left: 50%; bottom: 24px;
+      transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
+      background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
+      pointer-events: none; transition: opacity .2s;
+      max-width: min(90vw, 420px); text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: calc(var(--header-h) + 12px) 12px 16px; }
+      .slide {
+        width: 100%; min-height: calc(100vh - 100px);
+        max-height: none; aspect-ratio: auto;
+      }
+      .grid, .grid.two, .grid.four, .grid.split, .grid.split-r { grid-template-columns: 1fr 1fr; }
+      .grid.split, .grid.split-r { grid-template-columns: 1fr; }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .grid.four { grid-template-columns: 1fr; }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { display: block; padding: 0; }
+      html { --content-scale: 1 !important; }
+      .slide {
+        display: block !important; width: 16in; height: 9in;
+        min-height: 0; max-height: none; aspect-ratio: auto;
+        overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+        page-break-after: always; break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      #deck-header, .hint, #notes-panel, .copy { display: none !important; }
+      .prompt pre { max-height: none; overflow: visible; }
+    }
+    /* ---- 第 2 場補充 ---- */
+    .prompt.compact pre { font-size: calc(clamp(12px, 0.98vw, 15.5px) * var(--content-scale)); line-height: 1.5; }
+    #s17 .closing {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    #s17 .closing .callout { margin: 0; flex: 1; }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 興銘內訓</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-aminus" title="縮小字體（-）">A−</button>
+      <span id="type-scale-label">100%</span>
+      <button type="button" id="btn-aplus" title="放大字體（+）">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
+      <span id="slide-counter">1 / 17</span>
+      <button type="button" id="btn-next" title="下一頁（→）">›</button>
+      <button type="button" id="btn-present" title="全頁顯示／離開（F）">⛶</button>
+      <button type="button" id="btn-notes" title="講稿（N）">講稿</button>
+      <button type="button" id="btn-print" title="匯出為 PDF（P）">PDF</button>
+      <button type="button" id="btn-header-toggle" title="收合／展開工具列（H）" aria-label="收合或展開工具列" aria-expanded="true">▾</button>
+    </div>
+  </header>
+  <main class="deck">
+
+    <!-- 1 封面 -->
+    <section class="slide active hero" id="s1" data-title="封面">
+      <p class="kicker">AI 系統開發內訓 · 第 2 場（共 4 場）</p>
+      <div class="mark"></div>
+      <h1>資料與流程<br>＋Cursor 上手</h1>
+      <p class="lead">上週把「要做什麼」講清楚了；今晚把它變成資料表和 7 狀態流程，再第一次打開 Cursor，把這些成果存成專案裡的檔案。最後 25 分鐘，教 Grok Bot 定時提醒申報期限。</p>
+      <p style="margin-top:22px">
+        <span class="pill lg">興銘聯合會計師事務所</span>
+        <span class="pill lg">2026-10-20（二）19:00–21:00</span>
+        <span class="pill lg o">報稅平台專題</span>
+        <span class="pill lg r">全程只用虛構資料</span>
+      </p>
+      <p class="mini" style="margin-top:6px">地點：台北市大安區敦化南路一段263號9樓之1</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 僅供內部訓練使用，請勿外流</span><span>1 / 17</span></div>
+      <aside class="notes">今晚跟講義原本的安排不一樣：Cursor 從第 3 場提前到今晚開始。今晚 Cursor 不寫程式，只做三件事：裝好、登入、把今晚的資料表與流程圖存成專案檔案。這樣 11/9 一開場就能直接做畫面。Grok Bot 這次排在 21:00 之前（20:30–20:55），不用延長。</aside>
+    </section>
+
+    <!-- 2 今晚流程 -->
+    <section class="slide" id="s2" data-title="今晚流程">
+      <p class="kicker">今晚流程 · 120 分鐘</p>
+      <h2 class="tight">先做資料與流程，再把成果交給 Cursor 存成檔案</h2>
+      <div class="grid split-r">
+        <div class="timeline">
+          <div class="tl"><b>19:00–19:10</b><span class="m">10′</span><span>回顧第 1 場、分享作業「7 個狀態誰負責」、規則複誦</span></div>
+          <div class="tl hot"><b>19:10–19:45</b><span class="m">35′</span><span>資料與流程：示範 2-1 → 實作 A 資料表 → 實作 B 7 狀態流程圖（2-2）→ RLS 一句話</span></div>
+          <div class="tl rest"><b>19:45–19:50</b><span class="m">5′</span><span>休息（順便開始下載 Cursor）</span></div>
+          <div class="tl hot"><b>19:50–20:30</b><span class="m">40′</span><span>Cursor 上手：安裝登入 → 4 個基本功 → AGENTS.md → 實作 C 把今晚成果存成檔案</span></div>
+          <div class="tl hot"><b>20:30–20:55</b><span class="m">25′</span><span>Grok Bot 第 2 週：例行排程（申報期限提醒）</span></div>
+          <div class="tl"><b>20:55–21:00</b><span class="m">5′</span><span>作業（11/9 前）、反思小卡、課後問卷</span></div>
+        </div>
+        <div class="stack">
+          <div class="card warm">
+            <strong>今晚帶走的東西</strong>
+            <ul>
+              <li>各組資料表設計＋7 狀態流程圖（mermaid）與轉換表</li>
+              <li>一個 Cursor 專案資料夾 tax-platform-demo：AGENTS.md、docs/、data/</li>
+              <li>1–3 個 Grok Bot 例行排程（routine）＋模擬結果</li>
+            </ul>
+          </div>
+          <div class="card alert">
+            <strong>跟講義不一樣的地方</strong>
+            <ul>
+              <li>Cursor 提前到今晚；今晚只建文件，不寫程式</li>
+              <li>Supabase 建表（2-3）、RLS 政策（2-4）先改成延伸題</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="callout">時間比較緊：每段實作我會計時，做不完的部分列進課後作業，不硬拖。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程＋Cursor</span><span>2 / 17</span></div>
+      <aside class="notes">講義第七章原本是：資料表 40 分、狀態圖 20 分、Supabase 建表 30 分、RLS 10 分。今晚把 Supabase 實作讓給 Cursor 上手，資料與流程壓到 35 分。Grok Bot 講義建議接在主課後 21:00–21:25；今晚改排在 20:30–20:55，全部在 21:00 前結束。</aside>
+    </section>
+
+    <!-- 3 第1場回顧 -->
+    <section class="slide" id="s3" data-title="第 1 場回顧">
+      <p class="kicker">回顧第 1 場（10/12）· 規則複誦</p>
+      <h2 class="tight">上週我們把「要做什麼」講清楚了</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">需求分析</div><strong>故事＋驗收標準</strong>
+          <ul>
+            <li>身為【角色】，我想要【功能】，以便【價值】</li>
+            <li>Given／When／Then，至少 1 條例外情況</li>
+            <li>請 AI 挑錯，再列「待確認」事項</li>
+          </ul></div>
+        <div class="card"><div class="num sm">MVP 切片</div><strong>主線三件事（以上週全班決議為準）</strong>
+          <ul>
+            <li>申報行事曆</li>
+            <li>營業稅案件</li>
+            <li>案件流程（7 個狀態）</li>
+          </ul></div>
+        <div class="card"><div class="num sm">Grok Bot 第 1 週</div><strong>角色＋記憶＋委派</strong>
+          <ul>
+            <li>建好「興銘小幫手」，記住 6 項工作偏好</li>
+            <li>把虛構討論紀錄整理成會議紀錄</li>
+            <li>今晚接著教它「定時做事」</li>
+          </ul></div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card warm"><strong>作業分享（3 分鐘）：7 個狀態各誰負責？</strong>
+          <div class="chain"><span>待收件</span><i>→</i><span>整理中</span><i>→</i><span>待覆核</span><i>→</i><span>已核准</span><i>→</i><span>已申報</span><i>→</i><span>已繳款</span><i>→</i><span>結案</span></div></div>
+        <div class="card alert"><strong>規則複誦（今晚特別注意）</strong>
+          <ul>
+            <li>只用附錄 A 虛構資料；規格書只貼附錄 B 摘錄</li>
+            <li>金鑰、密碼、.env 檔不貼對話、不上傳、不放進專案</li>
+            <li>期限、稅率一律「待確認」，以官方公告為準</li>
+          </ul></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 回顧</span><span>3 / 17</span></div>
+      <aside class="notes">請 1–2 位分享選做作業：每個狀態誰負責、要做什麼。MVP 切片請依上週實際決議口頭補充（投影片寫的是講義建議版）。規則出自講義第四章；今晚多了 Cursor 專案資料夾，所以「金鑰不外流、不放進專案」要再講一次。</aside>
+    </section>
+
+    <!-- 4 課程地圖調整 -->
+    <section class="slide" id="s4" data-title="課程地圖調整">
+      <p class="kicker">課程地圖調整 · Cursor 提前開始</p>
+      <h2 class="tight">Cursor 從今晚開始：今晚先建文件，第 3 場做原型</h2>
+      <div class="grid four">
+        <div class="card"><div class="num sm">第 1 場 · 10/12</div><strong>需求分析</strong><p>故事＋驗收標準、MVP 切片</p><p class="mini">對話式 AI · 已完成</p></div>
+        <div class="card warm"><div class="num sm">第 2 場 · 10/20</div><strong>資料與流程＋Cursor 上手</strong><p>資料表、7 狀態流程圖；Cursor 建專案資料夾、規則檔與參考檔</p><p class="mini">今晚 · 對話式 AI＋Cursor</p></div>
+        <div class="card"><div class="num sm">第 3 場 · 11/09</div><strong>用 Cursor 生成原型</strong><p>可點擊 3 畫面：行事曆、案件清單、營業稅案件頁</p><p class="mini">Cursor＋Node.js＋GitHub</p></div>
+        <div class="card"><div class="num sm">第 4 場 · 11/16</div><strong>AI 檢核與展示</strong><p>發票異常檢核、驗收測試、成果展示與回顧</p><p class="mini">Cursor</p></div>
+      </div>
+      <div class="grid" style="margin-top:14px">
+        <div class="card"><div class="num">1</div><strong>卡關提早發現</strong><p>安裝、登入、帳號的問題今晚就浮出來，到 11/9 還有時間處理。</p></div>
+        <div class="card"><div class="num">2</div><strong>今晚成果直接進專案</strong><p>資料表、流程圖存成 docs/、data/ 檔案，第 3 場用 @ 引用就好，不用再貼一大段。</p></div>
+        <div class="card"><div class="num">3</div><strong>先用低風險的事練手</strong><p>只建文件、不寫程式、不碰資料庫，先熟悉 Agent／Ask 和「看差異再接受」。</p></div>
+      </div>
+      <div class="callout">分工不變：今晚 Cursor 只整理文件；第 3 場才建 Next.js 原型；第 4 場加 AI 檢核。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 課程地圖</span><span>4 / 17</span></div>
+      <aside class="notes">上週第 12 頁說「Cursor 第 3、4 場用」，今晚更新：Cursor 從第 2 場開始，但第 2 場只做設定與文件；Node.js、Git 的安裝與驗證還是 11/9 前的作業（今晚的練習用不到）。全員統一用 Cursor 的理由不變：畫面一樣、好互相幫、同一份規則檔。</aside>
+    </section>
+
+    <!-- 5 資料表概念 -->
+    <section class="slide dense" id="s5" data-title="資料表怎麼想">
+      <p class="kicker">資料與流程 · 講師示範（19:10–19:15）</p>
+      <h2 class="tight">資料表就像 Excel 工作表：一張表一件事，用 client_id 串起來</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card"><strong>用 Excel 來想</strong>
+            <ul>
+              <li><b>表</b>＝一個工作表（客戶、申報案件、發票……）</li>
+              <li><b>欄位</b>＝欄標題；<b>一列</b>＝一筆資料</li>
+              <li><b>關聯</b>＝用「客戶編號」把兩張表連起來（像 VLOOKUP）</li>
+            </ul></div>
+          <div class="card warm"><strong>講義的 3 個硬規定</strong>
+            <ul>
+              <li>所有業務表都有 client_id，以及 created_at／created_by／updated_at／updated_by</li>
+              <li>案件狀態只能是 7 個值</li>
+              <li>稅率等參數放參數表，不寫死在欄位預設值</li>
+            </ul></div>
+          <div class="card"><strong>示範時會追問 AI</strong>
+            <ul>
+              <li>為什麼每張表都要有 client_id？</li>
+              <li>狀態欄位要用文字還是代碼？</li>
+            </ul></div>
+        </div>
+        <div class="card"><strong>資料實體摘要（附錄 B）</strong>
+          <table class="plan">
+            <tr><th>實體</th><th>關鍵欄位（摘要）</th></tr>
+            <tr><td>client 客戶公司</td><td>id、統一編號、名稱、會計年度、狀態、預設承辦／覆核</td></tr>
+            <tr><td>client_tax_type 適用稅目</td><td>client_id、稅目代碼、課稅方式（一般／查定）、起用日、停用日</td></tr>
+            <tr><td>deadline_rule 期限設定</td><td>稅目、頻率、截止日規則、假日順延、提醒天數（預設 7,3，待確認）、最後查核日</td></tr>
+            <tr><td>tax_parameter 參數設定</td><td>稅目、參數名稱（稅率、門檻）、值、生效起迄</td></tr>
+            <tr><td>filing_case 申報案件</td><td>client_id、稅目、期別、狀態、截止日、承辦、覆核、核准、是否逾期、曾逾期</td></tr>
+            <tr><td>invoice 發票</td><td>client_id、期別、進銷項別、字軌號碼、日期、對方統編、銷售額、稅額、檢核結果</td></tr>
+            <tr><td>case_status_log 紀錄</td><td>時間、操作者、物件、原值、新值、說明（僅可新增）</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>5 / 17</span></div>
+      <aside class="notes">出自講義第七章目標與附錄 B「資料實體摘要」（另有 property／tax_bill 延伸）。示範只要 5 分鐘：貼共用開場＋2-1，然後追問那兩個問題。新手可以用 2-S，用 Excel 比喻先看懂客戶和申報案件兩張表。</aside>
+    </section>
+
+    <!-- 6 練習 2-1 -->
+    <section class="slide dense" id="s6" data-title="練習 2-1">
+      <p class="kicker">練習 2-1 · 實作 A（19:15–19:30）</p>
+      <h2 class="tight">各組用 AI 設計自己模組的資料表，再對照附錄 B 挑錯</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card"><span class="pill">第 1 組 · 期限與追蹤線</span>
+            <p>client、client_tax_type、deadline_rule、filing_case（行事曆所需）＋延伸 property、tax_bill</p></div>
+          <div class="card"><span class="pill o">第 2 組 · 資料與試算線</span>
+            <p>invoice、filing_case 的營業稅欄位＋延伸 withholding_item</p></div>
+          <div class="card warm"><strong>兩組共同</strong>
+            <p>case_status_log（狀態變更紀錄）。做完把<b>修正後的表格</b>留著，等一下要貼給 Cursor。</p></div>
+          <details class="more">
+            <summary>共用開場（開新對話先貼）</summary>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>共用開場</span><button class="copy" type="button">複製</button></div><pre>你是協助台灣會計師事務所開發內部系統的資深系統分析師兼開發教練。我是會計人員，不是專業工程師，請用繁體中文（台灣用語）回答，避免艱澀術語；必須用術語時，用一句話解釋。
+專案背景：我們要做「企業報稅作業平台」，是事務所內部作業平台（排程、收件、試算草稿、覆核、留痕），不直接代為申報。技術選型：Next.js＋Supabase。
+規則：
+1. 只依據我提供的需求與資料，不要自行新增需求；若你做了假設，請標註「【假設】」。
+2. 稅率、期限、書表欄位一律標註「待確認」，不要當成定論；不要捏造法條條號。
+3. 我提供的資料都是虛構練習資料。
+4. 輸出用條列或表格，精簡，方便我核對。</pre></div>
+          </details>
+          <details class="more">
+            <summary>★新手版 2-S（用 Excel 比喻）</summary>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>提示詞 2-S</span><button class="copy" type="button">複製</button></div><pre>我是會計人員，第一次學資料庫。請把「客戶公司」和「申報案件」這兩張表，用 Excel 工作表來比喻：每張表有哪些欄位（中文）、一列代表什麼、兩張表怎麼用「客戶編號」連起來。再用附錄 A 的 3 家虛構公司，各舉一筆申報案件當例子，用表格呈現。</pre></div>
+          </details>
+        </div>
+        <div class="prompt" style="--pmax:56vh"><div class="ph"><span>提示詞 2-1｜資料表設計</span><button class="copy" type="button">複製</button></div><pre>請依下面的使用者故事與資料實體摘要，為「企業報稅作業平台」MVP 切片設計 Supabase（PostgreSQL）資料表。
+
+請用表格輸出每張表：表名（英文）／中文名稱／欄位（英文名、中文說明、型別、是否必填、範例值）／與其他表的關聯。
+
+要求：
+1. 所有業務資料表都要有 client_id，以及 created_at、created_by、updated_at、updated_by。
+2. 案件狀態只能是：待收件、整理中、待覆核、已核准、已申報、已繳款、結案。
+3. 稅率等參數不要寫死在欄位預設值，改放參數表。
+4. 不要設計規格書沒有的功能；有假設請標註【假設】。
+5. 最後用 3 句話說明：哪些欄位放了個資或敏感資料，需要遮罩或加密。
+
+<span class="fill">【使用者故事：貼第 1 場 Must 故事】</span>
+<span class="fill">【資料實體摘要：貼附錄 B「資料實體摘要」】</span></pre></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>6 / 17</span></div>
+      <aside class="notes">實作開始 5 分鐘內先巡到新手那組，確認已貼上提示詞並拿到第一個回覆。駕駛／領航每 15 分鐘換手。挑錯重點：有沒有漏 client_id、狀態有沒有多出第 8 個、稅率有沒有被寫死、有沒有自己加需求。</aside>
+    </section>
+
+    <!-- 7 練習 2-2 狀態流程 -->
+    <section class="slide dense" id="s7" data-title="練習 2-2">
+      <p class="kicker">練習 2-2 · 實作 B（19:30–19:42）· 兩組共同</p>
+      <h2 class="tight">把案件 7 狀態畫成 mermaid 流程圖，找出「不允許的轉換」</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card"><strong>依序往前走</strong>
+            <div class="chain"><span>待收件</span><i>→</i><span>整理中</span><i>→</i><span>待覆核</span><i>→</i><span>已核准</span><i>→</i><span>已申報</span><i>→</i><span>已繳款</span><i>→</i><span>結案</span></div></div>
+          <div class="card warm"><strong>例外路徑</strong>
+            <ul>
+              <li>退回：待覆核／已核准 → 整理中（原因必填；已核准退回需主管M「重開案件」）</li>
+              <li>無應納稅額（例如營業稅留抵）：已申報 → 直接結案</li>
+            </ul></div>
+          <div class="card alert"><strong>一定要擋下來</strong>
+            <ul>
+              <li>不可跳過待覆核與已核准（例：整理中 → 已核准 ✗）</li>
+              <li>承辦人與覆核人不得為同一人</li>
+              <li>每次變更都留紀錄：操作者、時間（Asia/Taipei）、原狀態、新狀態、說明</li>
+            </ul></div>
+          <p class="mini">看圖：把 A 段 mermaid 文字貼到 Mermaid Live Editor 預覽（免登入，需確認）。</p>
+        </div>
+        <div class="prompt" style="--pmax:57vh"><div class="ph"><span>提示詞 2-2｜案件 7 狀態流程圖（mermaid）</span><button class="copy" type="button">複製</button></div><pre>請依下面的狀態規則，產出：
+A. mermaid 的 stateDiagram-v2 程式碼（狀態用中文），標出每條轉換的動作名稱與執行角色。
+B. 狀態轉換表：目前狀態／動作／下一狀態／執行角色／必要條件。
+C. 「不允許的轉換」清單至少 5 條（例如：整理中 → 已核准），每條說明理由。
+D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 年 9–10 月營業稅案件，從待收件一路走到結案）。
+
+狀態規則：
+- 依序：待收件 → 整理中 → 待覆核 → 已核准 → 已申報 → 已繳款 → 結案。
+- 退回：待覆核或已核准 → 整理中（退回原因必填；已核准退回需事務所主管「重開案件」）。
+- 無應納稅額（例如營業稅留抵）可由已申報直接結案。
+- 不可跳過待覆核與已核准；承辦人與覆核人不得為同一人。
+- 每次狀態變更要留紀錄：操作者、時間（Asia/Taipei）、原狀態、新狀態、說明。</pre></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>7 / 17</span></div>
+      <aside class="notes">示範：把 mermaid 文字貼到編輯器，故意改錯一條（整理中 → 已核准），讓大家看出違反規則。驗收：圖要能正確顯示，含退回路徑和「已申報直接結案」。A、B、C 三段修正後留著，等一下 Cursor 實作 C 要用。</aside>
+    </section>
+
+    <!-- 8 RLS 與 Supabase -->
+    <section class="slide" id="s8" data-title="RLS 一句話">
+      <p class="kicker">資料與流程 · 收尾（19:42–19:45）</p>
+      <h2 class="tight">RLS 一句話：A 公司的人，看不到 B 公司的資料</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="card"><strong>用事務所來比喻</strong>
+            <p>RLS（列層級權限）就像檔案櫃的鑰匙：同一個櫃子，每個人只能打開被指派客戶的那幾格。</p>
+            <ul>
+              <li>主管M：看得到全部客戶的案件</li>
+              <li>承辦、覆核：只看被指派的客戶</li>
+              <li>客戶公司窗口：只看自家公司（P2，之後再說）</li>
+            </ul></div>
+          <div class="card warm"><strong>越權測試長這樣</strong>
+            <p>用 A 公司窗口的帳號查 B 公司案件 → 應該回傳 0 筆。</p></div>
+        </div>
+        <div class="stack">
+          <div class="card alert"><strong>今晚改動：Supabase 實作先延後</strong>
+            <p>講義原本 30 分鐘帶做建表（2-3）、10 分鐘 RLS（2-4）。今晚時間讓給 Cursor，這兩題先改為延伸題；何時補做由講師另行通知。</p></div>
+          <details class="more">
+            <summary>延伸 2-3｜產生可執行的建表 SQL＋虛構資料</summary>
+            <div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>提示詞 2-3</span><button class="copy" type="button">複製</button></div><pre>請把我們確認過的資料表設計，轉成可以直接貼到 Supabase SQL Editor 執行的 SQL：
+1. CREATE TABLE（含主鍵、外鍵、必填、狀態欄位用 CHECK 限制 7 個狀態）。
+2. 為每張含 client_id 的表啟用 RLS（ALTER TABLE ... ENABLE ROW LEVEL SECURITY），政策先留註解說明，下一步再寫。
+3. INSERT 附錄 A 的虛構資料（3 家客戶、發票、案件）。
+4. SQL 中每段加上中文註解，說明這段在做什麼。
+5. 不要使用 DROP 或刪除資料的語法。
+執行後如果出錯，我會把錯誤訊息貼給你，請你解釋原因並給修正版。
+
+<span class="fill">【資料表設計：貼提示詞 2-1 的最終表格】</span><span class="fill">【虛構資料：貼附錄 A 表格】</span></pre></div>
+          </details>
+          <details class="more">
+            <summary>延伸 2-4｜RLS 白話說明＋政策草稿</summary>
+            <div class="prompt compact" style="--pmax:20vh"><div class="ph"><span>提示詞 2-4</span><button class="copy" type="button">複製</button></div><pre>請用會計師事務所的比喻，向非工程師解釋 Supabase 的 RLS（Row Level Security，列層級權限）。然後針對 filing_case 表，寫出以下規則的 RLS 政策草稿（含中文註解），並說明怎麼測試：
+1. 事務所主管：可看全部客戶的案件。
+2. 承辦人員、覆核人員：只能看被指派的客戶案件。
+3. 客戶公司窗口：只能看自家公司（P2，先寫草稿即可）。
+最後列出 3 個「越權測試」情境（例如：用 A 公司窗口帳號查 B 公司案件，應回傳 0 筆）。
+提醒：這是練習環境，只放虛構資料。</pre></div>
+          </details>
+        </div>
+      </div>
+      <div class="callout">Supabase 的 API 金鑰：知道在哪裡、知道不能外流就好，不要複製出來，更不要貼進 Cursor。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>8 / 17</span></div>
+      <aside class="notes">這頁 3 分鐘講完。2-3、2-4 原文照講義第七章。是否在 11/9 前另找時間帶做 Supabase、或併入第 3 場延伸（講義第 3 場延伸本來就有「連接 Supabase 讀取第 2 場資料」），由我之後決定再通知大家。</aside>
+    </section>
+
+    <!-- 9 Cursor 安裝登入 -->
+    <section class="slide" id="s9" data-title="Cursor 安裝與方案">
+      <p class="kicker">Cursor 上手 · 安裝與登入（19:50–20:00）</p>
+      <h2 class="tight">先把 Cursor 裝好、登入，請它用繁中說聲「你好」</h2>
+      <div class="grid">
+        <div class="stack">
+          <div class="card"><div class="num sm">1</div><strong>下載安裝並登入</strong>
+            <p>到 Cursor 官網下載安裝並登入。方案與額度依講師指示（需確認）。</p>
+            <p class="mini">網路慢的話：休息時間就先開始下載。</p></div>
+          <div class="card"><div class="num sm">2</div><strong>驗證：AI 有回覆就通過</strong>
+            <p>在 Cursor 的 AI 對話面板輸入下面這句，有回覆就截圖。</p>
+            <div class="prompt"><div class="ph"><span>驗證用</span><button class="copy" type="button">複製</button></div><pre>請用繁體中文回答：你好</pre></div></div>
+        </div>
+        <div class="card">
+          <strong>免費版 vs Pro</strong>
+          <table class="plan">
+            <tr><th>Hobby（免費）</th><th>Pro（US$20／月）</th></tr>
+            <tr><td>不用信用卡</td><td>包含 Hobby 全部，再加：</td></tr>
+            <tr><td>Agent 次數有限</td><td>Agent 額度更多</td></tr>
+            <tr><td>可用 Composer 模型</td><td>可用各家前沿模型</td></tr>
+          </table>
+          <p class="mini" style="margin-top:8px">今晚的練習只建幾個文件，先用 Hobby 即可。價格未含稅，額度細節以官網為準。要不要升 Pro、誰付費，由事務所決定（待確認）。</p>
+          <p class="src">來源：<a href="https://cursor.com/pricing" target="_blank" rel="noopener">https://cursor.com/pricing</a>（2026-10-12 查閱，月繳顯示價）</p>
+        </div>
+        <div class="stack">
+          <div class="card warm"><strong>今晚用不到、11/9 前要裝好</strong>
+            <ul>
+              <li>Node.js LTS 版</li>
+              <li>Windows 另裝 Git for Windows（預設選項即可）</li>
+              <li>在 Cursor 內建終端機（Terminal）驗證 node -v、npm -v、git --version</li>
+            </ul></div>
+          <div class="card alert"><strong>裝不起來怎麼辦</strong>
+            <ul>
+              <li>先跟同組共用一台「主機」，不要卡在原地</li>
+              <li>截圖貼群組，回家再處理；11/9 我 18:30 提早到場</li>
+            </ul></div>
+        </div>
+      </div>
+      <div class="callout">登入用的帳號密碼、驗證碼，只在 Cursor 的登入畫面輸入，不要貼到任何 AI 對話裡。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>9 / 17</span></div>
+      <aside class="notes">安裝步驟只照講義第七章作業文字講，不示範點選路徑（版本不同畫面會變）。原本「第 2 場課後安裝 Cursor」改成今晚當場裝；Node.js、Git 仍是回家作業。方案資訊同第 1 場：cursor.com/pricing，2026-10-12 查閱，Hobby 免費、Pro US$20/月；是否購買 Pro 待事務所決定。若 10 分鐘內還有人裝不好，直接併到同組主機。</aside>
+    </section>
+
+    <!-- 10 Cursor 4 個基本功 -->
+    <section class="slide" id="s10" data-title="Cursor 基本功">
+      <p class="kicker">Cursor 上手 · 帶做設定（20:00–20:10）</p>
+      <h2 class="tight">今晚先學 4 個基本功</h2>
+      <div class="grid four">
+        <div class="card"><div class="num">1</div><strong>開啟專案資料夾</strong>
+          <p>在桌面建立空資料夾 <b>tax-platform-demo</b> → Cursor 選單「開啟資料夾（Open Folder）」選它。</p>
+          <p class="mini">一次只開一個專案資料夾；不放任何真實資料。</p></div>
+        <div class="card"><div class="num">2</div><strong>選對模式</strong>
+          <p><b>Agent</b>：要 AI 新增／修改檔案、執行指令時用。</p>
+          <p><b>Ask</b>：只想問問題、請它解釋，不改檔案時用。</p>
+          <p class="mini">不確定時先用 Ask 問清楚，再切 Agent 動手。模式名稱可能依版本不同。</p></div>
+        <div class="card"><div class="num">3</div><strong>用 @ 引用檔案</strong>
+          <p>在對話框輸入 @ 再選檔案或資料夾，例如 <b>@AGENTS.md</b>、<b>@docs/需求摘錄.md</b>。AI 會以這些檔案為依據。</p>
+          <p class="mini">比貼一大段文字更準；@ 後的檔名用選單實際選取。</p></div>
+        <div class="card warm"><div class="num">4</div><strong>先看差異再接受</strong>
+          <p>Agent 改完會顯示每個檔案的差異（綠色新增、紅色刪除），逐一檢查後再按「接受（Accept）」。</p>
+          <p class="mini">不要一次全部接受；刪除大量內容或碰到 .env 時要停下來。</p></div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card"><strong>同一個問題，兩種模式差在哪</strong>
+          <p>同樣問「行事曆的逾期怎麼判斷？」：Ask 只會解釋；Agent 會動手改檔案。所以<b>要改檔案才用 Agent</b>。</p></div>
+        <div class="card"><strong>第 3 場才會用到</strong>
+          <p>在內建終端機執行 npm run dev、瀏覽器開 localhost 看原型、每完成一步存一個版本（commit）。</p></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>10 / 17</span></div>
+      <aside class="notes">出自講義「Cursor 設定」6 項中的 1、2、3、5；第 4 項規則檔下一頁做；第 6 項執行與回報錯誤留到第 3 場。講義提醒：Agent、Ask、Checkpoint 等介面名稱可能依 Cursor 版本不同，以當時畫面為準。示範時投影我的畫面，大家跟著做。</aside>
+    </section>
+
+    <!-- 11 AGENTS.md -->
+    <section class="slide dense" id="s11" data-title="AGENTS.md 規則檔">
+      <p class="kicker">Cursor 上手 · 專案規則檔 · 模式：Agent</p>
+      <h2 class="tight">第一個任務：讓 Cursor 建好規則檔 AGENTS.md 和需求摘錄</h2>
+      <div class="grid two">
+        <div class="prompt compact" style="--pmax:66vh"><div class="ph"><span>AGENTS.md（完整內容，貼進 C-1 的【】）</span><button class="copy" type="button">複製</button></div><pre># 專案規則：企業報稅作業平台（練習原型）
+- 這是興銘聯合會計師事務所內訓用的練習原型，不是正式系統。
+- 介面文字一律使用繁體中文（台灣用語）；日期格式 YYYY-MM-DD，時區 Asia/Taipei。
+- 技術：Next.js（App Router、TypeScript）＋ Tailwind CSS；未來連接 Supabase。課堂上先用 data/虛構資料.json，不連資料庫。
+- 只能使用虛構資料（data/虛構資料.json）；不得新增真實公司、統一編號、身分證字號或真實發票。
+- 不得在程式碼、設定檔或對話中寫入任何金鑰、密碼、token；.env* 檔案不得建立或提交到 Git，除非講師指示。
+- 稅率、門檻、容許值一律放在 config/parameters.ts，不得寫死在畫面或邏輯中；所有期限與稅率視為「待確認」。
+- 所有試算畫面須顯示「草稿，非最終稅務結論」。
+- 檢核功能只產生建議，不得自動修改或刪除資料；任何資料變更需使用者按鈕確認並留紀錄。
+- 案件狀態只有 7 個：待收件、整理中、待覆核、已核准、已申報、已繳款、結案；狀態轉換規則以 lib/caseStatus.ts 為唯一來源。
+- 需求依據 docs/需求摘錄.md；不要新增需求以外的功能，若有假設請在回覆中標註【假設】。
+- 每次修改後，請列出改了哪些檔案，並說明使用者要如何在畫面上確認。
+- 回覆使用者時用非工程師看得懂的繁體中文。</pre></div>
+        <div class="stack">
+          <div class="prompt" style="--pmax:34vh"><div class="ph"><span>C-1｜建立規則檔與需求摘錄（改自 3-2）· Agent</span><button class="copy" type="button">複製</button></div><pre>請在目前開啟的資料夾（tax-platform-demo）建立以下檔案，內容依我提供的文字，不要自行增刪：
+1. AGENTS.md：內容如下<span class="fill">【貼上投影片左邊「AGENTS.md」全文】</span>
+2. docs/需求摘錄.md：把下面的需求摘錄整理成 Markdown 表格（保留需求編號與文字）<span class="fill">【貼上講義附錄 B 全部內容，含「資料實體摘要」】</span>
+今晚只建立這兩個檔案：不要建立 Next.js 專案、不要安裝任何套件、不要執行任何指令、不要建立 .env 檔案。
+完成後請列出每個檔案的路徑。</pre></div>
+          <div class="card warm"><strong>如何確認</strong>
+            <ul>
+              <li>差異畫面只出現 AGENTS.md、docs/需求摘錄.md 兩個新檔</li>
+              <li>打開 docs/需求摘錄.md，抽查 FR-CASE-001 的 7 個狀態有沒有被改字</li>
+              <li>確認後才按接受</li>
+            </ul></div>
+          <p class="mini">AGENTS.md 也可以放在 .cursor/rules 規則資料夾（依版本支援情況）。規則裡提到的 data/虛構資料.json、config/parameters.ts、lib/caseStatus.ts 第 3 場才會建立。</p>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>11 / 17</span></div>
+      <aside class="notes">AGENTS.md 全文照講義 v1.1「專案規則檔」，一字不改。C-1 是講義 3-2 的第 1、2 項，加上「今晚不要建 Next.js、不要裝套件、不要執行指令」。Cursor 每次對話都會參考 AGENTS.md，所以規則寫一次就好。這頁是第一次看差異再接受，慢慢來。</aside>
+    </section>
+
+    <!-- 12 實作 C 分組 -->
+    <section class="slide dense" id="s12" data-title="實作 C：分組">
+      <p class="kicker">實作 C · 把今晚成果存成檔案（20:10–20:30）· 模式：Agent</p>
+      <h2 class="tight">各組把資料表設計和虛構資料，交給 Cursor 存進專案</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:60vh"><div class="ph"><span>C-2（第 1 組）｜資料表文件＋案件 CSV</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，把我們今晚設計好的資料表整理成專案檔案。只建立下列檔案，不要改其他檔案、不要執行任何指令：
+1. docs/資料表設計.md：每張表一個段落，用 Markdown 表格列出欄位（英文名、中文說明、型別、是否必填、範例值）與關聯；範圍：client、client_tax_type、deadline_rule、filing_case（延伸：property、tax_bill）。內容依我貼上的版本，不要自行新增欄位；你覺得缺的，列在文末「待討論」並標【假設】。最上方註明「虛構練習資料｜期限、稅率為練習假設值，待確認」。
+2. data/cases.csv：把附錄 A-3 的 8 件申報案件轉成 CSV，第一列為欄位名稱；日期保持 YYYY-MM-DD；每筆保留原本的案件編號。
+3. （延伸）data/properties.csv：附錄 A-4 的房地清冊 2 筆。
+完成後請列出：每個檔案的路徑、cases.csv 有幾筆、C003 的截止日與狀態。
+
+<span class="fill">【資料表設計：貼實作 A（2-1）你們組修正後的表格】</span>
+<span class="fill">【虛構資料：貼附錄 A-3（延伸再加 A-4 房地清冊）】</span></pre></div>
+          <div class="card"><strong>第 1 組如何確認</strong>
+            <p>cases.csv 共 8 筆；C003 截止日 2026-10-10、狀態「待收件」（虛構，期限待確認）。</p></div>
+        </div>
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:60vh"><div class="ph"><span>C-2（第 2 組）｜資料表文件＋發票 CSV</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，把我們今晚設計好的資料表整理成專案檔案。只建立下列檔案，不要改其他檔案、不要執行任何指令：
+1. docs/資料表設計.md：每張表一個段落，用 Markdown 表格列出欄位（英文名、中文說明、型別、是否必填、範例值）與關聯；範圍：invoice、filing_case 的營業稅欄位（延伸：withholding_item）。內容依我貼上的版本，不要自行新增欄位；你覺得缺的，列在文末「待討論」並標【假設】。最上方註明「虛構練習資料｜期限、稅率為練習假設值，待確認」。
+2. data/invoices.csv：把附錄 A-2 的 12 筆發票轉成 CSV，第一列為欄位名稱；金額去掉千分位逗號；字軌號碼、對方統編當文字照抄，看起來有錯也不要修正；每筆保留原本的編號。
+3. （延伸）data/withholdings.csv：附錄 A-4 的扣繳明細 3 筆。
+完成後請列出：每個檔案的路徑、invoices.csv 有幾筆、#4 的稅額、#10 的對方統編。
+
+<span class="fill">【資料表設計：貼實作 A（2-1）你們組修正後的表格】</span>
+<span class="fill">【虛構資料：貼附錄 A-2（延伸再加 A-4 扣繳明細）】</span></pre></div>
+          <div class="card"><strong>第 2 組如何確認</strong>
+            <p>invoices.csv 共 12 筆；#4 稅額 4800；#10 對方統編 9910000（7 位，原樣保留，第 4 場會用到）。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>12 / 17</span></div>
+      <aside class="notes">這是今晚自訂的練習，改寫自講義 3-2（建立參考檔）與 3-6（只做一件事）的寫法；不是完整原型。重點練「看差異再接受」：差異只能出現指定的檔案，Agent 想改別的就先拒絕並問原因。第 2 組的「看起來有錯也不要修正」很重要：#4、#7、#8、#10 是第 4 場預埋的異常，不要現在公布答案。</aside>
+    </section>
+
+    <!-- 13 實作 C 共同＋Ask＋卡關 -->
+    <section class="slide dense" id="s13" data-title="實作 C：共同＋Ask">
+      <p class="kicker">實作 C · 兩組共同 · 先 Agent 建檔，再用 Ask 檢查</p>
+      <h2 class="tight">流程圖也存進專案，再請 Cursor 用 Ask 模式幫忙對照</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:32vh"><div class="ph"><span>C-3｜狀態流程文件 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md 與 @docs/需求摘錄.md 的 FR-CASE-001、FR-CASE-004，建立 docs/狀態流程.md（只建立這個檔案，不要執行任何指令）：
+1. 放入我們今晚確認過的 mermaid stateDiagram-v2 程式碼（用 mermaid 程式碼區塊）。
+2. 放入狀態轉換表與「不允許的轉換」清單，照我貼的版本，不要自行增刪；和需求摘錄不一致的地方，列在文末「待討論」。
+3. 最上方註明「練習用｜狀態規則以 FR-CASE-001 為準」。
+
+<span class="fill">【貼上實作 B（2-2）修正後的 A、B、C 三段】</span></pre></div>
+          <div class="prompt compact" style="--pmax:32vh"><div class="ph"><span>C-4｜請 Cursor 對照檢查 · Ask</span><button class="copy" type="button">複製</button></div><pre>請用非工程師看得懂的繁體中文，對照 @docs/需求摘錄.md 的 FR-CASE-001、FR-CASE-004，檢查 @docs/狀態流程.md 與 @docs/資料表設計.md：
+1. 狀態是否剛好 7 個、名稱是否一致。
+2. 退回路徑（待覆核／已核准 → 整理中）與「已申報直接結案」是否都有。
+3. 有沒有讓承辦人與覆核人變成同一人的漏洞。
+4. 業務資料表是否都有 client_id。
+每個發現標示信心程度（高／中／低）。只回答，不要修改檔案。</pre></div>
+        </div>
+        <div class="stack">
+          <div class="card warm"><strong>今晚做完，資料夾長這樣</strong>
+            <ul>
+              <li>AGENTS.md</li>
+              <li>docs/需求摘錄.md、docs/資料表設計.md、docs/狀態流程.md</li>
+              <li>data/cases.csv（第 1 組）或 data/invoices.csv（第 2 組）</li>
+            </ul>
+            <p class="mini">Ask 模式不改檔案：C-4 做完，差異畫面應該什麼都沒有。</p></div>
+          <details class="more">
+            <summary>卡關時：T-1 貼錯誤訊息 · Agent</summary>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>T-1｜貼錯誤訊息</span><button class="copy" type="button">複製</button></div><pre>執行時出現下面的錯誤。請：
+1. 用白話解釋可能原因（2–3 句）。
+2. 提供最小範圍的修正，只改必要的檔案。
+3. 告訴我修正後要怎麼確認。
+如果需要更多資訊，告訴我去哪裡看、貼什麼給你；不要為了修錯而刪除功能。
+錯誤發生在：<span class="fill">【終端機／瀏覽器畫面／瀏覽器主控台】</span>，我剛剛做的動作是：<span class="fill">【例如：按下送覆核】</span>
+<span class="fill">【貼上完整錯誤訊息（紅字全部複製）】</span></pre></div>
+          </details>
+          <details class="more">
+            <summary>卡關時：T-2 改壞了，要回到上一版 · Ask</summary>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>T-2｜回到上一版</span><button class="copy" type="button">複製</button></div><pre>我剛剛接受了一個修改後，<span class="fill">【描述壞掉的現象，例如：案件清單變空白】</span>。請先不要改任何檔案，告訴我：
+1. 如何用 Cursor 的還原功能（例如對話中的 Checkpoint／Restore，名稱可能依版本不同）回到修改前。
+2. 如果已經存過 Git 版本，如何查看最近的版本並回到上一個可以正常運作的版本；每個指令先說明會影響什麼，有沒有可能讓我失去資料。</pre></div>
+          </details>
+          <details class="more">
+            <summary>卡關時：T-3 看不懂／AI 一直繞圈 · Ask</summary>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>T-3｜AI 一直繞圈</span><button class="copy" type="button">複製</button></div><pre>我們已經試修 3 次還是失敗。請停止修改，先幫我整理：
+1. 目前想達成什麼、實際發生什麼。
+2. 你認為最可能的 2 個原因，以及各自要怎麼驗證。
+3. 建議下一步只做哪一件事。
+參考檔案：<span class="fill">【@ 相關檔案，例如 @docs/狀態流程.md @docs/資料表設計.md】</span></pre></div>
+          </details>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>13 / 17</span></div>
+      <aside class="notes">C-3、C-4 為今晚自訂練習，C-4 的寫法改自講義 3-7（Ask 解釋）與 4-4（審查者挑錯）。T-1～T-3 原文照講義「卡關時」，只把 T-3 的範例檔名換成今晚的檔案；今晚不執行程式，最常用的是 T-2（改壞回上一版）和 T-3。T-2 不要用會刪除檔案的指令，除非我在場確認。20:30 準時收，沒做完的列作業。</aside>
+    </section>
+
+    <!-- 14 Grok Bot 第2週 概念 -->
+    <section class="slide" id="s14" data-title="Grok Bot：例行排程">
+      <p class="kicker">20:30 · Grok Bot 第 2 週 · 例行排程（routines）</p>
+      <h2 class="tight">教「興銘小幫手」定時做事：每個工作日早上提醒到期案件</h2>
+      <div class="grid split-r">
+        <div class="stack">
+          <div class="card"><strong>routine＝4 件事寫清楚</strong>
+            <div class="chain"><span>觸發條件</span><i>＋</i><span>存好的指示</span><i>＋</i><span>輸出給誰</span><i>＋</i><span>誰覆核</span></div>
+            <p class="mini">觸發可以是時間排程（例如每個工作日 08:30、每週一）或事件；可用的事件種類可能依版本不同。</p></div>
+          <div class="prompt" style="--pmax:20vh"><div class="ph"><span>Routine 句型（寫在白板）</span><button class="copy" type="button">複製</button></div><pre>每<span class="fill">【頻率與時間（含時區）】</span>，請<span class="fill">【動作】</span>；資料來源<span class="fill">【只用哪些資料】</span>；輸出<span class="fill">【格式、給誰】</span>；若<span class="fill">【條件】</span>則<span class="fill">【標示或處理】</span>；不要<span class="fill">【禁止事項：不寄信、不推算期限、不猜】</span>。建立前先複述，等我回覆「確認」。</pre></div>
+          <div class="timeline">
+            <div class="tl"><b>20:30–20:33</b><span class="m">3′</span><span>回顧上週記憶檢查＋規則複誦</span></div>
+            <div class="tl"><b>20:33–20:39</b><span class="m">6′</span><span>講師示範：G2-1 → Bot 複述 → 確認 → G2-4 模擬</span></div>
+            <div class="tl hot"><b>20:39–20:50</b><span class="m">11′</span><span>學員實作：G2-1 必做＋分組加做＋G2-4 核對</span></div>
+            <div class="tl"><b>20:50–20:55</b><span class="m">5′</span><span>分享 3′＋用 G2-5 暫停課堂 routine 2′</span></div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card alert"><strong>期限類 routine 的風險</strong>
+            <p>錯一次，就會每天準時錯一次。期限必須由人依官方公告查核後填入；routine 裡寫明「只用期限表日期，不自行推算」。</p></div>
+          <div class="card"><strong>今晚的規矩</strong>
+            <ul>
+              <li>只用附錄 G-3 虛構期限表；截止日是練習假設值（待確認）</li>
+              <li>只提醒我本人：不寄信、不傳訊息給任何人</li>
+              <li>要寄出的東西一律先做草稿，人檢查後自己寄</li>
+              <li>不需要連接 Gmail／日曆／Drive</li>
+              <li>不要教 Bot 記住任何客戶資料</li>
+            </ul></div>
+          <div class="card warm"><strong>人工覆核</strong>
+            <p>Bot 的提醒是草稿，不是專業意見；承辦人每天看提醒，期限表每年（及法規變動時）由主管M查核。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>14 / 17</span></div>
+      <aside class="notes">出自 Grok Bot 講義第七章與第四章第 4 條。示範前關閉通知、確認投影畫面沒有真實信件。routine 的通知方式（App 內或其他管道）與排程時區設定，課前我要先確認（講義標示可能依版本不同、需確認）。本講義不提供點選路徑，只講「對 Bot 怎麼說」。</aside>
+    </section>
+
+    <!-- 15 G2-1 -->
+    <section class="slide dense" id="s15" data-title="練習 G2-1">
+      <p class="kicker">練習 G2-1 · 全員必做</p>
+      <h2 class="tight">建立「工作日申報期限提醒」：建立前先請 Bot 複述</h2>
+      <div class="grid split">
+        <div class="prompt compact" style="--pmax:66vh"><div class="ph"><span>G2-1｜工作日申報期限提醒 routine</span><button class="copy" type="button">複製</button></div><pre>請幫我建立一個例行排程（routine）：
+- 觸發：每個工作日（週一至週五）08:30，時區 Asia/Taipei。
+- 動作：整理接下來 14 天內到期、以及已逾期的申報與繳款事項，提醒我本人。
+- 資料來源：只用我下面提供的【虛構】期限表（之後我會更新）。
+- 輸出：3 行重點＋表格（截止日、客戶代號、稅目、期別、狀態、承辦／覆核、剩餘天數），依截止日排序；已過截止日且狀態未達「已申報」者放最上面並標「逾期」；7 天內到期者標「即將到期」。
+- 規則：
+1. 截止日只用期限表上的日期，不要自行推算法定期限；表頭註明「期限為練習假設值，待確認」。
+2. 狀態為已申報、已繳款、結案者不列入。
+3. 只提醒我本人，不要寄信或傳訊息給任何人。
+4. 若期限表缺資料，寫「資料不足」，不要猜。
+建立前，請先用條列複述這個 routine 的觸發時間、資料來源、輸出內容與限制，等我回覆「確認」後再建立。
+
+<span class="fill">【貼上附錄 G-3 虛構期限表（右邊可複製）】</span></pre></div>
+        <div class="stack">
+          <details class="more" open>
+            <summary>素材 G-3：虛構期限表（可複製）</summary>
+            <div class="prompt compact" style="--pmax:44vh"><div class="ph"><span>附錄 G-3（虛構；截止日為練習假設值，待確認）</span><button class="copy" type="button">複製</button></div><pre>【虛構】期限表（截止日為練習假設值，非法定期限，待確認）
+案件編號｜客戶｜稅目｜期別｜截止日（假設）｜狀態｜承辦／覆核
+C001｜CL-A 示範貿易（虛構）｜營業稅｜2026-09/10｜2026-11-15｜整理中｜同仁甲／同仁乙
+C002｜CL-A 示範貿易（虛構）｜營業稅｜2026-07/08｜2026-09-15｜結案｜同仁甲／同仁乙
+C003｜CL-A 示範貿易（虛構）｜扣繳（月）｜2026-09｜2026-10-10｜待收件｜同仁甲／同仁乙
+C004｜CL-B 範例科技（虛構）｜營業稅｜2026-09/10｜2026-11-15｜待收件｜同仁丙／同仁丁
+C005｜CL-B 範例科技（虛構）｜扣繳（月）｜2026-09｜2026-10-10｜已繳款｜同仁丙／同仁丁
+C006｜CL-C 練習小吃店（虛構）｜營業稅（查定，繳款追蹤）｜2026-07/09｜2026-10-31｜待收件｜同仁丁／同仁甲
+C007｜CL-A 示範貿易（虛構）｜地價稅（繳款追蹤）｜2026｜2026-11-30｜待收件｜同仁甲／同仁乙
+C008｜CL-A 示範貿易（虛構）｜房屋稅（繳款追蹤）｜2026｜2026-05-31｜結案｜同仁甲／同仁乙</pre></div>
+          </details>
+          <div class="card warm"><strong>Bot 複述時檢查 4 件事，都對了才回「確認」</strong>
+            <p>① 觸發時間有寫 Asia/Taipei　② 資料來源只有期限表　③ 只提醒我本人　④ 不推算期限</p></div>
+          <details class="more">
+            <summary>★新手版 G2-S（新手可改做這題）</summary>
+            <div class="prompt compact" style="--pmax:9vh"><div class="ph"><span>★新手版 G2-S</span><button class="copy" type="button">複製</button></div><pre>請每週一早上 8 點（台灣時間）提醒我：看一下本週有哪些申報案件快到期，並把下面這張期限表中 7 天內到期的案件列給我。只提醒我自己，不要寄信。期限只看表上的日期，不要自己算。建立前先跟我確認時間對不對。<span class="fill">【貼上附錄 G-3 虛構期限表】</span></pre></div>
+          </details>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>15 / 17</span></div>
+      <aside class="notes">示範重點：故意在 G2-1 漏寫時區，看 Bot 會不會問、還是自己假設，再指出要明確寫 Asia/Taipei。錯誤情境示範：問 Bot「營業稅法定申報期限是哪天？」——指出 routine 只能用查核過的期限表，Bot 的回答只能當線索。G-3 與主講義附錄 A-3 是同一份資料。</aside>
+    </section>
+
+    <!-- 16 G2 分組＋模擬 -->
+    <section class="slide dense" id="s16" data-title="練習 G2-2～G2-4">
+      <p class="kicker">分組加做 · 再用 G2-4 模擬執行一次</p>
+      <h2 class="tight">第 1 組做週期提醒、第 2 組做每週摘要，最後一起對答案</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:39vh"><div class="ph"><span>第 1 組｜G2-2 週期性稅目提醒</span><button class="copy" type="button">複製</button></div><pre>請建立兩個提醒 routine（時區 Asia/Taipei），只提醒我本人：
+A. 營業稅（一般稅額計算，每 2 個月為一期）：在<span class="fill">【月份，例如 1、3、5、7、9、11 月】</span>的<span class="fill">【第 1 個工作日】</span>09:00 提醒我：上一期申報作業開始，需向客戶 CL-A、CL-B（虛構）收集上一期發票資料；申報期限<span class="fill">【依官方公告查核後填入，待確認】</span>。
+B. 扣繳（每月）：每月<span class="fill">【第 1 個工作日】</span>09:00 提醒我：檢查 CL-A、CL-B 上個月有無扣繳給付；繳款期限<span class="fill">【依官方公告查核後填入，待確認】</span>。
+共同規則：所有期限文字後面加「（待確認，以財政部／國稅局公告為準）」；不要自行說明法定期限是哪一天；不要寄出任何信件。
+建立前先複述兩個 routine 的觸發條件與內容，並告訴我下一次執行的日期時間，等我回覆「確認」。</pre></div>
+          <div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>第 2 組｜G2-3 每週待辦摘要</span><button class="copy" type="button">複製</button></div><pre>請建立一個 routine：每週一 08:00（Asia/Taipei）給我一份「本週待辦摘要」，只給我本人：
+1. 本週到期事項：依我提供的期限表。
+2. 待辦事項：依我在對話中交代、尚未標示完成的待辦。
+3. 需要主管M確認的事項。
+格式：3 行重點＋表格，全部不超過一頁。若某項資訊無法取得，直接寫「無法取得：原因」，不要猜。建立前先複述並等我確認。</pre></div>
+
+        </div>
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:17vh"><div class="ph"><span>全員｜G2-4 列出 routine 並模擬執行一次</span><button class="copy" type="button">複製</button></div><pre>請列出我目前所有的 routine：名稱、觸發條件、下一次執行時間（Asia/Taipei）、會做什麼、輸出給誰。然後把今天當作 2026-10-20，立即模擬執行一次「工作日申報期限提醒」，讓我核對結果（模擬即可，不要寄出任何東西）。</pre></div>
+          <div class="card warm"><strong>對答案：今天＝2026-10-20（虛構期限表）</strong>
+            <table class="plan">
+              <tr><th>案件</th><th>應該怎麼出現</th></tr>
+              <tr><td>C003 扣繳 2026-10-10 待收件</td><td>標「逾期」、放最上面</td></tr>
+              <tr><td>C006 查定 2026-10-31 待收件</td><td>列入 14 天內（剩 11 天，不標即將到期）</td></tr>
+              <tr><td>C001、C004 2026-11-15；C007 2026-11-30</td><td>不在 14 天內，不列</td></tr>
+              <tr><td>C002、C008 結案；C005 已繳款</td><td>不列</td></tr>
+            </table></div>
+          <div class="prompt compact" style="--pmax:14vh"><div class="ph"><span>收尾｜G2-5 暫停課堂 routine（或保留一個並標「練習」）</span><button class="copy" type="button">複製</button></div><pre>請把「<span class="fill">【routine 名稱】</span>」<span class="fill">【暫停／改為每週一、三、五 08:30／刪除】</span>。完成後重新列出所有 routine 與下一次執行時間。</pre></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>16 / 17</span></div>
+      <aside class="notes">講義 G2-4 原文是「今天當作 2026-10-19」，因為今晚改到 10/20，所以改成 2026-10-20；對答案結果和講義驗收標準一致（C003 逾期置頂、C006 列入、其他不列）。若 Bot 不支援「立即執行一次」或列出 routine，就請它直接依 G2-1 指示產出一次結果。分享 3 分鐘：Bot 複述跟你的意圖一不一致、模擬結果有沒有錯。</aside>
+    </section>
+
+    <!-- 17 作業與問卷 -->
+    <section class="slide" id="s17" data-title="作業與問卷">
+      <p class="kicker">作業（11/9 前，≤30 分鐘）· 反思小卡 · 課後問卷</p>
+      <h2 class="tight">11/9 第 3 場一開場就做原型：環境請先準備好</h2>
+      <div class="grid">
+        <div class="card"><span class="pill">必做 · 10 分</span><strong>安裝 Node.js LTS＋Git</strong>
+          <p>到 Node.js 官網下載安裝 LTS 版；Windows 同仁另裝 Git for Windows（預設選項即可）。</p></div>
+        <div class="card"><span class="pill">必做 · 5 分</span><strong>在 Cursor 終端機驗證</strong>
+          <p>開啟 tax-platform-demo → 內建終端機（Terminal）依序輸入 <b>node -v</b>、<b>npm -v</b>、<b>git --version</b>，三行都顯示版本號；連同今晚 Cursor 回「你好」的截圖，放到共享資料夾「第2場」。</p></div>
+        <div class="card"><span class="pill">必做 · 15 分</span><strong>補完今晚的專案檔案</strong>
+          <p>沒做完的 C-1～C-3 補完；用 C-4（Ask）檢查一次，把發現記在交付物文件。</p></div>
+      </div>
+      <div class="grid" style="margin-top:12px">
+        <div class="card"><span class="pill o">選做</span><strong>想想案件清單</strong>
+          <p>「案件清單」畫面你最想看到哪 5 個欄位？寫在交付物文件。Grok Bot：觀察 routine 是否準時、內容對不對，記下 1 個要改的地方。</p></div>
+        <div class="card"><strong>反思小卡（主課＋Grok Bot）</strong>
+          <ul>
+            <li>AI 哪裡看起來很像對，但我不敢信？我怎麼驗證？</li>
+            <li>今天的產出，哪一部分是「我」的判斷？</li>
+            <li>今天有沒有不該讓 Cursor 或 Bot 讀到、記住的內容？</li>
+          </ul></div>
+        <div class="card warm"><strong>卡關怎麼辦</strong>
+          <p>截圖貼到群組，不用自己硬解。11/9 我 18:30 提早到場協助。</p>
+          <p class="mini">交付物存「AI系統開發課_交付物／第2場」與「GrokBot_第2場」，只分享給我們 4 位。</p></div>
+      </div>
+      <div class="closing">
+        <div class="callout">今晚的資料表和流程圖已經在專案裡了；11/9 我們直接讓 Cursor 把它們做成畫面。下次見！</div>
+        <a class="survey-link" href="https://aidc.work/s/ee50c25a3377356da55eb2575ebf2d10" target="_blank" rel="noopener">課後問卷</a>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 收尾</span><span>17 / 17</span></div>
+      <aside class="notes">作業出自講義第七章「第 3 場前完成 Cursor 環境」，Cursor 安裝已在課堂完成，所以回家只剩 Node.js、Git 與驗證。小卡題目精簡自主講義第十章與 Grok Bot 講義第十二章（完整 5 題見講義）。11/6 前我會檢查「第2場」資料夾的驗證截圖，沒完成的請 11/9 18:30 提早到。課堂 routine 記得暫停。</aside>
+    </section>
+
+  </main>
+
+  <aside id="notes-panel" aria-live="polite" aria-label="講稿"><h4>講稿</h4><div id="notes-body"></div></aside>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <script>
+    const DECK_TITLE = "AI 系統開發內訓・第2場｜資料與流程＋Cursor 上手";
+    const FS_STEPS = [0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("slide-counter");
+    const barEl = document.getElementById("progress-bar");
+    const header = document.getElementById("deck-header");
+    const toggleUi = document.getElementById("btn-header-toggle");
+    const fsLabel = document.getElementById("type-scale-label");
+    const hintEl = document.getElementById("hint");
+    const notesPanel = document.getElementById("notes-panel");
+    const notesBody = document.getElementById("notes-body");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--content-scale", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function updateNotes() {
+      const n = slides[index].querySelector("aside.notes");
+      notesBody.textContent = n ? n.textContent.trim() : "（這頁沒有講稿）";
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      const t = slides[index].dataset.title || "";
+      document.title = t ? `${t}｜${DECK_TITLE}` : DECK_TITLE;
+      history.replaceState(null, "", `#${slides[index].id || (index + 1)}`);
+      updateNotes();
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      header.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    function toggleNotes() {
+      notesPanel.classList.toggle("open");
+      updateNotes();
+    }
+
+    /* 複製提示詞 */
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        const ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        let ok = false;
+        try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
+        ta.remove();
+        return ok;
+      }
+    }
+    document.querySelectorAll(".prompt").forEach((box) => {
+      const btn = box.querySelector(".copy");
+      const pre = box.querySelector("pre");
+      if (!btn || !pre) return;
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        const ok = await copyText(pre.innerText.trim());
+        btn.textContent = ok ? "已複製 ✓" : "請手動選取";
+        btn.classList.toggle("done", ok);
+        flash(ok ? "提示詞已複製，記得把【】換成你的內容" : "無法自動複製，請手動選取文字");
+        setTimeout(() => { btn.textContent = "複製"; btn.classList.remove("done"); }, 1800);
+      });
+    });
+
+    /* 列印時展開所有收合區塊 */
+    addEventListener("beforeprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.dataset.wasOpen = d.open ? "1" : ""; d.open = true; });
+    });
+    addEventListener("afterprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.open = d.dataset.wasOpen === "1"; });
+    });
+
+    document.getElementById("btn-prev").onclick = () => show(index - 1);
+    document.getElementById("btn-next").onclick = () => show(index + 1);
+    document.getElementById("btn-aminus").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("btn-aplus").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("btn-present").onclick = () => toggleFullscreen();
+    document.getElementById("btn-notes").onclick = () => toggleNotes();
+    document.getElementById("btn-print").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!header.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA", "SUMMARY"].includes(tag) && e.key === " ") return;
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!header.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "n") {
+        e.preventDefault();
+        toggleNotes();
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+      if (e.target.closest && e.target.closest(".prompt pre")) return;
+      const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.body.classList.toggle("presenting", on);
+      document.getElementById("btn-present").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const hash = location.hash.replace(/^#/, "");
+    const byId = slides.findIndex((s) => s.id === hash);
+    if (byId >= 0) show(byId);
+    else {
+      const requested = Number(new URLSearchParams(location.search).get("slide") || hash);
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+    }
+  </script>
+</body>
+</html>
