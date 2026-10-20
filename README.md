@@ -20,6 +20,15 @@ npm install
 npm run deploy
 ```
 
+### Unlisted decks (agent publish path)
+
+Decks such as `hsingming-ai-dev-s1` and `hsingming-ai-dev-s2` live in `presentations/` with `<meta name="robots" content="noindex, nofollow">`. Do not add them to `registry.json`, the homepage, `decks/*.slides.json`, or a sitemap. They are reachable only by direct URL, for example `https://myppt.aidc.work/hsingming-ai-dev-s2`.
+
+1. Open a PR and merge it to `main`.
+2. Manually trigger **Deploy to Cloudflare Workers** (`workflow_dispatch`) from the Actions page, or via the GitHub API with a fine-grained token scoped to this repo and **Actions: Read and write**.
+
+**Warning:** this Actions deploy publishes the repo contents. It can overwrite decks and audio uploaded from local Admin that are not committed. Commit those files, or re-upload them from Admin, before triggering the workflow.
+
 ## Local admin (not deployed)
 
 Express admin + LLM / TTS / PDF import stays on your machine only. Do **not** commit `.env`.
