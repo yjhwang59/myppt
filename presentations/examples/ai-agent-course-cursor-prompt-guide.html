@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cursor Prompt 入門教學｜用撞球小遊戲學會跟 AI 一起做網頁</title>
+<style>
+  :root { --ink:#0f172a; --muted:#475569; --line:#cbd5e1; --soft:#f1f5f9; --accent:#0f766e; --accent-soft:#ccfbf1; --warn:#b45309; --warn-soft:#fef3c7; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif; color:var(--ink); background:#e2e8f0; line-height:1.65; font-size:16px; }
+  .page { max-width:860px; margin:24px auto; background:#fff; padding:40px 48px; border-radius:12px; box-shadow:0 2px 12px rgba(15,23,42,.08); }
+  header.top { border-bottom:3px solid var(--accent); padding-bottom:14px; margin-bottom:8px; }
+  .kicker { display:inline-block; font-size:13px; font-weight:700; color:var(--accent); background:var(--accent-soft); padding:2px 10px; border-radius:999px; }
+  h1 { font-size:28px; line-height:1.3; margin:10px 0 6px; }
+  h2 { font-size:21px; margin:30px 0 10px; padding-left:10px; border-left:5px solid var(--accent); line-height:1.35; }
+  h3 { font-size:17px; margin:18px 0 6px; }
+  p { margin:6px 0; }
+  .lead { color:var(--muted); }
+  .meta { font-size:13px; color:var(--muted); }
+  .meta a, a { color:var(--accent); }
+  table { width:100%; border-collapse:collapse; margin:8px 0; font-size:15px; }
+  th, td { border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); white-space:nowrap; }
+  td:first-child { font-weight:700; white-space:nowrap; }
+  .flow { list-style:none; padding:0; margin:10px 0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; counter-reset:s; }
+  .flow li { counter-increment:s; border:2px solid var(--accent); border-radius:10px; padding:8px 10px 8px 44px; position:relative; font-size:15px; }
+  .flow li::before { content:counter(s); position:absolute; left:10px; top:8px; width:26px; height:26px; border-radius:50%; background:var(--accent); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .flow b { display:block; font-size:16px; }
+  .box { border-radius:10px; padding:10px 14px; margin:10px 0; }
+  .box.warn { background:var(--warn-soft); border:1px solid #f59e0b; }
+  .box.tip { background:var(--accent-soft); border:1px solid #5eead4; }
+  .box.note { background:var(--soft); border:1px solid var(--line); }
+  .box h3 { margin-top:2px; }
+  .prompt { position:relative; margin:8px 0 10px; }
+  .prompt .label { font-size:13px; font-weight:700; color:var(--muted); }
+  pre { margin:4px 0 0; background:#0f172a; color:#f8fafc; border-radius:8px; padding:12px 14px; white-space:pre-wrap; word-break:break-word; font-family:"Noto Sans Mono CJK TC","Noto Sans TC",ui-monospace,monospace; font-size:14.5px; line-height:1.6; }
+  .copy { position:absolute; top:22px; right:8px; font:inherit; font-size:12px; padding:2px 10px; border-radius:6px; border:1px solid #64748b; background:#1e293b; color:#e2e8f0; cursor:pointer; }
+  .checks { list-style:none; padding:0; margin:6px 0; }
+  .checks li { padding-left:26px; position:relative; margin:3px 0; }
+  .checks li::before { content:""; position:absolute; left:2px; top:5px; width:15px; height:15px; border:2px solid var(--ink); border-radius:3px; }
+  .step { border:1px solid var(--line); border-radius:12px; padding:4px 16px 10px; margin:14px 0; }
+  .step h3 .tag { font-size:12px; background:var(--accent); color:#fff; border-radius:999px; padding:1px 8px; margin-right:6px; vertical-align:2px; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  footer { margin-top:28px; border-top:1px solid var(--line); padding-top:10px; font-size:13px; color:var(--muted); }
+  .toc { font-size:14.5px; margin:8px 0 0; padding-left:20px; columns:2; }
+  .noprint { }
+  @media (max-width: 640px) {
+    body { font-size:15.5px; }
+    .page { margin:0; padding:20px 16px; border-radius:0; box-shadow:none; }
+    h1 { font-size:23px; }
+    .flow, .two { grid-template-columns:minmax(0,1fr); }
+    .toc { columns:1; }
+    table { display:block; overflow-x:auto; }
+    td:first-child, th { white-space:normal; }
+  }
+  @page { size:A4; margin:12mm 13mm 14mm; }
+  @media print {
+    body { background:#fff; font-size:13px; line-height:1.5; }
+    .page { margin:0; padding:0; max-width:none; box-shadow:none; border-radius:0; }
+    .copy, .noprint { display:none !important; }
+    h2 { font-size:18px; margin:18px 0 8px; break-after:avoid; }
+    h3 { break-after:avoid; }
+    .break { break-before:page; }
+    pre { font-size:12px; padding:7px 10px; background:#f8fafc; color:#0f172a; border:1px solid var(--line); }
+    .prompt, .flow, tr, .checks li { break-inside:avoid; }
+    .box.tip { break-inside:avoid; }
+    footer { break-inside:avoid; }
+    table { font-size:12.5px; }
+    a { color:var(--ink); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <span class="kicker">AI 系統開發入門班 · 課堂講義</span>
+  <h1>Cursor Prompt 入門教學：用撞球小遊戲學會跟 AI 一起做網頁</h1>
+  <p class="lead">零基礎也能做。只要學會一張「固定流程卡」，再用五段式寫清楚你要什麼。這份講義用撞球小遊戲當例子，三步做出一個能玩、會自動打、有聲音的網頁遊戲。</p>
+  <p class="meta">黃燕忠｜AI發展顧問 · 2026-10-20 · 改寫自「Codex Prompt 範例教學」（撞球網頁遊戲案例），工具改成 Cursor · <span class="noprint"><a href="ai-agent-course-cursor-prompt-guide.pdf" download>下載 PDF</a> · <a href="/ai-agent-course-week02-user-flow-frontend-design.html">第 2 週投影片</a> · </span>案例成品：<a href="https://jade-pool-studio-jack-1014.yjhwang59.chatgpt.site/" target="_blank" rel="noopener noreferrer">撞球遊戲範例網站</a></p>
+  <ol class="toc">
+    <li>開始前：裝好、登入、開資料夾</li>
+    <li>十個名詞，一句話說完</li>
+    <li>固定流程卡（每次都這樣做）</li>
+    <li>本機與雲端：最常見的坑</li>
+    <li>五段式提示詞模板</li>
+    <li>撞球遊戲三步做出來</li>
+    <li>模糊說法 → 清楚說法</li>
+    <li>交出去前的檢查清單</li>
+    <li>進階（選讀）</li>
+  </ol>
+</header>
+
+<h2>1｜開始前：裝好、登入、開資料夾</h2>
+<ul class="checks">
+  <li><b>安裝 Cursor 桌面版</b>：到 <a href="https://cursor.com/downloads" target="_blank" rel="noopener noreferrer">cursor.com/downloads</a> 下載安裝（Mac：macOS 12 以上；Windows：10 以上）。</li>
+  <li><b>在電腦上登入 Cursor</b>：打開 Cursor，依畫面登入。如果訂閱是用手機買的，請在上課前先確認電腦登入得進去。</li>
+  <li><b>開一個練習資料夾</b>：在桌面新增資料夾（例如 <code>pool-game</code>），然後在 Cursor 選「File → Open Folder」打開它。</li>
+  <li><b>打開 Agent 對話框</b>：Mac 按 <b>Cmd+I</b>（Windows 是 <b>Ctrl+I</b>）。之後所有提示詞都貼在這裡。</li>
+</ul>
+<p class="meta">如果一打開看到的是「Agents Window」，而不是有檔案列表的編輯器：Mac 按 Cmd+Shift+P（Windows 是 Ctrl+Shift+P），輸入「Open IDE」就能切回編輯器。（依 Cursor 官方文件，2026-10-20 查閱）</p>
+
+<h2>2｜十個名詞，一句話說完</h2>
+<table>
+  <tr><th>名詞</th><th>白話意思</th></tr>
+  <tr><td>Prompt（提示詞）</td><td>你打給 AI 的一段話，說清楚要它做什麼。</td></tr>
+  <tr><td>Agent（代理）</td><td>Cursor 裡會自己動手的 AI：會讀檔案、寫檔案、跑指令，不只回答問題。</td></tr>
+  <tr><td>專案資料夾</td><td>這次作品放在哪一個資料夾。Agent 只在你打開的資料夾裡工作。</td></tr>
+  <tr><td>HTML 檔</td><td>網頁檔案，例如 <code>index.html</code>。雙擊就會用瀏覽器打開。</td></tr>
+  <tr><td>預覽</td><td>用瀏覽器打開，看看做出來的樣子。</td></tr>
+  <tr><td>本機／雲端</td><td>本機：AI 在你這台電腦上做事。雲端（Cloud）：AI 在網路上的另一台電腦做事，你的電腦上看不到它做的檔案。<b>上課一律用本機。</b></td></tr>
+  <tr><td>127.0.0.1／localhost</td><td>代表「這台電腦自己」的網址。網頁如果其實跑在別台電腦上，你用這個網址就打不開。</td></tr>
+  <tr><td>Diff（變更對照）</td><td>AI 改了哪些地方：新增的和刪除的內容會用不同顏色標出來。</td></tr>
+  <tr><td>Checkpoint（還原點）</td><td>AI 每次大改之前會自動存一份。改壞了可以按「Restore Checkpoint」回到之前的樣子。</td></tr>
+  <tr><td>驗收</td><td>你自己點一點、看一看，確認真的做到了。不能只聽 AI 說「完成了」。</td></tr>
+  <tr><td>Commit（存版本）</td><td>用 Git 幫作品存一個有名字的版本，方便之後回頭找。選做；電腦要先裝好 Git。</td></tr>
+</table>
+
+<h2>3｜固定流程卡：每次都這樣做</h2>
+<ol class="flow">
+  <li><b>開資料夾</b>File → Open Folder，確認左邊看得到這個資料夾。</li>
+  <li><b>說目標</b>按 Cmd/Ctrl+I，貼上「開頭提示詞」和這次的五段式提示詞。</li>
+  <li><b>看結果</b>看 AI 說它做了什麼、改了哪些檔案（Diff），再打開網頁看看。</li>
+  <li><b>請它修</b>哪裡不對，就照「修正提示詞」說：看到什麼、應該是什麼。</li>
+  <li><b>驗收</b>照提示詞裡的驗收條件自己點一遍，一項一項打勾。</li>
+  <li><b>存檔／存版本</b>貼上「結尾提示詞」，留一份說明；想存版本再請它 Commit。</li>
+</ol>
+
+<div class="prompt"><div class="label">開頭提示詞（每次新任務先貼這段）</div>
+<pre>請先看一下這個資料夾裡有什麼，用三句話告訴我。
+接下來的規則：
+1. 只在這個資料夾裡工作。
+2. 網頁做成可以直接雙擊打開的 index.html，不要用外部套件，不要啟動伺服器，不要部署。
+3. 用繁體中文回答我，說明要簡單，我是新手。
+4. 不確定的地方先問我，不要自己猜。</pre></div>
+
+<div class="prompt"><div class="label">修正提示詞（看到問題時）</div>
+<pre>我打開網頁後看到：【畫面上看到什麼／錯誤訊息全文】
+我期待的是：【應該怎樣】
+請只修這個問題，其他功能不要動。修好後告訴我怎麼確認。</pre></div>
+
+<div class="prompt"><div class="label">結尾提示詞（每次做完都貼這段）</div>
+<pre>請幫我整理這次的成果：
+1. 改了哪些檔案
+2. 我要怎麼打開來看
+3. 我自己驗收要點哪 3 個地方
+4. 還有什麼沒做、沒測，或你不確定的地方
+最後把以上內容寫進 README.md。</pre></div>
+
+<div class="prompt"><div class="label">選做：存一個版本（電腦已裝 Git 才用）</div>
+<pre>請用 Git 幫我存一個版本，說明寫「【這次做了什麼】」。只存這個資料夾，不要上傳到網路。</pre></div>
+
+<h2>4｜本機與雲端：最常見的坑</h2>
+<div class="box warn">
+  <h3>症狀：Cursor 說做好了，但瀏覽器打不開，出現 127.0.0.1 … ERR_CONNECTION_REFUSED</h3>
+  <p><b>原因：</b>網頁伺服器不在你這台電腦上，例如 Agent 跑在雲端的另一台電腦，或伺服器已經關掉了。127.0.0.1 指的是「你這台電腦」，你的電腦上沒有東西在跑，所以連不上。</p>
+  <p><b>怎麼避免：</b></p>
+  <ul>
+    <li>在 Agent 輸入框下方的選單確認<b>不是 Cloud（雲端）</b>。上課一律用本機。</li>
+    <li>開頭提示詞已經寫了「做成雙擊就能打開的 index.html、不要啟動伺服器」。這樣不需要任何網址，到資料夾雙擊檔案就能看。</li>
+    <li>已經卡住時，貼這段給 Agent：</li>
+  </ul>
+  <div class="prompt"><pre>我打不開預覽，瀏覽器顯示 ERR_CONNECTION_REFUSED。請不要用伺服器，改成單一 index.html，存在我打開的這個資料夾裡，並告訴我檔案的完整路徑，我要自己雙擊打開。</pre></div>
+</div>
+
+<h2>5｜五段式提示詞模板</h2>
+<table>
+  <tr><th>段落</th><th>要寫什麼</th><th>撞球例子</th></tr>
+  <tr><td>目標</td><td>做完之後，使用者可以做什麼</td><td>做一個能直接玩的撞球網頁小遊戲</td></tr>
+  <tr><td>功能</td><td>列 3–5 點，要看得到、點得到</td><td>瞄準虛線、力道滑桿、球會進袋、重新開始</td></tr>
+  <tr><td>限制</td><td>哪些不要做、哪些要保留</td><td>只做一個 index.html、不要伺服器、不要部署</td></tr>
+  <tr><td>驗收</td><td>你自己怎麼點、看到什麼才算過</td><td>改力道，白球跑的距離會變</td></tr>
+  <tr><td>交付</td><td>要它最後交給你什麼</td><td>檔案在哪、怎麼打開、還有什麼沒做</td></tr>
+</table>
+<div class="prompt"><div class="label">空白模板（複製後把【】換掉）</div>
+<pre>目標：【做完之後，使用者可以做什麼】
+功能：
+1. 【看得到、點得到的功能】
+2. 【……】
+3. 【……】
+限制：【不要做什麼、要保留什麼】
+驗收：【我會怎麼測、看到什麼才算過】
+交付：【檔案在哪、怎麼打開、還有什麼沒做】</pre></div>
+
+<h2>6｜撞球遊戲三步做出來</h2>
+<p>每一步都在<b>同一個資料夾、同一個對話</b>裡接著做。先做完一步、驗收過了，再貼下一步。</p>
+
+<div class="step">
+<h3><span class="tag">第 1 步</span>做出能玩的原型</h3>
+<div class="prompt"><pre>目標：在這個資料夾做一個可以直接玩的撞球網頁小遊戲，畫面用繁體中文。
+功能：
+1. 一張球桌、白球、15 顆色球、6 個球袋；球會互相碰撞、碰到桌邊會反彈、會慢慢停下、會進袋。
+2. 用滑鼠或手指拖曳來瞄準，畫面上顯示瞄準虛線；用滑桿設定力道，按「擊球」出桿。
+3. 白球進袋後，可以把它重新放回桌上的空位。
+4. 顯示進球數和桿數，有「重新開始」按鈕。
+限制：只做一個 index.html，不用外部套件，雙擊就能打開；不要啟動伺服器，不要部署。
+驗收：告訴我怎麼測下面三件事。
+交付：告訴我檔案在哪裡、怎麼打開。</pre></div>
+<ul class="checks">
+  <li>改角度和力道之後，白球的方向和距離跟著變。</li>
+  <li>球還在滾的時候按「擊球」，桿數不會增加。</li>
+  <li>白球進袋後可以放回桌上；「重新開始」可以用。手機打開也能用手指瞄準。</li>
+</ul>
+</div>
+
+<div class="step">
+<h3><span class="tag">第 2 步</span>加上自動打和設定</h3>
+<div class="prompt"><pre>目標：在剛剛的撞球遊戲加上「自動打」和設定，原本的手動玩法要保留。
+功能：
+1. 按「自動打」後，電腦自己選一顆球：先顯示瞄準虛線、力道和球桿後拉的動作 2.5 秒，再出桿；等所有球停下，再打下一桿。
+2. 按「暫停」後就不再出桿（已經在滾的球讓它滾完）。
+3. 設定區：瞄準秒數（2–3 秒）、球滾動速度、力道上限；重新打開網頁後，設定還在。
+4. 找不到能進的球時，畫面上說明原因，不要假裝一定會進。
+限制：只改 index.html；不要改掉原本的手動玩法和畫面風格。
+驗收：告訴我怎麼測下面三件事。
+交付：列出這次改了什麼。</pre></div>
+<ul class="checks">
+  <li>自動打時，看得到約 2.5 秒的瞄準動作，之後才出桿。</li>
+  <li>按「暫停」之後，不會再自動出桿。</li>
+  <li>重新整理網頁後，設定還在。</li>
+</ul>
+</div>
+
+<div class="step">
+<h3><span class="tag">第 3 步</span>加上聲音和音量</h3>
+<div class="prompt"><pre>目標：讓撞球遊戲有聲音，而且可以調音量。
+功能：
+1. 球桿打到白球、球碰球、球進袋，各有一種聲音；不用下載音效檔，用瀏覽器內建的方式產生聲音。
+2. 打得越用力、撞得越快，聲音越大；球靜止靠在一起時不要一直響。
+3. 音量滑桿 0–100%，預設 70%，0% 就是靜音；重新打開網頁後音量還在。
+限制：手動和自動玩法都要保留；只改 index.html。
+驗收：告訴我怎麼測下面三件事；你沒有真的聽過的部分，請老實說。
+交付：列出這次改了什麼。</pre></div>
+<ul class="checks">
+  <li>手動打一桿，聽得到擊球、球碰球、進袋三種聲音（瀏覽器規定要先點一下畫面才會出聲）。</li>
+  <li>音量拉到 0%，完全沒有聲音。</li>
+  <li>自動打的時候也有聲音；重新整理後，音量設定還在。</li>
+</ul>
+</div>
+
+<h2>7｜模糊說法 → 清楚說法</h2>
+<table>
+  <tr><th>模糊說法</th><th>清楚說法</th></tr>
+  <tr><td>幫我優化</td><td>這次只改一件事：【哪一件】；改完我要看到【什麼】</td></tr>
+  <tr><td>做一個撞球遊戲</td><td>列出功能：瞄準虛線、力道滑桿、會進袋、重新開始</td></tr>
+  <tr><td>每 2–3 秒打一次</td><td>瞄準畫面停 2.5 秒才出桿；等球都停下，再算下一桿</td></tr>
+  <tr><td>要有聲音</td><td>哪三種聲音、音量 0–100%、0% 是靜音、重開後設定還在</td></tr>
+  <tr><td>想好再出桿</td><td>先算完再開始瞄準動畫；算的時候畫面顯示「計算中」</td></tr>
+  <tr><td>做好給大家看</td><td>先做本機版；要公開分享，另外說放哪個網站、誰能看</td></tr>
+  <tr><td>測試都要過</td><td>列出 3 個我要自己點的檢查；沒測的要說沒測</td></tr>
+</table>
+
+<h2>8｜交出去前的檢查清單</h2>
+<ul class="checks">
+  <li>Agent 是本機，不是 Cloud；檔案在我打開的資料夾裡看得到。</li>
+  <li>提示詞有寫目標、功能、限制、驗收、交付五段。</li>
+  <li>我自己打開網頁點過，驗收條件一項一項打勾。</li>
+  <li>手機（或把瀏覽器拉窄）也能看，不用左右捲動。</li>
+  <li>原本已經會的功能，改完之後還是會。</li>
+  <li>AI 說「沒測」或「不確定」的地方，我有記下來。</li>
+  <li>已經貼過結尾提示詞，README.md 有說明怎麼打開。</li>
+  <li>沒有放真實客戶資料、密碼或公司機密。</li>
+</ul>
+<div class="box tip"><b>卡住三步：</b>① 截圖（整個畫面，包含錯誤訊息）② 傳到 LINE 群組，寫「卡住＋第幾步」③ 先把同一張截圖貼給 Agent，問「這是什麼意思、我下一步要按哪裡」。</div>
+
+<h2>9｜進階（選讀）：會做三步之後</h2>
+<div class="box note">
+  <p><b>兩桿做球：</b>讓自動打「先想好下一桿再出桿」。重點是把「想好」寫成可以檢查的條件，不是讓它停幾秒。</p>
+  <div class="prompt"><pre>目標：把自動打升級成「這一桿打完後，下一桿也要好打」。
+功能：
+1. 出桿前，先模擬這一桿打完後所有球停在哪裡，再模擬下一桿能不能把指定的球打進指定的球袋。
+2. 計算時畫面顯示「計算中」，算完才開始 2.5 秒瞄準動畫；計算期間不出桿。
+3. 畫面上標出預計的白球停點，以及下一桿要打的球和球袋。
+4. 按暫停或重新開始後，舊的計算結果不能再出桿。
+限制：保留手動、自動、音效和設定；只改 index.html。
+驗收：實際停點和預計停點大致一致；計算期間桿數不增加。沒有驗證過的不要寫成已通過。
+交付：列出改了什麼、測了哪些局面、還有什麼限制。</pre></div>
+  <p><b>公開分享：</b>要讓別人用網址打開，就要放上網站，例如<a href="https://jade-pool-studio-jack-1014.yjhwang59.chatgpt.site/" target="_blank" rel="noopener noreferrer">撞球遊戲範例網站</a>。提示詞要另外寫清楚：放在哪個網站、誰能看、不能讓別人修改。「部署成功」不等於「任何人都打得開」，要用無痕視窗自己試一次。127.0.0.1 不能拿來分享給別人。</p>
+</div>
+
+<footer>
+  <p>資料來源：黃燕忠「Codex Prompt 範例教學：以撞球網頁遊戲的五階段迭代為案例」（2026-10-20）；Cursor 官方文件（cursor.com/docs：Quickstart、Agent、Cloud Agents、Agents Window；2026-10-20 查閱）。Cursor 的介面會更新；按鈕名稱如果跟講義不一樣，以你畫面上的為準。撞球提示詞是教學改寫版，不是當時逐字送出的內容。</p>
+  <p>黃燕忠｜AI發展顧問 · AI 系統開發入門班（大躍企業 AI 內訓）</p>
+</footer>
+</div>
+<script>
+  document.querySelectorAll('.prompt').forEach(function (box) {
+    var pre = box.querySelector('pre'); if (!pre) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'copy'; b.textContent = '複製';
+    if (!box.querySelector('.label')) b.style.top = '10px';
+    b.addEventListener('click', function () {
+      var t = pre.innerText;
+      var done = function () { b.textContent = '已複製'; setTimeout(function () { b.textContent = '複製'; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(done, fallback); } else { fallback(); }
+      function fallback() { var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) { b.textContent = '請手動選取'; } document.body.removeChild(ta); }
+    });
+    box.appendChild(b);
+  });
+</script>
+</body>
+</html>

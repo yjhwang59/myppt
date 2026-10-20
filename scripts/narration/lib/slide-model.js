@@ -167,6 +167,7 @@ export function renderSlideHtml(slide, total) {
       <h1>${(slide.h1 || "").split("\n").map(escapeHtml).join("<br />")}</h1>
       ${slide.lead ? `<p class="lead">${escapeHtml(slide.lead)}</p>` : ""}
       ${slide.stamp ? `<p class="stamp">${escapeHtml(slide.stamp)}</p>` : ""}`;
+    body += renderLinks(slide.links);
   } else {
     body += slide.eyebrow ? `<p class="eyebrow">${escapeHtml(slide.eyebrow)}</p>` : "";
     body += slide.h2 ? `<h2>${escapeHtml(slide.h2)}</h2>` : "";

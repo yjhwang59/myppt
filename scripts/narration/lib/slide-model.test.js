@@ -30,3 +30,12 @@ test("arch-svg aria-label is configurable and defaults to the legacy label", () 
   const $ = cheerio.load(html, { decodeEntities: false });
   assert.equal(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).archSvgLabel, "頁面導覽圖");
 });
+
+test("hero slides render and round-trip links too", () => {
+  const slide = { slideId: "s1", index: 1, title: "t", layout: "hero", hero: true, kicker: "k", h1: "封面", lead: "l", stamp: "s", cards: [], callouts: [],
+    links: [{ label: "Cursor 教學文件", href: "/examples/ai-agent-course-cursor-prompt-guide.html" }] };
+  const html = renderSlideHtml(slide, 1);
+  assert.match(html, /class="slide-links"/);
+  const $ = cheerio.load(html, { decodeEntities: false });
+  assert.deepEqual(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).links, slide.links);
+});
