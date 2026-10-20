@@ -4,8 +4,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="興銘聯合會計師事務所 AI 系統開發內訓第 2 場：資料與流程、Cursor 上手（提前到第 2 場），加上 Grok Bot 第 2 週例行排程。全程使用虛構資料。">
-  <title>AI 系統開發內訓・第2場｜資料與流程＋Cursor 上手</title>
+  <meta name="description" content="興銘聯合會計師事務所 AI 系統開發內訓第 2 場：資料與流程、Cursor 與 GitHub 帶做設定（提前到第 2 場），加上 Grok Bot 第 2 週例行排程。全程使用虛構資料。">
+  <title>AI 系統開發內訓・第2場｜資料與流程＋Cursor×GitHub 上手</title>
   <style>
     :root {
       --ink: #17324d;
@@ -425,13 +425,13 @@
     }
     /* ---- 第 2 場補充 ---- */
     .prompt.compact pre { font-size: calc(clamp(12px, 0.98vw, 15.5px) * var(--content-scale)); line-height: 1.5; }
-    #s17 .closing {
+    #s24 .closing {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-top: 8px;
     }
-    #s17 .closing .callout { margin: 0; flex: 1; }
+    #s24 .closing .callout { margin: 0; flex: 1; }
   </style>
 </head>
 <body>
@@ -443,7 +443,7 @@
       <span id="type-scale-label">100%</span>
       <button type="button" id="btn-aplus" title="放大字體（+）">A＋</button>
       <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
-      <span id="slide-counter">1 / 17</span>
+      <span id="slide-counter">1 / 24</span>
       <button type="button" id="btn-next" title="下一頁（→）">›</button>
       <button type="button" id="btn-present" title="全頁顯示／離開（F）">⛶</button>
       <button type="button" id="btn-notes" title="講稿（N）">講稿</button>
@@ -457,8 +457,8 @@
     <section class="slide active hero" id="s1" data-title="封面">
       <p class="kicker">AI 系統開發內訓 · 第 2 場（共 4 場）</p>
       <div class="mark"></div>
-      <h1>資料與流程<br>＋Cursor 上手</h1>
-      <p class="lead">上週把「要做什麼」講清楚了；今晚把它變成資料表和 7 狀態流程，再第一次打開 Cursor，把這些成果存成專案裡的檔案。最後 25 分鐘，教 Grok Bot 定時提醒申報期限。</p>
+      <h1>資料與流程<br>＋Cursor×GitHub 上手</h1>
+      <p class="lead">上週把「要做什麼」講清楚了；今晚把它變成資料表和 7 狀態流程，再一起設定 Cursor 和 GitHub，把成果存成檔案、推上私人儲存庫。最後 15 分鐘，教 Grok Bot 定時提醒申報期限。</p>
       <p style="margin-top:22px">
         <span class="pill lg">興銘聯合會計師事務所</span>
         <span class="pill lg">2026-10-20（二）19:00–21:00</span>
@@ -466,49 +466,50 @@
         <span class="pill lg r">全程只用虛構資料</span>
       </p>
       <p class="mini" style="margin-top:6px">地點：台北市大安區敦化南路一段263號9樓之1</p>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 僅供內部訓練使用，請勿外流</span><span>1 / 17</span></div>
-      <aside class="notes">今晚跟講義原本的安排不一樣：Cursor 從第 3 場提前到今晚開始。今晚 Cursor 不寫程式，只做三件事：裝好、登入、把今晚的資料表與流程圖存成專案檔案。這樣 11/9 一開場就能直接做畫面。Grok Bot 這次排在 21:00 之前（20:30–20:55），不用延長。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 僅供內部訓練使用，請勿外流</span><span>1 / 24</span></div>
+      <aside class="notes">今晚跟講義原本的安排不一樣：Cursor 從第 3 場提前到今晚，而且今晚就要連好 GitHub（講義原本第 3 場最後才推到私人 GitHub）。今晚 Cursor 不寫程式，只做：裝好、登入、把今晚的資料表與流程圖存成專案檔案、推到 GitHub 私人儲存庫。Grok Bot 縮成 15 分鐘（20:40–20:55），不用延長。</aside>
     </section>
 
     <!-- 2 今晚流程 -->
     <section class="slide" id="s2" data-title="今晚流程">
       <p class="kicker">今晚流程 · 120 分鐘</p>
-      <h2 class="tight">先做資料與流程，再把成果交給 Cursor 存成檔案</h2>
+      <h2 class="tight">資料與流程做快一點，留 65 分鐘一起把 Cursor＋GitHub 設定好</h2>
       <div class="grid split-r">
         <div class="timeline">
-          <div class="tl"><b>19:00–19:10</b><span class="m">10′</span><span>回顧第 1 場、分享作業「7 個狀態誰負責」、規則複誦</span></div>
-          <div class="tl hot"><b>19:10–19:45</b><span class="m">35′</span><span>資料與流程：示範 2-1 → 實作 A 資料表 → 實作 B 7 狀態流程圖（2-2）→ RLS 一句話</span></div>
-          <div class="tl rest"><b>19:45–19:50</b><span class="m">5′</span><span>休息（順便開始下載 Cursor）</span></div>
-          <div class="tl hot"><b>19:50–20:30</b><span class="m">40′</span><span>Cursor 上手：安裝登入 → 4 個基本功 → AGENTS.md → 實作 C 把今晚成果存成檔案</span></div>
-          <div class="tl hot"><b>20:30–20:55</b><span class="m">25′</span><span>Grok Bot 第 2 週：例行排程（申報期限提醒）</span></div>
+          <div class="tl"><b>19:00–19:05</b><span class="m">5′</span><span>回顧第 1 場、規則複誦</span></div>
+          <div class="tl hot"><b>19:05–19:30</b><span class="m">25′</span><span>資料與流程：2-1 資料表 → 2-2 7 狀態流程圖 → RLS 一句話</span></div>
+          <div class="tl rest"><b>19:30–19:35</b><span class="m">5′</span><span>休息（順便開始下載 Git、Cursor）</span></div>
+          <div class="tl hot"><b>19:35–20:40</b><span class="m">65′</span><span>帶做設定 ①～⑧：GitHub 帳號 → Git＋Cursor → 規則檔 → 存檔 → 私人 repo → commit＋push → 驗收</span></div>
+          <div class="tl"><b>20:40–20:55</b><span class="m">15′</span><span>Grok Bot 第 2 週：工作日申報期限提醒（routine）</span></div>
           <div class="tl"><b>20:55–21:00</b><span class="m">5′</span><span>作業（11/9 前）、反思小卡、課後問卷</span></div>
         </div>
         <div class="stack">
           <div class="card warm">
             <strong>今晚帶走的東西</strong>
             <ul>
-              <li>各組資料表設計＋7 狀態流程圖（mermaid）與轉換表</li>
-              <li>一個 Cursor 專案資料夾 tax-platform-demo：AGENTS.md、docs/、data/</li>
-              <li>1–3 個 Grok Bot 例行排程（routine）＋模擬結果</li>
+              <li>各組資料表設計＋7 狀態流程圖（mermaid）</li>
+              <li>GitHub 私人儲存庫 tax-platform-demo：AGENTS.md、.gitignore、docs/、data/</li>
+              <li>1 個 Grok Bot 例行排程＋模擬結果</li>
             </ul>
           </div>
           <div class="card alert">
             <strong>跟講義不一樣的地方</strong>
             <ul>
-              <li>Cursor 提前到今晚；今晚只建文件，不寫程式</li>
-              <li>Supabase 建表（2-3）、RLS 政策（2-4）先改成延伸題</li>
+              <li>Cursor、Git、GitHub 推送都提前到今晚</li>
+              <li>Supabase 建表（2-3）、RLS 政策（2-4）改成延伸題</li>
+              <li>Grok Bot 縮成 15 分鐘，分組加做改課後選做</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="callout">時間比較緊：每段實作我會計時，做不完的部分列進課後作業，不硬拖。</div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程＋Cursor</span><span>2 / 17</span></div>
-      <aside class="notes">講義第七章原本是：資料表 40 分、狀態圖 20 分、Supabase 建表 30 分、RLS 10 分。今晚把 Supabase 實作讓給 Cursor 上手，資料與流程壓到 35 分。Grok Bot 講義建議接在主課後 21:00–21:25；今晚改排在 20:30–20:55，全部在 21:00 前結束。</aside>
+      <div class="callout">時間很緊：每段我都會計時，做不完的部分列進課後作業，不硬拖。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程＋Cursor＋GitHub</span><span>2 / 24</span></div>
+      <aside class="notes">講義第七章原本：資料表 40 分、狀態圖 20 分、Supabase 30 分、RLS 10 分。今晚資料與流程壓到 25 分（示範與實作 A 合併 13 分、實作 B 10 分、RLS 2 分），把時間讓給帶做設定 65 分。Grok Bot 講義建議 25 分鐘、接在主課後；今晚縮成 15 分鐘並排在 21:00 前。</aside>
     </section>
 
     <!-- 3 第1場回顧 -->
     <section class="slide" id="s3" data-title="第 1 場回顧">
-      <p class="kicker">回顧第 1 場（10/12）· 規則複誦</p>
+      <p class="kicker">回顧第 1 場（10/12）· 規則複誦（19:00–19:05）</p>
       <h2 class="tight">上週我們把「要做什麼」講清楚了</h2>
       <div class="grid">
         <div class="card"><div class="num sm">需求分析</div><strong>故事＋驗收標準</strong>
@@ -531,42 +532,42 @@
           </ul></div>
       </div>
       <div class="grid two" style="margin-top:14px">
-        <div class="card warm"><strong>作業分享（3 分鐘）：7 個狀態各誰負責？</strong>
+        <div class="card warm"><strong>作業分享（1 位，2 分鐘）：7 個狀態各誰負責？</strong>
           <div class="chain"><span>待收件</span><i>→</i><span>整理中</span><i>→</i><span>待覆核</span><i>→</i><span>已核准</span><i>→</i><span>已申報</span><i>→</i><span>已繳款</span><i>→</i><span>結案</span></div></div>
         <div class="card alert"><strong>規則複誦（今晚特別注意）</strong>
           <ul>
             <li>只用附錄 A 虛構資料；規格書只貼附錄 B 摘錄</li>
-            <li>金鑰、密碼、.env 檔不貼對話、不上傳、不放進專案</li>
+            <li>金鑰、密碼、.env 檔不貼對話、不上傳、不放進專案；GitHub 一律私人</li>
             <li>期限、稅率一律「待確認」，以官方公告為準</li>
           </ul></div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 回顧</span><span>3 / 17</span></div>
-      <aside class="notes">請 1–2 位分享選做作業：每個狀態誰負責、要做什麼。MVP 切片請依上週實際決議口頭補充（投影片寫的是講義建議版）。規則出自講義第四章；今晚多了 Cursor 專案資料夾，所以「金鑰不外流、不放進專案」要再講一次。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 回顧</span><span>3 / 24</span></div>
+      <aside class="notes">時間只有 5 分鐘：請 1 位分享選做作業：每個狀態誰負責、要做什麼。MVP 切片請依上週實際決議口頭補充（投影片寫的是講義建議版）。規則出自講義第四章；今晚多了 Cursor 專案資料夾和 GitHub，所以「金鑰不外流、不放進專案、repo 一律私人」要再講一次。</aside>
     </section>
 
     <!-- 4 課程地圖調整 -->
     <section class="slide" id="s4" data-title="課程地圖調整">
-      <p class="kicker">課程地圖調整 · Cursor 提前開始</p>
-      <h2 class="tight">Cursor 從今晚開始：今晚先建文件，第 3 場做原型</h2>
+      <p class="kicker">課程地圖調整 · Cursor 與 GitHub 提前開始</p>
+      <h2 class="tight">Cursor＋GitHub 從今晚開始：今晚建文件並推上去，第 3 場做原型</h2>
       <div class="grid four">
         <div class="card"><div class="num sm">第 1 場 · 10/12</div><strong>需求分析</strong><p>故事＋驗收標準、MVP 切片</p><p class="mini">對話式 AI · 已完成</p></div>
-        <div class="card warm"><div class="num sm">第 2 場 · 10/20</div><strong>資料與流程＋Cursor 上手</strong><p>資料表、7 狀態流程圖；Cursor 建專案資料夾、規則檔與參考檔</p><p class="mini">今晚 · 對話式 AI＋Cursor</p></div>
+        <div class="card warm"><div class="num sm">第 2 場 · 10/20</div><strong>資料與流程＋Cursor×GitHub</strong><p>資料表、7 狀態流程圖；Cursor 建專案檔案，推上 GitHub 私人儲存庫</p><p class="mini">今晚 · 對話式 AI＋Cursor＋Git</p></div>
         <div class="card"><div class="num sm">第 3 場 · 11/09</div><strong>用 Cursor 生成原型</strong><p>可點擊 3 畫面：行事曆、案件清單、營業稅案件頁</p><p class="mini">Cursor＋Node.js＋GitHub</p></div>
         <div class="card"><div class="num sm">第 4 場 · 11/16</div><strong>AI 檢核與展示</strong><p>發票異常檢核、驗收測試、成果展示與回顧</p><p class="mini">Cursor</p></div>
       </div>
       <div class="grid" style="margin-top:14px">
-        <div class="card"><div class="num">1</div><strong>卡關提早發現</strong><p>安裝、登入、帳號的問題今晚就浮出來，到 11/9 還有時間處理。</p></div>
-        <div class="card"><div class="num">2</div><strong>今晚成果直接進專案</strong><p>資料表、流程圖存成 docs/、data/ 檔案，第 3 場用 @ 引用就好，不用再貼一大段。</p></div>
+        <div class="card"><div class="num">1</div><strong>卡關提早發現</strong><p>安裝、登入、GitHub 授權的問題今晚就浮出來，到 11/9 還有時間處理。</p></div>
+        <div class="card"><div class="num">2</div><strong>今晚成果直接進專案</strong><p>資料表、流程圖存成 docs/、data/ 檔案並備份到 GitHub，第 3 場用 @ 引用就好。</p></div>
         <div class="card"><div class="num">3</div><strong>先用低風險的事練手</strong><p>只建文件、不寫程式、不碰資料庫，先熟悉 Agent／Ask 和「看差異再接受」。</p></div>
       </div>
-      <div class="callout">分工不變：今晚 Cursor 只整理文件；第 3 場才建 Next.js 原型；第 4 場加 AI 檢核。</div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 課程地圖</span><span>4 / 17</span></div>
-      <aside class="notes">上週第 12 頁說「Cursor 第 3、4 場用」，今晚更新：Cursor 從第 2 場開始，但第 2 場只做設定與文件；Node.js、Git 的安裝與驗證還是 11/9 前的作業（今晚的練習用不到）。全員統一用 Cursor 的理由不變：畫面一樣、好互相幫、同一份規則檔。</aside>
+      <div class="callout">分工不變：今晚 Cursor 只整理文件、推上 GitHub；第 3 場才建 Next.js 原型；第 4 場加 AI 檢核。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 課程地圖</span><span>4 / 24</span></div>
+      <aside class="notes">上週第 12 頁說「Cursor 第 3、4 場用」，今晚更新：Cursor 和 GitHub 推送都從第 2 場開始，但第 2 場只做設定與文件；Node.js 安裝與驗證仍是 11/9 前的作業（今晚用不到）。講義 3-8「推到私人 GitHub」今晚先做完，第 3 場只需 commit＋push 更新。全員統一用 Cursor 的理由不變：畫面一樣、好互相幫、同一份規則檔。</aside>
     </section>
 
     <!-- 5 資料表概念 -->
     <section class="slide dense" id="s5" data-title="資料表怎麼想">
-      <p class="kicker">資料與流程 · 講師示範（19:10–19:15）</p>
+      <p class="kicker">資料與流程 · 講師示範（19:05–19:08）</p>
       <h2 class="tight">資料表就像 Excel 工作表：一張表一件事，用 client_id 串起來</h2>
       <div class="grid split">
         <div class="stack">
@@ -601,13 +602,13 @@
           </table>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>5 / 17</span></div>
-      <aside class="notes">出自講義第七章目標與附錄 B「資料實體摘要」（另有 property／tax_bill 延伸）。示範只要 5 分鐘：貼共用開場＋2-1，然後追問那兩個問題。新手可以用 2-S，用 Excel 比喻先看懂客戶和申報案件兩張表。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>5 / 24</span></div>
+      <aside class="notes">出自講義第七章目標與附錄 B「資料實體摘要」（另有 property／tax_bill 延伸）。示範只有 3 分鐘：貼共用開場＋2-1，然後追問那兩個問題。新手可以用 2-S，用 Excel 比喻先看懂客戶和申報案件兩張表。</aside>
     </section>
 
     <!-- 6 練習 2-1 -->
     <section class="slide dense" id="s6" data-title="練習 2-1">
-      <p class="kicker">練習 2-1 · 實作 A（19:15–19:30）</p>
+      <p class="kicker">練習 2-1 · 實作 A（19:08–19:18）</p>
       <h2 class="tight">各組用 AI 設計自己模組的資料表，再對照附錄 B 挑錯</h2>
       <div class="grid split">
         <div class="stack">
@@ -646,13 +647,13 @@
 <span class="fill">【使用者故事：貼第 1 場 Must 故事】</span>
 <span class="fill">【資料實體摘要：貼附錄 B「資料實體摘要」】</span></pre></div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>6 / 17</span></div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>6 / 24</span></div>
       <aside class="notes">實作開始 5 分鐘內先巡到新手那組，確認已貼上提示詞並拿到第一個回覆。駕駛／領航每 15 分鐘換手。挑錯重點：有沒有漏 client_id、狀態有沒有多出第 8 個、稅率有沒有被寫死、有沒有自己加需求。</aside>
     </section>
 
     <!-- 7 練習 2-2 狀態流程 -->
     <section class="slide dense" id="s7" data-title="練習 2-2">
-      <p class="kicker">練習 2-2 · 實作 B（19:30–19:42）· 兩組共同</p>
+      <p class="kicker">練習 2-2 · 實作 B（19:18–19:28）· 兩組共同</p>
       <h2 class="tight">把案件 7 狀態畫成 mermaid 流程圖，找出「不允許的轉換」</h2>
       <div class="grid split">
         <div class="stack">
@@ -684,13 +685,13 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
 - 不可跳過待覆核與已核准；承辦人與覆核人不得為同一人。
 - 每次狀態變更要留紀錄：操作者、時間（Asia/Taipei）、原狀態、新狀態、說明。</pre></div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>7 / 17</span></div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>7 / 24</span></div>
       <aside class="notes">示範：把 mermaid 文字貼到編輯器，故意改錯一條（整理中 → 已核准），讓大家看出違反規則。驗收：圖要能正確顯示，含退回路徑和「已申報直接結案」。A、B、C 三段修正後留著，等一下 Cursor 實作 C 要用。</aside>
     </section>
 
     <!-- 8 RLS 與 Supabase -->
     <section class="slide" id="s8" data-title="RLS 一句話">
-      <p class="kicker">資料與流程 · 收尾（19:42–19:45）</p>
+      <p class="kicker">資料與流程 · 收尾（19:28–19:30）</p>
       <h2 class="tight">RLS 一句話：A 公司的人，看不到 B 公司的資料</h2>
       <div class="grid two">
         <div class="stack">
@@ -706,10 +707,10 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
         </div>
         <div class="stack">
           <div class="card alert"><strong>今晚改動：Supabase 實作先延後</strong>
-            <p>講義原本 30 分鐘帶做建表（2-3）、10 分鐘 RLS（2-4）。今晚時間讓給 Cursor，這兩題先改為延伸題；何時補做由講師另行通知。</p></div>
+            <p>講義原本 30 分鐘帶做建表（2-3）、10 分鐘 RLS（2-4）。時間讓給 Cursor×GitHub，這兩題先改為延伸題；何時補做由講師另行通知。</p></div>
           <details class="more">
             <summary>延伸 2-3｜產生可執行的建表 SQL＋虛構資料</summary>
-            <div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>提示詞 2-3</span><button class="copy" type="button">複製</button></div><pre>請把我們確認過的資料表設計，轉成可以直接貼到 Supabase SQL Editor 執行的 SQL：
+            <div class="prompt compact" style="--pmax:21vh"><div class="ph"><span>提示詞 2-3</span><button class="copy" type="button">複製</button></div><pre>請把我們確認過的資料表設計，轉成可以直接貼到 Supabase SQL Editor 執行的 SQL：
 1. CREATE TABLE（含主鍵、外鍵、必填、狀態欄位用 CHECK 限制 7 個狀態）。
 2. 為每張含 client_id 的表啟用 RLS（ALTER TABLE ... ENABLE ROW LEVEL SECURITY），政策先留註解說明，下一步再寫。
 3. INSERT 附錄 A 的虛構資料（3 家客戶、發票、案件）。
@@ -731,56 +732,126 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
         </div>
       </div>
       <div class="callout">Supabase 的 API 金鑰：知道在哪裡、知道不能外流就好，不要複製出來，更不要貼進 Cursor。</div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>8 / 17</span></div>
-      <aside class="notes">這頁 3 分鐘講完。2-3、2-4 原文照講義第七章。是否在 11/9 前另找時間帶做 Supabase、或併入第 3 場延伸（講義第 3 場延伸本來就有「連接 Supabase 讀取第 2 場資料」），由我之後決定再通知大家。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 資料與流程</span><span>8 / 24</span></div>
+      <aside class="notes">這頁 2 分鐘講完。2-3、2-4 原文照講義第七章。是否在 11/9 前另找時間帶做 Supabase、或併入第 3 場延伸（講義第 3 場延伸本來就有「連接 Supabase 讀取第 2 場資料」），由我之後決定再通知大家。</aside>
     </section>
 
-    <!-- 9 Cursor 安裝登入 -->
-    <section class="slide" id="s9" data-title="Cursor 安裝與方案">
-      <p class="kicker">Cursor 上手 · 安裝與登入（19:50–20:00）</p>
-      <h2 class="tight">先把 Cursor 裝好、登入，請它用繁中說聲「你好」</h2>
-      <div class="grid">
-        <div class="stack">
-          <div class="card"><div class="num sm">1</div><strong>下載安裝並登入</strong>
-            <p>到 Cursor 官網下載安裝並登入。方案與額度依講師指示（需確認）。</p>
-            <p class="mini">網路慢的話：休息時間就先開始下載。</p></div>
-          <div class="card"><div class="num sm">2</div><strong>驗證：AI 有回覆就通過</strong>
-            <p>在 Cursor 的 AI 對話面板輸入下面這句，有回覆就截圖。</p>
-            <div class="prompt"><div class="ph"><span>驗證用</span><button class="copy" type="button">複製</button></div><pre>請用繁體中文回答：你好</pre></div></div>
-        </div>
-        <div class="card">
-          <strong>免費版 vs Pro</strong>
-          <table class="plan">
-            <tr><th>Hobby（免費）</th><th>Pro（US$20／月）</th></tr>
-            <tr><td>不用信用卡</td><td>包含 Hobby 全部，再加：</td></tr>
-            <tr><td>Agent 次數有限</td><td>Agent 額度更多</td></tr>
-            <tr><td>可用 Composer 模型</td><td>可用各家前沿模型</td></tr>
-          </table>
-          <p class="mini" style="margin-top:8px">今晚的練習只建幾個文件，先用 Hobby 即可。價格未含稅，額度細節以官網為準。要不要升 Pro、誰付費，由事務所決定（待確認）。</p>
-          <p class="src">來源：<a href="https://cursor.com/pricing" target="_blank" rel="noopener">https://cursor.com/pricing</a>（2026-10-12 查閱，月繳顯示價）</p>
+    <!-- 帶做設定總覽 -->
+    <section class="slide" id="s9" data-title="帶做設定總覽">
+      <p class="kicker">帶做設定 · 19:35–20:40 · 大家一起一步一步來</p>
+      <h2 class="tight">8 個步驟：從帳號到把專案推上 GitHub 私人儲存庫</h2>
+      <div class="grid split-r">
+        <div class="timeline">
+          <div class="tl"><b>19:35–19:45</b><span class="m">10′</span><span>① GitHub 帳號（建議開 2FA）　② 安裝 Git＋Cursor、登入</span></div>
+          <div class="tl"><b>19:45–19:50</b><span class="m">5′</span><span>③ 告訴 Git 你是誰（user.name／user.email）</span></div>
+          <div class="tl"><b>19:50–20:00</b><span class="m">10′</span><span>④ Cursor 4 個基本功　⑤ 規則檔 AGENTS.md＋.gitignore</span></div>
+          <div class="tl hot"><b>20:00–20:15</b><span class="m">15′</span><span>⑥ 實作 C：今晚的資料表、流程圖存成檔案</span></div>
+          <div class="tl hot"><b>20:15–20:35</b><span class="m">20′</span><span>⑦ 建立私人 repo　⑧ 第一次 commit＋push（瀏覽器授權）</span></div>
+          <div class="tl"><b>20:35–20:40</b><span class="m">5′</span><span>驗收：在 github.com 看到自己的檔案</span></div>
         </div>
         <div class="stack">
-          <div class="card warm"><strong>今晚用不到、11/9 前要裝好</strong>
+          <div class="card warm"><strong>帶做規則</strong>
             <ul>
-              <li>Node.js LTS 版</li>
-              <li>Windows 另裝 Git for Windows（預設選項即可）</li>
-              <li>在 Cursor 內建終端機（Terminal）驗證 node -v、npm -v、git --version</li>
+              <li>我投影一步，大家做一步；做完的人舉手或在便利貼打勾</li>
+              <li>卡住先舉手，旁邊的同事先幫看；不要跳步驟</li>
+              <li>下載很吃網路：休息時間就先開始下載 Git 和 Cursor</li>
             </ul></div>
-          <div class="card alert"><strong>裝不起來怎麼辦</strong>
-            <ul>
-              <li>先跟同組共用一台「主機」，不要卡在原地</li>
-              <li>截圖貼群組，回家再處理；11/9 我 18:30 提早到場</li>
-            </ul></div>
+          <div class="card alert"><strong>這一段只會碰到虛構資料</strong>
+            <p>推上 GitHub 的只有 AGENTS.md、.gitignore、docs/、data/ 的虛構練習檔案，而且一律是<b>私人（Private）</b>儲存庫。</p></div>
         </div>
       </div>
-      <div class="callout">登入用的帳號密碼、驗證碼，只在 Cursor 的登入畫面輸入，不要貼到任何 AI 對話裡。</div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>9 / 17</span></div>
-      <aside class="notes">安裝步驟只照講義第七章作業文字講，不示範點選路徑（版本不同畫面會變）。原本「第 2 場課後安裝 Cursor」改成今晚當場裝；Node.js、Git 仍是回家作業。方案資訊同第 1 場：cursor.com/pricing，2026-10-12 查閱，Hobby 免費、Pro US$20/月；是否購買 Pro 待事務所決定。若 10 分鐘內還有人裝不好，直接併到同組主機。</aside>
+      <div class="callout">畫面上的按鈕位置、名稱依版本可能不同；以當下畫面為準，找不到就用終端機指令（每一步都有可複製的版本）。</div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>9 / 24</span></div>
+      <aside class="notes">Jack 加的需求：今晚就要把 GitHub 連好。講義原本是第 3 場最後（3-8）才推到私人 GitHub，現在提前。這一段 65 分鐘全程帶做：我投影、大家跟。每一步結束我會問「好了的舉手」，等新手那組跟上再往下。</aside>
+    </section>
+
+    <!-- ① GitHub 帳號 -->
+    <section class="slide" id="s10" data-title="① GitHub 帳號">
+      <p class="kicker">帶做 ① · GitHub 帳號（19:35–19:40）</p>
+      <h2 class="tight">建立或登入 GitHub 帳號，Email 要先驗證</h2>
+      <div class="grid">
+        <div class="card"><div class="num">1</div><strong>註冊或登入</strong>
+          <p>到 <b>github.com/signup</b> 依畫面提示建立個人帳號；上週已註冊的直接登入。</p>
+          <p class="mini">用個人 Email 註冊（帳號歸屬請依事務所規定，待確認）。</p></div>
+        <div class="card"><div class="num">2</div><strong>驗證 Email</strong>
+          <p>註冊時會要求驗證 Email。<b>沒驗證就不能建立儲存庫（repo）</b>，所以先去收信。</p></div>
+        <div class="card warm"><div class="num">3</div><strong>建議：開啟 2FA</strong>
+          <p>GitHub 強烈建議開兩步驟驗證。建議用手機驗證 App（TOTP），不建議用簡訊。</p>
+          <p class="mini">位置：右上角頭像 → Settings → Password and authentication → Enable two-factor authentication（依版本可能不同）。</p></div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card alert"><strong>復原碼（recovery codes）一定要存</strong>
+          <p>開 2FA 時會請你下載復原碼；手機掉了就靠它登入。存在安全的地方，不要貼到群組或 AI 對話。</p></div>
+        <div class="card"><strong>來不及開 2FA？</strong>
+          <p>今晚先完成 ①～⑧，2FA 列為回家作業也可以；但帳號密碼請設強一點、不要跟其他網站共用。</p></div>
+      </div>
+      <p class="src">來源：docs.github.com〈Creating an account on GitHub〉、〈Configuring two-factor authentication〉（2026-10-20 查閱）。</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>10 / 24</span></div>
+      <aside class="notes">GitHub 文件：註冊網址 https://github.com/signup，可用 Google 或 Apple 帳號登入註冊；需驗證 Email 才能建立 repo；強烈建議設定 2FA，建議 TOTP App、不建議 SMS；設定後下載 recovery codes。開 2FA 要裝手機 App，可能 5 分鐘以上，時間不夠就列作業。要不要規定一律開 2FA、帳號是否必須用個人 Email，事務所決定。</aside>
+    </section>
+
+    <!-- ② 安裝 Git + Cursor -->
+    <section class="slide dense" id="s11" data-title="② 安裝 Git＋Cursor">
+      <p class="kicker">帶做 ② · 安裝 Git 與 Cursor（19:40–19:45）</p>
+      <h2 class="tight">裝好 Git 和 Cursor，用 git --version 確認</h2>
+      <div class="grid">
+        <div class="stack">
+          <div class="card"><span class="pill">Windows</span><strong>安裝 Git for Windows</strong>
+            <p>到 <b>git-scm.com/install/windows</b> 下載 Git for Windows 安裝檔，安裝選項用預設即可。</p>
+            <p class="mini">Git for Windows 內含 Git Credential Manager，等一下 push 時會跳出瀏覽器登入。</p></div>
+          <div class="card warm"><span class="pill o">macOS</span><strong>Mac 同仁</strong>
+            <p>先在終端機輸入 git --version；沒有 Git 時，git-scm 列出的方式之一是 xcode-select --install。</p>
+            <p class="mini">要用瀏覽器登入推送，GitHub 文件建議以 Homebrew 安裝 git 與 git-credential-manager（見右側指令）；沒有 Homebrew 的請舉手。</p></div>
+        </div>
+        <div class="stack">
+          <div class="prompt"><div class="ph"><span>驗證 Git（Cursor 內建終端機）</span><button class="copy" type="button">複製</button></div><pre>git --version</pre></div>
+          <p class="mini">顯示 git version 2.xx 就通過。找不到指令：<b>完全關閉 Cursor 再開</b>，讓終端機重新讀到 Git。</p>
+          <details class="more">
+            <summary>Mac：Homebrew 安裝 Git＋GCM（GitHub 文件）</summary>
+            <div class="prompt compact"><div class="ph"><span>macOS（已有 Homebrew）</span><button class="copy" type="button">複製</button></div><pre>brew install git
+brew install --cask git-credential-manager</pre></div>
+          </details>
+        </div>
+        <div class="stack">
+          <div class="card"><strong>Cursor：安裝並登入</strong>
+            <p>到 Cursor 官網下載安裝並登入。方案：Hobby 免費、Pro US$20／月（cursor.com/pricing，2026-10-12 查閱）；要不要升 Pro 由事務所決定（待確認）。</p></div>
+          <div class="prompt"><div class="ph"><span>驗證 Cursor（AI 對話面板）</span><button class="copy" type="button">複製</button></div><pre>請用繁體中文回答：你好</pre></div>
+          <p class="mini">開內建終端機、AI 面板的方式依版本可能不同。</p>
+        </div>
+      </div>
+      <p class="src">來源：git-scm.com/install/windows、git-scm.com/install/mac；docs.github.com〈Caching your GitHub credentials in Git〉；cursor.com/pricing（2026-10-12）。2026-10-20 查閱。</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>11 / 24</span></div>
+      <aside class="notes">git-scm 2026-10-20 顯示 Windows 最新版 2.56.0（2026-10-05 釋出）。GitHub 文件：Git for Windows 內含 GCM，至少 2.29 才支援 GitHub OAuth；macOS 用 Homebrew 安裝 git 與 GCM 後不需另外 git config。Mac 若只用 Xcode 內建 Git，push 時可能要求帳密而失敗（GitHub 不接受密碼），所以 Mac 同仁最好課前確認是否有 Homebrew。重開 Cursor 讓 PATH 生效是一般作法。</aside>
+    </section>
+
+    <!-- ③ git config -->
+    <section class="slide" id="s12" data-title="③ 告訴 Git 你是誰">
+      <p class="kicker">帶做 ③ · 告訴 Git 你是誰（19:45–19:50）</p>
+      <h2 class="tight">設定名字與 Email：每一筆版本紀錄都會記上它</h2>
+      <div class="grid split-r">
+        <div class="stack">
+          <div class="prompt"><div class="ph"><span>設定（把【】換掉，一次貼一行）</span><button class="copy" type="button">複製</button></div><pre>git config --global user.name "<span class="fill">【你的名字或代號，例如 同仁甲】</span>"
+git config --global user.email "<span class="fill">【你註冊 GitHub 用的 Email】</span>"</pre></div>
+          <div class="prompt"><div class="ph"><span>確認（會顯示剛剛設定的值）</span><button class="copy" type="button">複製</button></div><pre>git config --global user.name
+git config --global user.email</pre></div>
+        </div>
+        <div class="stack">
+          <div class="card"><strong>名字可以用代號</strong>
+            <p>Git 的名字不等於 GitHub 帳號名稱；不想露出本名，可以填任何文字。</p></div>
+          <div class="card warm"><strong>Email 要跟 GitHub 對得上</strong>
+            <p>用註冊 GitHub 的 Email（或 GitHub 提供的 noreply Email），版本紀錄才會算在你的帳號上。</p></div>
+          <div class="card alert"><strong>打錯了？</strong>
+            <p>重新執行同一行設定即可；只影響之後的版本，之前的不會改。</p></div>
+        </div>
+      </div>
+      <p class="src">來源：docs.github.com〈Setting your username in Git〉、〈Setting your commit email address〉（2026-10-20 查閱）。</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>12 / 24</span></div>
+      <aside class="notes">在 Cursor 內建終端機執行（Windows 也可以用 Git Bash）。--global 代表這台電腦所有專案都用這組設定。GitHub 文件：Git username 不等於 GitHub username；email 可用 noreply；修改只影響之後的 commit。共用電腦的同仁要注意：global 設定會套用到這台電腦的所有人。</aside>
     </section>
 
     <!-- 10 Cursor 4 個基本功 -->
-    <section class="slide" id="s10" data-title="Cursor 基本功">
-      <p class="kicker">Cursor 上手 · 帶做設定（20:00–20:10）</p>
+    <section class="slide" id="s13" data-title="④ Cursor 基本功">
+      <p class="kicker">帶做 ④ · Cursor 4 個基本功（19:50–19:55）</p>
       <h2 class="tight">今晚先學 4 個基本功</h2>
       <div class="grid four">
         <div class="card"><div class="num">1</div><strong>開啟專案資料夾</strong>
@@ -801,16 +872,56 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
         <div class="card"><strong>同一個問題，兩種模式差在哪</strong>
           <p>同樣問「行事曆的逾期怎麼判斷？」：Ask 只會解釋；Agent 會動手改檔案。所以<b>要改檔案才用 Agent</b>。</p></div>
         <div class="card"><strong>第 3 場才會用到</strong>
-          <p>在內建終端機執行 npm run dev、瀏覽器開 localhost 看原型、每完成一步存一個版本（commit）。</p></div>
+          <p>在內建終端機執行 npm run dev、瀏覽器開 localhost 看原型。今晚先學存版本（commit）和推上 GitHub。</p></div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>10 / 17</span></div>
-      <aside class="notes">出自講義「Cursor 設定」6 項中的 1、2、3、5；第 4 項規則檔下一頁做；第 6 項執行與回報錯誤留到第 3 場。講義提醒：Agent、Ask、Checkpoint 等介面名稱可能依 Cursor 版本不同，以當時畫面為準。示範時投影我的畫面，大家跟著做。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>13 / 24</span></div>
+      <aside class="notes">出自講義「Cursor 設定」6 項中的 1、2、3、5；第 4 項規則檔在帶做 ⑤ 做；第 6 項執行與回報錯誤留到第 3 場。講義提醒：Agent、Ask、Checkpoint 等介面名稱可能依 Cursor 版本不同，以當時畫面為準。示範時投影我的畫面，大家跟著做。</aside>
+    </section>
+
+    <!-- 推上 GitHub 的規矩 + .gitignore -->
+    <section class="slide dense" id="s14" data-title="推上 GitHub 的規矩">
+      <p class="kicker">帶做 ⑤ 之前 · 推上 GitHub 的規矩</p>
+      <h2 class="tight">儲存庫一律私人、只放虛構資料，再加一個 .gitignore</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card alert"><strong>絕對不能 commit／push 的東西</strong>
+            <ul>
+              <li>真實客戶資料、真實統一編號、身分證字號、銀行帳號、發票</li>
+              <li>密碼、驗證碼、API 金鑰、token、.env 檔</li>
+              <li>規格書全文（只放附錄 B 練習摘錄）</li>
+            </ul></div>
+          <div class="card"><strong>儲存庫一律 Private</strong>
+            <p>建立時選「Private」；建好後在 github.com 名稱旁應看到 Private 標示。</p></div>
+          <div class="card warm"><strong>萬一推上去了</strong>
+            <p>馬上停、跟我說。刪掉檔案再 commit 並不會從歷史紀錄消失，要另外處理。</p></div>
+          <p class="src">來源：docs.github.com〈Adding locally hosted code to GitHub〉（不要 commit 密碼、API 金鑰等敏感資訊）、〈Ignoring files〉（2026-10-20 查閱）。</p>
+        </div>
+        <div class="stack">
+          <div class="prompt" style="--pmax:44vh"><div class="ph"><span>.gitignore（放在專案根目錄；⑤ 會請 Cursor 建立）</span><button class="copy" type="button">複製</button></div><pre># 金鑰與環境設定：絕對不要上傳
+.env
+.env.*
+
+# Node.js／Next.js（第 3 場會產生）
+node_modules/
+.next/
+
+# 系統與記錄檔
+.DS_Store
+Thumbs.db
+*.log</pre></div>
+          <div class="card"><strong>.gitignore 是什麼</strong>
+            <p>一張「不要放進版本」的清單。寫在裡面的檔案，git add 時會自動跳過。</p>
+            <p class="mini">它是保險，不是許可：真實資料本來就不能放進專案資料夾。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>14 / 24</span></div>
+      <aside class="notes">GitHub 文件明確警告：不要 add／commit／push 密碼或 API 金鑰等敏感資訊；若已推上去，要依〈Removing sensitive data from a repository〉處理（改寫歷史），課堂上一律先停、找我。.gitignore 內容跟 AGENTS.md「.env* 不得建立或提交」與講義 3-8「排除 node_modules、.env*、.next」一致。</aside>
     </section>
 
     <!-- 11 AGENTS.md -->
-    <section class="slide dense" id="s11" data-title="AGENTS.md 規則檔">
-      <p class="kicker">Cursor 上手 · 專案規則檔 · 模式：Agent</p>
-      <h2 class="tight">第一個任務：讓 Cursor 建好規則檔 AGENTS.md 和需求摘錄</h2>
+    <section class="slide dense" id="s15" data-title="⑤ 規則檔＋.gitignore">
+      <p class="kicker">帶做 ⑤ · 規則檔＋.gitignore（19:55–20:00）· 模式：Agent</p>
+      <h2 class="tight">讓 Cursor 建好 AGENTS.md、.gitignore 和需求摘錄</h2>
       <div class="grid two">
         <div class="prompt compact" style="--pmax:66vh"><div class="ph"><span>AGENTS.md（完整內容，貼進 C-1 的【】）</span><button class="copy" type="button">複製</button></div><pre># 專案規則：企業報稅作業平台（練習原型）
 - 這是興銘聯合會計師事務所內訓用的練習原型，不是正式系統。
@@ -826,27 +937,28 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
 - 每次修改後，請列出改了哪些檔案，並說明使用者要如何在畫面上確認。
 - 回覆使用者時用非工程師看得懂的繁體中文。</pre></div>
         <div class="stack">
-          <div class="prompt" style="--pmax:34vh"><div class="ph"><span>C-1｜建立規則檔與需求摘錄（改自 3-2）· Agent</span><button class="copy" type="button">複製</button></div><pre>請在目前開啟的資料夾（tax-platform-demo）建立以下檔案，內容依我提供的文字，不要自行增刪：
+          <div class="prompt" style="--pmax:36vh"><div class="ph"><span>C-1｜建立規則檔與需求摘錄（改自 3-2）· Agent</span><button class="copy" type="button">複製</button></div><pre>請在目前開啟的資料夾（tax-platform-demo）建立以下檔案，內容依我提供的文字，不要自行增刪：
 1. AGENTS.md：內容如下<span class="fill">【貼上投影片左邊「AGENTS.md」全文】</span>
-2. docs/需求摘錄.md：把下面的需求摘錄整理成 Markdown 表格（保留需求編號與文字）<span class="fill">【貼上講義附錄 B 全部內容，含「資料實體摘要」】</span>
-今晚只建立這兩個檔案：不要建立 Next.js 專案、不要安裝任何套件、不要執行任何指令、不要建立 .env 檔案。
+2. .gitignore：內容如下<span class="fill">【貼上「推上 GitHub 的規矩」那頁的 .gitignore 全文】</span>
+3. docs/需求摘錄.md：把下面的需求摘錄整理成 Markdown 表格（保留需求編號與文字）<span class="fill">【貼上講義附錄 B 全部內容，含「資料實體摘要」】</span>
+今晚只建立這三個檔案：不要建立 Next.js 專案、不要安裝任何套件、不要執行任何指令、不要建立 .env 檔案。
 完成後請列出每個檔案的路徑。</pre></div>
           <div class="card warm"><strong>如何確認</strong>
             <ul>
-              <li>差異畫面只出現 AGENTS.md、docs/需求摘錄.md 兩個新檔</li>
+              <li>差異畫面只出現 AGENTS.md、.gitignore、docs/需求摘錄.md 三個新檔</li>
               <li>打開 docs/需求摘錄.md，抽查 FR-CASE-001 的 7 個狀態有沒有被改字</li>
               <li>確認後才按接受</li>
             </ul></div>
           <p class="mini">AGENTS.md 也可以放在 .cursor/rules 規則資料夾（依版本支援情況）。規則裡提到的 data/虛構資料.json、config/parameters.ts、lib/caseStatus.ts 第 3 場才會建立。</p>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>11 / 17</span></div>
-      <aside class="notes">AGENTS.md 全文照講義 v1.1「專案規則檔」，一字不改。C-1 是講義 3-2 的第 1、2 項，加上「今晚不要建 Next.js、不要裝套件、不要執行指令」。Cursor 每次對話都會參考 AGENTS.md，所以規則寫一次就好。這頁是第一次看差異再接受，慢慢來。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>15 / 24</span></div>
+      <aside class="notes">AGENTS.md 全文照講義 v1.1「專案規則檔」，一字不改。C-1 是講義 3-2 的第 1、2 項，再加 .gitignore，並加上「今晚不要建 Next.js、不要裝套件、不要執行指令」。Cursor 每次對話都會參考 AGENTS.md，所以規則寫一次就好。這頁是第一次看差異再接受，慢慢來。</aside>
     </section>
 
     <!-- 12 實作 C 分組 -->
-    <section class="slide dense" id="s12" data-title="實作 C：分組">
-      <p class="kicker">實作 C · 把今晚成果存成檔案（20:10–20:30）· 模式：Agent</p>
+    <section class="slide dense" id="s16" data-title="⑥ 實作 C：分組">
+      <p class="kicker">帶做 ⑥ · 實作 C：把今晚成果存成檔案（20:00–20:15）· 模式：Agent</p>
       <h2 class="tight">各組把資料表設計和虛構資料，交給 Cursor 存進專案</h2>
       <div class="grid two">
         <div class="stack">
@@ -874,14 +986,14 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
             <p>invoices.csv 共 12 筆；#4 稅額 4800；#10 對方統編 9910000（7 位，原樣保留，第 4 場會用到）。</p></div>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>12 / 17</span></div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>16 / 24</span></div>
       <aside class="notes">這是今晚自訂的練習，改寫自講義 3-2（建立參考檔）與 3-6（只做一件事）的寫法；不是完整原型。重點練「看差異再接受」：差異只能出現指定的檔案，Agent 想改別的就先拒絕並問原因。第 2 組的「看起來有錯也不要修正」很重要：#4、#7、#8、#10 是第 4 場預埋的異常，不要現在公布答案。</aside>
     </section>
 
     <!-- 13 實作 C 共同＋Ask＋卡關 -->
-    <section class="slide dense" id="s13" data-title="實作 C：共同＋Ask">
-      <p class="kicker">實作 C · 兩組共同 · 先 Agent 建檔，再用 Ask 檢查</p>
-      <h2 class="tight">流程圖也存進專案，再請 Cursor 用 Ask 模式幫忙對照</h2>
+    <section class="slide dense" id="s17" data-title="⑥ 實作 C：共同">
+      <p class="kicker">帶做 ⑥ · 實作 C 兩組共同 · 模式：Agent</p>
+      <h2 class="tight">流程圖也存進專案；先不要 commit，等 ⑦⑧ 一起推</h2>
       <div class="grid two">
         <div class="stack">
           <div class="prompt compact" style="--pmax:32vh"><div class="ph"><span>C-3｜狀態流程文件 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md 與 @docs/需求摘錄.md 的 FR-CASE-001、FR-CASE-004，建立 docs/狀態流程.md（只建立這個檔案，不要執行任何指令）：
@@ -890,21 +1002,20 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
 3. 最上方註明「練習用｜狀態規則以 FR-CASE-001 為準」。
 
 <span class="fill">【貼上實作 B（2-2）修正後的 A、B、C 三段】</span></pre></div>
-          <div class="prompt compact" style="--pmax:32vh"><div class="ph"><span>C-4｜請 Cursor 對照檢查 · Ask</span><button class="copy" type="button">複製</button></div><pre>請用非工程師看得懂的繁體中文，對照 @docs/需求摘錄.md 的 FR-CASE-001、FR-CASE-004，檢查 @docs/狀態流程.md 與 @docs/資料表設計.md：
-1. 狀態是否剛好 7 個、名稱是否一致。
-2. 退回路徑（待覆核／已核准 → 整理中）與「已申報直接結案」是否都有。
-3. 有沒有讓承辦人與覆核人變成同一人的漏洞。
-4. 業務資料表是否都有 client_id。
-每個發現標示信心程度（高／中／低）。只回答，不要修改檔案。</pre></div>
+          <div class="card"><strong>做完 C-2、C-3 之後</strong>
+            <ul>
+              <li>逐一看差異，只接受指定的檔案</li>
+              <li>打開 docs/狀態流程.md，確認 7 個狀態名稱沒被改字</li>
+              <li>先不要 commit：帶做 ⑦ 會請 Cursor 用 Ask 模式先檢查一次，再一起推上 GitHub</li>
+            </ul></div>
         </div>
         <div class="stack">
           <div class="card warm"><strong>今晚做完，資料夾長這樣</strong>
             <ul>
-              <li>AGENTS.md</li>
+              <li>AGENTS.md、.gitignore</li>
               <li>docs/需求摘錄.md、docs/資料表設計.md、docs/狀態流程.md</li>
               <li>data/cases.csv（第 1 組）或 data/invoices.csv（第 2 組）</li>
-            </ul>
-            <p class="mini">Ask 模式不改檔案：C-4 做完，差異畫面應該什麼都沒有。</p></div>
+            </ul></div>
           <details class="more">
             <summary>卡關時：T-1 貼錯誤訊息 · Agent</summary>
             <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>T-1｜貼錯誤訊息</span><button class="copy" type="button">複製</button></div><pre>執行時出現下面的錯誤。請：
@@ -931,13 +1042,133 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
           </details>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>13 / 17</span></div>
-      <aside class="notes">C-3、C-4 為今晚自訂練習，C-4 的寫法改自講義 3-7（Ask 解釋）與 4-4（審查者挑錯）。T-1～T-3 原文照講義「卡關時」，只把 T-3 的範例檔名換成今晚的檔案；今晚不執行程式，最常用的是 T-2（改壞回上一版）和 T-3。T-2 不要用會刪除檔案的指令，除非我在場確認。20:30 準時收，沒做完的列作業。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Cursor 上手</span><span>17 / 24</span></div>
+      <aside class="notes">C-3 為今晚自訂練習。原本的 C-4（Ask 對照檢查）併到帶做 ⑦ 的 A-1（推送前檢查）。T-1～T-3 原文照講義「卡關時」，只把 T-3 的範例檔名換成今晚的檔案；今晚最常用的是 T-2（改壞回上一版）和 T-3。T-2 不要用會刪除檔案的指令，除非我在場確認。20:15 準時進入 GitHub 步驟，C-2、C-3 沒做完的人先推已完成的檔案，其餘回家補。</aside>
+    </section>
+
+    <!-- ⑦ 建立私人 repo -->
+    <section class="slide dense" id="s18" data-title="⑦ 建立私人 repo">
+      <p class="kicker">帶做 ⑦ · 建立 GitHub 私人儲存庫（20:15–20:20）</p>
+      <h2 class="tight">在 GitHub 建一個「空的、私人的」tax-platform-demo</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="card"><strong>步驟（github.com 網頁）</strong>
+            <ol>
+              <li>右上角「＋」→ New repository（依版本可能不同）</li>
+              <li>Repository name：<b>tax-platform-demo</b></li>
+              <li>Visibility：選 <b>Private</b></li>
+              <li><b>README、.gitignore、license 都不要勾</b>（我們的專案已經有檔案，勾了 push 會被拒絕）</li>
+              <li>按 Create repository，在 Quick Setup 頁複製 HTTPS 網址</li>
+            </ol></div>
+          <div class="prompt"><div class="ph"><span>捷徑：直接開這個網址（已預填名稱＋Private）</span><button class="copy" type="button">複製</button></div><pre>https://github.com/new?name=tax-platform-demo&amp;visibility=private</pre></div>
+          <p class="mini">網址長這樣：https://github.com/【你的帳號】/tax-platform-demo.git</p>
+        </div>
+        <div class="stack">
+          <div class="prompt" style="--pmax:44vh"><div class="ph"><span>A-1｜推送前請 Cursor 檢查＋寫 commit 訊息 · Ask</span><button class="copy" type="button">複製</button></div><pre>請先不要修改任何檔案，也不要執行 commit 或 push。
+我準備把這個專案第一次推到 GitHub 的私人儲存庫，請幫我檢查：
+1. 用表格列出目前資料夾中會被放進版本的檔案（路徑、一句話用途），並對照 @.gitignore 說明哪些會被排除。
+2. 檢查 @AGENTS.md、@docs、@data 有沒有疑似真實資料或機密：真實公司名稱、附錄 A 虛構代號以外的統一編號、身分證字號、銀行帳號、密碼、金鑰、token。有疑慮就列出檔案與行數，並建議我先停下來。
+3. 幫我寫一則 commit 訊息：繁體中文、一行、50 字以內，說明這次放了哪些東西，例如「第2場：規則檔、需求摘錄、資料表設計與虛構資料」。</pre></div>
+          <p class="mini">Ask 模式只回答、不改檔案。AI 的檢查是輔助，自己也要看一遍檔案清單。</p>
+        </div>
+      </div>
+      <p class="src">來源：docs.github.com〈Creating a new repository〉（含 URL 預填 name、visibility 參數）、〈Adding locally hosted code to GitHub〉（建立時不要勾 README 等以免出錯）。2026-10-20 查閱。</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>18 / 24</span></div>
+      <aside class="notes">GitHub 文件支援用網址參數預填：/new?name=...&amp;visibility=private，我可以把這個網址貼到群組。repo 名稱只能用英數與 . - _。最常見的錯就是勾了 README，後面 push 會出現 rejected；這頁一定要強調。A-1 是今晚新寫的 Ask 提示詞。</aside>
+    </section>
+
+    <!-- ⑧ commit + push -->
+    <section class="slide dense" id="s19" data-title="⑧ commit 與 push">
+      <p class="kicker">帶做 ⑧ · 第一次 commit＋push（20:20–20:35）</p>
+      <h2 class="tight">兩條路都可以：Cursor 的版本控制面板，或終端機指令</h2>
+      <div class="grid two">
+        <div class="stack">
+          <div class="card"><span class="pill">路線 A · Cursor 版本控制面板（Source Control）</span>
+            <ol>
+              <li>打開側邊的 Source Control 面板，確認列出的檔案（沒有 .env、沒有真實資料）</li>
+              <li>把要放進版本的檔案「暫存（stage）」</li>
+              <li>按訊息欄旁的 ✨ 讓 AI 產生 commit 訊息，<b>改成你看得懂的中文</b>再 Commit</li>
+              <li>推送（Publish／Sync／Push）：按鈕名稱與位置依版本可能不同；找不到就改用右邊的終端機指令</li>
+            </ol>
+            <p class="mini">資料夾還沒有 Git 時，面板按鈕依版本可能不同；最穩的作法是先在終端機執行右側第 1 行 git init -b main。</p></div>
+          <div class="card warm"><strong>第一次 push：瀏覽器授權</strong>
+            <p>會跳出 Git Credential Manager 視窗或瀏覽器，請你登入 GitHub、授權（可能先授權一個 OAuth App）；有開 2FA 的要輸入驗證碼。之後就會記住，不用每次登入。</p>
+            <p class="mini">GitHub 帳號密碼、驗證碼只在 GitHub 官方視窗輸入，不要貼到 Cursor 對話。</p></div>
+        </div>
+        <div class="stack">
+          <div class="prompt" style="--pmax:52vh"><div class="ph"><span>路線 B · 終端機（在 tax-platform-demo 資料夾執行）</span><button class="copy" type="button">複製</button></div><pre># 1. 讓這個資料夾開始用 Git（預設分支 main）
+git init -b main
+
+# 2. 加入檔案，先看清單再 commit
+git add .
+git status
+git commit -m "<span class="fill">【A-1 建議的 commit 訊息】</span>"
+
+# 3. 連到 GitHub 的私人儲存庫
+git remote add origin https://github.com/<span class="fill">【你的帳號】</span>/tax-platform-demo.git
+git remote -v
+
+# 4. 推上去（第一次會跳出瀏覽器授權）
+git push -u origin main</pre></div>
+          <p class="mini">建議一次貼一段、看完結果再貼下一段。git status 清單裡如果出現 .env 或不認識的檔案，先停。</p>
+        </div>
+      </div>
+      <p class="src">來源：docs.github.com〈Adding locally hosted code to GitHub〉、〈Caching your GitHub credentials in Git〉；cursor.com/help/integrations/git（Source Control 面板 ✨ 產生 commit 訊息）。2026-10-20 查閱。</p>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>19 / 24</span></div>
+      <aside class="notes">Cursor 官方說明只寫到：Cursor 在標準 Source Control 面板上加了 AI 功能，暫存後按 ✨ 產生 commit 訊息。Initialize／Publish 等按鈕 Cursor 文件沒有寫，所以投影片只說「依版本可能不同」，主推終端機。git init -b main 需要 Git 2.28 以上。GitHub 文件：Windows 的 Git for Windows 內含 GCM，第一次 push 會開瀏覽器登入、可能要授權 OAuth App、要過 2FA；憑證存在 Windows 認證管理員。另外：Cursor 後台的「GitHub 整合」是給 Cloud Agents、Bugbot 用的，需要管理員權限，今晚不需要。</aside>
+    </section>
+
+    <!-- 驗收 + 卡關 -->
+    <section class="slide dense" id="s20" data-title="驗收與卡關">
+      <p class="kicker">驗收（20:35–20:40）· 卡關時展開下面的方塊</p>
+      <h2 class="tight">在 github.com 看到自己的檔案，而且是 Private，才算完成</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card"><strong>驗收清單（每人）</strong>
+            <ul>
+              <li>☐ git --version 顯示版本；git config 顯示名字與 Email</li>
+              <li>☐ github.com 上有 tax-platform-demo，名稱旁標示 <b>Private</b></li>
+              <li>☐ 看得到 AGENTS.md、.gitignore、docs/、data/</li>
+              <li>☐ 沒有 .env、沒有任何真實資料</li>
+              <li>☐ 最新一筆版本紀錄的作者是自己</li>
+            </ul></div>
+          <div class="card warm"><span class="pill o">選做 · 待確認</span><strong>邀請講師當協作者</strong>
+            <p>repo 頁面 Settings → Collaborators → Add people → 輸入講師帳號（依版本可能不同）。</p>
+            <p class="mini">注意：私人 repo 的協作者會有寫入權限，不是唯讀。要不要邀請，依講師指示。</p></div>
+          <p class="src">來源：docs.github.com〈Inviting collaborators to a personal repository〉、〈Permission levels for a personal account repository〉、〈Dealing with non-fast-forward errors〉、〈Caching your GitHub credentials in Git〉、〈Setting your commit email address〉。2026-10-20 查閱。</p>
+        </div>
+        <div class="stack">
+          <details class="more">
+            <summary>卡關 1：驗證失敗／一直要求輸入密碼</summary>
+            <div class="card"><p>GitHub 推送要用瀏覽器授權登入，輸入帳號密碼會失敗。Windows 若存到錯誤的帳號：控制台 → 使用者帳戶 → 認證管理員，刪掉 GitHub 那一筆，再 push 一次就會重新跳出登入。Mac 請確認已裝 git-credential-manager（見帶做 ②）。</p></div>
+          </details>
+          <details class="more">
+            <summary>卡關 2：push 出現 rejected（通常是建 repo 時勾了 README）</summary>
+            <div class="card"><p><b>不要用強制推送（--force）。</b>最簡單：照帶做 ⑦ 另建一個「空的」私人 repo（例如 tax-platform-demo-2），把網址換過去再推：</p></div>
+            <div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>換成新的 repo 網址</span><button class="copy" type="button">複製</button></div><pre>git remote set-url origin https://github.com/<span class="fill">【你的帳號】</span>/tax-platform-demo-2.git
+git push -u origin main</pre></div>
+          </details>
+          <details class="more">
+            <summary>卡關 3：名字或 Email 設錯</summary>
+            <div class="card"><p>重新執行帶做 ③ 的兩行設定；只影響之後的版本。已推上去的這一筆先不用管，下次 commit 就會正確。</p></div>
+          </details>
+          <details class="more">
+            <summary>卡關 4：「git 不是內部或外部命令」／command not found</summary>
+            <div class="card"><p>剛裝完 Git 時常見：<b>完全關閉 Cursor 再打開</b>，重新開終端機再試 git --version。還是不行就重跑安裝程式（預設選項），或舉手找我。</p></div>
+          </details>
+          <details class="more">
+            <summary>卡關 5：remote origin already exists</summary>
+            <div class="prompt compact" style="--pmax:10vh"><div class="ph"><span>改成正確的網址</span><button class="copy" type="button">複製</button></div><pre>git remote set-url origin https://github.com/<span class="fill">【你的帳號】</span>/tax-platform-demo.git</pre></div>
+          </details>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 帶做設定</span><span>20 / 24</span></div>
+      <aside class="notes">GitHub 文件：非快轉錯誤可用 git pull 合併遠端變更後再推；但新手處理合併訊息容易卡在編輯器，所以課堂上建議另建空 repo 改 remote。舊憑證：GitHub 文件說明到 Windows 控制台的認證管理員刪除 GitHub 項目。協作者：GitHub 文件說私人個人 repo 的協作者只能給寫入權限，所以要不要邀請講師，請事務所／講師決定。重開 Cursor 讓 Git 生效是一般作法，非官方文件步驟。</aside>
     </section>
 
     <!-- 14 Grok Bot 第2週 概念 -->
-    <section class="slide" id="s14" data-title="Grok Bot：例行排程">
-      <p class="kicker">20:30 · Grok Bot 第 2 週 · 例行排程（routines）</p>
+    <section class="slide" id="s21" data-title="Grok Bot：例行排程">
+      <p class="kicker">20:40 · Grok Bot 第 2 週 · 例行排程（routines）· 15 分鐘</p>
       <h2 class="tight">教「興銘小幫手」定時做事：每個工作日早上提醒到期案件</h2>
       <div class="grid split-r">
         <div class="stack">
@@ -946,10 +1177,10 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
             <p class="mini">觸發可以是時間排程（例如每個工作日 08:30、每週一）或事件；可用的事件種類可能依版本不同。</p></div>
           <div class="prompt" style="--pmax:20vh"><div class="ph"><span>Routine 句型（寫在白板）</span><button class="copy" type="button">複製</button></div><pre>每<span class="fill">【頻率與時間（含時區）】</span>，請<span class="fill">【動作】</span>；資料來源<span class="fill">【只用哪些資料】</span>；輸出<span class="fill">【格式、給誰】</span>；若<span class="fill">【條件】</span>則<span class="fill">【標示或處理】</span>；不要<span class="fill">【禁止事項：不寄信、不推算期限、不猜】</span>。建立前先複述，等我回覆「確認」。</pre></div>
           <div class="timeline">
-            <div class="tl"><b>20:30–20:33</b><span class="m">3′</span><span>回顧上週記憶檢查＋規則複誦</span></div>
-            <div class="tl"><b>20:33–20:39</b><span class="m">6′</span><span>講師示範：G2-1 → Bot 複述 → 確認 → G2-4 模擬</span></div>
-            <div class="tl hot"><b>20:39–20:50</b><span class="m">11′</span><span>學員實作：G2-1 必做＋分組加做＋G2-4 核對</span></div>
-            <div class="tl"><b>20:50–20:55</b><span class="m">5′</span><span>分享 3′＋用 G2-5 暫停課堂 routine 2′</span></div>
+            <div class="tl"><b>20:40–20:43</b><span class="m">3′</span><span>routine 是什麼＋規則複誦</span></div>
+            <div class="tl"><b>20:43–20:46</b><span class="m">3′</span><span>講師示範：G2-1 → Bot 複述 → 回「確認」</span></div>
+            <div class="tl hot"><b>20:46–20:52</b><span class="m">6′</span><span>學員實作：G2-1（新手可用 G2-S）</span></div>
+            <div class="tl"><b>20:52–20:55</b><span class="m">3′</span><span>G2-4 模擬核對＋G2-5 暫停課堂 routine</span></div>
           </div>
         </div>
         <div class="stack">
@@ -967,13 +1198,13 @@ D. 3 個用附錄 A 虛構資料寫的測試情境（例如：示範貿易 2026 
             <p>Bot 的提醒是草稿，不是專業意見；承辦人每天看提醒，期限表每年（及法規變動時）由主管M查核。</p></div>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>14 / 17</span></div>
-      <aside class="notes">出自 Grok Bot 講義第七章與第四章第 4 條。示範前關閉通知、確認投影畫面沒有真實信件。routine 的通知方式（App 內或其他管道）與排程時區設定，課前我要先確認（講義標示可能依版本不同、需確認）。本講義不提供點選路徑，只講「對 Bot 怎麼說」。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>21 / 24</span></div>
+      <aside class="notes">出自 Grok Bot 講義第七章與第四章第 4 條；講義原為 25 分鐘，今晚縮成 15 分鐘。示範前關閉通知、確認投影畫面沒有真實信件。routine 的通知方式（App 內或其他管道）與排程時區設定，課前我要先確認（講義標示可能依版本不同、需確認）。本講義不提供點選路徑，只講「對 Bot 怎麼說」。</aside>
     </section>
 
     <!-- 15 G2-1 -->
-    <section class="slide dense" id="s15" data-title="練習 G2-1">
-      <p class="kicker">練習 G2-1 · 全員必做</p>
+    <section class="slide dense" id="s22" data-title="練習 G2-1">
+      <p class="kicker">練習 G2-1 · 全員必做（20:43–20:52）</p>
       <h2 class="tight">建立「工作日申報期限提醒」：建立前先請 Bot 複述</h2>
       <div class="grid split">
         <div class="prompt compact" style="--pmax:66vh"><div class="ph"><span>G2-1｜工作日申報期限提醒 routine</span><button class="copy" type="button">複製</button></div><pre>請幫我建立一個例行排程（routine）：
@@ -1011,30 +1242,36 @@ C008｜CL-A 示範貿易（虛構）｜房屋稅（繳款追蹤）｜2026｜2026
           </details>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>15 / 17</span></div>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>22 / 24</span></div>
       <aside class="notes">示範重點：故意在 G2-1 漏寫時區，看 Bot 會不會問、還是自己假設，再指出要明確寫 Asia/Taipei。錯誤情境示範：問 Bot「營業稅法定申報期限是哪天？」——指出 routine 只能用查核過的期限表，Bot 的回答只能當線索。G-3 與主講義附錄 A-3 是同一份資料。</aside>
     </section>
 
-    <!-- 16 G2 分組＋模擬 -->
-    <section class="slide dense" id="s16" data-title="練習 G2-2～G2-4">
-      <p class="kicker">分組加做 · 再用 G2-4 模擬執行一次</p>
-      <h2 class="tight">第 1 組做週期提醒、第 2 組做每週摘要，最後一起對答案</h2>
+    <!-- G2-4 模擬＋對答案 -->
+    <section class="slide dense" id="s23" data-title="G2-4 模擬與對答案">
+      <p class="kicker">Grok Bot 第 2 週 · 模擬執行一次（20:50–20:55）</p>
+      <h2 class="tight">用 G2-4 讓 Bot 跑一次，對照答案，再暫停課堂 routine</h2>
       <div class="grid two">
         <div class="stack">
-          <div class="prompt compact" style="--pmax:39vh"><div class="ph"><span>第 1 組｜G2-2 週期性稅目提醒</span><button class="copy" type="button">複製</button></div><pre>請建立兩個提醒 routine（時區 Asia/Taipei），只提醒我本人：
+          <div class="prompt compact"><div class="ph"><span>全員｜G2-4 列出 routine 並模擬執行一次</span><button class="copy" type="button">複製</button></div><pre>請列出我目前所有的 routine：名稱、觸發條件、下一次執行時間（Asia/Taipei）、會做什麼、輸出給誰。然後把今天當作 2026-10-20，立即模擬執行一次「工作日申報期限提醒」，讓我核對結果（模擬即可，不要寄出任何東西）。</pre></div>
+          <div class="prompt compact"><div class="ph"><span>收尾｜G2-5 暫停課堂 routine（或保留一個並標「練習」）</span><button class="copy" type="button">複製</button></div><pre>請把「<span class="fill">【routine 名稱】</span>」<span class="fill">【暫停／改為每週一、三、五 08:30／刪除】</span>。完成後重新列出所有 routine 與下一次執行時間。</pre></div>
+          <details class="more">
+            <summary>課後選做（第 1 組）：G2-2 週期性稅目提醒</summary>
+            <div class="prompt compact" style="--pmax:16vh"><div class="ph"><span>G2-2｜週期性稅目提醒</span><button class="copy" type="button">複製</button></div><pre>請建立兩個提醒 routine（時區 Asia/Taipei），只提醒我本人：
 A. 營業稅（一般稅額計算，每 2 個月為一期）：在<span class="fill">【月份，例如 1、3、5、7、9、11 月】</span>的<span class="fill">【第 1 個工作日】</span>09:00 提醒我：上一期申報作業開始，需向客戶 CL-A、CL-B（虛構）收集上一期發票資料；申報期限<span class="fill">【依官方公告查核後填入，待確認】</span>。
 B. 扣繳（每月）：每月<span class="fill">【第 1 個工作日】</span>09:00 提醒我：檢查 CL-A、CL-B 上個月有無扣繳給付；繳款期限<span class="fill">【依官方公告查核後填入，待確認】</span>。
 共同規則：所有期限文字後面加「（待確認，以財政部／國稅局公告為準）」；不要自行說明法定期限是哪一天；不要寄出任何信件。
 建立前先複述兩個 routine 的觸發條件與內容，並告訴我下一次執行的日期時間，等我回覆「確認」。</pre></div>
-          <div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>第 2 組｜G2-3 每週待辦摘要</span><button class="copy" type="button">複製</button></div><pre>請建立一個 routine：每週一 08:00（Asia/Taipei）給我一份「本週待辦摘要」，只給我本人：
+          </details>
+          <details class="more">
+            <summary>課後選做（第 2 組）：G2-3 每週待辦摘要</summary>
+            <div class="prompt compact" style="--pmax:16vh"><div class="ph"><span>G2-3｜每週待辦摘要</span><button class="copy" type="button">複製</button></div><pre>請建立一個 routine：每週一 08:00（Asia/Taipei）給我一份「本週待辦摘要」，只給我本人：
 1. 本週到期事項：依我提供的期限表。
 2. 待辦事項：依我在對話中交代、尚未標示完成的待辦。
 3. 需要主管M確認的事項。
 格式：3 行重點＋表格，全部不超過一頁。若某項資訊無法取得，直接寫「無法取得：原因」，不要猜。建立前先複述並等我確認。</pre></div>
-
+          </details>
         </div>
         <div class="stack">
-          <div class="prompt compact" style="--pmax:17vh"><div class="ph"><span>全員｜G2-4 列出 routine 並模擬執行一次</span><button class="copy" type="button">複製</button></div><pre>請列出我目前所有的 routine：名稱、觸發條件、下一次執行時間（Asia/Taipei）、會做什麼、輸出給誰。然後把今天當作 2026-10-20，立即模擬執行一次「工作日申報期限提醒」，讓我核對結果（模擬即可，不要寄出任何東西）。</pre></div>
           <div class="card warm"><strong>對答案：今天＝2026-10-20（虛構期限表）</strong>
             <table class="plan">
               <tr><th>案件</th><th>應該怎麼出現</th></tr>
@@ -1043,44 +1280,49 @@ B. 扣繳（每月）：每月<span class="fill">【第 1 個工作日】</span>
               <tr><td>C001、C004 2026-11-15；C007 2026-11-30</td><td>不在 14 天內，不列</td></tr>
               <tr><td>C002、C008 結案；C005 已繳款</td><td>不列</td></tr>
             </table></div>
-          <div class="prompt compact" style="--pmax:14vh"><div class="ph"><span>收尾｜G2-5 暫停課堂 routine（或保留一個並標「練習」）</span><button class="copy" type="button">複製</button></div><pre>請把「<span class="fill">【routine 名稱】</span>」<span class="fill">【暫停／改為每週一、三、五 08:30／刪除】</span>。完成後重新列出所有 routine 與下一次執行時間。</pre></div>
+          <div class="card alert"><strong>Bot 有沒有犯這些錯？</strong>
+            <ul>
+              <li>自己推算了「法定期限」，或沒標「待確認」</li>
+              <li>把已繳款、結案的案件也列進來</li>
+              <li>說要「通知承辦人」：我們只要求提醒本人，不寄給任何人</li>
+            </ul></div>
         </div>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>16 / 17</span></div>
-      <aside class="notes">講義 G2-4 原文是「今天當作 2026-10-19」，因為今晚改到 10/20，所以改成 2026-10-20；對答案結果和講義驗收標準一致（C003 逾期置頂、C006 列入、其他不列）。若 Bot 不支援「立即執行一次」或列出 routine，就請它直接依 G2-1 指示產出一次結果。分享 3 分鐘：Bot 複述跟你的意圖一不一致、模擬結果有沒有錯。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · Grok Bot 第 2 週</span><span>23 / 24</span></div>
+      <aside class="notes">講義 G2-4 原文是「今天當作 2026-10-19」，因為今晚是 10/20 所以改成 2026-10-20；對答案結果跟講義驗收標準一致。因為 GitHub 帶做佔了時間，Grok Bot 從 25 分鐘縮成 15 分鐘：分組加做的 G2-2、G2-3 改成課後選做，分享環節取消。若 Bot 不支援「立即執行一次」，就請它直接依 G2-1 指示產出一次結果。</aside>
     </section>
 
-    <!-- 17 作業與問卷 -->
-    <section class="slide" id="s17" data-title="作業與問卷">
+    <!-- 作業與問卷 -->
+    <section class="slide" id="s24" data-title="作業與問卷">
       <p class="kicker">作業（11/9 前，≤30 分鐘）· 反思小卡 · 課後問卷</p>
-      <h2 class="tight">11/9 第 3 場一開場就做原型：環境請先準備好</h2>
+      <h2 class="tight">Git、GitHub 今晚都連好了；回家只剩 Node.js</h2>
       <div class="grid">
-        <div class="card"><span class="pill">必做 · 10 分</span><strong>安裝 Node.js LTS＋Git</strong>
-          <p>到 Node.js 官網下載安裝 LTS 版；Windows 同仁另裝 Git for Windows（預設選項即可）。</p></div>
-        <div class="card"><span class="pill">必做 · 5 分</span><strong>在 Cursor 終端機驗證</strong>
-          <p>開啟 tax-platform-demo → 內建終端機（Terminal）依序輸入 <b>node -v</b>、<b>npm -v</b>、<b>git --version</b>，三行都顯示版本號；連同今晚 Cursor 回「你好」的截圖，放到共享資料夾「第2場」。</p></div>
-        <div class="card"><span class="pill">必做 · 15 分</span><strong>補完今晚的專案檔案</strong>
-          <p>沒做完的 C-1～C-3 補完；用 C-4（Ask）檢查一次，把發現記在交付物文件。</p></div>
+        <div class="card"><span class="pill">必做 · 10 分</span><strong>安裝 Node.js LTS 並驗證</strong>
+          <p>到 Node.js 官網下載安裝 LTS 版；在 Cursor 內建終端機輸入 <b>node -v</b>、<b>npm -v</b>，連同 git --version 截圖放到共享資料夾「第2場」。</p></div>
+        <div class="card"><span class="pill">必做 · 10 分</span><strong>沒推上去的補完</strong>
+          <p>今晚還沒完成 ⑥～⑧ 的，補完並在 github.com 確認 Private＋看得到檔案；repo 網址貼到交付物文件。</p></div>
+        <div class="card"><span class="pill">建議 · 10 分</span><strong>GitHub 開 2FA</strong>
+          <p>今晚沒開的，依帶做 ① 用手機驗證 App 開啟，復原碼存好。</p></div>
       </div>
       <div class="grid" style="margin-top:12px">
-        <div class="card"><span class="pill o">選做</span><strong>想想案件清單</strong>
-          <p>「案件清單」畫面你最想看到哪 5 個欄位？寫在交付物文件。Grok Bot：觀察 routine 是否準時、內容對不對，記下 1 個要改的地方。</p></div>
+        <div class="card"><span class="pill o">選做</span><strong>想想案件清單＋Grok Bot</strong>
+          <p>「案件清單」最想看到哪 5 個欄位？Grok Bot：做 G2-2 或 G2-3，觀察 routine 是否準時、內容對不對。</p></div>
         <div class="card"><strong>反思小卡（主課＋Grok Bot）</strong>
           <ul>
             <li>AI 哪裡看起來很像對，但我不敢信？我怎麼驗證？</li>
             <li>今天的產出，哪一部分是「我」的判斷？</li>
-            <li>今天有沒有不該讓 Cursor 或 Bot 讀到、記住的內容？</li>
+            <li>今天有沒有不該讓 Cursor、GitHub 或 Bot 讀到、記住的內容？</li>
           </ul></div>
         <div class="card warm"><strong>卡關怎麼辦</strong>
-          <p>截圖貼到群組，不用自己硬解。11/9 我 18:30 提早到場協助。</p>
+          <p>截圖貼到群組（畫面裡不要有密碼、驗證碼）。11/9 我 18:30 提早到場協助。</p>
           <p class="mini">交付物存「AI系統開發課_交付物／第2場」與「GrokBot_第2場」，只分享給我們 4 位。</p></div>
       </div>
       <div class="closing">
-        <div class="callout">今晚的資料表和流程圖已經在專案裡了；11/9 我們直接讓 Cursor 把它們做成畫面。下次見！</div>
+        <div class="callout">今晚的資料表和流程圖已經在 GitHub 私人儲存庫裡了；11/9 我們直接讓 Cursor 把它們做成畫面。下次見！</div>
         <a class="survey-link" href="https://aidc.work/s/ee50c25a3377356da55eb2575ebf2d10" target="_blank" rel="noopener">課後問卷</a>
       </div>
-      <div class="footer"><span>興銘內訓 · 第 2 場 · 收尾</span><span>17 / 17</span></div>
-      <aside class="notes">作業出自講義第七章「第 3 場前完成 Cursor 環境」，Cursor 安裝已在課堂完成，所以回家只剩 Node.js、Git 與驗證。小卡題目精簡自主講義第十章與 Grok Bot 講義第十二章（完整 5 題見講義）。11/6 前我會檢查「第2場」資料夾的驗證截圖，沒完成的請 11/9 18:30 提早到。課堂 routine 記得暫停。</aside>
+      <div class="footer"><span>興銘內訓 · 第 2 場 · 收尾</span><span>24 / 24</span></div>
+      <aside class="notes">作業依講義第七章調整：Cursor、Git、GitHub 已在課堂完成，回家只剩 Node.js LTS 與驗證。11/6 前我檢查「第2場」資料夾的截圖；沒完成的 11/9 18:30 提早到。第 3 場講義 3-8「建立私人 repo 並推上去」已在今晚完成，第 3 場只要 commit＋push 更新。課堂 routine 記得暫停。</aside>
     </section>
 
   </main>
@@ -1088,7 +1330,7 @@ B. 扣繳（每月）：每月<span class="fill">【第 1 個工作日】</span>
   <aside id="notes-panel" aria-live="polite" aria-label="講稿"><h4>講稿</h4><div id="notes-body"></div></aside>
   <div class="hint" id="hint" role="status" aria-live="polite"></div>
   <script>
-    const DECK_TITLE = "AI 系統開發內訓・第2場｜資料與流程＋Cursor 上手";
+    const DECK_TITLE = "AI 系統開發內訓・第2場｜資料與流程＋Cursor×GitHub 上手";
     const FS_STEPS = [0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4];
     const slides = [...document.querySelectorAll(".slide")];
     const countEl = document.getElementById("slide-counter");
