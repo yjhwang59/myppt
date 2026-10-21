@@ -22,7 +22,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "1 / 34",
+      "footerPage": "1 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -82,7 +82,7 @@
         "還沒好：18:15 起助教一台一台處理。18:30 準時開始，還沒弄好的先看旁邊同學的畫面。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "2 / 34"
+      "footerPage": "2 / 37"
     },
     {
       "slideId": "s3",
@@ -93,7 +93,7 @@
       "eyebrow": "00 / 今天怎麼走",
       "kicker": "",
       "h1": "",
-      "h2": "3 小時（18:30–21:30）：先熟悉 Cursor，再畫出 Wireframe",
+      "h2": "3 小時：熟悉 Cursor → 找到題目 → 畫出 Wireframe",
       "lead": "",
       "stamp": "",
       "cards": [],
@@ -110,51 +110,51 @@
           "開場：課前檢查、「好了／卡住」、分組"
         ],
         [
-          "18:35–19:05",
-          "30′",
+          "18:35–19:00",
+          "25′",
           "Cursor 入門：畫面導覽、固定流程卡、本機與雲端"
         ],
         [
-          "19:05–19:15",
+          "19:00–19:10",
           "10′",
           "熱身：一段提示詞做出撞球遊戲"
         ],
         [
-          "19:15–19:25",
-          "10′",
+          "19:10–19:15",
+          "5′",
           "W1 作業檢討：提案改一處"
         ],
         [
-          "19:25–19:55",
-          "30′",
-          "02-1 使用者旅程｜練習 1"
+          "19:15–20:05",
+          "50′",
+          "02-1 使用者旅程：示範＋選題＋練習 1"
         ],
         [
-          "19:55–20:25",
-          "30′",
+          "20:05–20:30",
+          "25′",
           "02-2 頁面結構與資訊架構｜練習 2"
         ],
         [
-          "20:25–20:35",
+          "20:30–20:40",
           "10′",
           "休息"
         ],
         [
-          "20:35–21:10",
-          "35′",
+          "20:40–21:12",
+          "32′",
           "02-3 UI／UX 與 RWD｜練習 3"
         ],
         [
-          "21:10–21:30",
-          "20′",
-          "成果展示 12′＋作業、W3 預告、課後問卷 8′"
+          "21:12–21:30",
+          "18′",
+          "成果展示 10′＋作業、W3 預告、課後問卷 8′"
         ]
       ],
       "callouts": [
         "每個練習：基本題必做，進階題選做；做完就在 LINE 群打「好了」。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "3 / 34"
+      "footerPage": "3 / 37"
     },
     {
       "slideId": "s4",
@@ -209,7 +209,7 @@
         "名詞｜Wireframe：灰階的頁面草圖，只畫「放什麼、放哪裡、點了去哪」，不管好不好看。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "4 / 34"
+      "footerPage": "4 / 37"
     },
     {
       "slideId": "s5",
@@ -267,7 +267,7 @@
         "原則：沒有人被丟下。卡超過 3 分鐘，先跟著隔壁同學或範例看，助教再幫你補。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "5 / 34"
+      "footerPage": "5 / 37"
     },
     {
       "slideId": "s6",
@@ -325,7 +325,7 @@
         "備案：Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "6 / 34"
+      "footerPage": "6 / 37"
     },
     {
       "slideId": "s7",
@@ -334,17 +334,17 @@
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "00 / Cursor 入門 · 30 分鐘（18:35–19:05）",
+      "kicker": "00 / Cursor 入門 · 25 分鐘（18:35–19:00）",
       "h1": "Cursor 入門：\n一張流程卡走到底",
       "h2": "",
       "lead": "先認得畫面，再學一張每次都一樣的流程卡，最後避開「本機與雲端」這個最常見的坑。",
-      "stamp": "畫面導覽 10′ · 流程卡＋開頭／結尾提示詞 12′ · 本機與雲端 8′",
+      "stamp": "畫面導覽 8′ · 流程卡＋開頭／結尾提示詞 10′ · 本機與雲端 7′",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "7 / 34",
+      "footerPage": "7 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -420,7 +420,7 @@
         "完整 11 個名詞在《Cursor Prompt 入門教學》第 2 節（右上角連結）。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "8 / 34",
+      "footerPage": "8 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -434,7 +434,7 @@
       "title": "Cursor 畫面導覽",
       "layout": "table",
       "hero": false,
-      "eyebrow": "00 / 畫面導覽 · 10′",
+      "eyebrow": "00 / 畫面導覽 · 8′",
       "kicker": "",
       "h1": "",
       "h2": "打開 Cursor，先認得這 4 個地方",
@@ -473,7 +473,7 @@
         "看到的是 Agents Window（沒有檔案區）？按 Cmd/Ctrl+Shift+P，輸入「Open IDE」切回編輯器。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "9 / 34"
+      "footerPage": "9 / 37"
     },
     {
       "slideId": "s10",
@@ -481,7 +481,7 @@
       "title": "固定流程卡",
       "layout": "flow",
       "hero": false,
-      "eyebrow": "00 / 固定流程卡 · 12′",
+      "eyebrow": "00 / 固定流程卡 · 10′",
       "kicker": "",
       "h1": "",
       "h2": "每次都這樣做：六步走完一輪",
@@ -519,7 +519,7 @@
         "流程卡在講義第 3 節，練習時放在旁邊照著做。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "10 / 34",
+      "footerPage": "10 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -563,7 +563,7 @@
         "中間看到問題就說：「我看到【…】，我期待【…】，請只修這個問題，其他不要動。」"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "11 / 34"
+      "footerPage": "11 / 37"
     },
     {
       "slideId": "s12",
@@ -571,7 +571,7 @@
       "title": "本機與雲端",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "00 / 本機與雲端 · 8′",
+      "eyebrow": "00 / 本機與雲端 · 7′",
       "kicker": "",
       "h1": "",
       "h2": "「Cursor 說好了，網頁卻打不開」：多半是跑到雲端了",
@@ -611,7 +611,7 @@
         "W1 有線上同學真的遇過：不是電腦壞了，改用本機、雙擊打開就好。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "12 / 34"
+      "footerPage": "12 / 37"
     },
     {
       "slideId": "s13",
@@ -619,7 +619,7 @@
       "title": "熱身撞球",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "00 / 熱身 · 10′（19:05–19:15）",
+      "eyebrow": "00 / 熱身 · 10′（19:00–19:10）",
       "kicker": "",
       "h1": "",
       "h2": "熱身：一段提示詞，做出能玩的撞球遊戲",
@@ -654,7 +654,7 @@
         "回家再玩第 2、3 步（自動打、音效），提示詞都在講義第 6 節。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "13 / 34",
+      "footerPage": "13 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -672,10 +672,10 @@
       "title": "W1 作業檢討",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "W1 / 作業檢討 · 10′（19:15–19:25）",
+      "eyebrow": "W1 / 作業檢討 · 5′（19:10–19:15）",
       "kicker": "",
       "h1": "",
-      "h2": "先把提案改好一處，今天才有東西可以畫",
+      "h2": "快速看一處：提案最常漏掉什麼",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -683,10 +683,10 @@
           "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "組內互看 5′",
+          "heading": "組內互看 3′",
           "paragraph": "",
           "bullets": [
-            "每人 1 分鐘，用三句話念提案",
+            "每人用三句話念提案",
             "組員只挑一處：題目太寬、不做事項不清楚、或沒有人工確認點",
             "當場改好，標「W2 修改」"
           ]
@@ -695,12 +695,11 @@
           "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "全班討論 5′",
+          "heading": "全班 2′",
           "paragraph": "",
           "bullets": [
-            "講師挑 2 份，一起看改前改後",
-            "每組決定今天要畫的題目",
-            "沒有共識就用「Northgo 中文詢價助理」"
+            "講師挑 1 份，一起看改前改後",
+            "等一下選題時，可以沿用或換題目"
           ]
         }
       ],
@@ -710,7 +709,7 @@
         "名詞｜人工確認點：AI 做完之後，一定要由人看過、由人按下去的那一步，例如寄出回覆。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "14 / 34"
+      "footerPage": "14 / 37"
     },
     {
       "slideId": "s15",
@@ -764,7 +763,7 @@
         "各組可以換成自己修改後的題目；練習範例都用這一題。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "15 / 34"
+      "footerPage": "15 / 37"
     },
     {
       "slideId": "s16",
@@ -773,17 +772,17 @@
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "02-1 · 30 分鐘（19:25–19:55）",
+      "kicker": "02-1 · 50 分鐘（19:15–20:05）",
       "h1": "使用者旅程",
       "h2": "",
-      "lead": "先看人怎麼走，再決定頁面怎麼畫：找出痛點步驟，寫下成功與例外路徑。",
-      "stamp": "02-1-1 任務與痛點 4′ · 02-1-2 成功與例外 4′ · 練習 1 22′",
+      "lead": "先看 Northgo 示範，再找你自己的題目：誰卡在哪一步，第一版就只解決那一步。",
+      "stamp": "Northgo 示範 6′ · 選題指南 4′ · AI 專題教練 10′＋分享 10′ · 練習 1 20′",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "16 / 34"
+      "footerPage": "16 / 37"
     },
     {
       "slideId": "s17",
@@ -791,7 +790,7 @@
       "title": "02-1-1 旅程與痛點",
       "layout": "flow",
       "hero": false,
-      "eyebrow": "02-1-1 / 任務與痛點 · 4′",
+      "eyebrow": "02-1-1 / 示範：任務與痛點 · 3′",
       "kicker": "",
       "h1": "",
       "h2": "潛在客戶想用中文詢價：現在這樣走（W1 實測）",
@@ -825,7 +824,7 @@
         "名詞｜使用者旅程：為了完成一件事，使用者一步一步怎麼走。痛點＝卡住或不舒服的那一步。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "17 / 34"
+      "footerPage": "17 / 37"
     },
     {
       "slideId": "s18",
@@ -833,7 +832,7 @@
       "title": "02-1-2 成功與例外",
       "layout": "table",
       "hero": false,
-      "eyebrow": "02-1-2 / 成功與例外路徑 · 4′",
+      "eyebrow": "02-1-2 / 示範：成功與例外路徑 · 3′",
       "kicker": "",
       "h1": "",
       "h2": "同一步，成功時怎麼走、出錯時系統要怎麼回應",
@@ -877,18 +876,153 @@
         "名詞｜例外路徑：出錯時怎麼走，例如 Email 打錯、送出失敗。寫不出來，W4 表單驗證就沒有依據。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "18 / 34"
+      "footerPage": "18 / 37"
     },
     {
       "slideId": "s19",
       "index": 19,
+      "title": "選題：題目從哪裡來",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "02-1 / 選題指南 · 4′",
+      "kicker": "",
+      "h1": "",
+      "h2": "找自己的專題：先想「誰，卡在哪一步」",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "工作上的問題",
+          "paragraph": "",
+          "bullets": [
+            "每天重複、很花時間、常出錯的事",
+            "例：報價流程"
+          ]
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "專業介紹",
+          "paragraph": "",
+          "bullets": [
+            "你的產品或服務，幫客戶或同事解決什麼問題",
+            "例：優化公司官網的服務表單"
+          ]
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "興趣、社團、協會",
+          "paragraph": "",
+          "bullets": [
+            "例：撞球遊戲",
+            "例：棋品空間-棋藝交流中心"
+          ]
+        },
+        {
+          "num": "4",
+          "tag": null,
+          "tagClass": null,
+          "heading": "資訊系統",
+          "paragraph": "",
+          "bullets": [
+            "例：旅遊行程、設備管理",
+            "例：報價、記帳"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "撞球適合熱身或興趣題；第 8 週成果發表，請選有明確使用者和痛點的題目。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "19 / 37"
+    },
+    {
+      "slideId": "s20",
+      "index": 20,
+      "title": "選題四步與三個標準",
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "02-1 / 選題方法",
+      "kicker": "",
+      "h1": "",
+      "h2": "四步找到題目，再用三個標準檢查",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "選真實情境",
+          "description": "從四個來源挑一個你熟的"
+        },
+        {
+          "title": "寫成一句話",
+          "description": "「誰，想要完成什麼，現在怎麼做」"
+        },
+        {
+          "title": "列 5–7 步，圈最痛",
+          "description": "最花時間、最常出錯、最常等人的 1–2 步"
+        },
+        {
+          "title": "縮成第一版",
+          "description": "只解決那一步，3–5 個畫面"
+        }
+      ],
+      "table": [],
+      "callouts": [
+        "好題目三標準：有人真的會用、一句話講得清楚、第一版 3–5 個畫面。太大就縮：設備管理 → 設備借還登記。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "20 / 37"
+    },
+    {
+      "slideId": "s21",
+      "index": 21,
+      "title": "AI 專題教練",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "02-1 / AI 專題教練 · 10′ 對話＋10′ 分享（19:25–19:45）",
+      "kicker": "",
+      "h1": "",
+      "h2": "在 Cursor 貼這段，讓 AI 一題一題問你",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "分享：組內每人 1 分鐘念結果，講師巡迴判斷「太大要縮／可以做」。線上同學：把結果貼到 LINE 群。"
+      ],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerPage": "21 / 37",
+      "links": [
+        {
+          "label": "Cursor 教學文件",
+          "href": "/examples/ai-agent-course-cursor-prompt-guide.html"
+        }
+      ],
+      "promptBlock": {
+        "label": "AI 專題教練提示詞（整段複製，貼到 Cursor 的 Agent 對話）",
+        "text": "你是我的 AI 專題教練。請一次只問我一個問題，引導我找出這次 AI 課程的專題，不要一次問完。只用對話，先不要建立或修改任何檔案。\n題目可以來自：1. 工作上的問題（如報價流程）2. 我的產品或服務幫客戶、同事解決什麼（如優化官網服務表單）3. 興趣、社團、協會（如撞球遊戲、棋品空間-棋藝交流中心）4. 資訊系統（如旅遊行程、設備管理、報價、記帳）。\n引導步驟：A. 選一個情境，寫成一句話「誰，想要完成什麼，現在怎麼做」 B. 列出 5–7 個步驟 C. 圈出最痛的 1–2 步（最花時間、最常出錯、最常等人） D. 第一版只解決那一步，最多 3–5 個畫面。題目太大請幫我縮小。\n最後用這個格式整理：專題名稱／使用者是誰／任務一句話／目前步驟／最痛的步驟與原因／第一版要做的功能（最多 3 項）／需要哪些畫面／怎麼算成功。"
+      }
+    },
+    {
+      "slideId": "s22",
+      "index": 22,
       "title": "練習 1 題目",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "02-1 / 練習 1 · 22′",
+      "eyebrow": "02-1 / 練習 1 · 20′（19:45–20:05）",
       "kicker": "",
       "h1": "",
-      "h2": "畫出詢價旅程，標出痛點與例外",
+      "h2": "畫出你自己題目的旅程，標出痛點與例外",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -899,10 +1033,10 @@
           "heading": "基本題",
           "paragraph": "",
           "bullets": [
-            "畫出潛在客戶用中文詢價的旅程，5–7 步",
-            "標出至少 2 個痛點步驟",
+            "用剛剛整理的專題，畫出使用者旅程 5–7 步",
+            "標出最痛的 1–2 步（跟教練結果一致）",
             "寫出至少 2 條例外路徑與系統回應",
-            "交付：README.md 裡的旅程表＋例外表"
+            "交付：README.md 的專題摘要＋旅程表＋例外表"
           ]
         },
         {
@@ -912,7 +1046,7 @@
           "heading": "進階題",
           "paragraph": "",
           "bullets": [
-            "加上服務窗口的旅程：收到 → 分類 → 回覆 → 結案",
+            "加上第二個角色（處理的人、管理的人）的旅程",
             "標出兩條旅程交棒的那一步",
             "每條例外路徑寫一條驗收標準（假設／當／則）"
           ]
@@ -921,21 +1055,21 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "22 分鐘到時，不論做到哪，都先在 LINE 群打「好了」或「卡住」。"
+        "還沒想好題目：先照 Northgo 示範做，作業再換成自己的。20 分鐘到時在 LINE 群打「好了」或「卡住」。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "19 / 34"
+      "footerPage": "22 / 37"
     },
     {
-      "slideId": "s20",
-      "index": 20,
+      "slideId": "s23",
+      "index": 23,
       "title": "練習 1 提示詞",
       "layout": "cards-two",
       "hero": false,
       "eyebrow": "02-1 / 練習 1 · 貼到 Cursor",
       "kicker": "",
       "h1": "",
-      "h2": "開資料夾 northgo-wireframe → 貼開頭提示詞 → 貼這段",
+      "h2": "接在 AI 教練同一個對話裡貼這段（cursor-w2 資料夾）",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -943,8 +1077,8 @@
           "num": "必做",
           "tag": null,
           "tagClass": null,
-          "heading": "基本題（【】換成你的內容）",
-          "paragraph": "在這個資料夾建立 README.md。依下面的提案，寫出「潛在客戶用中文詢價」的使用者旅程 5–7 步，用表格：步驟／在做什麼／看到的畫面／痛點。再列 2 條例外路徑與系統怎麼回應。不要加提案沒有的功能；不確定的寫「待問大躍」。【貼上 W1 提案】",
+          "heading": "基本題",
+          "paragraph": "依上面整理好的專題，在這個資料夾建立 README.md：先放專題摘要（照剛剛的格式），再寫使用者旅程 5–7 步，用表格：步驟／在做什麼／看到的畫面／痛點，最痛的 1–2 步標「最痛」。再列 2 條例外路徑與系統怎麼回應。不要加我沒說過的功能；不確定的寫「待確認」。",
           "bullets": []
         },
         {
@@ -952,40 +1086,40 @@
           "tag": null,
           "tagClass": null,
           "heading": "進階題",
-          "paragraph": "在 README.md 再加上「服務窗口」的旅程：收到詢價 → 分類 → 回覆 → 結案，標出兩條旅程交棒的那一步。每條例外路徑寫一條驗收標準：假設……／當……／則……。",
+          "paragraph": "在 README.md 再加上第二個角色（例如處理的人或管理的人）的旅程，標出兩條旅程交棒的那一步。每條例外路徑寫一條驗收標準：假設……／當……／則……。",
           "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "驗收：打開 README.md 看得到旅程表和例外表；沒有提案以外的功能。"
+        "驗收：README.md 看得到專題摘要、旅程表、例外表；最痛的步驟有標出來。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "20 / 34"
+      "footerPage": "23 / 37"
     },
     {
-      "slideId": "s21",
-      "index": 21,
+      "slideId": "s24",
+      "index": 24,
       "title": "02-2 章節頁",
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "02-2 · 30 分鐘（19:55–20:25）",
+      "kicker": "02-2 · 25 分鐘（20:05–20:30）",
       "h1": "頁面結構與資訊架構",
       "h2": "",
       "lead": "頁面越少越好：先列出走完主流程的最少頁面，再決定每頁欄位的先後。",
-      "stamp": "02-2-1 頁面與導覽 4′ · 02-2-2 欄位優先順序 4′ · 練習 2 22′",
+      "stamp": "02-2-1 頁面與導覽 4′ · 02-2-2 欄位優先順序 4′ · 練習 2 17′",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "21 / 34"
+      "footerPage": "24 / 37"
     },
     {
-      "slideId": "s22",
-      "index": 22,
+      "slideId": "s25",
+      "index": 25,
       "title": "02-2-1 頁面導覽圖",
       "layout": "arch-svg",
       "hero": false,
@@ -1002,13 +1136,13 @@
         "名詞｜MVP：最小可用版本，只做走完主流程一定要有的頁面。綠色框是今天的重點頁。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "22 / 34",
+      "footerPage": "25 / 37",
       "archSvgHtml": "<svg viewBox=\"0 0 1200 430\" xmlns=\"http://www.w3.org/2000/svg\">\n<defs><marker id=\"w2ar\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0 0L10 5L0 10z\" fill=\"#64748b\"/></marker></defs>\n<text class=\"hd\" x=\"20\" y=\"30\">前台：潛在客戶</text>\n<rect class=\"ly\" x=\"20\" y=\"48\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"44\" y=\"94\">中文首頁</text><text class=\"t2\" x=\"44\" y=\"128\">現有頁面，加「我要詢價」</text>\n<rect class=\"ly-ai\" x=\"440\" y=\"48\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"464\" y=\"94\">詢價表單頁</text><text class=\"t2\" x=\"464\" y=\"128\">5 個必填＋服務別</text>\n<rect class=\"ly\" x=\"860\" y=\"48\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"884\" y=\"94\">送出完成頁</text><text class=\"t2\" x=\"884\" y=\"128\">中文確認＋詢價編號</text>\n<line class=\"ar\" x1=\"342\" y1=\"100\" x2=\"436\" y2=\"100\" marker-end=\"url(#w2ar)\"/><line class=\"ar\" x1=\"762\" y1=\"100\" x2=\"856\" y2=\"100\" marker-end=\"url(#w2ar)\"/>\n<line class=\"ar-d\" x1=\"600\" y1=\"154\" x2=\"600\" y2=\"270\" marker-end=\"url(#w2ar)\"/><text class=\"t3\" x=\"616\" y=\"220\">送出後產生一筆詢價</text>\n<text class=\"hd\" x=\"20\" y=\"256\">後台：服務窗口、主管</text>\n<rect class=\"ly\" x=\"20\" y=\"274\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"44\" y=\"320\">登入</text><text class=\"t2\" x=\"44\" y=\"354\">W6 再做，今天畫框就好</text>\n<rect class=\"ly-ai\" x=\"440\" y=\"274\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"464\" y=\"320\">詢價列表</text><text class=\"t2\" x=\"464\" y=\"354\">依狀態篩選</text>\n<rect class=\"ly\" x=\"860\" y=\"274\" width=\"320\" height=\"104\" rx=\"14\"/><text class=\"t1\" x=\"884\" y=\"320\">詢價明細</text><text class=\"t2\" x=\"884\" y=\"354\">AI 摘要與草稿＋確認寄出</text>\n<line class=\"ar\" x1=\"342\" y1=\"326\" x2=\"436\" y2=\"326\" marker-end=\"url(#w2ar)\"/><line class=\"ar\" x1=\"762\" y1=\"326\" x2=\"856\" y2=\"326\" marker-end=\"url(#w2ar)\"/>\n<text class=\"t2\" x=\"20\" y=\"418\">MVP 共 6 頁：走完「客戶送出 → 窗口確認寄出」一次主流程</text>\n</svg>",
       "archSvgLabel": "Northgo 中文詢價助理頁面導覽圖"
     },
     {
-      "slideId": "s23",
-      "index": 23,
+      "slideId": "s26",
+      "index": 26,
       "title": "02-2-2 欄位優先順序",
       "layout": "cards-two",
       "hero": false,
@@ -1052,15 +1186,15 @@
         "名詞｜必填：不填就不能送出。做決定需要的放前面；同意條款要不要留，要問大躍（法務）。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "23 / 34"
+      "footerPage": "26 / 37"
     },
     {
-      "slideId": "s24",
-      "index": 24,
+      "slideId": "s27",
+      "index": 27,
       "title": "練習 2 題目",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "02-2 / 練習 2 · 22′",
+      "eyebrow": "02-2 / 練習 2 · 17′",
       "kicker": "",
       "h1": "",
       "h2": "列出頁面、排好欄位、做成點得到的頁面",
@@ -1096,14 +1230,14 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "換角色：上一輪的領航，這一輪當駕駛。"
+        "用自己題目的同學：把頁面換成你第一版的 3–5 個畫面。換角色：上一輪的領航，這一輪當駕駛。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "24 / 34"
+      "footerPage": "27 / 37"
     },
     {
-      "slideId": "s25",
-      "index": 25,
+      "slideId": "s28",
+      "index": 28,
       "title": "練習 2 提示詞",
       "layout": "cards-two",
       "hero": false,
@@ -1137,30 +1271,30 @@
         "驗收：從首頁點到送出完成頁 3 下以內；頁名和清單一字不差；必填不超過 5 個。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "25 / 34"
+      "footerPage": "28 / 37"
     },
     {
-      "slideId": "s26",
-      "index": 26,
+      "slideId": "s29",
+      "index": 29,
       "title": "02-3 章節頁",
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "02-3 · 35 分鐘（休息 10′ 後，20:35–21:10）",
+      "kicker": "02-3 · 32 分鐘（休息 10′ 後，20:40–21:12）",
       "h1": "UI／UX 與 RWD 基礎",
       "h2": "",
       "lead": "同一頁在桌面和手機要怎麼取捨；按下去之後，畫面要告訴使用者發生了什麼。",
-      "stamp": "02-3-1 桌面與手機 4′ · 02-3-2 狀態回饋 4′ · 練習 3 27′",
+      "stamp": "02-3-1 桌面與手機 4′ · 02-3-2 狀態回饋 4′ · 練習 3 24′",
       "cards": [],
       "flowSteps": [],
       "table": [],
       "callouts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "26 / 34"
+      "footerPage": "29 / 37"
     },
     {
-      "slideId": "s27",
-      "index": 27,
+      "slideId": "s30",
+      "index": 30,
       "title": "02-3-1 桌面與手機",
       "layout": "table",
       "hero": false,
@@ -1208,11 +1342,11 @@
         "名詞｜RWD（響應式設計）：同一個網頁在手機和電腦上自動換成適合的排法。手機先畫。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "27 / 34"
+      "footerPage": "30 / 37"
     },
     {
-      "slideId": "s28",
-      "index": 28,
+      "slideId": "s31",
+      "index": 31,
       "title": "02-3-2 狀態回饋",
       "layout": "cards-three",
       "hero": false,
@@ -1266,15 +1400,15 @@
         "現況：成功訊息是英文「Thank you! Your submission has been received!」，中文版聯絡頁也一樣。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "28 / 34"
+      "footerPage": "31 / 37"
     },
     {
-      "slideId": "s29",
-      "index": 29,
+      "slideId": "s32",
+      "index": 32,
       "title": "練習 3 題目",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "02-3 / 練習 3 · 27′",
+      "eyebrow": "02-3 / 練習 3 · 24′",
       "kicker": "",
       "h1": "",
       "h2": "做出可點擊的 Wireframe：含三種狀態",
@@ -1310,10 +1444,10 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "Wireframe 用灰階方框就好。卡住時打開右上角的參考答案對照。"
+        "自己的題目：把表單頁換成你最痛那一步的畫面。卡住時打開右上角的 Northgo 參考答案對照。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "29 / 34",
+      "footerPage": "32 / 37",
       "links": [
         {
           "label": "參考答案：Wireframe 範例",
@@ -1322,8 +1456,8 @@
       ]
     },
     {
-      "slideId": "s30",
-      "index": 30,
+      "slideId": "s33",
+      "index": 33,
       "title": "練習 3 提示詞",
       "layout": "cards-two",
       "hero": false,
@@ -1357,11 +1491,11 @@
         "做完先貼結尾提示詞，再用下一頁的驗收清單打勾。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "30 / 34"
+      "footerPage": "33 / 37"
     },
     {
-      "slideId": "s31",
-      "index": 31,
+      "slideId": "s34",
+      "index": 34,
       "title": "Wireframe 驗收清單",
       "layout": "table",
       "hero": false,
@@ -1419,18 +1553,18 @@
         "沒通過的項目不用當場修完：寫進 W3 的修正清單。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "31 / 34"
+      "footerPage": "34 / 37"
     },
     {
-      "slideId": "s32",
-      "index": 32,
+      "slideId": "s35",
+      "index": 35,
       "title": "成果展示",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "99 / 成果展示 · 12′（21:10–21:22）",
+      "eyebrow": "99 / 成果展示 · 10′（21:12–21:22）",
       "kicker": "",
       "h1": "",
-      "h2": "每組 3 分鐘：點給大家看",
+      "h2": "每組 2 分鐘：點給大家看",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -1465,18 +1599,18 @@
         "其他組只回饋一件事：哪一步會讓客戶卡住？線上同學請分享螢幕來展示。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "32 / 34"
+      "footerPage": "35 / 37"
     },
     {
-      "slideId": "s33",
-      "index": 33,
+      "slideId": "s36",
+      "index": 36,
       "title": "作業",
       "layout": "cards-two",
       "hero": false,
       "eyebrow": "99 / 作業 · 21:22–21:30",
       "kicker": "",
       "h1": "",
-      "h2": "作業：把 Wireframe 定稿，下週課堂一起檢討",
+      "h2": "作業：一頁專題提案＋Wireframe 定稿",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -1484,16 +1618,16 @@
           "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "必做｜Wireframe 定稿",
-          "paragraph": "頁面清單、表單欄位、三種狀態，整理在 northgo-wireframe 資料夾（README＋index.html）。",
+          "heading": "必做｜一頁專題提案",
+          "paragraph": "照 AI 教練的格式：專題名稱、使用者、任務一句話、目前步驟、最痛的步驟與原因、第一版功能（最多 3 項）、畫面、怎麼算成功。",
           "bullets": []
         },
         {
           "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "必做｜更新提案",
-          "paragraph": "把今天改過的流程、不做事項寫回 W1 提案。",
+          "heading": "必做｜Wireframe 定稿",
+          "paragraph": "自己的題目或 Northgo 都可以：頁面、欄位、三種狀態，放在 cursor-w2 資料夾（README＋index.html）。",
           "bullets": []
         },
         {
@@ -1516,10 +1650,10 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "做不出成品也沒關係：README 文字＋截圖也算。下週開場每組 2 分鐘檢討。"
+        "這個題目就是 W8 成果發表的起點。做不出成品也沒關係，README 文字＋截圖也算；下週開場每組 2 分鐘檢討。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "33 / 34",
+      "footerPage": "36 / 37",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -1528,8 +1662,8 @@
       ]
     },
     {
-      "slideId": "s34",
-      "index": 34,
+      "slideId": "s37",
+      "index": 37,
       "title": "W3 預告",
       "layout": "table",
       "hero": false,
@@ -1564,10 +1698,10 @@
         ]
       ],
       "callouts": [
-        "下週一樣全程用 Cursor：今天的 northgo-wireframe 資料夾請留著，下週接著做。課後請填問卷。"
+        "下週一樣全程用 Cursor：今天的 cursor-w2 資料夾請留著，下週接著做。課後請填問卷。"
       ],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "footerPage": "34 / 34"
+      "footerPage": "37 / 37"
     }
   ]
 }

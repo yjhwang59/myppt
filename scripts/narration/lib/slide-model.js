@@ -96,6 +96,10 @@ export function migrateSlideFromHtml($, el, index, total) {
     .toArray()
     .map((a) => ({ label: cleanText($(a).text()), href: $(a).attr("href") || "" }));
   if (links.length) slide.links = links;
+  const $prompt = $el.find(".slide-prompt").first();
+  if ($prompt.length) {
+    slide.promptBlock = { label: cleanText($prompt.find("figcaption").first().text()), text: $prompt.find("pre").first().text() };
+  }
 
   if (layout === "arch-svg") {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
@@ -132,6 +136,13 @@ export function renderLinks(links) {
   return `<p class="slide-links">${items
     .map((l) => `<a href="${escapeHtml(l.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label)}</a>`)
     .join("")}</p>`;
+}
+
+/** Optional slide.promptBlock: { label, text } → one copyable prompt block (line breaks kept). */
+export function renderPromptBlock(block) {
+  if (!block?.text) return "";
+  const label = block.label ? `<figcaption>${escapeHtml(block.label)}</figcaption>` : "";
+  return `<figure class="slide-prompt">${label}<pre>${escapeHtml(block.text)}</pre></figure>`;
 }
 
 function renderCard(card, extraClass = "") {
@@ -172,6 +183,7 @@ export function renderSlideHtml(slide, total) {
     body += slide.eyebrow ? `<p class="eyebrow">${escapeHtml(slide.eyebrow)}</p>` : "";
     body += slide.h2 ? `<h2>${escapeHtml(slide.h2)}</h2>` : "";
     body += slide.lead ? `<p class="lead">${escapeHtml(slide.lead)}</p>` : "";
+    body += renderPromptBlock(slide.promptBlock);
 
     if (slide.layout === "arch-svg") {
       body += `<div class="arch-svg-wrap" role="img" aria-label="${escapeHtml(slide.archSvgLabel || "企業 AI 五層架構圖")}">${slide.archSvgHtml || ""}</div>`;
