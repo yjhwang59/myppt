@@ -214,6 +214,10 @@
     .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
     .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
     .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-prompt { position: relative; margin: 6px 0 0; border: 1px solid var(--kicker-border); border-radius: 14px; background: var(--card); padding: 12px 16px 14px; }
+    .slide-prompt figcaption { font-size: calc(14px * var(--font-scale)); font-weight: 700; color: var(--kicker-text); margin-bottom: 6px; padding-right: 80px; }
+    .slide-prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: calc(16px * var(--font-scale)); line-height: 1.55; color: var(--text); }
+    .slide-prompt .prompt-copy { position: absolute; top: 10px; right: 12px; font: inherit; font-size: calc(13px * var(--font-scale)); font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--kicker-border); background: var(--kicker-bg); color: var(--kicker-text); cursor: pointer; }
     .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
     .slide-links a {
       display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
@@ -264,55 +268,55 @@
       <h1>使用者流程<br />與前端設計</h1>
       <p class="lead">今天全程用 Cursor：先花 30 分鐘熟悉工具，再把 W1 的「Northgo 中文詢價助理」畫成點得到的 Wireframe。</p>
       <p class="stamp">企業AI內訓 · 2026-10-21（三）18:30–21:30 · 大躍 Northgo 台北總部 · 黃燕忠｜AI發展顧問</p><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a><a href="/examples/ai-agent-course-week02-northgo-wireframe.html" target="_blank" rel="noopener noreferrer">Wireframe 範例</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>1 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>1 / 37</span></div>
     </section>
 
     <section class="slide" id="s2" data-title="課前檢查">
 <p class="eyebrow">00 / 課前檢查 · 18:15–18:30</p><h2>18:30 開始前：這 6 項都打勾</h2><table class="table"><thead><tr><th>項目</th><th>怎麼算「好了」</th></tr></thead><tbody><tr><td><strong>電腦</strong></td><td>筆電帶來並插電；線上同學用電腦上課，不用手機</td></tr><tr><td><strong>Cursor 桌面版</strong></td><td>已安裝、打得開（cursor.com/downloads）</td></tr><tr><td><strong>Cursor 帳號</strong></td><td>在這台電腦登入成功；用手機買的方案，先確認電腦登得進去</td></tr><tr><td><strong>練習資料夾</strong></td><td>桌面新增資料夾 cursor-w2，在 Cursor 用 File → Open Folder 打開</td></tr><tr><td><strong>LINE 群組</strong></td><td>已加入，能傳截圖</td></tr><tr><td><strong>線上同學</strong></td><td>會議連結已測試，能分享自己的螢幕</td></tr></tbody></table><div class="callout"><strong>還沒好：</strong>18:15 起助教一台一台處理。18:30 準時開始，還沒弄好的先看旁邊同學的畫面。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>2 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>2 / 37</span></div>
     </section>
 
     <section class="slide" id="s3" data-title="今天怎麼走">
-<p class="eyebrow">00 / 今天怎麼走</p><h2>3 小時（18:30–21:30）：先熟悉 Cursor，再畫出 Wireframe</h2><table class="table"><thead><tr><th>時段</th><th>分鐘</th><th>內容</th></tr></thead><tbody><tr><td><strong>18:30–18:35</strong></td><td>5′</td><td>開場：課前檢查、「好了／卡住」、分組</td></tr><tr><td><strong>18:35–19:05</strong></td><td>30′</td><td>Cursor 入門：畫面導覽、固定流程卡、本機與雲端</td></tr><tr><td><strong>19:05–19:15</strong></td><td>10′</td><td>熱身：一段提示詞做出撞球遊戲</td></tr><tr><td><strong>19:15–19:25</strong></td><td>10′</td><td>W1 作業檢討：提案改一處</td></tr><tr><td><strong>19:25–19:55</strong></td><td>30′</td><td>02-1 使用者旅程｜練習 1</td></tr><tr><td><strong>19:55–20:25</strong></td><td>30′</td><td>02-2 頁面結構與資訊架構｜練習 2</td></tr><tr><td><strong>20:25–20:35</strong></td><td>10′</td><td>休息</td></tr><tr><td><strong>20:35–21:10</strong></td><td>35′</td><td>02-3 UI／UX 與 RWD｜練習 3</td></tr><tr><td><strong>21:10–21:30</strong></td><td>20′</td><td>成果展示 12′＋作業、W3 預告、課後問卷 8′</td></tr></tbody></table><div class="callout"><strong>每個練習：</strong>基本題必做，進階題選做；做完就在 LINE 群打「好了」。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>3 / 34</span></div>
+<p class="eyebrow">00 / 今天怎麼走</p><h2>3 小時：熟悉 Cursor → 找到題目 → 畫出 Wireframe</h2><table class="table"><thead><tr><th>時段</th><th>分鐘</th><th>內容</th></tr></thead><tbody><tr><td><strong>18:30–18:35</strong></td><td>5′</td><td>開場：課前檢查、「好了／卡住」、分組</td></tr><tr><td><strong>18:35–19:00</strong></td><td>25′</td><td>Cursor 入門：畫面導覽、固定流程卡、本機與雲端</td></tr><tr><td><strong>19:00–19:10</strong></td><td>10′</td><td>熱身：一段提示詞做出撞球遊戲</td></tr><tr><td><strong>19:10–19:15</strong></td><td>5′</td><td>W1 作業檢討：提案改一處</td></tr><tr><td><strong>19:15–20:05</strong></td><td>50′</td><td>02-1 使用者旅程：示範＋選題＋練習 1</td></tr><tr><td><strong>20:05–20:30</strong></td><td>25′</td><td>02-2 頁面結構與資訊架構｜練習 2</td></tr><tr><td><strong>20:30–20:40</strong></td><td>10′</td><td>休息</td></tr><tr><td><strong>20:40–21:12</strong></td><td>32′</td><td>02-3 UI／UX 與 RWD｜練習 3</td></tr><tr><td><strong>21:12–21:30</strong></td><td>18′</td><td>成果展示 10′＋作業、W3 預告、課後問卷 8′</td></tr></tbody></table><div class="callout"><strong>每個練習：</strong>基本題必做，進階題選做；做完就在 LINE 群打「好了」。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>3 / 37</span></div>
     </section>
 
     <section class="slide" id="s4" data-title="六個學習點">
 <p class="eyebrow">00 / 今天的 6 個學習點</p><h2>三章、六個點，最後收成一份 Wireframe</h2><div class="grid three"><article class="card"><div class="num">02-1</div><strong>使用者旅程</strong><ul><li>02-1-1 描繪主要使用者任務與痛點步驟</li><li>02-1-2 標出成功路徑與例外／錯誤路徑</li></ul></article><article class="card"><div class="num">02-2</div><strong>頁面結構與資訊架構</strong><ul><li>02-2-1 列出必要頁面與導覽關係</li><li>02-2-2 表單與列表頁的欄位優先順序</li></ul></article><article class="card"><div class="num">02-3</div><strong>UI／UX 與 RWD 基礎</strong><ul><li>02-3-1 桌面與行動裝置版面取捨</li><li>02-3-2 狀態回饋：載入、成功、錯誤提示</li></ul></article></div><div class="callout"><strong>名詞｜Wireframe：</strong>灰階的頁面草圖，只畫「放什麼、放哪裡、點了去哪」，不管好不好看。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>4 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>4 / 37</span></div>
     </section>
 
     <section class="slide" id="s5" data-title="好了／卡住">
 <p class="eyebrow">00 / 好了／卡住 · 線上支援</p><h2>每一步都對齊：做完說「好了」，卡住馬上說</h2><div class="grid three"><article class="card"><div class="num">✓</div><strong>好了</strong><ul><li>現場：舉手比 OK</li><li>線上：LINE 群打「好了」</li><li>大多數人好了，講師才往下</li></ul></article><article class="card"><div class="num">!</div><strong>卡住</strong><ul><li>截整個畫面，包含錯誤訊息</li><li>LINE 群打「卡住＋第幾步」，貼上截圖</li><li>助教先處理，講師繼續帶其他人</li></ul></article><article class="card"><div class="num">線上</div><strong>線上同學</strong><ul><li>卡住時，直接分享螢幕給助教看</li><li>每個練習開始前，講師先在大螢幕示範一次</li><li>投影片、講義、範例連結都放在 LINE 群</li></ul></article></div><div class="callout"><strong>原則：</strong>沒有人被丟下。卡超過 3 分鐘，先跟著隔壁同學或範例看，助教再幫你補。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>5 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>5 / 37</span></div>
     </section>
 
     <section class="slide" id="s6" data-title="分組與角色">
 <p class="eyebrow">00 / 分組與角色</p><h2>3–4 人一組，大家用同一套 Cursor 流程</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>領航</strong><ul><li>念題目和驗收條件</li><li>決定這一輪要做到哪裡</li><li>照驗收清單逐項打勾</li></ul></article><article class="card"><div class="num">2</div><strong>駕駛</strong><ul><li>在自己的 Cursor 貼提示詞</li><li>把畫面轉給組員看（線上：分享螢幕）</li><li>卡住就喊「卡住」</li></ul></article><article class="card"><div class="num">3</div><strong>跟做</strong><ul><li>在自己的電腦跟著做同一步</li><li>記下卡關的地方</li><li>下一個練習換你當駕駛</li></ul></article></div><div class="callout"><strong>備案：</strong>Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>6 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>6 / 37</span></div>
     </section>
 
     <section class="slide hero" id="s7" data-title="Cursor 入門章節頁">
 
-      <p class="kicker">00 / Cursor 入門 · 30 分鐘（18:35–19:05）</p>
+      <p class="kicker">00 / Cursor 入門 · 25 分鐘（18:35–19:00）</p>
       <h1>Cursor 入門：<br />一張流程卡走到底</h1>
       <p class="lead">先認得畫面，再學一張每次都一樣的流程卡，最後避開「本機與雲端」這個最常見的坑。</p>
-      <p class="stamp">畫面導覽 10′ · 流程卡＋開頭／結尾提示詞 12′ · 本機與雲端 8′</p><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>7 / 34</span></div>
+      <p class="stamp">畫面導覽 8′ · 流程卡＋開頭／結尾提示詞 10′ · 本機與雲端 7′</p><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>7 / 37</span></div>
     </section>
 
     <section class="slide" id="s8" data-title="名詞小卡">
 <p class="eyebrow">00 / 名詞小卡</p><h2>今天會一直聽到的 6 個詞</h2><div class="grid six"><article class="card"><strong>Prompt（提示詞）</strong><p>你打給 AI 的一段話，說清楚要它做什麼。</p></article><article class="card"><strong>Agent（代理）</strong><p>Cursor 裡會自己動手的 AI：會讀檔、寫檔、跑指令。</p></article><article class="card"><strong>專案資料夾</strong><p>作品放的地方；Agent 只在你打開的資料夾裡工作。</p></article><article class="card"><strong>預覽</strong><p>用瀏覽器打開 index.html，看看做出來的樣子。</p></article><article class="card"><strong>本機／雲端</strong><p>本機＝在你這台電腦做；雲端＝在別台電腦做。上課用本機。</p></article><article class="card"><strong>Diff／Checkpoint</strong><p>Diff＝AI 改了哪裡；Checkpoint＝改壞了可以還原的存檔點。</p></article></div><div class="callout">完整 11 個名詞在《Cursor Prompt 入門教學》第 2 節（右上角連結）。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>8 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>8 / 37</span></div>
     </section>
 
     <section class="slide" id="s9" data-title="Cursor 畫面導覽">
-<p class="eyebrow">00 / 畫面導覽 · 10′</p><h2>打開 Cursor，先認得這 4 個地方</h2><table class="table"><thead><tr><th>地方</th><th>在哪裡</th><th>用來做什麼</th></tr></thead><tbody><tr><td><strong>檔案區</strong></td><td>左邊</td><td>看資料夾裡有哪些檔案；用 File → Open Folder 打開資料夾</td></tr><tr><td><strong>編輯區</strong></td><td>中間</td><td>看檔案內容；AI 改過的地方會標出來（Diff）</td></tr><tr><td><strong>Agent 對話</strong></td><td>Mac 按 Cmd+I（Windows：Ctrl+I）</td><td>貼提示詞、看 AI 回報；改壞了按 Restore Checkpoint</td></tr><tr><td><strong>輸入框下方選單</strong></td><td>Agent 輸入框下面</td><td>確認不是 Cloud（雲端）；Shift+Tab 切換 Plan Mode（先規劃再動手）</td></tr></tbody></table><div class="callout">看到的是 Agents Window（沒有檔案區）？按 Cmd/Ctrl+Shift+P，輸入「Open IDE」切回編輯器。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>9 / 34</span></div>
+<p class="eyebrow">00 / 畫面導覽 · 8′</p><h2>打開 Cursor，先認得這 4 個地方</h2><table class="table"><thead><tr><th>地方</th><th>在哪裡</th><th>用來做什麼</th></tr></thead><tbody><tr><td><strong>檔案區</strong></td><td>左邊</td><td>看資料夾裡有哪些檔案；用 File → Open Folder 打開資料夾</td></tr><tr><td><strong>編輯區</strong></td><td>中間</td><td>看檔案內容；AI 改過的地方會標出來（Diff）</td></tr><tr><td><strong>Agent 對話</strong></td><td>Mac 按 Cmd+I（Windows：Ctrl+I）</td><td>貼提示詞、看 AI 回報；改壞了按 Restore Checkpoint</td></tr><tr><td><strong>輸入框下方選單</strong></td><td>Agent 輸入框下面</td><td>確認不是 Cloud（雲端）；Shift+Tab 切換 Plan Mode（先規劃再動手）</td></tr></tbody></table><div class="callout">看到的是 Agents Window（沒有檔案區）？按 Cmd/Ctrl+Shift+P，輸入「Open IDE」切回編輯器。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>9 / 37</span></div>
     </section>
 
     <section class="slide" id="s10" data-title="固定流程卡">
-<p class="eyebrow">00 / 固定流程卡 · 12′</p><h2>每次都這樣做：六步走完一輪</h2><div class="flow" role="list">
+<p class="eyebrow">00 / 固定流程卡 · 10′</p><h2>每次都這樣做：六步走完一輪</h2><div class="flow" role="list">
         
         <div class="flow-step" role="listitem">
           <div class="flow-num">1</div>
@@ -349,45 +353,45 @@
           <strong>存檔</strong>
           <p class="flow-desc">貼結尾提示詞；想留版本再 Commit</p>
         </div></div><div class="callout">流程卡在講義第 3 節，練習時放在旁邊照著做。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>10 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>10 / 37</span></div>
     </section>
 
     <section class="slide" id="s11" data-title="開頭與結尾提示詞">
 <p class="eyebrow">00 / 開頭與結尾提示詞</p><h2>每次都用：開頭一段、結尾一段</h2><div class="grid two"><article class="card"><div class="num">開頭</div><strong>開頭提示詞（新任務先貼）</strong><p>請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。</p></article><article class="card"><div class="num">結尾</div><strong>結尾提示詞（做完都貼）</strong><p>請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。</p></article></div><div class="callout"><strong>中間看到問題就說：</strong>「我看到【…】，我期待【…】，請只修這個問題，其他不要動。」</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>11 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>11 / 37</span></div>
     </section>
 
     <section class="slide" id="s12" data-title="本機與雲端">
-<p class="eyebrow">00 / 本機與雲端 · 8′</p><h2>「Cursor 說好了，網頁卻打不開」：多半是跑到雲端了</h2><div class="grid two"><article class="card"><div class="num">為什麼</div><strong>症狀與原因</strong><ul><li>瀏覽器顯示 127.0.0.1 … ERR_CONNECTION_REFUSED</li><li>127.0.0.1＝「你這台電腦」</li><li>網頁伺服器其實在雲端的另一台電腦，或已經關掉</li><li>所以你的電腦連不上</li></ul></article><article class="card"><div class="num">怎麼做</div><strong>怎麼避免</strong><ul><li>Agent 輸入框下方的選單：不要選 Cloud</li><li>請它做成單一 index.html，不啟動伺服器</li><li>到資料夾雙擊 index.html 打開</li><li>已經卡住：貼講義第 4 節的救援提示詞</li></ul></article></div><div class="callout"><strong>W1 有線上同學真的遇過：</strong>不是電腦壞了，改用本機、雙擊打開就好。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>12 / 34</span></div>
+<p class="eyebrow">00 / 本機與雲端 · 7′</p><h2>「Cursor 說好了，網頁卻打不開」：多半是跑到雲端了</h2><div class="grid two"><article class="card"><div class="num">為什麼</div><strong>症狀與原因</strong><ul><li>瀏覽器顯示 127.0.0.1 … ERR_CONNECTION_REFUSED</li><li>127.0.0.1＝「你這台電腦」</li><li>網頁伺服器其實在雲端的另一台電腦，或已經關掉</li><li>所以你的電腦連不上</li></ul></article><article class="card"><div class="num">怎麼做</div><strong>怎麼避免</strong><ul><li>Agent 輸入框下方的選單：不要選 Cloud</li><li>請它做成單一 index.html，不啟動伺服器</li><li>到資料夾雙擊 index.html 打開</li><li>已經卡住：貼講義第 4 節的救援提示詞</li></ul></article></div><div class="callout"><strong>W1 有線上同學真的遇過：</strong>不是電腦壞了，改用本機、雙擊打開就好。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>12 / 37</span></div>
     </section>
 
     <section class="slide" id="s13" data-title="熱身撞球">
-<p class="eyebrow">00 / 熱身 · 10′（19:05–19:15）</p><h2>熱身：一段提示詞，做出能玩的撞球遊戲</h2><div class="grid two"><article class="card"><div class="num">貼到 Cursor</div><strong>提示詞（講義第 6 節第 1 步）</strong><p>目標：在這個資料夾做一個可以直接玩的撞球網頁小遊戲（繁體中文）。功能：白球、15 顆色球、6 個球袋，會碰撞、反彈、進袋；拖曳瞄準並顯示虛線；力道滑桿＋「擊球」；白球進袋可放回；顯示進球數、桿數和「重新開始」。限制：只做一個 index.html，雙擊就能打開，不要伺服器、不要部署。交付：告訴我檔案在哪、怎麼打開。</p></article><article class="card"><div class="num">驗收</div><strong>「好了」的標準</strong><ul><li>雙擊 index.html 打得開</li><li>改力道，白球跑的距離會變</li><li>球還在滾時按擊球，桿數不增加</li><li>好了在 LINE 群打「好了」，卡住打「卡住」</li></ul></article></div><div class="callout">回家再玩第 2、3 步（自動打、音效），提示詞都在講義第 6 節。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a><a href="https://jade-pool-studio-jack-1014.yjhwang59.chatgpt.site/" target="_blank" rel="noopener noreferrer">撞球範例網站</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>13 / 34</span></div>
+<p class="eyebrow">00 / 熱身 · 10′（19:00–19:10）</p><h2>熱身：一段提示詞，做出能玩的撞球遊戲</h2><div class="grid two"><article class="card"><div class="num">貼到 Cursor</div><strong>提示詞（講義第 6 節第 1 步）</strong><p>目標：在這個資料夾做一個可以直接玩的撞球網頁小遊戲（繁體中文）。功能：白球、15 顆色球、6 個球袋，會碰撞、反彈、進袋；拖曳瞄準並顯示虛線；力道滑桿＋「擊球」；白球進袋可放回；顯示進球數、桿數和「重新開始」。限制：只做一個 index.html，雙擊就能打開，不要伺服器、不要部署。交付：告訴我檔案在哪、怎麼打開。</p></article><article class="card"><div class="num">驗收</div><strong>「好了」的標準</strong><ul><li>雙擊 index.html 打得開</li><li>改力道，白球跑的距離會變</li><li>球還在滾時按擊球，桿數不增加</li><li>好了在 LINE 群打「好了」，卡住打「卡住」</li></ul></article></div><div class="callout">回家再玩第 2、3 步（自動打、音效），提示詞都在講義第 6 節。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a><a href="https://jade-pool-studio-jack-1014.yjhwang59.chatgpt.site/" target="_blank" rel="noopener noreferrer">撞球範例網站</a></p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>13 / 37</span></div>
     </section>
 
     <section class="slide" id="s14" data-title="W1 作業檢討">
-<p class="eyebrow">W1 / 作業檢討 · 10′（19:15–19:25）</p><h2>先把提案改好一處，今天才有東西可以畫</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>組內互看 5′</strong><ul><li>每人 1 分鐘，用三句話念提案</li><li>組員只挑一處：題目太寬、不做事項不清楚、或沒有人工確認點</li><li>當場改好，標「W2 修改」</li></ul></article><article class="card"><div class="num">2</div><strong>全班討論 5′</strong><ul><li>講師挑 2 份，一起看改前改後</li><li>每組決定今天要畫的題目</li><li>沒有共識就用「Northgo 中文詢價助理」</li></ul></article></div><div class="callout"><strong>名詞｜人工確認點：</strong>AI 做完之後，一定要由人看過、由人按下去的那一步，例如寄出回覆。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>14 / 34</span></div>
+<p class="eyebrow">W1 / 作業檢討 · 5′（19:10–19:15）</p><h2>快速看一處：提案最常漏掉什麼</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>組內互看 3′</strong><ul><li>每人用三句話念提案</li><li>組員只挑一處：題目太寬、不做事項不清楚、或沒有人工確認點</li><li>當場改好，標「W2 修改」</li></ul></article><article class="card"><div class="num">2</div><strong>全班 2′</strong><ul><li>講師挑 1 份，一起看改前改後</li><li>等一下選題時，可以沿用或換題目</li></ul></article></div><div class="callout"><strong>名詞｜人工確認點：</strong>AI 做完之後，一定要由人看過、由人按下去的那一步，例如寄出回覆。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>14 / 37</span></div>
     </section>
 
     <section class="slide" id="s15" data-title="今天的共同題目">
 <p class="eyebrow">W1 / 共同題目</p><h2>Northgo 中文詢價助理：W1 提案摘要</h2><table class="table"><thead><tr><th>欄位</th><th>內容</th></tr></thead><tbody><tr><td><strong>題目</strong></td><td>只做中文詢價表單、AI 分流與回覆草稿</td></tr><tr><td><strong>使用者</strong></td><td>潛在客戶送出；各服務窗口回覆；主管看全部</td></tr><tr><td><strong>痛點（W1 實測）</strong></td><td>中文版內容仍是英文；8 個必填，手機要滑約 2.5 個畫面才送出；成功訊息是英文</td></tr><tr><td><strong>流程</strong></td><td>填中文表單 → AI 摘要並建議服務別 → 寄給窗口 → 窗口改 AI 草稿 → 寄出</td></tr><tr><td><strong>AI 負責</strong></td><td>摘要需求、建議服務分類、草擬回覆；不報價</td></tr><tr><td><strong>人工確認點</strong></td><td>回覆與報價由窗口確認後寄出；分類有疑問由人改</td></tr><tr><td><strong>不做事項</strong></td><td>不做線上報價、不串貨況或 ERP、不改英文版其他頁、不做日／越文</td></tr></tbody></table><div class="callout">各組可以換成自己修改後的題目；練習範例都用這一題。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>15 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>15 / 37</span></div>
     </section>
 
     <section class="slide hero" id="s16" data-title="02-1 章節頁">
 
-      <p class="kicker">02-1 · 30 分鐘（19:25–19:55）</p>
+      <p class="kicker">02-1 · 50 分鐘（19:15–20:05）</p>
       <h1>使用者旅程</h1>
-      <p class="lead">先看人怎麼走，再決定頁面怎麼畫：找出痛點步驟，寫下成功與例外路徑。</p>
-      <p class="stamp">02-1-1 任務與痛點 4′ · 02-1-2 成功與例外 4′ · 練習 1 22′</p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>16 / 34</span></div>
+      <p class="lead">先看 Northgo 示範，再找你自己的題目：誰卡在哪一步，第一版就只解決那一步。</p>
+      <p class="stamp">Northgo 示範 6′ · 選題指南 4′ · AI 專題教練 10′＋分享 10′ · 練習 1 20′</p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>16 / 37</span></div>
     </section>
 
     <section class="slide" id="s17" data-title="02-1-1 旅程與痛點">
-<p class="eyebrow">02-1-1 / 任務與痛點 · 4′</p><h2>潛在客戶想用中文詢價：現在這樣走（W1 實測）</h2><div class="flow" role="list">
+<p class="eyebrow">02-1-1 / 示範：任務與痛點 · 3′</p><h2>潛在客戶想用中文詢價：現在這樣走（W1 實測）</h2><div class="flow" role="list">
         
         <div class="flow-step" role="listitem">
           <div class="flow-num">1</div>
@@ -418,34 +422,76 @@
           <strong>送出之後</strong>
           <p class="flow-desc">痛點：英文確認訊息，不知道誰會回、多久回</p>
         </div></div><div class="callout"><strong>名詞｜使用者旅程：</strong>為了完成一件事，使用者一步一步怎麼走。痛點＝卡住或不舒服的那一步。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>17 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>17 / 37</span></div>
     </section>
 
     <section class="slide" id="s18" data-title="02-1-2 成功與例外">
-<p class="eyebrow">02-1-2 / 成功與例外路徑 · 4′</p><h2>同一步，成功時怎麼走、出錯時系統要怎麼回應</h2><table class="table"><thead><tr><th>步驟</th><th>成功路徑</th><th>例外／錯誤路徑</th><th>系統怎麼回應</th></tr></thead><tbody><tr><td><strong>填表</strong></td><td>5 個必填都填好</td><td>Email 格式錯、必填空白</td><td>欄位下方中文提示，不送出</td></tr><tr><td><strong>送出</strong></td><td>送出成功</td><td>網路斷線、伺服器錯誤</td><td>保留已填內容，顯示「送出失敗，請再試一次」</td></tr><tr><td><strong>分流</strong></td><td>AI 判斷出服務別</td><td>AI 判斷不出來</td><td>標「待人工分類」，交給指定窗口</td></tr><tr><td><strong>回覆</strong></td><td>窗口確認草稿後寄出</td><td>太久沒回（期限待和大躍確認）</td><td>列表標示「逾時」提醒</td></tr></tbody></table><div class="callout"><strong>名詞｜例外路徑：</strong>出錯時怎麼走，例如 Email 打錯、送出失敗。寫不出來，W4 表單驗證就沒有依據。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>18 / 34</span></div>
+<p class="eyebrow">02-1-2 / 示範：成功與例外路徑 · 3′</p><h2>同一步，成功時怎麼走、出錯時系統要怎麼回應</h2><table class="table"><thead><tr><th>步驟</th><th>成功路徑</th><th>例外／錯誤路徑</th><th>系統怎麼回應</th></tr></thead><tbody><tr><td><strong>填表</strong></td><td>5 個必填都填好</td><td>Email 格式錯、必填空白</td><td>欄位下方中文提示，不送出</td></tr><tr><td><strong>送出</strong></td><td>送出成功</td><td>網路斷線、伺服器錯誤</td><td>保留已填內容，顯示「送出失敗，請再試一次」</td></tr><tr><td><strong>分流</strong></td><td>AI 判斷出服務別</td><td>AI 判斷不出來</td><td>標「待人工分類」，交給指定窗口</td></tr><tr><td><strong>回覆</strong></td><td>窗口確認草稿後寄出</td><td>太久沒回（期限待和大躍確認）</td><td>列表標示「逾時」提醒</td></tr></tbody></table><div class="callout"><strong>名詞｜例外路徑：</strong>出錯時怎麼走，例如 Email 打錯、送出失敗。寫不出來，W4 表單驗證就沒有依據。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>18 / 37</span></div>
     </section>
 
-    <section class="slide" id="s19" data-title="練習 1 題目">
-<p class="eyebrow">02-1 / 練習 1 · 22′</p><h2>畫出詢價旅程，標出痛點與例外</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>畫出潛在客戶用中文詢價的旅程，5–7 步</li><li>標出至少 2 個痛點步驟</li><li>寫出至少 2 條例外路徑與系統回應</li><li>交付：README.md 裡的旅程表＋例外表</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>加上服務窗口的旅程：收到 → 分類 → 回覆 → 結案</li><li>標出兩條旅程交棒的那一步</li><li>每條例外路徑寫一條驗收標準（假設／當／則）</li></ul></article></div><div class="callout">22 分鐘到時，不論做到哪，都先在 LINE 群打「好了」或「卡住」。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>19 / 34</span></div>
+    <section class="slide" id="s19" data-title="選題：題目從哪裡來">
+<p class="eyebrow">02-1 / 選題指南 · 4′</p><h2>找自己的專題：先想「誰，卡在哪一步」</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>工作上的問題</strong><ul><li>每天重複、很花時間、常出錯的事</li><li>例：報價流程</li></ul></article><article class="card"><div class="num">2</div><strong>專業介紹</strong><ul><li>你的產品或服務，幫客戶或同事解決什麼問題</li><li>例：優化公司官網的服務表單</li></ul></article><article class="card"><div class="num">3</div><strong>興趣、社團、協會</strong><ul><li>例：撞球遊戲</li><li>例：棋品空間-棋藝交流中心</li></ul></article><article class="card"><div class="num">4</div><strong>資訊系統</strong><ul><li>例：旅遊行程、設備管理</li><li>例：報價、記帳</li></ul></article></div><div class="callout">撞球適合熱身或興趣題；第 8 週成果發表，請選有明確使用者和痛點的題目。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>19 / 37</span></div>
     </section>
 
-    <section class="slide" id="s20" data-title="練習 1 提示詞">
-<p class="eyebrow">02-1 / 練習 1 · 貼到 Cursor</p><h2>開資料夾 northgo-wireframe → 貼開頭提示詞 → 貼這段</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題（【】換成你的內容）</strong><p>在這個資料夾建立 README.md。依下面的提案，寫出「潛在客戶用中文詢價」的使用者旅程 5–7 步，用表格：步驟／在做什麼／看到的畫面／痛點。再列 2 條例外路徑與系統怎麼回應。不要加提案沒有的功能；不確定的寫「待問大躍」。【貼上 W1 提案】</p></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>在 README.md 再加上「服務窗口」的旅程：收到詢價 → 分類 → 回覆 → 結案，標出兩條旅程交棒的那一步。每條例外路徑寫一條驗收標準：假設……／當……／則……。</p></article></div><div class="callout"><strong>驗收：</strong>打開 README.md 看得到旅程表和例外表；沒有提案以外的功能。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>20 / 34</span></div>
+    <section class="slide" id="s20" data-title="選題四步與三個標準">
+<p class="eyebrow">02-1 / 選題方法</p><h2>四步找到題目，再用三個標準檢查</h2><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>選真實情境</strong>
+          <p class="flow-desc">從四個來源挑一個你熟的</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>寫成一句話</strong>
+          <p class="flow-desc">「誰，想要完成什麼，現在怎麼做」</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>列 5–7 步，圈最痛</strong>
+          <p class="flow-desc">最花時間、最常出錯、最常等人的 1–2 步</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>縮成第一版</strong>
+          <p class="flow-desc">只解決那一步，3–5 個畫面</p>
+        </div></div><div class="callout"><strong>好題目三標準：</strong>有人真的會用、一句話講得清楚、第一版 3–5 個畫面。太大就縮：設備管理 → 設備借還登記。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>20 / 37</span></div>
     </section>
 
-    <section class="slide hero" id="s21" data-title="02-2 章節頁">
+    <section class="slide" id="s21" data-title="AI 專題教練">
+<p class="eyebrow">02-1 / AI 專題教練 · 10′ 對話＋10′ 分享（19:25–19:45）</p><h2>在 Cursor 貼這段，讓 AI 一題一題問你</h2><figure class="slide-prompt"><figcaption>AI 專題教練提示詞（整段複製，貼到 Cursor 的 Agent 對話）</figcaption><pre>你是我的 AI 專題教練。請一次只問我一個問題，引導我找出這次 AI 課程的專題，不要一次問完。只用對話，先不要建立或修改任何檔案。
+題目可以來自：1. 工作上的問題（如報價流程）2. 我的產品或服務幫客戶、同事解決什麼（如優化官網服務表單）3. 興趣、社團、協會（如撞球遊戲、棋品空間-棋藝交流中心）4. 資訊系統（如旅遊行程、設備管理、報價、記帳）。
+引導步驟：A. 選一個情境，寫成一句話「誰，想要完成什麼，現在怎麼做」 B. 列出 5–7 個步驟 C. 圈出最痛的 1–2 步（最花時間、最常出錯、最常等人） D. 第一版只解決那一步，最多 3–5 個畫面。題目太大請幫我縮小。
+最後用這個格式整理：專題名稱／使用者是誰／任務一句話／目前步驟／最痛的步驟與原因／第一版要做的功能（最多 3 項）／需要哪些畫面／怎麼算成功。</pre></figure><div class="callout"><strong>分享：</strong>組內每人 1 分鐘念結果，講師巡迴判斷「太大要縮／可以做」。線上同學：把結果貼到 LINE 群。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>21 / 37</span></div>
+    </section>
 
-      <p class="kicker">02-2 · 30 分鐘（19:55–20:25）</p>
+    <section class="slide" id="s22" data-title="練習 1 題目">
+<p class="eyebrow">02-1 / 練習 1 · 20′（19:45–20:05）</p><h2>畫出你自己題目的旅程，標出痛點與例外</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>用剛剛整理的專題，畫出使用者旅程 5–7 步</li><li>標出最痛的 1–2 步（跟教練結果一致）</li><li>寫出至少 2 條例外路徑與系統回應</li><li>交付：README.md 的專題摘要＋旅程表＋例外表</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>加上第二個角色（處理的人、管理的人）的旅程</li><li>標出兩條旅程交棒的那一步</li><li>每條例外路徑寫一條驗收標準（假設／當／則）</li></ul></article></div><div class="callout"><strong>還沒想好題目：</strong>先照 Northgo 示範做，作業再換成自己的。20 分鐘到時在 LINE 群打「好了」或「卡住」。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>22 / 37</span></div>
+    </section>
+
+    <section class="slide" id="s23" data-title="練習 1 提示詞">
+<p class="eyebrow">02-1 / 練習 1 · 貼到 Cursor</p><h2>接在 AI 教練同一個對話裡貼這段（cursor-w2 資料夾）</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><p>依上面整理好的專題，在這個資料夾建立 README.md：先放專題摘要（照剛剛的格式），再寫使用者旅程 5–7 步，用表格：步驟／在做什麼／看到的畫面／痛點，最痛的 1–2 步標「最痛」。再列 2 條例外路徑與系統怎麼回應。不要加我沒說過的功能；不確定的寫「待確認」。</p></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>在 README.md 再加上第二個角色（例如處理的人或管理的人）的旅程，標出兩條旅程交棒的那一步。每條例外路徑寫一條驗收標準：假設……／當……／則……。</p></article></div><div class="callout"><strong>驗收：</strong>README.md 看得到專題摘要、旅程表、例外表；最痛的步驟有標出來。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>23 / 37</span></div>
+    </section>
+
+    <section class="slide hero" id="s24" data-title="02-2 章節頁">
+
+      <p class="kicker">02-2 · 25 分鐘（20:05–20:30）</p>
       <h1>頁面結構與資訊架構</h1>
       <p class="lead">頁面越少越好：先列出走完主流程的最少頁面，再決定每頁欄位的先後。</p>
-      <p class="stamp">02-2-1 頁面與導覽 4′ · 02-2-2 欄位優先順序 4′ · 練習 2 22′</p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>21 / 34</span></div>
+      <p class="stamp">02-2-1 頁面與導覽 4′ · 02-2-2 欄位優先順序 4′ · 練習 2 17′</p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>24 / 37</span></div>
     </section>
 
-    <section class="slide" id="s22" data-title="02-2-1 頁面導覽圖">
+    <section class="slide" id="s25" data-title="02-2-1 頁面導覽圖">
 <p class="eyebrow">02-2-1 / 頁面與導覽 · 4′</p><h2>Northgo 中文詢價助理：MVP 頁面與導覽關係</h2><div class="arch-svg-wrap" role="img" aria-label="Northgo 中文詢價助理頁面導覽圖"><svg viewBox="0 0 1200 430" xmlns="http://www.w3.org/2000/svg">
 <defs><marker id="w2ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#64748b"/></marker></defs>
 <text class="hd" x="20" y="30">前台：潛在客戶</text>
@@ -461,71 +507,71 @@
 <line class="ar" x1="342" y1="326" x2="436" y2="326" marker-end="url(#w2ar)"/><line class="ar" x1="762" y1="326" x2="856" y2="326" marker-end="url(#w2ar)"/>
 <text class="t2" x="20" y="418">MVP 共 6 頁：走完「客戶送出 → 窗口確認寄出」一次主流程</text>
 </svg></div><div class="callout"><strong>名詞｜MVP：</strong>最小可用版本，只做走完主流程一定要有的頁面。綠色框是今天的重點頁。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>22 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>25 / 37</span></div>
     </section>
 
-    <section class="slide" id="s23" data-title="02-2-2 欄位優先順序">
+    <section class="slide" id="s26" data-title="02-2-2 欄位優先順序">
 <p class="eyebrow">02-2-2 / 欄位優先順序 · 4′</p><h2>表單頁與列表頁：先放做決定需要的欄位</h2><div class="grid two"><article class="card"><div class="num">表單</div><strong>詢價表單頁（建議）</strong><ul><li>必填：公司、聯絡人、Email、需求服務、需求描述</li><li>選填：電話、國家、預計出貨時間</li><li>合併：現況的名、姓兩欄改成「聯絡人」一欄</li><li>對照：現況 8 個必填，含國家下拉與同意條款</li></ul></article><article class="card"><div class="num">列表</div><strong>詢價列表頁（建議）</strong><ul><li>第一欄：詢價編號＋狀態（新進／處理中／已回覆）</li><li>公司、需求服務</li><li>送出時間、已等待多久</li><li>AI 摘要一行（點進明細看全文）</li></ul></article></div><div class="callout"><strong>名詞｜必填：</strong>不填就不能送出。做決定需要的放前面；同意條款要不要留，要問大躍（法務）。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>23 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>26 / 37</span></div>
     </section>
 
-    <section class="slide" id="s24" data-title="練習 2 題目">
-<p class="eyebrow">02-2 / 練習 2 · 22′</p><h2>列出頁面、排好欄位、做成點得到的頁面</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>列出 MVP 頁面（最多 6 頁）與「從哪來、到哪去」</li><li>表單欄位分必填／選填／不放，必填最多 5 個</li><li>做成 index.html：每頁一個區塊，能互相點</li><li>交付：README 的頁面清單＋欄位表、index.html</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>列表頁欄位順序＋篩選條件</li><li>標出哪些頁要登入、哪個角色能看</li><li>列表頁放 3 筆假資料（客戶公司 A、B、C）</li></ul></article></div><div class="callout"><strong>換角色：</strong>上一輪的領航，這一輪當駕駛。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>24 / 34</span></div>
+    <section class="slide" id="s27" data-title="練習 2 題目">
+<p class="eyebrow">02-2 / 練習 2 · 17′</p><h2>列出頁面、排好欄位、做成點得到的頁面</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>列出 MVP 頁面（最多 6 頁）與「從哪來、到哪去」</li><li>表單欄位分必填／選填／不放，必填最多 5 個</li><li>做成 index.html：每頁一個區塊，能互相點</li><li>交付：README 的頁面清單＋欄位表、index.html</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>列表頁欄位順序＋篩選條件</li><li>標出哪些頁要登入、哪個角色能看</li><li>列表頁放 3 筆假資料（客戶公司 A、B、C）</li></ul></article></div><div class="callout"><strong>用自己題目的同學：</strong>把頁面換成你第一版的 3–5 個畫面。換角色：上一輪的領航，這一輪當駕駛。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>27 / 37</span></div>
     </section>
 
-    <section class="slide" id="s25" data-title="練習 2 提示詞">
+    <section class="slide" id="s28" data-title="練習 2 提示詞">
 <p class="eyebrow">02-2 / 練習 2 · 貼到 Cursor</p><h2>接在練習 1 同一個資料夾、同一個對話</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><p>依 README 的旅程，在 README.md 加上「頁面清單」：最多 6 頁，每頁寫頁名／給誰／主要內容／從哪來、到哪去。再加「表單欄位」：分必填、選填、不放，各寫一句理由，必填最多 5 個。接著建立 index.html：每頁一個區塊，有頁名和上一頁／下一步連結。</p></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>在 README 加上詢價列表頁的欄位（依窗口做決定的先後）和篩選條件，並標出哪些頁要登入、哪個角色能看。index.html 的列表頁用表格放 3 筆假資料：客戶公司 A、B、C。</p></article></div><div class="callout"><strong>驗收：</strong>從首頁點到送出完成頁 3 下以內；頁名和清單一字不差；必填不超過 5 個。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>25 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>28 / 37</span></div>
     </section>
 
-    <section class="slide hero" id="s26" data-title="02-3 章節頁">
+    <section class="slide hero" id="s29" data-title="02-3 章節頁">
 
-      <p class="kicker">02-3 · 35 分鐘（休息 10′ 後，20:35–21:10）</p>
+      <p class="kicker">02-3 · 32 分鐘（休息 10′ 後，20:40–21:12）</p>
       <h1>UI／UX 與 RWD 基礎</h1>
       <p class="lead">同一頁在桌面和手機要怎麼取捨；按下去之後，畫面要告訴使用者發生了什麼。</p>
-      <p class="stamp">02-3-1 桌面與手機 4′ · 02-3-2 狀態回饋 4′ · 練習 3 27′</p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>26 / 34</span></div>
+      <p class="stamp">02-3-1 桌面與手機 4′ · 02-3-2 狀態回饋 4′ · 練習 3 24′</p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>29 / 37</span></div>
     </section>
 
-    <section class="slide" id="s27" data-title="02-3-1 桌面與手機">
+    <section class="slide" id="s30" data-title="02-3-1 桌面與手機">
 <p class="eyebrow">02-3-1 / 桌面與手機取捨 · 4′</p><h2>同一頁，桌面與手機怎麼取捨</h2><table class="table"><thead><tr><th>項目</th><th>桌面</th><th>手機</th><th>Northgo 怎麼取捨</th></tr></thead><tbody><tr><td><strong>表單</strong></td><td>可兩欄並排</td><td>單欄，由上往下</td><td>現況送出鈕約在 2.5 個畫面下 → 縮短表單、送出鈕跟著最後一欄</td></tr><tr><td><strong>第一屏</strong></td><td>大圖＋標題</td><td>標題＋表單開頭</td><td>現況聯絡頁手機第一屏只有主視覺圖 → 圖縮小或拿掉</td></tr><tr><td><strong>導覽</strong></td><td>上方選單</td><td>漢堡選單</td><td>「我要詢價」放在漢堡選單外面</td></tr><tr><td><strong>列表</strong></td><td>表格</td><td>卡片</td><td>每張卡只放編號、公司、狀態</td></tr></tbody></table><div class="callout"><strong>名詞｜RWD（響應式設計）：</strong>同一個網頁在手機和電腦上自動換成適合的排法。手機先畫。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>27 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>30 / 37</span></div>
     </section>
 
-    <section class="slide" id="s28" data-title="02-3-2 狀態回饋">
+    <section class="slide" id="s31" data-title="02-3-2 狀態回饋">
 <p class="eyebrow">02-3-2 / 狀態回饋 · 4′</p><h2>按下去之後：載入、成功、錯誤都要說清楚</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>載入</strong><ul><li>按鈕變「送出中…」並停用</li><li>避免重複送出兩筆</li><li>超過幾秒才顯示提示（W4 再決定）</li></ul></article><article class="card"><div class="num">2</div><strong>成功</strong><ul><li>中文確認訊息</li><li>詢價編號，方便之後追問</li><li>多久會回覆（待大躍確認）</li></ul></article><article class="card"><div class="num">3</div><strong>錯誤</strong><ul><li>欄位旁中文說明哪裡錯</li><li>送出失敗：保留已填內容</li><li>給下一步：再試一次或打電話</li></ul></article></div><div class="callout"><strong>現況：</strong>成功訊息是英文「Thank you! Your submission has been received!」，中文版聯絡頁也一樣。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>28 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>31 / 37</span></div>
     </section>
 
-    <section class="slide" id="s29" data-title="練習 3 題目">
-<p class="eyebrow">02-3 / 練習 3 · 27′</p><h2>做出可點擊的 Wireframe：含三種狀態</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>表單頁與完成頁，手機寬也能用</li><li>做出載入、成功、錯誤三種狀態</li><li>送出鈕在表單最後一欄下方</li><li>交付：點得到的 index.html</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>加上詢價列表與明細頁，桌面與手機各一版</li><li>明細頁有 AI 摘要、AI 草稿與「確認寄出」</li><li>確認寄出要由人按，不能自動寄出</li></ul></article></div><div class="callout">Wireframe 用灰階方框就好。卡住時打開右上角的參考答案對照。</div><p class="slide-links"><a href="/examples/ai-agent-course-week02-northgo-wireframe.html" target="_blank" rel="noopener noreferrer">參考答案：Wireframe 範例</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>29 / 34</span></div>
+    <section class="slide" id="s32" data-title="練習 3 題目">
+<p class="eyebrow">02-3 / 練習 3 · 24′</p><h2>做出可點擊的 Wireframe：含三種狀態</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>表單頁與完成頁，手機寬也能用</li><li>做出載入、成功、錯誤三種狀態</li><li>送出鈕在表單最後一欄下方</li><li>交付：點得到的 index.html</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><ul><li>加上詢價列表與明細頁，桌面與手機各一版</li><li>明細頁有 AI 摘要、AI 草稿與「確認寄出」</li><li>確認寄出要由人按，不能自動寄出</li></ul></article></div><div class="callout"><strong>自己的題目：</strong>把表單頁換成你最痛那一步的畫面。卡住時打開右上角的 Northgo 參考答案對照。</div><p class="slide-links"><a href="/examples/ai-agent-course-week02-northgo-wireframe.html" target="_blank" rel="noopener noreferrer">參考答案：Wireframe 範例</a></p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>32 / 37</span></div>
     </section>
 
-    <section class="slide" id="s30" data-title="練習 3 提示詞">
+    <section class="slide" id="s33" data-title="練習 3 提示詞">
 <p class="eyebrow">02-3 / 練習 3 · 貼到 Cursor</p><h2>接著改同一個 index.html</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><p>把 index.html 的詢價表單頁和送出完成頁做成灰階 Wireframe，手機寬 390px 也不會左右捲動，欄位順序照 README。必填空白或 Email 錯：欄位下方中文提示，不跳頁。按送出：按鈕變「送出中…」並停用 1 秒，再到完成頁顯示詢價編號（示意）。不要有任何真的送出資料的程式。</p></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>加上詢價列表與明細頁：桌面用表格，手機改成卡片。明細頁要有 AI 摘要、AI 回覆草稿和「確認寄出」按鈕；按下只顯示「已寄出（示意）」，不能自動寄出。</p></article></div><div class="callout">做完先貼結尾提示詞，再用下一頁的驗收清單打勾。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>30 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>33 / 37</span></div>
     </section>
 
-    <section class="slide" id="s31" data-title="Wireframe 驗收清單">
+    <section class="slide" id="s34" data-title="Wireframe 驗收清單">
 <p class="eyebrow">02-3 / 驗收清單</p><h2>領航拿這張表，逐項驗收可點擊 Wireframe</h2><table class="table"><thead><tr><th>項目</th><th>怎麼驗</th><th>通過條件</th></tr></thead><tbody><tr><td><strong>主流程</strong></td><td>首頁 → 我要詢價 → 填表 → 送出</td><td>3 下以內到完成頁</td></tr><tr><td><strong>必填</strong></td><td>空白直接按送出</td><td>5 個必填都有中文提示，不跳頁</td></tr><tr><td><strong>Email</strong></td><td>輸入 abc</td><td>顯示格式錯誤，不送出</td></tr><tr><td><strong>載入</strong></td><td>按送出</td><td>按鈕變「送出中…」且不能再按</td></tr><tr><td><strong>成功</strong></td><td>送出完成</td><td>中文確認訊息＋詢價編號（示意）</td></tr><tr><td><strong>手機</strong></td><td>把瀏覽器視窗拉窄到手機寬</td><td>沒有左右捲動，第一屏看得到表單開頭</td></tr><tr><td><strong>人工確認</strong></td><td>明細頁（進階題）</td><td>AI 草稿旁有「確認寄出」，不會自動寄出</td></tr></tbody></table><div class="callout"><strong>沒通過的項目不用當場修完：</strong>寫進 W3 的修正清單。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>31 / 34</span></div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>34 / 37</span></div>
     </section>
 
-    <section class="slide" id="s32" data-title="成果展示">
-<p class="eyebrow">99 / 成果展示 · 12′（21:10–21:22）</p><h2>每組 3 分鐘：點給大家看</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>走一次主流程</strong><p>從首頁點到完成頁，邊點邊說每一頁給誰用。</p></article><article class="card"><div class="num">2</div><strong>示範一條例外</strong><p>例如 Email 打錯、送出失敗，畫面怎麼回應。</p></article><article class="card"><div class="num">3</div><strong>說一個還沒解決的問題</strong><p>寫進 W3 修正清單，下週先處理。</p></article></div><div class="callout"><strong>其他組只回饋一件事：</strong>哪一步會讓客戶卡住？線上同學請分享螢幕來展示。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>32 / 34</span></div>
+    <section class="slide" id="s35" data-title="成果展示">
+<p class="eyebrow">99 / 成果展示 · 10′（21:12–21:22）</p><h2>每組 2 分鐘：點給大家看</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>走一次主流程</strong><p>從首頁點到完成頁，邊點邊說每一頁給誰用。</p></article><article class="card"><div class="num">2</div><strong>示範一條例外</strong><p>例如 Email 打錯、送出失敗，畫面怎麼回應。</p></article><article class="card"><div class="num">3</div><strong>說一個還沒解決的問題</strong><p>寫進 W3 修正清單，下週先處理。</p></article></div><div class="callout"><strong>其他組只回饋一件事：</strong>哪一步會讓客戶卡住？線上同學請分享螢幕來展示。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>35 / 37</span></div>
     </section>
 
-    <section class="slide" id="s33" data-title="作業">
-<p class="eyebrow">99 / 作業 · 21:22–21:30</p><h2>作業：把 Wireframe 定稿，下週課堂一起檢討</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>必做｜Wireframe 定稿</strong><p>頁面清單、表單欄位、三種狀態，整理在 northgo-wireframe 資料夾（README＋index.html）。</p></article><article class="card"><div class="num">2</div><strong>必做｜更新提案</strong><p>把今天改過的流程、不做事項寫回 W1 提案。</p></article><article class="card"><div class="num">3</div><strong>選做｜補完進階題</strong><p>任選一題，附上驗收清單打勾結果。</p></article><article class="card"><div class="num">4</div><strong>選做｜撞球第 2、3 步</strong><p>照講義加上自動打和音效，下週分享給組員玩。</p></article></div><div class="callout"><strong>做不出成品也沒關係：</strong>README 文字＋截圖也算。下週開場每組 2 分鐘檢討。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>33 / 34</span></div>
+    <section class="slide" id="s36" data-title="作業">
+<p class="eyebrow">99 / 作業 · 21:22–21:30</p><h2>作業：一頁專題提案＋Wireframe 定稿</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>必做｜一頁專題提案</strong><p>照 AI 教練的格式：專題名稱、使用者、任務一句話、目前步驟、最痛的步驟與原因、第一版功能（最多 3 項）、畫面、怎麼算成功。</p></article><article class="card"><div class="num">2</div><strong>必做｜Wireframe 定稿</strong><p>自己的題目或 Northgo 都可以：頁面、欄位、三種狀態，放在 cursor-w2 資料夾（README＋index.html）。</p></article><article class="card"><div class="num">3</div><strong>選做｜補完進階題</strong><p>任選一題，附上驗收清單打勾結果。</p></article><article class="card"><div class="num">4</div><strong>選做｜撞球第 2、3 步</strong><p>照講義加上自動打和音效，下週分享給組員玩。</p></article></div><div class="callout">這個題目就是 W8 成果發表的起點。做不出成品也沒關係，README 文字＋截圖也算；下週開場每組 2 分鐘檢討。</div><p class="slide-links"><a href="/examples/ai-agent-course-cursor-prompt-guide.html" target="_blank" rel="noopener noreferrer">Cursor 教學文件</a></p>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>36 / 37</span></div>
     </section>
 
-    <section class="slide" id="s34" data-title="W3 預告">
-<p class="eyebrow">99 / 下週預告</p><h2>W3｜Vibe Coding 基礎實作：照 Wireframe 做出首版頁面</h2><table class="table"><thead><tr><th>章節</th><th>學習點</th><th>會用到今天的</th></tr></thead><tbody><tr><td><strong>03-1 開發環境與提示詞</strong></td><td>專案結構、README 與 repo 規則；撰寫可驗收的 AI 開發提示</td><td>README、開頭／結尾提示詞</td></tr><tr><td><strong>03-2 頁面與元件</strong></td><td>產生頁面骨架並拆分可重用元件；樣式調整與品牌一致性檢查</td><td>頁面清單、欄位表</td></tr><tr><td><strong>03-3 迭代驗證</strong></td><td>對照 Wireframe 逐頁驗收；記錄已知缺陷與下一輪修正清單</td><td>Wireframe、驗收清單</td></tr></tbody></table><div class="callout"><strong>下週一樣全程用 Cursor：</strong>今天的 northgo-wireframe 資料夾請留著，下週接著做。課後請填問卷。</div>
-      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>34 / 34</span></div>
+    <section class="slide" id="s37" data-title="W3 預告">
+<p class="eyebrow">99 / 下週預告</p><h2>W3｜Vibe Coding 基礎實作：照 Wireframe 做出首版頁面</h2><table class="table"><thead><tr><th>章節</th><th>學習點</th><th>會用到今天的</th></tr></thead><tbody><tr><td><strong>03-1 開發環境與提示詞</strong></td><td>專案結構、README 與 repo 規則；撰寫可驗收的 AI 開發提示</td><td>README、開頭／結尾提示詞</td></tr><tr><td><strong>03-2 頁面與元件</strong></td><td>產生頁面骨架並拆分可重用元件；樣式調整與品牌一致性檢查</td><td>頁面清單、欄位表</td></tr><tr><td><strong>03-3 迭代驗證</strong></td><td>對照 Wireframe 逐頁驗收；記錄已知缺陷與下一輪修正清單</td><td>Wireframe、驗收清單</td></tr></tbody></table><div class="callout"><strong>下週一樣全程用 Cursor：</strong>今天的 cursor-w2 資料夾請留著，下週接著做。課後請填問卷。</div>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>37 / 37</span></div>
     </section>
   </main>
 
@@ -653,6 +699,18 @@
 
       show(parseInitialSlide());
     })();
+
+    document.querySelectorAll(".slide-prompt").forEach(function (fig) {
+      var pre = fig.querySelector("pre"); if (!pre) return;
+      var b = document.createElement("button"); b.type = "button"; b.className = "prompt-copy"; b.textContent = "複製";
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var t = pre.textContent, ok = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製"; }, 1500); };
+        var fb = function () { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (err) { b.textContent = "請手動選取"; } document.body.removeChild(ta); };
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+      });
+      fig.appendChild(b);
+    });
   </script>
 </body>
 </html>

@@ -39,3 +39,14 @@ test("hero slides render and round-trip links too", () => {
   const $ = cheerio.load(html, { decodeEntities: false });
   assert.deepEqual(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).links, slide.links);
 });
+
+test("promptBlock renders escaped and round-trips with line breaks", () => {
+  const slide = { slideId: "s1", index: 1, title: "t", layout: "cards", h2: "h", cards: [], callouts: [],
+    promptBlock: { label: "教練提示詞", text: "第一行 <x>\n第二行" } };
+  const html = renderSlideHtml(slide, 1);
+  assert.match(html, /<pre>第一行 &lt;x&gt;\n第二行<\/pre>/);
+  const $ = cheerio.load(html, { decodeEntities: false });
+  const back = migrateSlideFromHtml($, $(".slide").get(0), 0, 1);
+  assert.equal(back.layout, "cards");
+  assert.deepEqual(back.promptBlock, slide.promptBlock);
+});
