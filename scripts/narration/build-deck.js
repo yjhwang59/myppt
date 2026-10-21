@@ -4,11 +4,13 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { DECK_HTML, DECK_ID, deckHtmlPath, slidesJsonPath } from "./lib/paths.js";
-import { patchDeckHtml, readSlidesJson } from "./lib/slide-model.js";
+import { patchDeckHtml, readSlidesJson, roundTripMismatches } from "./lib/slide-model.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const args = process.argv.slice(2).filter((arg) => arg !== "--skip-extract");
-const deckId = args[0] || DECK_ID;
+const rawArgs = process.argv.slice(2);
+const check = rawArgs.includes("--check");
+const args = rawArgs.filter((arg) => arg !== "--skip-extract" && arg !== "--check");
+const deckId = args.find((arg) => !arg.startsWith("--")) || DECK_ID;
 const htmlPath = deckHtmlPath(deckId);
 const resolvedHtml = path.resolve(htmlPath);
 const resolvedEnterprise = path.resolve(DECK_HTML);
@@ -37,6 +39,23 @@ if (!/<main id="deck">[\s\S]*?<\/main>/.test(html)) {
   process.exit(1);
 }
 const patched = patchDeckHtml(html, deckData);
+
+if (check) {
+  const mismatches = roundTripMismatches(deckData);
+  const htmlDrift = patched !== html;
+  if (mismatches.length || htmlDrift) {
+    console.error(`✗ round-trip check failed for ${deckId}`);
+    if (htmlDrift) console.error("  - HTML <main id=\"deck\"> 與 slides.json 渲染結果不一致");
+    for (const mismatch of mismatches) {
+      console.error(`  - ${mismatch.slideId} 往返後欄位不一致`);
+      console.error(JSON.stringify(mismatch, null, 2));
+    }
+    process.exit(1);
+  }
+  console.log(`✓ round-trip check passed for ${deckId}`);
+  process.exit(0);
+}
+
 fs.writeFileSync(htmlPath, patched, "utf8");
 console.log(`✓ rebuilt ${htmlPath} from ${slidesPath}`);
 
