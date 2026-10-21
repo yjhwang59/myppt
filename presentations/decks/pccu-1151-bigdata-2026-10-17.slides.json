@@ -11,15 +11,15 @@
       "hero": true,
       "eyebrow": "",
       "kicker": "文化大學推廣部｜1151 碩專班｜2026-10-17 週六 13:10｜W5",
-      "h1": "2026-10-17｜巨量1151\nW5 · 固定驗收集",
-      "h2": "2026-10-17｜巨量1151｜W5 固定驗收集",
+      "h1": "2026-10-17｜巨量1151\n\nW5 · 固定驗收集",
+      "h2": "2026-10-17｜巨量1151 W5 · 固定驗收集",
       "lead": "巨量資料挖掘與分析。這週新交的作業不多，所以改成複習加 PBL 工作室。",
-      "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · W5 · AISDLC Deploy · ←→ 翻頁 · F 全螢幕 · 12 頁 · 16:9",
+      "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · W5 · AISDLC Deploy · ←→ 翻頁 · F 全螢幕 · 17 頁 · 16:9",
       "cards": [],
       "flowSteps": [
         {
           "title": "開場",
-          "description": "上週回顧"
+          "description": "目標＋PBL 雙軌"
         },
         {
           "title": "作業三",
@@ -27,7 +27,7 @@
         },
         {
           "title": "W5",
-          "description": "固定驗收集"
+          "description": "驗收集＋現場示範"
         },
         {
           "title": "工作室",
@@ -41,7 +41,7 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "1 / 12"
+      "footerPage": "1 / 17"
     },
     {
       "slideId": "s2",
@@ -85,15 +85,114 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "2 / 12"
+      "footerPage": "2 / 17"
     },
     {
       "slideId": "s3",
       "index": 3,
+      "title": "PBL 是什麼",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "03 / PBL 是什麼（3 分鐘）",
+      "kicker": "",
+      "h1": "",
+      "h2": "專題導向：你的題目，就是這門課的教材",
+      "lead": "不是先教完再做專題。每週用你自己的題目，過一道品質門檻。",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "品質門檻鎖進度",
+          "tag": null,
+          "tagClass": null,
+          "heading": "前一關沒過，不能只做漂亮的下一關",
+          "paragraph": "沒有基線就不談模型；系統跑不起來，驗收集也鎖不住。",
+          "bullets": []
+        },
+        {
+          "num": "課堂是工作室",
+          "tag": null,
+          "tagClass": null,
+          "heading": "老師是教練，不是一直講課",
+          "paragraph": "現場抽查三格：基線／系統／證據。指得到檔案，才算過。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "基線",
+          "description": "證明現在有多痛"
+        },
+        {
+          "title": "最小可跑系統",
+          "description": "證明做得出來"
+        },
+        {
+          "title": "固定驗收集",
+          "description": "證明不是運氣・本週"
+        },
+        {
+          "title": "證據包",
+          "description": "證明敢給人看"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "3 / 17"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "S／F 雙軌",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04 / PBL 雙軌：S／F",
+      "kicker": "",
+      "h1": "",
+      "h2": "先過當週門檻，再決定要不要加碼",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "S · 穩健軌 Steady",
+          "tag": null,
+          "tagClass": null,
+          "heading": "程式經驗少、資料還在補，走這條",
+          "paragraph": "",
+          "bullets": [
+            "每週過必過項：基線、最小系統、驗收集、證據包",
+            "簡單沒關係，可重跑、數字誠實",
+            "這就是滿分路線"
+          ]
+        },
+        {
+          "num": "F · 快速軌 Fast",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先過當週門檻，才加碼",
+          "paragraph": "",
+          "bullets": [
+            "多指標基線、真實 API、排程、儀表板、A/B 或回測",
+            "要教別組重跑你的東西",
+            "換到的是展示機會，不提早給期末分"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "軌道可以隨時換：F 軌當週門檻沒過，就先退回 S 軌把必過項補齊。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "4 / 17"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
       "title": "W3–W6",
       "layout": "cards",
       "hero": false,
-      "eyebrow": "03 / W3–W6 的意義",
+      "eyebrow": "05 / W3–W6 的意義",
       "kicker": "",
       "h1": "",
       "h2": "四道關卡，這週停在固定驗收集",
@@ -153,15 +252,15 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "3 / 12"
+      "footerPage": "5 / 17"
     },
     {
-      "slideId": "s4",
-      "index": 4,
+      "slideId": "s6",
+      "index": 6,
       "title": "三硬門檻與 5V",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "04 / 三硬門檻 × 5V",
+      "eyebrow": "06 / 三硬門檻 × 5V",
       "kicker": "",
       "h1": "",
       "h2": "沒過門，就還不能叫專案",
@@ -219,15 +318,15 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "4 / 12"
+      "footerPage": "6 / 17"
     },
     {
-      "slideId": "s5",
-      "index": 5,
+      "slideId": "s7",
+      "index": 7,
       "title": "AISDLC 週次對照",
       "layout": "table",
       "hero": false,
-      "eyebrow": "05 / AISDLC × 週次",
+      "eyebrow": "07 / AISDLC × 週次",
       "kicker": "",
       "h1": "",
       "h2": "Discover 走到 Diagnose，對上 W1–W6",
@@ -271,15 +370,15 @@
         "這週停在 Deploy：把固定驗收集鎖住，同一組輸入重跑要對得起來。Develop 的最小系統，還有 Diagnose 的失敗說明，都還是你要負責。"
       ],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "5 / 12"
+      "footerPage": "7 / 17"
     },
     {
-      "slideId": "s6",
-      "index": 6,
+      "slideId": "s8",
+      "index": 8,
       "title": "作業三 SRS 觀察",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "06 / 作業三 SRS 共通觀察（去名化）",
+      "eyebrow": "08 / 作業三 SRS 共通觀察（去名化）",
       "kicker": "",
       "h1": "",
       "h2": "六項齊了沒；缺口還是那幾類",
@@ -332,15 +431,15 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "6 / 12"
+      "footerPage": "8 / 17"
     },
     {
-      "slideId": "s7",
-      "index": 7,
+      "slideId": "s9",
+      "index": 9,
       "title": "W5 怎麼做",
       "layout": "cards",
       "hero": false,
-      "eyebrow": "07 / W5 固定驗收集",
+      "eyebrow": "09 / W5 固定驗收集",
       "kicker": "",
       "h1": "",
       "h2": "先凍結樣例、標上版本，預期輸出寫下來",
@@ -386,15 +485,202 @@
         "不算驗收：每次偷偷換一份資料，或只跑過一次就收工。同一組輸入，重跑才算數。"
       ],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "7 / 12"
+      "footerPage": "9 / 17"
     },
     {
-      "slideId": "s8",
-      "index": 8,
+      "slideId": "s10",
+      "index": 10,
+      "title": "示範：北風烘焙驗收集",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "10 / 示範：北風烘焙固定驗收集（示範資料）",
+      "kicker": "",
+      "h1": "",
+      "h2": "四個檔案，一個門檻：MAPE ≤ 15% 且優於基線",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "模型",
+          "tag": null,
+          "tagClass": null,
+          "heading": "同星期近 4 週平均",
+          "paragraph": "再加天氣／假日調整。",
+          "bullets": []
+        },
+        {
+          "num": "基線",
+          "tag": null,
+          "tagClass": null,
+          "heading": "上週同一天",
+          "paragraph": "最簡單的對照，模型要贏它才有意義。",
+          "bullets": []
+        },
+        {
+          "num": "門檻",
+          "tag": null,
+          "tagClass": null,
+          "heading": "MAPE ≤ 15% 且優於基線",
+          "paragraph": "兩個條件都要過，才叫 PASS。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [
+        [
+          "檔案",
+          "內容"
+        ],
+        [
+          "history.csv",
+          "120 天銷量，2 店 × 3 品項"
+        ],
+        [
+          "acceptance_v1.csv",
+          "凍結的驗收集：30 筆，10/12–10/16"
+        ],
+        [
+          "manifest",
+          "記錄版本、筆數、來源和 SHA-256 指紋"
+        ],
+        [
+          "run_eval.py",
+          "一行指令跑完驗收，印出指紋、MAPE、PASS／FAIL"
+        ]
+      ],
+      "callouts": [
+        "示範資料，非真實客戶：結構照抄就好。把這四個檔案換成你自己題目的資料、模型和基線。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "10 / 17"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "現場三步",
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "11 / 現場三步（真實輸出）",
+      "kicker": "",
+      "h1": "",
+      "h2": "驗收集一動，指紋就變",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "輸入",
+          "SHA-256",
+          "模型 MAPE",
+          "基線 MAPE",
+          "判讀"
+        ],
+        [
+          "① 跑一次",
+          "python run_eval.py acceptance_v1.csv",
+          "848d82f6…aceb87",
+          "11.43%",
+          "17.15%",
+          "PASS"
+        ],
+        [
+          "② 重跑",
+          "同一份 acceptance_v1.csv",
+          "848d82f6…aceb87",
+          "11.43%",
+          "17.15%",
+          "完全一樣"
+        ],
+        [
+          "③ 竄改檔",
+          "acceptance_v1_tampered.csv",
+          "8dad44df…ac248",
+          "12.57%",
+          "18.44%",
+          "指紋不同"
+        ],
+        [
+          "③ 現場改一筆",
+          "某筆銷量 59 → 177",
+          "90356119…e841",
+          "13.53%",
+          "—",
+          "指紋不同"
+        ]
+      ],
+      "callouts": [
+        "注意：竄改後 MAPE 還是低於 15%，只看 PASS 抓不到。要看指紋對不對得上。"
+      ],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "11 / 17"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "在 Cursor 怎麼做",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "12 / 在 Cursor 怎麼做",
+      "kicker": "",
+      "h1": "",
+      "h2": "AI 寫程式；驗收集和門檻，由你來定",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "現在就填 · 3–5 行",
+          "tag": null,
+          "tagClass": null,
+          "heading": "你的驗收集說明",
+          "paragraph": "",
+          "bullets": [
+            "筆數：＿＿ 筆；來源：＿＿",
+            "預期輸出：＿＿",
+            "通過門檻：＿＿（指標＋數字＋對基線）",
+            "跑法：一行指令"
+          ]
+        },
+        {
+          "num": "分工",
+          "tag": null,
+          "tagClass": null,
+          "heading": "AI 改完，你負責驗收",
+          "paragraph": "AI 加了新功能，舊數字一定要用同一份驗收集重跑。總 MAPE 變了，先問為什麼，不要直接收下。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [
+        {
+          "title": "Open Folder",
+          "description": "打開整個專案資料夾"
+        },
+        {
+          "title": "Ctrl+` 終端機",
+          "description": "跑指令：python 或 py"
+        },
+        {
+          "title": "Ctrl+L 問 AI",
+          "description": "請它解釋或加功能，例如各品項 MAPE"
+        },
+        {
+          "title": "重跑驗收",
+          "description": "固定驗收集再跑，總 MAPE 不變才算數"
+        }
+      ],
+      "table": null,
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "12 / 17"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
       "title": "Grok Bot 參考實例",
       "layout": "cards",
       "hero": false,
-      "eyebrow": "08 / Grok Bot × 巨量分析",
+      "eyebrow": "13 / Grok Bot × 巨量分析",
       "kicker": "",
       "h1": "",
       "h2": "助教可以先起草，核准和口徑還是在講師",
@@ -440,15 +726,15 @@
         "人工核准，而且查得到：這就是 SRS「權限／人工核准」的示範。要留得下是誰核准的。Bot 不能自己把草稿改成成績。"
       ],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "8 / 12"
+      "footerPage": "13 / 17"
     },
     {
-      "slideId": "s9",
-      "index": 9,
+      "slideId": "s14",
+      "index": 14,
       "title": "AI 工具繳交規範",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "09 / AI 工具繳交規範",
+      "eyebrow": "14 / AI 工具繳交規範",
       "kicker": "",
       "h1": "",
       "h2": "工具可以換，要交的是重跑得起來的東西",
@@ -517,63 +803,15 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "9 / 12"
+      "footerPage": "14 / 17"
     },
     {
-      "slideId": "s10",
-      "index": 10,
-      "title": "PBL 雙軌",
-      "layout": "cards-two",
-      "hero": false,
-      "eyebrow": "10 / PBL 雙軌",
-      "kicker": "",
-      "h1": "",
-      "h2": "先過門，再決定要不要加碼",
-      "lead": "",
-      "stamp": "",
-      "cards": [
-        {
-          "num": "S · 穩健",
-          "tag": null,
-          "tagClass": null,
-          "heading": "先過必過項",
-          "paragraph": "",
-          "bullets": [
-            "基線表：數字＋期間＋口徑＋來源",
-            "一條最小可跑路徑",
-            "驗收集已凍結、版本化，跑法 3–5 行",
-            "一個指標對基線；限制／失敗寫一頁"
-          ]
-        },
-        {
-          "num": "F · 快速",
-          "tag": null,
-          "tagClass": null,
-          "heading": "過門檻之後才加碼",
-          "paragraph": "",
-          "bullets": [
-            "多指標基線",
-            "真實 API／排程",
-            "CI／儀表板",
-            "A/B 或回測"
-          ]
-        }
-      ],
-      "flowSteps": [],
-      "table": null,
-      "callouts": [
-        "超前換到的是展示和分享。不會因為做得比較深，就提早給期末分。必過項是空的，加碼也不算。"
-      ],
-      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "10 / 12"
-    },
-    {
-      "slideId": "s11",
-      "index": 11,
+      "slideId": "s15",
+      "index": 15,
       "title": "本週作業與工作室",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "11 / 本週作業與工作室",
+      "eyebrow": "15 / 本週作業與工作室",
       "kicker": "",
       "h1": "",
       "h2": "短講評、三分鐘 demo、抽查三格",
@@ -611,15 +849,88 @@
         "W6 前要有：固定驗收集、重跑證明，還有跟基線比的一個指標。"
       ],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "11 / 12"
+      "footerPage": "15 / 17"
     },
     {
-      "slideId": "s12",
-      "index": 12,
+      "slideId": "s16",
+      "index": 16,
+      "title": "接下來四週",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "16 / 接下來四週",
+      "kicker": "",
+      "h1": "",
+      "h2": "W5 凍結、W6 交換重跑、W7–W8 當場 Demo",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "W6 ①",
+          "tag": null,
+          "tagClass": null,
+          "heading": "驗收集＋SHA-256",
+          "paragraph": "v1 檔案和指紋一起交。",
+          "bullets": []
+        },
+        {
+          "num": "W6 ②",
+          "tag": null,
+          "tagClass": null,
+          "heading": "跑法",
+          "paragraph": "3–5 行，別組照著能重跑。",
+          "bullets": []
+        },
+        {
+          "num": "W6 ③",
+          "tag": null,
+          "tagClass": null,
+          "heading": "結果 CSV",
+          "paragraph": "每筆預測、實際、誤差。",
+          "bullets": []
+        },
+        {
+          "num": "W6 ④",
+          "tag": null,
+          "tagClass": null,
+          "heading": "一頁失敗案例",
+          "paragraph": "錯最離譜的 3 筆，寫為什麼。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [
+        [
+          "週次",
+          "要做出來的",
+          "課堂怎麼驗"
+        ],
+        [
+          "W5 · 今天",
+          "凍結 acceptance v1＋manifest，算出第一個指標",
+          "每組 2 分鐘：基線／結果／門檻"
+        ],
+        [
+          "W6",
+          "證據包四件（見下方）",
+          "組間交換，照跑法重跑別組的"
+        ],
+        [
+          "W7–W8",
+          "期中 Prototype：AISDLC 四段各一頁",
+          "Demo 當場重跑，不放錄影"
+        ]
+      ],
+      "callouts": [],
+      "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
+      "footerPage": "16 / 17"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
       "title": "下課檢查清單",
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "12 / 下課檢查清單",
+      "eyebrow": "17 / 下課檢查清單",
       "kicker": "",
       "h1": "",
       "h2": "走之前對一下這六項",
@@ -655,7 +966,7 @@
       "table": null,
       "callouts": [],
       "footerBrand": "黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問",
-      "footerPage": "12 / 12"
+      "footerPage": "17 / 17"
     }
   ]
 }
