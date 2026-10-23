@@ -208,6 +208,17 @@
       "summary": "W5 · 固定驗收集（AISDLC Deploy）。2026-10-17 13:10。這週新交的作業不多，改成複習加 PBL 工作室。"
     },
     {
+      "deckId": "pccu-1151-bigdata-2026-10-24",
+      "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-24｜W6 證據包",
+      "sourceType": "html",
+      "createdAt": "2026-10-23T06:00:00.000Z",
+      "updatedAt": "2026-10-23T06:00:00.000Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "W6 證據包：前後對照＋限制／失敗＋可重跑。2026-10-24（六）13:10 課前簡報。"
+    },
+    {
       "deckId": "enterprise-ai-intro",
       "title": "企業 AI 導論｜90–120 分鐘",
       "sourceType": "html",
