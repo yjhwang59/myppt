@@ -217,6 +217,17 @@
       "summary": "",
       "createdAt": "2026-10-15T09:15:12.240Z",
       "updatedAt": "2026-10-15T09:15:12.240Z"
+    },
+    {
+      "deckId": "pccu-1151-bigdata-2026-11-07",
+      "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-11-07｜期末彩排",
+      "sourceType": "html",
+      "createdAt": "2026-11-06T06:00:00.000Z",
+      "updatedAt": "2026-11-06T06:00:00.000Z",
+      "categoryId": "bigdata",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "期末彩排（AISDLC Diagnose）。2026-11-07 13:10。複習＋PBL 工作室版。10/18–11/06 課程 Drive 沒有新的學生繳件。"
     }
   ],
   "categories": [
