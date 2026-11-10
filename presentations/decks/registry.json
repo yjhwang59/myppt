@@ -197,6 +197,21 @@
       "summary": ""
     },
     {
+      "deckId": "ai-agent-course-week03-vibe-coding-first-version",
+      "title": "第 3 週｜Vibe Coding 基礎實作",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 3 週。企業AI內訓 2026-11-11 18:30–21:30。案例：大躍 Northgo 中文詢價助理。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-10T07:20:00.000Z",
+      "updatedAt": "2026-11-10T07:20:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "用 Cursor 本機照 Wireframe 做出可雙擊打開的首版頁面，並寫 AI 個人檔案。"
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-10-17",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-17｜W5 固定驗收集",
       "sourceType": "html",
