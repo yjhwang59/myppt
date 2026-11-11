@@ -21,7 +21,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "1 / 49",
       "links": [
         {
@@ -81,7 +81,7 @@
       "callouts": [
         "還沒好：18:15 起助教一台一台處理。沒有 cursor-w2 的，跟助教拿 Northgo 範例資料夾。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "2 / 49"
     },
     {
@@ -158,7 +158,7 @@
       "callouts": [
         "每個練習：基本題必做，進階題選做。做完在 LINE 群打「好了」。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "3 / 49"
     },
     {
@@ -213,7 +213,7 @@
       "callouts": [
         "名詞｜Vibe Coding：用白話請 AI 寫出第一版，你負責打開來看、指出要改哪裡。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "4 / 49"
     },
     {
@@ -271,7 +271,7 @@
       "callouts": [
         "原則：沒有人被丟下。卡超過 3 分鐘，先看隔壁同學的畫面，助教再幫你補。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "5 / 49"
     },
     {
@@ -329,7 +329,7 @@
       "callouts": [
         "備案：Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "6 / 49"
     },
     {
@@ -375,7 +375,7 @@
       "callouts": [
         "做不完也沒關係：README 的文字加一張截圖，今天也可以接著做。自己的專題一樣適用。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "7 / 49"
     },
     {
@@ -422,7 +422,7 @@
       "callouts": [
         "留著 cursor-w2：那是上週的線框，這週改壞了還可以對。電腦慢的，先關掉其他程式。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "8 / 49"
     },
     {
@@ -438,7 +438,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "先講清楚題目",
       "index": 9,
       "slideId": "s9",
@@ -492,7 +492,7 @@
       "callouts": [
         "題目可以是：專案管理、設備管理、客戶關係管理、旅遊記錄網站、報價管理。想不到就先用 Northgo 詢價。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "四個問題",
       "index": 10,
       "slideId": "s10",
@@ -542,7 +542,7 @@
       "callouts": [
         "填完可以貼給 Cursor：請把這六格寫進 README，標題用「我想解決的問題」。先不要改網頁。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "問題清單模板",
       "index": 11,
       "slideId": "s11",
@@ -600,7 +600,7 @@
       "callouts": [
         "沒有現成檔案也沒關係：把做法用箭頭寫進 README，今天還是做得出來。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "準備哪些資料",
       "index": 12,
       "slideId": "s12",
@@ -647,7 +647,7 @@
       "callouts": [
         "放進去之前先拿掉個資和機密：姓名、電話、身分證、地址、真實報價、密碼。用「客戶 A」，金額用假的。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "資料放進資料夾",
       "index": 13,
       "slideId": "s13",
@@ -693,7 +693,7 @@
       "callouts": [
         "原本那句：「我想做專案帳務，看請款進度。從成立、簽約、分階段請款、記支出，到結案、算收益，還要追蹤。」追蹤不是最後才做，每一段都要看得到。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "範例：拆成階段",
       "index": 14,
       "slideId": "s14",
@@ -745,7 +745,7 @@
       "callouts": [
         "第一版只做專案總覽和請款進度。支出明細、收益計算之後再加。負責人看進度，會計看收支。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "範例：第一版做多少",
       "index": 15,
       "slideId": "s15",
@@ -788,7 +788,7 @@
       "callouts": [
         "優化前沒有說第一版做多少，Cursor 會想一次做完。你的題目也用同樣四點改寫。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "優化前與優化後",
       "index": 16,
       "slideId": "s16",
@@ -809,7 +809,7 @@
       "callouts": [
         "課堂可以這樣問：我的題目是＿＿，最麻煩的是＿＿，第一版只做＿＿，會不會太大？線上在 LINE 前面加「我想問」。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "title": "優化題目提示詞",
       "promptBlock": {
         "label": "優化後提示詞（已含開頭與結尾，按複製）",
@@ -835,7 +835,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "18 / 49",
       "links": [
         {
@@ -879,7 +879,7 @@
       "callouts": [
         "今天的頁面先做在自己電腦的 cursor-w3。沒有 GitHub 帳號，還是做得出首版。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "19 / 49"
     },
     {
@@ -917,7 +917,7 @@
       "callouts": [
         "等一下示範時會看到這兩個按鈕。現在不用背，投影片可以往回翻。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "20 / 49"
     },
     {
@@ -965,7 +965,7 @@
       "callouts": [
         "電腦較慢：一次只請它改一個檔，做完再貼下一段。改壞了，在對話裡按 Restore Checkpoint。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "21 / 49"
     },
     {
@@ -1003,7 +1003,7 @@
       "callouts": [
         "後面每個練習的提示詞都已經含這兩段，整頁按「複製」即可。中間要改一句就說：我看到【…】，我期待【…】，請只修這個。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "22 / 49"
     },
     {
@@ -1046,7 +1046,7 @@
       "callouts": [
         "可驗收的意思：寫得出「做好時，我會在畫面上看到什麼」。只寫「幫我做漂亮一點」不算。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "23 / 49"
     },
     {
@@ -1067,7 +1067,7 @@
       "callouts": [
         "好了：README 最上面有「本週驗收」，下面原本的專題內容還在。進階題用上一頁右邊那張卡。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "24 / 49",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
@@ -1090,7 +1090,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "25 / 49",
       "links": [
         {
@@ -1142,7 +1142,7 @@
       "callouts": [
         "自己的專題：換成 README 頁面清單裡的 3 個畫面，頁名要一字不差。列表頁、後台今天先不做。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "26 / 49"
     },
     {
@@ -1188,7 +1188,7 @@
       "callouts": [
         "成功畫面：瀏覽器看得到中文首頁，不是一片空白，網址也不是 127.0.0.1。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "27 / 49"
     },
     {
@@ -1231,7 +1231,7 @@
       "callouts": [
         "換角色：上一輪的領航，這一輪當駕駛。卡住先看右上角的 W2 Wireframe 範例。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "28 / 49",
       "links": [
         {
@@ -1258,7 +1258,7 @@
       "callouts": [
         "好了：雙擊 index.html，3 下以內從首頁到完成頁。進階題用上一頁右邊那張卡。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "29 / 49",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
@@ -1308,7 +1308,7 @@
       "callouts": [
         "名詞｜元件：一塊可以重複用的畫面零件。改一次，每一頁一起變。不要每頁各寫一份。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "30 / 49"
     },
     {
@@ -1356,7 +1356,7 @@
       "callouts": [
         "官網打不開：頁首用深色、按鈕用同一種綠色，不要用漸層。自己的專題就對你自己的官網或 Logo。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "31 / 49"
     },
     {
@@ -1399,7 +1399,7 @@
       "callouts": [
         "不要請它「設計得更漂亮」。要說：頁首同一塊、按鈕同一種顏色。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "32 / 49"
     },
     {
@@ -1420,7 +1420,7 @@
       "callouts": [
         "好了：改頁首的一個字，三頁一起變；三顆主按鈕顏色相同。進階題用上一頁右邊那張卡。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "33 / 49",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
@@ -1443,7 +1443,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "34 / 49"
     },
     {
@@ -1500,7 +1500,7 @@
       "callouts": [
         "沒過的項目不要當場全部修完：寫進下一頁的修正清單。自己的專題，把頁名換成你的。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "35 / 49",
       "links": [
         {
@@ -1549,7 +1549,7 @@
       "callouts": [
         "例子：問題「完成頁還是英文」；下一次「改成已收到你的詢價」。寫得越具體，下週越好改。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "36 / 49"
     },
     {
@@ -1570,7 +1570,7 @@
       "callouts": [
         "好了：README 有驗收結果，也有修正清單。畫面這一輪可以還不完美。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "37 / 49",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
@@ -1593,7 +1593,7 @@
       "flowSteps": [],
       "table": [],
       "callouts": [],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "38 / 49"
     },
     {
@@ -1640,7 +1640,7 @@
       "callouts": [
         "這份檔案是給 AI 讀的自我介紹。靈感來自楊竹筠的分享。專題摘要、旅程表、頁面清單都要留著。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "39 / 49"
     },
     {
@@ -1661,7 +1661,7 @@
       "callouts": [
         "貼上之後，把「請本人補上」改成你自己的話。不要寫密碼、身分證、客戶名字、公司報價。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "40 / 49",
       "promptBlock": {
         "label": "必做提示詞（已含開頭與結尾，按複製）",
@@ -1711,7 +1711,7 @@
       "callouts": [
         "選做提示詞：請建立這三個檔，並在 README 最上面用三行說明它們是做什麼的。不要寫密碼或客戶資料。之後每次修改就 commit，留下版本。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "41 / 49"
     },
     {
@@ -1762,7 +1762,7 @@
       "callouts": [
         "名詞｜private：私人。選 Public 則全世界都能看。這份個人檔案一定選 Private。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "42 / 49"
     },
     {
@@ -1812,7 +1812,7 @@
       "callouts": [
         "README 當入口：打開 README.md，按編輯，加三行說明這三個檔是做什麼的，再 Commit changes。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "43 / 49"
     },
     {
@@ -1869,7 +1869,7 @@
       "callouts": [
         "第一次才會跳登入。已經有 my-ai-profile 的人，這個專題是另一個 repo，不要混在同一個。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "44 / 49"
     },
     {
@@ -1929,7 +1929,7 @@
       "callouts": [
         "安全：個人檔案和課程專題都選 Private。GitHub 做不完不影響今天的必做：首版頁面、修正清單、README 裡的個人檔案。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "45 / 49"
     },
     {
@@ -1996,7 +1996,7 @@
       "callouts": [
         "模板在第 11 頁，優化提示詞在第 17 頁。資料夾步驟在第 8 頁，首版在第 27 頁，GitHub 在第 42、44 頁。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "46 / 49"
     },
     {
@@ -2042,7 +2042,7 @@
       "callouts": [
         "其他組只回饋一件事：哪一頁看起來不像同一家公司？線上同學請分享螢幕。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "47 / 49"
     },
     {
@@ -2104,7 +2104,7 @@
       "callouts": [
         "下週開場每組 2 分鐘。做不出網頁也請交 README。回家照「回家照著做」那一頁。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "48 / 49",
       "links": [
         {
@@ -2152,7 +2152,7 @@
       "callouts": [
         "cursor-w3 請留著，下週接著改這張表單。課後問卷連結在 LINE 群。"
       ],
-      "footerBrand": "黃燕忠｜AI發展顧問",
+      "footerBrand": "AIDC.work",
       "footerPage": "49 / 49"
     }
   ]
