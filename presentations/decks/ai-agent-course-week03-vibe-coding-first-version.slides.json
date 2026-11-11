@@ -22,7 +22,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "1 / 49",
+      "footerPage": "1 / 69",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -82,7 +82,7 @@
         "還沒好：18:15 起助教一台一台處理。沒有 cursor-w2 的，跟助教拿 Northgo 範例資料夾。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "2 / 49"
+      "footerPage": "2 / 69"
     },
     {
       "slideId": "s3",
@@ -145,21 +145,24 @@
           "AI 個人檔案（必做）＋ GitHub 私人 repo（示範）"
         ],
         [
-          "21:08–21:18",
-          "10′",
+          "21:08–21:16",
+          "8′",
           "成果展示：每組點首版頁面"
         ],
         [
-          "21:18–21:30",
-          "12′",
+          "21:16–21:24",
+          "8′",
+          "實戰範例：Northgo 14 句提示詞（挑幾句）"
+        ],
+        [
+          "21:24–21:30",
+          "6′",
           "作業、W4 預告、課後問卷"
         ]
       ],
-      "callouts": [
-        "每個練習：基本題必做，進階題選做。做完在 LINE 群打「好了」。"
-      ],
+      "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "3 / 49"
+      "footerPage": "3 / 69"
     },
     {
       "slideId": "s4",
@@ -214,7 +217,7 @@
         "名詞｜Vibe Coding：用白話請 AI 寫出第一版，你負責打開來看、指出要改哪裡。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "4 / 49"
+      "footerPage": "4 / 69"
     },
     {
       "slideId": "s5",
@@ -272,7 +275,7 @@
         "原則：沒有人被丟下。卡超過 3 分鐘，先看隔壁同學的畫面，助教再幫你補。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "5 / 49"
+      "footerPage": "5 / 69"
     },
     {
       "slideId": "s6",
@@ -330,7 +333,7 @@
         "備案：Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "6 / 49"
+      "footerPage": "6 / 69"
     },
     {
       "slideId": "s7",
@@ -376,7 +379,7 @@
         "做不完也沒關係：README 的文字加一張截圖，今天也可以接著做。自己的專題一樣適用。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "7 / 49"
+      "footerPage": "7 / 69"
     },
     {
       "slideId": "s8",
@@ -423,7 +426,7 @@
         "留著 cursor-w2：那是上週的線框，這週改壞了還可以對。電腦慢的，先關掉其他程式。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "8 / 49"
+      "footerPage": "8 / 69"
     },
     {
       "layout": "hero",
@@ -442,7 +445,7 @@
       "title": "先講清楚題目",
       "index": 9,
       "slideId": "s9",
-      "footerPage": "9 / 49"
+      "footerPage": "9 / 69"
     },
     {
       "layout": "cards-two",
@@ -496,7 +499,7 @@
       "title": "四個問題",
       "index": 10,
       "slideId": "s10",
-      "footerPage": "10 / 49"
+      "footerPage": "10 / 69"
     },
     {
       "layout": "table",
@@ -546,7 +549,7 @@
       "title": "問題清單模板",
       "index": 11,
       "slideId": "s11",
-      "footerPage": "11 / 49"
+      "footerPage": "11 / 69"
     },
     {
       "layout": "cards-three",
@@ -604,7 +607,7 @@
       "title": "準備哪些資料",
       "index": 12,
       "slideId": "s12",
-      "footerPage": "12 / 49"
+      "footerPage": "12 / 69"
     },
     {
       "layout": "table",
@@ -651,7 +654,7 @@
       "title": "資料放進資料夾",
       "index": 13,
       "slideId": "s13",
-      "footerPage": "13 / 49"
+      "footerPage": "13 / 69"
     },
     {
       "layout": "flow",
@@ -697,7 +700,7 @@
       "title": "範例：拆成階段",
       "index": 14,
       "slideId": "s14",
-      "footerPage": "14 / 49"
+      "footerPage": "14 / 69"
     },
     {
       "layout": "table",
@@ -749,7 +752,7 @@
       "title": "範例：第一版做多少",
       "index": 15,
       "slideId": "s15",
-      "footerPage": "15 / 49"
+      "footerPage": "15 / 69"
     },
     {
       "layout": "cards-two",
@@ -792,7 +795,7 @@
       "title": "優化前與優化後",
       "index": 16,
       "slideId": "s16",
-      "footerPage": "16 / 49"
+      "footerPage": "16 / 69"
     },
     {
       "layout": "cards",
@@ -817,7 +820,7 @@
       },
       "index": 17,
       "slideId": "s17",
-      "footerPage": "17 / 49"
+      "footerPage": "17 / 69"
     },
     {
       "slideId": "s18",
@@ -836,7 +839,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "18 / 49",
+      "footerPage": "18 / 69",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -880,7 +883,7 @@
         "今天的頁面先做在自己電腦的 cursor-w3。沒有 GitHub 帳號，還是做得出首版。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "19 / 49"
+      "footerPage": "19 / 69"
     },
     {
       "slideId": "s20",
@@ -918,7 +921,7 @@
         "等一下示範時會看到這兩個按鈕。現在不用背，投影片可以往回翻。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "20 / 49"
+      "footerPage": "20 / 69"
     },
     {
       "slideId": "s21",
@@ -966,7 +969,7 @@
         "電腦較慢：一次只請它改一個檔，做完再貼下一段。改壞了，在對話裡按 Restore Checkpoint。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "21 / 49"
+      "footerPage": "21 / 69"
     },
     {
       "slideId": "s22",
@@ -1004,7 +1007,7 @@
         "後面每個練習的提示詞都已經含這兩段，整頁按「複製」即可。中間要改一句就說：我看到【…】，我期待【…】，請只修這個。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "22 / 49"
+      "footerPage": "22 / 69"
     },
     {
       "slideId": "s23",
@@ -1047,7 +1050,7 @@
         "可驗收的意思：寫得出「做好時，我會在畫面上看到什麼」。只寫「幫我做漂亮一點」不算。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "23 / 49"
+      "footerPage": "23 / 69"
     },
     {
       "slideId": "s24",
@@ -1068,7 +1071,7 @@
         "好了：README 最上面有「本週驗收」，下面原本的專題內容還在。進階題用上一頁右邊那張卡。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "24 / 49",
+      "footerPage": "24 / 69",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md，先不要改別的檔。用三句話告訴我：專題是什麼、有哪些頁、表單必填有哪些。\n接著只在 README.md 最上面加一節「本週驗收」：首版要有首頁、詢價表單、完成頁。做好的標準是雙擊 index.html，能從首頁點到完成頁。缺的資料寫「待確認」，不要自己發明欄位。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
@@ -1091,7 +1094,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "25 / 49",
+      "footerPage": "25 / 69",
       "links": [
         {
           "label": "W2 Wireframe 範例",
@@ -1143,7 +1146,7 @@
         "自己的專題：換成 README 頁面清單裡的 3 個畫面，頁名要一字不差。列表頁、後台今天先不做。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "26 / 49"
+      "footerPage": "26 / 69"
     },
     {
       "slideId": "s27",
@@ -1189,7 +1192,7 @@
         "成功畫面：瀏覽器看得到中文首頁，不是一片空白，網址也不是 127.0.0.1。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "27 / 49"
+      "footerPage": "27 / 69"
     },
     {
       "slideId": "s28",
@@ -1232,7 +1235,7 @@
         "換角色：上一輪的領航，這一輪當駕駛。卡住先看右上角的 W2 Wireframe 範例。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "28 / 49",
+      "footerPage": "28 / 69",
       "links": [
         {
           "label": "W2 Wireframe 範例",
@@ -1259,7 +1262,7 @@
         "好了：雙擊 index.html，3 下以內從首頁到完成頁。進階題用上一頁右邊那張卡。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "29 / 49",
+      "footerPage": "29 / 69",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md，再把 index.html 做成可瀏覽的首版（蓋過原本的線框，不要另開檔、不要啟動伺服器）：\n1. 首頁：中文標題、一句說明、按鈕「我要詢價」。\n2. 詢價表單：必填照 README，最多 5 個。\n3. 完成頁：中文「已收到你的詢價」，加上一組示意編號。\n三頁要能互相點。不要把資料真的送出去。做完請告訴我：請雙擊 index.html 打開。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
@@ -1309,7 +1312,7 @@
         "名詞｜元件：一塊可以重複用的畫面零件。改一次，每一頁一起變。不要每頁各寫一份。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "30 / 49"
+      "footerPage": "30 / 69"
     },
     {
       "slideId": "s31",
@@ -1357,7 +1360,7 @@
         "官網打不開：頁首用深色、按鈕用同一種綠色，不要用漸層。自己的專題就對你自己的官網或 Logo。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "31 / 49"
+      "footerPage": "31 / 69"
     },
     {
       "slideId": "s32",
@@ -1400,7 +1403,7 @@
         "不要請它「設計得更漂亮」。要說：頁首同一塊、按鈕同一種顏色。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "32 / 49"
+      "footerPage": "32 / 69"
     },
     {
       "slideId": "s33",
@@ -1421,7 +1424,7 @@
         "好了：改頁首的一個字，三頁一起變；三顆主按鈕顏色相同。進階題用上一頁右邊那張卡。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "33 / 49",
+      "footerPage": "33 / 69",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請只改 index.html。把三頁相同的頁首做成同一塊，按鈕「我要詢價」也做成同一塊。我改頁首標題時，三頁要一起變。\n然後讓三頁的頁首顏色、按鈕顏色、按鈕文字大小都一樣。請對照 northgo.com 的 Logo 和按鈕顏色，盡量靠近。官網打不開就用深色頁首、同一種綠色按鈕，不要用漸層。不要啟動伺服器。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
@@ -1444,7 +1447,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "34 / 49"
+      "footerPage": "34 / 69"
     },
     {
       "slideId": "s35",
@@ -1501,7 +1504,7 @@
         "沒過的項目不要當場全部修完：寫進下一頁的修正清單。自己的專題，把頁名換成你的。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "35 / 49",
+      "footerPage": "35 / 69",
       "links": [
         {
           "label": "W2 Wireframe 範例",
@@ -1550,7 +1553,7 @@
         "例子：問題「完成頁還是英文」；下一次「改成已收到你的詢價」。寫得越具體，下週越好改。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "36 / 49"
+      "footerPage": "36 / 69"
     },
     {
       "slideId": "s37",
@@ -1571,7 +1574,7 @@
         "好了：README 有驗收結果，也有修正清單。畫面這一輪可以還不完美。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "37 / 49",
+      "footerPage": "37 / 69",
       "promptBlock": {
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md 和 index.html。先不要改畫面。\n在 README.md 新增「驗收結果」：項目、通過或沒過、我看到的畫面。項目至少有：首頁點得到表單、表單點得到完成頁、必填有標示、三頁頁首長一樣、手機寬沒有左右捲動。\n沒過的另寫「已知問題／下一輪修正清單」，每項一行：問題、下一次要改什麼。先不要修。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
@@ -1594,7 +1597,7 @@
       "table": [],
       "callouts": [],
       "footerBrand": "AIDC.work",
-      "footerPage": "38 / 49"
+      "footerPage": "38 / 69"
     },
     {
       "slideId": "s39",
@@ -1641,7 +1644,7 @@
         "這份檔案是給 AI 讀的自我介紹。靈感來自楊竹筠的分享。專題摘要、旅程表、頁面清單都要留著。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "39 / 49"
+      "footerPage": "39 / 69"
     },
     {
       "slideId": "s40",
@@ -1662,7 +1665,7 @@
         "貼上之後，把「請本人補上」改成你自己的話。不要寫密碼、身分證、客戶名字、公司報價。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "40 / 49",
+      "footerPage": "40 / 69",
       "promptBlock": {
         "label": "必做提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md。在最上面加一節「AI 個人檔案」，分成三段：我是誰（工作、單位）、我喜歡的語氣與格式、進行中的專案。不要刪掉原本的專題摘要、旅程表、頁面清單和修正清單。\n我還沒寫的部分先留「請本人補上」。語氣請寫：繁體中文、口語、步驟要編號。進行中的專案先寫「Northgo 中文詢價助理」，我若有自己的專題再改。不要寫入任何密碼或客戶資料。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
@@ -1712,7 +1715,7 @@
         "選做提示詞：請建立這三個檔，並在 README 最上面用三行說明它們是做什麼的。不要寫密碼或客戶資料。之後每次修改就 commit，留下版本。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "41 / 49"
+      "footerPage": "41 / 69"
     },
     {
       "slideId": "s42",
@@ -1763,7 +1766,7 @@
         "名詞｜private：私人。選 Public 則全世界都能看。這份個人檔案一定選 Private。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "42 / 49"
+      "footerPage": "42 / 69"
     },
     {
       "slideId": "s43",
@@ -1813,7 +1816,7 @@
         "README 當入口：打開 README.md，按編輯，加三行說明這三個檔是做什麼的，再 Commit changes。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "43 / 49"
+      "footerPage": "43 / 69"
     },
     {
       "slideId": "s44",
@@ -1870,7 +1873,7 @@
         "第一次才會跳登入。已經有 my-ai-profile 的人，這個專題是另一個 repo，不要混在同一個。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "44 / 49"
+      "footerPage": "44 / 69"
     },
     {
       "slideId": "s45",
@@ -1930,11 +1933,852 @@
         "安全：個人檔案和課程專題都選 Private。GitHub 做不完不影響今天的必做：首版頁面、修正清單、README 裡的個人檔案。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "45 / 49"
+      "footerPage": "45 / 69"
     },
     {
-      "slideId": "s46",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "實戰範例 · 課堂先看幾句（21:16–21:24），其餘回家翻",
+      "h1": "14 句提示詞\n從官網分析到上線",
+      "h2": "",
+      "lead": "這是 Northgo 示範站開發時，人真正打給 AI 的話，原文沒有改。一句看一頁：這句要 AI 做什麼、做出了什麼、寫的時候可以學什麼。",
+      "stamp": "2026/10/14 – 2026/11/11 · 來源 docs/northgo-demo-prompt.md",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "Northgo 14 句章節頁",
       "index": 46,
+      "slideId": "s46",
+      "footerPage": "46 / 69"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "實戰 / 流程總覽",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一個專案，提示詞會一直換用途",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "種類",
+          "在做什麼",
+          "哪幾句"
+        ],
+        [
+          "分析",
+          "先看懂現況，或先出計畫",
+          "1、5、9"
+        ],
+        [
+          "照計畫實作",
+          "人看過計畫，才讓 AI 動手",
+          "2、6、10、11"
+        ],
+        [
+          "追加需求",
+          "看到第一版，再補少的",
+          "3、4"
+        ],
+        [
+          "維運",
+          "開本機網站、上線、做成腳本",
+          "7、8、12、13"
+        ],
+        [
+          "紀錄",
+          "把打過的提示詞留下來",
+          "14"
+        ]
+      ],
+      "callouts": [
+        "先請 AI 看懂現況，再規劃、實作、維運，最後留下紀錄。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "五種提示詞",
+      "index": 47,
+      "slideId": "s47",
+      "footerPage": "47 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 1 句 · 分析 · 2026/10/14（三）09:10",
+      "kicker": "",
+      "h1": "",
+      "h2": "先讓 AI 看懂整個網站",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "分析",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "請 AI 讀官網，整理出所有頁面和上下層，做成一頁網站地圖。先盤點現在有什麼，再決定要改什麼。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "寫法拆開看",
+          "paragraph": "",
+          "bullets": [
+            "動作：分析、生成",
+            "對象：官網",
+            "做出來的格式：HTML",
+            "限制：RWD，手機、平板、電腦都能看"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "注意：網址少了 ://，AI 還是猜對了。不要靠這種運氣。網址最好從瀏覽器複製貼上。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 1 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "分析 httpswww.northgo.com 生成網站地圖, HTML 格式, 符合RWD"
+      },
+      "index": 48,
+      "slideId": "s48",
+      "footerPage": "48 / 69"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "實戰 / 第 2 句 · 照計畫實作 · 2026/10/14（三）09:16",
+      "kicker": "",
+      "h1": "",
+      "h2": "先出計畫，確認後才動手",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這句在做什麼：第 1 句之後，AI 先寫出一份計畫。人看過、按下「實作」，編輯器才送出這段，AI 開始照計畫寫程式。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 2 句提示詞",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "Northgo RWD HTML 網站地圖\n\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos."
+      },
+      "index": 49,
+      "slideId": "s49",
+      "footerPage": "49 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 2 句 · 照計畫實作 · 2026/10/14（三）09:16",
+      "kicker": "",
+      "h1": "",
+      "h2": "第 2 句：寫法與產出",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "照計畫實作",
+          "tag": null,
+          "tagClass": null,
+          "heading": "每一段的用意",
+          "paragraph": "",
+          "bullets": [
+            "第一行：計畫的標題",
+            "Do NOT edit the plan file：計畫是約定，不讓 AI 自己改",
+            "Do not create them again：待辦已建好，不要再建一次",
+            "Don't stop until…：一路做完，不要每步都停下來問"
+          ]
+        },
+        {
+          "num": "產出",
+          "tag": null,
+          "tagClass": null,
+          "heading": "做出來的檔案",
+          "paragraph": "",
+          "bullets": [
+            "sitemap.html"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 2 句說明",
+      "index": 50,
+      "slideId": "s50",
+      "footerPage": "50 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 3 句 · 追加需求 · 2026/10/14（三）09:24",
+      "kicker": "",
+      "h1": "",
+      "h2": "看到成果後，再補需求",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "追加需求",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "兩件事：讓原本的網站地圖可以切換語系，另外做一份只列標題的樹狀版。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以學的寫法",
+          "paragraph": "",
+          "bullets": [
+            "一句話裡有兩個需求，用分號和換行分開，比較不會漏掉一個",
+            "「另外生成」是新增一份，不是改掉原本那份",
+            "第一版做出來才發現少什麼，很正常。一小步一小步補，比一開始寫很長的規格容易",
+            "產出：sitemap-i18n.js、sitemap-tree.html"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 3 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "網站地圖要依選擇的語系, 顯示對應的語系內容；\n另外生成一個網站地圖, 樹狀結構, 精簡內容\n"
+      },
+      "index": 51,
+      "slideId": "s51",
+      "footerPage": "51 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 4 句 · 追加需求 · 2026/10/14（三）09:34",
+      "kicker": "",
+      "h1": "",
+      "h2": "給參考來源，指明要哪一塊",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "追加需求",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "從聯絡頁的「全球據點」拿辦公室資料，畫成一頁世界地圖。可以看全部，也可以只看某個區域。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以學的寫法",
+          "paragraph": "",
+          "bullets": [
+            "資料從哪來：給完整網址，再寫區塊標題，AI 才知道要頁面上的哪一段",
+            "畫面怎麼動：「一次顯示全部」是預設，「選擇局部區域」是可以點的功能",
+            "產出：locations.html"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 4 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "參考 https://www.northgo.com/zh-tw/contact \nLocations -- Our global offices\n生成一頁世界地圖, 一次顯示全部的辦公室, 也可以選擇局部區域"
+      },
+      "index": 52,
+      "slideId": "s52",
+      "footerPage": "52 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 5 句 · 分析 · 2026/10/14（三）10:14",
+      "kicker": "",
+      "h1": "",
+      "h2": "大改之前，先請 AI 當顧問",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "分析",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "只要求「提出方案」，沒有要求動手。AI 會說明現在的網站有哪些問題、打算怎麼重做，寫成一份計畫給人看。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "為什麼這樣問",
+          "paragraph": "",
+          "bullets": [
+            "重建整個網站會動到很多檔案。先看計畫，比做完才發現方向不對便宜得多",
+            "可以在計畫階段先刪掉不做的、改技術選擇，再進入第 6 句"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "常用動詞：「分析／規劃／提出方案」只產生計畫。「實作／生成／修改」會直接改檔案。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 5 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "分析官網 https://www.northgo.com/ , 提出重建及優化方案"
+      },
+      "index": 53,
+      "slideId": "s53",
+      "footerPage": "53 / 69"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "實戰 / 第 6 句 · 照計畫實作 · 2026/10/14（三）11:17",
+      "kicker": "",
+      "h1": "",
+      "h2": "照計畫重建整個網站",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這句在做什麼：和第 2 句是同一個模式：第 5 句的計畫通過後，讓 AI 依待辦一項一項做完。從 10:14 提問到 11:17 才開始實作，中間是人在看計畫。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 6 句提示詞",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "Northgo 官網重建方案\n\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos."
+      },
+      "index": 54,
+      "slideId": "s54",
+      "footerPage": "54 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 6 句 · 照計畫實作 · 2026/10/14（三）11:17",
+      "kicker": "",
+      "h1": "",
+      "h2": "第 6 句：寫法與產出",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "照計畫實作",
+          "tag": null,
+          "tagClass": null,
+          "heading": "做出來的架構",
+          "paragraph": "",
+          "bullets": [
+            "內容和版面分開：四種語言的文字放在 content/site.js，build.mjs 負責套版",
+            "自動檢查：check-dist.mjs 確認產生的頁數和 sitemap 筆數都對"
+          ]
+        },
+        {
+          "num": "產出",
+          "tag": null,
+          "tagClass": null,
+          "heading": "做出來的檔案",
+          "paragraph": "",
+          "bullets": [
+            "content/site.js",
+            "build.mjs",
+            "assets/site.css",
+            "check-dist.mjs"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 6 句說明",
+      "index": 55,
+      "slideId": "s55",
+      "footerPage": "55 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 7 句 · 維運 · 2026/10/14（三）20:25",
+      "kicker": "",
+      "h1": "",
+      "h2": "短短一句也能用",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "維運",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "晚上回來繼續做，請 AI 把本機的開發伺服器重新跑起來，好在瀏覽器上看網站。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "為什麼這麼短也行",
+          "paragraph": "AI 會自己讀 package.json 找啟動指令，也會先停掉還在跑的舊伺服器。專案本身就是它看得懂的上下文，不必每次重講。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "留意：這時候還沒有固定的啟動腳本，每次都靠 AI 臨場判斷，做法可能每次不一樣。這個問題到第 13 句才解決。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 7 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "重啟 local dev\n"
+      },
+      "index": 56,
+      "slideId": "s56",
+      "footerPage": "56 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 8 句 · 維運 · 2026/10/15（四）08:36",
+      "kicker": "",
+      "h1": "",
+      "h2": "一句話串起整個上線流程",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "維運",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "一句話把升版本、推上 GitHub、部署、綁網域串在一起。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做的四步",
+          "paragraph": "",
+          "bullets": [
+            "bump：升版本號（這次是 v0.1.1）",
+            "commit and push：提交並推上 GitHub",
+            "Deploy：部署到 Cloudflare Workers",
+            "binding：綁定自訂網域 northgo-demo.aidc.work"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "用 then 把先後講清楚。網域名稱直接寫出來，AI 就會把它寫進 wrangler.jsonc。後來的規則改了：部署是對外的動作，出錯會影響所有人。現在 AGENTS.md 規定，AI 不自己部署，只從 main 由人執行 npm run deploy。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 8 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "update bump, commit and push to GitHub then Deploy to Cloudflare binding northgo-demo.aidc.work"
+      },
+      "index": 57,
+      "slideId": "s57",
+      "footerPage": "57 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 9 句 · 分析 · 2026/10/15（四）11:50",
+      "kicker": "",
+      "h1": "",
+      "h2": "一次講清楚：內容、語言、圖、格式",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "分析",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "規劃「詢價表單」從填寫到送出的流程，做成一份中英文都有的 HTML 簡報。用的是「規劃」，所以 AI 先回一份計畫。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "四個條件，缺一個結果就會不同",
+          "paragraph": "",
+          "bullets": [
+            "主題：Enquiry-form 作業流程",
+            "語言：中英文版",
+            "資料來源：欄位參考官網聯絡頁",
+            "格式：流程圖用 SVG，整份用 HTML 簡報"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "為什麼指定 SVG：它是用文字寫成的圖，放大不會糊，也能直接改圖上的字，適合要反覆改的流程圖。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 9 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "規劃 Enquiry-form 作業流程 ,中英文版, 欄位請參考 https://www.northgo.com/contact \n並說明表單流程(SVG格式), 生成HTML簡報"
+      },
+      "index": 58,
+      "slideId": "s58",
+      "footerPage": "58 / 69"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "實戰 / 第 10 句 · 照計畫實作 · 2026/10/15（四）11:55",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一個模式，第三次用",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這句在做什麼：第 9 句的計畫只看了 5 分鐘就通過，開始做簡報。計畫越小，審查越快。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 10 句提示詞",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "Enquiry 表單流程簡報\n\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos."
+      },
+      "index": 59,
+      "slideId": "s59",
+      "footerPage": "59 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 10 句 · 照計畫實作 · 2026/10/15（四）11:55",
+      "kicker": "",
+      "h1": "",
+      "h2": "第 10 句：寫法與產出",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "照計畫實作",
+          "tag": null,
+          "tagClass": null,
+          "heading": "回顧「先規劃再實作」",
+          "paragraph": "",
+          "bullets": [
+            "第 1→2 句：網站地圖（6 分鐘）",
+            "第 5→6 句：官網重建（63 分鐘）",
+            "第 9→10 句：表單簡報（5 分鐘）",
+            "改動越大，花在看計畫的時間越長，這是合理的"
+          ]
+        },
+        {
+          "num": "產出",
+          "tag": null,
+          "tagClass": null,
+          "heading": "做出來的檔案",
+          "paragraph": "",
+          "bullets": [
+            "presentations/enquiry-form-deck.html"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 10 句說明",
+      "index": 60,
+      "slideId": "s60",
+      "footerPage": "60 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 11 句 · 照計畫實作 · 2026/10/15（四）13:25",
+      "kicker": "",
+      "h1": "",
+      "h2": "中斷了，就說「繼續」",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "照計畫實作",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "第 10 句的工作沒有一次做完就停了。人只回一個字，讓 AI 從停下的地方接著做。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "常見的中斷原因",
+          "paragraph": "",
+          "bullets": [
+            "單次回覆長度或執行時間到了上限",
+            "網路或編輯器斷線",
+            "AI 做到一半停下來等人確認"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "同一個對話裡，AI 記得做到哪裡，所以 continue 就夠了。如果是開新對話，要寫清楚「上次做到哪、還剩什麼」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 11 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "continue"
+      },
+      "index": 61,
+      "slideId": "s61",
+      "footerPage": "61 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 12 句 · 維運 · 2026/10/16（五）15:53",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一件事說了第二次",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "維運",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "和第 7 句幾乎一樣：隔天再開工，請 AI 啟動本機伺服器。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "值得注意的訊號",
+          "paragraph": "同一句話要講第二次，就表示這件事應該固定下來。每次都請 AI 臨場判斷，既花時間，結果也不一定一樣。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "第 13 句把這件事做成腳本，以後不用再問 AI，自己打一行指令就能啟動。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "第 12 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "啟動 local dev\n"
+      },
+      "index": 62,
+      "slideId": "s62",
+      "footerPage": "62 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 13 句 · 維運 · 2026/11/11（三）13:58",
+      "kicker": "",
+      "h1": "",
+      "h2": "重複的事，交給腳本",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "維運",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "把「啟動本機網站」需要的步驟寫成腳本。現在只要執行 npm run start:local。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "腳本幫你做了什麼",
+          "paragraph": "",
+          "bullets": [
+            "第一次執行時自動建立 .dev.vars",
+            "建立本機資料庫並重新產生網頁",
+            "在 8787–8790 自動找空的連接埠，多個分支可以同時跑",
+            "產出：scripts/start-local-dev.mjs、.ps1、.cmd"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 13 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "生成 本機 start local dev 的 scripts"
+      },
+      "index": 63,
+      "slideId": "s63",
+      "footerPage": "63 / 69"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "實戰 / 第 14 句 · 紀錄 · 2026/11/11（三）14:47",
+      "kicker": "",
+      "h1": "",
+      "h2": "把提示詞也當成專案紀錄",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "紀錄",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這句在做什麼",
+          "paragraph": "請 AI 從對話紀錄裡找出人打過的每一句話，依時間排好，存成 Markdown 檔。這份範例就是用那個檔案做的。",
+          "bullets": []
+        },
+        {
+          "num": "寫法",
+          "tag": null,
+          "tagClass": null,
+          "heading": "三個把範圍講死的條件",
+          "paragraph": "",
+          "bullets": [
+            "「我輸入的」：只要人說的話，不要 AI 的回答",
+            "「不要修改文字內容」：連錯字也留著（例如第 1 句的網址）",
+            "「包括這一句」：連正在下的這句也算進去",
+            "產出：docs/northgo-demo-prompt.md"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "第 14 句",
+      "promptBlock": {
+        "label": "原始提示詞（原文不改，含錯字）",
+        "text": "整理本專案全部我輸入的提示詞, 不要修改文字內容,  生成northgo-demo-prompt.md 存入 docs 資料夾。(包括這一句)"
+      },
+      "index": 64,
+      "slideId": "s64",
+      "footerPage": "64 / 69"
+    },
+    {
+      "layout": "cards-six",
+      "hero": false,
+      "eyebrow": "實戰 / 總結",
+      "kicker": "",
+      "h1": "",
+      "h2": "從 14 句話學到的六個習慣",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先分析，再動手",
+          "paragraph": "用「分析／規劃／提出方案」先拿計畫，看過再實作。（第 1、5、9 句）",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "講清楚做出來長什麼樣",
+          "paragraph": "格式、語言、手機也能看、流程圖，條件寫得越具體，越少重做。（第 1、9 句）",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "給參考來源",
+          "paragraph": "貼完整網址，再指出頁面上的哪一個區塊。（第 4、9 句）",
+          "bullets": []
+        },
+        {
+          "num": "4",
+          "tag": null,
+          "tagClass": null,
+          "heading": "一小步一小步補",
+          "paragraph": "看到第一版再補需求，比一開始寫很長的規格容易。（第 3、4 句）",
+          "bullets": []
+        },
+        {
+          "num": "5",
+          "tag": null,
+          "tagClass": null,
+          "heading": "重複的事做成腳本",
+          "paragraph": "同一句話講第二次，就該讓它自己跑。（第 7、12、13 句）",
+          "bullets": []
+        },
+        {
+          "num": "6",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對外的動作由人把關",
+          "paragraph": "部署、推上正式分支，先確認再做。（第 8 句、AGENTS.md）",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "詢價表單的後台與資料庫（commit 6c88057）是在其他工具裡完成的，相關提示詞不在這份紀錄裡。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "六個習慣",
+      "index": 65,
+      "slideId": "s65",
+      "footerPage": "65 / 69"
+    },
+    {
+      "slideId": "s66",
+      "index": 66,
       "title": "回家照著做",
       "layout": "table",
       "hero": false,
@@ -1994,18 +2838,18 @@
         ]
       ],
       "callouts": [
-        "模板在第 11 頁，優化提示詞在第 17 頁。資料夾步驟在第 8 頁，首版在第 27 頁，GitHub 在第 42、44 頁。"
+        "模板在第 11 頁，優化提示詞在第 17 頁。資料夾步驟在第 8 頁，首版在第 27 頁，GitHub 在第 42、44 頁。Northgo 14 句從第 46 頁開始，原文不要改。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "46 / 49"
+      "footerPage": "66 / 69"
     },
     {
-      "slideId": "s47",
-      "index": 47,
+      "slideId": "s67",
+      "index": 67,
       "title": "成果展示",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "99 / 成果展示 · 10′（21:08–21:18）",
+      "eyebrow": "99 / 成果展示 · 8′（21:08–21:16）",
       "kicker": "",
       "h1": "",
       "h2": "每組 2 分鐘：點給大家看",
@@ -2043,15 +2887,15 @@
         "其他組只回饋一件事：哪一頁看起來不像同一家公司？線上同學請分享螢幕。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "47 / 49"
+      "footerPage": "67 / 69"
     },
     {
-      "slideId": "s48",
-      "index": 48,
+      "slideId": "s68",
+      "index": 68,
       "title": "作業",
       "layout": "table",
       "hero": false,
-      "eyebrow": "99 / 作業 · 21:18–21:30",
+      "eyebrow": "99 / 作業 · 21:24–21:30",
       "kicker": "",
       "h1": "",
       "h2": "作業：問題、資料、改寫題目、首版頁面",
@@ -2105,7 +2949,7 @@
         "下週開場每組 2 分鐘。做不出網頁也請交 README。回家照「回家照著做」那一頁。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "48 / 49",
+      "footerPage": "68 / 69",
       "links": [
         {
           "label": "Cursor 教學文件",
@@ -2114,8 +2958,8 @@
       ]
     },
     {
-      "slideId": "s49",
-      "index": 49,
+      "slideId": "s69",
+      "index": 69,
       "title": "W4 預告",
       "layout": "table",
       "hero": false,
@@ -2153,7 +2997,7 @@
         "cursor-w3 請留著，下週接著改這張表單。課後問卷連結在 LINE 群。"
       ],
       "footerBrand": "AIDC.work",
-      "footerPage": "49 / 49"
+      "footerPage": "69 / 69"
     }
   ]
 }
