@@ -940,8 +940,8 @@
       "notes": "我們收在這句話：先跑通一次，再讓團隊反覆做好。今天不是要各位回家就開一間很大的 AI 公司。你負責把目標說清楚，也負責最後准不准過。總管負責分工和驗收，不能把已派工當成已完成。對外的內容，先成功做一則，再交給排程；驗收時只認真實連結或真實對話。若過程中出了錯，像我的金句曾經重複發出，就把教訓寫回規則，下一次才會比較穩。方法我參考了七七行銷筆記的《Grok Bot 新手實戰指南》，再改成 aidc.work 的用法，連結會放在講義裡。下週開始，請挑一件你自己每週都要做的工作，用同樣的方法交給你的團隊。我們課堂上見。",
       "links": [
         {
-          "label": "Grok Bot 新手實戰指南",
-          "href": "https://grokbot-team-handbook.moneey712.chatgpt.site/"
+          "label": "詳見 Grok Bot 部落格文章",
+          "href": "https://aidc.work/blog/grok-bot-team-dispatch-not-done"
         }
       ],
       "footerPage": "19 / 19"
