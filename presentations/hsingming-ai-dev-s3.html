@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-deck-id="hsingming-ai-dev-s3">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="興銘聯合會計師事務所 AI 系統開發內訓第 3 場：接續第 2 場專案，用 Cursor 生成企業報稅作業平台原型（行事曆、案件清單、營業稅案件頁含三層簽核）、Supabase 補做，加上 Grok Bot 第 3 週串接 Gmail／日曆／Drive（只做草稿）。全程使用虛構資料。">
+  <title>AI 系統開發內訓・第3場｜用 Cursor 生成原型</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+      --code-bg: #12283d;
+      --code-ink: #e6f1ef;
+      --warn-bg: #fdecea;
+      --warn: #b6412f;
+      --header-h: 52px;
+      --panel: #fff;
+      --card: #f1f5f9;
+      --text: #0f172a;
+      --portal-bright: #0f766e;
+      --data: #0284c7;
+      --content-scale: 1;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: calc(var(--header-h) + 10px) 2vw 12px;
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - var(--header-h) - 22px);
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.hero {
+      background:
+        radial-gradient(circle at 92% 8%, #bde8dfcc, transparent 38%),
+        radial-gradient(circle at 6% 100%, #fde3c4aa, transparent 32%),
+        linear-gradient(135deg, #fff, #f5faf8);
+    }
+    h1 {
+      font-size: calc(clamp(42px, 5.2vw, 76px) * var(--content-scale));
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: calc(clamp(28px, 3.2vw, 48px) * var(--content-scale));
+      margin: 0.1em 0 0.55em;
+      line-height: 1.15;
+    }
+    h2.tight {
+      font-size: calc(clamp(24px, 2.6vw, 36px) * var(--content-scale));
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: calc(clamp(18px, 1.55vw, 26px) * var(--content-scale));
+      margin: 0.15em 0 0.35em;
+    }
+    p, li {
+      font-size: calc(clamp(15px, 1.25vw, 21px) * var(--content-scale));
+      line-height: 1.52;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: calc(clamp(12px, 1.1vw, 16px) * var(--content-scale));
+      margin: 0;
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: calc(clamp(20px, 1.8vw, 28px) * var(--content-scale));
+    }
+    .lead.sm { font-size: calc(clamp(15px, 1.3vw, 20px) * var(--content-scale)); margin: 0 0 12px; }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 22px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.four { grid-template-columns: repeat(4, 1fr); }
+    .grid.split { grid-template-columns: 5fr 7fr; align-items: start; }
+    .grid.split-r { grid-template-columns: 7fr 5fr; align-items: start; }
+    .stack { display: grid; gap: 12px; align-content: start; }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card strong {
+      display: block;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      line-height: 1.3;
+      margin: 0.1em 0 0.28em;
+    }
+    .card ol, .card ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .card li {
+      font-size: calc(clamp(13px, 1.05vw, 17px) * var(--content-scale));
+      line-height: 1.4;
+      margin: 0.22em 0;
+    }
+    .card p { margin: 0.15em 0; }
+    .card.warm { background: #fff8ef; border-color: #f3d3ad; }
+    .card.alert { background: var(--warn-bg); border-color: #f1b8ae; }
+    .num {
+      font-size: calc(clamp(26px, 3.2vw, 46px) * var(--content-scale));
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+    }
+    .num.sm { font-size: calc(clamp(18px, 1.7vw, 26px) * var(--content-scale)); }
+    .callout {
+      padding: 14px 20px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      margin-top: 14px;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: calc(12px * var(--content-scale));
+    }
+    .pill.o { background: #fdebd6; color: #9a5512; }
+    .pill.r { background: var(--warn-bg); color: var(--warn); }
+    .pill.lg { font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); padding: 4px 14px; margin: 0 6px 8px 0; }
+    .src {
+      font-size: calc(12px * var(--content-scale)); color: #708397; margin-top: 10px; line-height: 1.45;
+    }
+    .aisdlc-label {
+      margin: 10px 0 4px;
+      color: var(--brand);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .aisdlc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+    .aisdlc li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      padding: 6px 7px 7px;
+      border: 1px solid #9fd6cc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .aisdlc li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 16px;
+      z-index: 1;
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--brand);
+    }
+    .aisdlc b {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 3px;
+      border-radius: 50%;
+      background: #e6f6f3;
+      color: #1d6b64;
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1;
+    }
+    .aisdlc span {
+      display: block;
+      color: var(--ink);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .aisdlc small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1.3;
+    }
+    a.survey-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: calc(16px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    a.survey-link:hover { color: #fff; text-decoration: none; filter: brightness(1.08); }
+    .slide.dense { padding: 26px 34px 52px; }
+    .slide.dense .card { padding: 10px 12px; }
+    .slide.dense .card p,
+    .slide.dense .card li { font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.38; }
+    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
+
+    /* ---- 時間表 ---- */
+    .timeline { display: grid; gap: 6px; }
+    .tl {
+      display: grid; grid-template-columns: 118px 46px 1fr; gap: 10px; align-items: center;
+      padding: 6px 12px; border-radius: 12px; background: #ffffffcc; border: 1px solid var(--line);
+      font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale));
+    }
+    .tl b { font-variant-numeric: tabular-nums; color: var(--ink); }
+    .tl .m { color: var(--muted); font-size: calc(12px * var(--content-scale)); }
+    .tl.hot { background: #e6f6f3; border-color: #9fd6cc; }
+    .tl.rest { background: #f4f6f7; color: var(--muted); }
+
+    /* ---- 狀態鏈 ---- */
+    .chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 2px; }
+    .chain span {
+      padding: 4px 12px; border-radius: 999px; background: #fff; border: 1px solid #9fd6cc;
+      font-weight: 700; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+    }
+    .chain i { font-style: normal; color: var(--brand); font-weight: 900; }
+
+    /* ---- 提示詞方塊（可複製） ---- */
+    .prompt {
+      position: relative;
+      border-radius: 16px;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      border: 1px solid #0b1a28;
+      overflow: hidden;
+    }
+    .prompt .ph {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 8px 12px 8px 16px; background: #0d1f30; font-size: calc(13px * var(--content-scale)); font-weight: 800;
+      letter-spacing: 0.02em; color: #9fe3d7;
+    }
+    .prompt pre {
+      margin: 0; padding: 12px 16px 14px;
+      white-space: pre-wrap; word-break: break-word;
+      font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      font-size: calc(clamp(13.5px, 1.12vw, 18px) * var(--content-scale)); line-height: 1.6;
+      max-height: var(--pmax, 44vh); overflow: auto;
+    }
+    .prompt pre .fill { color: #ffcf8f; }
+    .copy {
+      border: 0; border-radius: 999px; padding: 5px 12px; cursor: pointer;
+      background: #368f88; color: #fff; font-weight: 800; font-size: 12px;
+      font-family: inherit;
+    }
+    .copy:hover, .copy:focus-visible { background: #2a7771; outline: 2px solid #9fe3d7; }
+    .copy.done { background: #ed9b48; }
+    details.more {
+      border: 1px dashed #9fd6cc; border-radius: 14px; background: #ffffffcc; padding: 6px 12px;
+    }
+    details.more > summary {
+      cursor: pointer; font-weight: 800; color: #1d6b64; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+      padding: 4px 0; list-style: none;
+    }
+    details.more > summary::before { content: "▸ "; }
+    details.more[open] > summary::before { content: "▾ "; }
+    details.more .prompt { margin: 6px 0 6px; }
+    .mini { font-size: calc(clamp(12px, 0.95vw, 14px) * var(--content-scale)) !important; color: var(--muted); }
+
+    /* ---- 假對話 ---- */
+    .bubble {
+      padding: 12px 16px; border-radius: 16px; margin: 8px 0; max-width: 92%;
+      font-size: calc(clamp(14px, 1.15vw, 19px) * var(--content-scale)); line-height: 1.5;
+    }
+    .bubble.me { background: #e6f6f3; margin-left: auto; border-bottom-right-radius: 4px; }
+    .bubble.ai { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+    .stamp {
+      display: inline-block; transform: rotate(-4deg); border: 3px solid var(--warn); color: var(--warn);
+      padding: 2px 12px; border-radius: 10px; font-weight: 900; font-size: calc(clamp(14px, 1.2vw, 18px) * var(--content-scale));
+    }
+
+    /* ---- 表格 ---- */
+    table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: calc(clamp(13px, 1.1vw, 18px) * var(--content-scale)); }
+    table.plan th, table.plan td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.4; }
+    table.plan th { background: #e6f6f3; color: #1d6b64; }
+    table.plan tr:first-child th:first-child { border-top-left-radius: 12px; }
+    table.plan tr:first-child th:last-child { border-top-right-radius: 12px; }
+
+    /* ---- 講稿面板 ---- */
+    aside.notes { display: none; }
+    #notes-panel {
+      position: fixed; right: 16px; bottom: 16px; z-index: 60; width: min(380px, 92vw); max-height: 52vh;
+      overflow: auto; background: #17324df2; color: #eef6f4; border-radius: 14px; padding: 12px 14px;
+      box-shadow: 0 12px 40px #0006; font-size: 14px; line-height: 1.6; display: none;
+    }
+    #notes-panel.open { display: block; }
+    #notes-panel h4 { margin: 0 0 6px; font-size: 13px; color: #9fe3d7; letter-spacing: .06em; }
+
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck-header.collapsed .toolbar > :not(#btn-header-toggle) { display: none; }
+    .hint {
+      position: fixed; z-index: 50; left: 50%; bottom: 24px;
+      transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
+      background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
+      pointer-events: none; transition: opacity .2s;
+      max-width: min(90vw, 420px); text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: calc(var(--header-h) + 12px) 12px 16px; }
+      .slide {
+        width: 100%; min-height: calc(100vh - 100px);
+        max-height: none; aspect-ratio: auto;
+      }
+      .grid, .grid.two, .grid.four, .grid.split, .grid.split-r { grid-template-columns: 1fr 1fr; }
+      .grid.split, .grid.split-r { grid-template-columns: 1fr; }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .grid.four { grid-template-columns: 1fr; }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { display: block; padding: 0; }
+      html { --content-scale: 1 !important; }
+      .slide {
+        display: block !important; width: 16in; height: 9in;
+        min-height: 0; max-height: none; aspect-ratio: auto;
+        overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+        page-break-after: always; break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      #deck-header, .hint, #notes-panel, .copy { display: none !important; }
+      .prompt pre { max-height: none; overflow: visible; }
+    }
+    /* ---- 第 2 場補充 ---- */
+    .prompt.compact pre { font-size: calc(clamp(12px, 0.98vw, 15.5px) * var(--content-scale)); line-height: 1.5; }
+    .closing {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .closing .callout { margin: 0; flex: 1; }
+  
+    /* ---- 第 3 場補充 ---- */
+    .slide:focus, .slide:focus-visible { outline: none; }
+    .closing .callout { margin: 0; flex: 1; }
+    pre.tree {
+      margin: 4px 0 0; padding: 10px 12px; border-radius: 12px; background: #f1f7f5; border: 1px solid var(--line);
+      font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      font-size: calc(clamp(12px, 0.98vw, 15px) * var(--content-scale)); line-height: 1.55; white-space: pre-wrap;
+    }
+    /* 流程步驟（借鏡 vo-account 簡報的編號流程） */
+    ol.flow { list-style: none; margin: 6px 0 2px; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 10px; }
+    ol.flow li { position: relative; margin: 0; padding: 8px 8px 9px; border: 1px solid #9fd6cc; border-radius: 12px; background: #fff; min-width: 0; }
+    ol.flow li:not(:last-child)::after {
+      content: ""; position: absolute; right: -9px; top: 50%; transform: translateY(-50%); z-index: 1;
+      border-width: 6px 0 6px 7px; border-style: solid; border-color: transparent transparent transparent var(--brand);
+    }
+    ol.flow b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--brand); color: #fff; font-size: calc(11px * var(--content-scale)); }
+    ol.flow span { display: block; margin-top: 3px; font-weight: 850; font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.25; }
+    ol.flow small { display: block; margin-top: 2px; color: var(--muted); font-size: calc(clamp(11px, 0.85vw, 13px) * var(--content-scale)); line-height: 1.3; }
+    /* 版本時間軸 */
+    ol.ver { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; border-top: 3px solid #9fd6cc; padding-top: 10px; }
+    ol.ver li { position: relative; margin: 0; min-width: 0; }
+    ol.ver li::before { content: ""; position: absolute; top: -17px; left: 2px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; }
+    ol.ver b { display: block; color: var(--brand); font-size: calc(12px * var(--content-scale)); }
+    ol.ver span { display: block; font-weight: 900; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale)); }
+    ol.ver small { display: block; color: var(--muted); font-size: calc(clamp(11px, 0.85vw, 13px) * var(--content-scale)); line-height: 1.3; }
+    @media (max-width: 900px) { ol.flow, ol.ver { grid-template-columns: 1fr 1fr; } ol.flow li::after { display: none; } }
+</style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 興銘內訓</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-aminus" title="縮小字體（-）">A−</button>
+      <span id="type-scale-label">100%</span>
+      <button type="button" id="btn-aplus" title="放大字體（+）">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
+      <span id="slide-counter">1 / 27</span>
+      <button type="button" id="btn-next" title="下一頁（→）">›</button>
+      <button type="button" id="btn-present" title="全頁顯示／離開（F）">⛶</button>
+      <button type="button" id="btn-notes" title="講稿（N）">講稿</button>
+      <button type="button" id="btn-print" title="匯出為 PDF（P）">PDF</button>
+      <button type="button" id="btn-header-toggle" title="收合／展開工具列（H）" aria-label="收合或展開工具列" aria-expanded="true">▾</button>
+    </div>
+  </header>
+  <main class="deck">
+
+    <!-- 1 封面 -->
+    <section class="slide active hero" id="s1" data-title="封面">
+      <p class="kicker">AI 系統開發內訓 · 第 3 場（共 4 場）</p>
+      <div class="mark"></div>
+      <h1>用 Cursor 生成原型<br>從文件到可點擊的 3 個畫面</h1>
+      <p class="lead">第 2 場已經把資料表、流程圖存進 GitHub 私人儲存庫；今晚接著同一個資料夾，讓 Cursor 做出申報行事曆、案件清單、營業稅案件頁（含三層簽核）。最後 15 分鐘，讓 Grok Bot 幫你找信、整理缺件、寫催件信草稿。</p>
+      <p style="margin-top:22px">
+        <span class="pill lg">興銘聯合會計師事務所</span>
+        <span class="pill lg">2026-11-16（115/11/16）（一）19:00–21:00</span>
+        <span class="pill lg o">報稅平台專題 · 原型 v1</span>
+        <span class="pill lg r">全程只用虛構資料</span>
+      </p>
+      <p class="mini" style="margin-top:6px">地點：台北市大安區敦化南路一段263號9樓之1</p>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 僅供內部訓練使用，請勿外流</span><span>1 / 27</span></div>
+      <aside class="notes">講義 v1.2 寫第 3 場是 2026-11-09，實際改到 2026-11-16 上課；因此講義中「11/10、11/12、11/13」等日期在今晚都已經過去（G3-3、G3-4 會再提醒）。第 4 場日期待確認。今晚主軸：不重建、不重新 init，全部接續第 2 場的 tax-platform-demo。</aside>
+    </section>
+
+    <!-- 2 今晚流程 -->
+    <section class="slide" id="s2" data-title="今晚流程">
+      <p class="kicker">今晚流程 · 120 分鐘（含休息 5 分鐘）</p>
+      <h2 class="tight">接著第 2 場的專案，一路做到「點得進去」的原型</h2>
+      <div class="grid split-r"><div class="timeline"><div class="tl"><b>19:00–19:05</b><span class="m">5′</span><span>回顧第 2 場＋環境檢查（開 repo、pull、push 測試）＋規則複誦</span></div><div class="tl hot"><b>19:05–19:25</b><span class="m">20′</span><span>實作 A：3-0 確認現況 → 3-1 加入 Next.js → 3-2 補資料與參數 → npm run dev → commit</span></div><div class="tl hot"><b>19:25–19:55</b><span class="m">30′</span><span>實作 B：第 1 組 3-3 行事曆 → 3-4 案件清單；第 2 組 3-5A 狀態規則 → 3-5B 營業稅案件頁</span></div><div class="tl rest"><b>19:55–20:00</b><span class="m">5′</span><span>休息</span></div><div class="tl"><b>20:00–20:20</b><span class="m">20′</span><span>實作 C：3-6 一次改一件事、3-7 請 Cursor 解釋；延伸 3-E1／3-E2</span></div><div class="tl"><b>20:20–20:35</b><span class="m">15′</span><span>實作 D：Supabase 3-9 建表 SQL、3-10 RLS（是否進行：待確認；不做就延長實作 C）</span></div><div class="tl"><b>20:35–20:40</b><span class="m">5′</span><span>3-8 commit＋push 到既有私人 repo</span></div><div class="tl"><b>20:40–20:55</b><span class="m">15′</span><span>Grok Bot 第 3 週：Gmail／日曆／Drive，只做草稿</span></div><div class="tl"><b>20:55–21:00</b><span class="m">5′</span><span>互相試用＋反思小卡＋作業＋課後問卷</span></div></div><div class="stack">
+          <div class="card warm"><strong>今晚帶走的東西</strong>
+            <ul>
+              <li>原型 3 畫面：/calendar、/cases、/cases/C001（含三層簽核）</li>
+              <li>repo 新增 app/、lib/、config/、data/虛構資料.json，並推上 GitHub</li>
+              <li>Grok Bot：缺件清單文件、日曆保留時段、催件信草稿（不寄出）</li>
+            </ul></div>
+          <div class="card alert"><strong>跟講義不一樣的地方</strong>
+            <ul>
+              <li>上課日改為 2026-11-16（講義寫 11/09）</li>
+              <li>G3-3、G3-4 的日期已過，課堂上改成之後的日期</li>
+              <li>作業期限改為「下一場前」（第 4 場日期待確認）</li>
+            </ul></div>
+        </div>
+      </div>
+      <div class="callout">今晚只有一條鐵律：<b>接續既有專案</b>。不 git init、不新建 repo、不 --force、不覆蓋第 2 場的檔案。</div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 今晚流程</span><span>2 / 27</span></div>
+      <aside class="notes">時間表照講義第九章（v1.2），總計 5+20+30+5+20+15+5+15+5＝120 分鐘。實作 D 是否進行仍待確認；不進行就把 20:20–20:35 併入實作 C。休息排在 19:55，休息前請各組先 commit 一次。</aside>
+    </section>
+
+    <!-- 3 第 2 場回顧 -->
+    <section class="slide" id="s3" data-title="第 2 場回顧">
+      <p class="kicker">回顧第 2 場（2026-10-20）· 19:00–19:02</p>
+      <h2 class="tight">上次我們把「文件」放進了 GitHub 私人儲存庫</h2>
+      <div class="grid">
+        <div class="card"><div class="num sm">資料與流程</div><strong>資料表＋7 狀態流程圖</strong>
+          <ul><li>每張業務表都有 client_id 與建立／修改紀錄欄位</li><li>稅率放參數表，不寫死</li><li>mermaid 狀態圖＋「不允許的轉換」</li></ul></div>
+        <div class="card"><div class="num sm">帶做 8 步驟</div><strong>Git＋Cursor＋GitHub</strong>
+          <ul><li>Agent 改檔案、Ask 只回答</li><li>@ 引用檔案、先看差異再接受</li><li>私人 repo、第一次 commit＋push</li></ul></div>
+        <div class="card"><div class="num sm">Grok Bot 第 2 週</div><strong>例行排程（routine）</strong>
+          <ul><li>工作日 08:30 期限提醒，只提醒本人</li><li>期限只用查核過的期限表，不推算</li><li>今晚接著練「連接日常工具」</li></ul></div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card warm"><strong>你的 tax-platform-demo 現在長這樣</strong>
+          <pre class="tree">tax-platform-demo/
+├─ AGENTS.md          ← Cursor 規則檔
+├─ .gitignore         ← .env、node_modules/、.next/ 不進版本
+├─ docs/  需求摘錄.md、資料表設計.md、狀態流程.md
+└─ data/  cases.csv（第 1 組）或 invoices.csv（第 2 組）</pre></div>
+        <div class="card alert"><strong>規則複誦（今晚特別注意）</strong>
+          <ul>
+            <li>只用附錄 A 虛構資料；規格書只貼附錄 B 摘錄</li>
+            <li>repo 一律私人；金鑰、密碼、.env 不貼對話、不進專案</li>
+            <li>稅率、期限、門檻一律「待確認」，以官方公告為準</li>
+            <li>對外信件只做草稿，人看過才寄；AI 產出一定人工覆核</li>
+          </ul></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 回顧</span><span>3 / 27</span></div>
+      <aside class="notes">2 分鐘快速帶過。第 2 場投影片第 17 頁是同一張資料夾圖。第 2 場作業是安裝 Node.js LTS 並截圖 node -v、npm -v、git --version；沒完成的同仁請在環境檢查這一步舉手。</aside>
+    </section>
+
+    <!-- 4 環境檢查 -->
+    <section class="slide dense" id="s4" data-title="環境檢查">
+      <p class="kicker">環境檢查 · 19:02–19:05 · Cursor 內建終端機</p>
+      <h2 class="tight">每台主機：打開「原本的」tax-platform-demo，確認拉得下、推得上</h2>
+      <div class="grid two"><div class="stack"><div class="prompt"><div class="ph"><span>3-0｜環境與專案現況檢查（在 tax-platform-demo 執行）</span><button class="copy" type="button">複製</button></div><pre>node -v
+npm -v
+git --version
+git status
+git pull</pre></div><p class="mini">三個版本號都出現；git status 顯示 working tree clean；git pull 顯示 Already up to date。<b>git pull 若出現衝突或要求輸入訊息，先停下來舉手。</b></p><div class="prompt"><div class="ph"><span>加碼：確認還連得到 GitHub（本簡報補充）</span><button class="copy" type="button">複製</button></div><pre>git remote -v
+git push</pre></div><p class="mini">remote 指向自己的 tax-platform-demo；git push 顯示 Everything up-to-date 就代表授權還在。跳出登入視窗就照第 2 場帶做 ⑧ 授權。</p></div><div class="stack">
+          <div class="card"><strong>開對資料夾</strong>
+            <p>Cursor →「開啟資料夾（Open Folder）」→ 選第 2 場的 <b>tax-platform-demo</b>。<b>不要</b>開新的空資料夾，也不要再 clone 一份。</p></div>
+          <div class="card warm"><strong>每組一台「主機」</strong>
+            <p>每組以 1 台主機的專案為主，另一台看投影片、對照驗收標準；駕駛／領航每 15 分鐘換手。</p>
+            <p class="mini">用誰的 repo 當主機、是否加同組為協作者（協作者有寫入權限）：待確認。</p></div>
+          <div class="card alert"><strong>卡住了？</strong>
+            <ul>
+              <li>少了第 2 場的檔案 → 用講師救援版或同組夥伴補齊（不要複製任何 .env）</li>
+              <li>Cursor 額度不夠：是否購買 Cursor Pro 由事務所決定（待確認），先和同組共用主機</li>
+            </ul></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 回顧＋環境檢查</span><span>4 / 27</span></div>
+      <aside class="notes">3-0 終端機指令照講義原文。git remote -v 與 git push 是我加的檢查：沒有新版本時 git push 仍會連到 GitHub，可順便確認憑證還在。若有人 push 跳出要密碼，照第 2 場卡關 1 處理（Windows 認證管理員刪掉舊的 GitHub 憑證）。Hobby 免費額度可能不足以完成第 3、4 場，是否購買 Pro 由事務所決定（待確認）。</aside>
+    </section>
+
+    <!-- 5 真實案例：小步長大的系統 -->
+    <section class="slide" id="s5" data-title="真實案例：小步長大的系統">
+      <p class="kicker">借鏡 · vo.aidc.work 公開簡報〈vo-account 專案帳務〉</p>
+      <h2 class="tight">一套會計系統，也是一個版本一個版本長出來的</h2>
+      <div class="grid split-r">
+        <div class="stack">
+          <div class="card"><strong>vo-account 的版本紀錄（2026 年）</strong>
+            <ol class="ver">
+              <li><b>10/14</b><span>v0.1.1</span><small>首次上線：專案帳務、傳票、報表</small></li>
+              <li><b>10/26</b><span>v0.2.0</span><small>帳號、角色與權限</small></li>
+              <li><b>10/26</b><span>v0.3.0</span><small>客戶列表：搜尋、篩選</small></li>
+              <li><b>10/28</b><span>v0.4.0</span><small>舊系統資料轉入</small></li>
+              <li><b>11/01</b><span>v0.5.0</span><small>會計科目線上維護</small></li>
+              <li><b>11/05</b><span>v0.6.0</span><small>年度清冊依分類彙總</small></li>
+            </ol>
+            <p class="mini">每一版只解決一兩件事，每版異動都寫進 CHANGELOG。</p></div>
+          <div class="card warm"><strong>它的「改版固定五步」</strong>
+            <div class="chain"><span>建置</span><i>→</i><span>備份</span><i>→</i><span>套用</span><i>→</i><span>上線</span><i>→</i><span>驗證</span></div>
+            <p class="mini">對應今晚：看差異再接受 → npm run dev 確認 → commit → push → 在畫面上驗收。</p></div>
+        </div>
+        <div class="stack">
+          <div class="card"><strong>規則寫進系統，錯了就存不進去</strong>
+            <ul>
+              <li>vo-account：借貸不平衡就存不進去；結轉過的年度自動上鎖</li>
+              <li>我們今晚：不合法的狀態轉換擋下；編製、覆核、核准不得同一人</li>
+            </ul></div>
+          <div class="card"><strong>不信任畫面送來的資料</strong>
+            <ul>
+              <li>vo-account：每個寫入動作在伺服器端再檢查一次權限</li>
+              <li>我們今晚：按鈕按下時一律先經 lib/caseStatus.ts 檢查，不是只把按鈕藏起來</li>
+            </ul></div>
+          <div class="card alert"><strong>系統檢核 ≠ 人工判斷</strong>
+            <p>vo-account 也寫明：憑證真實性與科目選用仍需人工確認。原型做得再像，稅務判斷還是人負責。</p></div>
+        </div>
+      </div>
+      <div class="callout">今晚的原型 v1 也照這個節奏：一個提示詞一個畫面、一個畫面一個 commit，規則交給程式擋，判斷留給人。</div>
+      <p class="src">依據：vo.aidc.work/docs/overview-deck.html（vo-account v0.6.0 簡介，第 6、7、10、12 頁；2026-11-13 查閱）。</p>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 開場</span><span>5 / 27</span></div>
+      <aside class="notes">這頁借用 Jack 公開的 vo-account 簡報（vo.aidc.work）。重點不是介紹那套系統，而是三個觀念：1. 小步發版（對應 3-6 一次改一件事）；2. 規則寫在程式裡擋下來（對應 3-5A 職能分離）；3. 固定的改版步驟（對應今晚的工作循環）。簡報沒說它用什麼工具寫，這裡不要延伸說明。1 分鐘帶過，可在實作 A 開始前或 Agent 跑的空檔講。</aside>
+    </section>
+
+    <!-- 6 實作 A：3-0 確認現況 -->
+    <section class="slide dense" id="s6" data-title="實作 A：3-0 確認現況">
+      <p class="kicker">實作 A · 19:05–19:08（建議）· 模式：Ask</p>
+      <h2 class="tight">先問清楚再動手：請 Cursor 盤點第 2 場留下的檔案</h2>
+      <div class="grid split"><div class="stack"><div class="card"><strong>今晚每一步都走這個循環</strong><ol class="flow" style="--n:5"><li><b>1</b><span>選模式</span><small>Ask 問、Agent 做</small></li><li><b>2</b><span>@ 引用</span><small>@AGENTS.md、@docs</small></li><li><b>3</b><span>看差異</span><small>逐檔檢查再接受</small></li><li><b>4</b><span>npm run dev</span><small>瀏覽器確認</small></li><li><b>5</b><span>commit</span><small>存一個版本</small></li></ol></div><div class="card warm"><strong>今晚要長出來的 3 個畫面</strong>
+            <ul>
+              <li><b>/calendar</b> 申報行事曆：逾期紅、即將到期黃（第 1 組）</li>
+              <li><b>/cases</b> 案件清單：狀態小卡、篩選（第 1 組）</li>
+              <li><b>/cases/C001</b> 營業稅案件頁：試算草稿＋三層簽核（第 2 組）</li>
+            </ul></div>
+          <div class="card"><strong>如何確認</strong>
+            <p>預期變更檔案：<b>無</b>。清單與第 2 場驗收一致；缺檔先從講師救援版或同組夥伴補齊（不要從別人電腦複製任何 .env 或非練習檔案）。</p></div>
+        </div><div class="prompt" style="--pmax:58vh"><div class="ph"><span>提示詞 3-0｜請 Cursor 確認專案現況 · Ask</span><button class="copy" type="button">複製</button></div><pre>請先不要修改任何檔案、不要執行任何指令。這個資料夾（tax-platform-demo）是我們第 2 場建立的專案，已經推到 GitHub 私人儲存庫。請幫我確認現況：
+1. 用表格列出目前的檔案與資料夾（路徑、一句話用途）。
+2. 確認以下檔案是否存在：AGENTS.md、.gitignore、docs/需求摘錄.md、docs/資料表設計.md、docs/狀態流程.md，以及 data/ 底下的 CSV；缺少的請列出來。
+3. 對照 @.gitignore，確認已排除 .env、.env.*、node_modules/、.next/。
+4. 告訴我：今晚要在這個資料夾加入 Next.js 專案時，哪些現有檔案可能被覆蓋或衝突，要怎麼避免。</pre></div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 A</span><span>6 / 27</span></div>
+      <aside class="notes">3-0 原文照講義。Ask 模式不會改檔案，所以第一步一定用 Ask。第 4 點是今晚最重要的提醒：README.md、.gitignore 可能和 Next.js 產生的檔案衝突。巡場：5 分鐘內先到新手那組，確認已貼上提示詞並拿到第一個回覆。</aside>
+    </section>
+
+    <!-- 7 實作 A：3-1 加入 Next.js -->
+    <section class="slide dense" id="s7" data-title="實作 A：3-1 加入 Next.js">
+      <p class="kicker">實作 A · 19:08–19:15（建議）· 模式：Agent</p>
+      <h2 class="tight">在既有資料夾加入 Next.js：不覆蓋、不重新 init、不 commit</h2>
+      <div class="grid two"><div class="prompt compact" style="--pmax:64vh"><div class="ph"><span>提示詞 3-1｜在既有專案加入 Next.js · Agent</span><button class="copy" type="button">複製</button></div><pre>請在目前開啟的資料夾（tax-platform-demo）加入 Next.js 專案：App Router、TypeScript、Tailwind CSS、ESLint，使用 npm。
+這個資料夾不是空的：第 2 場已經有 AGENTS.md、.gitignore、docs/、data/，並已連到 GitHub 私人儲存庫。
+限制：
+1. 不得刪除、覆蓋或改寫 AGENTS.md、docs/、data/ 內的任何檔案。.gitignore 只能「追加」缺少的項目，不能刪掉原有的 .env、.env.* 規則。
+2. Next.js 的建立工具可能因資料夾不是空的而拒絕。若如此，請先在暫存子資料夾 _next_tmp 建立，再把產生的檔案搬到根目錄：不要搬 _next_tmp 裡的 .git 資料夾（如果有）；遇到同名檔案（例如 .gitignore、AGENTS.md、README.md）先停下來問我，不要直接覆蓋。搬完告訴我，經我同意再刪除 _next_tmp。
+3. 不要重新初始化 Git（不要執行 git init），也不要 commit 或 push。
+4. 不要建立 .env 檔案，不要安裝資料庫相關套件，不要加入任何金鑰。
+5. 需要執行指令時，先告訴我指令內容與用途，再執行。
+完成後：
+A. 把首頁改成繁體中文標題「企業報稅作業平台｜練習原型」，下方一行小字「練習原型｜虛構資料｜試算為草稿，非最終稅務結論」。
+B. 告訴我要在終端機輸入什麼指令啟動、瀏覽器要開哪個網址。
+C. 列出新增的檔案，以及 .gitignore 追加了哪些項目。</pre></div><div class="stack">
+          <div class="card"><strong>講師示範：看差異</strong>
+            <ul>
+              <li>差異應該只有<b>新增</b>的 Next.js 檔案，加上 .gitignore 追加的幾行</li>
+              <li>AGENTS.md、docs/、data/ 出現在修改清單 → <b>立即拒絕（Reject）</b></li>
+              <li>Agent 要執行指令前會先說明；看不懂就先問，不要直接按允許</li>
+            </ul></div>
+          <div class="card warm"><strong>預期變更檔案</strong>
+            <p>新增 package.json、package-lock.json、app/page.tsx、app/layout.tsx、next.config、tsconfig.json 等；.gitignore 可能追加幾行。</p></div>
+          <div class="card"><strong>如何確認</strong>
+            <ul>
+              <li>終端機 npm run dev → 開 http://localhost:3000 看到繁中標題與提示文字</li>
+              <li>git status 中 AGENTS.md、docs/、data/ 沒有被標示為 modified</li>
+              <li>_next_tmp 已刪除；.gitignore 仍有 .env 與 .env.*</li>
+            </ul></div>
+          <p class="mini">安裝套件需要幾分鐘，等待時可以讀右上的「看差異」重點。介面名稱（Agent、Terminal、Checkpoint）依 Cursor 版本可能不同。</p>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 A</span><span>7 / 27</span></div>
+      <aside class="notes">3-1 原文照講義（取代 v1.1「在空資料夾建立」）。create-next-app 遇到非空資料夾可能拒絕，所以提示詞要求先建在 _next_tmp 再搬；遇到同名檔案要停下來問。示範時故意讓大家看 git status：只有新檔（untracked）與 .gitignore modified 是正常的。</aside>
+    </section>
+
+    <!-- 8 實作 A：3-2 資料與參數 -->
+    <section class="slide dense" id="s8" data-title="實作 A：3-2 資料與參數">
+      <p class="kicker">實作 A · 19:15–19:21（建議）· 模式：Agent</p>
+      <h2 class="tight">補齊虛構資料、參數檔，並在需求摘錄「文末」追加 v1.2 需求</h2>
+      <div class="grid two"><div class="prompt compact" style="--pmax:62vh"><div class="ph"><span>提示詞 3-2｜補齊虛構資料、參數檔、追加需求 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md 建立或補齊下列檔案。AGENTS.md、.gitignore 第 2 場已建立，不要修改；data/ 底下現有的 CSV 也不要修改。
+1. data/虛構資料.json：結構為 { clients: [], invoices: [], cases: [], previousPeriod: [], properties: [], taxBills: [], withholdings: [] }。
+- 若 @data 已有 cases.csv 或 invoices.csv，以 CSV 為準轉入；其餘依我下面貼的附錄 A 補齊。
+- 數字欄位用數值型別（去掉千分位逗號）；文字、日期、字軌號碼、統一編號保持原樣，看起來有錯也不要修正；每筆保留原本的編號。
+2. config/parameters.ts：匯出 VAT_RATE = 0.05、TAX_TOLERANCE = 1、JUMP_THRESHOLD = 0.3、REMINDER_DAYS = [7, 3]、DEMO_TODAY = "2026-10-12"，每個參數加中文註解「練習假設值，待確認」。
+3. docs/需求摘錄.md：保留現有內容，一個字都不要改；在文末新增一段「v1.2 補充需求」，把我貼的附錄 B「v1.2 新增」列整理成同樣格式的 Markdown 表格。
+完成後請列出：每個檔案的路徑；JSON 中 clients、invoices、cases、properties、taxBills、withholdings 各有幾筆；docs/需求摘錄.md 新增了哪些需求編號。
+<span class="fill">【貼上本講義附錄 A 的 A-1～A-4b（不要貼 A-5 講師解答）】</span>
+<span class="fill">【貼上本講義附錄 B 中標示「v1.2 新增」的列】</span></pre></div><div class="stack"><details class="more"><summary>素材①：附錄 A 的 A-1～A-4b（貼進第一個【】）</summary><div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>附錄 A（虛構；不含 A-5 講師解答）</span><button class="copy" type="button">複製</button></div><pre>附錄 A｜虛構練習資料（全部為虛構，請勿與真實公司對應）
+【虛構】以下公司名稱、統一編號、發票字軌號碼、地址、人員代號、金額全部為練習用虛構資料，不代表任何真實公司或個人；統一編號為練習用代號，不保證符合檢查碼。截止日、稅額為練習假設值，非法定期限或正確稅額（待確認）。
+
+A-1 客戶公司（3 家，虛構）
+客戶代號｜名稱（虛構）｜統一編號（虛構）｜營業稅課稅方式｜適用稅目｜預設承辦／覆核
+CL-A｜示範貿易股份有限公司（虛構）｜99000001｜一般稅額計算（401，練習假設）｜營業稅、扣繳、房屋稅、地價稅｜同仁甲／同仁乙
+CL-B｜範例科技有限公司（虛構）｜99000002｜一般稅額計算（401，練習假設）｜營業稅、扣繳｜同仁丙／同仁丁
+CL-C｜練習小吃店（虛構）｜99000003｜查定課徵（僅追蹤繳款書）｜營業稅（查定）｜同仁丁／同仁甲
+事務所主管代號：主管M（第三層核准人）。人員代號：同仁甲、乙、丙、丁（編製、覆核、核准不得為同一人）。
+
+A-2 發票明細（12 筆，虛構；期別 2026 年 9–10 月）
+#｜客戶｜進／銷｜字軌號碼｜發票日期｜對方統編｜銷售額｜稅額
+1｜CL-A｜銷項｜ZZ10000001｜2026-09-05｜99100001｜200,000｜10,000
+2｜CL-A｜銷項｜ZZ10000002｜2026-09-18｜99100002｜150,000｜7,500
+3｜CL-A｜銷項｜ZZ10000003｜2026-10-02｜99100001｜300,000｜15,000
+4｜CL-A｜銷項｜ZZ10000004｜2026-10-28｜99100003｜80,000｜4,800
+5｜CL-A｜進項｜YY20000001｜2026-09-10｜99200001｜120,000｜6,000
+6｜CL-A｜進項｜YY20000002｜2026-09-22｜99200002｜50,000｜2,500
+7｜CL-A｜進項｜YY20000002｜2026-09-22｜99200002｜50,000｜2,500
+8｜CL-A｜進項｜YY20000003｜2026-08-30｜99200003｜30,000｜1,500
+9｜CL-A｜進項｜YY20000004｜2026-10-15｜99200004｜18,000｜900
+10｜CL-A｜銷項｜ZZ10000005｜2026-10-20｜9910000｜60,000｜3,000
+11｜CL-B｜銷項｜XX30000001｜2026-09-12｜99100004｜500,000｜25,000
+12｜CL-B｜進項｜WW40000001｜2026-10-05｜99200005｜400,000｜20,000
+備註：#9 摘要為「客戶招待餐敘」（練習用：可否扣抵須人工判斷，待確認）。前期資料（虛構）：CL-A 2026 年 7–8 月：銷售額 310,000、銷項稅額 15,500、進項稅額 8,000（用於「稅額跳動」檢核）。
+
+A-3 申報案件（8 件，虛構；截止日為練習假設值）
+案件編號｜客戶｜稅目｜期別｜截止日（假設）｜狀態｜承辦／覆核
+C001｜CL-A｜營業稅｜2026-09/10｜2026-11-15｜整理中｜同仁甲／同仁乙
+C002｜CL-A｜營業稅｜2026-07/08｜2026-09-15｜結案｜同仁甲／同仁乙
+C003｜CL-A｜扣繳（月）｜2026-09｜2026-10-10｜待收件｜同仁甲／同仁乙
+C004｜CL-B｜營業稅｜2026-09/10｜2026-11-15｜待收件｜同仁丙／同仁丁
+C005｜CL-B｜扣繳（月）｜2026-09｜2026-10-10｜已繳款｜同仁丙／同仁丁
+C006｜CL-C｜營業稅（查定，繳款追蹤）｜2026-07/09｜2026-10-31｜待收件｜同仁丁／同仁甲
+C007｜CL-A｜地價稅（繳款追蹤）｜2026｜2026-11-30｜待收件｜同仁甲／同仁乙
+C008｜CL-A｜房屋稅（繳款追蹤）｜2026｜2026-05-31｜結案｜同仁甲／同仁乙
+
+A-4 房地清冊與扣繳明細（延伸題用，虛構）
+清冊編號｜客戶｜類型｜稅籍編號／地號（虛構）｜縣市｜地址／地段（虛構）｜持分
+P-01｜CL-A｜房屋｜H-TEST-0001｜台北市｜○○區○○路 1 號（虛構）｜1/1
+P-02｜CL-A｜土地｜○○段○○小段 0001 地號（虛構）｜台北市｜○○區（虛構）｜1/2
+
+明細編號｜客戶｜所得人代號｜月份｜所得類別｜給付總額｜扣繳稅額（練習值）
+W-01｜CL-A｜PAYEE-01｜2026-09｜薪資｜60,000｜3,000
+W-02｜CL-A｜PAYEE-02｜2026-09｜租賃｜30,000｜3,000
+W-03｜CL-A｜PAYEE-03｜2026-09｜執行業務報酬｜20,000｜2,000
+扣繳稅額為練習假設值，不代表正確扣繳率（扣繳率與門檻待確認）。所得人只用代號，不放姓名與身分證字號。
+
+A-4b 稅單（v1.2 新增；延伸 3-E1 用，虛構）
+稅單編號｜清冊編號｜客戶｜稅目｜年度｜核定稅額（練習值）｜繳款期限（假設）｜繳款狀態｜對應案件
+TB-01｜P-01｜CL-A｜房屋稅｜2026｜12,000｜2026-05-31｜已繳款｜C008
+TB-02｜P-02｜CL-A｜地價稅｜2026｜8,000｜2026-11-30｜未繳｜C007
+核定稅額與期限為練習假設值，不代表正確稅率或開徵期間（房屋稅、地價稅稅率與開徵期間待確認）。</pre></div></details><details class="more"><summary>素材②：附錄 B「v1.2 新增」列（貼進第二個【】）</summary><div class="prompt compact" style="--pmax:26vh"><div class="ph"><span>附錄 B v1.2 新增列</span><button class="copy" type="button">複製</button></div><pre>附錄 B｜v1.2 新增列（所有期限、稅率、天數、門檻均為「待確認」）
+編號｜需求｜重點與驗收（摘要）｜優先級
+FR-CAL-001（v1.2 新增）｜法規期限設定表維護｜期限規則以設定表維護、不寫死在程式；欄位含稅目、期別規則、截止日規則、假日順延、提醒天數、生效起迄、最後確認日；異動留痕；最後確認日超過設定天數（預設 180 天）時提示重新查核｜MVP
+FR-CASE-005（v1.2 新增）｜案件清單與搜尋｜依客戶、稅目、期別、狀態、承辦人、截止日、逾期與否篩選與排序；可匯出｜MVP
+FR-REV-001（v1.2 新增）｜三層簽核｜承辦人員（編製）→ 覆核人員（覆核）→ 事務所主管（核准）；每層記錄簽核人、時間、意見與版本；三層未完成不得轉「已核准」；版本變更後既有簽核失效需重簽｜MVP
+FR-REV-002（v1.2 新增）｜職能分離｜同一案件之編製、覆核、核准須為不同人員；違反時系統拒絕並提示｜MVP
+FR-REV-004（v1.2 新增）｜覆核意見｜覆核人員可留意見，承辦回覆並標示已解決；未解決意見存在時不得核准；意見不可刪除，只可標示撤回｜MVP
+FR-REV-005（v1.2 新增）｜核准後鎖定｜已核准之底稿鎖定；如需修改須由主管「重開案件」並填原因，案件回到整理中並重新三層覆核｜MVP
+FR-DOC-001（v1.2 新增）｜收件清單範本｜依稅目維護應收資料清單（例：營業稅—銷項／進項發票明細、折讓單；扣繳—給付明細），案件產生時帶入；項目具必要／選填屬性｜MVP
+FR-DOC-003（v1.2 新增）｜催辦通知｜未收齊案件依設定（預設截止日前 14、10 天）發送催辦 Email 給客戶窗口並列出缺件項目；紀錄發送時間與次數（課堂練習一律只建草稿）｜MVP
+FR-VAT-005（v1.2 新增）｜查定課徵繳款追蹤｜小規模營業人不產生申報草稿，只追蹤繳款書：期別、核定稅額、繳款期限、繳款狀態；期限前 7／3 天提醒｜MVP
+FR-HSE-002／FR-LND-002（v1.2 補充）｜稅單對應｜每筆房屋／土地皆有對應稅單或註記「免稅／未收到」；登錄稅單稅額、期限、繳款狀態與收據｜MVP
+FR-DASH-002（v1.2 新增）｜承辦／覆核人員工作台｜顯示個人待辦：待收件、整理中、待覆核、被退回、即將到期；依截止日排序，逾期置頂｜MVP</pre></div></details><div class="card warm"><strong>如何確認（筆數要對）</strong>
+            <ul>
+              <li>clients 3、invoices 12、cases 8、properties 2、taxBills 2、withholdings 3</li>
+              <li>抽查發票 #4 稅額 4800、#10 對方統編 9910000（7 位，原樣保留）</li>
+              <li>docs/需求摘錄.md 的差異只在文末（綠色新增），原有內容沒有紅色刪除</li>
+            </ul></div>
+          <div class="card alert"><strong>參數全是練習假設值（待確認）</strong>
+            <p>VAT_RATE 0.05、REMINDER_DAYS [7, 3]、JUMP_THRESHOLD 0.3、TAX_TOLERANCE 1、DEMO_TODAY 2026-10-12：只放在 config/parameters.ts，不寫死在畫面。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 A</span><span>8 / 27</span></div>
+      <aside class="notes">3-2 原文照講義（取代 v1.1 的 3-2）。素材①、② 從講義附錄 A、B 整理成一行一筆，方便複製；A-5 講師解答（#4、#7、#8、#10 異常）不要貼，第 4 場才用。#4、#10 看起來有錯，但一定要原樣保留。稅率 5%、提醒 7／3 天、±30% 都是規格書預設參考值或練習假設值，待確認。</aside>
+    </section>
+
+    <!-- 9 實作 A：跑起來＋存第一版 -->
+    <section class="slide" id="s9" data-title="實作 A：跑起來＋存第一版">
+      <p class="kicker">實作 A · 19:21–19:25（建議）· 終端機</p>
+      <h2 class="tight">看到畫面，就存第一個版本</h2>
+      <div class="grid"><div class="stack"><div class="prompt"><div class="ph"><span>啟動原型（在 tax-platform-demo 執行）</span><button class="copy" type="button">複製</button></div><pre>npm run dev</pre></div><div class="card"><strong>瀏覽器開 http://localhost:3000</strong>
+            <p>看到「企業報稅作業平台｜練習原型」與「練習原型｜虛構資料｜試算為草稿，非最終稅務結論」。</p>
+            <p class="mini">停止伺服器：在終端機按 Ctrl＋C。要下其他指令時，可另開一個終端機分頁。</p></div></div><div class="stack"><div class="prompt"><div class="ph"><span>存第一個版本（也可用 Source Control 面板）</span><button class="copy" type="button">複製</button></div><pre>git add .
+git status
+git commit -m "第3場：加入 Next.js 專案、虛構資料與參數檔"</pre></div><div class="card warm"><strong>如何確認</strong>
+            <p>git status 清單中沒有 .env、node_modules/、.next/；若有，先停下來用 T-1 處理。今晚可以先不 push，3-8 一起推。</p></div></div>
+        <div class="stack">
+          <div class="card alert"><strong>講師示範：出錯怎麼辦</strong>
+            <ol>
+              <li>在終端機故意打錯一個指令，出現紅字</li>
+              <li>紅字<b>全部</b>複製，用 T-1 貼給 Cursor</li>
+              <li>錯誤訊息若有密碼、token 字樣，先遮掉再貼</li>
+            </ol></div>
+          <div class="card"><strong>講師示範：存版本與還原</strong>
+            <p>commit 一次 → 故意改壞 → 用 T-2 回到上一版。</p>
+            <p class="mini">不要使用 reset --hard、push --force 這類會刪檔或改寫歷史的指令，除非講師在場確認。</p></div>
+        </div></div>
+      <div class="callout">19:25 準時進入實作 B。3-2 還沒跑完的組，讓 Agent 繼續跑，先讀下一頁的分工。</div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 A</span><span>9 / 27</span></div>
+      <aside class="notes">存版本指令照講義原文。講義的兩個講師示範（出錯處理 T-1、存版本與還原 T-2）安排在這裡，各 1 分鐘以內；時間不夠就在實作 C 再示範。T-1～T-3 完整提示詞在第 19 頁。</aside>
+    </section>
+
+    <!-- 10 實作 B：分組任務 -->
+    <section class="slide" id="s10" data-title="實作 B：分組任務">
+      <p class="kicker">實作 B · 19:25–19:55 · 30 分鐘</p>
+      <h2 class="tight">兩組各做自己的畫面，每完成一個畫面就 commit 一次</h2>
+      <table class="plan">
+        <tr><th>組別</th><th>必做</th><th>延伸</th></tr>
+        <tr><td><span class="pill">第 1 組</span><br>期限與追蹤線<br><span class="mini">行事曆＋房屋稅／地價稅清冊</span></td><td>3-3 申報行事曆（月檢視＋清單、逾期紅、即將到期黃、依客戶／稅目／狀態／承辦人篩選）→ 3-4 案件清單</td><td>3-E1 房屋稅／地價稅清冊與稅單追蹤</td></tr>
+        <tr><td><span class="pill o">第 2 組</span><br>資料與試算線<br><span class="mini">營業稅＋扣繳</span></td><td>3-5A lib/caseStatus.ts（7 狀態＋三層簽核＋職能分離）→ 3-5B 營業稅案件頁</td><td>3-E2 扣繳月繳追蹤</td></tr>
+        <tr><td>兩組共同</td><td>每完成一個畫面 commit 一次；20:35 用 3-8 推上 GitHub</td><td>（待確認）實作 D Supabase</td></tr>
+      </table>
+      <div class="grid" style="margin-top:14px">
+        <div class="card"><div class="num">1</div><strong>先規則、後畫面</strong><p>第 2 組先做 lib/caseStatus.ts（規則唯一來源），再做畫面；第 1 組先做共用的逾期函式 lib/dates.ts，案件清單直接沿用。</p></div>
+        <div class="card"><div class="num">2</div><strong>一個提示詞一個畫面</strong><p>不要把 3-3、3-4 一次貼進去。做完一個 → npm run dev 看畫面 → commit → 再下一個。</p></div>
+        <div class="card warm"><div class="num">3</div><strong>新手的位置</strong><p>新手先當領航：念「如何確認」、在瀏覽器點點看；15 分鐘後換手當駕駛，可改用 ★3-S1、3-S2。</p></div>
+      </div>
+      <div class="callout">兩組最後會互點對方的原型（20:55），所以畫面上的「虛構資料／草稿」提示一定要在。</div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B</span><span>10 / 27</span></div>
+      <aside class="notes">分組表照講義實作 B 表格。第 1 組＝行事曆＋房屋稅／地價稅清冊（CAL、HSE／LND）；第 2 組＝營業稅＋扣繳（VAT、WHT）；案件流程（7 狀態＋三層簽核）兩組共用，由第 2 組的 lib/caseStatus.ts 負責。各組做各自主機的 repo。</aside>
+    </section>
+
+    <!-- 11 第 1 組：3-3 申報行事曆 -->
+    <section class="slide dense" id="s11" data-title="第 1 組：3-3 申報行事曆">
+      <p class="kicker">實作 B · 第 1 組 · 3-3（約 15 分鐘）· 模式：Agent</p>
+      <h2 class="tight">共用版面＋申報行事曆：逾期紅、即將到期黃</h2>
+      <div class="grid split-r"><div class="prompt compact" style="--pmax:64vh"><div class="ph"><span>提示詞 3-3｜版面與申報行事曆 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md 的規則，參考 @docs/需求摘錄.md 的 FR-CAL-004（到期提醒）、FR-CAL-005（逾期標示）與 FR-CAL-006（行事曆檢視），使用 @data/虛構資料.json 的 cases 與 clients、@config/parameters.ts 的 DEMO_TODAY 與 REMINDER_DAYS：
+1. 建立共用版面：左側選單「申報行事曆、案件清單、營業稅案件」，頁首顯示「練習原型｜虛構資料｜試算為草稿，非最終稅務結論」。
+2. 建立 /calendar 頁面：
+- 月檢視：可切換 2026 年 10 月與 11 月，案件依截止日放在日期格內，格式「客戶簡稱｜稅目｜狀態」。
+- 清單檢視：欄位為截止日、客戶、稅目、期別、狀態、承辦人。
+- 逾期：截止日已過（以 DEMO_TODAY 為今天）且狀態尚未到「已申報」→ 紅色「逾期」，並置頂。
+- 即將到期：截止日在 REMINDER_DAYS 最大天數（目前 7 天）內 → 黃色「即將到期」；天數不要寫死在畫面。
+- 可依客戶、稅目、狀態、承辦人篩選；點案件進入 /cases/[id]（先只顯示案件資料）。
+3. 截止日直接用資料中的值，不要自己計算法定期限；畫面註明「期限為練習假設值，待確認」。
+4. 逾期判斷寫成共用函式（例如 lib/dates.ts），之後案件清單會共用。</pre></div><div class="stack">
+          <div class="card"><strong>預期變更檔案</strong>
+            <p>app/layout.tsx、app/calendar/page.tsx、app/cases/[id]/page.tsx、lib/dates.ts、元件檔（如 components/）</p></div>
+          <div class="card warm"><strong>如何確認</strong>
+            <ul>
+              <li>DEMO_TODAY＝2026-10-12：C003 紅色逾期</li>
+              <li>改成 2026-11-10：C001、C004 黃色即將到期；C003、C006 逾期</li>
+              <li>依承辦人「同仁甲」篩選：只剩 C001、C002、C003、C007、C008</li>
+              <li>點任一案件可進入詳情</li>
+            </ul></div>
+          <div class="card alert"><strong>期限不是 AI 算的</strong>
+            <p>截止日全部來自虛構資料；畫面要註明「期限為練習假設值，待確認」。測完記得把 DEMO_TODAY 改回 2026-10-12。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B · 第 1 組</span><span>11 / 27</span></div>
+      <aside class="notes">3-3 原文照講義。「天數不要寫死在畫面」是重點：即將到期用 REMINDER_DAYS 最大值。DEMO_TODAY 是假的「今天」，讓大家測不同日期；今晚真實日期 2026-11-16 不影響測試。</aside>
+    </section>
+
+    <!-- 12 第 1 組：3-4 案件清單 -->
+    <section class="slide dense" id="s12" data-title="第 1 組：3-4 案件清單">
+      <p class="kicker">實作 B · 第 1 組 · 3-4（約 15 分鐘）· 模式：Agent</p>
+      <h2 class="tight">案件清單：沿用同一個逾期函式，不要重寫一份</h2>
+      <div class="grid two"><div class="stack"><div class="prompt" style="--pmax:40vh"><div class="ph"><span>提示詞 3-4｜案件清單 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，參考 @docs/需求摘錄.md 的 FR-CASE-005 精神，使用 @data/虛構資料.json，建立 /cases 案件清單頁：
+1. 表格欄位：案件編號、客戶、稅目、期別、截止日、狀態、承辦人、覆核人、是否逾期（逾期判斷沿用 @lib/dates.ts 的同一個函式，不要重寫一份）。
+2. 可依客戶、稅目、狀態、承辦人、是否逾期篩選；依截止日排序；逾期案件永遠排最上面。
+3. 7 個狀態用不同顏色標籤；上方顯示各狀態案件數小卡，點擊可篩選。
+4. 點案件編號進入 /cases/[id]。</pre></div><div class="card warm"><strong>如何確認</strong>
+            <ul>
+              <li>開 /cases：共 8 筆</li>
+              <li>DEMO_TODAY＝2026-10-12 時 C003 在最上面且標示逾期</li>
+              <li>點「待收件」小卡只剩待收件案件</li>
+              <li>行事曆頁仍正常（改了 lib/dates.ts 也不能壞）</li>
+            </ul></div></div>
+        <div class="stack">
+          <div class="card"><strong>7 個狀態用不同顏色</strong><div class="chain"><span>待收件</span><i>→</i><span>整理中</span><i>→</i><span>待覆核</span><i>→</i><span>已核准</span><i>→</i><span>已申報</span><i>→</i><span>已繳款</span><i>→</i><span>結案</span></div><p class="mini">狀態名稱一個字都不能改；以第 2 場 docs/狀態流程.md 為準。</p></div>
+          <div class="card"><strong>預期變更檔案</strong><p>app/cases/page.tsx（必要時微調 lib/dates.ts）</p></div>
+          <div class="card alert"><strong>為什麼要「同一個函式」</strong>
+            <p>行事曆說逾期、清單卻說沒逾期，就是兩份邏輯各寫各的。規則只放一個地方，改一次兩邊一起對。</p></div>
+          <p class="mini">提早做完 → 換手駕駛，用 3-6 做一個小修改，或挑戰延伸 3-E1（第 18 頁）。</p>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B · 第 1 組</span><span>12 / 27</span></div>
+      <aside class="notes">3-4 原文照講義（FR-CASE-005 精神）。若 Cursor 在 app/cases/page.tsx 裡重寫了一份逾期判斷，用 3-6 請它改回呼叫 lib/dates.ts 的函式。</aside>
+    </section>
+
+    <!-- 13 第 2 組：3-5A 狀態規則 -->
+    <section class="slide dense" id="s13" data-title="第 2 組：3-5A 狀態規則">
+      <p class="kicker">實作 B · 第 2 組 · 3-5A（約 12 分鐘）· 模式：Agent</p>
+      <h2 class="tight">先寫規則：lib/caseStatus.ts 是狀態與三層簽核的唯一來源</h2>
+      <div class="grid split-r"><div class="prompt compact" style="--pmax:64vh"><div class="ph"><span>提示詞 3-5A｜狀態規則＋三層簽核 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，參考 @docs/需求摘錄.md 的 FR-CASE-001、FR-CASE-003、FR-CASE-004、FR-REV-001、FR-REV-002、FR-REV-005，以及 @docs/狀態流程.md（第 2 場成果），建立 lib/caseStatus.ts 作為狀態規則唯一來源。只建立或修改這個檔案，先不要改畫面：
+1. 7 個狀態：待收件 → 整理中 → 待覆核 → 已核准 → 已申報 → 已繳款 → 結案。
+2. 動作與條件：
+- 確認收件完成：待收件 → 整理中（承辦人）。
+- 送覆核：整理中 → 待覆核（承辦人；記為第一層「編製」簽核）。
+- 覆核通過：第二層（覆核人）；狀態仍為待覆核，標示「待主管核准」。
+- 核准：第三層（主管M）；待覆核 → 已核准；前兩層都完成才可以。
+- 退回：待覆核 → 整理中（覆核人或主管M；原因必填；既有簽核全部失效）。
+- 主管重開：已核准 → 整理中（只有主管M；原因必填；既有簽核全部失效）。
+- 登錄申報完成：已核准 → 已申報（承辦人；必填申報日期、申報方式、回執附件檔名）。
+- 登錄繳款：已申報 → 已繳款（承辦人；必填繳款日期、金額；金額與草稿應納稅額不一致時，必填差異說明）。
+- 結案：已繳款 → 結案；無應納稅額時可由已申報直接結案。
+3. 職能分離：同一案件的編製、覆核、核准必須是不同人；違反時拒絕並回傳中文錯誤訊息。
+4. 提供函式：取得「某狀態下、某操作者」可執行的動作；檢查轉換是否合法（不合法時回傳中文錯誤訊息，例如「不可從整理中直接核准」）。
+5. 寫完後用表格列出所有動作、可執行角色、必要條件，讓我對照 @docs/狀態流程.md；兩者不一致的地方列出來，不要自行決定。</pre></div><div class="stack">
+          <div class="card"><strong>三層簽核，一層一個人</strong><ol class="flow" style="--n:3"><li><b>1</b><span>編製</span><small>承辦人 · 送覆核</small></li><li><b>2</b><span>覆核</span><small>覆核人 · 待主管核准</small></li><li><b>3</b><span>核准</span><small>主管M · 已核准</small></li></ol>
+            <p class="mini">退回、主管重開：原因必填，既有簽核全部失效。</p></div>
+          <div class="card warm"><strong>預期變更檔案</strong><p>只有 lib/caseStatus.ts（新增）。先不要改畫面。</p></div>
+          <div class="card"><strong>如何確認</strong>
+            <p>Cursor 列出的動作表與 docs/狀態流程.md、附錄 B 的 FR-CASE-001、FR-REV-001 一致；不一致處記在交付物「待討論」，由全班決定。</p></div>
+          <div class="card alert"><strong>待確認</strong>
+            <p>繳款追蹤類案件（查定、房屋稅、地價稅）是否簡化為二層：由事務所主管決定；原型先一律三層。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B · 第 2 組</span><span>13 / 27</span></div>
+      <aside class="notes">3-5A 原文照講義（v1.2 依規格書補強）。第 5 點「不一致的地方列出來，不要自行決定」很重要：AI 不能替我們決定規則。這頁就是借鏡 vo-account「借貸不平衡就存不進去」的觀念：規則寫在程式裡擋。</aside>
+    </section>
+
+    <!-- 14 第 2 組：3-5B 營業稅案件頁 -->
+    <section class="slide dense" id="s14" data-title="第 2 組：3-5B 營業稅案件頁">
+      <p class="kicker">實作 B · 第 2 組 · 3-5B（約 18 分鐘）· 模式：Agent</p>
+      <h2 class="tight">營業稅案件頁：試算草稿、三層簽核、申報回執、繳款登錄</h2>
+      <div class="grid split-r"><div class="prompt compact" style="--pmax:64vh"><div class="ph"><span>提示詞 3-5B｜營業稅案件頁 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，使用 @lib/caseStatus.ts、@data/虛構資料.json 與 @config/parameters.ts，改寫 /cases/[id] 頁面。若為營業稅一般稅額案件（例如 C001 示範貿易 2026-09/10），顯示：
+1. 基本資料：客戶、統一編號（虛構）、期別、截止日、承辦人、覆核人、核准人（主管M）、目前狀態。
+2. 發票明細：銷項／進項兩個分頁（字軌號碼、日期、對方統編、銷售額、稅額）。
+3. 試算草稿：銷售額合計、銷項稅額、進項稅額、本期應納（或留抵）＝銷項稅額－進項稅額；稅率從 config/parameters.ts 讀取；上期累積留抵先顯示 0 並標「<span class="fill">【假設】</span>」；整區標示「草稿，非最終稅務結論」。
+4. 三層簽核區：編製／覆核／核准三格，各顯示簽核人、時間（Asia/Taipei）、結果；退回或重開後三格清空並註記「簽核已失效」。
+5. 狀態按鈕：只顯示目前狀態下目前操作者可做的動作；按下時一律先經 lib/caseStatus.ts 檢查，不合法要顯示錯誤訊息（不是只把按鈕藏起來）；退回、重開要填原因；登錄申報要填申報日期、申報方式、回執附件檔名；登錄繳款要填日期與金額，與草稿應納不一致時要填差異說明。
+6. 狀態時間軸：每次變更記錄時間（Asia/Taipei）、操作者（下拉選同仁甲～丁、主管M）、原狀態、新狀態、說明。資料先存在畫面狀態即可，重新整理會消失沒關係。
+7. 承辦人、覆核人、核准人有任兩者相同時，顯示警告並擋下簽核。</pre></div><div class="stack">
+          <div class="card"><strong>預期變更檔案</strong>
+            <p>app/cases/[id]/page.tsx、相關元件（必要時微調 lib/caseStatus.ts，需先說明原因）</p></div>
+          <div class="card warm"><strong>試算區對答案（C001，練習值）</strong>
+            <table class="plan">
+              <tr><th>項目</th><th>應顯示</th></tr>
+              <tr><td>銷項稅額</td><td>40,300</td></tr>
+              <tr><td>進項稅額</td><td>13,400</td></tr>
+              <tr><td>本期應納</td><td>26,900</td></tr>
+            </table>
+            <p class="mini">尚未檢核，含 #7 重複與 #8 期外發票，屬正常（第 4 場才做異常檢核）。非稅務結論；稅率 5% 待確認。</p></div>
+          <div class="card alert"><strong>擋下來，不是藏起來</strong>
+            <p>不合法的動作按下去要顯示錯誤訊息；只把按鈕藏起來不算過關。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B · 第 2 組</span><span>14 / 27</span></div>
+      <aside class="notes">3-5B 原文照講義。注意 Cursor 可能把 #4 的稅額「修正」成 4,000：資料不能改，試算就是用原始資料。若銷項不是 40,300，先檢查是否漏了 #10（統編 7 位那筆）或把 #4 改掉。三層簽核測試步驟在下一頁。</aside>
+    </section>
+
+    <!-- 15 畫面驗收：照劇本點一次 -->
+    <section class="slide" id="s15" data-title="畫面驗收：照劇本點一次">
+      <p class="kicker">實作 B 收尾 · 講師示範＋各組自測</p>
+      <h2 class="tight">照著劇本點一次：該擋的有沒有擋下來？</h2>
+      <div class="grid two">
+        <div class="card"><span class="pill o">第 2 組 · /cases/C001 簽核劇本</span>
+          <ol>
+            <li>C001 狀態「整理中」；操作者選<b>同仁甲</b> → 只看到「送覆核」</li>
+            <li>按下 → 時間軸多一筆、編製格出現同仁甲</li>
+            <li>再以<b>同仁甲</b>按「覆核通過」→ <b>應被擋下</b>（職能分離）</li>
+            <li>改<b>同仁乙</b>覆核通過 → 顯示「待主管核准」</li>
+            <li><b>主管M</b> 核准 → 已核准、三格齊全</li>
+            <li>未填回執檔名就登錄申報 → <b>應被擋下</b></li>
+            <li>主管M 重開 → 回到整理中、顯示「簽核已失效」</li>
+          </ol></div>
+        <div class="stack">
+          <div class="card"><span class="pill">第 1 組 · 行事曆與清單劇本</span>
+            <table class="plan">
+              <tr><th>DEMO_TODAY</th><th>應該看到</th></tr>
+              <tr><td>2026-10-12</td><td>C003 紅色逾期，清單置頂</td></tr>
+              <tr><td>2026-11-10</td><td>C001、C004 黃色即將到期；C003、C006 逾期</td></tr>
+            </table>
+            <p class="mini">再測：承辦人篩「同仁甲」→ C001、C002、C003、C007、C008；/cases 共 8 筆。</p></div>
+          <div class="card alert"><strong>講師示範：三層簽核擋人</strong>
+            <p>在 /cases/C001 以同仁甲送覆核後，再以同仁甲按「覆核通過」，應被擋下。這就是規格書 FR-REV-002 的職能分離。</p></div>
+          <div class="card warm"><strong>沒過的項目</strong>
+            <p>記在交付物「迭代紀錄」，休息後用 3-6 一次修一項。</p></div>
+        </div>
+      </div>
+      <div class="callout">19:55 前：每組至少 commit 一次（git add . → git status → git commit），再去休息。</div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 B</span><span>15 / 27</span></div>
+      <aside class="notes">劇本照講義 3-3、3-5B 的「如何確認」與講義示範重點。所有日期、金額都是虛構練習值。若第 2 組只完成 3-5A，就請他們用 3-7 讓 Cursor 解釋規則，畫面留到實作 C。</aside>
+    </section>
+
+    <!-- 16 休息 -->
+    <section class="slide hero" id="s16" data-title="休息">
+      <p class="kicker">19:55–20:00 · 休息 5 分鐘</p>
+      <div class="mark"></div>
+      <h1>休息一下</h1>
+      <p class="lead">回來後是實作 C：一次只改一件事，讓 Cursor 解釋它寫了什麼。</p>
+      <div class="grid" style="margin-top:22px">
+        <div class="card"><div class="num">1</div><strong>先 commit 再離開</strong><p>畫面能跑就存一版，回來改壞也能回到這裡。</p></div>
+        <div class="card"><div class="num">2</div><strong>npm run dev 可以不關</strong><p>伺服器繼續跑，回來重新整理瀏覽器就好。</p></div>
+        <div class="card warm"><div class="num">3</div><strong>想一個小修改</strong><p>看看自己組的畫面，挑一個最想改的地方，等一下用 3-6。</p></div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 休息</span><span>16 / 27</span></div>
+      <aside class="notes">休息時間巡一下還沒 commit 的組。若有組 3-1 還卡住，休息時讓他們改用講師救援版接續。</aside>
+    </section>
+
+    <!-- 17 實作 C：迭代 -->
+    <section class="slide dense" id="s17" data-title="實作 C：迭代">
+      <p class="kicker">實作 C · 20:00–20:20 · 迭代與學習</p>
+      <h2 class="tight">一次只改一件事；看不懂就請 Cursor 解釋</h2>
+      <div class="grid two"><div class="stack"><div class="prompt" style="--pmax:24vh"><div class="ph"><span>提示詞 3-6｜迭代修改（每次只改一件事）· Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，只做下面這一項修改，不要動其他功能或檔案：
+<span class="fill">【要改的地方，例如：@app/cases/page.tsx 的逾期案件整列改成淡紅色底，而不只是文字變紅】</span>
+改完請列出改了哪些檔案，並告訴我在畫面上怎麼確認。</pre></div><p class="mini">預期變更檔案：只應出現你指定的檔案；若 Agent 想改其他檔案，先拒絕並問原因。確認：依 Cursor 說明的步驟在瀏覽器確認，其他頁面仍正常。</p><div class="prompt" style="--pmax:26vh"><div class="ph"><span>提示詞 3-7｜請 Cursor 解釋程式（學習用）· Ask</span><button class="copy" type="button">複製</button></div><pre>請用非工程師看得懂的繁體中文，解釋 @lib/caseStatus.ts 在做什麼：
+1. 用一張表列出每個狀態可以做哪些動作、誰可以做、會變成什麼狀態。
+2. 指出哪一段程式負責「擋下不合法的轉換」與「職能分離」。
+3. 對照 @docs/狀態流程.md（第 2 場成果）與 @docs/需求摘錄.md 的 FR-CASE-001、FR-REV-001，有沒有不一致的地方？
+只回答，不要修改檔案。</pre></div><p class="mini">預期變更檔案：無。把 Cursor 列的狀態表與第 2 場的狀態轉換表比對，一致即可；不一致記錄下來。</p></div><div class="stack"><details class="more" open><summary>★新手版 3-S1（先看懂再動手）· Ask</summary><div class="prompt compact" style="--pmax:14vh"><div class="ph"><span>★新手版｜提示詞 3-S1</span><button class="copy" type="button">複製</button></div><pre>我是會計人員，第一次用 Cursor 寫程式。請看 @app/calendar/page.tsx，用 5 句以內的白話告訴我：這個頁面從哪裡拿資料、怎麼決定哪些案件是紅色逾期。不要修改任何檔案。</pre></div><p class="mini">能用自己的話跟夥伴說明逾期怎麼判斷即通過。</p></details><details class="more" open><summary>★新手版 3-S2（一個小修改）· Agent</summary><div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>★新手版｜提示詞 3-S2</span><button class="copy" type="button">複製</button></div><pre>請只修改 @app/calendar/page.tsx：把「逾期」標籤的文字改成「⚠ 逾期」，其他都不要動。改完告訴我要怎麼在畫面上看到。</pre></div><p class="mini">預期變更：只有 app/calendar/page.tsx；重新整理 /calendar，C003 顯示「⚠ 逾期」。</p></details><div class="card warm"><strong>好的修改請求長這樣</strong>
+            <ul>
+              <li>指名檔案：@app/cases/page.tsx</li>
+              <li>只說一件事：逾期整列改淡紅色底</li>
+              <li>說怎麼驗收：改完告訴我畫面上怎麼確認</li>
+            </ul></div>
+          <p class="mini">每改好一項就 commit 一次；做完的組挑戰延伸題（下一頁）。</p>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 C</span><span>17 / 27</span></div>
+      <aside class="notes">3-6、3-7、3-S1、3-S2 原文照講義。3-7 適合第 2 組（解釋 lib/caseStatus.ts）；第 1 組可把 @lib/caseStatus.ts 換成 @lib/dates.ts 自己問。這就是 vo-account 的「小步發版」：每次只動一件事，壞了才知道是哪一步。</aside>
+    </section>
+
+    <!-- 18 延伸 3-E1／3-E2 -->
+    <section class="slide dense" id="s18" data-title="延伸 3-E1／3-E2">
+      <p class="kicker">實作 C · 延伸題（做完必做的組）· 模式：Agent</p>
+      <h2 class="tight">延伸：第 1 組做房地清冊，第 2 組做扣繳月繳追蹤</h2>
+      <div class="grid two"><div class="stack"><div class="prompt compact" style="--pmax:46vh"><div class="ph"><span>延伸 3-E1（第 1 組）｜房屋稅／地價稅清冊與稅單追蹤</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，參考 @docs/需求摘錄.md 的 FR-HSE-001、FR-HSE-002、FR-LND-001、FR-LND-002，使用 @data/虛構資料.json 的 properties、taxBills、cases 與 @config/parameters.ts，建立 /properties 頁面，並加到左側選單「房地清冊」：
+1. 清冊表格：清冊編號、客戶、類型（房屋／土地）、稅籍編號或地號、縣市、地址或地段、持分。
+2. 每筆旁顯示對應稅單：稅目、年度、核定稅額、繳款期限、繳款狀態、對應案件編號；沒有對應稅單的顯示「缺稅單：請註記免稅／未收到」，並提供註記按鈕（必填說明，記錄操作者與時間，只存在畫面狀態）。
+3. 繳款期限前 REMINDER_DAYS 最大天數內且未繳 → 黃色「即將到期」；已過期限且未繳 → 紅色「逾期」；今天使用 DEMO_TODAY。
+4. 稅額直接用資料中的值，不要自行計算房屋稅或地價稅；頁首註明「稅額、期限為練習假設值，待確認」。</pre></div><div class="card"><strong>如何確認</strong><p>預期變更：app/properties/page.tsx、app/layout.tsx（選單）。DEMO_TODAY 改為 2026-11-25：P-02 地價稅（期限 2026-11-30、未繳）顯示即將到期；P-01 房屋稅顯示已繳；測完改回 2026-10-12。</p></div></div><div class="stack"><div class="prompt compact" style="--pmax:46vh"><div class="ph"><span>延伸 3-E2（第 2 組）｜扣繳月繳追蹤</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md，參考 @docs/需求摘錄.md 的 FR-WHT-002、FR-WHT-004，使用 @data/虛構資料.json 的 withholdings、cases、clients，建立 /withholding 頁面，並加到左側選單「扣繳月繳追蹤」：
+1. 依客戶與月份彙總：給付筆數、給付總額合計、扣繳稅額合計；可展開看明細（所得人代號、所得類別、給付總額、扣繳稅額）。所得人只顯示代號。
+2. 顯示對應的扣繳月繳案件（例如 C003、C005）的截止日與狀態，點擊進入 /cases/[id]。
+3. 若某適用扣繳的客戶某月沒有任何給付，顯示「註記無扣繳」按鈕；按下需填說明，並記錄操作者與時間（只存在畫面狀態，不要修改 data 檔）。
+4. 扣繳稅額直接使用資料中的練習值，不要自行套用扣繳率計算；頁首註明「扣繳率、門檻與期限為練習假設值，待確認」。</pre></div><div class="card"><strong>如何確認</strong><p>預期變更：app/withholding/page.tsx、app/layout.tsx（選單）。CL-A 2026-09：3 筆、給付總額 110,000、扣繳稅額 8,000（練習值）；CL-B 2026-09 沒有給付明細，顯示「註記無扣繳」按鈕。</p></div></div></div><div class="callout">房屋稅、地價稅、扣繳的稅率、門檻、開徵期間全部<b>待確認</b>；畫面只用資料裡的練習值，不讓 AI 自己算。</div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 C</span><span>18 / 27</span></div>
+      <aside class="notes">3-E1、3-E2 原文照講義。兩組都改到 app/layout.tsx（左側選單），各組是不同 repo 所以不會衝突。若同一組兩台都改同一個 repo，push 前先找講師。</aside>
+    </section>
+
+    <!-- 19 卡關時 -->
+    <section class="slide dense" id="s19" data-title="卡關時">
+      <p class="kicker">卡關時 · 第 2–4 場通用</p>
+      <h2 class="tight">卡住先別亂試：貼錯誤、回上一版、請 AI 停下來整理</h2>
+      <div class="grid"><div class="stack"><div class="prompt compact" style="--pmax:40vh"><div class="ph"><span>T-1｜貼錯誤訊息 · Agent</span><button class="copy" type="button">複製</button></div><pre>執行時出現下面的錯誤。請：
+1. 用白話解釋可能原因（2–3 句）。
+2. 提供最小範圍的修正，只改必要的檔案。
+3. 告訴我修正後要怎麼確認。
+如果需要更多資訊，告訴我去哪裡看、貼什麼給你；不要為了修錯而刪除功能。
+錯誤發生在：<span class="fill">【終端機／瀏覽器畫面／瀏覽器主控台】</span>，我剛剛做的動作是：<span class="fill">【例如：按下送覆核】</span>
+<span class="fill">【貼上完整錯誤訊息（紅字全部複製）】</span></pre></div><p class="mini">錯誤訊息中若出現密碼、token 等字樣，先遮掉再貼。</p></div><div class="stack"><div class="prompt compact" style="--pmax:30vh"><div class="ph"><span>T-2｜改壞了，要回到上一版 · Ask</span><button class="copy" type="button">複製</button></div><pre>我剛剛接受了一個修改後，<span class="fill">【描述壞掉的現象，例如：案件清單變空白】</span>。請先不要改任何檔案，告訴我：
+1. 如何用 Cursor 的還原功能（例如對話中的 Checkpoint／Restore，名稱可能依版本不同）回到修改前。
+2. 如果已經存過 Git 版本，如何查看最近的版本並回到上一個可以正常運作的版本；每個指令先說明會影響什麼，有沒有可能讓我失去資料。</pre></div><p class="mini">不要使用 reset --hard、push --force，除非講師在場確認。</p><div class="prompt compact" style="--pmax:22vh"><div class="ph"><span>T-3｜看不懂／AI 一直繞圈 · Ask</span><button class="copy" type="button">複製</button></div><pre>我們已經試修 3 次還是失敗。請停止修改，先幫我整理：
+1. 目前想達成什麼、實際發生什麼。
+2. 你認為最可能的 2 個原因，以及各自要怎麼驗證。
+3. 建議下一步只做哪一件事。
+參考檔案：<span class="fill">【@ 相關檔案，例如 @app/cases/[id]/page.tsx @lib/caseStatus.ts】</span></pre></div></div><div class="stack"><details class="more"><summary>Git 卡關 1：驗證失敗／一直要求密碼</summary><div class="card"><p>GitHub 推送要用瀏覽器授權登入，輸入帳號密碼會失敗。Windows 存到錯誤帳號：控制台 → 使用者帳戶 → 認證管理員，刪掉 GitHub 那一筆，再 push。Mac 請確認已裝 git-credential-manager（待確認）。</p></div></details><details class="more"><summary>Git 卡關 2：push 出現 rejected</summary><div class="card"><p><b>不要用 --force。</b>第 3 場若因夥伴先推了新版本而被拒絕：先停下來找講師，一起執行 git pull 再 push。</p></div><div class="prompt compact" style="--pmax:10vh"><div class="ph"><span>（建 repo 時勾了 README 才用）換成新的空 repo</span><button class="copy" type="button">複製</button></div><pre>git remote set-url origin https://github.com/<span class="fill">【你的帳號】</span>/tax-platform-demo-2.git
+git push -u origin main</pre></div></details><details class="more"><summary>Git 卡關 3：名字或 Email 設錯</summary><div class="card"><p>重新執行第 2 場帶做 ③ 的兩行設定；只影響之後的版本。</p></div></details><details class="more"><summary>Git 卡關 4：git 不是內部或外部命令</summary><div class="card"><p>完全關閉 Cursor 再打開，重新開終端機再試 git --version；還是不行就重跑安裝程式或舉手。</p></div></details><details class="more"><summary>Git 卡關 5：remote origin already exists</summary><div class="prompt compact" style="--pmax:8vh"><div class="ph"><span>改成正確的網址</span><button class="copy" type="button">複製</button></div><pre>git remote set-url origin https://github.com/<span class="fill">【你的帳號】</span>/tax-platform-demo.git</pre></div></details><div class="card alert"><strong>推上去發現有敏感資料</strong><p>馬上停、通報講師；不要自行改寫歷史。</p></div></div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 卡關</span><span>19 / 27</span></div>
+      <aside class="notes">T-1～T-3 與 Git 卡關 1～5 原文照講義第十一章。今晚最常見：npm run dev 紅字（T-1）、Agent 改到不該改的檔案（T-2 用 Checkpoint 還原）、改了 3 次還是錯（T-3）。真的救不回來就改用講師救援版接續。Cursor 完全不能用時，暫時與同組共用主機。</aside>
+    </section>
+
+    <!-- 20 實作 D：Supabase 補做 -->
+    <section class="slide dense" id="s20" data-title="實作 D：Supabase 補做">
+      <p class="kicker">實作 D · 20:20–20:35 · Supabase 補做（本場是否進行：待確認）</p>
+      <h2 class="tight">把資料表變成真的資料庫：先產生 SQL，再理解 RLS</h2>
+      <div class="grid split-r"><div class="stack"><div class="card"><strong>講師帶做 5 步</strong><ol class="flow" style="--n:5"><li><b>1</b><span>3-9 · Agent</span><small>產生 supabase/schema.sql</small></li><li><b>2</b><span>看差異</span><small>只多這一個檔</small></li><li><b>3</b><span>SQL Editor</span><small>貼上 → 執行</small></li><li><b>4</b><span>Table Editor</span><small>3 客戶／12 發票／8 案件</small></li><li><b>5</b><span>3-10 · Ask</span><small>RLS 白話＋政策草稿</small></li></ol></div><div class="card"><strong>RLS 一句話（第 2 場講過）</strong>
+            <p>RLS（列層級權限）像檔案櫃的鑰匙：同一個櫃子，每個人只能打開被指派客戶的那幾格。用 A 公司窗口帳號查 B 公司案件 → 應回傳 0 筆。</p></div>
+          <div class="card warm"><strong>若今晚不進行</strong>
+            <p>20:20–20:35 延長實作 C；3-9、3-10 改為課後延伸或講師示範。</p></div></div>
+        <div class="stack">
+          <div class="card alert"><strong>金鑰紅線</strong>
+            <ul>
+              <li>SQL 檔只放在專案的 supabase/ 資料夾</li>
+              <li>Supabase 網址、金鑰、連線字串：不得寫進專案、不得貼到 Cursor</li>
+              <li>讓原型實際連線 Supabase（需 .env.local）不在今晚範圍（待確認）</li>
+            </ul></div>
+          <div class="card"><strong>練習環境</strong>
+            <p>各組可共用講師的練習 Supabase 專案或自己的專案，只放虛構資料、一律私人。</p>
+            <p class="mini">免費方案限制、專案地區選擇：待確認。</p></div>
+          <div class="card"><strong>如何確認沒外流</strong>
+            <p>專案中搜尋 supabase.co、key、password 等字樣沒有結果。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 D</span><span>20 / 27</span></div>
+      <aside class="notes">講義實作 D 原文：若採用，講師投影帶做；原第 2 場 2-3、2-4 改成 3-9、3-10。課前講師要先在自己的 Supabase 練習專案跑過 3-9 產生的 SQL。這段是否進行仍待確認（講義待確認事項 #6）。</aside>
+    </section>
+
+    <!-- 21 實作 D：3-9／3-10 -->
+    <section class="slide dense" id="s21" data-title="實作 D：3-9／3-10">
+      <p class="kicker">實作 D · 3-9 Agent → SQL Editor → 3-10 Ask</p>
+      <h2 class="tight">產生建表 SQL 檔，再請 Cursor 用事務所比喻講 RLS</h2>
+      <div class="grid two"><div class="stack"><div class="prompt compact" style="--pmax:48vh"><div class="ph"><span>提示詞 3-9｜用 Cursor 產生建表 SQL 檔 · Agent</span><button class="copy" type="button">複製</button></div><pre>請依 @AGENTS.md、@docs/資料表設計.md、@docs/狀態流程.md 與 @data/虛構資料.json，建立 supabase/schema.sql。只建立這個檔案：不要執行任何指令、不要安裝套件、不要連線到任何資料庫。
+1. CREATE TABLE（含主鍵、外鍵、必填）；filing_case 的狀態欄位用 CHECK 限制 7 個狀態；所有業務表都有 client_id 與 created_at、created_by、updated_at、updated_by。
+2. 為每張含 client_id 的表啟用 RLS（ALTER TABLE ... ENABLE ROW LEVEL SECURITY），政策先留中文註解，下一步再寫。
+3. INSERT 虛構資料：3 家客戶、12 筆發票、8 件案件。
+4. 每段加中文註解；不要使用 DROP、DELETE、TRUNCATE。
+5. 檔案中不得出現任何網址、金鑰、密碼或連線字串。
+完成後告訴我：要怎麼把這個檔案的內容貼到 Supabase 網頁的 SQL Editor 執行，以及執行後在 Table Editor 應該看到什麼。執行出錯時我會把錯誤訊息貼給你。</pre></div><div class="card"><strong>如何確認</strong><p>預期變更：supabase/schema.sql（新增）。SQL Editor 執行成功；Table Editor 看得到 3 家虛構客戶、12 筆發票、8 件案件。</p></div></div><div class="stack"><div class="prompt compact" style="--pmax:40vh"><div class="ph"><span>提示詞 3-10｜RLS 白話說明＋政策草稿 · Ask</span><button class="copy" type="button">複製</button></div><pre>請用會計師事務所的比喻，向非工程師解釋 Supabase 的 RLS（Row Level Security，列層級權限）。然後參考 @supabase/schema.sql，針對 filing_case 表，寫出以下規則的 RLS 政策草稿（含中文註解），並說明怎麼測試：
+1. 事務所主管：可看全部客戶的案件。
+2. 承辦人員、覆核人員：只能看被指派的客戶案件。
+3. 客戶公司窗口：只能看自家公司（P2，先寫草稿即可）。
+最後列出 3 個「越權測試」情境（例如：用 A 公司窗口帳號查 B 公司案件，應回傳 0 筆）。
+只回答，不要修改檔案。提醒：這是練習環境，只放虛構資料。</pre></div><div class="card"><strong>如何確認</strong><p>預期變更：無（若要保存，另請 Agent 存成 docs/RLS草稿.md）。能用自己的話說出 RLS 的用途與 1 個越權測試情境。</p></div><div class="card alert"><strong>執行出錯時</strong><p>把 SQL Editor 的錯誤訊息貼回 Cursor（用 T-1），不要自己改 SQL 亂試；不要用 DROP、DELETE、TRUNCATE。</p></div></div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 實作 D</span><span>21 / 27</span></div>
+      <aside class="notes">3-9、3-10 原文照講義（取代第 2 場 2-3、2-4）。示範時投影 SQL Editor 前，先確認畫面上沒有專案金鑰或連線字串。</aside>
+    </section>
+
+    <!-- 22 3-8 存版本推上 GitHub -->
+    <section class="slide dense" id="s22" data-title="3-8 存版本推上 GitHub">
+      <p class="kicker">20:35–20:40 · 存版本並推上 GitHub</p>
+      <h2 class="tight">推到第 2 場那個私人 repo：不新建、不改 remote、不 --force</h2>
+      <div class="grid two"><div class="prompt" style="--pmax:52vh"><div class="ph"><span>提示詞 3-8｜存版本並推到既有的私人 GitHub 儲存庫 · Agent</span><button class="copy" type="button">複製</button></div><pre>請幫我把目前的進度存成一個版本並推到 GitHub。第 2 場已經建立私人儲存庫 tax-platform-demo 並設定好 origin：不要新建儲存庫、不要修改 remote、不要使用 --force。
+1. 先執行 git status 給我看，並檢查 @.gitignore 仍排除 node_modules/、.next/、.env、.env.*；若有缺漏，只追加、不刪除。
+2. 檢查準備加入版本的檔案中，有沒有疑似金鑰、密碼、token、.env 檔、Supabase 網址或附錄 A 以外的真實資料；有就先停下來告訴我。
+3. 用 Git 建立版本，訊息「第3場：行事曆、案件清單、營業稅案件頁」。
+4. 推到 origin 的 main。若被拒絕（rejected），先停下來告訴我原因與建議，不要自行處理。
+每個指令執行前先說明用途。</pre></div><div class="stack"><div class="prompt"><div class="ph"><span>3-8 終端機版（不想讓 Agent 執行指令時用）</span><button class="copy" type="button">複製</button></div><pre>git status
+git add .
+git status
+git commit -m "第3場：行事曆、案件清單、營業稅案件頁"
+git push</pre></div><div class="card warm"><strong>如何確認（到 github.com 看）</strong>
+            <ul>
+              <li>儲存庫仍標示 <b>Private</b></li>
+              <li>最新 commit 是今晚的訊息</li>
+              <li>看得到 app/、lib/、config/、data/虛構資料.json</li>
+              <li>沒有 node_modules、.next、.env</li>
+            </ul></div>
+          <div class="card alert"><strong>先停的時機</strong>
+            <p>第二次 git status 出現 .env、node_modules 或不認識的檔案 → 先停。push 被拒絕 → 不要 --force，找講師（卡關 2）。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 存版本</span><span>22 / 27</span></div>
+      <aside class="notes">3-8 原文照講義（取代 v1.1「建立新 repo」）。Agent 版會先執行 git status 並檢查 .gitignore；新手那組建議用終端機版，自己一行一行看結果。</aside>
+    </section>
+
+    <!-- 23 Grok Bot 第 3 週 -->
+    <section class="slide dense" id="s23" data-title="Grok Bot 第 3 週">
+      <p class="kicker">20:40–20:55 · Grok Bot 第 3 週 · 串接日常工具</p>
+      <h2 class="tight">讓 Bot 讀信、整理缺件、排時段、寫催件信草稿：人按寄出</h2>
+      <div class="grid split-r"><div class="stack"><div class="card"><strong>今晚的流程（對應規格書 FR-DOC-001、FR-DOC-003）</strong><ol class="flow" style="--n:4"><li><b>1</b><span>G3-1 找信</span><small>Gmail 只讀</small></li><li><b>2</b><span>G3-2 缺件清單</span><small>Drive 文件，不分享</small></li><li><b>3</b><span>G3-3 保留時段</span><small>自己的日曆，不邀請</small></li><li><b>4</b><span>G3-4 催件信</span><small>只建草稿，不寄出</small></li></ol></div><div class="timeline"><div class="tl"><b>20:40–20:42</b><span class="m">2′</span><span>規則：只連核可帳號、最小權限、對外訊息一律草稿、日曆不邀請他人</span></div><div class="tl"><b>20:42–20:47</b><span class="m">5′</span><span>講師示範：G3-1 → G3-2（確認未分享）→ G3-4 → 到 Gmail 草稿匣檢查，說明「人按寄出」</span></div><div class="tl hot"><b>20:47–20:53</b><span class="m">6′</span><span>學員實作：第 1 組 G3-1、G3-3；第 2 組 G3-2、G3-4；新手 G3-S</span></div><div class="tl"><b>20:53–20:55</b><span class="m">2′</span><span>對照附錄 G-4 預期結果；刪除練習草稿或保留供第 4 場使用</span></div></div></div><div class="stack">
+          <div class="card alert"><strong>連接規則</strong>
+            <ul>
+              <li>只用事務所核可的練習用 Google 帳號（待確認），不連個人或真實工作信箱</li>
+              <li>最小權限：能只讀就不給寫入</li>
+              <li>投影前關閉通知</li>
+            </ul></div>
+          <div class="card"><strong>對外訊息一律草稿</strong>
+            <p>Bot 只準備草稿；承辦人檢查收件人、內容、附件、語氣後自己寄。課堂練習一律不寄。草稿不得含稅額結論、可否扣抵。</p></div>
+          <div class="card warm"><strong>連接不能用時</strong>
+            <p>改為講師示範；學員把附錄 G-4 信件文字（下一頁可複製）直接貼給 Bot，只練缺件比對與草稿文字。</p></div>
+        </div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · Grok Bot 第 3 週</span><span>23 / 27</span></div>
+      <aside class="notes">時間表照講義 Grok Bot 第 3 週。課前講師要準備練習用 Google 帳號與「虛構客戶窗口」信箱，並寄出附錄 G-4 三封信（需確認）。示範前確認投影畫面沒有任何真實信件。點選連接的路徑依 Grok Bot 版本可能不同，只講「對 Bot 怎麼說」。</aside>
+    </section>
+
+    <!-- 24 G3-1 找信／G3-2 缺件清單 -->
+    <section class="slide dense" id="s24" data-title="G3-1 找信／G3-2 缺件清單">
+      <p class="kicker">Grok Bot 第 3 週 · G3-1（第 1 組）· G3-2（第 2 組）</p>
+      <h2 class="tight">先只讀找信，再把缺件清單建成「不分享」的 Google 文件</h2>
+      <div class="grid two"><div class="stack"><div class="prompt" style="--pmax:30vh"><div class="ph"><span>提示詞 G3-1｜搜尋客戶文件往來信件（只讀）</span><button class="copy" type="button">複製</button></div><pre>請在我已連接的 Gmail（練習帳號）中，搜尋最近 30 天內，主旨或內容包含「示範貿易」或「CL-A」，且與發票、扣繳、資料提供相關的信件。用表格列出：日期、寄件者、主旨、信中提到已提供或將提供的文件、附件名稱（若有）。只讀取：不要回覆、轉寄、刪除、封存或標記任何信件。找不到就說找不到，不要猜。</pre></div><details class="more" open><summary>素材：附錄 G-4 三封虛構信件（連接不能用時直接貼給 Bot）</summary><div class="prompt compact" style="--pmax:22vh"><div class="ph"><span>附錄 G-4（虛構）</span><button class="copy" type="button">複製</button></div><pre>G-4 虛構客戶信件（全部為虛構）
+#｜主旨｜內文（全文）｜附件（虛構檔案）
+1｜示範貿易（虛構）9–10月銷項發票明細｜您好，附上本公司（示範貿易股份有限公司，虛構）2026 年 9–10 月銷項發票明細，請查收。——示範貿易 會計窗口（虛構）｜銷項發票明細_練習.xlsx
+2｜回覆：示範貿易（虛構）進項發票｜您好，進項發票明細先附上，發票影本下週再補寄。——示範貿易 會計窗口（虛構）｜進項發票明細_練習.xlsx
+3｜示範貿易（虛構）9月扣繳資料｜您好，附上 2026 年 9 月扣繳給付明細（所得人以代號表示）。——示範貿易 會計窗口（虛構）｜扣繳給付明細_202609_練習.xlsx</pre></div></details></div><div class="stack"><div class="prompt" style="--pmax:36vh"><div class="ph"><span>提示詞 G3-2｜缺件清單 → 建立 Google 文件（不分享）</span><button class="copy" type="button">複製</button></div><pre>請對照下面的應收文件清單與你剛剛找到的信件，整理「示範貿易（虛構）2026-09/10 營業稅 缺件清單」：表格欄位：文件／狀態（已收、部分收到、未收、不確定）／依據（哪一封信）／備註。判斷不確定的寫「不確定」並說明原因，不要猜。
+然後在我的 Google Drive 建立一份新的 Google 文件，標題「<span class="fill">【練習】</span>CL-A_2026-09-10_缺件清單」，最上方註明「虛構練習資料｜草稿」，放入上述表格。建立後給我文件連結。不要分享給任何人。
+<span class="fill">【應收文件清單：1. 銷項發票明細 2. 進項發票明細（含影本） 3. 折讓單 4. 上期留抵資料 5. 2026-09 扣繳給付明細】</span></pre></div><div class="card warm"><strong>檢查重點</strong>
+            <ul>
+              <li>G3-1：3 封信都找到，且沒有被回覆、刪除或標記</li>
+              <li>G3-2：文件標題有【練習】、最上方有「虛構練習資料｜草稿」</li>
+              <li>打開文件的共用設定：只有自己（未分享）</li>
+            </ul></div></div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · Grok Bot 第 3 週</span><span>24 / 27</span></div>
+      <aside class="notes">G3-1、G3-2 原文照講義。G-4 信件原文照講義附錄 G-4（一行一封）。若 Bot 說找到超過 3 封或內容不符，就是它在猜，提醒學員對照原信。</aside>
+    </section>
+
+    <!-- 25 G3-3 時段／G3-4 催件信 -->
+    <section class="slide dense" id="s25" data-title="G3-3 時段／G3-4 催件信">
+      <p class="kicker">Grok Bot 第 3 週 · G3-3（第 1 組）· G3-4（第 2 組）· 新手 G3-S</p>
+      <h2 class="tight">保留時段只建在自己日曆；催件信只進草稿匣</h2>
+      <div class="grid two"><div class="stack"><div class="prompt" style="--pmax:26vh"><div class="ph"><span>提示詞 G3-3｜建立日曆保留時段（不邀請他人）</span><button class="copy" type="button">複製</button></div><pre>請在我的 Google 日曆建立以下保留時段，只建在我自己的日曆、不要邀請任何人、不要寄出通知：
+1. 2026-11-10 10:00–11:00（Asia/Taipei）「<span class="fill">【練習】</span>CL-A 營業稅資料整理」
+2. 2026-11-12 14:00–14:30（Asia/Taipei）「<span class="fill">【練習】</span>CL-A 營業稅覆核（同仁乙）」——同仁乙只寫在標題，不要寄邀請。
+建立前先列出要建立的事件讓我確認；建立後列出事件標題、日期與時間。</pre></div><div class="card alert"><strong>今晚注意：講義日期已過</strong><p>2026-11-10、2026-11-12 是以 11/09 上課設計的。貼上後把兩個日期改成今天之後（例如 2026-11-17、2026-11-19，待確認），時間與標題不變。</p></div><details class="more"><summary>★新手版 G3-S</summary><div class="prompt compact" style="--pmax:12vh"><div class="ph"><span>★新手版｜提示詞 G3-S</span><button class="copy" type="button">複製</button></div><pre>請幫我看練習信箱裡和「示範貿易」有關的信件（只看，不要回覆或刪除），告訴我客戶已經給了哪些資料、還缺哪些。對照的清單是：銷項發票明細、進項發票明細（含影本）、折讓單、上期留抵資料、9 月扣繳給付明細。看不出來的寫「不確定」。</pre></div></details></div><div class="stack"><div class="prompt" style="--pmax:30vh"><div class="ph"><span>提示詞 G3-4｜草擬催件信（只建草稿，不寄出）</span><button class="copy" type="button">複製</button></div><pre>請依缺件清單，草擬一封給客戶窗口的催件 Email：
+- 收件人：<span class="fill">【講師準備的虛構客戶窗口練習信箱】</span>
+- 主旨：<span class="fill">【練習】</span>示範貿易 2026 年 9–10 月營業稅資料補件
+- 內容：禮貌、簡潔、專業；列出狀態為「未收」與「部分收到」的文件；請對方於<span class="fill">【日期，例如 2026-11-13】</span>前提供；說明收到後我們會開始整理。不要提及任何稅額、可否扣抵或其他稅務結論。
+只建立 Gmail 草稿，不要寄出。完成後告訴我草稿主旨與完整內文，讓我檢查後自己決定是否寄出。</pre></div><p class="mini">【日期】請填今天之後的日期（講義範例 2026-11-13 已過）。收件人只能是講師準備的虛構練習信箱。</p><div class="card warm"><strong>對答案（附錄 G-4 預期結果）</strong>
+            <p>銷項發票明細＝<b>已收</b>（信 1）；2026-09 扣繳給付明細＝<b>已收</b>（信 3）；進項發票明細（含影本）＝<b>部分收到／不確定</b>（信 2，影本未到）；折讓單、上期留抵資料＝<b>未收</b>。</p>
+            <p class="mini">另驗：日曆事件無受邀者；催件信只在草稿匣、無稅務結論。</p></div></div></div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · Grok Bot 第 3 週</span><span>25 / 27</span></div>
+      <aside class="notes">G3-3、G3-4、G3-S 原文照講義；因為上課日從 11/09 改到 11/16，G3-3 的兩個日期和 G3-4 的範例補件日都已過，請學員貼上後手動改日期（新日期為建議，待確認）。結束時決定：刪除練習草稿，或保留給第 4 場用。</aside>
+    </section>
+
+    <!-- 26 互相試用＋反思 -->
+    <section class="slide" id="s26" data-title="互相試用＋反思">
+      <p class="kicker">20:55–21:00 · 互相試用＋反思小卡</p>
+      <h2 class="tight">交換點對方的原型：用驗收標準各找 1 個問題</h2>
+      <div class="grid split">
+        <div class="stack">
+          <div class="card"><strong>互點清單（第 3 場驗收標準）</strong>
+            <ul>
+              <li>☐ 第 2 場檔案（AGENTS.md、docs/、data/*.csv）未被覆蓋；新增 data/虛構資料.json、config/parameters.ts</li>
+              <li>☐ 3 個畫面都可從選單點進去，全繁中、有「虛構資料／草稿」提示</li>
+              <li>☐ 逾期／即將到期標示正確（DEMO_TODAY 2026-10-12、2026-11-10 各測一次）</li>
+              <li>☐ 試算數字可用附錄 A 手算驗證；稅率來自 config/parameters.ts</li>
+              <li>☐ 只允許合法轉換；三層依序；同一人不可兼任；退回／重開要原因；申報要回執檔名</li>
+              <li>☐ GitHub 仍為私人，沒有 .env、金鑰、Supabase 連線資訊或真實資料</li>
+            </ul></div>
+        </div>
+        <div class="stack">
+          <div class="card warm"><strong>反思小卡（主課＋Grok Bot，約 3 分鐘）</strong>
+            <ol>
+              <li>今天我改了哪一句提示詞（或交給 Bot 的哪件事），產出才變好用？</li>
+              <li>AI 哪裡看起來很像對，但我不敢信？我怎麼驗證？</li>
+              <li>今天的產出，哪一部分是「我」的判斷，而不是 AI 的？</li>
+              <li>今天有沒有不該讓 Cursor、GitHub 或 Bot 讀到、記住的內容？</li>
+              <li>如果放進真實客戶資料，我的底線是什麼？誰要負責覆核？</li>
+              <li>下次上課前，我最想先搞懂的一件事？</li>
+            </ol></div>
+          <div class="card"><strong>今晚交付物</strong>
+            <p class="mini">原型 repo（最新版已推上）；3 畫面截圖；迭代紀錄（3 個關鍵提示詞、1 次卡關與解法、3-5A 與狀態流程不一致處）；（若有）schema.sql＋Table Editor 截圖；Grok Bot 文件連結（未分享）、日曆截圖、草稿截圖＋人工檢查紀錄（註明未寄出）；反思小卡。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 收尾</span><span>26 / 27</span></div>
+      <aside class="notes">驗收標準、反思小卡 6 題、交付物照講義第九章與第十二章。互點時間很短，每組只要找出 1 個問題記下來，第 4 場用 3-6 修。小卡放「AI系統開發課_交付物／第3場」與「GrokBot_第3場」。</aside>
+    </section>
+
+    <!-- 27 作業與問卷 -->
+    <section class="slide" id="s27" data-title="作業與問卷">
+      <p class="kicker">作業（下一場前，≤30 分鐘；第 4 場日期待確認）· 課後問卷</p>
+      <h2 class="tight">回家把「驗收標準」放進專案，讓 Cursor 幫你對答案</h2>
+      <div class="grid">
+        <div class="stack">
+          <div class="card"><span class="pill">必做 · 20 分</span><strong>建立 docs/驗收標準.md 並對照檢查</strong>
+            <p>用 3-H1 建檔、3-H2 檢查，把結果記錄在交付物文件；commit＋push。</p></div>
+          <div class="prompt compact" style="--pmax:20vh"><div class="ph"><span>作業 3-H1｜建立驗收標準檔 · Agent</span><button class="copy" type="button">複製</button></div><pre>請建立 docs/驗收標準.md（只建立這個檔案，不要改其他檔案、不要執行指令），內容就是我下面貼的第 1 場修正後驗收標準，整理成 Markdown 表格（故事編號、驗收標準、對應需求編號），不要自行增刪。
+<span class="fill">【貼上第 1 場修正後的驗收標準】</span></pre></div>
+        </div>
+        <div class="stack">
+          <div class="prompt compact" style="--pmax:16vh"><div class="ph"><span>作業 3-H2｜對照驗收標準檢查進度 · Ask</span><button class="copy" type="button">複製</button></div><pre>請對照 @docs/驗收標準.md 檢查 @app 目前做到哪些，列出每一條的「通過／不通過／未做」與理由（指出相關檔案）。不要修改檔案。</pre></div>
+          <div class="card"><span class="pill o">選做 · 10 分</span><strong>修好 1 個不通過項目</strong><p>用 3-6 只改那一項，再存一個版本。</p></div>
+        </div>
+        <div class="stack">
+          <div class="card"><span class="pill o">選做 · Grok Bot</span><strong>想一個自己的「找信→整理清單→催件」流程</strong><p>不含客戶資料；第 4 場會把它存成技能。</p></div>
+          <div class="card warm"><strong>卡關怎麼辦</strong><p>截圖貼群組（畫面不要有密碼、驗證碼、金鑰）。課堂 Gmail 草稿一律不寄出。</p></div>
+        </div>
+      </div>
+      <div class="closing">
+        <div class="callout">今晚的原型已經在私人儲存庫了。填問卷時請在開頭註明<b>「第 3 場」</b>，謝謝！</div>
+        <a class="survey-link" href="https://aidc.work/s/ee50c25a3377356da55eb2575ebf2d10" target="_blank" rel="noopener">課後問卷（第 3 場）</a>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 收尾</span><span>27 / 27</span></div>
+      <aside class="notes">作業照講義第九章（3-H1、3-H2 原文）；講義寫「2026-11-16 前」，因上課日改到 11/16，期限改為下一場前，第 4 場日期待確認。3-H1 需要第 1 場修正後的驗收標準，請講師課後放到共享資料夾。問卷連結和第 2 場同一份，請學員在開頭寫「第 3 場」。</aside>
+    </section>
+
+  </main>
+
+  <aside id="notes-panel" aria-live="polite" aria-label="講稿"><h4>講稿</h4><div id="notes-body"></div></aside>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <script>
+    const DECK_TITLE = "AI 系統開發內訓・第3場｜用 Cursor 生成原型";
+    const FS_STEPS = [0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("slide-counter");
+    const barEl = document.getElementById("progress-bar");
+    const header = document.getElementById("deck-header");
+    const toggleUi = document.getElementById("btn-header-toggle");
+    const fsLabel = document.getElementById("type-scale-label");
+    const hintEl = document.getElementById("hint");
+    const notesPanel = document.getElementById("notes-panel");
+    const notesBody = document.getElementById("notes-body");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--content-scale", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function updateNotes() {
+      const n = slides[index].querySelector("aside.notes");
+      notesBody.textContent = n ? n.textContent.trim() : "（這頁沒有講稿）";
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      const t = slides[index].dataset.title || "";
+      document.title = t ? `${t}｜${DECK_TITLE}` : DECK_TITLE;
+      history.replaceState(null, "", `#${slides[index].id || (index + 1)}`);
+      updateNotes();
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      header.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    function toggleNotes() {
+      notesPanel.classList.toggle("open");
+      updateNotes();
+    }
+
+    /* 複製提示詞 */
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        const ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        let ok = false;
+        try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
+        ta.remove();
+        return ok;
+      }
+    }
+    document.querySelectorAll(".prompt").forEach((box) => {
+      const btn = box.querySelector(".copy");
+      const pre = box.querySelector("pre");
+      if (!btn || !pre) return;
+      btn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        const ok = await copyText(pre.innerText.trim());
+        btn.textContent = ok ? "已複製 ✓" : "請手動選取";
+        btn.classList.toggle("done", ok);
+        flash(ok ? "提示詞已複製，記得把【】換成你的內容" : "無法自動複製，請手動選取文字");
+        setTimeout(() => { btn.textContent = "複製"; btn.classList.remove("done"); }, 1800);
+      });
+    });
+
+    /* 列印時展開所有收合區塊 */
+    addEventListener("beforeprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.dataset.wasOpen = d.open ? "1" : ""; d.open = true; });
+    });
+    addEventListener("afterprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.open = d.dataset.wasOpen === "1"; });
+    });
+
+    document.getElementById("btn-prev").onclick = () => show(index - 1);
+    document.getElementById("btn-next").onclick = () => show(index + 1);
+    document.getElementById("btn-aminus").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("btn-aplus").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("btn-present").onclick = () => toggleFullscreen();
+    document.getElementById("btn-notes").onclick = () => toggleNotes();
+    document.getElementById("btn-print").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!header.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA", "SUMMARY"].includes(tag) && e.key === " ") return;
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!header.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "n") {
+        e.preventDefault();
+        toggleNotes();
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+      if (e.target.closest && e.target.closest(".prompt pre")) return;
+      const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.body.classList.toggle("presenting", on);
+      document.getElementById("btn-present").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const hash = location.hash.replace(/^#/, "");
+    const byId = slides.findIndex((s) => s.id === hash);
+    if (byId >= 0) show(byId);
+    else {
+      const requested = Number(new URLSearchParams(location.search).get("slide") || hash);
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+    }
+  </script>
+</body>
+</html>
