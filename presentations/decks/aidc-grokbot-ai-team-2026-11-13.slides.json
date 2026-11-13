@@ -1,0 +1,950 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-grokbot-ai-team-2026-11-13",
+  "title": "Grok Bot AI 團隊｜已派工，不等於已完成",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "本週教學簡報",
+      "h1": "已派工，不等於已完成",
+      "h2": "",
+      "lead": "我在 aidc.work 怎麼帶一支 Grok Bot 教學團隊",
+      "stamp": "黃燕忠 博士｜AI發展顧問｜aidc.work",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "各位好，我是黃燕忠，在 aidc.work 做 AI 發展顧問，也帶這門課。今天這週的主題，我先送各位一句話：已派工，不等於已完成。很多人一聽到組 AI 團隊，就想一次招很多 Bot。我自己帶團隊的經驗不是這樣。先讓一個 Bot 交出你認的成果，再交給總管分工；對外要發的內容，一定先經過你核准。等一下我會用我自己的每日金句當例子，帶各位把這套方法做一遍。",
+      "footerPage": "1 / 19"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "今天的路線",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "02 / 今天的路線",
+      "kicker": "",
+      "h1": "",
+      "h2": "今天會先把這幾件事講清楚",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "為什麼要組 Bot 團隊，而不是一直單聊",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "四個核心觀念：協作、記憶、排程、雲端工作",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "怎麼建立第一個 Bot，以及總管怎麼驗收",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "我在 aidc.work 的團隊怎麼分工",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "每日金句案例、課堂練習，跟本週作業",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "今天的路線很單純。我們先談什麼情況才需要組團隊。接著把四個觀念講清楚，尤其是記憶跟排程，這兩個最容易混在一起。再來會示範怎麼建立第一個 Bot，還有總管要怎麼驗收，才不會只會傳話。中間我會畫出我在 aidc.work 實際在用的角色分工，再講每日金句這個真實案例。最後留時間做課堂練習，並把本週作業交代清楚。各位不用一次全做完，先把觀念跟第一個動作做對就好。",
+      "footerPage": "2 / 19"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "什麼時候組團隊",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "03 / 什麼時候組團隊",
+      "kicker": "",
+      "h1": "",
+      "h2": "什麼時候，才需要組一支 Bot 團隊？",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "臨時問一句，直接對話就夠了",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "會反覆做、還要交接的工作，才適合交給固定職位的 Bot",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "像是寫 Blog、整理簡報、準備金句、按時發到共學群",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先不要招滿整間公司；先讓一個 Bot 交出你認的成果",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "先跟各位說，不是什麼事都要組團隊。你臨時想問一個觀念，打開對話問就好，不必大費周章。可是教學工作常常不是問一句就結束。寫一篇文章、做一組簡報、每天要發金句，這些事會反覆做，也常要交給不同角色接力。這種時候，才適合組一支固定的 Bot 團隊。還有一句話請先記住：不要一開始就招滿整間公司。先讓一個 Bot 做出你看得過的成果，再把它放進團隊。這樣後面比較不容易亂。",
+      "footerPage": "3 / 19"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "四個觀念",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04 / 四個觀念",
+      "kicker": "",
+      "h1": "",
+      "h2": "先搞懂四件事：協作、記憶、排程、雲端工作",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "協作",
+          "paragraph": "不同職位做不同事，總管負責分工和交接",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "記憶",
+          "paragraph": "長期記住定位、語氣和工作規則；說「記住了」還要重述、再測試",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "排程",
+          "paragraph": "決定何時執行；記得每天做，不代表排程已經設好",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "雲端工作",
+          "paragraph": "任務可以在雲端繼續跑；先確認已啟動，通知也收得到",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "這四件事，我希望各位今天就能分得開。協作，就是不要讓同一個 Bot 什麼都做，總管負責分工，專員負責交接。記憶，是讓它長期記得你是誰、你的語氣、你的工作規則，這樣就不必每次從頭講；可是它說記住了，你還是要請它用自己的話講一次，再拿新例子測。排程跟記憶不一樣。記憶是記得要做，排程才是什麼時候做。你跟它說每天要發金句，不代表排程已經設好，還要核對日期、時間、時區和啟用狀態。最後是雲端工作：任務可以在你離開之後繼續跑，但前提是任務真的已啟動，通知也收得到。",
+      "footerPage": "4 / 19"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "第一個 Bot",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "05 / 第一個 Bot",
+      "kicker": "",
+      "h1": "",
+      "h2": "先建立第一個 Bot",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先說清楚三件事",
+          "paragraph": "我給你什麼、你做什麼、最後交什麼格式",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以請建角助手幫忙",
+          "paragraph": "教學手冊裡稱它為 eggbot；也可以手動建立",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "這一步的驗收",
+          "paragraph": "角色出現在列表、對話打得開、能正確說出自己的工作",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "介面名稱、方案和權限，以你帳號實際看到的為準",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "實作的第一步，不是先寫一篇很長的提示詞。你只要先說清楚三件事：你會給它什麼資料、你要它做什麼、最後希望用什麼格式交回來。新手可以先找一位專門幫你建立 Bot 的助手，原手冊裡稱它為 eggbot；如果你比較習慣自己來，手動建立也可以。怎麼算完成呢？很具體：新角色出現在側邊列表，對話打得開，問它「你負責什麼」，它講得清楚。至於畫面上的名稱、方案、能不能用某些工具，請以你自己帳號實際看到的為準，我不會在這裡幫產品保證功能。",
+      "footerPage": "5 / 19"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "總管要驗收",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "06 / 總管要驗收",
+      "kicker": "",
+      "h1": "",
+      "h2": "總管要會派工，更要會驗收",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "你負責目標，以及最後准不准過",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "總管負責",
+          "paragraph": "確認需求、拆任務、派工、檢查、退修、彙整",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對外發布或寄送",
+          "paragraph": "只能依你明確核准的內容和範圍執行",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "把驗收標準寫清楚",
+          "paragraph": "才不會變成只會轉交訊息",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "最重要的一句話：已派工，不等於已完成"
+      ],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "總管，有時我也叫它總經理。它的工作不是把你的話轉來轉去。你把目標交代一次，由它拆任務、找對人、檢查成果。可是目標跟最後准不准過，還是你決定。這裡請各位把一句話寫進總管的規則裡：已派工，不等於已完成。它收到東西以後，要看有沒有做完、來源可不可靠、格式對不對。沒過關，就要寫出具體修改意見，退回去改。缺資料，或是需要你做決定，就一次問清楚。尤其是部落格、簡報、LINE 訊息這些對外內容，沒有你的核准，不能發。建好之後，一定要用一個小任務實測，看它是不是真的有在檢查。",
+      "footerPage": "6 / 19"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "團隊分工",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 團隊分工",
+      "kicker": "",
+      "h1": "",
+      "h2": "我在 aidc.work 的 AI 團隊怎麼分工",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "總管",
+          "tag": null,
+          "tagClass": null,
+          "heading": "中間是總管",
+          "paragraph": "拆解、派工、檢查、再交給我審核",
+          "bullets": []
+        },
+        {
+          "num": "專員",
+          "tag": null,
+          "tagClass": null,
+          "heading": "專員",
+          "paragraph": "AI秘書、AI文膽、AI英文家教",
+          "bullets": []
+        },
+        {
+          "num": "內容",
+          "tag": null,
+          "tagClass": null,
+          "heading": "內容角色",
+          "paragraph": "每日更新 aidc.work Blog、myppt 簡報",
+          "bullets": []
+        },
+        {
+          "num": "查證",
+          "tag": null,
+          "tagClass": null,
+          "heading": "查證角色",
+          "paragraph": "AI技術長",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "第一次試跑只做草稿，不發布、不上稿、不發送"
+      ],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "跟各位說明一下，我自己在 aidc.work 實際怎麼組。中間是總管。旁邊有秘書，幫我整理待辦和要我決定的事；文膽幫我寫稿、改稿，語氣要口語、句子要短；英文家教處理英文句子，每日金句就是它先寫。另外還有專門準備 aidc.work 部落格草稿的角色，以及幫忙整理 myppt 簡報的角色。技術長則是查證技術問題，不準編造功能或數據。各位不一定要複製我全部的職位。重點是：每個角色交出去的東西要清楚，總管要檢查，最後交到我手上的是可以審核的成果。第一次試跑，我一定要求只做草稿，先不要發出去。",
+      "footerPage": "7 / 19"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "每日金句",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "08 / 每日金句",
+      "kicker": "",
+      "h1": "",
+      "h2": "每日金句：一則例行工作，怎麼變成穩定流程",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "【AI每日金句】由 AI 英文家教先寫",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "總管在 08:10 發到 LINE 共學群",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "曾有重複句子溜出去",
+          "paragraph": "後來加上「對照檔案、365 天不重複」的檢查",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "教訓",
+          "paragraph": "如果沒把教訓寫回規則，下週還是會再犯",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "再例行的對外內容，也要先核准，再用真實訊息核對",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "我用一個自己天天在做的例子，各位會比較有感覺。每天的【AI每日金句】，是英文家教先寫，總管再在早上 08:10 發到 LINE 共學群。聽起來很單純，對不對？可是有一次，重複的句子還是溜出去了。後來我們加了一條很明確的規則：要對照既有檔案，365 天內不能重複。這件事我想特別講給各位聽。不是設了流程就不會出錯；出錯沒關係，但一定要把教訓寫回規則。不然下週還是會再犯同一件事。所以就算是每天都要發的內容，也要先核准，再發送；發完以後，還要回到真實的群組訊息上核對，不要只聽它說「我發了」。",
+      "footerPage": "8 / 19"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "先發一則",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "09 / 先發一則",
+      "kicker": "",
+      "h1": "",
+      "h2": "先成功發一則，再交給排程",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先指定哪一版已經通過",
+          "paragraph": "完整貼上，不要讓它自行改寫",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先成功發一則",
+          "paragraph": "再用真實連結或真實對話核對",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "再安排下一則",
+          "paragraph": "寫完整日期、時間，時區用 Asia/Taipei（台灣時間，UTC+8）",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "排程建立成功，和實際發送成功，是兩件事",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "沒把握或結果不確定",
+          "paragraph": "先通知你，不要重複發送",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "排程很有用，可是順序很重要。先不要一開始就排很多則。先指定哪一版已經通過，最好把核准的文案完整貼給總管，請它不要自行改寫、也不要加料。先成功發一則，你自己回到真實連結或真實對話上看過，再排下一則。日期請寫完整，時區我自己固定寫 Asia/Taipei，也就是台灣時間。不要只說「今天下午」，也不要讓已過的時間還停在排程裡。還有，排程建立成功，跟實際發送成功，是兩件事。第一次一定要小規模測試。若它沒把握，或結果不確定，要先通知你，千萬不要重複發送。",
+      "footerPage": "9 / 19"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "真實連結",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "10 / 真實連結",
+      "kicker": "",
+      "h1": "",
+      "h2": "打開真實連結，才算驗收完成",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "不要只驗收「網頁做好了」或「它說完成了」",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "打開真實連結、真實對話",
+          "paragraph": "確認內容就是核准的那一版",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "沒有資料就寫「暫無資料」",
+          "paragraph": "不要填假數字",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "頁面上有數字，不代表已經接上真實來源",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "進度最好能集中查看",
+          "paragraph": "但仍要用一次可核對的更新做測試",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "驗收這件事，我希望各位今天就養成習慣。不要只看它回你「做好了」，也不要只看排版漂不漂亮。打開真實連結，打開真實對話，確認帳號對不對、文字對不對、是不是你核准的那一版。如果在做進度頁或看板，沒有資料就老老實實寫「暫無資料」，千萬不要填一個假數字上去充場面。頁上有數字，不代表已經接上真實來源。原手冊也提醒過，還要問資料從哪裡來、多久更新一次、需要哪些權限。最好做一次可核對的更新測試：你新增一筆，看它會不會依約定出現；測完再把測試資料拿掉。",
+      "footerPage": "10 / 19"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "容易卡住",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "11 / 容易卡住",
+      "kicker": "",
+      "h1": "",
+      "h2": "最容易卡住的幾個地方",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "團隊一直討論、不交件",
+          "paragraph": "先縮小目標，今天先交草稿，並寫清驗收標準",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "它說已記住，下次又做錯",
+          "paragraph": "請它重述規則，再拿新例子測試",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "設了排程，以為一定會準時成功",
+          "paragraph": "以真實發送結果驗收，失敗要回報原因",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "助手要你裝很多插件",
+          "paragraph": "先問這一步需不需要，只連現在用得到的工具",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "寫得太硬、太像術語",
+          "paragraph": "把修改說具體，請總管更新規則後再重跑一輪",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "各位實作時，大概會碰到這幾種狀況。第一種，團隊一直討論，卻沒有交件。這時請總管先停止擴大需求，列出每個人目前的成果、卡在哪裡、還缺什麼，然後把目標縮小，例如今天先交一則草稿。第二種，它說記住了，下次又做錯。請它把目前的規則重述一遍，再給一個新例子測；如果只有在這串對話裡才做對，那規則可能還沒真正存好。第三種，排程設了，不代表一定會準時發出，還是要以真實結果為準。第四種，它要你裝很多插件，先問這一步是不是真的需要，只連現在用得到的。最後，如果寫得太硬，不要只說「再口語一點」，要把修改說具體，並請總管把規則改掉，再重跑一輪。",
+      "footerPage": "11 / 19"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "課堂練習",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "12 / 課堂練習",
+      "kicker": "",
+      "h1": "",
+      "h2": "課堂練習：先交出一則可審核的草稿",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "用「建立總管」提示詞",
+          "paragraph": "建立角色或先寫清職責",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "交代你的工作背景",
+          "paragraph": "你是誰、為誰寫、語氣是什麼、什麼不能做",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "請總管只做草稿",
+          "paragraph": "一則金句，或一段課後摘要",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "本輪不發布、不上稿、不發送",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "互查重點",
+          "paragraph": "有沒有先求核准、有沒有寫清交付標準、有沒有編造內容",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "接下來請各位動手。不必一次把整支團隊建完。先用我準備的「建立總管」提示詞，把總管建起來，或至少把職責寫清楚。接著用背景模板，告訴它你是誰、你為誰寫、語氣是什麼、什麼事情不能做。然後只交一個小任務：準備一則金句草稿，或寫一段今天的課後摘要。記住，本輪只做草稿，不要發到任何地方。做完後，鄰座互相看一看：它有沒有先確認核准規則？交付標準寫清楚了沒有？有沒有自己編造來源或數據？這就是今天課堂要帶走的最小成果。",
+      "footerPage": "12 / 19"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "建立總管",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "提示詞 / 建立總管",
+      "kicker": "",
+      "h1": "",
+      "h2": "建立總管",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "promptBlock": {
+        "label": "建立總管（整段複製）",
+        "text": "我需要建立一個「總管」Bot，負責協調我在 aidc.work 的 Bot 團隊。我是黃燕忠，職位是 AI 發展顧問。\n\n每次收到任務，先確認目標、必要背景與交付標準，再拆解流程，把工作分給對應的 Bot，說清楚每個人的輸入、輸出和交接順序。\n\n收到成果後，要檢查交付物：是否完成需求、事實與來源是否可靠、格式是否正確。沒有過關，就列出具體修改意見，交回對應 Bot 修改；通過後再整合最終成果交給我。\n\n缺少資料或需要我做決定時，集中一次提出問題。部落格、簡報、LINE 訊息等對外內容，只能依我明確核准的內容和範圍執行。不要把「已派工」當成「已完成」。"
+      },
+      "footerPage": "13 / 19"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "建立教學團隊",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "提示詞 / 建立教學團隊",
+      "kicker": "",
+      "h1": "",
+      "h2": "建立 aidc.work 教學團隊",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "promptBlock": {
+        "label": "建立 aidc.work 教學團隊（整段複製）",
+        "text": "請沿用已有的總管，再幫我建立 aidc.work 教學團隊，並協助建立工作群組。\n\n角色與職責如下：\n- AI秘書：整理待辦、提醒與交代事項，列出我需要決定的問題。\n- AI文膽：用口語化繁體中文寫稿、改稿，短句、少術語，適合教學場合。\n- AI英文家教：處理英文例句與中英對照，例如【AI每日金句】的英文句與繁中翻譯。\n- aidc.work Blog：依我的語氣準備部落格草稿，含標題、摘要和分段，先交審不發布。\n- myppt簡報：把核准的教學重點整理成簡報大綱與投影片文字，先交審不上稿。\n- AI技術長：查證技術問題，說明依據與限制，不編造功能或數據。\n- 總管：負責分工、檢查和退修，最後彙整給我。\n\n先向我索取必要的工作背景，試跑一次「確定本週主題 → 寫 Blog 草稿 → 寫簡報大綱 → 準備一則金句草稿」。本輪只做草稿，不發布、不上稿、不發送。"
+      },
+      "footerPage": "14 / 19"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "交代工作背景",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "提示詞 / 交代工作背景",
+      "kicker": "",
+      "h1": "",
+      "h2": "交代工作背景",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "promptBlock": {
+        "label": "交代工作背景（整段複製）",
+        "text": "網站：https://aidc.work\n我的身分：黃燕忠，AI 發展顧問，在 aidc.work 帶 AI 課程。\n主要受眾：想把 AI 用在自己工作上的學員與讀者。\n內容目標：讓人聽得懂、帶得走、當週就能實作。\n語氣：放鬆、口語化的台灣繁體中文，句子要短，少用專業術語。\n不想做的內容：誇大效果、編造數據或功能、未經我核准就對外發布。\n\n請先用自己的話重述你理解的定位與規則，確認還缺哪些資訊，再依照分工開始第一次試跑。"
+      },
+      "footerPage": "15 / 19"
+    },
+    {
+      "slideId": "s16",
+      "index": 16,
+      "title": "核准後發送",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "提示詞 / 核准後發送",
+      "kicker": "",
+      "h1": "",
+      "h2": "核准後發送",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "promptBlock": {
+        "label": "核准後發送（整段複製，先替換〔方括號〕）",
+        "text": "以下內容已審核通過，請只發送這則，不要改寫，也不要加其他內容。\n\n發送管道：〔例如：LINE 共學群 / aidc.work Blog〕\n核准發布的內容：\n〔貼上最終文案〕\n\n完成後提供可核對的真實連結或發送證明，並更新工作狀態為「已發布」。遇到登入或驗證問題時，先通知我處理，不要重試到重複發出。"
+      },
+      "footerPage": "16 / 19"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
+      "title": "設定排程",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "提示詞 / 設定排程",
+      "kicker": "",
+      "h1": "",
+      "h2": "設定排程",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "promptBlock": {
+        "label": "設定排程（整段複製，先替換〔方括號〕）",
+        "text": "請將以下已核准內容，安排在指定時間發送：\n日期：〔YYYY-MM-DD〕\n時間：〔HH:MM〕\n時區：Asia/Taipei（台灣時間，UTC+8）\n管道：〔例如：LINE 共學群〕\n內容：〔貼上最終版本〕\n\n建立後請回覆實際日期、時間、時區、任務名稱與啟用狀態，讓我核對。執行時只發送這一則；若無法完成或結果不確定，先通知我，不要重複發送。成功後回傳可核對的連結或證明，並更新狀態。"
+      },
+      "footerPage": "17 / 19"
+    },
+    {
+      "slideId": "s18",
+      "index": 18,
+      "title": "本週作業",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "13 / 本週作業",
+      "kicker": "",
+      "h1": "",
+      "h2": "本週作業與實作清單",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "本週至少完成清單前三項",
+          "paragraph": "第一個 Bot、總管一次真檢查、背景已交代並請它重述",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "試跑一次分工",
+          "paragraph": "只交草稿，不對外發布",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有餘力再做",
+          "paragraph": "核准後發出一則，並用真實連結或真實對話核對",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "再核對一個排程",
+          "paragraph": "完整日期、台灣時區、啟用狀態",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "把這週一次教訓寫回規則",
+          "paragraph": "下週帶可核對的成果來",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "作業我開得實在，不要求各位一週做完所有項目。先完成前三項：第一個 Bot 建好，而且能說出自己的職責；總管實際派過一次工，並且有檢查、有提出修改，不是只傳話；再來，把你的定位、受眾、語氣和工作規則交代清楚，還要請它用自己的話重述。若還有時間，就試跑一次分工，只交草稿。更進一步，才是核准後真的發出一則，並用真實連結或真實對話核對；以及檢查一個排程的日期、時區和啟用狀態。最後一項我特別重視：這週不管踩到什麼坑，都要把教訓寫回規則。下週上課，請帶可核對的成果來，不要只說「我做了」。",
+      "footerPage": "18 / 19"
+    },
+    {
+      "slideId": "s19",
+      "index": 19,
+      "title": "先跑通一次",
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "14 / 收尾",
+      "kicker": "",
+      "h1": "",
+      "h2": "先跑通一次，再讓團隊反覆做好",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "你負責目標，以及最後的核准",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "總管負責分工與驗收",
+          "paragraph": "已派工，不等於已完成",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先成功做一則，再排程",
+          "paragraph": "用真實連結驗收",
+          "bullets": []
+        },
+        {
+          "num": "04",
+          "tag": null,
+          "tagClass": null,
+          "heading": "把教訓寫回規則，流程才會穩定",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "05",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下週",
+          "paragraph": "把這套方法，用在你自己每週都要做的工作上",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "我們收在這句話：先跑通一次，再讓團隊反覆做好。今天不是要各位回家就開一間很大的 AI 公司。你負責把目標說清楚，也負責最後准不准過。總管負責分工和驗收，不能把已派工當成已完成。對外的內容，先成功做一則，再交給排程；驗收時只認真實連結或真實對話。若過程中出了錯，像我的金句曾經重複發出，就把教訓寫回規則，下一次才會比較穩。方法我參考了七七行銷筆記的《Grok Bot 新手實戰指南》，再改成 aidc.work 的用法，連結會放在講義裡。下週開始，請挑一件你自己每週都要做的工作，用同樣的方法交給你的團隊。我們課堂上見。",
+      "links": [
+        {
+          "label": "Grok Bot 新手實戰指南",
+          "href": "https://grokbot-team-handbook.moneey712.chatgpt.site/"
+        }
+      ],
+      "footerPage": "19 / 19"
+    }
+  ]
+}

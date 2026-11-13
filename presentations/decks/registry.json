@@ -234,6 +234,21 @@
       "updatedAt": "2026-10-15T09:15:12.240Z"
     },
     {
+      "deckId": "aidc-grokbot-ai-team-2026-11-13",
+      "title": "Grok Bot AI 團隊｜已派工，不等於已完成",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "2026-11-13 本週教學。我在 aidc.work 怎麼帶一支 Grok Bot 教學團隊。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-13T08:40:00.000Z",
+      "updatedAt": "2026-11-13T08:40:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "已派工，不等於已完成。先讓一個 Bot 交出你認的成果，再交給總管分工；對外內容先核准，再用真實連結驗收。"
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-11-07",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-11-07｜期末彩排",
       "sourceType": "html",
