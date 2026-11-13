@@ -100,6 +100,8 @@ export function migrateSlideFromHtml($, el, index, total) {
   if ($prompt.length) {
     slide.promptBlock = { label: cleanText($prompt.find("figcaption").first().text()), text: $prompt.find("pre").first().text() };
   }
+  const notes = $el.find("aside.notes").first().text().replace(/\u00a0/g, " ").trim();
+  if (notes) slide.notes = notes;
 
   if (layout === "arch-svg") {
     slide.archSvgHtml = $el.find(".arch-svg-wrap").html()?.trim() || "";
@@ -169,6 +171,7 @@ function gridClass(layout) {
 export function renderSlideHtml(slide, total) {
   const active = slide.index === 1 ? " active" : "";
   const heroClass = slide.hero || slide.layout === "hero" ? " hero" : "";
+  const promptClass = slide.promptBlock?.text ? " has-prompt" : "";
   const footerPage = `${slide.index} / ${total}`;
   let body = "";
 
@@ -220,8 +223,12 @@ export function renderSlideHtml(slide, total) {
     body += renderLinks(slide.links);
   }
 
-  return `    <section class="slide${heroClass}${active}" id="${escapeHtml(slide.slideId)}" data-title="${escapeHtml(slide.title)}">
-${body}
+  const notes = slide.notes
+    ? `\n      <aside class="notes">${escapeHtml(slide.notes)}</aside>`
+    : "";
+
+  return `    <section class="slide${heroClass}${promptClass}${active}" id="${escapeHtml(slide.slideId)}" data-title="${escapeHtml(slide.title)}">
+${body}${notes}
       <div class="footer"><span>${escapeHtml(slide.footerBrand || "企業 AI 整合平台")}</span><span>${footerPage}</span></div>
     </section>`;
 }
