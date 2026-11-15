@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-deck-id="hsingming-ai-dev-s3-outline">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="興銘聯合會計師事務所 AI 系統開發內訓第 3 場「生成原型」學員版教學大綱：今晚目標、5 個大步驟與完成標準、卡關與安全規則。全程使用虛構資料。">
+  <title>AI 系統開發內訓・第3場｜生成原型（學員大綱）</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --muted: #607286;
+      --brand: #368f88;
+      --accent: #ed9b48;
+      --paper: #f5faf8;
+      --line: #cbded9;
+      --shadow: 0 24px 70px #17324d28;
+      --code-bg: #12283d;
+      --code-ink: #e6f1ef;
+      --warn-bg: #fdecea;
+      --warn: #b6412f;
+      --header-h: 52px;
+      --panel: #fff;
+      --card: #f1f5f9;
+      --text: #0f172a;
+      --portal-bright: #0f766e;
+      --data: #0284c7;
+      --content-scale: 1;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dce9e5;
+      color: var(--ink);
+    }
+    body {
+      font-family: Inter, "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+      overflow: hidden;
+    }
+    .deck {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: calc(var(--header-h) + 10px) 2vw 12px;
+    }
+    .slide {
+      display: none;
+      width: min(94vw, 1440px);
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - var(--header-h) - 22px);
+      overflow: auto;
+      padding: clamp(30px, 4vw, 64px);
+      position: relative;
+      border: 1px solid #368f8833;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, #bde8df77, transparent 34%),
+        linear-gradient(135deg, #fff, #f5faf8);
+      box-shadow: var(--shadow);
+    }
+    .slide.active { display: block; }
+    .slide.hero {
+      background:
+        radial-gradient(circle at 92% 8%, #bde8dfcc, transparent 38%),
+        radial-gradient(circle at 6% 100%, #fde3c4aa, transparent 32%),
+        linear-gradient(135deg, #fff, #f5faf8);
+    }
+    h1 {
+      font-size: calc(clamp(42px, 5.2vw, 76px) * var(--content-scale));
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0.2em 0;
+    }
+    h2 {
+      font-size: calc(clamp(28px, 3.2vw, 48px) * var(--content-scale));
+      margin: 0.1em 0 0.55em;
+      line-height: 1.15;
+    }
+    h2.tight {
+      font-size: calc(clamp(24px, 2.6vw, 36px) * var(--content-scale));
+      margin-bottom: 0.35em;
+    }
+    h3 {
+      font-size: calc(clamp(18px, 1.55vw, 26px) * var(--content-scale));
+      margin: 0.15em 0 0.35em;
+    }
+    p, li {
+      font-size: calc(clamp(15px, 1.25vw, 21px) * var(--content-scale));
+      line-height: 1.52;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .kicker {
+      color: var(--brand);
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: calc(clamp(12px, 1.1vw, 16px) * var(--content-scale));
+      margin: 0;
+    }
+    .lead {
+      max-width: 1050px;
+      color: var(--muted);
+      font-size: calc(clamp(20px, 1.8vw, 28px) * var(--content-scale));
+    }
+    .lead.sm { font-size: calc(clamp(15px, 1.3vw, 20px) * var(--content-scale)); margin: 0 0 12px; }
+    .mark {
+      width: 110px;
+      height: 10px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--brand), #63c2b5, var(--accent));
+      margin: 22px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.four { grid-template-columns: repeat(4, 1fr); }
+    .grid.split { grid-template-columns: 5fr 7fr; align-items: start; }
+    .grid.split-r { grid-template-columns: 7fr 5fr; align-items: start; }
+    .stack { display: grid; gap: 12px; align-content: start; }
+    .card {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #ffffffdd;
+    }
+    .card strong {
+      display: block;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      line-height: 1.3;
+      margin: 0.1em 0 0.28em;
+    }
+    .card ol, .card ul {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+    .card li {
+      font-size: calc(clamp(13px, 1.05vw, 17px) * var(--content-scale));
+      line-height: 1.4;
+      margin: 0.22em 0;
+    }
+    .card p { margin: 0.15em 0; }
+    .card.warm { background: #fff8ef; border-color: #f3d3ad; }
+    .card.alert { background: var(--warn-bg); border-color: #f1b8ae; }
+    .num {
+      font-size: calc(clamp(26px, 3.2vw, 46px) * var(--content-scale));
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+    }
+    .num.sm { font-size: calc(clamp(18px, 1.7vw, 26px) * var(--content-scale)); }
+    .callout {
+      padding: 14px 20px;
+      border-left: 7px solid var(--accent);
+      border-radius: 9px 18px 18px 9px;
+      background: #fff4e7;
+      font-size: calc(clamp(16px, 1.35vw, 22px) * var(--content-scale));
+      margin-top: 14px;
+    }
+    .footer {
+      position: absolute;
+      left: clamp(30px, 4vw, 64px);
+      right: clamp(30px, 4vw, 64px);
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: #708397;
+      font-size: 12px;
+    }
+    .pill {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      background: #e6f6f3; color: #1d6b64; font-weight: 800; font-size: calc(12px * var(--content-scale));
+    }
+    .pill.o { background: #fdebd6; color: #9a5512; }
+    .pill.r { background: var(--warn-bg); color: var(--warn); }
+    .pill.lg { font-size: calc(clamp(13px, 1.1vw, 16px) * var(--content-scale)); padding: 4px 14px; margin: 0 6px 8px 0; }
+    .src {
+      font-size: calc(12px * var(--content-scale)); color: #708397; margin-top: 10px; line-height: 1.45;
+    }
+    .aisdlc-label {
+      margin: 10px 0 4px;
+      color: var(--brand);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .aisdlc {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+    .aisdlc li {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      padding: 6px 7px 7px;
+      border: 1px solid #9fd6cc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .aisdlc li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 16px;
+      z-index: 1;
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--brand);
+    }
+    .aisdlc b {
+      display: inline-grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      margin-bottom: 3px;
+      border-radius: 50%;
+      background: #e6f6f3;
+      color: #1d6b64;
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1;
+    }
+    .aisdlc span {
+      display: block;
+      color: var(--ink);
+      font-size: calc(12px * var(--content-scale));
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .aisdlc small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: calc(10px * var(--content-scale));
+      line-height: 1.3;
+    }
+    a.survey-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      font-size: calc(16px * var(--content-scale));
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    a.survey-link:hover { color: #fff; text-decoration: none; filter: brightness(1.08); }
+    .slide.dense { padding: 26px 34px 52px; }
+    .slide.dense .card { padding: 10px 12px; }
+    .slide.dense .card p,
+    .slide.dense .card li { font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.38; }
+    .slide.dense .callout { margin-top: 10px; padding: 10px 14px; font-size: calc(clamp(14px, 1.15vw, 18px) * var(--content-scale)); }
+
+    /* ---- 時間表 ---- */
+    .timeline { display: grid; gap: 6px; }
+    .tl {
+      display: grid; grid-template-columns: 118px 46px 1fr; gap: 10px; align-items: center;
+      padding: 6px 12px; border-radius: 12px; background: #ffffffcc; border: 1px solid var(--line);
+      font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale));
+    }
+    .tl b { font-variant-numeric: tabular-nums; color: var(--ink); }
+    .tl .m { color: var(--muted); font-size: calc(12px * var(--content-scale)); }
+    .tl.hot { background: #e6f6f3; border-color: #9fd6cc; }
+    .tl.rest { background: #f4f6f7; color: var(--muted); }
+
+    /* ---- 狀態鏈 ---- */
+    .chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 2px; }
+    .chain span {
+      padding: 4px 12px; border-radius: 999px; background: #fff; border: 1px solid #9fd6cc;
+      font-weight: 700; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+    }
+    .chain i { font-style: normal; color: var(--brand); font-weight: 900; }
+
+    /* ---- 提示詞方塊（可複製） ---- */
+    .prompt {
+      position: relative;
+      border-radius: 16px;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      border: 1px solid #0b1a28;
+      overflow: hidden;
+    }
+    .prompt .ph {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      padding: 8px 12px 8px 16px; background: #0d1f30; font-size: calc(13px * var(--content-scale)); font-weight: 800;
+      letter-spacing: 0.02em; color: #9fe3d7;
+    }
+    .prompt pre {
+      margin: 0; padding: 12px 16px 14px;
+      white-space: pre-wrap; word-break: break-word;
+      font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      font-size: calc(clamp(13.5px, 1.12vw, 18px) * var(--content-scale)); line-height: 1.6;
+      max-height: var(--pmax, 44vh); overflow: auto;
+    }
+    .prompt pre .fill { color: #ffcf8f; }
+    .copy {
+      border: 0; border-radius: 999px; padding: 5px 12px; cursor: pointer;
+      background: #368f88; color: #fff; font-weight: 800; font-size: 12px;
+      font-family: inherit;
+    }
+    .copy:hover, .copy:focus-visible { background: #2a7771; outline: 2px solid #9fe3d7; }
+    .copy.done { background: #ed9b48; }
+    details.more {
+      border: 1px dashed #9fd6cc; border-radius: 14px; background: #ffffffcc; padding: 6px 12px;
+    }
+    details.more > summary {
+      cursor: pointer; font-weight: 800; color: #1d6b64; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale));
+      padding: 4px 0; list-style: none;
+    }
+    details.more > summary::before { content: "▸ "; }
+    details.more[open] > summary::before { content: "▾ "; }
+    details.more .prompt { margin: 6px 0 6px; }
+    .mini { font-size: calc(clamp(12px, 0.95vw, 14px) * var(--content-scale)) !important; color: var(--muted); }
+
+    /* ---- 假對話 ---- */
+    .bubble {
+      padding: 12px 16px; border-radius: 16px; margin: 8px 0; max-width: 92%;
+      font-size: calc(clamp(14px, 1.15vw, 19px) * var(--content-scale)); line-height: 1.5;
+    }
+    .bubble.me { background: #e6f6f3; margin-left: auto; border-bottom-right-radius: 4px; }
+    .bubble.ai { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+    .stamp {
+      display: inline-block; transform: rotate(-4deg); border: 3px solid var(--warn); color: var(--warn);
+      padding: 2px 12px; border-radius: 10px; font-weight: 900; font-size: calc(clamp(14px, 1.2vw, 18px) * var(--content-scale));
+    }
+
+    /* ---- 表格 ---- */
+    table.plan { width: 100%; border-collapse: separate; border-spacing: 0; font-size: calc(clamp(13px, 1.1vw, 18px) * var(--content-scale)); }
+    table.plan th, table.plan td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.4; }
+    table.plan th { background: #e6f6f3; color: #1d6b64; }
+    table.plan tr:first-child th:first-child { border-top-left-radius: 12px; }
+    table.plan tr:first-child th:last-child { border-top-right-radius: 12px; }
+
+    /* ---- 講稿面板 ---- */
+    aside.notes { display: none; }
+    #notes-panel {
+      position: fixed; right: 16px; bottom: 16px; z-index: 60; width: min(380px, 92vw); max-height: 52vh;
+      overflow: auto; background: #17324df2; color: #eef6f4; border-radius: 14px; padding: 12px 14px;
+      box-shadow: 0 12px 40px #0006; font-size: 14px; line-height: 1.6; display: none;
+    }
+    #notes-panel.open { display: block; }
+    #notes-panel h4 { margin: 0 0 6px; font-size: 13px; color: #9fe3d7; letter-spacing: .06em; }
+
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck-header.collapsed .toolbar > :not(#btn-header-toggle) { display: none; }
+    .hint {
+      position: fixed; z-index: 50; left: 50%; bottom: 24px;
+      transform: translateX(-50%); padding: 10px 16px; border-radius: 12px;
+      background: #17324df2; color: #fff; font-size: 14px; opacity: 0;
+      pointer-events: none; transition: opacity .2s;
+      max-width: min(90vw, 420px); text-align: center;
+    }
+    .hint.show { opacity: 1; }
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck { padding: calc(var(--header-h) + 12px) 12px 16px; }
+      .slide {
+        width: 100%; min-height: calc(100vh - 100px);
+        max-height: none; aspect-ratio: auto;
+      }
+      .grid, .grid.two, .grid.four, .grid.split, .grid.split-r { grid-template-columns: 1fr 1fr; }
+      .grid.split, .grid.split-r { grid-template-columns: 1fr; }
+      .footer { position: static; margin-top: 25px; }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid.two, .grid.four { grid-template-columns: 1fr; }
+    }
+    @page { size: 16in 9in; margin: 0; }
+    @media print {
+      html, body { overflow: visible; background: #fff; }
+      .deck { display: block; padding: 0; }
+      html { --content-scale: 1 !important; }
+      .slide {
+        display: block !important; width: 16in; height: 9in;
+        min-height: 0; max-height: none; aspect-ratio: auto;
+        overflow: hidden; border: 0; border-radius: 0; box-shadow: none;
+        page-break-after: always; break-after: page;
+      }
+      .slide:last-child { page-break-after: auto; break-after: auto; }
+      #deck-header, .hint, #notes-panel, .copy { display: none !important; }
+      .prompt pre { max-height: none; overflow: visible; }
+    }
+    /* ---- 第 2 場補充 ---- */
+    .prompt.compact pre { font-size: calc(clamp(12px, 0.98vw, 15.5px) * var(--content-scale)); line-height: 1.5; }
+    .closing {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .closing .callout { margin: 0; flex: 1; }
+  
+    /* ---- 第 3 場補充 ---- */
+    .slide:focus, .slide:focus-visible { outline: none; }
+    .closing .callout { margin: 0; flex: 1; }
+    pre.tree {
+      margin: 4px 0 0; padding: 10px 12px; border-radius: 12px; background: #f1f7f5; border: 1px solid var(--line);
+      font-family: "Noto Sans Mono CJK TC", "Cascadia Mono", Consolas, ui-monospace, monospace;
+      font-size: calc(clamp(12px, 0.98vw, 15px) * var(--content-scale)); line-height: 1.55; white-space: pre-wrap;
+    }
+    /* 流程步驟（借鏡 vo-account 簡報的編號流程） */
+    ol.flow { list-style: none; margin: 6px 0 2px; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 10px; }
+    ol.flow li { position: relative; margin: 0; padding: 8px 8px 9px; border: 1px solid #9fd6cc; border-radius: 12px; background: #fff; min-width: 0; }
+    ol.flow li:not(:last-child)::after {
+      content: ""; position: absolute; right: -9px; top: 50%; transform: translateY(-50%); z-index: 1;
+      border-width: 6px 0 6px 7px; border-style: solid; border-color: transparent transparent transparent var(--brand);
+    }
+    ol.flow b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--brand); color: #fff; font-size: calc(11px * var(--content-scale)); }
+    ol.flow span { display: block; margin-top: 3px; font-weight: 850; font-size: calc(clamp(13px, 1.02vw, 16px) * var(--content-scale)); line-height: 1.25; }
+    ol.flow small { display: block; margin-top: 2px; color: var(--muted); font-size: calc(clamp(11px, 0.85vw, 13px) * var(--content-scale)); line-height: 1.3; }
+    /* 版本時間軸 */
+    ol.ver { list-style: none; margin: 6px 0 4px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; border-top: 3px solid #9fd6cc; padding-top: 10px; }
+    ol.ver li { position: relative; margin: 0; min-width: 0; }
+    ol.ver li::before { content: ""; position: absolute; top: -17px; left: 2px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; }
+    ol.ver b { display: block; color: var(--brand); font-size: calc(12px * var(--content-scale)); }
+    ol.ver span { display: block; font-weight: 900; font-size: calc(clamp(13px, 1.05vw, 16px) * var(--content-scale)); }
+    ol.ver small { display: block; color: var(--muted); font-size: calc(clamp(11px, 0.85vw, 13px) * var(--content-scale)); line-height: 1.3; }
+    @media (max-width: 900px) { ol.flow, ol.ver { grid-template-columns: 1fr 1fr; } ol.flow li::after { display: none; } }
+    /* ---- 學員大綱版補充 ---- */
+    .ol h2 { font-size: calc(clamp(30px, 3vw, 46px) * var(--content-scale)); margin: 0.05em 0 0.45em; }
+    .ol .big {
+      font-size: calc(clamp(22px, 2.05vw, 32px) * var(--content-scale));
+      line-height: 1.4; font-weight: 800; margin: 0.1em 0 0.5em;
+    }
+    .ol .big em { font-style: normal; color: var(--brand); }
+    .ol .card strong { font-size: calc(clamp(18px, 1.55vw, 25px) * var(--content-scale)); }
+    .ol .card p, .ol .card li { font-size: calc(clamp(15px, 1.3vw, 21px) * var(--content-scale)); line-height: 1.5; }
+    .screens { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 6px 0 12px; }
+    .screens div { padding: 12px 14px; border-radius: 16px; background: #fff; border: 2px solid #9fd6cc; }
+    .screens b { display: block; font-family: "Noto Sans Mono CJK TC", Consolas, monospace; color: var(--brand); font-size: calc(clamp(15px, 1.25vw, 20px) * var(--content-scale)); }
+    .screens span { display: block; font-weight: 800; font-size: calc(clamp(17px, 1.45vw, 23px) * var(--content-scale)); margin-top: 2px; }
+    .screens small { display: block; color: var(--muted); font-size: calc(clamp(13px, 1.05vw, 17px) * var(--content-scale)); margin-top: 2px; }
+    .ol .tl { grid-template-columns: 124px 1fr; font-size: calc(clamp(15px, 1.22vw, 20px) * var(--content-scale)); padding: 8px 14px; }
+    .ol .timeline { gap: 7px; }
+    /* 步驟清單 */
+    .steps { display: grid; gap: 9px; }
+    .step {
+      display: grid; grid-template-columns: 54px 1.15fr 1fr 1.25fr; gap: 14px; align-items: center;
+      padding: 10px 16px; border-radius: 16px; background: #ffffffe6; border: 1px solid var(--line);
+    }
+    .step.hot { background: #effaf7; border-color: #9fd6cc; }
+    .step.opt { background: #f7f8f9; border-style: dashed; }
+    .step .n {
+      width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--brand); color: #fff; font-weight: 900; font-size: calc(22px * var(--content-scale));
+    }
+    .step.opt .n { background: #9aa8b5; }
+    .step h3 { margin: 0; font-size: calc(clamp(17px, 1.42vw, 23px) * var(--content-scale)); line-height: 1.25; }
+    .step h3 small { display: block; color: var(--muted); font-weight: 700; font-size: calc(clamp(12px, 0.95vw, 15px) * var(--content-scale)); margin-top: 2px; }
+    .step .what, .step .pr, .step .done { font-size: calc(clamp(14px, 1.12vw, 18px) * var(--content-scale)); line-height: 1.42; }
+    .step .pr { color: #1d4f6e; }
+    .step .pr i { font-style: normal; display: inline-block; padding: 0 8px; border-radius: 999px; background: #e7eef6; font-weight: 800; font-size: 0.86em; margin-right: 4px; }
+    .step .done { padding-left: 12px; border-left: 3px solid var(--accent); }
+    .step .done b { color: #9a5512; }
+    .steps-head { display: grid; grid-template-columns: 54px 1.15fr 1fr 1.25fr; gap: 14px; padding: 0 16px; color: var(--muted); font-weight: 800; font-size: calc(clamp(12px, 0.98vw, 15px) * var(--content-scale)); letter-spacing: 0.04em; }
+    .g1 { color: #1d6b64; font-weight: 800; }
+    .g2 { color: #9a5512; font-weight: 800; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; align-items: center; }
+    a.ghost-link {
+      display: inline-flex; padding: 9px 16px; border-radius: 999px; border: 2px solid var(--brand);
+      color: var(--brand); font-weight: 800; font-size: calc(15px * var(--content-scale)); background: #fff;
+    }
+    .ol ul.check { list-style: none; padding-left: 0; }
+    .ol ul.check li::before { content: "☐ "; color: var(--brand); font-weight: 900; }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 興銘內訓</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-aminus" title="縮小字體（-）">A−</button>
+      <span id="type-scale-label">100%</span>
+      <button type="button" id="btn-aplus" title="放大字體（+）">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁（←）">‹</button>
+      <span id="slide-counter">1 / 3</span>
+      <button type="button" id="btn-next" title="下一頁（→）">›</button>
+      <button type="button" id="btn-present" title="全頁顯示／離開（F）">⛶</button>
+      <button type="button" id="btn-notes" title="講稿（N）">講稿</button>
+      <button type="button" id="btn-print" title="匯出為 PDF（P）">PDF</button>
+      <button type="button" id="btn-header-toggle" title="收合／展開工具列（H）" aria-label="收合或展開工具列" aria-expanded="true">▾</button>
+    </div>
+  </header>
+  <main class="deck">
+
+    <!-- 1 今晚目標 -->
+    <section class="slide active hero ol" id="s1" data-title="今晚目標">
+      <p class="kicker">AI 系統開發內訓 · 第 3 場「生成原型」· 學員大綱 · 2026-11-16（115/11/16）（一）19:00–21:00</p>
+      <h2>今晚目標：在自己的 sys-w2 做出「點得進去」的報稅平台原型</h2>
+      <div class="grid split-r">
+        <div class="stack">
+          <p class="big">打開第 2 場的 <em>sys-w2</em>，補齊後做客戶管理頁（CRUD）、分組做畫面，最後<em>推回自己的 GitHub 私人 repo</em>。</p>
+          <div class="screens" style="grid-template-columns: repeat(4, 1fr)">
+            <div><b>/clients</b><span>客戶管理</span><small>新增、查詢、修改、停用</small></div>
+            <div><b>/calendar</b><span>申報行事曆</span><small>逾期紅、快到期黃</small></div>
+            <div><b>/cases</b><span>案件清單</span><small>8 件虛構案件</small></div>
+            <div><b>/cases/C001</b><span>營業稅案件頁</span><small>試算草稿＋三層簽核</small></div>
+          </div>
+          <div class="grid two">
+            <div class="card"><strong><span class="g1">第 1 組</span>　期限與追蹤</strong><p>行事曆＋案件清單<br>延伸：房屋稅／地價稅清冊</p></div>
+            <div class="card warm"><strong><span class="g2">第 2 組</span>　營業稅與扣繳</strong><p>營業稅案件頁＋三層簽核<br>延伸：扣繳月繳追蹤</p></div>
+          </div>
+          <div class="callout">唯一鐵律：<b>接續自己的 sys-w2</b>，不新建 repo、不 --force。<br><b>第 2 場沒做完或換電腦：舉手，講師帶你 clone 或重建 sys-w2</b></div>
+        </div>
+        <div class="timeline">
+          <div class="tl"><b>19:00–19:05</b><span>開場＋打開自己的 sys-w2、git pull</span></div>
+          <div class="tl"><b>19:05–19:15</b><span>CRUD 複習：用客戶資料講四個動作</span></div>
+          <div class="tl hot"><b>19:15–19:25</b><span>① 補齊 sys-w2</span></div>
+          <div class="tl hot"><b>19:25–19:50</b><span>② 首頁跑起來＋客戶管理頁</span></div>
+          <div class="tl hot"><b>19:50–20:15</b><span>③ 分組做畫面</span></div>
+          <div class="tl rest"><b>20:15–20:20</b><span>休息 5 分鐘（先 commit）</span></div>
+          <div class="tl hot"><b>20:20–20:35</b><span>④ 一次改一件事、延伸題<br><span class="mini">Supabase：選做</span></span></div>
+          <div class="tl hot"><b>20:35–20:40</b><span>⑤ 推上 GitHub</span></div>
+          <div class="tl"><b>20:40–20:55</b><span>Grok Bot：找信、缺件清單、草稿</span></div>
+          <div class="tl"><b>20:55–21:00</b><span>互點原型＋作業＋問卷</span></div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 學員大綱 · 全程只用虛構資料</span><span>1 / 3</span></div>
+      <aside class="notes">學員大綱版只講目標、步驟和完成標準；完整提示詞在詳細版 https://myppt.aidc.work/hsingming-ai-dev-s3 。sys-w2 是第 2 場在各自 GitHub 帳號建立的私人 repo（網址 https://github.com/【你的帳號】/sys-w2），目前只有「客戶資料檔.csv」3 筆虛構客戶。每組以一台主機的 sys-w2 為主，駕駛／領航每 15 分鐘換手。進度落後的組，至少完成 ① 補齊＋② 客戶管理頁列表＋⑤ push 即算達標。</aside>
+    </section>
+
+    <!-- 2 五個步驟 -->
+    <section class="slide ol" id="s2" data-title="五個步驟與完成標準">
+      <p class="kicker">照順序做 · 每完成一步就 commit 一次 · 完整提示詞見詳細版</p>
+      <h2>5 個步驟，每步做到「完成標準」再往下</h2>
+      <div class="steps-head"><span></span><span>做什麼</span><span>提示詞重點（詳細版頁碼）</span><span>完成標準 ☐</span></div>
+      <div class="steps">
+        <div class="step hot">
+          <span class="n">1</span>
+          <h3>打開並補齊 sys-w2<small>19:15–19:25 · 開場先 git pull</small></h3>
+          <div class="pr"><i>Agent</i>「建立 AGENTS.md、.gitignore，把客戶資料檔搬到 data/clients.csv、整理表頭」→ A0（第 4、8 頁）</div>
+          <div class="done">☐ git pull 成功<br>☐ GitHub 上看得到 AGENTS.md、.gitignore、data/clients.csv</div>
+        </div>
+        <div class="step hot">
+          <span class="n">2</span>
+          <h3>首頁跑起來＋CRUD：客戶管理頁<small>19:25–19:50 · 概念第 5–6 頁</small></h3>
+          <div class="pr"><i>Agent</i> 加 Next.js＋資料 3-1、3-2（第 9–11 頁）<br><i>Agent</i> 客戶 CRUD 3-C（第 12 頁）</div>
+          <div class="done">☐ localhost:3000 看到首頁標題<br>☐ /clients 新增 CL-D、修改、停用<br>☐ 承辦＝覆核時<b>被擋下</b></div>
+        </div>
+        <div class="step hot">
+          <span class="n">3</span>
+          <h3>分組做畫面<small>19:50–20:15 · 一個提示詞一個畫面</small></h3>
+          <div class="pr"><span class="g1">第 1 組</span> 行事曆 → 清單 3-3、3-4（第 14–15 頁）<br><span class="g2">第 2 組</span> 規則 → 案件頁 3-5A、3-5B（第 16–17 頁）</div>
+          <div class="done"><span class="g1">第 1 組</span> ☐ 行事曆 C003 紅色逾期　☐ 清單 8 筆<br><span class="g2">第 2 組</span> ☐ C001 看得到試算草稿<br>　　　☐ 同一人覆核會<b>被擋下</b></div>
+        </div>
+        <div class="step">
+          <span class="n">4</span>
+          <h3>修改與延伸：一次只改一件事<small>20:20–20:35</small></h3>
+          <div class="pr"><i>Agent</i>「只改這一項，其他不要動」3-6<br><i>Ask</i>「用白話解釋這個檔案」3-7（第 20 頁）· 延伸題第 21 頁</div>
+          <div class="done">☐ 改好 1 項、畫面上確認、commit<br><span class="mini">延伸：第 1 組房地清冊／第 2 組扣繳 · Supabase 選做（第 23–24 頁）</span></div>
+        </div>
+        <div class="step hot">
+          <span class="n">5</span>
+          <h3>commit＋push 到自己的 sys-w2<small>20:35–20:40</small></h3>
+          <div class="pr"><i>Agent</i>「推到我的 sys-w2，不新建、不 --force」→ 3-8（第 25 頁）</div>
+          <div class="done">☐ push 成功<br>☐ GitHub 仍 Private、看得到今晚的 commit、沒有 .env</div>
+        </div>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 學員大綱 · 步驟</span><span>2 / 3</span></div>
+      <aside class="notes">每一步都走同一個循環：選模式（Ask 問、Agent 做）→ @ 引用檔案 → 看差異再接受 → npm run dev 在瀏覽器確認 → commit。CRUD＝新增（C）、查詢（R）、修改（U）、刪除（D，我們改成「停用」並留紀錄）。講師可依各組進度彈性調整：落後的組先求 ① 補齊＋② 客戶管理頁＋⑤ push；超前的組做延伸題。第 2 組 C001 試算對答案數字在詳細版第 17 頁（練習值，非稅務結論）。</aside>
+    </section>
+
+    <!-- 3 卡關、規則、收尾 -->
+    <section class="slide ol" id="s3" data-title="卡關、規則與收尾">
+      <p class="kicker">卡關怎麼辦 · 安全規則 · Grok Bot · 作業與問卷</p>
+      <h2>卡住先別亂試；守住規則；最後交作業、填問卷</h2>
+      <div class="grid two">
+        <div class="card"><strong>卡關怎麼辦</strong>
+          <ul>
+            <li><b>先舉手</b>，講師或同組夥伴來看</li>
+            <li>紅字錯誤<b>整段複製</b>貼給 Cursor，請它白話解釋、只做最小修正</li>
+            <li>改壞了：用 Cursor 的還原（Checkpoint）回到上一步，或回到上一個 commit</li>
+            <li>試了 3 次還不行：切到 <b>Ask 模式</b>，請 Cursor「先停下來，整理原因和下一步」</li>
+          </ul>
+          <p class="mini">提示詞 T-1～T-3 見詳細版第 22 頁</p></div>
+        <div class="card alert"><strong>安全規則</strong>
+          <ul>
+            <li>只用課程的<b>虛構資料</b>，不放任何真實客戶資料</li>
+            <li>GitHub 一律<b>私人 repo</b>；金鑰、密碼、.env 不貼對話、不進專案</li>
+            <li><b>不要用 --force</b>、reset --hard；push 被拒絕就找講師</li>
+            <li>畫面上的稅額、期限都是練習值，<b>非稅務結論</b></li>
+          </ul></div>
+      </div>
+      <div class="grid two" style="margin-top:14px">
+        <div class="card warm"><strong>Grok Bot（20:40–20:55）</strong>
+          <p>讓 Bot 讀練習信箱找客戶來信、整理缺件清單、寫催件信——<b>只建草稿，不寄出</b>，人看過才寄。</p></div>
+        <div class="card"><strong>作業（下一場前，約 30 分鐘）</strong>
+          <p>在 sys-w2 建立 docs/驗收標準.md，請 Cursor 對照檢查目前做到哪些，commit＋push。<span class="mini">第 4 場日期待確認</span></p></div>
+      </div>
+      <div class="links">
+        <a class="survey-link" href="https://aidc.work/s/ee50c25a3377356da55eb2575ebf2d10" target="_blank" rel="noopener">作業＋課後問卷（請註明「第 3 場」）</a>
+        <a class="ghost-link" href="https://myppt.aidc.work/hsingming-ai-dev-s3" target="_blank" rel="noopener">詳細版簡報（完整提示詞）→</a>
+      </div>
+      <div class="footer"><span>興銘內訓 · 第 3 場 · 學員大綱 · 收尾</span><span>3 / 3</span></div>
+      <aside class="notes">問卷連結和第 2 場同一份，請學員在開頭寫「第 3 場」。Grok Bot 段落細節（G3-1～G3-4）見詳細版第 26–28 頁；講義上 G3-3、G3-4 的日期已過，請改成今天之後的日期。作業 3-H1、3-H2 見詳細版第 30 頁。</aside>
+    </section>
+
+  </main>
+
+  <aside id="notes-panel" aria-live="polite" aria-label="講稿"><h4>講稿</h4><div id="notes-body"></div></aside>
+  <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  <script>
+    const DECK_TITLE = "AI 系統開發內訓・第3場｜生成原型（學員大綱）";
+    const FS_STEPS = [0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4];
+    const slides = [...document.querySelectorAll(".slide")];
+    const countEl = document.getElementById("slide-counter");
+    const barEl = document.getElementById("progress-bar");
+    const header = document.getElementById("deck-header");
+    const toggleUi = document.getElementById("btn-header-toggle");
+    const fsLabel = document.getElementById("type-scale-label");
+    const hintEl = document.getElementById("hint");
+    const notesPanel = document.getElementById("notes-panel");
+    const notesBody = document.getElementById("notes-body");
+    let index = 0;
+    let fsIndex = 2;
+    let hintTimer = 0;
+    let touchStartX = 0;
+
+    function flash(msg) {
+      hintEl.textContent = msg;
+      hintEl.classList.add("show");
+      clearTimeout(hintTimer);
+      hintTimer = setTimeout(() => hintEl.classList.remove("show"), 2200);
+    }
+
+    function applyFontScale() {
+      const scale = FS_STEPS[fsIndex];
+      document.documentElement.style.setProperty("--content-scale", String(scale));
+      fsLabel.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function updateNotes() {
+      const n = slides[index].querySelector("aside.notes");
+      notesBody.textContent = n ? n.textContent.trim() : "（這頁沒有講稿）";
+    }
+
+    function show(n) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+      countEl.textContent = `${index + 1} / ${slides.length}`;
+      barEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+      const t = slides[index].dataset.title || "";
+      document.title = t ? `${t}｜${DECK_TITLE}` : DECK_TITLE;
+      history.replaceState(null, "", `#${slides[index].id || (index + 1)}`);
+      updateNotes();
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          flash("此瀏覽器無法進入全頁，請改用瀏覽器選單全螢幕");
+        });
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    function setCollapsed(collapsed) {
+      header.classList.toggle("collapsed", collapsed);
+      toggleUi.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      toggleUi.textContent = collapsed ? "▴" : "▾";
+      toggleUi.title = collapsed ? "展開工具列（H）" : "收合工具列（H）";
+    }
+
+    function exportPdf() {
+      flash("請在列印對話框選擇「另存為 PDF」／「Save as PDF」");
+      setTimeout(() => print(), 350);
+    }
+
+    function toggleNotes() {
+      notesPanel.classList.toggle("open");
+      updateNotes();
+    }
+
+    /* 列印時展開所有收合區塊 */
+    addEventListener("beforeprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.dataset.wasOpen = d.open ? "1" : ""; d.open = true; });
+    });
+    addEventListener("afterprint", () => {
+      document.querySelectorAll("details").forEach((d) => { d.open = d.dataset.wasOpen === "1"; });
+    });
+
+    document.getElementById("btn-prev").onclick = () => show(index - 1);
+    document.getElementById("btn-next").onclick = () => show(index + 1);
+    document.getElementById("btn-aminus").onclick = () => {
+      if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+    };
+    document.getElementById("btn-aplus").onclick = () => {
+      if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+    };
+    document.getElementById("btn-present").onclick = () => toggleFullscreen();
+    document.getElementById("btn-notes").onclick = () => toggleNotes();
+    document.getElementById("btn-print").onclick = () => exportPdf();
+    toggleUi.onclick = () => setCollapsed(!header.classList.contains("collapsed"));
+
+    addEventListener("keydown", (e) => {
+      const tag = (e.target && e.target.tagName) || "";
+      if (["INPUT", "TEXTAREA", "SUMMARY"].includes(tag) && e.key === " ") return;
+      if (["INPUT", "TEXTAREA"].includes(tag)) return;
+      if (["ArrowRight", "PageDown", " "].includes(e.key)) {
+        e.preventDefault();
+        show(index + 1);
+      }
+      if (["ArrowLeft", "PageUp"].includes(e.key)) {
+        e.preventDefault();
+        show(index - 1);
+      }
+      if (e.key === "Home") show(0);
+      if (e.key === "End") show(slides.length - 1);
+      if (e.key === "-" || e.key === "_") {
+        e.preventDefault();
+        if (fsIndex > 0) { fsIndex -= 1; applyFontScale(); }
+      }
+      if (e.key === "=" || e.key === "+") {
+        e.preventDefault();
+        if (fsIndex < FS_STEPS.length - 1) { fsIndex += 1; applyFontScale(); }
+      }
+      if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+      if (e.key.toLowerCase() === "h") {
+        e.preventDefault();
+        setCollapsed(!header.classList.contains("collapsed"));
+      }
+      if (e.key.toLowerCase() === "n") {
+        e.preventDefault();
+        toggleNotes();
+      }
+      if (e.key.toLowerCase() === "p") {
+        e.preventDefault();
+        exportPdf();
+      }
+    });
+
+    addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    addEventListener("touchend", (e) => {
+            const d = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(d) > 55) show(index + (d < 0 ? 1 : -1));
+    }, { passive: true });
+
+    document.addEventListener("fullscreenchange", () => {
+      const on = Boolean(document.fullscreenElement);
+      document.body.classList.toggle("presenting", on);
+      document.getElementById("btn-present").title = on ? "離開全頁（F）" : "全頁顯示（F）";
+      if (on) setCollapsed(true);
+    });
+
+    applyFontScale();
+    const hash = location.hash.replace(/^#/, "");
+    const byId = slides.findIndex((s) => s.id === hash);
+    if (byId >= 0) show(byId);
+    else {
+      const requested = Number(new URLSearchParams(location.search).get("slide") || hash);
+      show(Number.isInteger(requested) && requested > 0 ? requested - 1 : 0);
+    }
+  </script>
+</body>
+</html>
