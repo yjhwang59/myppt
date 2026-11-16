@@ -1,0 +1,1488 @@
+{
+  "version": "1.0.0",
+  "deckId": "ai-agent-course-week04-form-validation",
+  "title": "第 4 週｜表單設計與資料驗證",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "AI 系統開發入門班 · 第 4 週（共 8 週）",
+      "h1": "表單設計\n與資料驗證",
+      "h2": "",
+      "lead": "今天看 Northgo 詢價表：哪些一定要填、信箱打錯要怎麼講，再在自己的頁面上加一欄、做一次檢查。",
+      "stamp": "企業AI內訓 · 2026-11-18（三）18:30–21:30 · 臺北市中山區民生東路三段10號7樓 · 實體＋線上 · 黃燕忠｜AI發展顧問",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "封面",
+      "links": [
+        {
+          "label": "示範站詢價表",
+          "href": "https://northgo-demo.aidc.work/zh-tw/contact"
+        },
+        {
+          "label": "第 3 週簡報",
+          "href": "/ai-agent-course-week03-vibe-coding-first-version.html"
+        }
+      ],
+      "slideId": "s1",
+      "index": 1,
+      "footerPage": "1 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 課前檢查 · 18:15–18:30",
+      "kicker": "",
+      "h1": "",
+      "h2": "18:30 開始前：這 6 項都打勾",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "怎麼算「好了」"
+        ],
+        [
+          "電腦",
+          "筆電帶來並插電；線上同學用電腦，不用手機"
+        ],
+        [
+          "Cursor",
+          "打得開。按 Cmd+I（Windows：Ctrl+I），不要選 Cloud"
+        ],
+        [
+          "上週資料夾",
+          "找得到 cursor-w3，裡面有 README.md 和 index.html"
+        ],
+        [
+          "示範站",
+          "打得開 northgo-demo 的聯絡頁。今天只看，不要按送出"
+        ],
+        [
+          "LINE 群組",
+          "已加入，能傳截圖"
+        ],
+        [
+          "線上同學",
+          "會議連結已測試，能分享自己的螢幕"
+        ]
+      ],
+      "callouts": [
+        "還沒好：18:15 起助教一台一台處理。沒有 cursor-w3 的，跟助教拿 Northgo 範例資料夾。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "課前檢查",
+      "slideId": "s2",
+      "index": 2,
+      "footerPage": "2 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 今天怎麼走",
+      "kicker": "",
+      "h1": "",
+      "h2": "3 小時：看懂詢價表 → 加上檢查 → 套到自己的題目",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "時段",
+          "分鐘",
+          "內容"
+        ],
+        [
+          "18:30–18:36",
+          "6′",
+          "開場：課前檢查、「好了／卡住」、分組"
+        ],
+        [
+          "18:36–18:48",
+          "12′",
+          "W3 作業檢討：每組 2 分鐘"
+        ],
+        [
+          "18:48–19:08",
+          "20′",
+          "為什麼表單重要、欄位誰必填"
+        ],
+        [
+          "19:08–19:40",
+          "32′",
+          "兩道檢查：網頁先看、伺服器再看"
+        ],
+        [
+          "19:40–20:15",
+          "35′",
+          "練習 1：加一欄，並做出中文提示"
+        ],
+        [
+          "20:15–20:25",
+          "10′",
+          "休息"
+        ],
+        [
+          "20:25–20:55",
+          "30′",
+          "從填寫到後台；練習 2（選做）"
+        ],
+        [
+          "20:55–21:10",
+          "15′",
+          "個資、鑰匙檔，套到自己的報價單"
+        ],
+        [
+          "21:10–21:20",
+          "10′",
+          "成果展示：每組點一次檢查"
+        ],
+        [
+          "21:20–21:30",
+          "10′",
+          "作業、W5 預告、課後問卷"
+        ]
+      ],
+      "callouts": [
+        "每個練習：基本題必做，進階題選做。做完在 LINE 群打「好了」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "今天怎麼走",
+      "slideId": "s3",
+      "index": 3,
+      "footerPage": "3 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 今天要帶走的",
+      "kicker": "",
+      "h1": "",
+      "h2": "三件事，最後收成一張會檢查的詢價表",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "欄位",
+          "paragraph": "",
+          "bullets": [
+            "分出必填和選填",
+            "看文字、信箱、電話、下拉、勾選",
+            "四個語言用同一張表"
+          ]
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "檢查",
+          "paragraph": "",
+          "bullets": [
+            "網頁先擋，人馬上看到提示",
+            "伺服器再擋，這才算數",
+            "句子要說人話"
+          ]
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "練習",
+          "paragraph": "",
+          "bullets": [
+            "加一欄，並寫出怎麼算錯",
+            "用假資料，不要真的送出",
+            "同一套套到自己的題目"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜檢查（也叫驗證）：送出前先看填得對不對。填錯就停下來，告訴人哪裡要改。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "今天的三件事",
+      "slideId": "s4",
+      "index": 4,
+      "footerPage": "4 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 好了／卡住 · 線上支援",
+      "kicker": "",
+      "h1": "",
+      "h2": "每一步都對齊：做完說「好了」，卡住馬上說",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "✓",
+          "tag": null,
+          "tagClass": null,
+          "heading": "好了",
+          "paragraph": "",
+          "bullets": [
+            "現場：舉手比 OK",
+            "線上：LINE 群打「好了」",
+            "大多數人好了，講師才往下"
+          ]
+        },
+        {
+          "num": "!",
+          "tag": null,
+          "tagClass": null,
+          "heading": "卡住",
+          "paragraph": "",
+          "bullets": [
+            "截整個畫面，包含錯誤訊息",
+            "LINE 群打「卡住＋第幾步」，貼上截圖",
+            "助教先處理，講師繼續帶其他人"
+          ]
+        },
+        {
+          "num": "線上",
+          "tag": null,
+          "tagClass": null,
+          "heading": "線上同學",
+          "paragraph": "",
+          "bullets": [
+            "卡住時，直接分享螢幕給助教看",
+            "每個練習開始前，講師先示範一次",
+            "投影片連結都放在 LINE 群"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "原則：沒有人被丟下。卡超過 3 分鐘，先看隔壁同學的畫面，助教再幫你補。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "好了／卡住",
+      "slideId": "s5",
+      "index": 5,
+      "footerPage": "5 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 分組與角色",
+      "kicker": "",
+      "h1": "",
+      "h2": "3–4 人一組，大家用同一套 Cursor 流程",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "領航",
+          "paragraph": "",
+          "bullets": [
+            "念題目和驗收條件",
+            "決定這一輪要做到哪裡",
+            "照驗收清單逐項打勾"
+          ]
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "駕駛",
+          "paragraph": "",
+          "bullets": [
+            "在自己的 Cursor 貼提示詞",
+            "把畫面轉給組員看（線上：分享螢幕）",
+            "卡住就喊「卡住」"
+          ]
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "跟做",
+          "paragraph": "",
+          "bullets": [
+            "在自己的電腦跟著做同一步",
+            "記下卡關的地方",
+            "下一個練習換你當駕駛"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "備案：Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "分組與角色",
+      "slideId": "s6",
+      "index": 6,
+      "footerPage": "6 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "W3 / 作業檢討 · 每組 2 分鐘（18:36–18:48）",
+      "kicker": "",
+      "h1": "",
+      "h2": "每組 2 分鐘：點一次首版，只說表單還缺什麼",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "點一次",
+          "paragraph": "雙擊 index.html，從首頁走到詢價表。線上同學請分享螢幕。",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "只講一個缺口",
+          "paragraph": "例如：必填沒有提示、信箱打 abc 仍能送出、完成頁還是英文。",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "寫下來",
+          "paragraph": "領航把這一句記在紙上。等一下的練習，就先處理這一句。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "做不完也沒關係：README 加一張截圖就能接著做。自己的專題一樣適用。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "W3 作業檢討",
+      "slideId": "s7",
+      "index": 7,
+      "footerPage": "7 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 練習資料夾",
+      "kicker": "",
+      "h1": "",
+      "h2": "複製 cursor-w3，改名 cursor-w4，再用 Cursor 打開",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "你點哪裡",
+          "看到什麼算成功"
+        ],
+        [
+          "1 複製",
+          "桌面的 cursor-w3 → 複製 → 貼上",
+          "桌面有 cursor-w3 和一份副本"
+        ],
+        [
+          "2 改名",
+          "副本按右鍵 → 重新命名",
+          "資料夾名字變成 cursor-w4"
+        ],
+        [
+          "3 打開",
+          "Cursor 選 File → Open Folder",
+          "選到 cursor-w4，按開啟"
+        ],
+        [
+          "4 確認",
+          "看左邊檔案區，再按 Cmd/Ctrl+I",
+          "有 README.md、index.html，而且不是 Cloud"
+        ]
+      ],
+      "callouts": [
+        "留著 cursor-w3：那是上週的首版。電腦慢的，先關掉其他程式。一次只請 Cursor 改一個檔。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "打開練習資料夾",
+      "slideId": "s8",
+      "index": 8,
+      "footerPage": "8 / 32"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "欄位 · 20 分鐘（18:48–19:08）",
+      "h1": "一張詢價表\n就是一個機會",
+      "h2": "",
+      "lead": "客戶願意把公司和需求留給你。表單填得動、填得懂，窗口才接得到這一筆。",
+      "stamp": "先看欄位，再談檢查",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "為什麼表單重要",
+      "slideId": "s9",
+      "index": 9,
+      "footerPage": "9 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "欄位 / 為什麼今天做表單",
+      "kicker": "",
+      "h1": "",
+      "h2": "人填完、公司才知道有人要問",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "客戶",
+          "tag": null,
+          "tagClass": null,
+          "heading": "客戶想問一票貨",
+          "paragraph": "",
+          "bullets": [
+            "現在要在聯絡頁找得到表單",
+            "填完要知道「有人收到了」",
+            "不要猜自己要填哪些"
+          ]
+        },
+        {
+          "num": "公司",
+          "tag": null,
+          "tagClass": null,
+          "heading": "窗口要接得住",
+          "paragraph": "",
+          "bullets": [
+            "要看得懂公司、信箱、需求",
+            "缺了聯絡方式就無法回",
+            "第 3 週第 9 句先規劃這張表"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "第 3 週第 9 句是「規劃 Enquiry-form」，第 10 句才照計畫做出簡報。今天把那張表的欄位和檢查補清楚。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "詢價單是什麼",
+      "slideId": "s10",
+      "index": 10,
+      "footerPage": "10 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "欄位 / 兩張表對一下",
+      "kicker": "",
+      "h1": "",
+      "h2": "官網是現況，示範站是我們在改的版本",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "官網",
+          "tag": null,
+          "tagClass": null,
+          "heading": "northgo.com/contact",
+          "paragraph": "",
+          "bullets": [
+            "名、姓、公司、信箱、電話：必填",
+            "國家：可不選",
+            "訊息：必填",
+            "要勾接受條款"
+          ]
+        },
+        {
+          "num": "示範站",
+          "tag": null,
+          "tagClass": null,
+          "heading": "northgo-demo 聯絡頁",
+          "paragraph": "",
+          "bullets": [
+            "前面五項一樣必填",
+            "國家、服務、訊息：可不填",
+            "訊息最多 4000 字",
+            "今天以這張表為準"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "示範站只打開來看。不要按「送出詢問」，也不要填真實客戶。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "官網和示範站",
+      "links": [
+        {
+          "label": "示範站詢價表",
+          "href": "https://northgo-demo.aidc.work/zh-tw/contact"
+        }
+      ],
+      "slideId": "s11",
+      "index": 11,
+      "footerPage": "11 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "欄位 / 示範站詢價表",
+      "kicker": "",
+      "h1": "",
+      "h2": "標了 * 的才是必填",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "欄位",
+          "一定要填？",
+          "還有的限制"
+        ],
+        [
+          "名、姓",
+          "要",
+          "各最多 80 字"
+        ],
+        [
+          "公司",
+          "要",
+          "最多 160 字"
+        ],
+        [
+          "電子郵件",
+          "要",
+          "要像信箱，最多 160 字"
+        ],
+        [
+          "電話",
+          "要",
+          "最多 40 字"
+        ],
+        [
+          "國家",
+          "不要",
+          "下拉選單，可不選"
+        ],
+        [
+          "有興趣的服務",
+          "不要",
+          "五個可以複選"
+        ],
+        [
+          "訊息",
+          "不要",
+          "最多 4000 字"
+        ],
+        [
+          "接受條款",
+          "要",
+          "沒勾就不能送"
+        ]
+      ],
+      "callouts": [
+        "名詞｜必填：不填就不能送出。頁面上有一句：「標示 * 的欄位為必填。」"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "必填和選填",
+      "slideId": "s12",
+      "index": 12,
+      "footerPage": "12 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "欄位 / 五種長相",
+      "kicker": "",
+      "h1": "",
+      "h2": "不同的資料，用不同的格子",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "字",
+          "tag": null,
+          "tagClass": null,
+          "heading": "短文字",
+          "paragraph": "名、姓、公司、電話。電話用電話鍵盤比較好填。",
+          "bullets": []
+        },
+        {
+          "num": "信",
+          "tag": null,
+          "tagClass": null,
+          "heading": "電子郵件",
+          "paragraph": "要有 @。格式不對，先不要送。",
+          "bullets": []
+        },
+        {
+          "num": "選",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下拉和勾選",
+          "paragraph": "國家用下拉，約 30 國，可不選。服務用勾選，可多選。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "中文頁的國家名稱仍是英文（Taiwan、Japan…）。要改國名，四個語言要一起想，不要只改中文頁。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "欄位長什麼樣子",
+      "slideId": "s13",
+      "index": 13,
+      "footerPage": "13 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "欄位 / 同一張表，四種說法",
+      "kicker": "",
+      "h1": "",
+      "h2": "英文、繁中、日文、越文，欄位是同一套",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "字和版面分開",
+          "paragraph": "示範站把四種語言的句子放在一起管理，版面不要每種語言重做一次。",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "改一句要改四句",
+          "paragraph": "「必填」「已收到」「請再試一次」都要有四種說法。只改中文，別的語言頁會對不上。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "今天練習先把繁體中文寫對。進階再補英文。日文、越文知道有這兩頁就好。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "四個語言",
+      "slideId": "s14",
+      "index": 14,
+      "footerPage": "14 / 32"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "檢查 · 32 分鐘（19:08–19:40）",
+      "h1": "網頁先看\n伺服器再看",
+      "h2": "",
+      "lead": "人馬上要看到哪裡填錯。真正算不算數，還要等收到資料的那一端再看一次。",
+      "stamp": "必填 · 信箱格式 · 字數 · 說人話的提示",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "兩道檢查",
+      "slideId": "s15",
+      "index": 15,
+      "footerPage": "15 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "檢查 / 兩道關卡",
+      "kicker": "",
+      "h1": "",
+      "h2": "一道給人看，一道幫公司把關",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "先",
+          "tag": null,
+          "tagClass": null,
+          "heading": "網頁上先檢查",
+          "paragraph": "",
+          "bullets": [
+            "人還在這一頁",
+            "錯了立刻在欄位下方講",
+            "不用等伺服器才知道",
+            "這是立刻的回饋"
+          ]
+        },
+        {
+          "num": "再",
+          "tag": null,
+          "tagClass": null,
+          "heading": "伺服器再檢查",
+          "paragraph": "",
+          "bullets": [
+            "資料真的送出去之後",
+            "有人可以關掉網頁檢查",
+            "所以這一道才算數",
+            "下週才把這一道做真的"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜伺服器：收到表單的那一端，不是你眼前的網頁。今天先知道它要再查一次，不必自己架。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "兩道關卡",
+      "slideId": "s16",
+      "index": 16,
+      "footerPage": "16 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "檢查 / 必填、信箱、字數",
+      "kicker": "",
+      "h1": "",
+      "h2": "示範站已經擋住的三件事",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "檢查",
+          "怎麼試",
+          "通過的樣子"
+        ],
+        [
+          "必填",
+          "名、信箱或條款留白就按送出",
+          "停在這一頁，標出沒填的格子"
+        ],
+        [
+          "信箱",
+          "電子郵件打 abc",
+          "不要當成合格信箱"
+        ],
+        [
+          "字數",
+          "公司名打超過 160 字",
+          "最多只能到 160 字"
+        ],
+        [
+          "電話",
+          "可以填數字和符號",
+          "今天不要求一定是 09 開頭"
+        ]
+      ],
+      "callouts": [
+        "訊息可以空白。官網那張表的訊息是必填，示範站改成選填。練習以示範站為準。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三種常見錯誤",
+      "slideId": "s17",
+      "index": 17,
+      "footerPage": "17 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "檢查 / 句子要說人話",
+      "kicker": "",
+      "h1": "",
+      "h2": "示範站四種語言都有這三句",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "狀況",
+          "繁體中文",
+          "英文"
+        ],
+        [
+          "欄位有錯",
+          "請檢查標示的欄位。",
+          "Check the marked fields."
+        ],
+        [
+          "送出失敗",
+          "送出時發生問題，請再試一次。",
+          "Oops! Something went wrong while submitting the form."
+        ],
+        [
+          "送出成功",
+          "已收到您的詢問。",
+          "Thank you! Your submission has been received!"
+        ]
+      ],
+      "callouts": [
+        "日文頁、越文頁也有各自的句子。按鈕送出時會先變成「送出中」。今天練習的提示請用繁體中文，寫在欄位下方。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "錯誤訊息",
+      "slideId": "s18",
+      "index": 18,
+      "footerPage": "18 / 32"
+    },
+    {
+      "layout": "flow",
+      "hero": false,
+      "eyebrow": "檢查 / 一整條怎麼走",
+      "kicker": "",
+      "h1": "",
+      "h2": "六步：從填表到窗口看得到",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [
+        {
+          "title": "填表",
+          "description": "在聯絡頁填詢價"
+        },
+        {
+          "title": "網頁先查",
+          "description": "必填和信箱"
+        },
+        {
+          "title": "按送出",
+          "description": "按鈕變成送出中"
+        },
+        {
+          "title": "伺服器再查",
+          "description": "不對就退回"
+        },
+        {
+          "title": "存成一筆",
+          "description": "下週才真的存"
+        },
+        {
+          "title": "後台跟進",
+          "description": "窗口打開清單看"
+        }
+      ],
+      "table": [],
+      "callouts": [
+        "今天練習停在第 2 步，再加上欄位下方的中文提示。不要把資料真的送到示範站。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "從填寫到後台",
+      "slideId": "s19",
+      "index": 19,
+      "footerPage": "19 / 32"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "練習 · 35 分鐘（19:40–20:15），休息後再做選做",
+      "h1": "加一欄\n並讓它擋得住",
+      "h2": "",
+      "lead": "在 cursor-w4 的詢價表加上「預計出貨時間」。必填沒填、信箱不像信箱，都要有繁體中文提示。",
+      "stamp": "基本題必做 · 進階題選做",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "動手做",
+      "slideId": "s20",
+      "index": 20,
+      "footerPage": "20 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "練習 / 先看步驟",
+      "kicker": "",
+      "h1": "",
+      "h2": "六步做完一輪，回家也照這張表",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "你做什麼",
+          "看到什麼算成功"
+        ],
+        [
+          "1",
+          "確認打開的是 cursor-w4",
+          "左邊有 index.html"
+        ],
+        [
+          "2",
+          "Cmd/Ctrl+I，不要選 Cloud",
+          "看得到對話框"
+        ],
+        [
+          "3",
+          "貼下一頁的基本題，按送出",
+          "AI 只改這個資料夾"
+        ],
+        [
+          "4",
+          "到資料夾雙擊 index.html",
+          "瀏覽器開的是詢價表"
+        ],
+        [
+          "5",
+          "必填留白，再按送出",
+          "欄位下方有中文提示，沒跳頁"
+        ],
+        [
+          "6",
+          "信箱打 abc，再按送出",
+          "提示格式不對，沒有送出去"
+        ]
+      ],
+      "callouts": [
+        "網址如果是 127.0.0.1 又打不開，就是開錯了。請改回雙擊 index.html，不要啟動伺服器。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "練習前的步驟",
+      "slideId": "s21",
+      "index": 21,
+      "footerPage": "21 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "練習 / 基本題必做，進階題選做",
+      "kicker": "",
+      "h1": "",
+      "h2": "先讓一張表擋得住，再考慮清單",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "必做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "基本題",
+          "paragraph": "",
+          "bullets": [
+            "加選填欄位「預計出貨時間」",
+            "必填空白有中文提示",
+            "信箱打 abc 不能過",
+            "交付：雙擊打得開的 index.html"
+          ]
+        },
+        {
+          "num": "選做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "進階題",
+          "paragraph": "基本題過了再做：同一頁加「詢價清單」，放 1 筆假資料，狀態寫「新進」。或寫一句「已收到你的詢問」。不要寄信、不要連資料庫。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "換角色：上一輪的領航，這一輪當駕駛。自己的專題，把詢價表換成你的那一頁。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "練習題目",
+      "slideId": "s22",
+      "index": 22,
+      "footerPage": "22 / 32"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "練習 / 基本題 · 整段複製",
+      "kicker": "",
+      "h1": "",
+      "h2": "貼到 Cursor 的 Agent（cursor-w4）",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "好了：雙擊 index.html，空白和 abc 都會停住，而且看得到中文提示。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "基本題提示詞",
+      "promptBlock": {
+        "label": "基本題提示詞（已含開頭與結尾，按複製）",
+        "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md 和 index.html。在詢價表單加一個選填欄位「預計出貨時間」。\n必填沒填，或電子郵件不像信箱（例如 abc）時，在該欄位下方顯示繁體中文提示，不要跳頁、不要送出。按送出時，按鈕先變成「送出中…」。\n只改 index.html。請告訴我：到資料夾雙擊 index.html 打開。不要啟動伺服器，不要真的把資料送出去。用假資料，不要寫客戶真名、電話或報價。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
+      },
+      "slideId": "s23",
+      "index": 23,
+      "footerPage": "23 / 32"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "練習 / 進階題 · 基本題過了再貼",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一頁看到這一筆，仍然不要真的送出",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這題選做。做不出來不影響必做。下週才把詢價真的存下來。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "進階題提示詞",
+      "promptBlock": {
+        "label": "進階題提示詞（已含開頭與結尾，按複製）",
+        "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請只改 index.html。在詢價表下面加一個「詢價清單」，用 1 筆假資料：公司名「客戶 A」、狀態「新進」。不要寄信、不要連資料庫、不要寫密碼或鑰匙。\n另外加一句繁體中文：「已收到你的詢問。」這句只顯示在頁面上，不要真的寄出。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
+      },
+      "slideId": "s24",
+      "index": 24,
+      "footerPage": "24 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "練習 / 驗收表",
+      "kicker": "",
+      "h1": "",
+      "h2": "領航拿這張表，對著瀏覽器打勾",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "怎麼驗",
+          "通過條件"
+        ],
+        [
+          "新欄位",
+          "打開詢價表",
+          "看得到「預計出貨時間」，可不填"
+        ],
+        [
+          "必填",
+          "名或信箱留白就按送出",
+          "欄位下方有中文提示，不跳頁"
+        ],
+        [
+          "信箱",
+          "電子郵件打 abc",
+          "提示格式不對，沒有送出"
+        ],
+        [
+          "送出中",
+          "改成合格的假資料再按",
+          "按鈕會變成「送出中…」"
+        ],
+        [
+          "假資料",
+          "看頁面上的名字",
+          "沒有真實客戶、電話、報價"
+        ],
+        [
+          "進階",
+          "有做清單的人",
+          "看得到「客戶 A」和「新進」"
+        ]
+      ],
+      "callouts": [
+        "沒過的寫進 README「已知問題／下一輪修正清單」。這一輪不必全部修好。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "驗收表",
+      "slideId": "s25",
+      "index": 25,
+      "footerPage": "25 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "安全 / 示範站只看不送",
+      "kicker": "",
+      "h1": "",
+      "h2": "看欄位可以，按送出不行",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "看",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以做的",
+          "paragraph": "",
+          "bullets": [
+            "打開示範站聯絡頁",
+            "對一下 * 和欄位名稱",
+            "看按鈕寫「送出詢問」",
+            "看完就關掉"
+          ]
+        },
+        {
+          "num": "停",
+          "tag": null,
+          "tagClass": null,
+          "heading": "不要做的",
+          "paragraph": "",
+          "bullets": [
+            "不要按送出詢問",
+            "不要填自己的信箱或電話",
+            "不要填客戶公司的真資料",
+            "練習只在自己的 index.html"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "送出成功的句子是「已收到您的詢問。」你今天不需要在示範站看到這句。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "不要真的送出",
+      "slideId": "s26",
+      "index": 26,
+      "footerPage": "26 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "安全 / 15 分鐘（20:55–21:10）",
+      "kicker": "",
+      "h1": "",
+      "h2": "三件東西不要交出去",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "客戶資料",
+          "paragraph": "提示詞、README、網頁都用「客戶 A」。不要寫真名、電話、地址、報價。",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "密碼",
+          "paragraph": "不要把密碼貼給 Cursor，也不要貼到 LINE。登入畫面出現就先停，問助教。",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "鑰匙檔",
+          "paragraph": ".dev.vars 是本機的鑰匙。不要放進 Git、不要傳群組、不要寫進提示詞。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜.dev.vars：電腦上的一把鑰匙，用來開本機的秘密設定。沒有這個檔也做得出今天的練習。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "個資和鑰匙檔",
+      "slideId": "s27",
+      "index": 27,
+      "footerPage": "27 / 32"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "安全 / 例如報價單",
+      "kicker": "",
+      "h1": "",
+      "h2": "詢價表的方法，換到你自己的表",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "詢價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Northgo 先做這張",
+          "paragraph": "",
+          "bullets": [
+            "必填：名、姓、公司、信箱、電話、條款",
+            "選填：國家、服務、訊息、預計出貨時間",
+            "信箱打錯要停下來"
+          ]
+        },
+        {
+          "num": "報價",
+          "tag": null,
+          "tagClass": null,
+          "heading": "換成你的單據",
+          "paragraph": "",
+          "bullets": [
+            "例如報價單：客戶、品項、數量、金額、信箱",
+            "必填先留 3 個就好",
+            "寫進 README，欄位名用你的"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "沒有報價單的人，就寫自己專題裡最痛的那一張表。寫不出 5 欄，先寫 3 欄。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "套到自己的題目",
+      "slideId": "s28",
+      "index": 28,
+      "footerPage": "28 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 回家照著做",
+      "kicker": "",
+      "h1": "",
+      "h2": "回家不用背：照這 8 步再做一次",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "做什麼",
+          "怎樣算做完"
+        ],
+        [
+          "1",
+          "複製成 cursor-w4，打開 Cursor，不要選 Cloud",
+          "左邊有 index.html"
+        ],
+        [
+          "2",
+          "打開示範站聯絡頁，不要按送出",
+          "對得到名、信箱、條款"
+        ],
+        [
+          "3",
+          "把必填和選填寫進 README",
+          "看得到 * 的那幾欄"
+        ],
+        [
+          "4",
+          "貼基本題提示詞",
+          "多了「預計出貨時間」"
+        ],
+        [
+          "5",
+          "雙擊 index.html，試空白和 abc",
+          "都有中文提示，沒送出"
+        ],
+        [
+          "6",
+          "沒過的寫進修正清單",
+          "README 有下一輪要改什麼"
+        ],
+        [
+          "7",
+          "自己的表寫 3 到 5 個欄位",
+          "例如報價單，標出必填"
+        ],
+        [
+          "8 選做",
+          "加假資料清單或一句已收到",
+          "沒有密碼，也沒有 .dev.vars"
+        ]
+      ],
+      "callouts": [
+        "忘記按鈕：回到第 8 頁和第 21 頁。提示詞在第 23 頁和第 24 頁。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "回家照著做",
+      "slideId": "s29",
+      "index": 29,
+      "footerPage": "29 / 32"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "99 / 成果展示 · 10′（21:10–21:20）",
+      "kicker": "",
+      "h1": "",
+      "h2": "每組 2 分鐘：只示範檢查",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "留白",
+          "paragraph": "必填不填就按送出，指出中文提示。",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "錯的信箱",
+          "paragraph": "打 abc，確認沒有送出。",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "一個還沒好的",
+          "paragraph": "念修正清單的第一行。下週先處理這一行。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "其他組只回饋一件事：這句提示，客戶看得懂嗎？線上同學請分享螢幕。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "成果展示",
+      "slideId": "s30",
+      "index": 30,
+      "footerPage": "30 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 作業 · 21:20–21:30",
+      "kicker": "",
+      "h1": "",
+      "h2": "作業：會檢查的表，加自己的欄位",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "交什麼",
+          "怎樣算做完"
+        ],
+        [
+          "必做",
+          "詢價表",
+          "index.html 有「預計出貨時間」，雙擊打得開"
+        ],
+        [
+          "必做",
+          "兩種檢查",
+          "必填空白、信箱 abc，都有繁體中文提示"
+        ],
+        [
+          "必做",
+          "欄位表",
+          "README 寫必填、選填，以及字數"
+        ],
+        [
+          "必做",
+          "自己的表",
+          "3 到 5 欄，例如報價單，標出必填"
+        ],
+        [
+          "選做",
+          "清單或通知",
+          "假資料「客戶 A」，或一句已收到"
+        ],
+        [
+          "選做",
+          "四種語言",
+          "成功那一句再寫英文。日文、越文可先空著"
+        ]
+      ],
+      "callouts": [
+        "下週開場每組 2 分鐘。做不出網頁也請交 README。不要交真實客戶資料。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "作業",
+      "links": [
+        {
+          "label": "第 3 週簡報",
+          "href": "/ai-agent-course-week03-vibe-coding-first-version.html"
+        }
+      ],
+      "slideId": "s31",
+      "index": 31,
+      "footerPage": "31 / 32"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 下週預告",
+      "kicker": "",
+      "h1": "",
+      "h2": "W5｜把詢價真的存下來",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "下週",
+          "你會做的",
+          "今天先留好"
+        ],
+        [
+          "存下來",
+          "送出後還在，而且有編號",
+          "表單和欄位表"
+        ],
+        [
+          "再查一次",
+          "就算網頁沒擋，收到的那一端也要擋",
+          "必填和信箱規則"
+        ],
+        [
+          "窗口看得到",
+          "打開清單看到這一筆",
+          "假資料清單（選做的人）"
+        ]
+      ],
+      "callouts": [
+        "cursor-w4 請留著。課後問卷連結在 LINE 群。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "W5 預告",
+      "slideId": "s32",
+      "index": 32,
+      "footerPage": "32 / 32"
+    }
+  ]
+}
