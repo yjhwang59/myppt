@@ -32,7 +32,7 @@
       ],
       "slideId": "s1",
       "index": 1,
-      "footerPage": "1 / 32"
+      "footerPage": "1 / 49"
     },
     {
       "layout": "table",
@@ -82,7 +82,7 @@
       "title": "課前檢查",
       "slideId": "s2",
       "index": 2,
-      "footerPage": "2 / 32"
+      "footerPage": "2 / 49"
     },
     {
       "layout": "table",
@@ -107,23 +107,28 @@
           "開場：課前檢查、「好了／卡住」、分組"
         ],
         [
-          "18:36–18:48",
-          "12′",
+          "18:36–18:46",
+          "10′",
           "W3 作業檢討：每組 2 分鐘"
         ],
         [
-          "18:48–19:08",
-          "20′",
+          "18:46–19:04",
+          "18′",
           "為什麼表單重要、欄位誰必填"
         ],
         [
-          "19:08–19:40",
-          "32′",
+          "19:04–19:22",
+          "18′",
           "兩道檢查：網頁先看、伺服器再看"
         ],
         [
-          "19:40–20:15",
-          "35′",
+          "19:22–19:47",
+          "25′",
+          "範例提示詞：前台、後端、CRUD"
+        ],
+        [
+          "19:47–20:15",
+          "28′",
           "練習 1：加一欄，並做出中文提示"
         ],
         [
@@ -134,22 +139,17 @@
         [
           "20:25–20:55",
           "30′",
-          "從填寫到後台；練習 2（選做）"
+          "練習 2：後台清單與狀態（選做）"
         ],
         [
-          "20:55–21:10",
-          "15′",
+          "20:55–21:12",
+          "17′",
           "個資、鑰匙檔，套到自己的報價單"
         ],
         [
-          "21:10–21:20",
-          "10′",
-          "成果展示：每組點一次檢查"
-        ],
-        [
-          "21:20–21:30",
-          "10′",
-          "作業、W5 預告、課後問卷"
+          "21:12–21:30",
+          "18′",
+          "成果展示 8′，作業、W5、問卷 10′"
         ]
       ],
       "callouts": [
@@ -159,7 +159,7 @@
       "title": "今天怎麼走",
       "slideId": "s3",
       "index": 3,
-      "footerPage": "3 / 32"
+      "footerPage": "3 / 49"
     },
     {
       "layout": "cards-three",
@@ -217,7 +217,7 @@
       "title": "今天的三件事",
       "slideId": "s4",
       "index": 4,
-      "footerPage": "4 / 32"
+      "footerPage": "4 / 49"
     },
     {
       "layout": "cards-three",
@@ -275,7 +275,7 @@
       "title": "好了／卡住",
       "slideId": "s5",
       "index": 5,
-      "footerPage": "5 / 32"
+      "footerPage": "5 / 49"
     },
     {
       "layout": "cards-three",
@@ -333,7 +333,7 @@
       "title": "分組與角色",
       "slideId": "s6",
       "index": 6,
-      "footerPage": "6 / 32"
+      "footerPage": "6 / 49"
     },
     {
       "layout": "cards-three",
@@ -379,7 +379,7 @@
       "title": "W3 作業檢討",
       "slideId": "s7",
       "index": 7,
-      "footerPage": "7 / 32"
+      "footerPage": "7 / 49"
     },
     {
       "layout": "table",
@@ -426,13 +426,13 @@
       "title": "打開練習資料夾",
       "slideId": "s8",
       "index": 8,
-      "footerPage": "8 / 32"
+      "footerPage": "8 / 49"
     },
     {
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "欄位 · 20 分鐘（18:48–19:08）",
+      "kicker": "欄位 · 18 分鐘（18:46–19:04）",
       "h1": "一張詢價表\n就是一個機會",
       "h2": "",
       "lead": "客戶願意把公司和需求留給你。表單填得動、填得懂，窗口才接得到這一筆。",
@@ -445,7 +445,7 @@
       "title": "為什麼表單重要",
       "slideId": "s9",
       "index": 9,
-      "footerPage": "9 / 32"
+      "footerPage": "9 / 49"
     },
     {
       "layout": "cards-two",
@@ -491,7 +491,7 @@
       "title": "詢價單是什麼",
       "slideId": "s10",
       "index": 10,
-      "footerPage": "10 / 32"
+      "footerPage": "10 / 49"
     },
     {
       "layout": "cards-two",
@@ -545,7 +545,7 @@
       ],
       "slideId": "s11",
       "index": 11,
-      "footerPage": "11 / 32"
+      "footerPage": "11 / 49"
     },
     {
       "layout": "table",
@@ -612,7 +612,7 @@
       "title": "必填和選填",
       "slideId": "s12",
       "index": 12,
-      "footerPage": "12 / 32"
+      "footerPage": "12 / 49"
     },
     {
       "layout": "cards-three",
@@ -658,7 +658,7 @@
       "title": "欄位長什麼樣子",
       "slideId": "s13",
       "index": 13,
-      "footerPage": "13 / 32"
+      "footerPage": "13 / 49"
     },
     {
       "layout": "cards-two",
@@ -696,13 +696,13 @@
       "title": "四個語言",
       "slideId": "s14",
       "index": 14,
-      "footerPage": "14 / 32"
+      "footerPage": "14 / 49"
     },
     {
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "檢查 · 32 分鐘（19:08–19:40）",
+      "kicker": "檢查 · 18 分鐘（19:04–19:22）",
       "h1": "網頁先看\n伺服器再看",
       "h2": "",
       "lead": "人馬上要看到哪裡填錯。真正算不算數，還要等收到資料的那一端再看一次。",
@@ -715,7 +715,7 @@
       "title": "兩道檢查",
       "slideId": "s15",
       "index": 15,
-      "footerPage": "15 / 32"
+      "footerPage": "15 / 49"
     },
     {
       "layout": "cards-two",
@@ -763,7 +763,7 @@
       "title": "兩道關卡",
       "slideId": "s16",
       "index": 16,
-      "footerPage": "16 / 32"
+      "footerPage": "16 / 49"
     },
     {
       "layout": "table",
@@ -810,7 +810,7 @@
       "title": "三種常見錯誤",
       "slideId": "s17",
       "index": 17,
-      "footerPage": "17 / 32"
+      "footerPage": "17 / 49"
     },
     {
       "layout": "table",
@@ -852,7 +852,7 @@
       "title": "錯誤訊息",
       "slideId": "s18",
       "index": 18,
-      "footerPage": "18 / 32"
+      "footerPage": "18 / 49"
     },
     {
       "layout": "flow",
@@ -898,16 +898,519 @@
       "title": "從填寫到後台",
       "slideId": "s19",
       "index": 19,
-      "footerPage": "19 / 32"
+      "footerPage": "19 / 49"
     },
     {
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "練習 · 35 分鐘（19:40–20:15），休息後再做選做",
+      "kicker": "範例提示詞 · 25 分鐘（19:22–19:47）",
+      "h1": "前後端怎麼講\n才能做出表單",
+      "h2": "",
+      "lead": "下面每句都能整段複製。先講誰在用、要做什麼、做出來長什麼樣、有什麼限制。詢價表是例子，報價單只要換詞。",
+      "stamp": "前台 · 後端 · 新增讀取更新刪除 · 測試",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "範例提示詞章節",
+      "index": 20,
+      "slideId": "s20",
+      "footerPage": "20 / 49"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "範例 / 四段寫法",
+      "kicker": "",
+      "h1": "",
+      "h2": "每句都用這四段，Cursor 比較不會做偏",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "誰、做什麼",
+          "paragraph": "",
+          "bullets": [
+            "誰會用這頁或這個動作",
+            "這一次只做一件事"
+          ]
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "長什麼樣、限制",
+          "paragraph": "",
+          "bullets": [
+            "寫出看得到的句子和格式",
+            "不確定的先問，不要猜",
+            "假資料、不送出、不交鑰匙檔"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "第 3 週第 9 句就是先規劃。今天多給一整套可以照做的句子。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "提示詞四段",
+      "index": 21,
+      "slideId": "s21",
+      "footerPage": "21 / 49"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "範例 / Northgo 示範站",
+      "kicker": "",
+      "h1": "",
+      "h2": "句子裡的檔名和網址，請照這樣寫",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "在哪",
+          "做什麼"
+        ],
+        [
+          "content/site.js",
+          "四種語言的文字，和版面分開"
+        ],
+        [
+          "src/worker.js",
+          "收到表單的程式"
+        ],
+        [
+          "POST /api/enquiries",
+          "客戶送出時走這裡"
+        ],
+        [
+          "D1 資料表 enquiries",
+          "詢價存成一列的地方"
+        ],
+        [
+          "/admin",
+          "窗口要先登入才進得去"
+        ],
+        [
+          "/api/admin/enquiries",
+          "登入後才能改狀態、刪除"
+        ]
+      ],
+      "callouts": [
+        "名詞｜D1：Cloudflare 上的資料庫，表單要存進去的地方。沒有這套檔案的人，先做看得到的網頁就好。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "檔案在哪",
+      "index": 22,
+      "slideId": "s22",
+      "footerPage": "22 / 49"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "範例 / 四個動作",
+      "kicker": "",
+      "h1": "",
+      "h2": "新增、讀取、更新、刪除",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "簡寫",
+          "一句話",
+          "詢價表上是什麼"
+        ],
+        [
+          "C 新增",
+          "多一筆新的",
+          "客戶按下送出"
+        ],
+        [
+          "R 讀取",
+          "把已有的讀出來",
+          "窗口看清單和明細"
+        ],
+        [
+          "U 更新",
+          "改已有的內容",
+          "狀態和備註"
+        ],
+        [
+          "D 刪除",
+          "拿掉一筆",
+          "先問確定，再隱藏"
+        ]
+      ],
+      "callouts": [
+        "讀取、更新、刪除都要先登入 /admin。沒登入就拒絕。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "四個動作",
+      "index": 23,
+      "slideId": "s23",
+      "footerPage": "23 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 前台 · 頁面",
+      "kicker": "",
+      "h1": "",
+      "h2": "先做出看得到的詢價表",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這句只做頁面。檢查、成功句子、存進資料庫用後面的句子。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "前台做出表單",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：想問貨運的客戶，在聯絡頁填表。我是新手。\n要做什麼：做出一頁詢價表。必填：名、姓、公司、電子郵件、電話、接受條款。選填：國家（下拉，可不選）、有興趣的服務（可複選：貨運物流、專案物流、倉儲物流、船務代理、其他）、訊息、預計出貨時間。\n長什麼樣：繁體中文。手機和電腦都能看，不要左右捲動。標了 * 的是必填。按鈕寫「送出詢問」。\n限制：先只做看得到的頁面，不要真的把資料送出去。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 24,
+      "slideId": "s24",
+      "footerPage": "24 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 前台 · 檢查",
+      "kicker": "",
+      "h1": "",
+      "h2": "送出前，在網頁上先擋住",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "課堂時間不夠時，先做繁體中文。英文、日文、越文回家再補。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "前台檢查",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：正在填詢價表的客戶。\n要做什麼：按送出前先檢查。必填沒填、電子郵件不像信箱（例如 abc）、訊息超過 4000 字，都停在這一頁。\n長什麼樣：錯誤寫在該欄位下方，不要只用瀏覽器預設的英文泡泡。繁體中文、英文、日文、越文各準備一句人話。繁中用「請檢查這個欄位。」信箱用「請填正確的電子郵件。」字數用「訊息太長。」\n限制：句子寫進 content/site.js，四種語言一起補。不要啟動伺服器。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 25,
+      "slideId": "s25",
+      "footerPage": "25 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 前台 · 結果",
+      "kicker": "",
+      "h1": "",
+      "h2": "成功或失敗，都要在同一頁講清楚",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "示範站已經有這三句。請對一下，不要另寫一套。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "送出後的句子",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：剛按「送出詢問」的客戶。\n要做什麼：在同一頁告訴他結果。送出當下按鈕先變成「送出中」。\n長什麼樣：成功「已收到您的詢問。」失敗「送出時發生問題，請再試一次。」欄位有錯「請檢查標示的欄位。」這三句要有繁體中文、英文、日文、越文。\n限制：先用假的結果示範，不要真的寄信，不要連資料庫。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 26,
+      "slideId": "s26",
+      "footerPage": "26 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 後端 · 資料表",
+      "kicker": "",
+      "h1": "",
+      "h2": "先有地方可存，再談送出",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜migration：建立或修改資料表的一份腳本，讓每台電腦的表長得一樣。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "建立資料表",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：我。資料是客戶的詢價。\n要做什麼：建立 D1 資料表 enquiries，並寫一份 migration。欄位至少有：id、建立時間、名、姓、公司、email、電話、國家、服務、訊息、預計出貨時間、狀態、備註、deleted_at。\n長什麼樣：一份 SQL migration。狀態只用「新進、處理中、已回覆」，預設「新進」。deleted_at 空的表示還沒刪。\n限制：不要塞進任何真實客戶。不要改 .dev.vars，也不要把它加進 git。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 27,
+      "slideId": "s27",
+      "footerPage": "27 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 後端 · 接收",
+      "kicker": "",
+      "h1": "",
+      "h2": "伺服器再查一次，通過才寫入",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這是真正把關的那一端。網頁上的紅字只是讓人馬上看見。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "收到並存起來",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：詢價表送出後，由 src/worker.js 接收。\n要做什麼：做 POST /api/enquiries。先再檢查必填、信箱格式、訊息長度。通過就把一列寫進 D1 的 enquiries，回傳成功和編號。不通過就回傳哪一欄錯了，而且不要寫入。\n長什麼樣：用 JSON 回傳。句子跟頁面上的繁中句子一致。\n限制：網頁上的檢查可以關掉，這一道仍要擋得住。不要記錄密碼。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 28,
+      "slideId": "s28",
+      "footerPage": "28 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / C 新增",
+      "kicker": "",
+      "h1": "",
+      "h2": "C：客戶送出，就多一筆",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "新增是給客戶用的，不需要登入。後面三個動作才要登入。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "新增一筆",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：客戶。\n要做什麼：按「送出詢問」時，把表單送到 POST /api/enquiries，新增一筆詢價。C 就是新增。\n長什麼樣：成功顯示「已收到您的詢問。」和編號。失敗停在原頁，指出哪一欄。狀態預設「新進」。\n限制：只用假資料試。不要寄信。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 29,
+      "slideId": "s29",
+      "footerPage": "29 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / R 讀取",
+      "kicker": "",
+      "h1": "",
+      "h2": "R：登入後才看得到清單和明細",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "沒有帳號的同學，這句先留著，請講師示範。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "讀取清單",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：已登入的窗口。\n要做什麼：在 /admin 做詢價清單，可依狀態或公司名篩選，點一列看明細。R 就是讀出來。\n長什麼樣：清單有編號、公司、狀態、建立時間。明細看得到訊息和備註。預設不顯示已軟刪除的。\n限制：沒登入 /admin 就不能讀。讀取走 /api/admin/enquiries。只用假資料。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 30,
+      "slideId": "s30",
+      "footerPage": "30 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / U 更新",
+      "kicker": "",
+      "h1": "",
+      "h2": "U：改狀態和備註",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "狀態只這三個：新進、處理中、已回覆。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "更新狀態",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：已登入的窗口。\n要做什麼：在明細頁把狀態從「新進」改成「處理中」或「已回覆」，並能改備註。U 就是改已有的。\n長什麼樣：按儲存後，清單上的狀態一起變。只能改狀態和備註，不要改客戶填的原文。\n限制：一定要先登入。用 /api/admin/enquiries。不要改到別的一筆。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 31,
+      "slideId": "s31",
+      "footerPage": "31 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / D 刪除",
+      "kicker": "",
+      "h1": "",
+      "h2": "D：先確認，再建議只隱藏",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "軟刪除：人看起來像刪了，資料還留著，以後才查得到。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "刪除前先問",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：已登入的窗口。\n要做什麼：刪除前先問「確定刪除？」。建議做軟刪除：寫入 deleted_at，清單預設不再顯示，而不是從資料表真的抹掉。D 就是刪掉。\n長什麼樣：按刪除 → 出現確認 → 確認後清單看不到這筆。\n限制：沒有確認就不能刪。一定要先登入。走 /api/admin/enquiries。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 32,
+      "slideId": "s32",
+      "footerPage": "32 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 測試",
+      "kicker": "",
+      "h1": "",
+      "h2": "先寫會失敗的三種情況",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "三種都過了，才算檢查做完。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三個測試案例",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：我自己驗收。\n要做什麼：寫三個案例並各點一次。1 必填留白。2 電子郵件打 abc。3 訊息超過 4000 字。\n長什麼樣：每個案例寫「我做了什麼／應該看到什麼」。三個都應該停下來，並有人話提示，而且資料表沒有多一筆。\n限制：只用假資料。不要用真實信箱。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 33,
+      "slideId": "s33",
+      "footerPage": "33 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 對結果",
+      "kicker": "",
+      "h1": "",
+      "h2": "瀏覽器看一句，後台看得到同一筆",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "沒有後台帳號就只做瀏覽器這一半，並在 README 寫「後台未測」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "用假資料對一次",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：我，以及已登入的窗口。\n要做什麼：用「客戶 A」走一次合格的送出。瀏覽器要看到「已收到您的詢問。」後台 /admin 要看到同一筆，狀態是「新進」。\n長什麼樣：回我三件事：你點了哪裡、畫面上哪一句、清單上的編號。\n限制：沒登入不能進後台。不要把密碼寫進對話。不要送到 northgo-demo 的正式表單。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 34,
+      "slideId": "s34",
+      "footerPage": "34 / 49"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 先規劃再實作",
+      "kicker": "",
+      "h1": "",
+      "h2": "先要整份計畫，不要馬上改檔",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "和第 3 週第 9、10 句同一套：先看計畫，通過才實作。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "先規劃再實作",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：我。請先當顧問。\n要做什麼：規劃 Northgo 詢價表的整份做法：填寫、網頁檢查、POST /api/enquiries、寫入 D1 的 enquiries、以及登入 /admin 後的讀取、改狀態、刪除。\n長什麼樣：繁體中文。列出頁面、資料表欄位、API、四種語言的提示句、先做什麼、後做什麼。\n限制：這一步只出計畫。不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。"
+      },
+      "index": 35,
+      "slideId": "s35",
+      "footerPage": "35 / 49"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "範例 / 換成自己的題目",
+      "kicker": "",
+      "h1": "",
+      "h2": "提示詞照抄，只換這四格",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "詢價表",
+          "換成報價單"
+        ],
+        [
+          "客戶問貨運",
+          "客戶要一張報價"
+        ],
+        [
+          "資料表 enquiries",
+          "例如 quotes，不要沿用詢價"
+        ],
+        [
+          "新進／處理中／已回覆",
+          "草稿／已送出／已成交"
+        ],
+        [
+          "名、姓、公司、信箱、電話",
+          "客戶、品項、數量、金額、信箱"
+        ]
+      ],
+      "callouts": [
+        "誰、做什麼、長什麼樣、限制這四段不要拿掉。只換上面四格。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "換成報價單",
+      "index": 36,
+      "slideId": "s36",
+      "footerPage": "36 / 49"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "練習 1 · 28 分鐘（19:47–20:15），休息後做選做",
       "h1": "加一欄\n並讓它擋得住",
       "h2": "",
-      "lead": "在 cursor-w4 的詢價表加上「預計出貨時間」。必填沒填、信箱不像信箱，都要有繁體中文提示。",
+      "lead": "課堂先貼「加一欄」那句。整套前後端與新增讀取更新刪除，用前面的範例提示詞，回家也能照做。",
       "stamp": "基本題必做 · 進階題選做",
       "cards": [],
       "flowSteps": [],
@@ -915,9 +1418,9 @@
       "callouts": [],
       "footerBrand": "AIDC.work",
       "title": "動手做",
-      "slideId": "s20",
-      "index": 20,
-      "footerPage": "20 / 32"
+      "slideId": "s37",
+      "index": 37,
+      "footerPage": "37 / 49"
     },
     {
       "layout": "table",
@@ -948,7 +1451,7 @@
         ],
         [
           "3",
-          "貼下一頁的基本題，按送出",
+          "貼「加一欄」的基本題",
           "AI 只改這個資料夾"
         ],
         [
@@ -972,9 +1475,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "練習前的步驟",
-      "slideId": "s21",
-      "index": 21,
-      "footerPage": "21 / 32"
+      "slideId": "s38",
+      "index": 38,
+      "footerPage": "38 / 49"
     },
     {
       "layout": "cards-two",
@@ -1011,13 +1514,13 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "換角色：上一輪的領航，這一輪當駕駛。自己的專題，把詢價表換成你的那一頁。"
+        "基本題用後面的短提示詞。整頁表單、存進資料庫、後台四個動作，用前面標了「範例」的句子。"
       ],
       "footerBrand": "AIDC.work",
       "title": "練習題目",
-      "slideId": "s22",
-      "index": 22,
-      "footerPage": "22 / 32"
+      "slideId": "s39",
+      "index": 39,
+      "footerPage": "39 / 49"
     },
     {
       "layout": "cards",
@@ -1040,9 +1543,9 @@
         "label": "基本題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請讀 README.md 和 index.html。在詢價表單加一個選填欄位「預計出貨時間」。\n必填沒填，或電子郵件不像信箱（例如 abc）時，在該欄位下方顯示繁體中文提示，不要跳頁、不要送出。按送出時，按鈕先變成「送出中…」。\n只改 index.html。請告訴我：到資料夾雙擊 index.html 打開。不要啟動伺服器，不要真的把資料送出去。用假資料，不要寫客戶真名、電話或報價。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
       },
-      "slideId": "s23",
-      "index": 23,
-      "footerPage": "23 / 32"
+      "slideId": "s40",
+      "index": 40,
+      "footerPage": "40 / 49"
     },
     {
       "layout": "cards",
@@ -1065,9 +1568,9 @@
         "label": "進階題提示詞（已含開頭與結尾，按複製）",
         "text": "請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。\n\n請只改 index.html。在詢價表下面加一個「詢價清單」，用 1 筆假資料：公司名「客戶 A」、狀態「新進」。不要寄信、不要連資料庫、不要寫密碼或鑰匙。\n另外加一句繁體中文：「已收到你的詢問。」這句只顯示在頁面上，不要真的寄出。\n\n請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。"
       },
-      "slideId": "s24",
-      "index": 24,
-      "footerPage": "24 / 32"
+      "slideId": "s41",
+      "index": 41,
+      "footerPage": "41 / 49"
     },
     {
       "layout": "table",
@@ -1122,9 +1625,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "驗收表",
-      "slideId": "s25",
-      "index": 25,
-      "footerPage": "25 / 32"
+      "slideId": "s42",
+      "index": 42,
+      "footerPage": "42 / 49"
     },
     {
       "layout": "cards-two",
@@ -1170,14 +1673,14 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "不要真的送出",
-      "slideId": "s26",
-      "index": 26,
-      "footerPage": "26 / 32"
+      "slideId": "s43",
+      "index": 43,
+      "footerPage": "43 / 49"
     },
     {
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "安全 / 15 分鐘（20:55–21:10）",
+      "eyebrow": "安全 / 17 分鐘（20:55–21:12）",
       "kicker": "",
       "h1": "",
       "h2": "三件東西不要交出去",
@@ -1216,9 +1719,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "個資和鑰匙檔",
-      "slideId": "s27",
-      "index": 27,
-      "footerPage": "27 / 32"
+      "slideId": "s44",
+      "index": 44,
+      "footerPage": "44 / 49"
     },
     {
       "layout": "cards-two",
@@ -1262,9 +1765,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "套到自己的題目",
-      "slideId": "s28",
-      "index": 28,
-      "footerPage": "28 / 32"
+      "slideId": "s45",
+      "index": 45,
+      "footerPage": "45 / 49"
     },
     {
       "layout": "table",
@@ -1300,8 +1803,8 @@
         ],
         [
           "4",
-          "貼基本題提示詞",
-          "多了「預計出貨時間」"
+          "貼基本題，或前台檢查那一句",
+          "多了欄位，空白和 abc 會被擋住"
         ],
         [
           "5",
@@ -1325,18 +1828,18 @@
         ]
       ],
       "callouts": [
-        "忘記按鈕：回到第 8 頁和第 21 頁。提示詞在第 23 頁和第 24 頁。"
+        "範例提示詞從第 20 頁到第 36 頁。課堂基本題在第 40 頁。資料夾步驟在第 8 頁。"
       ],
       "footerBrand": "AIDC.work",
       "title": "回家照著做",
-      "slideId": "s29",
-      "index": 29,
-      "footerPage": "29 / 32"
+      "slideId": "s46",
+      "index": 46,
+      "footerPage": "46 / 49"
     },
     {
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "99 / 成果展示 · 10′（21:10–21:20）",
+      "eyebrow": "99 / 成果展示 · 8′（21:12–21:20）",
       "kicker": "",
       "h1": "",
       "h2": "每組 2 分鐘：只示範檢查",
@@ -1375,9 +1878,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "成果展示",
-      "slideId": "s30",
-      "index": 30,
-      "footerPage": "30 / 32"
+      "slideId": "s47",
+      "index": 47,
+      "footerPage": "47 / 49"
     },
     {
       "layout": "table",
@@ -1438,9 +1941,9 @@
           "href": "/ai-agent-course-week03-vibe-coding-first-version.html"
         }
       ],
-      "slideId": "s31",
-      "index": 31,
-      "footerPage": "31 / 32"
+      "slideId": "s48",
+      "index": 48,
+      "footerPage": "48 / 49"
     },
     {
       "layout": "table",
@@ -1480,9 +1983,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "W5 預告",
-      "slideId": "s32",
-      "index": 32,
-      "footerPage": "32 / 32"
+      "slideId": "s49",
+      "index": 49,
+      "footerPage": "49 / 49"
     }
   ]
 }
