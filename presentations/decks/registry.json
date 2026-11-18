@@ -273,6 +273,21 @@
       "listed": true,
       "sortOrder": 0,
       "summary": "期末彩排（AISDLC Diagnose）。2026-11-07 13:10。複習＋PBL 工作室版。10/18–11/06 課程 Drive 沒有新的學生繳件。"
+    },
+    {
+      "deckId": "yuda-teacher-ai-clone-2026-11-18",
+      "title": "育達科技大學｜如何造出教師 AI 分身｜2026-11-18",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "2026-11-18 育達科技大學教師 AI 研習，約 90 分鐘。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。ydutest 執行時不呼叫 AI；教師 AI 分身與 AI 問答助教為規劃中。",
+      "createdAt": "2026-11-18T02:30:00.000Z",
+      "updatedAt": "2026-11-18T02:30:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "90 分鐘教師研習。對照已上線的 ydutest：平台執行時不跑 AI。教師 AI 分身與 AI 問答助教都還在規劃中。最後每人寫一頁提案。"
     }
   ],
   "categories": [
