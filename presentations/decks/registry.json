@@ -227,6 +227,21 @@
       "summary": "看 Northgo 詢價表的必填、信箱格式和字數，並在自己的頁面上加一欄、做檢查。"
     },
     {
+      "deckId": "ai-agent-course-week05-rbac",
+      "title": "第 5 週｜角色權限控管",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 5 週。企業AI內訓 2026-11-25 18:30–21:30。在 Northgo 後台加上管理員、業務、客服。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-19T01:00:00.000Z",
+      "updatedAt": "2026-11-19T01:00:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "在第 4 週後台之上，用角色決定誰能看詢問、改狀態、刪除和管帳號。"
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-10-17",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-17｜W5 固定驗收集",
       "sourceType": "html",
