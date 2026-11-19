@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="ai-agent-course-week05-rbac">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 系統開發入門班（8 週）第 5 週：角色權限控管。在 Northgo 後台加上管理員、業務、客服三種角色。講師：黃燕忠｜AI發展顧問。">
+  <title>第 5 週｜角色權限控管</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    /* week01: layouts used by build:deck that this shell did not style yet */
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .table td strong { color: var(--text); }
+    .arch-svg-wrap { margin-top: 10px; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .arch-svg-wrap svg { width: 100%; height: 100%; max-height: 470px; }
+    .arch-svg-wrap .ly { fill: var(--card); stroke: var(--line); }
+    .arch-svg-wrap .ly-ai { fill: var(--kicker-bg); stroke: var(--kicker-border); }
+    .arch-svg-wrap .t1 { fill: var(--text); font-weight: 800; font-size: 28px; }
+    .arch-svg-wrap .t2 { fill: var(--muted); font-size: 22px; }
+    .arch-svg-wrap .t3 { fill: var(--accent); font-weight: 700; font-size: 22px; }
+    .arch-svg-wrap .ar { stroke: var(--muted); stroke-width: 2.5; fill: none; }
+    .arch-svg-wrap .ar-d { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; }
+    .arch-svg-wrap .hd { fill: var(--accent); font-weight: 800; font-size: 20px; }
+    .arch-svg-wrap .ln { stroke: var(--line); stroke-width: 2; }
+    /* week01: classroom-readable sizes (projector at the back of a 12-person room) */
+    .slide h2 { font-size: calc(clamp(24px, 2.5vw, 34px) * var(--font-scale)); margin-bottom: 4px; }
+    .slide .lead { font-size: calc(17px * var(--font-scale)); max-width: none; }
+    .slide .eyebrow { font-size: calc(14px * var(--font-scale)); }
+    .slide .grid { gap: 16px; margin-top: 18px; }
+    .slide .card { padding: 18px 20px; }
+    .slide .card > strong { font-size: calc(19px * var(--font-scale)); margin-bottom: 8px; }
+    .slide .card p, .slide .card li { font-size: calc(17px * var(--font-scale)); line-height: 1.55; }
+    .slide.active:not(.hero) { justify-content: center; padding-bottom: 56px; }
+    .slide.active:not(.hero) > .eyebrow { margin-top: 0; }
+    .slide .card li + li { margin-top: 6px; }
+    .slide .num { font-size: calc(14px * var(--font-scale)); }
+    .slide .table { font-size: calc(16.5px * var(--font-scale)); margin-top: 14px; }
+    .slide .table th { font-size: calc(14px * var(--font-scale)); }
+    .slide .table td:first-child, .slide .table th:first-child { white-space: nowrap; }
+    .slide .table th, .slide .table td { padding: 8px 10px; }
+    .slide .flow { gap: 8px; margin-top: 18px; padding: 14px; }
+    .slide .flow-step { padding: 14px 12px; }
+    .slide .flow-num { width: 30px; height: 30px; font-size: calc(14px * var(--font-scale)); }
+    .slide .flow-step strong { font-size: calc(17px * var(--font-scale)); margin-bottom: 6px; }
+    .slide .flow-desc { font-size: calc(16px * var(--font-scale)); line-height: 1.5; }
+    .slide .callout { font-size: calc(17px * var(--font-scale)); padding: 12px 16px; margin-top: 16px; }
+    .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
+    .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
+    .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-prompt { position: relative; margin: 6px 0 0; border: 1px solid var(--kicker-border); border-radius: 14px; background: var(--card); padding: 12px 16px 14px; }
+    .slide-prompt figcaption { font-size: calc(14px * var(--font-scale)); font-weight: 700; color: var(--kicker-text); margin-bottom: 6px; padding-right: 80px; }
+    .slide-prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: calc(16px * var(--font-scale)); line-height: 1.55; color: var(--text); }
+    .slide-prompt .prompt-copy { position: absolute; top: 10px; right: 12px; font: inherit; font-size: calc(13px * var(--font-scale)); font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--kicker-border); background: var(--kicker-bg); color: var(--kicker-text); cursor: pointer; }
+    .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(14px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { border-color: var(--accent); text-decoration: underline; }
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      #deck-header { height: auto; min-height: var(--header-h); flex-wrap: wrap; row-gap: 6px; padding: 6px 8px; }
+      #deck { padding-top: 108px; }
+      .slide { width: calc(100vw - 16px); aspect-ratio: auto; min-height: 0; overflow: auto; padding: 20px 16px 44px; }
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { display: none; }
+      .table { display: table; width: 100%; }
+      .slide .table td, .slide .table th, .slide .table td:first-child, .slide .table th:first-child { white-space: normal; word-break: break-word; }
+      .footer { left: 16px; right: 16px; }
+      #deck-header .brand { display: none; }
+      .slide-links { position: static; margin-top: 10px; flex-wrap: wrap; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> AI 系統開發入門班 · 第 5 週</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 1</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+      </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">AI 系統開發入門班 · 第 5 週（共 8 週）</p>
+      <h1>角色權限控管<br />RBAC</h1>
+      <p class="lead">上週後台已經能管帳號。今天改成依角色給權限：管理員、業務、客服，不是為每一個人各寫一套規則。</p>
+      <p class="stamp">企業AI內訓 · 2026-11-25（三）18:30–21:30 · 實體＋線上 · 黃燕忠｜AI發展顧問</p><p class="slide-links"><a href="https://northgo-w4.service168.workers.dev/admin" target="_blank" rel="noopener noreferrer">第 4 週後台</a><a href="/ai-agent-course-week04-form-validation.html" target="_blank" rel="noopener noreferrer">第 4 週簡報</a></p>
+      <div class="footer"><span>AIDC.work</span><span>1 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="課前檢查">
+<p class="eyebrow">00 / 課前檢查 · 18:15–18:30</p><h2>18:30 開始前：這 6 項都打勾</h2><table class="table"><thead><tr><th>項目</th><th>怎麼算「好了」</th></tr></thead><tbody><tr><td><strong>電腦</strong></td><td>筆電帶來並插電；線上同學用電腦，不用手機</td></tr><tr><td><strong>Cursor</strong></td><td>打得開。按 Cmd+I（Windows：Ctrl+I），不要選 Cloud</td></tr><tr><td><strong>上週後台</strong></td><td>打得開 northgo-w4 的 /admin 登入頁。只看，先不要亂改</td></tr><tr><td><strong>上週資料夾</strong></td><td>Cursor 打得開做出後台的那個專案</td></tr><tr><td><strong>LINE 群組</strong></td><td>已加入，能傳截圖</td></tr><tr><td><strong>線上同學</strong></td><td>會議連結已測試，能分享自己的螢幕</td></tr></tbody></table><div class="callout"><strong>登入頁應看得到這句：</strong>管理文案、媒體、動態頁面、詢問與帳號。登不進去先跟助教說，不要把密碼貼到群組。</div>
+      <div class="footer"><span>AIDC.work</span><span>2 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="今天怎麼走">
+<p class="eyebrow">00 / 今天怎麼走</p><h2>3 小時：三種角色 → 伺服器擋得住 → 畫面也跟著藏</h2><table class="table"><thead><tr><th>時段</th><th>分鐘</th><th>內容</th></tr></thead><tbody><tr><td><strong>18:30–18:36</strong></td><td>6′</td><td>開場：課前檢查、「好了／卡住」、分組</td></tr><tr><td><strong>18:36–18:48</strong></td><td>12′</td><td>W4 複習：使用者管理的新增讀取更新刪除</td></tr><tr><td><strong>18:48–19:10</strong></td><td>22′</td><td>三個詞，和管理員、業務、客服</td></tr><tr><td><strong>19:10–19:40</strong></td><td>30′</td><td>權限表、403、誰改了什麼</td></tr><tr><td><strong>19:40–20:15</strong></td><td>35′</td><td>練習 1：客服不能刪詢問</td></tr><tr><td><strong>20:15–20:25</strong></td><td>10′</td><td>休息</td></tr><tr><td><strong>20:25–20:55</strong></td><td>30′</td><td>練習 2：記下誰改了狀態（選做）</td></tr><tr><td><strong>20:55–21:10</strong></td><td>15′</td><td>三個假帳號各測一次</td></tr><tr><td><strong>21:10–21:20</strong></td><td>10′</td><td>成果展示</td></tr><tr><td><strong>21:20–21:30</strong></td><td>10′</td><td>作業、W6 預告、課後問卷</td></tr></tbody></table><div class="callout">基本題必做，進階題選做。做完在 LINE 群打「好了」。</div>
+      <div class="footer"><span>AIDC.work</span><span>3 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="今天的三件事">
+<p class="eyebrow">00 / 今天要帶走的</p><h2>三件事，最後三種人登入看到的不一樣</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>角色</strong><ul><li>管理員、業務、客服</li><li>權限寫在角色上</li><li>人只是被指派一個角色</li></ul></article><article class="card"><div class="num">2</div><strong>擋在伺服器</strong><ul><li>沒權限回 403</li><li>藏按鈕不算完成</li><li>後台每一條都要查</li></ul></article><article class="card"><div class="num">3</div><strong>留紀錄</strong><ul><li>誰改了狀態</li><li>用假帳號各測一次</li><li>回家照提示詞再做一次</li></ul></article></div><div class="callout"><strong>名詞｜RBAC：</strong>Role-Based Access Control，角色權限控管。依角色決定能看、能改什麼，不必為每一個人各寫一套。</div>
+      <div class="footer"><span>AIDC.work</span><span>4 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="好了／卡住">
+<p class="eyebrow">00 / 好了／卡住</p><h2>做完說「好了」，卡住立刻說</h2><div class="grid three"><article class="card"><div class="num">✓</div><strong>好了</strong><ul><li>現場：舉手比 OK</li><li>線上：LINE 群打「好了」</li><li>大多數人好了才往下</li></ul></article><article class="card"><div class="num">!</div><strong>卡住</strong><ul><li>截整個畫面，含錯誤訊息</li><li>打「卡住＋第幾步」</li><li>助教先處理</li></ul></article><article class="card"><div class="num">線上</div><strong>線上同學</strong><ul><li>卡住就分享螢幕</li><li>練習前講師先示範</li><li>連結放在 LINE 群</li></ul></article></div><div class="callout">卡超過 3 分鐘，先看隔壁的畫面。沒有人被丟下。</div>
+      <div class="footer"><span>AIDC.work</span><span>5 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="分組與角色">
+<p class="eyebrow">00 / 分組與角色</p><h2>3–4 人一組。這週的「角色」有兩層意思</h2><div class="grid three"><article class="card"><div class="num">領航</div><strong>小組裡念題目</strong><ul><li>念驗收條件</li><li>決定做到哪</li><li>拿表打勾</li></ul></article><article class="card"><div class="num">駕駛</div><strong>貼提示詞的人</strong><ul><li>在自己的 Cursor 貼</li><li>線上就分享螢幕</li><li>卡住就喊</li></ul></article><article class="card"><div class="num">跟做</div><strong>自己也做一次</strong><ul><li>跟上同一步</li><li>記下卡關</li><li>下一輪換你開</li></ul></article></div><div class="callout">小組角色是誰負責操作。系統角色是管理員、業務、客服。兩個都叫角色，不要混在一起。</div>
+      <div class="footer"><span>AIDC.work</span><span>6 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="W4 複習">
+<p class="eyebrow">W4 / 使用者管理 · 每組 2 分鐘（18:36–18:48）</p><h2>上週已經能對「帳號」做四個動作</h2><table class="table"><thead><tr><th>動作</th><th>一句話</th><th>上週後台</th></tr></thead><tbody><tr><td><strong>C 新增</strong></td><td>多一筆</td><td>新增一個使用者</td></tr><tr><td><strong>R 讀取</strong></td><td>把已有的讀出來</td><td>使用者清單</td></tr><tr><td><strong>U 更新</strong></td><td>改已有的</td><td>改姓名或密碼</td></tr><tr><td><strong>D 刪除</strong></td><td>拿掉一筆</td><td>刪掉使用者</td></tr></tbody></table><div class="callout"><strong>名詞對齊第 1 週和公開詞彙表：</strong>CRUD 就是新增、讀取、更新、刪除。今天不重做帳號，改問「誰可以做這四件事」。</div>
+      <div class="footer"><span>AIDC.work</span><span>7 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="打開上週專案">
+<p class="eyebrow">00 / 打開上週的後台</p><h2>用做出後台的那個資料夾，不要新開一個</h2><table class="table"><thead><tr><th>步驟</th><th>你點哪裡</th><th>看到什麼算成功</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Cursor：File → Open Folder</td><td>選到上週的專案</td></tr><tr><td><strong>2</strong></td><td>看左邊有沒有 src/worker.js</td><td>後台程式在這裡</td></tr><tr><td><strong>3</strong></td><td>Cmd/Ctrl+I，不要選 Cloud</td><td>對話框出現，檔案還在左邊</td></tr><tr><td><strong>4</strong></td><td>瀏覽器打開 /admin</td><td>看得到「後台登入」</td></tr></tbody></table><div class="callout">網址是 northgo-w4.service168.workers.dev/admin。只看登入頁。密碼不要貼到提示詞或 LINE。</div>
+      <div class="footer"><span>AIDC.work</span><span>8 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="三個詞">
+<p class="eyebrow">角色 / 先對詞 · 對齊第 1 週</p><h2>CRUD、API、RBAC 各用一句話</h2><div class="grid three"><article class="card"><div class="num">CRUD</div><strong>資料會怎麼變</strong><p>新增、讀取、更新、刪除。上週的使用者管理就是這四個。</p></article><article class="card"><div class="num">API</div><strong>兩邊說好的入口</strong><p>前端請後端做事的門口。例如送出詢問是一個，查詢問清單是另一個。</p></article><article class="card"><div class="num">RBAC</div><strong>依角色，不依人</strong><p>角色權限控管。先定角色能做什麼，再把人放進角色。</p></article></div><div class="callout"><strong>這三句對齊第 1 週投影片，也對齊公開詞彙表：</strong>RBAC 是依使用者角色決定可查看或操作哪些功能。</div>
+      <div class="footer"><span>AIDC.work</span><span>9 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="為什麼不依人">
+<p class="eyebrow">角色 / 18:48–19:10</p><h2>人會換，角色比較穩</h2><div class="grid two"><article class="card"><div class="num">依人</div><strong>每一個人各寫一條</strong><ul><li>小王可以刪、小陳不行</li><li>人一離職就要改程式</li><li>很容易漏</li></ul></article><article class="card"><div class="num">依角色</div><strong>先寫角色，再派人</strong><ul><li>客服都不能刪</li><li>新人只要指定成客服</li><li>規則只維持三份</li></ul></article></div><div class="callout"><strong>Northgo 詢問處理用三個角色：</strong>管理員、業務、客服。英文對照是 admin、editor、viewer 的想法，但課堂用中文角色名。</div>
+      <div class="footer"><span>AIDC.work</span><span>10 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="三種角色">
+<p class="eyebrow">角色 / Northgo 詢問</p><h2>誰可以看、誰可以改、誰可以刪</h2><table class="table"><thead><tr><th>動作</th><th>管理員</th><th>業務</th><th>客服</th></tr></thead><tbody><tr><td><strong>看詢問</strong></td><td>全部</td><td>全部</td><td>只看自己的</td></tr><tr><td><strong>改狀態和備註</strong></td><td>可以</td><td>可以</td><td>只能改成處理中</td></tr><tr><td><strong>刪詢問</strong></td><td>可以</td><td>不行</td><td>不行</td></tr><tr><td><strong>管帳號和角色</strong></td><td>可以</td><td>不行</td><td>不行</td></tr></tbody></table><div class="callout"><strong>狀態仍是上週的三個：</strong>新進、處理中、已回覆。客服不能把它改成已回覆，也不能刪。</div>
+      <div class="footer"><span>AIDC.work</span><span>11 / 30</span></div>
+    </section>
+
+    <section class="slide hero" id="s12" data-title="擋在哪裡">
+
+      <p class="kicker">把關 · 30 分鐘（19:10–19:40）</p>
+      <h1>藏按鈕不夠<br />伺服器要回 403</h1>
+      <p class="lead">畫面可以少一顆刪除鈕，讓人少點錯。真正算數的是：沒權限的人就算自己打網址，也改不到資料。</p>
+      <p class="stamp">403 · 權限表 · 誰改了什麼</p>
+      <div class="footer"><span>AIDC.work</span><span>12 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="兩層一起做">
+<p class="eyebrow">把關 / 畫面和伺服器</p><h2>藏起來給人看，403 才是把關</h2><div class="grid two"><article class="card"><div class="num">畫面</div><strong>依角色少放按鈕</strong><ul><li>客服看不到刪除</li><li>客服看不到帳號管理</li><li>業務看得到詢問，看不到帳號</li></ul></article><article class="card"><div class="num">伺服器</div><strong>每條 /api/admin 都查</strong><ul><li>不允許就回 403</li><li>正文寫「你沒有這個權限」</li><li>不要順便改到資料</li></ul></article></div><div class="callout"><strong>名詞｜403：</strong>伺服器拒絕這次請求。人還是登入了，只是這個動作不準做。跟「沒登入」不是同一件事。</div>
+      <div class="footer"><span>AIDC.work</span><span>13 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s14" data-title="權限表">
+<p class="eyebrow">把關 / 資料表要多四張</p><h2>角色、權限、誰屬於哪個角色、誰改了什麼</h2><table class="table"><thead><tr><th>表</th><th>放什麼</th></tr></thead><tbody><tr><td><strong>roles</strong></td><td>管理員、業務、客服</td></tr><tr><td><strong>permissions</strong></td><td>看詢問、改狀態、刪詢問、管帳號</td></tr><tr><td><strong>role_permissions</strong></td><td>哪個角色可以做哪個動作</td></tr><tr><td><strong>user_roles</strong></td><td>哪個帳號是哪個角色</td></tr><tr><td><strong>audit_log</strong></td><td>誰、何時、改了哪一筆、改成什麼</td></tr></tbody></table><div class="callout">人的資料還在上週的使用者表。今天只加「他是哪種角色」，不要把權限直接寫在每一個人身上。</div>
+      <div class="footer"><span>AIDC.work</span><span>14 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s15" data-title="誰改了什麼">
+<p class="eyebrow">把關 / 留紀錄</p><h2>狀態一改，就要留下是誰改的</h2><div class="grid three"><article class="card"><div class="num">誰</div><strong>哪一個帳號</strong><p>寫帳號名稱，不寫密碼。</p></article><article class="card"><div class="num">何時</div><strong>改的時間</strong><p>用伺服器的時間，不要用瀏覽器自己填。</p></article><article class="card"><div class="num">什麼</div><strong>哪一筆、改成什麼</strong><p>例如詢問 12 的狀態，從新進改成處理中。</p></article></div><div class="callout">這張紀錄只有管理員讀得到。今天的進階題才做；基本題先把 403 做對。</div>
+      <div class="footer"><span>AIDC.work</span><span>15 / 30</span></div>
+    </section>
+
+    <section class="slide hero" id="s16" data-title="動手做">
+
+      <p class="kicker">練習 1 · 35 分鐘（19:40–20:15）</p>
+      <h1>客服不能刪<br />就算打網址也不行</h1>
+      <p class="lead">基本題：客服登入後看不到刪除，而且呼叫刪除時伺服器回 403。進階題再留下誰改了狀態。</p>
+      <p class="stamp">提示詞從下一頁開始，可以整段複製</p>
+      <div class="footer"><span>AIDC.work</span><span>16 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s17" data-title="練習前的步驟">
+<p class="eyebrow">練習 / 先看步驟</p><h2>六步。回家也照這張表</h2><table class="table"><thead><tr><th>步驟</th><th>你做什麼</th><th>看到什麼算成功</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>打開上週專案，不要選 Cloud</td><td>左邊有 src/worker.js</td></tr><tr><td><strong>2</strong></td><td>先貼「只出計畫」那一句</td><td>它還沒改檔，先給你一張表</td></tr><tr><td><strong>3</strong></td><td>你說照計畫做，再貼資料表那句</td><td>多了 roles 等表</td></tr><tr><td><strong>4</strong></td><td>貼伺服器擋下那句</td><td>客服刪除時看到 403</td></tr><tr><td><strong>5</strong></td><td>貼畫面那句</td><td>客服的畫面上沒有刪除鈕</td></tr><tr><td><strong>6</strong></td><td>用假帳號各登入一次</td><td>三種人看到的不一樣</td></tr></tbody></table><div class="callout">改壞了就在對話裡按 Restore Checkpoint。一次只貼一句。</div>
+      <div class="footer"><span>AIDC.work</span><span>17 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s18" data-title="練習題目">
+<p class="eyebrow">練習 / 基本題必做，進階題選做</p><h2>先擋刪除，再留改狀態的紀錄</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>三種角色寫進資料表</li><li>客服刪詢問得到 403</li><li>客服畫面沒有刪除鈕</li><li>管理員仍可以刪</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>業務把一筆狀態改成已回覆後，管理員看得到是哪個帳號、什麼時間改的。客服讀不到這張紀錄。</p></article></div><div class="callout"><strong>換駕駛。自己的專題：</strong>把客服換成你的「只能看自己的人」。</div>
+      <div class="footer"><span>AIDC.work</span><span>18 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s19" data-title="先出計畫">
+<p class="eyebrow">範例 / 先規劃</p><h2>先要一張權限表，不要馬上改檔</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：我。請先當顧問，不要改任何檔案。
+要做什麼：規劃 Northgo 後台的角色權限。角色只有三種：管理員、業務、客服。
+長什麼樣：用繁體中文給一張表。列出來誰可以看詢問、改狀態、刪詢問、管帳號。並寫沒有權限時，/api/admin 要回 403 和哪一句中文。
+限制：不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout"><strong>和第 3、4 週一樣：</strong>先看計畫。你點頭之後，才貼下一句。</div>
+      <div class="footer"><span>AIDC.work</span><span>19 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s20" data-title="建立角色資料表">
+<p class="eyebrow">範例 / 資料表</p><h2>先把角色和權限存成表</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：管理員指派角色時會用到這些表。
+要做什麼：寫一份 D1 migration。表有 roles、permissions、role_permissions、user_roles。權限至少有：看詢問、改狀態、刪詢問、管帳號。再加 audit_log：誰、何時、哪一筆、改成什麼。
+長什麼樣：一份 SQL。先放入管理員、業務、客服三個角色，並照我們的權限表把關係寫好。
+限制：不要塞真實客戶。不要改 .dev.vars，不要把它加進 git。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout"><strong>名詞｜migration：</strong>改資料表的腳本，讓每個人電腦上的表長得一樣。</div>
+      <div class="footer"><span>AIDC.work</span><span>20 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s21" data-title="伺服器回 403">
+<p class="eyebrow">範例 / 伺服器</p><h2>每條後台請求都先查角色</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會呼叫：已經登入、打到 /api/admin 開頭的人。程式在 src/worker.js。
+要做什麼：先查出這個人的角色。客服不能刪詢問、不能管帳號，而且只能把狀態改成處理中。業務不能刪詢問、不能管帳號。管理員可以。不允許就回 403，正文「你沒有這個權限」，不要改資料。
+長什麼樣：JSON。刪除和改狀態都走 /api/admin/enquiries。管帳號仍走原本的使用者管理。
+限制：不能只靠藏按鈕。沒登入要先擋，再談角色。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout">403 表示登入了，但這個動作不準。資料要維持原樣。</div>
+      <div class="footer"><span>AIDC.work</span><span>21 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s22" data-title="畫面依角色藏按鈕">
+<p class="eyebrow">範例 / 畫面</p><h2>客服不要看到刪除和帳號管理</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會看：管理員、業務、客服登入同一套後台。
+要做什麼：客服不顯示刪除，也不顯示帳號管理。業務看得到詢問和改狀態，看不到帳號管理。管理員全部看得到。
+長什麼樣：繁體中文。按鈕直接不出現，不要只變成灰色。
+限制：藏按鈕不夠。伺服器仍要回 403。文字若在 content/site.js，就改那裡。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout">先用一個假的客服帳號看畫面，再請別人用管理員帳號對一次。</div>
+      <div class="footer"><span>AIDC.work</span><span>22 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s23" data-title="三種角色各測一次">
+<p class="eyebrow">範例 / 測試</p><h2>每個角色寫下看到什麼</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰來測：我自己，用三個假帳號。
+要做什麼：管理員、業務、客服各登入一次。客服請求刪除一筆詢問，應得到 403，而且那筆還在。業務打開帳號管理，應進不去。管理員可以把另一個假帳號改成客服。
+長什麼樣：每個角色三行：帳號、做了什麼、看到什麼。
+限制：帳號用 admin.test、sales.test、service.test。密碼不要寫進對話。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout">三個都測完，基本題才算過。測不到的角色寫「未測」。</div>
+      <div class="footer"><span>AIDC.work</span><span>23 / 30</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s24" data-title="記下誰改了狀態">
+<p class="eyebrow">範例 / 選做</p><h2>進階：留下誰、何時、改成什麼</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會看這張紀錄：只有管理員。
+要做什麼：業務把一筆詢問從「新進」改成「已回覆」時，寫進 audit_log：帳號、時間、哪一筆、舊狀態、新狀態。客服讀這張紀錄要得到 403。
+長什麼樣：管理員在明細頁看得到一行字：「sales.test 在什麼時間把狀態改成已回覆」。
+限制：時間用伺服器的時間。不要記錄密碼。這題選做。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。</pre></figure><div class="callout">基本題還沒過，就不要貼這句。</div>
+      <div class="footer"><span>AIDC.work</span><span>24 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s25" data-title="驗收表">
+<p class="eyebrow">練習 / 驗收</p><h2>領航拿這張表，三種帳號都點過</h2><table class="table"><thead><tr><th>項目</th><th>怎麼驗</th><th>通過</th></tr></thead><tbody><tr><td><strong>角色</strong></td><td>看資料表</td><td>有管理員、業務、客服</td></tr><tr><td><strong>客服刪除</strong></td><td>用客服帳號刪一筆</td><td>403，資料還在</td></tr><tr><td><strong>客服畫面</strong></td><td>登入客服</td><td>沒有刪除，也沒有帳號管理</td></tr><tr><td><strong>業務</strong></td><td>登入業務</td><td>改得了狀態，進不了帳號管理</td></tr><tr><td><strong>管理員</strong></td><td>登入管理員</td><td>仍可以刪，也可以改別人的角色</td></tr><tr><td><strong>紀錄</strong></td><td>進階才測</td><td>看得到是誰改的狀態</td></tr></tbody></table><div class="callout">沒過的寫進 README。不要把三個密碼一起貼上群組，只說哪個角色被擋住。</div>
+      <div class="footer"><span>AIDC.work</span><span>25 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s26" data-title="假帳號">
+<p class="eyebrow">安全 / 15 分鐘（20:55–21:10）</p><h2>測角色用假帳號，密碼留在自己電腦</h2><div class="grid three"><article class="card"><div class="num">帳號</div><strong>三個就好</strong><p>admin.test、sales.test、service.test。不要用真實同事的信箱。</p></article><article class="card"><div class="num">密碼</div><strong>不要傳出去</strong><p>不要寫進提示詞、README、LINE。Cursor 若問密碼，先停下來問講師。</p></article><article class="card"><div class="num">鑰匙檔</div><strong>.dev.vars 不上傳</strong><p>本機的鑰匙。不要 commit，不要貼到對話。</p></article></div><div class="callout">示範站 northgo-w4 是全班共用的。練習若會改到共用資料，先問講師要不要改自己的複本。</div>
+      <div class="footer"><span>AIDC.work</span><span>26 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s27" data-title="回家照著做">
+<p class="eyebrow">99 / 回家照著做</p><h2>回家不用背：照這 8 步</h2><table class="table"><thead><tr><th>步驟</th><th>做什麼</th><th>怎樣算做完</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>打開上週專案，不要選 Cloud</td><td>看得到 src/worker.js</td></tr><tr><td><strong>2</strong></td><td>貼「先出計畫」</td><td>有一張三種角色的表，還沒改檔</td></tr><tr><td><strong>3</strong></td><td>說照計畫做，貼資料表那句</td><td>有 roles 和 user_roles</td></tr><tr><td><strong>4</strong></td><td>貼伺服器回 403 那句</td><td>客服刪除被擋</td></tr><tr><td><strong>5</strong></td><td>貼藏按鈕那句</td><td>客服畫面沒有刪除</td></tr><tr><td><strong>6</strong></td><td>三個假帳號各登入一次</td><td>README 有三行測試結果</td></tr><tr><td><strong>7</strong></td><td>沒過的寫進修正清單</td><td>下一輪知道改什麼</td></tr><tr><td><strong>8 選做</strong></td><td>貼紀錄那句</td><td>管理員看得到是誰改的</td></tr></tbody></table><div class="callout">提示詞在第 19 到 24 頁。步驟表在第 17 頁。密碼不要寫進 README。</div>
+      <div class="footer"><span>AIDC.work</span><span>27 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s28" data-title="成果展示">
+<p class="eyebrow">99 / 成果展示 · 10′（21:10–21:20）</p><h2>每組 2 分鐘：只示範被擋住</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>客服</strong><p>登入後指出畫面上沒有刪除。</p></article><article class="card"><div class="num">2</div><strong>403</strong><p>仍去刪一筆，讓大家看到「你沒有這個權限」。</p></article><article class="card"><div class="num">3</div><strong>一個還沒好的</strong><p>念修正清單第一行。</p></article></div><div class="callout"><strong>其他組只問一件事：</strong>業務進不進得了帳號管理？線上同學請分享螢幕。不要念密碼。</div>
+      <div class="footer"><span>AIDC.work</span><span>28 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s29" data-title="作業">
+<p class="eyebrow">99 / 作業 · 21:20–21:30</p><h2>作業：三種角色，客服刪不掉</h2><table class="table"><thead><tr><th>項目</th><th>交什麼</th><th>怎樣算做完</th></tr></thead><tbody><tr><td><strong>必做</strong></td><td>三種角色</td><td>管理員、業務、客服，權限照今天的表</td></tr><tr><td><strong>必做</strong></td><td>403</td><td>客服刪詢問被拒絕，資料還在</td></tr><tr><td><strong>必做</strong></td><td>畫面</td><td>客服看不到刪除和帳號管理</td></tr><tr><td><strong>必做</strong></td><td>三行測試</td><td>README 各寫帳號、做了什麼、看到什麼</td></tr><tr><td><strong>選做</strong></td><td>紀錄</td><td>管理員看得到誰把狀態改成已回覆</td></tr><tr><td><strong>選做</strong></td><td>自己的題目</td><td>把客服換成你的「只能看自己的人」</td></tr></tbody></table><div class="callout">下週開場每組 2 分鐘。不要交密碼，不要交真實客戶。</div>
+      <div class="footer"><span>AIDC.work</span><span>29 / 30</span></div>
+    </section>
+
+    <section class="slide" id="s30" data-title="W6 預告">
+<p class="eyebrow">99 / 下週預告</p><h2>W6｜測試、修正與部署準備</h2><table class="table"><thead><tr><th>下週</th><th>你會做的</th><th>今天先留好</th></tr></thead><tbody><tr><td><strong>再測一輪</strong></td><td>三種角色各走一次主流程</td><td>今天的三行測試</td></tr><tr><td><strong>修正清單</strong></td><td>沒過的集中改，不另開功能</td><td>README 的下一輪</td></tr><tr><td><strong>上線前</strong></td><td>哪些檔不能帶上去</td><td>.dev.vars 沒有進 git</td></tr></tbody></table><div class="callout">原課表第 6 週是後台清單。清單和帳號上週已做，角色這週做完，所以下週轉去測試和準備上線。cursor 專案請留著。問卷連結在 LINE 群。</div>
+      <div class="footer"><span>AIDC.work</span><span>30 / 30</span></div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "AI 系統開發入門班｜第 5 週";
+      const LS_KEY = "ai-ppt-ai-agent-course-week05-rbac-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+
+    document.querySelectorAll(".slide-prompt").forEach(function (fig) {
+      var pre = fig.querySelector("pre"); if (!pre) return;
+      var b = document.createElement("button"); b.type = "button"; b.className = "prompt-copy"; b.textContent = "複製";
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var t = pre.textContent, ok = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製"; }, 1500); };
+        var fb = function () { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (err) { b.textContent = "請手動選取"; } document.body.removeChild(ta); };
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+      });
+      fig.appendChild(b);
+    });
+  </script>
+</body>
+</html>

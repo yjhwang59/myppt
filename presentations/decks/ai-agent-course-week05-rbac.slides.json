@@ -1,0 +1,1318 @@
+{
+  "version": "1.0.0",
+  "deckId": "ai-agent-course-week05-rbac",
+  "title": "第 5 週｜角色權限控管",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "AI 系統開發入門班 · 第 5 週（共 8 週）",
+      "h1": "角色權限控管\nRBAC",
+      "h2": "",
+      "lead": "上週後台已經能管帳號。今天改成依角色給權限：管理員、業務、客服，不是為每一個人各寫一套規則。",
+      "stamp": "企業AI內訓 · 2026-11-25（三）18:30–21:30 · 實體＋線上 · 黃燕忠｜AI發展顧問",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "封面",
+      "links": [
+        {
+          "label": "第 4 週後台",
+          "href": "https://northgo-w4.service168.workers.dev/admin"
+        },
+        {
+          "label": "第 4 週簡報",
+          "href": "/ai-agent-course-week04-form-validation.html"
+        }
+      ],
+      "slideId": "s1",
+      "index": 1,
+      "footerPage": "1 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 課前檢查 · 18:15–18:30",
+      "kicker": "",
+      "h1": "",
+      "h2": "18:30 開始前：這 6 項都打勾",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "怎麼算「好了」"
+        ],
+        [
+          "電腦",
+          "筆電帶來並插電；線上同學用電腦，不用手機"
+        ],
+        [
+          "Cursor",
+          "打得開。按 Cmd+I（Windows：Ctrl+I），不要選 Cloud"
+        ],
+        [
+          "上週後台",
+          "打得開 northgo-w4 的 /admin 登入頁。只看，先不要亂改"
+        ],
+        [
+          "上週資料夾",
+          "Cursor 打得開做出後台的那個專案"
+        ],
+        [
+          "LINE 群組",
+          "已加入，能傳截圖"
+        ],
+        [
+          "線上同學",
+          "會議連結已測試，能分享自己的螢幕"
+        ]
+      ],
+      "callouts": [
+        "登入頁應看得到這句：管理文案、媒體、動態頁面、詢問與帳號。登不進去先跟助教說，不要把密碼貼到群組。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "課前檢查",
+      "slideId": "s2",
+      "index": 2,
+      "footerPage": "2 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 今天怎麼走",
+      "kicker": "",
+      "h1": "",
+      "h2": "3 小時：三種角色 → 伺服器擋得住 → 畫面也跟著藏",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "時段",
+          "分鐘",
+          "內容"
+        ],
+        [
+          "18:30–18:36",
+          "6′",
+          "開場：課前檢查、「好了／卡住」、分組"
+        ],
+        [
+          "18:36–18:48",
+          "12′",
+          "W4 複習：使用者管理的新增讀取更新刪除"
+        ],
+        [
+          "18:48–19:10",
+          "22′",
+          "三個詞，和管理員、業務、客服"
+        ],
+        [
+          "19:10–19:40",
+          "30′",
+          "權限表、403、誰改了什麼"
+        ],
+        [
+          "19:40–20:15",
+          "35′",
+          "練習 1：客服不能刪詢問"
+        ],
+        [
+          "20:15–20:25",
+          "10′",
+          "休息"
+        ],
+        [
+          "20:25–20:55",
+          "30′",
+          "練習 2：記下誰改了狀態（選做）"
+        ],
+        [
+          "20:55–21:10",
+          "15′",
+          "三個假帳號各測一次"
+        ],
+        [
+          "21:10–21:20",
+          "10′",
+          "成果展示"
+        ],
+        [
+          "21:20–21:30",
+          "10′",
+          "作業、W6 預告、課後問卷"
+        ]
+      ],
+      "callouts": [
+        "基本題必做，進階題選做。做完在 LINE 群打「好了」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "今天怎麼走",
+      "slideId": "s3",
+      "index": 3,
+      "footerPage": "3 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 今天要帶走的",
+      "kicker": "",
+      "h1": "",
+      "h2": "三件事，最後三種人登入看到的不一樣",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "角色",
+          "paragraph": "",
+          "bullets": [
+            "管理員、業務、客服",
+            "權限寫在角色上",
+            "人只是被指派一個角色"
+          ]
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "擋在伺服器",
+          "paragraph": "",
+          "bullets": [
+            "沒權限回 403",
+            "藏按鈕不算完成",
+            "後台每一條都要查"
+          ]
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "留紀錄",
+          "paragraph": "",
+          "bullets": [
+            "誰改了狀態",
+            "用假帳號各測一次",
+            "回家照提示詞再做一次"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜RBAC：Role-Based Access Control，角色權限控管。依角色決定能看、能改什麼，不必為每一個人各寫一套。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "今天的三件事",
+      "slideId": "s4",
+      "index": 4,
+      "footerPage": "4 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 好了／卡住",
+      "kicker": "",
+      "h1": "",
+      "h2": "做完說「好了」，卡住立刻說",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "✓",
+          "tag": null,
+          "tagClass": null,
+          "heading": "好了",
+          "paragraph": "",
+          "bullets": [
+            "現場：舉手比 OK",
+            "線上：LINE 群打「好了」",
+            "大多數人好了才往下"
+          ]
+        },
+        {
+          "num": "!",
+          "tag": null,
+          "tagClass": null,
+          "heading": "卡住",
+          "paragraph": "",
+          "bullets": [
+            "截整個畫面，含錯誤訊息",
+            "打「卡住＋第幾步」",
+            "助教先處理"
+          ]
+        },
+        {
+          "num": "線上",
+          "tag": null,
+          "tagClass": null,
+          "heading": "線上同學",
+          "paragraph": "",
+          "bullets": [
+            "卡住就分享螢幕",
+            "練習前講師先示範",
+            "連結放在 LINE 群"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "卡超過 3 分鐘，先看隔壁的畫面。沒有人被丟下。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "好了／卡住",
+      "slideId": "s5",
+      "index": 5,
+      "footerPage": "5 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "00 / 分組與角色",
+      "kicker": "",
+      "h1": "",
+      "h2": "3–4 人一組。這週的「角色」有兩層意思",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "領航",
+          "tag": null,
+          "tagClass": null,
+          "heading": "小組裡念題目",
+          "paragraph": "",
+          "bullets": [
+            "念驗收條件",
+            "決定做到哪",
+            "拿表打勾"
+          ]
+        },
+        {
+          "num": "駕駛",
+          "tag": null,
+          "tagClass": null,
+          "heading": "貼提示詞的人",
+          "paragraph": "",
+          "bullets": [
+            "在自己的 Cursor 貼",
+            "線上就分享螢幕",
+            "卡住就喊"
+          ]
+        },
+        {
+          "num": "跟做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "自己也做一次",
+          "paragraph": "",
+          "bullets": [
+            "跟上同一步",
+            "記下卡關",
+            "下一輪換你開"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "小組角色是誰負責操作。系統角色是管理員、業務、客服。兩個都叫角色，不要混在一起。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "分組與角色",
+      "slideId": "s6",
+      "index": 6,
+      "footerPage": "6 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "W4 / 使用者管理 · 每組 2 分鐘（18:36–18:48）",
+      "kicker": "",
+      "h1": "",
+      "h2": "上週已經能對「帳號」做四個動作",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "動作",
+          "一句話",
+          "上週後台"
+        ],
+        [
+          "C 新增",
+          "多一筆",
+          "新增一個使用者"
+        ],
+        [
+          "R 讀取",
+          "把已有的讀出來",
+          "使用者清單"
+        ],
+        [
+          "U 更新",
+          "改已有的",
+          "改姓名或密碼"
+        ],
+        [
+          "D 刪除",
+          "拿掉一筆",
+          "刪掉使用者"
+        ]
+      ],
+      "callouts": [
+        "名詞對齊第 1 週和公開詞彙表：CRUD 就是新增、讀取、更新、刪除。今天不重做帳號，改問「誰可以做這四件事」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "W4 複習",
+      "slideId": "s7",
+      "index": 7,
+      "footerPage": "7 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "00 / 打開上週的後台",
+      "kicker": "",
+      "h1": "",
+      "h2": "用做出後台的那個資料夾，不要新開一個",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "你點哪裡",
+          "看到什麼算成功"
+        ],
+        [
+          "1",
+          "Cursor：File → Open Folder",
+          "選到上週的專案"
+        ],
+        [
+          "2",
+          "看左邊有沒有 src/worker.js",
+          "後台程式在這裡"
+        ],
+        [
+          "3",
+          "Cmd/Ctrl+I，不要選 Cloud",
+          "對話框出現，檔案還在左邊"
+        ],
+        [
+          "4",
+          "瀏覽器打開 /admin",
+          "看得到「後台登入」"
+        ]
+      ],
+      "callouts": [
+        "網址是 northgo-w4.service168.workers.dev/admin。只看登入頁。密碼不要貼到提示詞或 LINE。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "打開上週專案",
+      "slideId": "s8",
+      "index": 8,
+      "footerPage": "8 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "角色 / 先對詞 · 對齊第 1 週",
+      "kicker": "",
+      "h1": "",
+      "h2": "CRUD、API、RBAC 各用一句話",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "CRUD",
+          "tag": null,
+          "tagClass": null,
+          "heading": "資料會怎麼變",
+          "paragraph": "新增、讀取、更新、刪除。上週的使用者管理就是這四個。",
+          "bullets": []
+        },
+        {
+          "num": "API",
+          "tag": null,
+          "tagClass": null,
+          "heading": "兩邊說好的入口",
+          "paragraph": "前端請後端做事的門口。例如送出詢問是一個，查詢問清單是另一個。",
+          "bullets": []
+        },
+        {
+          "num": "RBAC",
+          "tag": null,
+          "tagClass": null,
+          "heading": "依角色，不依人",
+          "paragraph": "角色權限控管。先定角色能做什麼，再把人放進角色。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這三句對齊第 1 週投影片，也對齊公開詞彙表：RBAC 是依使用者角色決定可查看或操作哪些功能。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三個詞",
+      "slideId": "s9",
+      "index": 9,
+      "footerPage": "9 / 30"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "角色 / 18:48–19:10",
+      "kicker": "",
+      "h1": "",
+      "h2": "人會換，角色比較穩",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "依人",
+          "tag": null,
+          "tagClass": null,
+          "heading": "每一個人各寫一條",
+          "paragraph": "",
+          "bullets": [
+            "小王可以刪、小陳不行",
+            "人一離職就要改程式",
+            "很容易漏"
+          ]
+        },
+        {
+          "num": "依角色",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先寫角色，再派人",
+          "paragraph": "",
+          "bullets": [
+            "客服都不能刪",
+            "新人只要指定成客服",
+            "規則只維持三份"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "Northgo 詢問處理用三個角色：管理員、業務、客服。英文對照是 admin、editor、viewer 的想法，但課堂用中文角色名。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "為什麼不依人",
+      "slideId": "s10",
+      "index": 10,
+      "footerPage": "10 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "角色 / Northgo 詢問",
+      "kicker": "",
+      "h1": "",
+      "h2": "誰可以看、誰可以改、誰可以刪",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "動作",
+          "管理員",
+          "業務",
+          "客服"
+        ],
+        [
+          "看詢問",
+          "全部",
+          "全部",
+          "只看自己的"
+        ],
+        [
+          "改狀態和備註",
+          "可以",
+          "可以",
+          "只能改成處理中"
+        ],
+        [
+          "刪詢問",
+          "可以",
+          "不行",
+          "不行"
+        ],
+        [
+          "管帳號和角色",
+          "可以",
+          "不行",
+          "不行"
+        ]
+      ],
+      "callouts": [
+        "狀態仍是上週的三個：新進、處理中、已回覆。客服不能把它改成已回覆，也不能刪。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三種角色",
+      "slideId": "s11",
+      "index": 11,
+      "footerPage": "11 / 30"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "把關 · 30 分鐘（19:10–19:40）",
+      "h1": "藏按鈕不夠\n伺服器要回 403",
+      "h2": "",
+      "lead": "畫面可以少一顆刪除鈕，讓人少點錯。真正算數的是：沒權限的人就算自己打網址，也改不到資料。",
+      "stamp": "403 · 權限表 · 誰改了什麼",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "擋在哪裡",
+      "slideId": "s12",
+      "index": 12,
+      "footerPage": "12 / 30"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "把關 / 畫面和伺服器",
+      "kicker": "",
+      "h1": "",
+      "h2": "藏起來給人看，403 才是把關",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "畫面",
+          "tag": null,
+          "tagClass": null,
+          "heading": "依角色少放按鈕",
+          "paragraph": "",
+          "bullets": [
+            "客服看不到刪除",
+            "客服看不到帳號管理",
+            "業務看得到詢問，看不到帳號"
+          ]
+        },
+        {
+          "num": "伺服器",
+          "tag": null,
+          "tagClass": null,
+          "heading": "每條 /api/admin 都查",
+          "paragraph": "",
+          "bullets": [
+            "不允許就回 403",
+            "正文寫「你沒有這個權限」",
+            "不要順便改到資料"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜403：伺服器拒絕這次請求。人還是登入了，只是這個動作不準做。跟「沒登入」不是同一件事。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "兩層一起做",
+      "slideId": "s13",
+      "index": 13,
+      "footerPage": "13 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "把關 / 資料表要多四張",
+      "kicker": "",
+      "h1": "",
+      "h2": "角色、權限、誰屬於哪個角色、誰改了什麼",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "表",
+          "放什麼"
+        ],
+        [
+          "roles",
+          "管理員、業務、客服"
+        ],
+        [
+          "permissions",
+          "看詢問、改狀態、刪詢問、管帳號"
+        ],
+        [
+          "role_permissions",
+          "哪個角色可以做哪個動作"
+        ],
+        [
+          "user_roles",
+          "哪個帳號是哪個角色"
+        ],
+        [
+          "audit_log",
+          "誰、何時、改了哪一筆、改成什麼"
+        ]
+      ],
+      "callouts": [
+        "人的資料還在上週的使用者表。今天只加「他是哪種角色」，不要把權限直接寫在每一個人身上。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "權限表",
+      "slideId": "s14",
+      "index": 14,
+      "footerPage": "14 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "把關 / 留紀錄",
+      "kicker": "",
+      "h1": "",
+      "h2": "狀態一改，就要留下是誰改的",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "誰",
+          "tag": null,
+          "tagClass": null,
+          "heading": "哪一個帳號",
+          "paragraph": "寫帳號名稱，不寫密碼。",
+          "bullets": []
+        },
+        {
+          "num": "何時",
+          "tag": null,
+          "tagClass": null,
+          "heading": "改的時間",
+          "paragraph": "用伺服器的時間，不要用瀏覽器自己填。",
+          "bullets": []
+        },
+        {
+          "num": "什麼",
+          "tag": null,
+          "tagClass": null,
+          "heading": "哪一筆、改成什麼",
+          "paragraph": "例如詢問 12 的狀態，從新進改成處理中。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這張紀錄只有管理員讀得到。今天的進階題才做；基本題先把 403 做對。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "誰改了什麼",
+      "slideId": "s15",
+      "index": 15,
+      "footerPage": "15 / 30"
+    },
+    {
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "練習 1 · 35 分鐘（19:40–20:15）",
+      "h1": "客服不能刪\n就算打網址也不行",
+      "h2": "",
+      "lead": "基本題：客服登入後看不到刪除，而且呼叫刪除時伺服器回 403。進階題再留下誰改了狀態。",
+      "stamp": "提示詞從下一頁開始，可以整段複製",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "footerBrand": "AIDC.work",
+      "title": "動手做",
+      "slideId": "s16",
+      "index": 16,
+      "footerPage": "16 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "練習 / 先看步驟",
+      "kicker": "",
+      "h1": "",
+      "h2": "六步。回家也照這張表",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "你做什麼",
+          "看到什麼算成功"
+        ],
+        [
+          "1",
+          "打開上週專案，不要選 Cloud",
+          "左邊有 src/worker.js"
+        ],
+        [
+          "2",
+          "先貼「只出計畫」那一句",
+          "它還沒改檔，先給你一張表"
+        ],
+        [
+          "3",
+          "你說照計畫做，再貼資料表那句",
+          "多了 roles 等表"
+        ],
+        [
+          "4",
+          "貼伺服器擋下那句",
+          "客服刪除時看到 403"
+        ],
+        [
+          "5",
+          "貼畫面那句",
+          "客服的畫面上沒有刪除鈕"
+        ],
+        [
+          "6",
+          "用假帳號各登入一次",
+          "三種人看到的不一樣"
+        ]
+      ],
+      "callouts": [
+        "改壞了就在對話裡按 Restore Checkpoint。一次只貼一句。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "練習前的步驟",
+      "slideId": "s17",
+      "index": 17,
+      "footerPage": "17 / 30"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "練習 / 基本題必做，進階題選做",
+      "kicker": "",
+      "h1": "",
+      "h2": "先擋刪除，再留改狀態的紀錄",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "必做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "基本題",
+          "paragraph": "",
+          "bullets": [
+            "三種角色寫進資料表",
+            "客服刪詢問得到 403",
+            "客服畫面沒有刪除鈕",
+            "管理員仍可以刪"
+          ]
+        },
+        {
+          "num": "選做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "進階題",
+          "paragraph": "業務把一筆狀態改成已回覆後，管理員看得到是哪個帳號、什麼時間改的。客服讀不到這張紀錄。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "換駕駛。自己的專題：把客服換成你的「只能看自己的人」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "練習題目",
+      "slideId": "s18",
+      "index": 18,
+      "footerPage": "18 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 先規劃",
+      "kicker": "",
+      "h1": "",
+      "h2": "先要一張權限表，不要馬上改檔",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "和第 3、4 週一樣：先看計畫。你點頭之後，才貼下一句。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "先出計畫",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：我。請先當顧問，不要改任何檔案。\n要做什麼：規劃 Northgo 後台的角色權限。角色只有三種：管理員、業務、客服。\n長什麼樣：用繁體中文給一張表。列出來誰可以看詢問、改狀態、刪詢問、管帳號。並寫沒有權限時，/api/admin 要回 403 和哪一句中文。\n限制：不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s19",
+      "index": 19,
+      "footerPage": "19 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 資料表",
+      "kicker": "",
+      "h1": "",
+      "h2": "先把角色和權限存成表",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜migration：改資料表的腳本，讓每個人電腦上的表長得一樣。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "建立角色資料表",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會用：管理員指派角色時會用到這些表。\n要做什麼：寫一份 D1 migration。表有 roles、permissions、role_permissions、user_roles。權限至少有：看詢問、改狀態、刪詢問、管帳號。再加 audit_log：誰、何時、哪一筆、改成什麼。\n長什麼樣：一份 SQL。先放入管理員、業務、客服三個角色，並照我們的權限表把關係寫好。\n限制：不要塞真實客戶。不要改 .dev.vars，不要把它加進 git。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s20",
+      "index": 20,
+      "footerPage": "20 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 伺服器",
+      "kicker": "",
+      "h1": "",
+      "h2": "每條後台請求都先查角色",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "403 表示登入了，但這個動作不準。資料要維持原樣。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "伺服器回 403",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會呼叫：已經登入、打到 /api/admin 開頭的人。程式在 src/worker.js。\n要做什麼：先查出這個人的角色。客服不能刪詢問、不能管帳號，而且只能把狀態改成處理中。業務不能刪詢問、不能管帳號。管理員可以。不允許就回 403，正文「你沒有這個權限」，不要改資料。\n長什麼樣：JSON。刪除和改狀態都走 /api/admin/enquiries。管帳號仍走原本的使用者管理。\n限制：不能只靠藏按鈕。沒登入要先擋，再談角色。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s21",
+      "index": 21,
+      "footerPage": "21 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 畫面",
+      "kicker": "",
+      "h1": "",
+      "h2": "客服不要看到刪除和帳號管理",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "先用一個假的客服帳號看畫面，再請別人用管理員帳號對一次。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "畫面依角色藏按鈕",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會看：管理員、業務、客服登入同一套後台。\n要做什麼：客服不顯示刪除，也不顯示帳號管理。業務看得到詢問和改狀態，看不到帳號管理。管理員全部看得到。\n長什麼樣：繁體中文。按鈕直接不出現，不要只變成灰色。\n限制：藏按鈕不夠。伺服器仍要回 403。文字若在 content/site.js，就改那裡。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s22",
+      "index": 22,
+      "footerPage": "22 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 測試",
+      "kicker": "",
+      "h1": "",
+      "h2": "每個角色寫下看到什麼",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "三個都測完，基本題才算過。測不到的角色寫「未測」。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三種角色各測一次",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰來測：我自己，用三個假帳號。\n要做什麼：管理員、業務、客服各登入一次。客服請求刪除一筆詢問，應得到 403，而且那筆還在。業務打開帳號管理，應進不去。管理員可以把另一個假帳號改成客服。\n長什麼樣：每個角色三行：帳號、做了什麼、看到什麼。\n限制：帳號用 admin.test、sales.test、service.test。密碼不要寫進對話。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s23",
+      "index": 23,
+      "footerPage": "23 / 30"
+    },
+    {
+      "layout": "cards",
+      "hero": false,
+      "eyebrow": "範例 / 選做",
+      "kicker": "",
+      "h1": "",
+      "h2": "進階：留下誰、何時、改成什麼",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "基本題還沒過，就不要貼這句。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "記下誰改了狀態",
+      "promptBlock": {
+        "label": "整段複製，貼到 Cursor",
+        "text": "誰會看這張紀錄：只有管理員。\n要做什麼：業務把一筆詢問從「新進」改成「已回覆」時，寫進 audit_log：帳號、時間、哪一筆、舊狀態、新狀態。客服讀這張紀錄要得到 403。\n長什麼樣：管理員在明細頁看得到一行字：「sales.test 在什麼時間把狀態改成已回覆」。\n限制：時間用伺服器的時間。不要記錄密碼。這題選做。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+      },
+      "slideId": "s24",
+      "index": 24,
+      "footerPage": "24 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "練習 / 驗收",
+      "kicker": "",
+      "h1": "",
+      "h2": "領航拿這張表，三種帳號都點過",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "怎麼驗",
+          "通過"
+        ],
+        [
+          "角色",
+          "看資料表",
+          "有管理員、業務、客服"
+        ],
+        [
+          "客服刪除",
+          "用客服帳號刪一筆",
+          "403，資料還在"
+        ],
+        [
+          "客服畫面",
+          "登入客服",
+          "沒有刪除，也沒有帳號管理"
+        ],
+        [
+          "業務",
+          "登入業務",
+          "改得了狀態，進不了帳號管理"
+        ],
+        [
+          "管理員",
+          "登入管理員",
+          "仍可以刪，也可以改別人的角色"
+        ],
+        [
+          "紀錄",
+          "進階才測",
+          "看得到是誰改的狀態"
+        ]
+      ],
+      "callouts": [
+        "沒過的寫進 README。不要把三個密碼一起貼上群組，只說哪個角色被擋住。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "驗收表",
+      "slideId": "s25",
+      "index": 25,
+      "footerPage": "25 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "安全 / 15 分鐘（20:55–21:10）",
+      "kicker": "",
+      "h1": "",
+      "h2": "測角色用假帳號，密碼留在自己電腦",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "帳號",
+          "tag": null,
+          "tagClass": null,
+          "heading": "三個就好",
+          "paragraph": "admin.test、sales.test、service.test。不要用真實同事的信箱。",
+          "bullets": []
+        },
+        {
+          "num": "密碼",
+          "tag": null,
+          "tagClass": null,
+          "heading": "不要傳出去",
+          "paragraph": "不要寫進提示詞、README、LINE。Cursor 若問密碼，先停下來問講師。",
+          "bullets": []
+        },
+        {
+          "num": "鑰匙檔",
+          "tag": null,
+          "tagClass": null,
+          "heading": ".dev.vars 不上傳",
+          "paragraph": "本機的鑰匙。不要 commit，不要貼到對話。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "示範站 northgo-w4 是全班共用的。練習若會改到共用資料，先問講師要不要改自己的複本。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "假帳號",
+      "slideId": "s26",
+      "index": 26,
+      "footerPage": "26 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 回家照著做",
+      "kicker": "",
+      "h1": "",
+      "h2": "回家不用背：照這 8 步",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "做什麼",
+          "怎樣算做完"
+        ],
+        [
+          "1",
+          "打開上週專案，不要選 Cloud",
+          "看得到 src/worker.js"
+        ],
+        [
+          "2",
+          "貼「先出計畫」",
+          "有一張三種角色的表，還沒改檔"
+        ],
+        [
+          "3",
+          "說照計畫做，貼資料表那句",
+          "有 roles 和 user_roles"
+        ],
+        [
+          "4",
+          "貼伺服器回 403 那句",
+          "客服刪除被擋"
+        ],
+        [
+          "5",
+          "貼藏按鈕那句",
+          "客服畫面沒有刪除"
+        ],
+        [
+          "6",
+          "三個假帳號各登入一次",
+          "README 有三行測試結果"
+        ],
+        [
+          "7",
+          "沒過的寫進修正清單",
+          "下一輪知道改什麼"
+        ],
+        [
+          "8 選做",
+          "貼紀錄那句",
+          "管理員看得到是誰改的"
+        ]
+      ],
+      "callouts": [
+        "提示詞在第 19 到 24 頁。步驟表在第 17 頁。密碼不要寫進 README。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "回家照著做",
+      "slideId": "s27",
+      "index": 27,
+      "footerPage": "27 / 30"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "99 / 成果展示 · 10′（21:10–21:20）",
+      "kicker": "",
+      "h1": "",
+      "h2": "每組 2 分鐘：只示範被擋住",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "1",
+          "tag": null,
+          "tagClass": null,
+          "heading": "客服",
+          "paragraph": "登入後指出畫面上沒有刪除。",
+          "bullets": []
+        },
+        {
+          "num": "2",
+          "tag": null,
+          "tagClass": null,
+          "heading": "403",
+          "paragraph": "仍去刪一筆，讓大家看到「你沒有這個權限」。",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "一個還沒好的",
+          "paragraph": "念修正清單第一行。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "其他組只問一件事：業務進不進得了帳號管理？線上同學請分享螢幕。不要念密碼。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "成果展示",
+      "slideId": "s28",
+      "index": 28,
+      "footerPage": "28 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 作業 · 21:20–21:30",
+      "kicker": "",
+      "h1": "",
+      "h2": "作業：三種角色，客服刪不掉",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "項目",
+          "交什麼",
+          "怎樣算做完"
+        ],
+        [
+          "必做",
+          "三種角色",
+          "管理員、業務、客服，權限照今天的表"
+        ],
+        [
+          "必做",
+          "403",
+          "客服刪詢問被拒絕，資料還在"
+        ],
+        [
+          "必做",
+          "畫面",
+          "客服看不到刪除和帳號管理"
+        ],
+        [
+          "必做",
+          "三行測試",
+          "README 各寫帳號、做了什麼、看到什麼"
+        ],
+        [
+          "選做",
+          "紀錄",
+          "管理員看得到誰把狀態改成已回覆"
+        ],
+        [
+          "選做",
+          "自己的題目",
+          "把客服換成你的「只能看自己的人」"
+        ]
+      ],
+      "callouts": [
+        "下週開場每組 2 分鐘。不要交密碼，不要交真實客戶。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "作業",
+      "slideId": "s29",
+      "index": 29,
+      "footerPage": "29 / 30"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "99 / 下週預告",
+      "kicker": "",
+      "h1": "",
+      "h2": "W6｜測試、修正與部署準備",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "下週",
+          "你會做的",
+          "今天先留好"
+        ],
+        [
+          "再測一輪",
+          "三種角色各走一次主流程",
+          "今天的三行測試"
+        ],
+        [
+          "修正清單",
+          "沒過的集中改，不另開功能",
+          "README 的下一輪"
+        ],
+        [
+          "上線前",
+          "哪些檔不能帶上去",
+          ".dev.vars 沒有進 git"
+        ]
+      ],
+      "callouts": [
+        "原課表第 6 週是後台清單。清單和帳號上週已做，角色這週做完，所以下週轉去測試和準備上線。cursor 專案請留著。問卷連結在 LINE 群。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "W6 預告",
+      "slideId": "s30",
+      "index": 30,
+      "footerPage": "30 / 30"
+    }
+  ]
+}
