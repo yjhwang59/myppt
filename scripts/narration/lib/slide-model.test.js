@@ -40,6 +40,37 @@ test("hero slides render and round-trip links too", () => {
   assert.deepEqual(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).links, slide.links);
 });
 
+test("speaker notes render as a hidden aside and round-trip", () => {
+  const slide = {
+    slideId: "s1",
+    index: 1,
+    title: "t",
+    layout: "cards",
+    h2: "h",
+    cards: [],
+    callouts: [],
+    notes: "講稿 <第一句>",
+  };
+  const html = renderSlideHtml(slide, 1);
+  assert.match(html, /<aside class="notes">講稿 &lt;第一句&gt;<\/aside>/);
+  const $ = cheerio.load(html, { decodeEntities: false });
+  assert.equal(migrateSlideFromHtml($, $(".slide").get(0), 0, 1).notes, slide.notes);
+});
+
+test("prompt slides are marked so the code block can stay inside the frame", () => {
+  const slide = {
+    slideId: "s1",
+    index: 1,
+    title: "t",
+    layout: "cards",
+    h2: "h",
+    cards: [],
+    callouts: [],
+    promptBlock: { label: "建立總管", text: "第一行" },
+  };
+  assert.match(renderSlideHtml(slide, 1), /class="slide has-prompt active"/);
+});
+
 test("promptBlock renders escaped and round-trips with line breaks", () => {
   const slide = { slideId: "s1", index: 1, title: "t", layout: "cards", h2: "h", cards: [], callouts: [],
     promptBlock: { label: "教練提示詞", text: "第一行 <x>\n第二行" } };

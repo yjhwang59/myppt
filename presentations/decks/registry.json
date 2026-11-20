@@ -212,6 +212,36 @@
       "summary": "用 Cursor 本機照 Wireframe 做出可雙擊打開的首版頁面，並寫 AI 個人檔案。"
     },
     {
+      "deckId": "ai-agent-course-week04-form-validation",
+      "title": "第 4 週｜表單設計與資料驗證",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 4 週。企業AI內訓 2026-11-18 18:30–21:30。案例：大躍 Northgo 詢價表。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-16T06:30:00.000Z",
+      "updatedAt": "2026-11-16T06:30:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "看 Northgo 詢價表的必填、信箱格式和字數，並在自己的頁面上加一欄、做檢查。"
+    },
+    {
+      "deckId": "ai-agent-course-week05-rbac",
+      "title": "第 5 週｜角色權限控管",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "AI 系統開發入門班（8 週）第 5 週。企業AI內訓 2026-11-25 18:30–21:30。在 Northgo 後台加上管理員、業務、客服。slides.json 為 SSOT，改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-19T01:00:00.000Z",
+      "updatedAt": "2026-11-19T01:00:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "在第 4 週後台之上，用角色決定誰能看詢問、改狀態、刪除和管帳號。"
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-10-17",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-10-17｜W5 固定驗收集",
       "sourceType": "html",
@@ -234,6 +264,21 @@
       "updatedAt": "2026-10-15T09:15:12.240Z"
     },
     {
+      "deckId": "aidc-grokbot-ai-team-2026-11-13",
+      "title": "Grok Bot AI 團隊｜已派工，不等於已完成",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "2026-11-13 本週教學。我在 aidc.work 怎麼帶一支 Grok Bot 教學團隊。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-13T08:40:00.000Z",
+      "updatedAt": "2026-11-13T08:40:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "已派工，不等於已完成。先讓一個 Bot 交出你認的成果，再交給總管分工；對外內容先核准，再用真實連結驗收。"
+    },
+    {
       "deckId": "pccu-1151-bigdata-2026-11-07",
       "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-11-07｜期末彩排",
       "sourceType": "html",
@@ -254,6 +299,21 @@
       "listed": true,
       "sortOrder": 0,
       "summary": "課前簡報（業師教材對讀＋PBL 工作室）。2026-11-14（六）13:10。期中之後：把業師的「大數據策略」變成可驗證假設。不點名、不公開個別分數。"
+    },
+    {
+      "deckId": "yuda-teacher-ai-clone-2026-11-18",
+      "title": "育達科技大學｜如何造出教師 AI 分身｜2026-11-18",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "2026-11-18 育達科技大學教師 AI 研習，約 90 分鐘。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。ydutest 執行時不呼叫 AI；教師 AI 分身與 AI 問答助教為規劃中。",
+      "createdAt": "2026-11-18T02:30:00.000Z",
+      "updatedAt": "2026-11-18T02:30:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "90 分鐘教師研習。對照已上線的 ydutest：平台執行時不跑 AI。教師 AI 分身與 AI 問答助教都還在規劃中。最後每人寫一頁提案。"
     }
   ],
   "categories": [

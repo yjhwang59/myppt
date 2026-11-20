@@ -1,0 +1,1200 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-grokbot-ai-team-2026-11-13",
+  "deckPath": "aidc-grokbot-ai-team-2026-11-13.html",
+  "title": "Grok Bot AI 團隊｜已派工，不等於已完成",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "黃燕忠",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "bee2e30d3470044ac3f6fe35425e05403bfd049c50315c6b961c9527187611eb",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "本週教學簡報",
+        "headings": [
+          "已派工，不等於已完成"
+        ],
+        "lead": "我在 aidc.work 怎麼帶一支 Grok Bot 教學團隊",
+        "stamp": "黃燕忠 博士｜AI發展顧問｜aidc.work",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "各位好，我是黃燕忠，在 aidc.work 做 AI 發展顧問，也帶這門課。今天這週的主題，我先送各位一句話：已派工，不等於已完成。很多人一聽到組 AI 團隊，就想一次招很多 Bot。我自己帶團隊的經驗不是這樣。先讓一個 Bot 交出你認的成果，再交給總管分工；對外要發的內容，一定先經過你核准。等一下我會用我自己的每日金句當例子，帶各位把這套方法做一遍。",
+      "estimatedSeconds": 38,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "今天的路線",
+      "sourceHash": "f4c9e5afe53504e43cb3d3906ea2d511e1450d0417f38d69306374e0287cbb00",
+      "extractedContent": {
+        "eyebrow": "02 / 今天的路線",
+        "kicker": "",
+        "headings": [
+          "今天會先把這幾件事講清楚"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "為什麼要組 Bot 團隊，而不是一直單聊",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "四個核心觀念：協作、記憶、排程、雲端工作",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "怎麼建立第一個 Bot，以及總管怎麼驗收",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "我在 aidc.work 的團隊怎麼分工",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "每日金句案例、課堂練習，跟本週作業",
+            "paragraph": "",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "今天的路線很單純。我們先談什麼情況才需要組團隊。接著把四個觀念講清楚，尤其是記憶跟排程，這兩個最容易混在一起。再來會示範怎麼建立第一個 Bot，還有總管要怎麼驗收，才不會只會傳話。中間我會畫出我在 aidc.work 實際在用的角色分工，再講每日金句這個真實案例。最後留時間做課堂練習，並把本週作業交代清楚。各位不用一次全做完，先把觀念跟第一個動作做對就好。",
+      "estimatedSeconds": 39,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "什麼時候組團隊",
+      "sourceHash": "61da9b292fd9bdaecdc5824faac1027a628aaae874302028ce648ccd2def9229",
+      "extractedContent": {
+        "eyebrow": "03 / 什麼時候組團隊",
+        "kicker": "",
+        "headings": [
+          "什麼時候，才需要組一支 Bot 團隊？"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "臨時問一句，直接對話就夠了",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "會反覆做、還要交接的工作，才適合交給固定職位的 Bot",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "像是寫 Blog、整理簡報、準備金句、按時發到共學群",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "先不要招滿整間公司；先讓一個 Bot 交出你認的成果",
+            "paragraph": "",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "先跟各位說，不是什麼事都要組團隊。你臨時想問一個觀念，打開對話問就好，不必大費周章。可是教學工作常常不是問一句就結束。寫一篇文章、做一組簡報、每天要發金句，這些事會反覆做，也常要交給不同角色接力。這種時候，才適合組一支固定的 Bot 團隊。還有一句話請先記住：不要一開始就招滿整間公司。先讓一個 Bot 做出你看得過的成果，再把它放進團隊。這樣後面比較不容易亂。",
+      "estimatedSeconds": 39,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "四個觀念",
+      "sourceHash": "44f0d339a253b0c57353bf3b50ce653182d242917b6d1b396754524d5d2b4335",
+      "extractedContent": {
+        "eyebrow": "04 / 四個觀念",
+        "kicker": "",
+        "headings": [
+          "先搞懂四件事：協作、記憶、排程、雲端工作"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "協作",
+            "paragraph": "不同職位做不同事，總管負責分工和交接",
+            "bullets": []
+          },
+          {
+            "heading": "記憶",
+            "paragraph": "長期記住定位、語氣和工作規則；說「記住了」還要重述、再測試",
+            "bullets": []
+          },
+          {
+            "heading": "排程",
+            "paragraph": "決定何時執行；記得每天做，不代表排程已經設好",
+            "bullets": []
+          },
+          {
+            "heading": "雲端工作",
+            "paragraph": "任務可以在雲端繼續跑；先確認已啟動，通知也收得到",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "這四件事，我希望各位今天就能分得開。協作，就是不要讓同一個 Bot 什麼都做，總管負責分工，專員負責交接。記憶，是讓它長期記得你是誰、你的語氣、你的工作規則，這樣就不必每次從頭講；可是它說記住了，你還是要請它用自己的話講一次，再拿新例子測。排程跟記憶不一樣。記憶是記得要做，排程才是什麼時候做。你跟它說每天要發金句，不代表排程已經設好，還要核對日期、時間、時區和啟用狀態。最後是雲端工作：任務可以在你離開之後繼續跑，但前提是任務真的已啟動，通知也收得到。",
+      "estimatedSeconds": 50,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "第一個 Bot",
+      "sourceHash": "f30095237b9ba9e23a9c7b1d8020edca0dade1eea7d68c985c1628f99951a8fc",
+      "extractedContent": {
+        "eyebrow": "05 / 第一個 Bot",
+        "kicker": "",
+        "headings": [
+          "先建立第一個 Bot"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "先說清楚三件事",
+            "paragraph": "我給你什麼、你做什麼、最後交什麼格式",
+            "bullets": []
+          },
+          {
+            "heading": "可以請建角助手幫忙",
+            "paragraph": "教學手冊裡稱它為 eggbot；也可以手動建立",
+            "bullets": []
+          },
+          {
+            "heading": "這一步的驗收",
+            "paragraph": "角色出現在列表、對話打得開、能正確說出自己的工作",
+            "bullets": []
+          },
+          {
+            "heading": "介面名稱、方案和權限，以你帳號實際看到的為準",
+            "paragraph": "",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "實作的第一步，不是先寫一篇很長的提示詞。你只要先說清楚三件事：你會給它什麼資料、你要它做什麼、最後希望用什麼格式交回來。新手可以先找一位專門幫你建立 Bot 的助手，原手冊裡稱它為 eggbot；如果你比較習慣自己來，手動建立也可以。怎麼算完成呢？很具體：新角色出現在側邊列表，對話打得開，問它「你負責什麼」，它講得清楚。至於畫面上的名稱、方案、能不能用某些工具，請以你自己帳號實際看到的為準，我不會在這裡幫產品保證功能。",
+      "estimatedSeconds": 46,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "總管要驗收",
+      "sourceHash": "f6866c42f493f910a1801c6911a666e78cfc08a909fe83fa44a79e800290fad3",
+      "extractedContent": {
+        "eyebrow": "06 / 總管要驗收",
+        "kicker": "",
+        "headings": [
+          "總管要會派工，更要會驗收"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "你負責目標，以及最後准不准過",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "總管負責",
+            "paragraph": "確認需求、拆任務、派工、檢查、退修、彙整",
+            "bullets": []
+          },
+          {
+            "heading": "對外發布或寄送",
+            "paragraph": "只能依你明確核准的內容和範圍執行",
+            "bullets": []
+          },
+          {
+            "heading": "把驗收標準寫清楚",
+            "paragraph": "才不會變成只會轉交訊息",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "最重要的一句話：已派工，不等於已完成"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "總管，有時我也叫它總經理。它的工作不是把你的話轉來轉去。你把目標交代一次，由它拆任務、找對人、檢查成果。可是目標跟最後准不准過，還是你決定。這裡請各位把一句話寫進總管的規則裡：已派工，不等於已完成。它收到東西以後，要看有沒有做完、來源可不可靠、格式對不對。沒過關，就要寫出具體修改意見，退回去改。缺資料，或是需要你做決定，就一次問清楚。尤其是部落格、簡報、LINE 訊息這些對外內容，沒有你的核准，不能發。建好之後，一定要用一個小任務實測，看它是不是真的有在檢查。",
+      "estimatedSeconds": 51,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "團隊分工",
+      "sourceHash": "f9de33ee84f7a557ff9aed2381c8bcee6a65c49769a7eb4b5b4f5a9cc86bdbe9",
+      "extractedContent": {
+        "eyebrow": "07 / 團隊分工",
+        "kicker": "",
+        "headings": [
+          "我在 aidc.work 的 AI 團隊怎麼分工"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "中間是總管",
+            "paragraph": "拆解、派工、檢查、再交給我審核",
+            "bullets": []
+          },
+          {
+            "heading": "專員",
+            "paragraph": "AI秘書、AI文膽、AI英文家教",
+            "bullets": []
+          },
+          {
+            "heading": "內容角色",
+            "paragraph": "每日更新 aidc.work Blog、myppt 簡報",
+            "bullets": []
+          },
+          {
+            "heading": "查證角色",
+            "paragraph": "AI技術長",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "第一次試跑只做草稿，不發布、不上稿、不發送"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "跟各位說明一下，我自己在 aidc.work 實際怎麼組。中間是總管。旁邊有秘書，幫我整理待辦和要我決定的事；文膽幫我寫稿、改稿，語氣要口語、句子要短；英文家教處理英文句子，每日金句就是它先寫。另外還有專門準備 aidc.work 部落格草稿的角色，以及幫忙整理 myppt 簡報的角色。技術長則是查證技術問題，不準編造功能或數據。各位不一定要複製我全部的職位。重點是：每個角色交出去的東西要清楚，總管要檢查，最後交到我手上的是可以審核的成果。第一次試跑，我一定要求只做草稿，先不要發出去。",
+      "estimatedSeconds": 53,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "每日金句",
+      "sourceHash": "cdcdfd04ebdde44c2f8b330603f537b36f0e4314123cabe12845a2c2797ee349",
+      "extractedContent": {
+        "eyebrow": "08 / 每日金句",
+        "kicker": "",
+        "headings": [
+          "每日金句：一則例行工作，怎麼變成穩定流程"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "【AI每日金句】由 AI 英文家教先寫",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "總管在 08:10 發到 LINE 共學群",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "曾有重複句子溜出去",
+            "paragraph": "後來加上「對照檔案、365 天不重複」的檢查",
+            "bullets": []
+          },
+          {
+            "heading": "教訓",
+            "paragraph": "如果沒把教訓寫回規則，下週還是會再犯",
+            "bullets": []
+          },
+          {
+            "heading": "再例行的對外內容，也要先核准，再用真實訊息核對",
+            "paragraph": "",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "我用一個自己天天在做的例子，各位會比較有感覺。每天的【AI每日金句】，是英文家教先寫，總管再在早上 08:10 發到 LINE 共學群。聽起來很單純，對不對？可是有一次，重複的句子還是溜出去了。後來我們加了一條很明確的規則：要對照既有檔案，365 天內不能重複。這件事我想特別講給各位聽。不是設了流程就不會出錯；出錯沒關係，但一定要把教訓寫回規則。不然下週還是會再犯同一件事。所以就算是每天都要發的內容，也要先核准，再發送；發完以後，還要回到真實的群組訊息上核對，不要只聽它說「我發了」。",
+      "estimatedSeconds": 53,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "先發一則",
+      "sourceHash": "0976300924caae1b549671d9ea0f5470297b2543511a2d22f406bdd93634c34f",
+      "extractedContent": {
+        "eyebrow": "09 / 先發一則",
+        "kicker": "",
+        "headings": [
+          "先成功發一則，再交給排程"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "先指定哪一版已經通過",
+            "paragraph": "完整貼上，不要讓它自行改寫",
+            "bullets": []
+          },
+          {
+            "heading": "先成功發一則",
+            "paragraph": "再用真實連結或真實對話核對",
+            "bullets": []
+          },
+          {
+            "heading": "再安排下一則",
+            "paragraph": "寫完整日期、時間，時區用 Asia/Taipei（台灣時間，UTC+8）",
+            "bullets": []
+          },
+          {
+            "heading": "排程建立成功，和實際發送成功，是兩件事",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "沒把握或結果不確定",
+            "paragraph": "先通知你，不要重複發送",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "排程很有用，可是順序很重要。先不要一開始就排很多則。先指定哪一版已經通過，最好把核准的文案完整貼給總管，請它不要自行改寫、也不要加料。先成功發一則，你自己回到真實連結或真實對話上看過，再排下一則。日期請寫完整，時區我自己固定寫 Asia/Taipei，也就是台灣時間。不要只說「今天下午」，也不要讓已過的時間還停在排程裡。還有，排程建立成功，跟實際發送成功，是兩件事。第一次一定要小規模測試。若它沒把握，或結果不確定，要先通知你，千萬不要重複發送。",
+      "estimatedSeconds": 50,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "真實連結",
+      "sourceHash": "d5165595fce2d0cf426b189b688a7659ca6bf38b2b25b5161232dab2b49e4fa3",
+      "extractedContent": {
+        "eyebrow": "10 / 真實連結",
+        "kicker": "",
+        "headings": [
+          "打開真實連結，才算驗收完成"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "不要只驗收「網頁做好了」或「它說完成了」",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "打開真實連結、真實對話",
+            "paragraph": "確認內容就是核准的那一版",
+            "bullets": []
+          },
+          {
+            "heading": "沒有資料就寫「暫無資料」",
+            "paragraph": "不要填假數字",
+            "bullets": []
+          },
+          {
+            "heading": "頁面上有數字，不代表已經接上真實來源",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "進度最好能集中查看",
+            "paragraph": "但仍要用一次可核對的更新做測試",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "驗收這件事，我希望各位今天就養成習慣。不要只看它回你「做好了」，也不要只看排版漂不漂亮。打開真實連結，打開真實對話，確認帳號對不對、文字對不對、是不是你核准的那一版。如果在做進度頁或看板，沒有資料就老老實實寫「暫無資料」，千萬不要填一個假數字上去充場面。頁上有數字，不代表已經接上真實來源。原手冊也提醒過，還要問資料從哪裡來、多久更新一次、需要哪些權限。最好做一次可核對的更新測試：你新增一筆，看它會不會依約定出現；測完再把測試資料拿掉。",
+      "estimatedSeconds": 49,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "容易卡住",
+      "sourceHash": "4ab1ec09a983371d6d27f87f4581fe8fb41e6b82dc700ebdeaf343df62b394c2",
+      "extractedContent": {
+        "eyebrow": "11 / 容易卡住",
+        "kicker": "",
+        "headings": [
+          "最容易卡住的幾個地方"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "團隊一直討論、不交件",
+            "paragraph": "先縮小目標，今天先交草稿，並寫清驗收標準",
+            "bullets": []
+          },
+          {
+            "heading": "它說已記住，下次又做錯",
+            "paragraph": "請它重述規則，再拿新例子測試",
+            "bullets": []
+          },
+          {
+            "heading": "設了排程，以為一定會準時成功",
+            "paragraph": "以真實發送結果驗收，失敗要回報原因",
+            "bullets": []
+          },
+          {
+            "heading": "助手要你裝很多插件",
+            "paragraph": "先問這一步需不需要，只連現在用得到的工具",
+            "bullets": []
+          },
+          {
+            "heading": "寫得太硬、太像術語",
+            "paragraph": "把修改說具體，請總管更新規則後再重跑一輪",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "各位實作時，大概會碰到這幾種狀況。第一種，團隊一直討論，卻沒有交件。這時請總管先停止擴大需求，列出每個人目前的成果、卡在哪裡、還缺什麼，然後把目標縮小，例如今天先交一則草稿。第二種，它說記住了，下次又做錯。請它把目前的規則重述一遍，再給一個新例子測；如果只有在這串對話裡才做對，那規則可能還沒真正存好。第三種，排程設了，不代表一定會準時發出，還是要以真實結果為準。第四種，它要你裝很多插件，先問這一步是不是真的需要，只連現在用得到的。最後，如果寫得太硬，不要只說「再口語一點」，要把修改說具體，並請總管把規則改掉，再重跑一輪。",
+      "estimatedSeconds": 58,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "課堂練習",
+      "sourceHash": "cd3516fd80e646c3c0da625ae0404c2021b48ee04dbe778d8791fe70acf85308",
+      "extractedContent": {
+        "eyebrow": "12 / 課堂練習",
+        "kicker": "",
+        "headings": [
+          "課堂練習：先交出一則可審核的草稿"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "用「建立總管」提示詞",
+            "paragraph": "建立角色或先寫清職責",
+            "bullets": []
+          },
+          {
+            "heading": "交代你的工作背景",
+            "paragraph": "你是誰、為誰寫、語氣是什麼、什麼不能做",
+            "bullets": []
+          },
+          {
+            "heading": "請總管只做草稿",
+            "paragraph": "一則金句，或一段課後摘要",
+            "bullets": []
+          },
+          {
+            "heading": "本輪不發布、不上稿、不發送",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "互查重點",
+            "paragraph": "有沒有先求核准、有沒有寫清交付標準、有沒有編造內容",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "接下來請各位動手。不必一次把整支團隊建完。先用我準備的「建立總管」提示詞，把總管建起來，或至少把職責寫清楚。接著用背景模板，告訴它你是誰、你為誰寫、語氣是什麼、什麼事情不能做。然後只交一個小任務：準備一則金句草稿，或寫一段今天的課後摘要。記住，本輪只做草稿，不要發到任何地方。做完後，鄰座互相看一看：它有沒有先確認核准規則？交付標準寫清楚了沒有？有沒有自己編造來源或數據？這就是今天課堂要帶走的最小成果。",
+      "estimatedSeconds": 45,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "建立總管",
+      "sourceHash": "9b6518b354e661ac961dcc512f40d683f5d7c61cf423cf19a54a7d891691f241",
+      "extractedContent": {
+        "eyebrow": "提示詞 / 建立總管",
+        "kicker": "",
+        "headings": [
+          "建立總管"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "estimatedSeconds": 30,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "建立教學團隊",
+      "sourceHash": "cf2fd5d18ab3d66cd455fddf8375d509b0de8c177c2cf056fb6107c01f319d95",
+      "extractedContent": {
+        "eyebrow": "提示詞 / 建立教學團隊",
+        "kicker": "",
+        "headings": [
+          "建立 aidc.work 教學團隊"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "estimatedSeconds": 30,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "交代工作背景",
+      "sourceHash": "4dd61b9ab7290ce559e9fc9f9cee2c189a6194aa68dfcdb2609221bc8ef3743f",
+      "extractedContent": {
+        "eyebrow": "提示詞 / 交代工作背景",
+        "kicker": "",
+        "headings": [
+          "交代工作背景"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "estimatedSeconds": 30,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s16",
+      "index": 16,
+      "title": "核准後發送",
+      "sourceHash": "428ede2fe324d570df72ac1c6f91190e95d09070ed725f373b377379441e46bb",
+      "extractedContent": {
+        "eyebrow": "提示詞 / 核准後發送",
+        "kicker": "",
+        "headings": [
+          "核准後發送"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "estimatedSeconds": 30,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
+      "title": "設定排程",
+      "sourceHash": "1b55210156674a5cf14021006618e7d282e4fe91ae2aa6610a8b42365c574da1",
+      "extractedContent": {
+        "eyebrow": "提示詞 / 設定排程",
+        "kicker": "",
+        "headings": [
+          "設定排程"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "使用前請替換〔方括號〕內容。本週先做草稿，不發布、不上稿、不發送。",
+      "estimatedSeconds": 30,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s18",
+      "index": 18,
+      "title": "本週作業",
+      "sourceHash": "29e89603f802cb1ba1f08f252c6292405485778d7eabb1eec19f9c4ab9a34245",
+      "extractedContent": {
+        "eyebrow": "13 / 本週作業",
+        "kicker": "",
+        "headings": [
+          "本週作業與實作清單"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "本週至少完成清單前三項",
+            "paragraph": "第一個 Bot、總管一次真檢查、背景已交代並請它重述",
+            "bullets": []
+          },
+          {
+            "heading": "試跑一次分工",
+            "paragraph": "只交草稿，不對外發布",
+            "bullets": []
+          },
+          {
+            "heading": "有餘力再做",
+            "paragraph": "核准後發出一則，並用真實連結或真實對話核對",
+            "bullets": []
+          },
+          {
+            "heading": "再核對一個排程",
+            "paragraph": "完整日期、台灣時區、啟用狀態",
+            "bullets": []
+          },
+          {
+            "heading": "把這週一次教訓寫回規則",
+            "paragraph": "下週帶可核對的成果來",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "作業我開得實在，不要求各位一週做完所有項目。先完成前三項：第一個 Bot 建好，而且能說出自己的職責；總管實際派過一次工，並且有檢查、有提出修改，不是只傳話；再來，把你的定位、受眾、語氣和工作規則交代清楚，還要請它用自己的話重述。若還有時間，就試跑一次分工，只交草稿。更進一步，才是核准後真的發出一則，並用真實連結或真實對話核對；以及檢查一個排程的日期、時區和啟用狀態。最後一項我特別重視：這週不管踩到什麼坑，都要把教訓寫回規則。下週上課，請帶可核對的成果來，不要只說「我做了」。",
+      "estimatedSeconds": 53,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    },
+    {
+      "slideId": "s19",
+      "index": 19,
+      "title": "先跑通一次",
+      "sourceHash": "e19867f3a1965bfcc7664665859ca12285a80f91409a9e43a634d633f86cfc34",
+      "extractedContent": {
+        "eyebrow": "14 / 收尾",
+        "kicker": "",
+        "headings": [
+          "先跑通一次，再讓團隊反覆做好"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "你負責目標，以及最後的核准",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "總管負責分工與驗收",
+            "paragraph": "已派工，不等於已完成",
+            "bullets": []
+          },
+          {
+            "heading": "先成功做一則，再排程",
+            "paragraph": "用真實連結驗收",
+            "bullets": []
+          },
+          {
+            "heading": "把教訓寫回規則，流程才會穩定",
+            "paragraph": "",
+            "bullets": []
+          },
+          {
+            "heading": "下週",
+            "paragraph": "把這套方法，用在你自己每週都要做的工作上",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "我們收在這句話：先跑通一次，再讓團隊反覆做好。今天不是要各位回家就開一間很大的 AI 公司。你負責把目標說清楚，也負責最後准不准過。總管負責分工和驗收，不能把已派工當成已完成。對外的內容，先成功做一則，再交給排程；驗收時只認真實連結或真實對話。若過程中出了錯，像我的金句曾經重複發出，就把教訓寫回規則，下一次才會比較穩。方法我參考了七七行銷筆記的《Grok Bot 新手實戰指南》，再改成 aidc.work 的用法，連結會放在講義裡。下週開始，請挑一件你自己每週都要做的工作，用同樣的方法交給你的團隊。我們課堂上見。",
+      "estimatedSeconds": 56,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-13T08:40:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課堂口語講稿"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-11-13T08:40:00.000Z",
+    "totalEstimatedSeconds": 830,
+    "ttsCostEstimateUsd": 0,
+    "publishedAt": null,
+    "publishedUrl": null
+  }
+}

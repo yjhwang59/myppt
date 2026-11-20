@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="ai-agent-course-week04-form-validation">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 系統開發入門班（8 週）第 4 週：表單設計與資料驗證。以大躍 Northgo 詢價表為例，學必填、信箱格式與字數檢查。講師：黃燕忠｜AI發展顧問。">
+  <title>第 4 週｜表單設計與資料驗證</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    /* week01: layouts used by build:deck that this shell did not style yet */
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .table td strong { color: var(--text); }
+    .arch-svg-wrap { margin-top: 10px; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .arch-svg-wrap svg { width: 100%; height: 100%; max-height: 470px; }
+    .arch-svg-wrap .ly { fill: var(--card); stroke: var(--line); }
+    .arch-svg-wrap .ly-ai { fill: var(--kicker-bg); stroke: var(--kicker-border); }
+    .arch-svg-wrap .t1 { fill: var(--text); font-weight: 800; font-size: 28px; }
+    .arch-svg-wrap .t2 { fill: var(--muted); font-size: 22px; }
+    .arch-svg-wrap .t3 { fill: var(--accent); font-weight: 700; font-size: 22px; }
+    .arch-svg-wrap .ar { stroke: var(--muted); stroke-width: 2.5; fill: none; }
+    .arch-svg-wrap .ar-d { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; }
+    .arch-svg-wrap .hd { fill: var(--accent); font-weight: 800; font-size: 20px; }
+    .arch-svg-wrap .ln { stroke: var(--line); stroke-width: 2; }
+    /* week01: classroom-readable sizes (projector at the back of a 12-person room) */
+    .slide h2 { font-size: calc(clamp(24px, 2.5vw, 34px) * var(--font-scale)); margin-bottom: 4px; }
+    .slide .lead { font-size: calc(17px * var(--font-scale)); max-width: none; }
+    .slide .eyebrow { font-size: calc(14px * var(--font-scale)); }
+    .slide .grid { gap: 16px; margin-top: 18px; }
+    .slide .card { padding: 18px 20px; }
+    .slide .card > strong { font-size: calc(19px * var(--font-scale)); margin-bottom: 8px; }
+    .slide .card p, .slide .card li { font-size: calc(17px * var(--font-scale)); line-height: 1.55; }
+    .slide.active:not(.hero) { justify-content: center; padding-bottom: 56px; }
+    .slide.active:not(.hero) > .eyebrow { margin-top: 0; }
+    .slide .card li + li { margin-top: 6px; }
+    .slide .num { font-size: calc(14px * var(--font-scale)); }
+    .slide .table { font-size: calc(16.5px * var(--font-scale)); margin-top: 14px; }
+    .slide .table th { font-size: calc(14px * var(--font-scale)); }
+    .slide .table td:first-child, .slide .table th:first-child { white-space: nowrap; }
+    .slide .table th, .slide .table td { padding: 8px 10px; }
+    .slide .flow { gap: 8px; margin-top: 18px; padding: 14px; }
+    .slide .flow-step { padding: 14px 12px; }
+    .slide .flow-num { width: 30px; height: 30px; font-size: calc(14px * var(--font-scale)); }
+    .slide .flow-step strong { font-size: calc(17px * var(--font-scale)); margin-bottom: 6px; }
+    .slide .flow-desc { font-size: calc(16px * var(--font-scale)); line-height: 1.5; }
+    .slide .callout { font-size: calc(17px * var(--font-scale)); padding: 12px 16px; margin-top: 16px; }
+    .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
+    .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
+    .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-prompt { position: relative; margin: 6px 0 0; border: 1px solid var(--kicker-border); border-radius: 14px; background: var(--card); padding: 12px 16px 14px; }
+    .slide-prompt figcaption { font-size: calc(14px * var(--font-scale)); font-weight: 700; color: var(--kicker-text); margin-bottom: 6px; padding-right: 80px; }
+    .slide-prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: calc(16px * var(--font-scale)); line-height: 1.55; color: var(--text); }
+    .slide-prompt .prompt-copy { position: absolute; top: 10px; right: 12px; font: inherit; font-size: calc(13px * var(--font-scale)); font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--kicker-border); background: var(--kicker-bg); color: var(--kicker-text); cursor: pointer; }
+    .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(14px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { border-color: var(--accent); text-decoration: underline; }
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      #deck-header { height: auto; min-height: var(--header-h); flex-wrap: wrap; row-gap: 6px; padding: 6px 8px; }
+      #deck { padding-top: 108px; }
+      .slide { width: calc(100vw - 16px); aspect-ratio: auto; min-height: 0; overflow: auto; padding: 20px 16px 44px; }
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { display: none; }
+      .table { display: table; width: 100%; }
+      .slide .table td, .slide .table th, .slide .table td:first-child, .slide .table th:first-child { white-space: normal; word-break: break-word; }
+      .footer { left: 16px; right: 16px; }
+      #deck-header .brand { display: none; }
+      .slide-links { position: static; margin-top: 10px; flex-wrap: wrap; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> AI 系統開發入門班 · 第 4 週</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 1</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+      </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">AI 系統開發入門班 · 第 4 週（共 8 週）</p>
+      <h1>表單設計<br />與資料驗證</h1>
+      <p class="lead">今天看 Northgo 詢價表：哪些一定要填、信箱打錯要怎麼講，再在自己的頁面上加一欄、做一次檢查。</p>
+      <p class="stamp">企業AI內訓 · 2026-11-18（三）18:30–21:30 · 臺北市中山區民生東路三段10號7樓 · 實體＋線上 · 黃燕忠｜AI發展顧問</p><p class="slide-links"><a href="https://northgo-demo.aidc.work/zh-tw/contact" target="_blank" rel="noopener noreferrer">示範站詢價表</a><a href="/ai-agent-course-week03-vibe-coding-first-version.html" target="_blank" rel="noopener noreferrer">第 3 週簡報</a></p>
+      <div class="footer"><span>AIDC.work</span><span>1 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="課前檢查">
+<p class="eyebrow">00 / 課前檢查 · 18:15–18:30</p><h2>18:30 開始前：這 6 項都打勾</h2><table class="table"><thead><tr><th>項目</th><th>怎麼算「好了」</th></tr></thead><tbody><tr><td><strong>電腦</strong></td><td>筆電帶來並插電；線上同學用電腦，不用手機</td></tr><tr><td><strong>Cursor</strong></td><td>打得開。按 Cmd+I（Windows：Ctrl+I），不要選 Cloud</td></tr><tr><td><strong>上週資料夾</strong></td><td>找得到 cursor-w3，裡面有 README.md 和 index.html</td></tr><tr><td><strong>示範站</strong></td><td>打得開 northgo-demo 的聯絡頁。今天只看，不要按送出</td></tr><tr><td><strong>LINE 群組</strong></td><td>已加入，能傳截圖</td></tr><tr><td><strong>線上同學</strong></td><td>會議連結已測試，能分享自己的螢幕</td></tr></tbody></table><div class="callout"><strong>還沒好：</strong>18:15 起助教一台一台處理。沒有 cursor-w3 的，跟助教拿 Northgo 範例資料夾。</div>
+      <div class="footer"><span>AIDC.work</span><span>2 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="今天怎麼走">
+<p class="eyebrow">00 / 今天怎麼走</p><h2>3 小時：看懂詢價表 → 加上檢查 → 套到自己的題目</h2><table class="table"><thead><tr><th>時段</th><th>分鐘</th><th>內容</th></tr></thead><tbody><tr><td><strong>18:30–18:36</strong></td><td>6′</td><td>開場：課前檢查、「好了／卡住」、分組</td></tr><tr><td><strong>18:36–18:46</strong></td><td>10′</td><td>W3 作業檢討：每組 2 分鐘</td></tr><tr><td><strong>18:46–19:04</strong></td><td>18′</td><td>為什麼表單重要、欄位誰必填</td></tr><tr><td><strong>19:04–19:22</strong></td><td>18′</td><td>兩道檢查：網頁先看、伺服器再看</td></tr><tr><td><strong>19:22–19:47</strong></td><td>25′</td><td>範例提示詞：前台、後端、CRUD</td></tr><tr><td><strong>19:47–20:15</strong></td><td>28′</td><td>練習 1：加一欄，並做出中文提示</td></tr><tr><td><strong>20:15–20:25</strong></td><td>10′</td><td>休息</td></tr><tr><td><strong>20:25–20:55</strong></td><td>30′</td><td>練習 2：後台清單與狀態（選做）</td></tr><tr><td><strong>20:55–21:12</strong></td><td>17′</td><td>個資、鑰匙檔，套到自己的報價單</td></tr><tr><td><strong>21:12–21:30</strong></td><td>18′</td><td>成果展示 8′，作業、W5、問卷 10′</td></tr></tbody></table><div class="callout"><strong>每個練習：</strong>基本題必做，進階題選做。做完在 LINE 群打「好了」。</div>
+      <div class="footer"><span>AIDC.work</span><span>3 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="今天的三件事">
+<p class="eyebrow">00 / 今天要帶走的</p><h2>三件事，最後收成一張會檢查的詢價表</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>欄位</strong><ul><li>分出必填和選填</li><li>看文字、信箱、電話、下拉、勾選</li><li>四個語言用同一張表</li></ul></article><article class="card"><div class="num">2</div><strong>檢查</strong><ul><li>網頁先擋，人馬上看到提示</li><li>伺服器再擋，這才算數</li><li>句子要說人話</li></ul></article><article class="card"><div class="num">3</div><strong>練習</strong><ul><li>加一欄，並寫出怎麼算錯</li><li>用假資料，不要真的送出</li><li>同一套套到自己的題目</li></ul></article></div><div class="callout"><strong>名詞｜檢查（也叫驗證）：</strong>送出前先看填得對不對。填錯就停下來，告訴人哪裡要改。</div>
+      <div class="footer"><span>AIDC.work</span><span>4 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="好了／卡住">
+<p class="eyebrow">00 / 好了／卡住 · 線上支援</p><h2>每一步都對齊：做完說「好了」，卡住馬上說</h2><div class="grid three"><article class="card"><div class="num">✓</div><strong>好了</strong><ul><li>現場：舉手比 OK</li><li>線上：LINE 群打「好了」</li><li>大多數人好了，講師才往下</li></ul></article><article class="card"><div class="num">!</div><strong>卡住</strong><ul><li>截整個畫面，包含錯誤訊息</li><li>LINE 群打「卡住＋第幾步」，貼上截圖</li><li>助教先處理，講師繼續帶其他人</li></ul></article><article class="card"><div class="num">線上</div><strong>線上同學</strong><ul><li>卡住時，直接分享螢幕給助教看</li><li>每個練習開始前，講師先示範一次</li><li>投影片連結都放在 LINE 群</li></ul></article></div><div class="callout"><strong>原則：</strong>沒有人被丟下。卡超過 3 分鐘，先看隔壁同學的畫面，助教再幫你補。</div>
+      <div class="footer"><span>AIDC.work</span><span>5 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="分組與角色">
+<p class="eyebrow">00 / 分組與角色</p><h2>3–4 人一組，大家用同一套 Cursor 流程</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>領航</strong><ul><li>念題目和驗收條件</li><li>決定這一輪要做到哪裡</li><li>照驗收清單逐項打勾</li></ul></article><article class="card"><div class="num">2</div><strong>駕駛</strong><ul><li>在自己的 Cursor 貼提示詞</li><li>把畫面轉給組員看（線上：分享螢幕）</li><li>卡住就喊「卡住」</li></ul></article><article class="card"><div class="num">3</div><strong>跟做</strong><ul><li>在自己的電腦跟著做同一步</li><li>記下卡關的地方</li><li>下一個練習換你當駕駛</li></ul></article></div><div class="callout"><strong>備案：</strong>Cursor 真的不能用時，把同一段提示詞貼到 ChatGPT，請它給完整的 index.html，存檔後雙擊打開。</div>
+      <div class="footer"><span>AIDC.work</span><span>6 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="W3 作業檢討">
+<p class="eyebrow">W3 / 作業檢討 · 每組 2 分鐘（18:36–18:48）</p><h2>每組 2 分鐘：點一次首版，只說表單還缺什麼</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>點一次</strong><p>雙擊 index.html，從首頁走到詢價表。線上同學請分享螢幕。</p></article><article class="card"><div class="num">2</div><strong>只講一個缺口</strong><p>例如：必填沒有提示、信箱打 abc 仍能送出、完成頁還是英文。</p></article><article class="card"><div class="num">3</div><strong>寫下來</strong><p>領航把這一句記在紙上。等一下的練習，就先處理這一句。</p></article></div><div class="callout"><strong>做不完也沒關係：</strong>README 加一張截圖就能接著做。自己的專題一樣適用。</div>
+      <div class="footer"><span>AIDC.work</span><span>7 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="打開練習資料夾">
+<p class="eyebrow">00 / 練習資料夾</p><h2>複製 cursor-w3，改名 cursor-w4，再用 Cursor 打開</h2><table class="table"><thead><tr><th>步驟</th><th>你點哪裡</th><th>看到什麼算成功</th></tr></thead><tbody><tr><td><strong>1 複製</strong></td><td>桌面的 cursor-w3 → 複製 → 貼上</td><td>桌面有 cursor-w3 和一份副本</td></tr><tr><td><strong>2 改名</strong></td><td>副本按右鍵 → 重新命名</td><td>資料夾名字變成 cursor-w4</td></tr><tr><td><strong>3 打開</strong></td><td>Cursor 選 File → Open Folder</td><td>選到 cursor-w4，按開啟</td></tr><tr><td><strong>4 確認</strong></td><td>看左邊檔案區，再按 Cmd/Ctrl+I</td><td>有 README.md、index.html，而且不是 Cloud</td></tr></tbody></table><div class="callout"><strong>留著 cursor-w3：</strong>那是上週的首版。電腦慢的，先關掉其他程式。一次只請 Cursor 改一個檔。</div>
+      <div class="footer"><span>AIDC.work</span><span>8 / 49</span></div>
+    </section>
+
+    <section class="slide hero" id="s9" data-title="為什麼表單重要">
+
+      <p class="kicker">欄位 · 18 分鐘（18:46–19:04）</p>
+      <h1>一張詢價表<br />就是一個機會</h1>
+      <p class="lead">客戶願意把公司和需求留給你。表單填得動、填得懂，窗口才接得到這一筆。</p>
+      <p class="stamp">先看欄位，再談檢查</p>
+      <div class="footer"><span>AIDC.work</span><span>9 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="詢價單是什麼">
+<p class="eyebrow">欄位 / 為什麼今天做表單</p><h2>人填完、公司才知道有人要問</h2><div class="grid two"><article class="card"><div class="num">客戶</div><strong>客戶想問一票貨</strong><ul><li>現在要在聯絡頁找得到表單</li><li>填完要知道「有人收到了」</li><li>不要猜自己要填哪些</li></ul></article><article class="card"><div class="num">公司</div><strong>窗口要接得住</strong><ul><li>要看得懂公司、信箱、需求</li><li>缺了聯絡方式就無法回</li><li>第 3 週第 9 句先規劃這張表</li></ul></article></div><div class="callout">第 3 週第 9 句是「規劃 Enquiry-form」，第 10 句才照計畫做出簡報。今天把那張表的欄位和檢查補清楚。</div>
+      <div class="footer"><span>AIDC.work</span><span>10 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="官網和示範站">
+<p class="eyebrow">欄位 / 兩張表對一下</p><h2>官網是現況，示範站是我們在改的版本</h2><div class="grid two"><article class="card"><div class="num">官網</div><strong>northgo.com/contact</strong><ul><li>名、姓、公司、信箱、電話：必填</li><li>國家：可不選</li><li>訊息：必填</li><li>要勾接受條款</li></ul></article><article class="card"><div class="num">示範站</div><strong>northgo-demo 聯絡頁</strong><ul><li>前面五項一樣必填</li><li>國家、服務、訊息：可不填</li><li>訊息最多 4000 字</li><li>今天以這張表為準</li></ul></article></div><div class="callout">示範站只打開來看。不要按「送出詢問」，也不要填真實客戶。</div><p class="slide-links"><a href="https://northgo-demo.aidc.work/zh-tw/contact" target="_blank" rel="noopener noreferrer">示範站詢價表</a></p>
+      <div class="footer"><span>AIDC.work</span><span>11 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="必填和選填">
+<p class="eyebrow">欄位 / 示範站詢價表</p><h2>標了 * 的才是必填</h2><table class="table"><thead><tr><th>欄位</th><th>一定要填？</th><th>還有的限制</th></tr></thead><tbody><tr><td><strong>名、姓</strong></td><td>要</td><td>各最多 80 字</td></tr><tr><td><strong>公司</strong></td><td>要</td><td>最多 160 字</td></tr><tr><td><strong>電子郵件</strong></td><td>要</td><td>要像信箱，最多 160 字</td></tr><tr><td><strong>電話</strong></td><td>要</td><td>最多 40 字</td></tr><tr><td><strong>國家</strong></td><td>不要</td><td>下拉選單，可不選</td></tr><tr><td><strong>有興趣的服務</strong></td><td>不要</td><td>五個可以複選</td></tr><tr><td><strong>訊息</strong></td><td>不要</td><td>最多 4000 字</td></tr><tr><td><strong>接受條款</strong></td><td>要</td><td>沒勾就不能送</td></tr></tbody></table><div class="callout"><strong>名詞｜必填：</strong>不填就不能送出。頁面上有一句：「標示 * 的欄位為必填。」</div>
+      <div class="footer"><span>AIDC.work</span><span>12 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="欄位長什麼樣子">
+<p class="eyebrow">欄位 / 五種長相</p><h2>不同的資料，用不同的格子</h2><div class="grid three"><article class="card"><div class="num">字</div><strong>短文字</strong><p>名、姓、公司、電話。電話用電話鍵盤比較好填。</p></article><article class="card"><div class="num">信</div><strong>電子郵件</strong><p>要有 @。格式不對，先不要送。</p></article><article class="card"><div class="num">選</div><strong>下拉和勾選</strong><p>國家用下拉，約 30 國，可不選。服務用勾選，可多選。</p></article></div><div class="callout">中文頁的國家名稱仍是英文（Taiwan、Japan…）。要改國名，四個語言要一起想，不要只改中文頁。</div>
+      <div class="footer"><span>AIDC.work</span><span>13 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s14" data-title="四個語言">
+<p class="eyebrow">欄位 / 同一張表，四種說法</p><h2>英文、繁中、日文、越文，欄位是同一套</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>字和版面分開</strong><p>示範站把四種語言的句子放在一起管理，版面不要每種語言重做一次。</p></article><article class="card"><div class="num">2</div><strong>改一句要改四句</strong><p>「必填」「已收到」「請再試一次」都要有四種說法。只改中文，別的語言頁會對不上。</p></article></div><div class="callout">今天練習先把繁體中文寫對。進階再補英文。日文、越文知道有這兩頁就好。</div>
+      <div class="footer"><span>AIDC.work</span><span>14 / 49</span></div>
+    </section>
+
+    <section class="slide hero" id="s15" data-title="兩道檢查">
+
+      <p class="kicker">檢查 · 18 分鐘（19:04–19:22）</p>
+      <h1>網頁先看<br />伺服器再看</h1>
+      <p class="lead">人馬上要看到哪裡填錯。真正算不算數，還要等收到資料的那一端再看一次。</p>
+      <p class="stamp">必填 · 信箱格式 · 字數 · 說人話的提示</p>
+      <div class="footer"><span>AIDC.work</span><span>15 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s16" data-title="兩道關卡">
+<p class="eyebrow">檢查 / 兩道關卡</p><h2>一道給人看，一道幫公司把關</h2><div class="grid two"><article class="card"><div class="num">先</div><strong>網頁上先檢查</strong><ul><li>人還在這一頁</li><li>錯了立刻在欄位下方講</li><li>不用等伺服器才知道</li><li>這是立刻的回饋</li></ul></article><article class="card"><div class="num">再</div><strong>伺服器再檢查</strong><ul><li>資料真的送出去之後</li><li>有人可以關掉網頁檢查</li><li>所以這一道才算數</li><li>下週才把這一道做真的</li></ul></article></div><div class="callout"><strong>名詞｜伺服器：</strong>收到表單的那一端，不是你眼前的網頁。今天先知道它要再查一次，不必自己架。</div>
+      <div class="footer"><span>AIDC.work</span><span>16 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s17" data-title="三種常見錯誤">
+<p class="eyebrow">檢查 / 必填、信箱、字數</p><h2>示範站已經擋住的三件事</h2><table class="table"><thead><tr><th>檢查</th><th>怎麼試</th><th>通過的樣子</th></tr></thead><tbody><tr><td><strong>必填</strong></td><td>名、信箱或條款留白就按送出</td><td>停在這一頁，標出沒填的格子</td></tr><tr><td><strong>信箱</strong></td><td>電子郵件打 abc</td><td>不要當成合格信箱</td></tr><tr><td><strong>字數</strong></td><td>公司名打超過 160 字</td><td>最多只能到 160 字</td></tr><tr><td><strong>電話</strong></td><td>可以填數字和符號</td><td>今天不要求一定是 09 開頭</td></tr></tbody></table><div class="callout">訊息可以空白。官網那張表的訊息是必填，示範站改成選填。練習以示範站為準。</div>
+      <div class="footer"><span>AIDC.work</span><span>17 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s18" data-title="錯誤訊息">
+<p class="eyebrow">檢查 / 句子要說人話</p><h2>示範站四種語言都有這三句</h2><table class="table"><thead><tr><th>狀況</th><th>繁體中文</th><th>英文</th></tr></thead><tbody><tr><td><strong>欄位有錯</strong></td><td>請檢查標示的欄位。</td><td>Check the marked fields.</td></tr><tr><td><strong>送出失敗</strong></td><td>送出時發生問題，請再試一次。</td><td>Oops! Something went wrong while submitting the form.</td></tr><tr><td><strong>送出成功</strong></td><td>已收到您的詢問。</td><td>Thank you! Your submission has been received!</td></tr></tbody></table><div class="callout">日文頁、越文頁也有各自的句子。按鈕送出時會先變成「送出中」。今天練習的提示請用繁體中文，寫在欄位下方。</div>
+      <div class="footer"><span>AIDC.work</span><span>18 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s19" data-title="從填寫到後台">
+<p class="eyebrow">檢查 / 一整條怎麼走</p><h2>六步：從填表到窗口看得到</h2><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>填表</strong>
+          <p class="flow-desc">在聯絡頁填詢價</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>網頁先查</strong>
+          <p class="flow-desc">必填和信箱</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>按送出</strong>
+          <p class="flow-desc">按鈕變成送出中</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>伺服器再查</strong>
+          <p class="flow-desc">不對就退回</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>存成一筆</strong>
+          <p class="flow-desc">下週才真的存</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>後台跟進</strong>
+          <p class="flow-desc">窗口打開清單看</p>
+        </div></div><div class="callout">今天練習停在第 2 步，再加上欄位下方的中文提示。不要把資料真的送到示範站。</div>
+      <div class="footer"><span>AIDC.work</span><span>19 / 49</span></div>
+    </section>
+
+    <section class="slide hero" id="s20" data-title="範例提示詞章節">
+
+      <p class="kicker">範例提示詞 · 25 分鐘（19:22–19:47）</p>
+      <h1>前後端怎麼講<br />才能做出表單</h1>
+      <p class="lead">下面每句都能整段複製。先講誰在用、要做什麼、做出來長什麼樣、有什麼限制。詢價表是例子，報價單只要換詞。</p>
+      <p class="stamp">前台 · 後端 · 新增讀取更新刪除 · 測試</p>
+      <div class="footer"><span>AIDC.work</span><span>20 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s21" data-title="提示詞四段">
+<p class="eyebrow">範例 / 四段寫法</p><h2>每句都用這四段，Cursor 比較不會做偏</h2><div class="grid two"><article class="card"><div class="num">1</div><strong>誰、做什麼</strong><ul><li>誰會用這頁或這個動作</li><li>這一次只做一件事</li></ul></article><article class="card"><div class="num">2</div><strong>長什麼樣、限制</strong><ul><li>寫出看得到的句子和格式</li><li>不確定的先問，不要猜</li><li>假資料、不送出、不交鑰匙檔</li></ul></article></div><div class="callout">第 3 週第 9 句就是先規劃。今天多給一整套可以照做的句子。</div>
+      <div class="footer"><span>AIDC.work</span><span>21 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s22" data-title="檔案在哪">
+<p class="eyebrow">範例 / Northgo 示範站</p><h2>句子裡的檔名和網址，請照這樣寫</h2><table class="table"><thead><tr><th>在哪</th><th>做什麼</th></tr></thead><tbody><tr><td><strong>content/site.js</strong></td><td>四種語言的文字，和版面分開</td></tr><tr><td><strong>src/worker.js</strong></td><td>收到表單的程式</td></tr><tr><td><strong>POST /api/enquiries</strong></td><td>客戶送出時走這裡</td></tr><tr><td><strong>D1 資料表 enquiries</strong></td><td>詢價存成一列的地方</td></tr><tr><td><strong>/admin</strong></td><td>窗口要先登入才進得去</td></tr><tr><td><strong>/api/admin/enquiries</strong></td><td>登入後才能改狀態、刪除</td></tr></tbody></table><div class="callout"><strong>名詞｜D1：</strong>Cloudflare 上的資料庫，表單要存進去的地方。沒有這套檔案的人，先做看得到的網頁就好。</div>
+      <div class="footer"><span>AIDC.work</span><span>22 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s23" data-title="四個動作">
+<p class="eyebrow">範例 / 四個動作</p><h2>新增、讀取、更新、刪除</h2><table class="table"><thead><tr><th>簡寫</th><th>一句話</th><th>詢價表上是什麼</th></tr></thead><tbody><tr><td><strong>C 新增</strong></td><td>多一筆新的</td><td>客戶按下送出</td></tr><tr><td><strong>R 讀取</strong></td><td>把已有的讀出來</td><td>窗口看清單和明細</td></tr><tr><td><strong>U 更新</strong></td><td>改已有的內容</td><td>狀態和備註</td></tr><tr><td><strong>D 刪除</strong></td><td>拿掉一筆</td><td>先問確定，再隱藏</td></tr></tbody></table><div class="callout">讀取、更新、刪除都要先登入 /admin。沒登入就拒絕。</div>
+      <div class="footer"><span>AIDC.work</span><span>23 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s24" data-title="前台做出表單">
+<p class="eyebrow">範例 / 前台 · 頁面</p><h2>先做出看得到的詢價表</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：想問貨運的客戶，在聯絡頁填表。我是新手。
+要做什麼：做出一頁詢價表。必填：名、姓、公司、電子郵件、電話、接受條款。選填：國家（下拉，可不選）、有興趣的服務（可複選：貨運物流、專案物流、倉儲物流、船務代理、其他）、訊息、預計出貨時間。
+長什麼樣：繁體中文。手機和電腦都能看，不要左右捲動。標了 * 的是必填。按鈕寫「送出詢問」。
+限制：先只做看得到的頁面，不要真的把資料送出去。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">這句只做頁面。檢查、成功句子、存進資料庫用後面的句子。</div>
+      <div class="footer"><span>AIDC.work</span><span>24 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s25" data-title="前台檢查">
+<p class="eyebrow">範例 / 前台 · 檢查</p><h2>送出前，在網頁上先擋住</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：正在填詢價表的客戶。
+要做什麼：按送出前先檢查。必填沒填、電子郵件不像信箱（例如 abc）、訊息超過 4000 字，都停在這一頁。
+長什麼樣：錯誤寫在該欄位下方，不要只用瀏覽器預設的英文泡泡。繁體中文、英文、日文、越文各準備一句人話。繁中用「請檢查這個欄位。」信箱用「請填正確的電子郵件。」字數用「訊息太長。」
+限制：句子寫進 content/site.js，四種語言一起補。不要啟動伺服器。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">課堂時間不夠時，先做繁體中文。英文、日文、越文回家再補。</div>
+      <div class="footer"><span>AIDC.work</span><span>25 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s26" data-title="送出後的句子">
+<p class="eyebrow">範例 / 前台 · 結果</p><h2>成功或失敗，都要在同一頁講清楚</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：剛按「送出詢問」的客戶。
+要做什麼：在同一頁告訴他結果。送出當下按鈕先變成「送出中」。
+長什麼樣：成功「已收到您的詢問。」失敗「送出時發生問題，請再試一次。」欄位有錯「請檢查標示的欄位。」這三句要有繁體中文、英文、日文、越文。
+限制：先用假的結果示範，不要真的寄信，不要連資料庫。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">示範站已經有這三句。請對一下，不要另寫一套。</div>
+      <div class="footer"><span>AIDC.work</span><span>26 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s27" data-title="建立資料表">
+<p class="eyebrow">範例 / 後端 · 資料表</p><h2>先有地方可存，再談送出</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：我。資料是客戶的詢價。
+要做什麼：建立 D1 資料表 enquiries，並寫一份 migration。欄位至少有：id、建立時間、名、姓、公司、email、電話、國家、服務、訊息、預計出貨時間、狀態、備註、deleted_at。
+長什麼樣：一份 SQL migration。狀態只用「新進、處理中、已回覆」，預設「新進」。deleted_at 空的表示還沒刪。
+限制：不要塞進任何真實客戶。不要改 .dev.vars，也不要把它加進 git。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout"><strong>名詞｜migration：</strong>建立或修改資料表的一份腳本，讓每台電腦的表長得一樣。</div>
+      <div class="footer"><span>AIDC.work</span><span>27 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s28" data-title="收到並存起來">
+<p class="eyebrow">範例 / 後端 · 接收</p><h2>伺服器再查一次，通過才寫入</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：詢價表送出後，由 src/worker.js 接收。
+要做什麼：做 POST /api/enquiries。先再檢查必填、信箱格式、訊息長度。通過就把一列寫進 D1 的 enquiries，回傳成功和編號。不通過就回傳哪一欄錯了，而且不要寫入。
+長什麼樣：用 JSON 回傳。句子跟頁面上的繁中句子一致。
+限制：網頁上的檢查可以關掉，這一道仍要擋得住。不要記錄密碼。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">這是真正把關的那一端。網頁上的紅字只是讓人馬上看見。</div>
+      <div class="footer"><span>AIDC.work</span><span>28 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s29" data-title="新增一筆">
+<p class="eyebrow">範例 / C 新增</p><h2>C：客戶送出，就多一筆</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：客戶。
+要做什麼：按「送出詢問」時，把表單送到 POST /api/enquiries，新增一筆詢價。C 就是新增。
+長什麼樣：成功顯示「已收到您的詢問。」和編號。失敗停在原頁，指出哪一欄。狀態預設「新進」。
+限制：只用假資料試。不要寄信。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">新增是給客戶用的，不需要登入。後面三個動作才要登入。</div>
+      <div class="footer"><span>AIDC.work</span><span>29 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s30" data-title="讀取清單">
+<p class="eyebrow">範例 / R 讀取</p><h2>R：登入後才看得到清單和明細</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：已登入的窗口。
+要做什麼：在 /admin 做詢價清單，可依狀態或公司名篩選，點一列看明細。R 就是讀出來。
+長什麼樣：清單有編號、公司、狀態、建立時間。明細看得到訊息和備註。預設不顯示已軟刪除的。
+限制：沒登入 /admin 就不能讀。讀取走 /api/admin/enquiries。只用假資料。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">沒有帳號的同學，這句先留著，請講師示範。</div>
+      <div class="footer"><span>AIDC.work</span><span>30 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s31" data-title="更新狀態">
+<p class="eyebrow">範例 / U 更新</p><h2>U：改狀態和備註</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：已登入的窗口。
+要做什麼：在明細頁把狀態從「新進」改成「處理中」或「已回覆」，並能改備註。U 就是改已有的。
+長什麼樣：按儲存後，清單上的狀態一起變。只能改狀態和備註，不要改客戶填的原文。
+限制：一定要先登入。用 /api/admin/enquiries。不要改到別的一筆。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout"><strong>狀態只這三個：</strong>新進、處理中、已回覆。</div>
+      <div class="footer"><span>AIDC.work</span><span>31 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s32" data-title="刪除前先問">
+<p class="eyebrow">範例 / D 刪除</p><h2>D：先確認，再建議只隱藏</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：已登入的窗口。
+要做什麼：刪除前先問「確定刪除？」。建議做軟刪除：寫入 deleted_at，清單預設不再顯示，而不是從資料表真的抹掉。D 就是刪掉。
+長什麼樣：按刪除 → 出現確認 → 確認後清單看不到這筆。
+限制：沒有確認就不能刪。一定要先登入。走 /api/admin/enquiries。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout"><strong>軟刪除：</strong>人看起來像刪了，資料還留著，以後才查得到。</div>
+      <div class="footer"><span>AIDC.work</span><span>32 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s33" data-title="三個測試案例">
+<p class="eyebrow">範例 / 測試</p><h2>先寫會失敗的三種情況</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：我自己驗收。
+要做什麼：寫三個案例並各點一次。1 必填留白。2 電子郵件打 abc。3 訊息超過 4000 字。
+長什麼樣：每個案例寫「我做了什麼／應該看到什麼」。三個都應該停下來，並有人話提示，而且資料表沒有多一筆。
+限制：只用假資料。不要用真實信箱。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">三種都過了，才算檢查做完。</div>
+      <div class="footer"><span>AIDC.work</span><span>33 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s34" data-title="用假資料對一次">
+<p class="eyebrow">範例 / 對結果</p><h2>瀏覽器看一句，後台看得到同一筆</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：我，以及已登入的窗口。
+要做什麼：用「客戶 A」走一次合格的送出。瀏覽器要看到「已收到您的詢問。」後台 /admin 要看到同一筆，狀態是「新進」。
+長什麼樣：回我三件事：你點了哪裡、畫面上哪一句、清單上的編號。
+限制：沒登入不能進後台。不要把密碼寫進對話。不要送到 northgo-demo 的正式表單。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout">沒有後台帳號就只做瀏覽器這一半，並在 README 寫「後台未測」。</div>
+      <div class="footer"><span>AIDC.work</span><span>34 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s35" data-title="先規劃再實作">
+<p class="eyebrow">範例 / 先規劃再實作</p><h2>先要整份計畫，不要馬上改檔</h2><figure class="slide-prompt"><figcaption>整段複製，貼到 Cursor</figcaption><pre>誰會用：我。請先當顧問。
+要做什麼：規劃 Northgo 詢價表的整份做法：填寫、網頁檢查、POST /api/enquiries、寫入 D1 的 enquiries、以及登入 /admin 後的讀取、改狀態、刪除。
+長什麼樣：繁體中文。列出頁面、資料表欄位、API、四種語言的提示句、先做什麼、後做什麼。
+限制：這一步只出計畫。不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假資料「客戶 A」。不要寫密碼，不要把 .dev.vars 放進 git，也不要按示範站的送出鈕。</pre></figure><div class="callout"><strong>和第 3 週第 9、10 句同一套：</strong>先看計畫，通過才實作。</div>
+      <div class="footer"><span>AIDC.work</span><span>35 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s36" data-title="換成報價單">
+<p class="eyebrow">範例 / 換成自己的題目</p><h2>提示詞照抄，只換這四格</h2><table class="table"><thead><tr><th>詢價表</th><th>換成報價單</th></tr></thead><tbody><tr><td><strong>客戶問貨運</strong></td><td>客戶要一張報價</td></tr><tr><td><strong>資料表 enquiries</strong></td><td>例如 quotes，不要沿用詢價</td></tr><tr><td><strong>新進／處理中／已回覆</strong></td><td>草稿／已送出／已成交</td></tr><tr><td><strong>名、姓、公司、信箱、電話</strong></td><td>客戶、品項、數量、金額、信箱</td></tr></tbody></table><div class="callout">誰、做什麼、長什麼樣、限制這四段不要拿掉。只換上面四格。</div>
+      <div class="footer"><span>AIDC.work</span><span>36 / 49</span></div>
+    </section>
+
+    <section class="slide hero" id="s37" data-title="動手做">
+
+      <p class="kicker">練習 1 · 28 分鐘（19:47–20:15），休息後做選做</p>
+      <h1>加一欄<br />並讓它擋得住</h1>
+      <p class="lead">課堂先貼「加一欄」那句。整套前後端與新增讀取更新刪除，用前面的範例提示詞，回家也能照做。</p>
+      <p class="stamp">基本題必做 · 進階題選做</p>
+      <div class="footer"><span>AIDC.work</span><span>37 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s38" data-title="練習前的步驟">
+<p class="eyebrow">練習 / 先看步驟</p><h2>六步做完一輪，回家也照這張表</h2><table class="table"><thead><tr><th>步驟</th><th>你做什麼</th><th>看到什麼算成功</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>確認打開的是 cursor-w4</td><td>左邊有 index.html</td></tr><tr><td><strong>2</strong></td><td>Cmd/Ctrl+I，不要選 Cloud</td><td>看得到對話框</td></tr><tr><td><strong>3</strong></td><td>貼「加一欄」的基本題</td><td>AI 只改這個資料夾</td></tr><tr><td><strong>4</strong></td><td>到資料夾雙擊 index.html</td><td>瀏覽器開的是詢價表</td></tr><tr><td><strong>5</strong></td><td>必填留白，再按送出</td><td>欄位下方有中文提示，沒跳頁</td></tr><tr><td><strong>6</strong></td><td>信箱打 abc，再按送出</td><td>提示格式不對，沒有送出去</td></tr></tbody></table><div class="callout">網址如果是 127.0.0.1 又打不開，就是開錯了。請改回雙擊 index.html，不要啟動伺服器。</div>
+      <div class="footer"><span>AIDC.work</span><span>38 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s39" data-title="練習題目">
+<p class="eyebrow">練習 / 基本題必做，進階題選做</p><h2>先讓一張表擋得住，再考慮清單</h2><div class="grid two"><article class="card"><div class="num">必做</div><strong>基本題</strong><ul><li>加選填欄位「預計出貨時間」</li><li>必填空白有中文提示</li><li>信箱打 abc 不能過</li><li>交付：雙擊打得開的 index.html</li></ul></article><article class="card"><div class="num">選做</div><strong>進階題</strong><p>基本題過了再做：同一頁加「詢價清單」，放 1 筆假資料，狀態寫「新進」。或寫一句「已收到你的詢問」。不要寄信、不要連資料庫。</p></article></div><div class="callout">基本題用後面的短提示詞。整頁表單、存進資料庫、後台四個動作，用前面標了「範例」的句子。</div>
+      <div class="footer"><span>AIDC.work</span><span>39 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s40" data-title="基本題提示詞">
+<p class="eyebrow">練習 / 基本題 · 整段複製</p><h2>貼到 Cursor 的 Agent（cursor-w4）</h2><figure class="slide-prompt"><figcaption>基本題提示詞（已含開頭與結尾，按複製）</figcaption><pre>請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。
+
+請讀 README.md 和 index.html。在詢價表單加一個選填欄位「預計出貨時間」。
+必填沒填，或電子郵件不像信箱（例如 abc）時，在該欄位下方顯示繁體中文提示，不要跳頁、不要送出。按送出時，按鈕先變成「送出中…」。
+只改 index.html。請告訴我：到資料夾雙擊 index.html 打開。不要啟動伺服器，不要真的把資料送出去。用假資料，不要寫客戶真名、電話或報價。
+
+請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。</pre></figure><div class="callout"><strong>好了：</strong>雙擊 index.html，空白和 abc 都會停住，而且看得到中文提示。</div>
+      <div class="footer"><span>AIDC.work</span><span>40 / 49</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s41" data-title="進階題提示詞">
+<p class="eyebrow">練習 / 進階題 · 基本題過了再貼</p><h2>同一頁看到這一筆，仍然不要真的送出</h2><figure class="slide-prompt"><figcaption>進階題提示詞（已含開頭與結尾，按複製）</figcaption><pre>請先看一下這個資料夾裡有什麼，用三句話告訴我。規則：1. 只在這個資料夾裡工作。2. 網頁做成可以直接雙擊打開的 index.html，不用外部套件、不啟動伺服器、不部署。3. 用繁體中文、簡單說明，我是新手。4. 不確定的先問我。
+
+請只改 index.html。在詢價表下面加一個「詢價清單」，用 1 筆假資料：公司名「客戶 A」、狀態「新進」。不要寄信、不要連資料庫、不要寫密碼或鑰匙。
+另外加一句繁體中文：「已收到你的詢問。」這句只顯示在頁面上，不要真的寄出。
+
+請整理這次的成果：1. 改了哪些檔案 2. 我要怎麼打開來看 3. 我自己驗收要點哪 3 個地方 4. 還有什麼沒做、沒測或不確定。最後把以上內容寫進 README.md。</pre></figure><div class="callout">這題選做。做不出來不影響必做。下週才把詢價真的存下來。</div>
+      <div class="footer"><span>AIDC.work</span><span>41 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s42" data-title="驗收表">
+<p class="eyebrow">練習 / 驗收表</p><h2>領航拿這張表，對著瀏覽器打勾</h2><table class="table"><thead><tr><th>項目</th><th>怎麼驗</th><th>通過條件</th></tr></thead><tbody><tr><td><strong>新欄位</strong></td><td>打開詢價表</td><td>看得到「預計出貨時間」，可不填</td></tr><tr><td><strong>必填</strong></td><td>名或信箱留白就按送出</td><td>欄位下方有中文提示，不跳頁</td></tr><tr><td><strong>信箱</strong></td><td>電子郵件打 abc</td><td>提示格式不對，沒有送出</td></tr><tr><td><strong>送出中</strong></td><td>改成合格的假資料再按</td><td>按鈕會變成「送出中…」</td></tr><tr><td><strong>假資料</strong></td><td>看頁面上的名字</td><td>沒有真實客戶、電話、報價</td></tr><tr><td><strong>進階</strong></td><td>有做清單的人</td><td>看得到「客戶 A」和「新進」</td></tr></tbody></table><div class="callout">沒過的寫進 README「已知問題／下一輪修正清單」。這一輪不必全部修好。</div>
+      <div class="footer"><span>AIDC.work</span><span>42 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s43" data-title="不要真的送出">
+<p class="eyebrow">安全 / 示範站只看不送</p><h2>看欄位可以，按送出不行</h2><div class="grid two"><article class="card"><div class="num">看</div><strong>可以做的</strong><ul><li>打開示範站聯絡頁</li><li>對一下 * 和欄位名稱</li><li>看按鈕寫「送出詢問」</li><li>看完就關掉</li></ul></article><article class="card"><div class="num">停</div><strong>不要做的</strong><ul><li>不要按送出詢問</li><li>不要填自己的信箱或電話</li><li>不要填客戶公司的真資料</li><li>練習只在自己的 index.html</li></ul></article></div><div class="callout">送出成功的句子是「已收到您的詢問。」你今天不需要在示範站看到這句。</div>
+      <div class="footer"><span>AIDC.work</span><span>43 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s44" data-title="個資和鑰匙檔">
+<p class="eyebrow">安全 / 17 分鐘（20:55–21:12）</p><h2>三件東西不要交出去</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>客戶資料</strong><p>提示詞、README、網頁都用「客戶 A」。不要寫真名、電話、地址、報價。</p></article><article class="card"><div class="num">2</div><strong>密碼</strong><p>不要把密碼貼給 Cursor，也不要貼到 LINE。登入畫面出現就先停，問助教。</p></article><article class="card"><div class="num">3</div><strong>鑰匙檔</strong><p>.dev.vars 是本機的鑰匙。不要放進 Git、不要傳群組、不要寫進提示詞。</p></article></div><div class="callout"><strong>名詞｜.dev.vars：</strong>電腦上的一把鑰匙，用來開本機的秘密設定。沒有這個檔也做得出今天的練習。</div>
+      <div class="footer"><span>AIDC.work</span><span>44 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s45" data-title="套到自己的題目">
+<p class="eyebrow">安全 / 例如報價單</p><h2>詢價表的方法，換到你自己的表</h2><div class="grid two"><article class="card"><div class="num">詢價</div><strong>Northgo 先做這張</strong><ul><li>必填：名、姓、公司、信箱、電話、條款</li><li>選填：國家、服務、訊息、預計出貨時間</li><li>信箱打錯要停下來</li></ul></article><article class="card"><div class="num">報價</div><strong>換成你的單據</strong><ul><li>例如報價單：客戶、品項、數量、金額、信箱</li><li>必填先留 3 個就好</li><li>寫進 README，欄位名用你的</li></ul></article></div><div class="callout">沒有報價單的人，就寫自己專題裡最痛的那一張表。寫不出 5 欄，先寫 3 欄。</div>
+      <div class="footer"><span>AIDC.work</span><span>45 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s46" data-title="回家照著做">
+<p class="eyebrow">99 / 回家照著做</p><h2>回家不用背：照這 8 步再做一次</h2><table class="table"><thead><tr><th>步驟</th><th>做什麼</th><th>怎樣算做完</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>複製成 cursor-w4，打開 Cursor，不要選 Cloud</td><td>左邊有 index.html</td></tr><tr><td><strong>2</strong></td><td>打開示範站聯絡頁，不要按送出</td><td>對得到名、信箱、條款</td></tr><tr><td><strong>3</strong></td><td>把必填和選填寫進 README</td><td>看得到 * 的那幾欄</td></tr><tr><td><strong>4</strong></td><td>貼基本題，或前台檢查那一句</td><td>多了欄位，空白和 abc 會被擋住</td></tr><tr><td><strong>5</strong></td><td>雙擊 index.html，試空白和 abc</td><td>都有中文提示，沒送出</td></tr><tr><td><strong>6</strong></td><td>沒過的寫進修正清單</td><td>README 有下一輪要改什麼</td></tr><tr><td><strong>7</strong></td><td>自己的表寫 3 到 5 個欄位</td><td>例如報價單，標出必填</td></tr><tr><td><strong>8 選做</strong></td><td>加假資料清單或一句已收到</td><td>沒有密碼，也沒有 .dev.vars</td></tr></tbody></table><div class="callout">範例提示詞從第 20 頁到第 36 頁。課堂基本題在第 40 頁。資料夾步驟在第 8 頁。</div>
+      <div class="footer"><span>AIDC.work</span><span>46 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s47" data-title="成果展示">
+<p class="eyebrow">99 / 成果展示 · 8′（21:12–21:20）</p><h2>每組 2 分鐘：只示範檢查</h2><div class="grid three"><article class="card"><div class="num">1</div><strong>留白</strong><p>必填不填就按送出，指出中文提示。</p></article><article class="card"><div class="num">2</div><strong>錯的信箱</strong><p>打 abc，確認沒有送出。</p></article><article class="card"><div class="num">3</div><strong>一個還沒好的</strong><p>念修正清單的第一行。下週先處理這一行。</p></article></div><div class="callout"><strong>其他組只回饋一件事：</strong>這句提示，客戶看得懂嗎？線上同學請分享螢幕。</div>
+      <div class="footer"><span>AIDC.work</span><span>47 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s48" data-title="作業">
+<p class="eyebrow">99 / 作業 · 21:20–21:30</p><h2>作業：會檢查的表，加自己的欄位</h2><table class="table"><thead><tr><th>項目</th><th>交什麼</th><th>怎樣算做完</th></tr></thead><tbody><tr><td><strong>必做</strong></td><td>詢價表</td><td>index.html 有「預計出貨時間」，雙擊打得開</td></tr><tr><td><strong>必做</strong></td><td>兩種檢查</td><td>必填空白、信箱 abc，都有繁體中文提示</td></tr><tr><td><strong>必做</strong></td><td>欄位表</td><td>README 寫必填、選填，以及字數</td></tr><tr><td><strong>必做</strong></td><td>自己的表</td><td>3 到 5 欄，例如報價單，標出必填</td></tr><tr><td><strong>選做</strong></td><td>清單或通知</td><td>假資料「客戶 A」，或一句已收到</td></tr><tr><td><strong>選做</strong></td><td>四種語言</td><td>成功那一句再寫英文。日文、越文可先空著</td></tr></tbody></table><div class="callout">下週開場每組 2 分鐘。做不出網頁也請交 README。不要交真實客戶資料。</div><p class="slide-links"><a href="/ai-agent-course-week03-vibe-coding-first-version.html" target="_blank" rel="noopener noreferrer">第 3 週簡報</a></p>
+      <div class="footer"><span>AIDC.work</span><span>48 / 49</span></div>
+    </section>
+
+    <section class="slide" id="s49" data-title="W5 預告">
+<p class="eyebrow">99 / 下週預告</p><h2>W5｜把詢價真的存下來</h2><table class="table"><thead><tr><th>下週</th><th>你會做的</th><th>今天先留好</th></tr></thead><tbody><tr><td><strong>存下來</strong></td><td>送出後還在，而且有編號</td><td>表單和欄位表</td></tr><tr><td><strong>再查一次</strong></td><td>就算網頁沒擋，收到的那一端也要擋</td><td>必填和信箱規則</td></tr><tr><td><strong>窗口看得到</strong></td><td>打開清單看到這一筆</td><td>假資料清單（選做的人）</td></tr></tbody></table><div class="callout">cursor-w4 請留著。課後問卷連結在 LINE 群。</div>
+      <div class="footer"><span>AIDC.work</span><span>49 / 49</span></div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "AI 系統開發入門班｜第 4 週";
+      const LS_KEY = "ai-ppt-ai-agent-course-week04-form-validation-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+
+    document.querySelectorAll(".slide-prompt").forEach(function (fig) {
+      var pre = fig.querySelector("pre"); if (!pre) return;
+      var b = document.createElement("button"); b.type = "button"; b.className = "prompt-copy"; b.textContent = "複製";
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var t = pre.textContent, ok = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製"; }, 1500); };
+        var fb = function () { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (err) { b.textContent = "請手動選取"; } document.body.removeChild(ta); };
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+      });
+      fig.appendChild(b);
+    });
+  </script>
+</body>
+</html>

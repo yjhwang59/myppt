@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="yuda-teacher-ai-clone-2026-11-18">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="育達科技大學教師 AI 研習（2026/11/18，約 90 分鐘）：如何造出教師 AI 分身。講師黃燕忠｜AI發展顧問。ydutest 執行時不呼叫 AI；教師 AI 分身與 AI 問答助教為規劃中。">
+  <title>育達科技大學｜如何造出教師 AI 分身｜2026-11-18</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    /* week01: layouts used by build:deck that this shell did not style yet */
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .table td strong { color: var(--text); }
+    .arch-svg-wrap { margin-top: 10px; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .arch-svg-wrap svg { width: 100%; height: 100%; max-height: 470px; }
+    .arch-svg-wrap .ly { fill: var(--card); stroke: var(--line); }
+    .arch-svg-wrap .ly-ai { fill: var(--kicker-bg); stroke: var(--kicker-border); }
+    .arch-svg-wrap .t1 { fill: var(--text); font-weight: 800; font-size: 28px; }
+    .arch-svg-wrap .t2 { fill: var(--muted); font-size: 22px; }
+    .arch-svg-wrap .t3 { fill: var(--accent); font-weight: 700; font-size: 22px; }
+    .arch-svg-wrap .ar { stroke: var(--muted); stroke-width: 2.5; fill: none; }
+    .arch-svg-wrap .ar-d { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; }
+    .arch-svg-wrap .hd { fill: var(--accent); font-weight: 800; font-size: 20px; }
+    .arch-svg-wrap .ln { stroke: var(--line); stroke-width: 2; }
+    /* week01: classroom-readable sizes (projector at the back of a 12-person room) */
+    .slide h2 { font-size: calc(clamp(24px, 2.5vw, 34px) * var(--font-scale)); margin-bottom: 4px; }
+    .slide .lead { font-size: calc(17px * var(--font-scale)); max-width: none; }
+    .slide .eyebrow { font-size: calc(14px * var(--font-scale)); }
+    .slide .grid { gap: 16px; margin-top: 18px; }
+    .slide .card { padding: 18px 20px; }
+    .slide .card > strong { font-size: calc(19px * var(--font-scale)); margin-bottom: 8px; }
+    .slide .card p, .slide .card li { font-size: calc(17px * var(--font-scale)); line-height: 1.55; }
+    .slide.active:not(.hero) { justify-content: center; padding-bottom: 56px; }
+    .slide.active:not(.hero) > .eyebrow { margin-top: 0; }
+    .slide .card li + li { margin-top: 6px; }
+    .slide .num { font-size: calc(14px * var(--font-scale)); }
+    .slide .table { font-size: calc(16.5px * var(--font-scale)); margin-top: 14px; }
+    .slide .table th { font-size: calc(14px * var(--font-scale)); }
+    .slide .table td:first-child, .slide .table th:first-child { white-space: nowrap; }
+    .slide .table th, .slide .table td { padding: 8px 10px; }
+    .slide .flow { gap: 8px; margin-top: 18px; padding: 14px; }
+    .slide .flow-step { padding: 14px 12px; }
+    .slide .flow-num { width: 30px; height: 30px; font-size: calc(14px * var(--font-scale)); }
+    .slide .flow-step strong { font-size: calc(17px * var(--font-scale)); margin-bottom: 6px; }
+    .slide .flow-desc { font-size: calc(16px * var(--font-scale)); line-height: 1.5; }
+    .slide .callout { font-size: calc(17px * var(--font-scale)); padding: 12px 16px; margin-top: 16px; }
+    .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
+    .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
+    .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-prompt { position: relative; margin: 6px 0 0; border: 1px solid var(--kicker-border); border-radius: 14px; background: var(--card); padding: 12px 16px 14px; }
+    .slide-prompt figcaption { font-size: calc(14px * var(--font-scale)); font-weight: 700; color: var(--kicker-text); margin-bottom: 6px; padding-right: 80px; }
+    .slide-prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: calc(16px * var(--font-scale)); line-height: 1.55; color: var(--text); }
+    .slide-prompt .prompt-copy { position: absolute; top: 10px; right: 12px; font: inherit; font-size: calc(13px * var(--font-scale)); font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--kicker-border); background: var(--kicker-bg); color: var(--kicker-text); cursor: pointer; }
+    .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(14px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { border-color: var(--accent); text-decoration: underline; }
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      #deck-header { height: auto; min-height: var(--header-h); flex-wrap: wrap; row-gap: 6px; padding: 6px 8px; }
+      #deck { padding-top: 108px; }
+      .slide { width: calc(100vw - 16px); aspect-ratio: auto; min-height: 0; overflow: auto; padding: 20px 16px 44px; }
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { display: none; }
+      .table { display: table; width: 100%; }
+      .slide .table td, .slide .table th, .slide .table td:first-child, .slide .table th:first-child { white-space: normal; word-break: break-word; }
+      .footer { left: 16px; right: 16px; }
+      #deck-header .brand { display: none; }
+      .slide-links { position: static; margin-top: 10px; flex-wrap: wrap; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+
+    /* 這一堂引用多、表格密，連結改排在內文下方，避免壓到標題。 */
+    .slide-links { position: static; margin: 12px 0 0; flex-wrap: wrap; max-width: 100%; }
+    .slide-links a { font-size: calc(12.5px * var(--font-scale)); padding: 4px 10px; line-height: 1.35; }
+    .slide .table { font-size: calc(14.5px * var(--font-scale)); }
+    .slide .table th, .slide .table td { padding: 5px 8px; line-height: 1.35; }
+    .slide.active:not(.hero) { justify-content: flex-start; }
+    .grid.six .card { padding: 12px 14px; }
+    .grid.six .card > strong, .grid.six .card p { font-size: calc(15px * var(--font-scale)); }
+    .slide .flow-step { min-width: 0; }
+    aside.notes { display: none; }
+    .kicker { align-self: flex-start; }
+    .slide.has-prompt.active { justify-content: flex-start; }
+    .slide.has-prompt .slide-prompt { flex: 0 0 auto; min-height: 0; overflow: visible; }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(420px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 黃燕忠｜AI發展顧問</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 1</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+      <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+    </div>
+      </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">育達科技大學｜教師 AI 研習講座</p>
+      <h1>如何造出教師 AI 分身</h1>
+      <p class="lead">示範案例：境外學生在臺生活公約測驗平台（ydutest）。最後，每位老師寫一頁自己的分身提案。</p>
+      <p class="stamp">黃燕忠 博士｜AI發展顧問｜約 90 分鐘｜2026/11/18</p><p class="slide-links"><a href="https://aidc.work/blog/huang-yen-chung-profile-deck" target="_blank" rel="noopener noreferrer">黃燕忠｜個人簡介</a><a href="https://aidc.work/about" target="_blank" rel="noopener noreferrer">關於 Jack｜企業 AI 發展顧問</a></p>
+      <aside class="notes">各位老師好，我是黃燕忠，做企業 AI 發展顧問，也做專題指導。今天不是來推一套要大家立刻會寫程式的課，而是帶大家走一遍：從問題走到可以驗收的產出。這 90 分鐘先對齊觀念，再看一個已經上線的育達案例，接著講怎麼用 AI 把系統做出來，最後每位老師寫一頁自己的分身提案。先送大家一句話：AI 是你的助理，不是你的老闆。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>1 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="帶走四件事">
+<p class="eyebrow">第 0 段｜開場｜5 分鐘</p><h2>離開教室時，希望大家帶走這四件事</h2><p class="lead">今天不是要大家立刻會寫程式，而是一起走一遍：從問題走到可以驗收的產出。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>能用白話講清楚</strong><p>教師 AI 分身不是再多一個聊天視窗。它能替你做重複工作，最後仍由你負責。</p></article><article class="card"><div class="num">02</div><strong>看懂一個已上線的案例</strong><p>對照 ydutest，看一套系統怎麼從「先學、再考、再發證明」長出來。</p></article><article class="card"><div class="num">03</div><strong>帶回一頁提案</strong><p>要解決什麼、誰會用、做到哪裡、先不做什麼、怎麼驗收。</p></article><article class="card"><div class="num">04</div><strong>知道下一步從哪開始</strong><p>哪篇文章、哪門課、哪個工具。不要回家又不知道從哪下手。</p></article></div>
+      <aside class="notes">先把今天的終點說清楚。離開的時候，不是只聽過幾個工具名稱。第一，能用白話講分身是什麼。第二，看過一個校園裡真的在跑的系統。第三，自己寫了一頁提案。第四，知道回家第一篇要讀什麼，或第一件要做什麼。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>2 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="90 分鐘">
+<p class="eyebrow">第 0 段｜開場｜5 分鐘</p><h2>90 分鐘，我們這樣走</h2><table class="table"><thead><tr><th>段</th><th>時間</th><th>累計</th><th>這一段</th></tr></thead><tbody><tr><td><strong>0</strong></td><td>5 分</td><td>5</td><td>開場：今天要一起做的事</td></tr><tr><td><strong>1</strong></td><td>8 分</td><td>13</td><td>教師為什麼要造 AI 分身</td></tr><tr><td><strong>2</strong></td><td>8 分</td><td>21</td><td>共同語言：對話、系統、分身</td></tr><tr><td><strong>3</strong></td><td>10 分</td><td>31</td><td>用 AISDLC 看教師場景</td></tr><tr><td><strong>4</strong></td><td>15 分</td><td>46</td><td>示範：ydutest 現場拆解</td></tr><tr><td><strong>5</strong></td><td>12 分</td><td>58</td><td>用 Vibe Coding 做成系統</td></tr><tr><td><strong>6</strong></td><td>10 分</td><td>68</td><td>教師 AI 分身：Grok Bot 團隊</td></tr><tr><td><strong>7</strong></td><td>12 分</td><td>80</td><td>實作：一頁式提案</td></tr><tr><td><strong>8</strong></td><td>5 分</td><td>85</td><td>個資、責任與人機協作</td></tr><tr><td><strong>9</strong></td><td>5 分</td><td>90</td><td>帶走清單、下一步與 Q&amp;A</td></tr></tbody></table>
+      <aside class="notes">時間先對一下，總共 90 分鐘。前面三段把觀念對齊，第 4 段會現場打開 ydutest，這段請留住。後面講怎麼把想法做成系統、怎麼組一小隊助理，然後第 7 段是今天最重要的產出：一頁提案。最後五分鐘收個資底線，再留問答。若時間不夠，先縮第 6 段的示範、第 5 段改看投影；第 4 段和第 7 段盡量留著。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>3 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="開場提問">
+<p class="eyebrow">第 0 段｜開場提問｜約 1 分鐘</p><h2>這學期，你最想把哪一件重複工作交給助理？</h2><p class="lead">AI 是你的助理，不是你的老闆。給學生、給行政單位的內容，最後仍由老師核定。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>重複回答</strong><p>例如境外生的生活規定，同一題講了很多次。</p></article><article class="card"><div class="num">02</div><strong>作業回饋</strong><p>評語的起稿很花時間，但分數仍要你看過。</p></article><article class="card"><div class="num">03</div><strong>課前通知</strong><p>每週都要再講一次時間、繳交和注意事項。</p></article><article class="card"><div class="num">04</div><strong>題庫出題</strong><p>同一單元反覆出選擇題、再挑進考卷。</p></article></div><div class="callout"><strong>活動：</strong>舉手即可，約 1 分鐘。ydutest 的網址先不用抄，等一下一起看。</div>
+      <aside class="notes">請大家舉個手就好，不用上台。這學期最想交出哪一件重複的工作？可以是重複回答規定、作業回饋、課前通知，或題庫出題。我先聽兩三個例子，等一下的提案就從這裡收。網址先別抄，第 4 段我們一起打開。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>4 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="時間花在哪">
+<p class="eyebrow">第 1 段｜為什麼要造分身｜8 分鐘</p><h2>真正耗時的，常常不是上課那 50 分鐘</h2><div class="grid two"><article class="card"><div class="num">01</div><strong>課前準備</strong><p>講義、提問、小測驗，每週都要再做一次。</p></article><article class="card"><div class="num">02</div><strong>重複回答</strong><p>同一類規定、同一類問題，學期裡講了很多遍。</p></article><article class="card"><div class="num">03</div><strong>批改與紀錄</strong><p>評語、分數、出缺，都要留下看得到的紀錄。</p></article><article class="card"><div class="num">04</div><strong>通知與行政</strong><p>課前通知，以及跟行政單位對接。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/enterprise-line-group-clone-assistant" target="_blank" rel="noopener noreferrer">企業 LINE 群的分身助理</a></p>
+      <aside class="notes">我們先講為什麼值得做。老師累，常常不是累在上課那 50 分鐘，而是課前、重複回答、批改紀錄、通知和行政。這些工作的形狀，跟企業 LINE 群裡的重複回報很像。回到校園，班級群、生活公約、作業規則，是同一類問題。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>5 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="分身是什麼">
+<p class="eyebrow">第 1 段｜為什麼要造分身｜8 分鐘</p><h2>分身不是再多一個聊天視窗</h2><p class="lead">把你的教學目標、常用說法、判斷標準與工作流程，做成可重複使用的助理或小系統。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>它可以做的</strong><p>起草、提醒、測驗、整理。這些是重複、有規則的部分。</p></article><article class="card"><div class="num">02</div><strong>它不能取代的</strong><p>最後判斷仍是老師的。對外的內容，要你核定才算數。</p></article></div>
+      <aside class="notes">這堂課講的 AI 分身，定義就這一句：把你的目標、說法、標準和流程，做成可以重複用的助理或小系統。它能起草、提醒、測驗、整理。它不能代替你做最後判斷。請把這句留到等一下寫提案的時候用。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>6 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="兩種樣子">
+<p class="eyebrow">第 1 段｜為什麼要造分身｜8 分鐘</p><h2>分身常見有兩種樣子，今天都會碰到</h2><div class="grid two"><article class="card"><div class="num">01</div><strong>助理型分身</strong><p>常駐在聊天工具裡，幫你分流、起草、備課、追蹤。例如 Grok Bot、LINE 助理。</p></article><article class="card"><div class="num">02</div><strong>系統型</strong><p>把規則與流程做成學生用得上的平台。例如 ydutest：先學、再考、再發證明。</p></article></div><div class="callout"><strong>請分清楚：</strong>ydutest 是老師用 AI 協作開發的系統，平台執行時不跑 AI。在上面加 AI 問答助教，才是下一步的分身（規劃中）。</div><p class="slide-links"><a href="https://aidc.work/blog/grok-bots-small-company-ai-team" target="_blank" rel="noopener noreferrer">Grok Bots 上手教學</a><a href="https://aidc.work/cases/myassist-line-ai-assistant" target="_blank" rel="noopener noreferrer">案例｜myAssist</a></p>
+      <aside class="notes">今天會碰到兩種。一種住在聊天工具裡，像 Grok Bot 或 LINE 助理，幫你分流、起草。另一種是學生真的點得開的平台，像 ydutest，先學、再考、再發證明。這裡一定要講清楚：ydutest 是用 AI 一起開發出來的系統，平台跑起來的時候沒有呼叫 AI。AI 問答助教是下一步，現在是規劃中，還沒做。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>7 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="兩句對比">
+<p class="eyebrow">第 1 段｜現場對齊｜約 2 分鐘</p><h2>問一次，和把分身放進工作裡，不一樣</h2><div class="grid three"><article class="card"><div class="num">01</div><strong>我偶爾問 ChatGPT 一件事</strong><p>這是個人加速。做完這一題，就結束了。</p></article><article class="card"><div class="num">02</div><strong>我把規定交出去，並寫清權限</strong><p>這門課的規定、常見錯誤、評分標準交給分身，而且規定它什麼能自動做、什麼一定要我看過。這才叫分身開始進入工作。</p></article></div><div class="callout"><strong>帶走：</strong>你要的是問一次的工具，還是能進入教學流程的分身？</div>
+      <aside class="notes">用兩句話讓現場對齊。偶爾問 ChatGPT 一件事，是個人加速，做完就結束。若你把這門課的規定、常見錯誤、評分標準交出去，還寫清楚什麼可以自動做、什麼一定要你看過，分身才算進到工作裡。請大家現在心裡選一邊，等一下寫提案就不會寫成「我要一個聊天視窗」。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>8 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="可以開始">
+<p class="eyebrow">第 2 段｜共同語言｜8 分鐘</p><h2>不會寫程式，也可以開始</h2><p class="lead">可以開始，不等於只靠 AI 寫程式就結束。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>你可以開始</strong><p>先把問題、使用者和驗收講清楚，不必先成為工程師。</p></article><article class="card"><div class="num">02</div><strong>但不能停在這裡</strong><p>系統要有人用、有流程、有資料、有權限，還要驗收。這些不能交給模型自己決定。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/non-programmer-ai-system-development" target="_blank" rel="noopener noreferrer">不會寫程式也能做 AI 系統</a><a href="https://aidc.work/blog/non-programmer-ai-system-development-deck" target="_blank" rel="noopener noreferrer">同主題教學簡報</a></p>
+      <aside class="notes">第 2 段建立共同語言。不會寫程式，也可以開始做 AI 系統開發。可是「可以開始」這四個字，後面還有一句：不能只靠 AI 寫程式就結束。等一下看 ydutest，大家會看到畫面背後還有題庫、紀錄、及格標準和個資範圍。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>9 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="三種層次">
+<p class="eyebrow">第 2 段｜共同語言｜8 分鐘</p><h2>先分清楚：對話、功能、系統</h2><div class="grid three"><article class="card"><div class="num">01</div><strong>AI 對話</strong><p>問答、起草、腦力激盪。適合把問題想清楚。</p></article><article class="card"><div class="num">02</div><strong>AI 功能</strong><p>翻譯、出題、摘要、批改建議。通常還嵌在你既有的工作裡。</p></article><article class="card"><div class="num">03</div><strong>可上線的系統</strong><p>有使用者、有流程、有資料、有權限、有驗收。ydutest 屬於這一種。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-agent-system-development-intro" target="_blank" rel="noopener noreferrer">AI Agent 與系統開發導論</a></p>
+      <aside class="notes">後面的示範，用這三個詞就看得懂。對話，是問答和起草，幫你想清楚。功能，是出題、摘要、批改建議，還嵌在原來的工作裡。系統，是有人用、有流程、有資料、有權限、有驗收。ydutest 是第三種。老師可以從第一、第二種開始，但要有能力走向第三種。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>10 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="系統五層">
+<p class="eyebrow">第 2 段｜共同語言｜8 分鐘</p><h2>老師聽得懂的系統五層</h2><p class="lead">不必一次全做，但要知道它們存在。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>介面</strong></article><article class="card"><div class="num">02</div><strong>後端</strong></article><article class="card"><div class="num">03</div><strong>資料</strong></article><article class="card"><div class="num">04</div><strong>權限</strong></article><article class="card"><div class="num">05</div><strong>AI Agent</strong></article></div><div class="callout"><strong>對照 ydutest：</strong>學生看到中越雙語畫面；背後還有題庫、測驗紀錄、及格標準、後台與個資範圍。這不是一個聊天框能取代的。</div><p class="slide-links"><a href="https://aidc.work/blog/ai-system-development-glossary" target="_blank" rel="noopener noreferrer">AI 系統開發中英名詞</a></p>
+      <aside class="notes">系統五層，今天不用背英文，只要知道有這五層：介面、後端、資料、權限、AI Agent。不必一次做完。用 ydutest 對照最好懂：學生看到的是中越雙語畫面，背後還有題庫、測驗紀錄、及格標準、後台，以及個資收了哪些。一個聊天框取代不了這些。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>11 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="現場判斷">
+<p class="eyebrow">第 2 段｜現場判斷｜約 2 分鐘</p><h2>這三件事，比較像對話、功能，還是系統？</h2><div class="grid three"><article class="card"><div class="num">01</div><strong>幫這週講義寫一個開場故事</strong><p>標準答案：對話。</p></article><article class="card"><div class="num">02</div><strong>依單元出 10 題，你再挑 5 題進考卷</strong><p>標準答案：功能。</p></article><article class="card"><div class="num">03</div><strong>讀完公約、考 50 題、80 分才發證明，行政可查紀錄</strong><p>標準答案：系統。</p></article></div><div class="callout"><strong>今天的重點：</strong>可以從 1、2 開始，但要有能力走向 3。</div>
+      <aside class="notes">請大家先自己判斷，約兩分鐘。第一，請 AI 幫這週講義寫開場故事，是對話。第二，依單元出 10 題選擇題，你再挑 5 題，是功能。第三，境外生讀完生活公約，考 50 題、80 分才發完成證明，行政端還能查紀錄，是系統。先讓老師講，再對答案。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>12 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="先問對問題">
+<p class="eyebrow">第 3 段｜AISDLC｜10 分鐘</p><h2>先別急著說「我要做一個 GPT」</h2><p class="lead">很多專案不是模型不夠強，而是一開始問錯問題。「我要做一個 GPT」是解法偏好，還不是問題。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>為什麼反覆發生？</strong><p>境外生為什麼反覆觸犯同一類生活或課堂規定？</p></article><article class="card"><div class="num">02</div><strong>老師花了多少時間？</strong><p>每學期要花多少時間，把同一件事再說明一次？</p></article><article class="card"><div class="num">03</div><strong>怎麼知道他看懂了？</strong><p>學生看完規定以後，我們怎麼知道他真的看懂？</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate" target="_blank" rel="noopener noreferrer">不要急著叫 AI 寫程式</a><a href="https://aidc.work/blog/ai-adoption-start-with-process-inventory" target="_blank" rel="noopener noreferrer">導入 AI 先盤點流程</a></p>
+      <aside class="notes">第 3 段請大家先別急著寫程式。一開口就說我要做一個 GPT，那是你喜歡某個解法，問題還沒被問出來。比較好的問法是：為什麼同一類規定會反覆被觸犯？老師一學期重講要花多少時間？看完以後，怎麼知道他懂了？企業導入 AI 的第一步不是買工具，是盤點現在怎麼做。教師場景一樣。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>13 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s14" data-title="AISDLC 主軸">
+<p class="eyebrow">第 3 段｜AISDLC｜10 分鐘</p><h2>今天只要記住這條主軸</h2><p class="lead">AISDLC，就是 AI 系統開發生命週期。九個階段不用一次背完。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>問題</strong></article><article class="card"><div class="num">02</div><strong>需求</strong></article><article class="card"><div class="num">03</div><strong>流程</strong></article><article class="card"><div class="num">04</div><strong>資料與知識</strong></article><article class="card"><div class="num">05</div><strong>工具與模型</strong></article><article class="card"><div class="num">06</div><strong>開發</strong></article><article class="card"><div class="num">07</div><strong>測試驗證</strong></article><article class="card"><div class="num">08</div><strong>部署營運</strong></article><article class="card"><div class="num">09</div><strong>成效衡量與持續改善</strong></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc" target="_blank" rel="noopener noreferrer">AI SDLC 九階段</a></p>
+      <aside class="notes">AISDLC 九個階段，今天只要求記住這條線：問題、需求、流程、資料與知識、工具與模型、開發、測試驗證、部署營運、成效衡量與持續改善。等一下的對照表，會把每一段翻譯成教師的話，並對上 ydutest。細節下一頁先看表，平台等第 4 段再親眼看。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>14 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s15" data-title="教師版對照表">
+<p class="eyebrow">第 3 段｜教師版 AISDLC｜對照 ydutest</p><h2>先有地圖，再打開平台</h2><table class="table"><thead><tr><th>階段</th><th>用教師的話說</th><th>對到 ydutest</th></tr></thead><tbody><tr><td><strong>1 定義問題</strong></td><td>為什麼值得做？</td><td>協助境外生融入食衣住行、課堂規範、打工法令與詐騙防範</td></tr><tr><td><strong>2 需求規格</strong></td><td>誰要用、做到哪裡？</td><td>先學再考；50 題、100 分、80 分及格；可重考</td></tr><tr><td><strong>3 工作流程</strong></td><td>人、系統怎麼接力？</td><td>填資料、同意個資、讀完六單元、正式測驗、證明或錯題回顧；老師走後台</td></tr><tr><td><strong>4 資料與知識</strong></td><td>憑什麼給正確答案？</td><td>六大單元條文、題庫、雙語解析</td></tr><tr><td><strong>5–6 工具與開發</strong></td><td>最小版本做哪些？</td><td>學生端學習與測驗、管理端紀錄與題庫</td></tr><tr><td><strong>7 測試</strong></td><td>錯了怎麼辦？</td><td>即時雙語解析；未通過可重測（可設定）</td></tr><tr><td><strong>8–9 營運與改善</strong></td><td>上線後看什麼？</td><td>測驗紀錄、匯出；配題與及格標準可調整</td></tr></tbody></table><div class="callout"><strong>表上的細節，下一節打開平台看。這裡先養成習慣：</strong>不要直接跳去寫程式。</div>
+      <aside class="notes">我用這一張表口頭走一遍，先給地圖。問題是幫境外生融入食衣住行、課堂、打工法令與詐騙防範。需求是先學再考，50 題、100 分、80 分及格、可重考。流程從填資料、個資告知、六單元，到測驗、證明和錯題，老師走後台。資料是條文、題庫和雙語解析。最小版本是學生端和管理端。測試靠即時解析和可重測。上線後看紀錄、匯出，配題和及格標準還能調。請先記住這張地圖。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>15 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s16" data-title="開發前三件事">
+<p class="eyebrow">第 3 段｜AISDLC｜10 分鐘</p><h2>開發前先做三件事，就已經贏過大半專案</h2><p class="lead">先列出現在是怎麼做的，再決定哪一段適合交給分身。第一步不是先買工具。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>寫清問題</strong><p>為什麼值得做，痛在頻率還是在品質。</p></article><article class="card"><div class="num">02</div><strong>寫一頁需求</strong><p>誰要用、做到什麼程度、這一輪先不做什麼。</p></article><article class="card"><div class="num">03</div><strong>設定 Go／No-Go</strong><p>值得做最小版本，還是先把範圍縮小。</p></article></div><div class="callout"><strong>可重用的提問：</strong>為什麼值得做、誰要用、流程怎麼走、資料從哪來、怎麼算完成、誰做最後確認。</div><p class="slide-links"><a href="https://aidc.work/blog/five-questions-managers-must-ask-in-ai-era" target="_blank" rel="noopener noreferrer">主管必須思考的五件事</a></p>
+      <aside class="notes">開發前三件事：寫清問題、寫一頁需求、做 Go 或 No-Go。一頁需求要寫誰用、做到什麼程度、先不做什麼。Go／No-Go 是在問：這次值得做一個最小版本，還是先縮範圍。這張提問清單請帶回去：為什麼、誰、流程、資料、怎樣算完成、誰負責最後確認。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>16 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s17" data-title="案例定位">
+<p class="eyebrow">第 4 段｜ydutest 現場拆解｜15 分鐘</p><h2>這不是「分身已經做好」的案例</h2><p class="lead">老師用 AI 協作，把一份校方公約 docx，做成可上線的學習、測驗、紀錄平台。平台執行時沒有呼叫任何 AI 模型。AI 用在開發階段。</p><div class="callout"><strong>待補：</strong>aidc.work 上還沒有 ydutest 的專文或案例頁。今天直接看公開平台。</div><p class="slide-links"><a href="https://ydutest.aidc.work" target="_blank" rel="noopener noreferrer">打開 ydutest</a></p>
+      <aside class="notes">進入案例。請先把定位講死：這不是 AI 分身已經做好。這是老師用 AI 一起合作，把校方一份公約文件，做成學生可以學、可以考、可以留紀錄的平台。平台跑的時候不呼叫任何 AI。AI 出在開發的時候。部落格目前沒有這套平台的專文，這格是待補，不要現場編一個網址。我們看公開網站就好。講師自己若要對原始碼，那是私有 repo，不要投影、不要把網址放上畫面。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>17 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s18" data-title="平台怎麼走">
+<p class="eyebrow">第 4 段｜ydutest｜15 分鐘</p><h2>先學、再考、再發證明</h2><p class="lead">育達科技大學境外學生在臺生活公約測驗平台。第一階段以越南學生為主。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>讀公約</strong>
+          <p class="flow-desc">從校方文件進來</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>填資料</strong>
+          <p class="flow-desc">並同意個資告知</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>讀完六單元</strong>
+          <p class="flow-desc">讀完才准考</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">4</div>
+          <strong>正式測驗</strong>
+          <p class="flow-desc">現場算分</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">5</div>
+          <strong>錯題解析</strong>
+          <p class="flow-desc">中越雙語</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">6</div>
+          <strong>完成證明</strong>
+          <p class="flow-desc">網頁版，通識教育中心</p>
+        </div></div><div class="callout"><strong>版本：</strong>ydutest-quiz v1.0.4。網站畫面曾顯示 v1.0.2，投影前以當天畫面為準。教師與行政在後台看分數、通過名單並匯出。</div><p class="slide-links"><a href="https://ydutest.aidc.work" target="_blank" rel="noopener noreferrer">打開 ydutest</a></p>
+      <aside class="notes">用學生的路徑講：讀公約，填基本資料並同意個資告知，讀完六個單元，才進正式測驗，當場算分、看錯題解析，通過就有網頁版完成證明，單位是通識教育中心。老師和行政在後台看分數、通過名單，可以匯出。版本講的時候請看當天畫面：文件上的 repo 版本是 ydutest-quiz v1.0.4，網站曾經顯示 v1.0.2。網址是 ydutest.aidc.work。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>18 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s19" data-title="六大單元">
+<p class="eyebrow">第 4 段｜ydutest｜15 分鐘</p><h2>一份 docx，拆成六個單元</h2><p class="lead">內容來源是校方《育達科技大學越南留學生生活與合規公約守則》。中越雙語並列。</p><div class="grid six"><article class="card"><div class="num">食</div><strong>飲食衛生與餐桌禮儀</strong></article><article class="card"><div class="num">衣</div><strong>服飾儀容與形象禮儀</strong></article><article class="card"><div class="num">住</div><strong>宿舍常規與居家生活</strong></article><article class="card"><div class="num">行</div><strong>交通安全與駕駛合規</strong></article><article class="card"><div class="num">育</div><strong>課堂須知與學術誠信</strong></article><article class="card"><div class="num">樂</div><strong>休閒娛樂與守法自律</strong></article></div>
+      <aside class="notes">公約拆成六個單元，食衣住行育樂。食是飲食衛生與餐桌禮儀，衣是服飾儀容，住是宿舍與居家，行是交通與駕駛，育是課堂須知與學術誠信，樂是休閒和守法自律。畫面是中越雙語並列。等一下示範會打開「育」這個單元，讓大家看到條文怎麼變成讀得下去的規則。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>19 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s20" data-title="題庫與後台">
+<p class="eyebrow">第 4 段｜ydutest｜15 分鐘</p><h2>題庫、正式考、後台、個資，各看一件事</h2><div class="grid two"><article class="card"><div class="num">01</div><strong>題庫 200 題</strong><p>中越雙語，每一題都附解析。</p></article><article class="card"><div class="num">02</div><strong>正式測驗</strong><p>預設每單元抽 8 題、另加 2 題，共 50 題、滿分 100、80 分及格。題序打亂；沒過可以重考。</p></article><article class="card"><div class="num">03</div><strong>後台能做的</strong><p>題庫管理、組卷與預覽、及格標準、成績查詢與匯出，以及題目相似度檢查，用來找重複或太像的題。</p></article><article class="card"><div class="num">04</div><strong>個資只收這些</strong><p>姓名、學號、電話、信箱、國籍、系所班級、入學年度、居住狀態。只供校內學習紀錄、測驗管理與行政統計。</p></article></div>
+      <aside class="notes">數字請照這頁講，不要臨場改。題庫 200 題，雙語，有解析。正式考預設每單元 8 題再加 2 題，一共 50 題，100 分，80 分及格，題序會打亂，沒過可以重考。後台有題庫、組卷預覽、及格標準、成績匯出，還有相似度檢查，專門抓重複或太像的題。個資欄位就是畫面上這些，用途也寫在告知裡：校內學習紀錄、測驗管理和行政統計。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>20 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s21" data-title="架構表">
+<p class="eyebrow">第 4 段｜給老師看的白話架構</p><h2>學生看到畫面，背後是這四層</h2><p class="lead">管理端這節不登入。後台和相似度檢查，用這一張表講。</p><table class="table"><thead><tr><th>層</th><th>用什麼</th><th>白話</th></tr></thead><tbody><tr><td><strong>前端</strong></td><td>純 HTML／CSS／JavaScript（index.html、style.css、script.js）</td><td>學生看到的雙語畫面</td></tr><tr><td><strong>後端</strong></td><td>Cloudflare Worker（TypeScript，src/index.ts）。API：/api/quiz/start、/api/quiz/check、/api/records、/api/admin/*</td><td>出題、改考卷、存成績</td></tr><tr><td><strong>資料庫</strong></td><td>Cloudflare D1（ydutest-quiz-db）。資料表 quiz_records、questions、quiz_settings、quiz_papers、paper_questions</td><td>題庫、設定、試卷、成績</td></tr><tr><td><strong>部署</strong></td><td>wrangler，掛在 aidc.work 子網域</td><td>一行指令上線</td></tr></tbody></table>
+      <aside class="notes">這張表用白話講架構，不必進後台。前端就是學生看到的雙語頁面，HTML、CSS、JavaScript。後端是 Cloudflare Worker，負責出題、改考卷、存成績，API 就這幾條。資料在 Cloudflare D1，表是成績、題目、設定、試卷和試卷題目。部署用 wrangler，掛在 aidc.work 的子網域。原始碼是私有的，只給講師對照，不要打開、不要把位址投影出來。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>21 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s22" data-title="AI 在哪裡">
+<p class="eyebrow">第 4 段｜AI 出在開發，不在執行</p><h2>AI 幫的是做出平台，不是上場答題</h2><div class="grid two"><article class="card"><div class="num">01</div><strong>先寫規格書</strong><p>開發規格書.md：誰用、流程、規則、驗收。</p></article><article class="card"><div class="num">02</div><strong>再整理資料</strong><p>用 Python 腳本把公約 docx 拆成六單元，並做出中越雙語題庫與解析。</p></article><article class="card"><div class="num">03</div><strong>然後才開發</strong><p>用 AI 協作寫前端與 Worker，部署成 Cloudflare Worker 加 D1。</p></article><article class="card"><div class="num">04</div><strong>上線後還在修</strong><p>用後台的相似度檢查、組卷預覽，持續修題庫。</p></article></div><div class="callout"><strong>規劃中：</strong>依錯題解析做中越雙語 AI 問答助教，學生可追問「為什麼」，而且只根據公約條文與解析回答。目前平台沒有這項功能，也沒有這段程式。</div>
+      <aside class="notes">照實講 AI 出在哪。第一，先寫規格書，檔名是開發規格書，內容是誰用、流程、規則、驗收。第二，用 Python 把 docx 拆成六單元，並產生雙語題庫和解析。第三，用 AI 一起寫前端和 Worker，部署到 Cloudflare。第四，上線後靠相似度檢查和組卷預覽繼續修題。這正好對上剛才的 AISDLC：先規格、再資料、再開發、再驗證與營運。最後一定要補一句：錯題問答助教是規劃中，現在沒有這功能，也沒有這段程式。那是把系統再往分身推一步的構想。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>22 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s23" data-title="現場示範">
+<p class="eyebrow">第 4 段｜現場打開平台｜約 10 分鐘</p><h2>等一下畫面請跟著這六步看</h2><div class="grid six"><article class="card"><div class="num">01</div><strong>首頁</strong><p>中越雙語介紹。使用者是越南學生。</p></article><article class="card"><div class="num">02</div><strong>基本資料</strong><p>看個資告知：為什麼只收這些欄位。</p></article><article class="card"><div class="num">03</div><strong>打開「育」</strong><p>課堂須知與學術誠信。看條文怎麼被拆成讀得完的規則。</p></article><article class="card"><div class="num">04</div><strong>先讀再考</strong><p>六個單元讀完才准考。這是教學設計，不是多一個按鈕。</p></article><article class="card"><div class="num">05</div><strong>錯題解析</strong><p>示範答錯 1 到 2 題的雙語解析。通過畫面和證明只看結構。</p></article><article class="card"><div class="num">06</div><strong>管理端</strong><p>指出入口即可。後台與相似度用架構表講，不必登入。</p></article></div><div class="callout"><strong>導學：</strong>你手上哪一份文件，也能走「文件 → 規格書 → 題庫 → 平台」？例如課程規範、實驗室安全、實習須知。</div><p class="slide-links"><a href="https://ydutest.aidc.work" target="_blank" rel="noopener noreferrer">打開 ydutest</a></p>
+      <aside class="notes">現在打開 ydutest.aidc.work，大約十分鐘。順序：首頁點出越南學生；基本資料和個資告知；打開育這個單元；強調先讀完六單元才准考；答錯一兩題看雙語解析，通過和證明只展示結構；管理端指出入口，不登入。最後問老師：你手上哪一份文件可以走同一條路，文件、規格書、題庫、平台。課程規範、實驗室安全、實習須知都可以。這段結束時，大家要帶走網址，也要分得清：AI 協作開發的系統，還不是 AI 分身。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>23 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s24" data-title="Vibe Coding">
+<p class="eyebrow">第 5 段｜Vibe Coding｜12 分鐘</p><h2>不是靠感覺生成，是一個可檢查的循環</h2><p class="lead">AI 可以加速寫出第一版，但不能取代你對流程、資料與驗收的判斷。</p><div class="flow" role="list">
+        
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">1</div>
+          <strong>生成</strong>
+          <p class="flow-desc">讓 AI 寫出第一版</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">2</div>
+          <strong>驗證</strong>
+          <p class="flow-desc">用流程、資料、驗收來查</p>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-num">3</div>
+          <strong>修正</strong>
+          <p class="flow-desc">不合就改，再生成</p>
+        </div></div><div class="callout"><strong>最常見的失敗指令是：</strong>「幫我做一個測驗平台。」畫面可以很漂亮，卻沒有題庫規則、及格標準、個資告知，也沒有後台。</div><p class="slide-links"><a href="https://aidc.work/blog/from-vibe-coding-to-agentic-engineering-google-day-1" target="_blank" rel="noopener noreferrer">從 Vibe Coding 到 Agentic Engineering</a><a href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship" target="_blank" rel="noopener noreferrer">Cursor + Grok：從模糊需求到可發布</a></p>
+      <aside class="notes">Vibe Coding 不要翻譯成靠感覺。它是生成、驗證、修正。AI 可以幫你快點寫出第一版，但不能代替你判斷流程、資料和驗收。老師最常失敗的一句是：幫我做一個測驗平台。這樣做出來的畫面可能好看，可是沒有題庫規則、沒有及格線、沒有個資告知，也沒有後台。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>24 / 33</span></div>
+    </section>
+
+    <section class="slide has-prompt" id="s25" data-title="兩種問法">
+<p class="eyebrow">第 5 段｜同一句需求，兩種問法｜3–4 分鐘</p><h2>模糊的一句，和對得上規格的一句</h2><p class="lead">模糊版：「做一個境外生生活公約測驗。」</p><figure class="slide-prompt"><figcaption>清楚版（對齊 ydutest 已公開的規格）</figcaption><pre>學生要先填學號姓名並同意個資告知；先讀完食衣住行育樂六單元才能考試；正式考 50 題、100 分、80 分及格；題目與解析中越雙語；答錯立刻看解析；通過可列印完成證明；老師後台要能看紀錄、改題庫、調配題與及格標準。這一輪只做學生端學習與測驗，先不做 App。</pre></figure><div class="callout">清楚的需求，才叫 AI 有東西可以驗證。不是模型比較聽話，是題目出對了。</div>
+      <aside class="notes">現場若開得了 Cursor 就對照這兩句；網路不穩就用這頁。模糊版只有一句：做一個境外生生活公約測驗。清楚版把 ydutest 已經公開的規格講完：學號姓名、個資告知、六單元讀完才能考、50 題 100 分 80 分、雙語解析、答錯就看解析、通過可列印證明、後台要能看紀錄改題庫調配題和及格標準。這一輪只做學生端，先不做 App。請強調：是題目出對了，不是模型突然變聽話。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>25 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s26" data-title="工具怎麼分">
+<p class="eyebrow">第 5 段｜Vibe Coding｜12 分鐘</p><h2>先把需求寫清楚，再進專案改檔</h2><div class="grid two"><article class="card"><div class="num">01</div><strong>先寫清楚</strong><p>用會整理需求的工具，例如 ChatGPT Work。誰要用、流程、不做的範圍、驗收條件。</p></article><article class="card"><div class="num">02</div><strong>再最小修改</strong><p>用能進專案改檔、跑測試的工具，例如 Cursor、Codex。要拿實際操作證明功能是通的。</p></article><article class="card"><div class="num">03</div><strong>版本另行補上</strong><p>GitHub 用來留版本，不是做完只留在對話窗。初學 Cursor 不必先裝 GitHub；要多人改、要留紀錄時再補。</p></article><article class="card"><div class="num">04</div><strong>先做小原型</strong><p>從一句清楚需求，先做可點、可試的小原型，例如撞球教學模擬器。再決定要不要做成 ydutest 這種可營運的系統。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/chatgpt-work-vs-codex" target="_blank" rel="noopener noreferrer">ChatGPT Work vs. Codex</a><a href="https://aidc.work/blog/cursor-codex-github-ai-dev-workflow" target="_blank" rel="noopener noreferrer">Cursor、Codex、GitHub 工作流</a><a href="https://aidc.work/blog/cursor-ai-system-development-guide" target="_blank" rel="noopener noreferrer">如何正確使用 Cursor</a><a href="https://aidc.work/blog/cursor-beginner-no-github-required" target="_blank" rel="noopener noreferrer">初學 Cursor 不必先裝 GitHub</a><a href="https://aidc.work/cases/vibe-coding-billiard-simulator" target="_blank" rel="noopener noreferrer">案例｜撞球教學模擬器</a><a href="https://aidc.work/blog/codex-github-cloudflare-ai-system-mvp" target="_blank" rel="noopener noreferrer">從 SRS 到 Cloudflare MVP</a></p>
+      <aside class="notes">工具不用今天全部學會，只要知道何時用。想清楚需求，用會寫文件的，例如 ChatGPT Work。要改專案、跑測試、證明真的通了，用 Cursor 或 Codex 這類。Cursor 適合每天協作；較長、一批一批的修改，可以交給 Codex 或同類 Agent。GitHub 是留版本用的。初學不必把安裝 GitHub 當第一道門檻，但開始有別人一起改、要留紀錄，就要補上。信心可以先從小原型來，官方有撞球教學模擬器這種例子，不必一開始就做成像 ydutest 那樣要營運的系統。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>26 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s27" data-title="分身小團隊">
+<p class="eyebrow">第 6 段｜Grok Bot 團隊｜10 分鐘</p><h2>不必先做大平台，可以先組一小隊</h2><p class="lead">一個總管負責分流，其他助理各做一件事。講座裡用口語舉例，不必一次全做。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>總管（Boss）</strong><p>先聽你的問題，判斷該交給誰，而不是自己包辦到最後。</p></article><article class="card"><div class="num">02</div><strong>備課助理</strong><p>依課程大綱產出教學提要、提問、小測驗草稿。</p></article><article class="card"><div class="num">03</div><strong>規範助理</strong><p>只根據指定文件回答常見規定。不知道，就說不知道。</p></article><article class="card"><div class="num">04</div><strong>回饋助理</strong><p>依你的評分要點起草作業回饋。送給學生前，一定先經你看過。</p></article><article class="card"><div class="num">05</div><strong>紀錄秘書</strong><p>整理課堂摘要、學生狀況、下週待辦。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/grok-bots-small-company-ai-team" target="_blank" rel="noopener noreferrer">Grok Bots 上手教學</a></p>
+      <aside class="notes">第 6 段。教師分身不一定要先做成一個大平台。很多老師更適合先組小團隊。總管負責聽問題、決定交給誰，不要自己做到底。備課、規範、回饋、紀錄，各做一件。規範助理只能根據你指定的文件，不知道就說不知道。回饋助理可以起草，送給學生之前一定要老師看過。今天只是舉例，不必五個都做。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>27 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s28" data-title="角色卡">
+<p class="eyebrow">第 6 段｜角色卡｜現場約 2 分鐘</p><h2>先填四格。完整的一頁，留到下一段</h2><p class="lead">同一套回饋或週報若會反覆用，就把提示詞做成可重用的 Skill，或寫進專案說明，例如 AGENTS.md，不要每次重新教。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>我最想先做的一個角色是</strong><p>________</p></article><article class="card"><div class="num">02</div><strong>它只能使用的資料是</strong><p>例如課程大綱、生活公約條文。不含學生成績單。</p></article><article class="card"><div class="num">03</div><strong>它可以自動完成的是</strong><p>________</p></article><article class="card"><div class="num">04</div><strong>一定要我核准才准送出的是</strong><p>________</p></article></div><div class="callout"><strong>兩個坑：</strong>常駐同事（例如 Grok Bot）和專案裡的 Coding Agent（例如 Cursor 裡的 Grok）不是同一個東西。已派工，不等於已完成；驗收只認真實結果，不認 AI 自報完成。</div><p class="slide-links"><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok" target="_blank" rel="noopener noreferrer">Grok Bot vs. Cursor Grok</a><a href="https://aidc.work/blog/grok-bot-team-dispatch-not-done" target="_blank" rel="noopener noreferrer">已派工，不等於已完成</a><a href="https://aidc.work/blog/weekly-report-prompt-vs-skill" target="_blank" rel="noopener noreferrer">從週報 Prompt 到 Skill</a><a href="https://aidc.work/blog/agents-md-codex-claude-cursor-guide" target="_blank" rel="noopener noreferrer">AGENTS.md 是什麼</a></p>
+      <aside class="notes">請大家只填四格，兩分鐘。最想先做哪個角色、它只能用哪些資料、什麼可以自動做、什麼一定要你核准。資料的例子是課程大綱或公約條文，不要放學生成績單。完整寫作留到下一節。順便點兩個坑：Grok Bot 這種常駐同事，和 Cursor 裡負責改程式的 Grok，不是同一個東西。備課、回訊息走前者；要把 ydutest 這類系統改出去，走後者。另一個坑是以為派工了就是做完了。對外給學生或行政之前一定要老師核准。驗收只認連結、畫面、紀錄，不認它自己說完成。若網路可以，就快速看一下分工概念；不行就用文章，不必現場新建 Bot。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>28 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s29" data-title="一頁提案">
+<p class="eyebrow">第 7 段｜實作｜12 分鐘</p><h2>今天最重要的產出：一頁提案</h2><p class="lead">不要求寫程式。每位老師可以兩人一組，完成一頁「我的教師 AI 分身」。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>範圍要小到做得出來</strong><p>選一個 2 到 4 週內能做出最小版本的題目。</p></article><article class="card"><div class="num">02</div><strong>不要一開始就做全校</strong><p>不要一開口就是「全校統一智慧導師」。</p></article><article class="card"><div class="num">03</div><strong>ydutest 為什麼能當例子</strong><p>對象特定、六個單元、先學再考、有及格線。範圍是清楚的。</p></article></div><div class="callout"><strong>時間：</strong>0–1 分聽範例；1–8 分填寫；8–12 分請 2 組各講 1 分鐘。我只回一句：範圍清不清楚、驗收能不能檢查。</div><p class="slide-links"><a href="https://aidc.work/courses/ai-system-development-intro" target="_blank" rel="noopener noreferrer">AI 系統開發入門班</a><a href="https://aidc.work/courses" target="_blank" rel="noopener noreferrer">課程總覽</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate" target="_blank" rel="noopener noreferrer">不要急著叫 AI 寫程式</a></p>
+      <aside class="notes">這一段是今天最重要的輸出。不寫程式。可以兩人一組。選題要在兩到四週做得出最小版本，不要做全校統一智慧導師。ydutest 能示範，就是因為範圍清楚。時間這樣用：第一分鐘我用 ydutest 當填好的例子念一遍；接著大約七分鐘大家寫，我去幫忙把範圍縮小，最常見是把全能導師收成「本門課 10 題課前測驗」或「班級群的規範問答助理」；最後請兩組各講一分鐘，我只回範圍清不清楚、驗收能不能檢查。課程頁可以留給想繼續學的人：入門班第一週就是做一頁提案，課程定位包含不用寫程式、學會打造 AI 分身。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>29 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s30" data-title="提案範本">
+<p class="eyebrow">第 7 段｜一頁式提案範本</p><h2>我的教師 AI 分身</h2><p class="lead">看著這十格寫。紙本或共編文件都可以。</p><table class="table"><thead><tr><th>#</th><th>欄位</th><th>這一格寫什麼</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>題目</td><td>十個字以內</td></tr><tr><td><strong>2</strong></td><td>要解決的問題</td><td>頻率、目前怎麼做、痛在哪</td></tr><tr><td><strong>3</strong></td><td>主要使用者</td><td>學生／老師／行政；是否境外生、是否要雙語</td></tr><tr><td><strong>4</strong></td><td>理想流程</td><td>最多 6 步</td></tr><tr><td><strong>5</strong></td><td>最小版本</td><td>這一版一定要有的 3 件事</td></tr><tr><td><strong>6</strong></td><td>這一輪先不做</td><td>先不做的 3 件事</td></tr><tr><td><strong>7</strong></td><td>驗收方式</td><td>怎樣叫成功。例如學生做完、老師匯出名單、錯誤率可接受</td></tr><tr><td><strong>8</strong></td><td>能不能自動送出</td><td>哪些步驟一定要人工確認</td></tr><tr><td><strong>9</strong></td><td>既有資料</td><td>講義、辦法、題庫、課堂規範</td></tr><tr><td><strong>10</strong></td><td>下週第一步</td><td>只寫一件事</td></tr></tbody></table>
+      <aside class="notes">我先用 ydutest 把十格念完，大家再寫自己的。題目可以是「境外生生活公約測驗」。問題是同一類規定要重複講，也不知道學生看懂沒有。使用者是越南學生，需要中越雙語。流程是填資料、同意個資、讀完六單元、正式考、看解析、發證明。最小版本三件事：學生能讀、學生能考、老師能看紀錄。這一輪先不做 App、先不做 AI 問答助教、先不在現場登入後台。驗收是 50 題、100 分、80 分及格，後台能匯出。證明和對外內容不能自動送出。資料就是校方那份公約。下週第一步只寫一件：先把文件拆成單元。請照十格寫，空著的等一下個資那頁還要補勾。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>30 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s31" data-title="三條底線">
+<p class="eyebrow">第 8 段｜個資、責任與人機協作｜5 分鐘</p><h2>三條今天就能帶走的底線</h2><p class="lead">學生姓名、學號、聯絡方式、成績、出缺席，都不能隨手貼進公開的 AI 工具。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>最小必要</strong><p>只蒐集這項工作真正需要的。ydutest 的告知寫明：基本資料只供校內公約學習記錄、測驗管理與行政統計。</p></article><article class="card"><div class="num">02</div><strong>先審再發</strong><p>回饋、成績判斷、證明文件，不能因為 AI 寫得順，就直接送出。</p></article><article class="card"><div class="num">03</div><strong>權限要收斂</strong><p>可以起草、可以查指定文件。清除紀錄、改及格標準、對外發文、動到成績，留在老師或管理者手上。</p></article><article class="card"><div class="num">04</div><strong>會自己動手時</strong><p>先問它能看什麼、能改什麼、做錯如何回退、留下什麼紀錄。語音分身專文：待補。本場不展開做法。</p></article></div><div class="callout"><strong>活動：</strong>回頭看提案，勾兩欄。哪些資料不可以進公開工具？哪一步一定要人工確認？沒勾，就不算完成。</div><p class="slide-links"><a href="https://ydutest.aidc.work" target="_blank" rel="noopener noreferrer">打開 ydutest</a><a href="https://aidc.work/blog/enterprise-agentic-ai-security" target="_blank" rel="noopener noreferrer">四層資安治理框架</a><a href="https://aidc.work/blog/ai-era-pdca-value-loop" target="_blank" rel="noopener noreferrer">AI 時代的 PDCA</a></p>
+      <aside class="notes">教師場景比練習題敏感。姓名、學號、電話、成績、出缺席，不要貼進公開工具。三條底線：最小必要，ydutest 的告知就是例子，只供校內學習紀錄、測驗管理和行政統計；先審再發，回饋、成績、證明不能因為寫得順就送出；權限收斂，高風險動作留在老師或管理者。若分身會自己查資料、寫進系統，要問它能看什麼、能改什麼、怎樣回退、留下什麼紀錄。語音分身，用自己的聲音做講解或旁白，很多人會想做，但現在沒有可引用的專文，標待補，這場不示範步驟。請大家回到提案勾兩欄，沒勾不算完成。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>31 / 33</span></div>
+    </section>
+
+    <section class="slide" id="s32" data-title="下一步">
+<p class="eyebrow">第 9 段｜帶走清單｜5 分鐘</p><h2>今天不是停在「聽過 ydutest」</h2><p class="lead">你已經有一頁自己的提案。下面三條，只選一條先做。</p><div class="grid three"><article class="card"><div class="num">01</div><strong>本週</strong><p>跟同事或助教對過一次。刪掉三件這一輪做不到的事。</p></article><article class="card"><div class="num">02</div><strong>兩週內</strong><p>做最小版本。可以是只回答指定講義的問答助理，或 10 題課前測驗。不必先做成全校平台。</p></article><article class="card"><div class="num">03</div><strong>想系統化學</strong><p>依 Blog 閱讀順序補觀念，或進入「AI 系統開發入門班」，從需求走到可部署的小系統。</p></article></div><div class="callout"><strong>不必一次讀完。建議先讀：</strong>非工程師也能開始的系統開發、AISDLC、Grok Bots 上手、Cursor 實務。ydutest 請帶回網址，自己點過一遍。</div><p class="slide-links"><a href="https://aidc.work/blog/aidc-blog-reading-path" target="_blank" rel="noopener noreferrer">Blog 分類與推薦閱讀順序</a><a href="https://aidc.work/blog/non-programmer-ai-system-development" target="_blank" rel="noopener noreferrer">不會寫程式也能做 AI 系統</a><a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc" target="_blank" rel="noopener noreferrer">AI SDLC 九階段</a><a href="https://aidc.work/blog/grok-bots-small-company-ai-team" target="_blank" rel="noopener noreferrer">Grok Bots 上手教學</a></p>
+      <aside class="notes">收尾時請把終點講回來：不是聽過一個平台，是你已經有一頁提案。三個下一步只選一條。本週跟同事對過，刪掉三件做不到的。兩週內做最小版本，問答助理或 10 題課前測驗就好。想系統學，就照閱讀順序，或去入門班。閱讀不用一次讀完，先讀非工程師那篇、AISDLC、Grok Bots、Cursor 實務。平台網址帶回去自己點。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>32 / 33</span></div>
+    </section>
+
+    <section class="slide hero" id="s33" data-title="問答">
+
+      <p class="kicker">第 9 段｜Q&amp;A｜約 3–4 分鐘</p>
+      <h1>還有問題嗎？</h1>
+      <p class="lead">若沒有問題，請一位老師用 30 秒說出自己下週要做的那一步。帶走的是：一頁提案、三條底線、一個下週行動。</p>
+      <p class="stamp">黃燕忠｜AI發展顧問｜yjhwang59@gmail.com｜https://aidc.work</p><p class="slide-links"><a href="https://aidc.work" target="_blank" rel="noopener noreferrer">aidc.work</a><a href="https://aidc.work/courses" target="_blank" rel="noopener noreferrer">課程總覽</a><a href="https://aidc.work/courses/ai-system-development-intro" target="_blank" rel="noopener noreferrer">AI 系統開發入門班</a><a href="https://ydutest.aidc.work" target="_blank" rel="noopener noreferrer">打開 ydutest</a></p>
+      <aside class="notes">開放問答三到四分鐘。若沒有人問，就請一位老師用 30 秒講下週那一步。再報一次聯絡方式：黃燕忠，AI 發展顧問，網站 aidc.work，信箱 yjhwang59@gmail.com。延伸閱讀和課程連結在這一頁。謝謝各位老師。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>33 / 33</span></div>
+    </section>
+  </main>
+
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="yuda-teacher-ai-clone-2026-11-18">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "育達科技大學｜如何造出教師 AI 分身";
+      const LS_KEY = "ai-ppt-yuda-teacher-ai-clone-2026-11-18-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+
+    document.querySelectorAll(".slide-prompt").forEach(function (fig) {
+      var pre = fig.querySelector("pre"); if (!pre) return;
+      var b = document.createElement("button"); b.type = "button"; b.className = "prompt-copy"; b.textContent = "複製";
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var t = pre.textContent, ok = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製"; }, 1500); };
+        var fb = function () { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (err) { b.textContent = "請手動選取"; } document.body.removeChild(ta); };
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+      });
+      fig.appendChild(b);
+    });
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>

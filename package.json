@@ -18,7 +18,7 @@
     "build:deck": "node scripts/narration/build-deck.js",
     "import:html": "node scripts/import-html-deck.js",
     "dev": "node server/index.js",
-    "test": "node --test scripts/narration/lib/extract.test.js server/lib/html-import.test.js server/lib/registry.test.js server/lib/session.test.js presentations/catalog.test.js admin/parse-source-url.test.js worker/login-bridge.test.js worker/catalog.test.js worker/google-id-token.test.js worker/slide-patch.test.js worker/speech.test.js worker/studio-store.test.js scripts/narration/lib/tts/elevenlabs.test.js",
+    "test": "node --test scripts/narration/lib/extract.test.js scripts/narration/lib/slide-model.test.js server/lib/html-import.test.js server/lib/registry.test.js server/lib/session.test.js presentations/catalog.test.js admin/parse-source-url.test.js worker/login-bridge.test.js worker/catalog.test.js worker/google-id-token.test.js worker/slide-patch.test.js worker/speech.test.js worker/studio-store.test.js scripts/narration/lib/tts/elevenlabs.test.js",
     "deploy": "wrangler deploy"
   },
   "engines": {
