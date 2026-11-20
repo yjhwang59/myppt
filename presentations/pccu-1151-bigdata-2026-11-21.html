@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="pccu-1151-bigdata-2026-11-21">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="文化大學推廣部「巨量資料挖掘與分析」1151｜1151CMNAI2AI52500｜2026-11-21（六）13:10–16:00（臺北）課前簡報。期中回饋 → 期末補強：用證據證明「做得下去」。本週為複習＋PBL 工作室版。講師：黃燕忠。">
+  <title>2026-11-21｜巨量1151｜課前簡報</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 32px 40px 48px; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale));  line-height: 1.55; }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .grid > .span-2 { grid-column: 1 / -1; }
+    .slide.dense { padding-top: 26px; }
+    .slide.dense .grid { gap: 8px; margin-top: 10px; }
+    .slide.dense .card { padding: 10px 12px; }
+    .slide.dense .card > strong { margin-bottom: 4px; }
+    .slide.dense .callout { margin-top: 8px; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(360px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 文大 1151</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <a class="btn-link" href="/" title="回到簡報庫">庫</a>
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 16</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+    </div>
+    <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+  </header>
+  <main id="deck">
+
+    <section class="slide hero active" id="s1" data-title="封面">
+      <p class="kicker">文化大學推廣部｜巨量資料挖掘與分析 1151</p>
+      <h1>2026-11-21｜巨量1151｜<br>課前簡報</h1>
+      <p class="lead">期中回饋 → 期末補強：用證據證明「做得下去」</p>
+      <p class="stamp">本週為複習＋PBL 工作室版<br>黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問<br>2026-11-21（六）13:10–16:00（臺北）｜1151CMNAI2AI52500<br>←→ 翻頁　·　F 全螢幕　·　16 頁 · 16:9</p>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>1 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="今日流程｜短講約 30 分，其餘工作室">
+      <p class="eyebrow">02 / 今日流程</p>
+      <h2>今日流程｜短講約 30 分，其餘工作室</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">①</div><strong>期中評分參考的核心目標與共同尺度</strong></article>
+        <article class="card"><div class="num">②</div><strong>複習 W3–W6／三硬門檻＋5V／AISDLC</strong></article>
+        <article class="card"><div class="num">③</div><strong>期中 → 期末補強清單</strong><p>依八項常見不足</p></article>
+        <article class="card"><div class="num">④</div><strong>五分鐘問答抽查，先自我演練</strong></article>
+        <article class="card"><div class="num">⑤</div><strong>Grok Bot 實例＋AI 工具繳交規範</strong></article>
+        <article class="card"><div class="num">⑥</div><strong>PBL 工作室</strong><p>各組 demo＋抽查基線／系統／證據</p></article>
+      </div>
+      <div class="callout"><strong>本週為複習＋PBL 工作室版：</strong>11/14 後無新上傳教材或作業</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>2 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="學習目標｜本週">
+      <p class="eyebrow">03 / 學習目標</p>
+      <h2>學習目標｜本週</h2>
+      <div class="grid three">
+        <article class="card"><div class="num">①</div><strong>對照期中評分八項</strong><p>圈出自己專題「最缺證據」的兩項</p></article>
+        <article class="card"><div class="num">②</div><strong>把常見不足改寫成補強動作</strong><p>補什麼、證據放哪、何時重跑</p></article>
+        <article class="card"><div class="num">③</div><strong>能現場回答五題抽查</strong><p>資料、圖表、重跑、基準、備案</p></article>
+      </div>
+      <div class="callout"><strong>不加新理論；</strong>把現有版本補到「別人能重跑」</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>3 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="週次對照｜W3–W6 意義">
+      <p class="eyebrow">04 / 週次對照</p>
+      <h2>週次對照｜W3–W6 意義</h2>
+      <div class="grid two">
+        <article class="card"><strong>10/03 W3 基線定稿：</strong><p>同口徑數字</p></article>
+        <article class="card"><strong>10/17 W4 最小可跑系統（輸入→處理→輸出）</strong><p>10/17 W5 固定驗收集，事先凍結</p></article>
+        <article class="card"><strong>10/24 W6 證據包：</strong><p>拿得到、追得回、重跑得出</p></article>
+        <article class="card"><strong>10/31 複核｜11/07 期中報告｜11/14 業師教材對讀｜11/21 期中回饋 → 期末補強</strong></article>
+      </div>
+      <div class="callout"><strong>期中 ≈ W4–W5｜期末 ≈ W6＋決策價值講清楚</strong></div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>4 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s5" data-title="三硬門檻＋5V｜複習">
+      <p class="eyebrow">05 / 三硬門檻＋5V</p>
+      <h2>三硬門檻＋5V｜複習</h2>
+      <div class="grid two">
+        <article class="card"><strong>基線：</strong><p>現況數字＋同口徑比較＋成功／停止門檻</p></article>
+        <article class="card"><strong>系統：</strong><p>最小流程從輸入跑到輸出，他人可重跑</p></article>
+        <article class="card"><strong>證據：</strong><p>固定驗收集＋結果＋執行紀錄＋限制</p></article>
+        <article class="card"><strong>5V：</strong><p>Volume／Velocity／Variety／Veracity（來源、授權、缺值、重複、偏誤）／Value（替誰改哪個決定）</p></article>
+      </div>
+      <div class="callout"><strong>本週聚焦 Veracity＋Value，</strong>對應期中「資料品質」與「問題焦點」</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>5 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="AISDLC｜六階段與週次對照">
+      <p class="eyebrow">06 / AISDLC</p>
+      <h2>AISDLC｜六階段與週次對照</h2>
+      <p class="lead">Discover → Define → Design → Develop → Deploy → Diagnose</p>
+      <div class="grid two">
+        <article class="card"><strong>W3 Discover／Define：</strong><p>使用者、問題、基線定清楚</p></article>
+        <article class="card"><strong>W4 Design／Develop：</strong><p>最小系統能跑</p></article>
+        <article class="card"><strong>W5 Deploy：</strong><p>固定驗收集測試（驗收）</p></article>
+        <article class="card"><strong>W6 Diagnose：</strong><p>證據包、限制、失效條件</p></article>
+      </div>
+      <div class="callout"><strong>Diagnose 不過 → 回 Develop，</strong>只改一件事，用同一驗收集重跑</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>6 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s7" data-title="期中評分參考｜用證據證明「做得下去」">
+      <p class="eyebrow">07 / 期中評分參考</p>
+      <h2>期中評分參考｜用證據證明「做得下去」</h2>
+      <div class="grid two">
+        <article class="card"><strong>配分</strong><p>焦點 10、資料 20、品質 8、圖表 12</p></article>
+        <article class="card"><strong>配分</strong><p>方法 18、原型 22、README 5、計畫 5</p></article>
+        <article class="card span-2"><strong>共同尺度</strong><p>90–100% 完整可信｜70–89% 小缺口｜40–69% 關鍵待確認｜0–39% 證據不足</p></article>
+        <article class="card span-2"><strong>不以口才、簡報美觀或工具複雜度取代實際證據</strong></article>
+      </div>
+      <div class="callout"><strong>另記進度判定：</strong>可推進／補件推進／需調整（講師個別回饋）</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>7 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s8" data-title="期中 → 期末補強清單（1／2）">
+      <p class="eyebrow">08 / 補強清單</p>
+      <h2>期中 → 期末補強清單（1／2）</h2>
+      <div class="grid two">
+        <article class="card"><div class="num">焦點</div><strong>只講技術、題目太大</strong><p>一句話寫清替誰解決什麼、如何判斷改善</p></article>
+        <article class="card"><div class="num">資料</div><strong>只有連結、欄位不符</strong><p>附樣本＋來源／筆數／時間範圍／單位／授權</p></article>
+        <article class="card"><div class="num">品質</div><strong>直接刪補沒理由</strong><p>缺值／重複／異常檢查結果＋處理理由與影響</p></article>
+        <article class="card"><div class="num">圖表</div><strong>沒解讀、相關當因果</strong><p>至少三張，寫問題／發現／限制／待驗證，標單位與範圍</p></article>
+      </div>
+      <div class="callout"><strong>各項先看證據；</strong>同一缺失不重複扣分</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>8 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s9" data-title="期中 → 期末補強清單（2／2）">
+      <p class="eyebrow">09 / 補強清單</p>
+      <h2>期中 → 期末補強清單（2／2）</h2>
+      <div class="grid two">
+        <article class="card"><div class="num">方法</div><strong>只有方法或只報數字</strong><p>基準 vs 第一版同表；沒贏基準也要誠實分析</p></article>
+        <article class="card"><div class="num">原型</div><strong>只有截圖或影片</strong><p>輸入→處理→輸出可重跑，數字與報告一致</p></article>
+        <article class="card"><div class="num">README</div><strong>他人跑不起來</strong><p>環境／依賴／資料放置／執行命令／預期輸出／已知限制</p></article>
+        <article class="card"><div class="num">計畫</div><strong>工作不具體</strong><p>待辦＋負責人＋時程＋風險＋替代方案</p></article>
+      </div>
+      <div class="callout"><strong>預測、分類、探索各選合適指標，</strong>不強套 MAPE</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>9 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s10" data-title="五分鐘問答抽查｜先自我演練">
+      <p class="eyebrow">10 / 五分鐘問答抽查</p>
+      <h2>五分鐘問答抽查｜先自我演練</h2>
+      <div class="grid two">
+        <article class="card"><div class="num">①</div><strong>一筆資料代表什麼？來源與使用權限？</strong></article>
+        <article class="card"><div class="num">②</div><strong>選一張圖：發現什麼？還不能證明什麼？</strong></article>
+        <article class="card"><div class="num">③</div><strong>示範關鍵步驟重跑，指出輸入與輸出</strong><p>為何採用這個基準或評量方式？</p></article>
+        <article class="card"><div class="num">④</div><strong>下一步先補什麼？不可行時的備案？</strong></article>
+        <article class="card span-2"><strong>進度判定</strong><p>可推進／補件推進（列補件與確認時間）／需調整（縮題、換資料、簡化方法）</p></article>
+      </div>
+      <div class="callout"><strong>不另設隱藏加扣分</strong></div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>10 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="Grok Bot｜AI 助教如何產出本週課前簡報">
+      <p class="eyebrow">11 / Grok Bot</p>
+      <h2>Grok Bot｜AI 助教如何產出本週課前簡報</h2>
+      <div class="grid two">
+        <article class="card"><strong>輸入：</strong><p>課程 Drive 檔案清單＋前兩週簡報與講稿＋講師期中評分參考</p></article>
+        <article class="card"><strong>判斷：</strong><p>11/14 後沒有新上傳 → 改出「複習＋PBL 工作室」版</p></article>
+        <article class="card"><strong>處理：</strong><p>沿用前週版面與週次對照；評分參考轉成補強清單</p></article>
+        <article class="card"><strong>邊界：</strong><p>不開學生作業、不寫姓名與分數、不寄信、不改分享權限；輸出草稿待講師覆核</p></article>
+      </div>
+      <div class="callout"><strong>輸入來源 → 判斷理由 → 產出 → 人工核准</strong>＝證據包的樣子</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>11 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s12" data-title="示範｜去識別化「次日生產預估」：基線→系統→證據">
+      <p class="eyebrow">12 / 示範</p>
+      <h2>示範｜去識別化「次日生產預估」：基線→系統→證據</h2>
+      <div class="grid two">
+        <article class="card span-2"><strong>情境：</strong><p>北風烘焙（去識別化），營業日 15:00 前出明日建議量</p></article>
+        <article class="card"><strong>基線：</strong><p>近 31 日門市×品項均量 × 固定倍率，固定日期參數可重跑</p></article>
+        <article class="card"><strong>系統：</strong><p>產生預估表 → 同步產銷表 → 人工覆寫 → 與實出對帳</p></article>
+        <article class="card span-2"><strong>證據：</strong><p>公式說明、對照覆蓋率報表、誤差週報、主檔異動同步紀錄；高風險覆寫由產銷主管確認</p></article>
+      </div>
+      <div class="callout"><strong>來源：</strong>課程 Drive〈5V檢查表-填寫範例〉；門檻為教學示意</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>12 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s13" data-title="AI 工具繳交規範｜可用 AI，但要能重跑、能說明">
+      <p class="eyebrow">13 / AI 工具繳交規範</p>
+      <h2>AI 工具繳交規範｜可用 AI，但要能重跑、能說明</h2>
+      <div class="grid two">
+        <article class="card"><strong>可用 Cursor／Claude 等</strong><p>須理解關鍵步驟、能說明</p></article>
+        <article class="card"><strong>繳交：</strong><p>程式＋README＋證據（驗收集、結果、執行紀錄）</p></article>
+        <article class="card"><strong>README 六項：</strong><p>環境、依賴、資料放置、執行命令、預期輸出、已知限制</p></article>
+        <article class="card"><strong>敏感資料交去識別化樣本</strong><p>不打包密鑰帳密；刪 AI 對話殘留；版本一致</p></article>
+      </div>
+      <div class="callout"><strong>截圖或影片不能完全替代可執行程式</strong></div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>13 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s14" data-title="PBL 工作室｜各組 demo＋抽查三硬門檻">
+      <p class="eyebrow">14 / PBL 工作室</p>
+      <h2>PBL 工作室｜各組 demo＋抽查三硬門檻</h2>
+      <div class="grid two">
+        <article class="card"><strong>S 軌：</strong><p>先補期中最缺的兩項</p></article>
+        <article class="card"><strong>F 軌：</strong><p>加第二指標或 v2 單一變更，用同一驗收集重跑</p></article>
+        <article class="card"><strong>0–15：</strong><p>對照八項，圈出最缺的兩項</p></article>
+        <article class="card"><strong>15–45：</strong><p>補強實作（README／重跑紀錄／圖表解讀）</p></article>
+        <article class="card"><strong>45–75：</strong><p>各組 demo（輸入→處理→輸出）</p></article>
+        <article class="card"><strong>75–90：</strong><p>講師抽查基線／系統／證據＋問答擇要</p></article>
+      </div>
+      <div class="callout"><strong>相對時間，講師可調整；</strong>不公開分軌名單</div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>14 / 16</span></div>
+    </section>
+
+    <section class="slide dense" id="s15" data-title="本週作業｜建議（講師可調整）">
+      <p class="eyebrow">15 / 本週作業</p>
+      <h2>本週作業｜建議（講師可調整）</h2>
+      <div class="grid two">
+        <article class="card"><div class="num">①</div><strong>補強表</strong><p>最缺兩項 → 補什麼／證據放哪／何時完成</p></article>
+        <article class="card"><div class="num">②</div><strong>README 更新</strong><p>六項齊全，請一位同學依說明試跑</p></article>
+        <article class="card"><div class="num">③</div><strong>重跑紀錄</strong><p>同一驗收集，保留輸入、指令、輸出</p></article>
+        <article class="card"><div class="num">④</div><strong>圖表解讀</strong><p>至少三張，寫發現與「還不能證明什麼」</p></article>
+        <article class="card span-2"><div class="num">⑤</div><strong>後續計畫</strong><p>待辦＋負責人＋時程＋風險與備案</p></article>
+      </div>
+      <div class="callout"><strong>繳交方式與期限以講師公告為準</strong></div>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>15 / 16</span></div>
+    </section>
+
+    <section class="slide" id="s16" data-title="下課檢查清單｜用證據證明「做得下去」">
+      <p class="eyebrow">16 / 下課檢查清單</p>
+      <h2>下課檢查清單｜用證據證明「做得下去」</h2>
+      <div class="grid two">
+        <article class="card"><div class="num">□</div><strong>基線：</strong><p>同口徑數字＋成功／停止門檻＋核准者</p></article>
+        <article class="card"><div class="num">□</div><strong>系統：</strong><p>輸入→處理→輸出，他人可依 README 重跑</p></article>
+        <article class="card"><div class="num">□</div><strong>證據：</strong><p>驗收集＋結果＋執行紀錄＋已知限制</p></article>
+        <article class="card"><div class="num">□</div><strong>下一步：</strong><p>最缺兩項的補強表＋負責人＋時程</p></article>
+      </div>
+      <div class="slogan-stack">
+        <p>沒有基線的 AI 叫聊天｜沒有系統的分析叫作業｜沒有證據的 Demo 叫表演</p>
+        <p>先有基線，再談模型｜有證據，才叫變好</p>
+      </div>
+      <p class="mini-note">課後複習：myppt.aidc.work／pccu-1151-bigdata-2026-11-21.html</p>
+      <div class="footer"><span class="instructor">AIDC.work 黃老師</span><span>16 / 16</span></div>
+    </section>
+
+  </main>
+
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="pccu-1151-bigdata-2026-11-21">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "巨量資料挖掘與分析｜1151";
+      const LS_KEY = "ai-ppt-pccu-1151-bigdata-2026-11-21-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>
