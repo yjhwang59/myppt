@@ -1,0 +1,970 @@
+{
+  "version": "1.0.0",
+  "deckId": "pccu-1151-bigdata-2026-11-14",
+  "title": "文大推廣｜巨量資料挖掘與分析 1151｜2026-11-14｜課前簡報",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "2026-11-14（六）13:10（臺北）｜文化大學推廣部 1151CMNAI2AI52500",
+      "h1": "2026-11-14｜巨量1151｜\n課前簡報",
+      "h2": "2026-11-14｜巨量1151｜課前簡報",
+      "lead": "期中之後：把業師的「大數據策略」變成可驗證假設",
+      "stamp": "複習＋PBL 工作室＋業師教材對讀版 講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · ←→ 翻頁 · F 全螢幕 · 15 頁 · 16:9",
+      "cards": [],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "1 / 15"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "今日流程｜短講約 30 分，其餘工作室",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "02 / 今日流程",
+      "kicker": "",
+      "h1": "",
+      "h2": "今日流程｜短講約 30 分，其餘工作室",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "①",
+          "tag": null,
+          "tagClass": null,
+          "heading": "期中報告收件回顧（去名化）",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "②",
+          "tag": null,
+          "tagClass": null,
+          "heading": "複習 W3–W6／三硬門檻＋5V／AISDLC",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "③",
+          "tag": null,
+          "tagClass": null,
+          "heading": "業師教材對讀：",
+          "paragraph": "蔡鎮村老師〈大數據操盤〉",
+          "bullets": []
+        },
+        {
+          "num": "④",
+          "tag": null,
+          "tagClass": null,
+          "heading": "練習：",
+          "paragraph": "把一條策略寫成「基線＋系統＋證據」",
+          "bullets": []
+        },
+        {
+          "num": "⑤",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Grok Bot 實例＋AI 繳交規範",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": "⑥",
+          "tag": null,
+          "tagClass": null,
+          "heading": "PBL 工作室＋下課清單",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "不追新模型；先把資料口徑與驗證方法講清楚。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "2 / 15"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "學習目標｜本週",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "03 / 學習目標",
+      "kicker": "",
+      "h1": "",
+      "h2": "學習目標｜本週",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "①",
+          "tag": null,
+          "tagClass": null,
+          "heading": "讀懂一份業界大數據看盤表：",
+          "paragraph": "資料源、更新頻率、欄位口徑",
+          "bullets": []
+        },
+        {
+          "num": "②",
+          "tag": null,
+          "tagClass": null,
+          "heading": "把一條策略規則改寫成可回測假設：",
+          "paragraph": "基線／指標／門檻／停止條件",
+          "bullets": []
+        },
+        {
+          "num": "③",
+          "tag": null,
+          "tagClass": null,
+          "heading": "期中 → 期末：",
+          "paragraph": "自己專題的 v2 一件事＋證據包缺口清單",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "業師教材僅作資料分析教學案例，非投資建議。"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "3 / 15"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "週次對照｜W3–W6 意義",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "04 / 週次對照",
+      "kicker": "",
+      "h1": "",
+      "h2": "週次對照｜W3–W6 意義",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "10/03 W3｜基線：",
+          "paragraph": "現在多好或多差？同口徑數字",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "10/17 W4＋W5｜最小系統（輸入→輸出）＋固定驗收集（事先凍結）",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "10/24 W6｜證據包：",
+          "paragraph": "別人拿得到、追得回、重跑得出",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "10/31 證據包複核｜11/07 期中報告（zip 已進 Drive）",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "11/14 本週｜業師案例對讀＋期末 v2 規劃",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "期中 ≈ W4–W5｜期末 ≈ W6＋決策價值講清楚"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "4 / 15"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "三硬門檻＋5V｜套到業師資料",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "05 / 三硬門檻＋5V",
+      "kicker": "",
+      "h1": "",
+      "h2": "三硬門檻＋5V｜套到業師資料",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "門檻：",
+          "paragraph": "基線（同口徑）→ 系統（能跑）→ 證據（可重跑紀錄）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Volume：",
+          "paragraph": "全市場月營收、三大法人期權未平倉、個股財報",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Velocity：",
+          "paragraph": "日盤／夜盤；貿易 7 日、營收 10 日前、外銷訂單 20 日、景氣信號 27 日",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Variety：",
+          "paragraph": "總經（Fed、CPI、非農）＋籌碼＋基本面＋事件（成分股、法說、庫藏股）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Veracity：",
+          "paragraph": "TWSE／TPEX／MOPS／MSCI 原始來源；假期順延、公告時點",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "Value：",
+          "paragraph": "它支援哪個決定？研究與教學用途，不保證報酬",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "本週聚焦 Variety＋Veracity"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "5 / 15"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "AISDLC｜週次對照＋業師策略走一遍",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "06 / AISDLC",
+      "kicker": "",
+      "h1": "",
+      "h2": "AISDLC｜週次對照＋業師策略走一遍",
+      "lead": "Discover → Define → Design → Develop → Deploy → Diagnose",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "W3 Discover／Define：",
+          "paragraph": "理財行事曆找事件 → 寫成一條假設",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "W4 Design／Develop：",
+          "paragraph": "欄位、事件窗、選股器或腳本",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "W5 Deploy：",
+          "paragraph": "固定驗收期間，盤前提醒式輸出",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "W6 Diagnose：",
+          "paragraph": "樣本外檢驗、失效條件、證據包",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "Diagnose 不過 → 回 Develop，只改一件事"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "6 / 15"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "進度盤點｜Drive 現況（去名化）",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "07 / 進度盤點",
+      "kicker": "",
+      "h1": "",
+      "h2": "進度盤點｜Drive 現況（去名化）",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "11/07「1107期中報告」夾：",
+          "paragraph": "6 份 zip 已進 Drive，另有 3 個補充資料夾",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "本簡報未逐份評分；不點名、不公開個別分數",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "共通提醒（沿用）：",
+          "paragraph": "統一 zip／文件間數字與版本一致",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "成功／停止條件＝數字門檻＋核准者；刪草稿與 AI 對話殘留",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "期末前：",
+          "paragraph": "把期中講評轉成「v2 一件事」",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "講評細節由講師個別回饋"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "7 / 15"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "業師教材對讀｜蔡鎮村老師〈大數據操盤〉",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "08 / 業師教材對讀",
+      "kicker": "",
+      "h1": "",
+      "h2": "業師教材對讀｜蔡鎮村老師〈大數據操盤〉",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "背景：",
+          "paragraph": "中央大學數學系、產業經濟研究所；長年任證券／期貨業資訊與主管職",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "理財行事曆：",
+          "paragraph": "營收、財報、貿易、外銷訂單、景氣信號、成分股調整、Fed、CPI",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "事件統計：",
+          "paragraph": "Fed 利率決議後台股行情（2024/05–2026/10，21 次）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "事件統計：",
+          "paragraph": "美國 CPI 公布後台指次日表現",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "籌碼：",
+          "paragraph": "三大法人期權未平倉、P/C 比、VIX、散戶多空比",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "基本面：",
+          "paragraph": "上市櫃月營收創新高（115/10）、法說與財報時程",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "來源：課程 Drive〈蔡鎮村文化碩班1114.pdf〉"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "8 / 15"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "練習｜把一條策略寫成可驗證假設",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "09 / 練習",
+      "kicker": "",
+      "h1": "",
+      "h2": "練習｜把一條策略寫成可驗證假設",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "假設：",
+          "paragraph": "「Fed 決議後次日，台指期波動大於一般交易日」",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "基線：",
+          "paragraph": "同期間非事件日的平均絕對漲跌（%）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "指標：",
+          "paragraph": "次日絕對漲跌幅（%），不用點數（指數水位已不同）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "驗收：",
+          "paragraph": "先用 2024–2025 建立，再用 2026 驗證；事先凍結",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "停止：",
+          "paragraph": "樣本外不成立就停；21 次樣本偏小 → 只當觀察",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "人工：",
+          "paragraph": "任何交易決定由人負責，模型不自動下單",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "教學練習，非投資建議"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "9 / 15"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "Veracity 陷阱｜資料口徑先對齊",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "10 / Veracity 陷阱",
+      "kicker": "",
+      "h1": "",
+      "h2": "Veracity 陷阱｜資料口徑先對齊",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "公告日 ≠ 資料期間：",
+          "paragraph": "10 月營收在 11 月 10 日前公布",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "假期順延：",
+          "paragraph": "行事曆日期不是固定值",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "日盤／夜盤分開計算；美國數據常落在夜盤",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "點數 vs 百分比：",
+          "paragraph": "指數水位不同時用百分比比較",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "未來函數：",
+          "paragraph": "用到決策當下還拿不到的資料 = 作弊",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "截圖 ≠ 資料檔：",
+          "paragraph": "證據要能重新算出",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "先對口徑，再談策略"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "10 / 15"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "期中 → 期末｜Diagnose → v2 只改一件事",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "11 / 期中 → 期末",
+      "kicker": "",
+      "h1": "",
+      "h2": "期中 → 期末｜Diagnose → v2 只改一件事",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "先記一個失敗案例＋推測原因",
+          "paragraph": "",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "固定：",
+          "paragraph": "驗收集／指標口徑／門檻；保留 v1 不覆蓋",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "只改：",
+          "paragraph": "一個特徵、規則或參數",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "重跑：",
+          "paragraph": "v1、v2 同表比較；變差也照實寫",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "停止：",
+          "paragraph": "未過門檻先轉人工，交指定核准者",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "本週產出：change log 草稿"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "11 / 15"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "Grok Bot｜巨量分析參考實例",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "12 / Grok Bot",
+      "kicker": "",
+      "h1": "",
+      "h2": "Grok Bot｜巨量分析參考實例",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "輸入：",
+          "paragraph": "課程 Drive（期中報告夾、業師 PDF）＋行事曆上課時間",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "產出：",
+          "paragraph": "課前簡報＋口語講稿草稿；myppt 上稿走 PR 待人工合併",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "誠實限制：",
+          "paragraph": "業師 pptx 檔案過大未讀全文，僅依 PDF 文字整理",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "誠實限制：",
+          "paragraph": "未開期中 zip → 不評分、不宣稱看過內容",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "對照證據包：",
+          "paragraph": "輸入來源 → 版本差異 → 驗證結果 → 核准紀錄",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "參考工作流程；AI 建議待講師覆核"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "12 / 15"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "AI 工具繳交規範＋繳件四件",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "13 / AI 工具繳交規範＋繳件四件",
+      "kicker": "",
+      "h1": "",
+      "h2": "AI 工具繳交規範＋繳件四件",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "①",
+          "tag": null,
+          "tagClass": null,
+          "heading": "說明文件：",
+          "paragraph": "使用者／基線／門檻／3–5 行跑法／環境",
+          "bullets": []
+        },
+        {
+          "num": "②",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可跑系統：",
+          "paragraph": "程式或工作流＋依賴／設定（不含密鑰）",
+          "bullets": []
+        },
+        {
+          "num": "③",
+          "tag": null,
+          "tagClass": null,
+          "heading": "驗收與結果：",
+          "paragraph": "凍結資料＋manifest／SHA-256＋結果 CSV",
+          "bullets": []
+        },
+        {
+          "num": "④",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證據與限制：",
+          "paragraph": "執行紀錄／截圖／人工核准點／change log",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "可用 Cursor／Claude／Codex／Grok Bot；你要能重跑、解釋、核對",
+          "paragraph": "",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "四件統一 zip、版本一致；刪 AI 對話殘留"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "13 / 15"
+    },
+    {
+      "slideId": "s14",
+      "index": 14,
+      "title": "本週工作室｜PBL S/F 雙軌",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "14 / 本週工作室",
+      "kicker": "",
+      "h1": "",
+      "h2": "本週工作室｜PBL S/F 雙軌",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "S 軌：",
+          "paragraph": "期中缺口補齊，四件可重跑、限制講清楚",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "F 軌：",
+          "paragraph": "加一條事件型假設或第二指標，做樣本外驗證",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "0–15：",
+          "paragraph": "整理期中回饋，寫下 v2 一件事",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "15–45：",
+          "paragraph": "策略改寫練習（業師表或自己專題各一條）",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "45–75：",
+          "paragraph": "v2 實作＋同一驗收集重跑",
+          "bullets": []
+        },
+        {
+          "num": null,
+          "tag": null,
+          "tagClass": null,
+          "heading": "75–90：",
+          "paragraph": "組別分享＋講師抽查口徑與證據",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [
+        "相對時間；不公開個人分軌名單"
+      ],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "14 / 15"
+    },
+    {
+      "slideId": "s15",
+      "index": 15,
+      "title": "下課檢查清單｜有證據，才叫變好",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "15 / 下課檢查清單",
+      "kicker": "",
+      "h1": "",
+      "h2": "下課檢查清單｜有證據，才叫變好",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "□",
+          "tag": null,
+          "tagClass": null,
+          "heading": "基線：",
+          "paragraph": "同口徑數字＋成功／停止門檻＋核准者",
+          "bullets": []
+        },
+        {
+          "num": "□",
+          "tag": null,
+          "tagClass": null,
+          "heading": "系統：",
+          "paragraph": "3–5 行跑法，現場可跑",
+          "bullets": []
+        },
+        {
+          "num": "□",
+          "tag": null,
+          "tagClass": null,
+          "heading": "證據：",
+          "paragraph": "資料來源＋公告時點＋manifest／SHA-256",
+          "bullets": []
+        },
+        {
+          "num": "□",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下一步：",
+          "paragraph": "v2 一件事＋change log＋補交時間",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": null,
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "slideFooter": "",
+      "opUrls": [],
+      "footerBrand": "AIDC.work 黃老師",
+      "footerPage": "15 / 15"
+    }
+  ]
+}
