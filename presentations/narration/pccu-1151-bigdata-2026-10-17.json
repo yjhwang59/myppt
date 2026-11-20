@@ -18,7 +18,7 @@
       "slideId": "s1",
       "index": 1,
       "title": "封面",
-      "sourceHash": "2f12583affe36585bde65751907bbec1fb3e4fc19ca680d31909c077857f6fd3",
+      "sourceHash": "42235742fd6c0ed7a3faff214b3bc9c2a59bd9c0397cec46997b8dd47a025883",
       "extractedContent": {
         "eyebrow": "",
         "kicker": "文化大學推廣部｜1151 碩專班｜2026-10-17 週六 13:10｜W5",
@@ -26,13 +26,13 @@
           "2026-10-17｜巨量1151 W5 · 固定驗收集"
         ],
         "lead": "巨量資料挖掘與分析。這週新交的作業不多，所以改成複習加 PBL 工作室。",
-        "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · W5 · AISDLC Deploy · ←→ 翻頁 · F 全螢幕 · 12 頁 · 16:9",
+        "stamp": "講師：黃燕忠｜中國文化大學兼任副教授／上市公司 AI 發展顧問 · W5 · AISDLC Deploy · ←→ 翻頁 · F 全螢幕 · 17 頁 · 16:9",
         "cards": [],
         "table": null,
         "flowSteps": [
           {
             "title": "開場",
-            "description": "上週回顧"
+            "description": "目標＋PBL 雙軌"
           },
           {
             "title": "作業三",
@@ -40,7 +40,7 @@
           },
           {
             "title": "W5",
-            "description": "固定驗收集"
+            "description": "驗收集＋現場示範"
           },
           {
             "title": "工作室",
@@ -58,8 +58,8 @@
         "slideFooter": "",
         "opUrls": []
       },
-      "script": "各位好，我是 Jack 黃老師。今天十月十七日，第五週，下午一點十分。主題是固定驗收集，對上 AISDLC 的 Deploy。這週新交的作業不多，所以這堂改成複習加 PBL 工作室。等一下先回顧上週。再看作業三 SRS 的共通觀察。接著把驗收集怎麼鎖住講清楚。後半段各組 demo。我抽查基線、系統、證據。最後用下課檢查清單收尾。你先翻到自己的驗收集，等一下要指給我看。",
-      "estimatedSeconds": 39,
+      "script": "各位好，我是 Jack 黃老師。今天十月十七日，第五週，下午一點十分。主題是固定驗收集，對上 AISDLC 的 Deploy。這週新交的作業不多，所以這堂改成複習加 PBL 工作室。開場先講本週目標，再花三分鐘講 PBL 和 S、F 雙軌。接著看作業三 SRS 的共通觀察。然後我用北風烘焙的示範資料，現場跑一次固定驗收集給你看。後半段各組 demo，我抽查基線、系統、證據。最後用下課檢查清單收尾。你先翻到自己的驗收集，等一下要指給我看。",
+      "estimatedSeconds": 46,
       "status": "draft",
       "voice": {
         "provider": "openai",
@@ -75,7 +75,7 @@
       "avatarVideoUrl": null,
       "captionsUrl": null,
       "cuePoints": [],
-      "generatedAt": "2026-10-16T10:30:00.000Z",
+      "generatedAt": "2026-10-17T00:24:13.000Z",
       "approvedAt": null,
       "approvedBy": null,
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
@@ -144,10 +144,149 @@
     {
       "slideId": "s3",
       "index": 3,
-      "title": "W3–W6",
-      "sourceHash": "4d1812630d5a460167105b3ac609553fb754b4b9e9cd0d48172ba63bb8c12db4",
+      "title": "PBL 是什麼",
+      "sourceHash": "4a450d10c257fcb802f49df911921cc00677bb23f751bd522a57824cec3574c7",
       "extractedContent": {
-        "eyebrow": "03 / W3–W6 的意義",
+        "eyebrow": "03 / PBL 是什麼（3 分鐘）",
+        "kicker": "",
+        "headings": [
+          "專題導向：你的題目，就是這門課的教材"
+        ],
+        "lead": "不是先教完再做專題。每週用你自己的題目，過一道品質門檻。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "前一關沒過，不能只做漂亮的下一關",
+            "paragraph": "沒有基線就不談模型；系統跑不起來，驗收集也鎖不住。",
+            "bullets": []
+          },
+          {
+            "heading": "老師是教練，不是一直講課",
+            "paragraph": "現場抽查三格：基線／系統／證據。指得到檔案，才算過。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "基線",
+            "description": "證明現在有多痛"
+          },
+          {
+            "title": "最小可跑系統",
+            "description": "證明做得出來"
+          },
+          {
+            "title": "固定驗收集",
+            "description": "證明不是運氣・本週"
+          },
+          {
+            "title": "證據包",
+            "description": "證明敢給人看"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "花三分鐘講清楚，什麼是 PBL。PBL 就是專題導向。這門課不是先把東西教完，最後才做專題。你的題目，就是這門課的教材。每一週，用你自己的題目，過一道品質門檻。W3 是基線，W4 是最小可跑系統，W5 是今天的固定驗收集，W6 是證據包。門檻是鎖進度的。前一關沒過，不能跳過去，只做一個漂亮的下一關。沒有基線，就不要談模型。所以課堂比較像工作室。我是教練，不是一直站在台上講課。我會現場抽查三格：基線、系統、證據。你指得到檔案，才算過。",
+      "estimatedSeconds": 47,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "S／F 雙軌",
+      "sourceHash": "7b1f0a9155663756e502443708c8dbf638aa9d1f18b484f6f822c1ef82c4b050",
+      "extractedContent": {
+        "eyebrow": "04 / PBL 雙軌：S／F",
+        "kicker": "",
+        "headings": [
+          "先過當週門檻，再決定要不要加碼"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "程式經驗少、資料還在補，走這條",
+            "paragraph": "",
+            "bullets": [
+              "每週過必過項：基線、最小系統、驗收集、證據包",
+              "簡單沒關係，可重跑、數字誠實",
+              "這就是滿分路線"
+            ]
+          },
+          {
+            "heading": "先過當週門檻，才加碼",
+            "paragraph": "",
+            "bullets": [
+              "多指標基線、真實 API、排程、儀表板、A/B 或回測",
+              "要教別組重跑你的東西",
+              "換到的是展示機會，不提早給期末分"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "軌道可以隨時換：F 軌當週門檻沒過，就先退回 S 軌把必過項補齊。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "PBL 有兩條軌，S 跟 F。S 是穩健軌，Steady。程式經驗比較少，或資料還在補的，走這條。每週把必過項過掉就好。基線、最小系統、驗收集、證據包。做得簡單沒關係，只要可以重跑，數字誠實，這就是滿分路線。F 是快速軌，Fast。前提是先過當週門檻，才開始加碼。例如多指標基線、接真實 API、排程、儀表板、A/B 或回測。走 F 軌，你要能教別組重跑你的東西。換到的是展示機會，不會提早給期末分。記一句話：S 軌是確定能畢業的路，F 軌是畢業後多拿一個作品集。軌道隨時可以換。F 軌當週沒過，就先退回 S 軌，把必過項補齊。",
+      "estimatedSeconds": 56,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "W3–W6",
+      "sourceHash": "e1fe13a363db0a9225b8a2cc1db3a03ca7a3c7d805a032e0aa8ee7250baaa962",
+      "extractedContent": {
+        "eyebrow": "05 / W3–W6 的意義",
         "kicker": "",
         "headings": [
           "四道關卡，這週停在固定驗收集"
@@ -224,12 +363,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s4",
-      "index": 4,
+      "slideId": "s6",
+      "index": 6,
       "title": "三硬門檻與 5V",
-      "sourceHash": "68b63df7f4c469d8ff118b2c502ab37e5540f61cac847f89a962f0c9bad5e7de",
+      "sourceHash": "8d614ee6a747c16a6c25211bbb161331be6abaecd43f914ca16d001c315c1270",
       "extractedContent": {
-        "eyebrow": "04 / 三硬門檻 × 5V",
+        "eyebrow": "06 / 三硬門檻 × 5V",
         "kicker": "",
         "headings": [
           "沒過門，就還不能叫專案"
@@ -301,12 +440,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s5",
-      "index": 5,
+      "slideId": "s7",
+      "index": 7,
       "title": "AISDLC 週次對照",
-      "sourceHash": "4cd13eac96e5281532069349dbe9c78abd32542f6dce9d19ae38200acd188d94",
+      "sourceHash": "7ad90feec664c1c04b79f5e84b89345740fdb3af35b38a7321a470fc6f701d9e",
       "extractedContent": {
-        "eyebrow": "05 / AISDLC × 週次",
+        "eyebrow": "07 / AISDLC × 週次",
         "kicker": "",
         "headings": [
           "Discover 走到 Diagnose，對上 W1–W6"
@@ -379,12 +518,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s6",
-      "index": 6,
+      "slideId": "s8",
+      "index": 8,
       "title": "作業三 SRS 觀察",
-      "sourceHash": "e6d032a6dec38ab2b8208479e07832d486b4b329272c1fa513d718d4c1604083",
+      "sourceHash": "50dbfc3560c75c96c294c3796be62a4bc7c67f96207735d676357aabe15d08d5",
       "extractedContent": {
-        "eyebrow": "06 / 作業三 SRS 共通觀察（去名化）",
+        "eyebrow": "08 / 作業三 SRS 共通觀察（去名化）",
         "kicker": "",
         "headings": [
           "六項齊了沒；缺口還是那幾類"
@@ -457,12 +596,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s7",
-      "index": 7,
+      "slideId": "s9",
+      "index": 9,
       "title": "W5 怎麼做",
-      "sourceHash": "d4af053e418261e8569bdbf614e91027ca983281e6ee28c1b106c00ea751a72d",
+      "sourceHash": "4880db1d459b92ad2f4ec89dbc9b7054309dca0586950fcdeb63440540dd0351",
       "extractedContent": {
-        "eyebrow": "07 / W5 固定驗收集",
+        "eyebrow": "09 / W5 固定驗收集",
         "kicker": "",
         "headings": [
           "先凍結樣例、標上版本，預期輸出寫下來"
@@ -525,12 +664,262 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s8",
-      "index": 8,
-      "title": "Grok Bot 參考實例",
-      "sourceHash": "eb1ba8eead69b93545fab1559a23cfc9a61fcac63daa4afbbc410253aabd15b3",
+      "slideId": "s10",
+      "index": 10,
+      "title": "示範：北風烘焙驗收集",
+      "sourceHash": "078a38a4cba45fb64d8a56777bd78ec2d61e877694f8602b3f658e1c3ec95833",
       "extractedContent": {
-        "eyebrow": "08 / Grok Bot × 巨量分析",
+        "eyebrow": "10 / 示範：北風烘焙固定驗收集（示範資料）",
+        "kicker": "",
+        "headings": [
+          "四個檔案，一個門檻：MAPE ≤ 15% 且優於基線"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "同星期近 4 週平均",
+            "paragraph": "再加天氣／假日調整。",
+            "bullets": []
+          },
+          {
+            "heading": "上週同一天",
+            "paragraph": "最簡單的對照，模型要贏它才有意義。",
+            "bullets": []
+          },
+          {
+            "heading": "MAPE ≤ 15% 且優於基線",
+            "paragraph": "兩個條件都要過，才叫 PASS。",
+            "bullets": []
+          }
+        ],
+        "table": [
+          [
+            "檔案",
+            "內容"
+          ],
+          [
+            "history.csv",
+            "120 天銷量，2 店 × 3 品項"
+          ],
+          [
+            "acceptance_v1.csv",
+            "凍結的驗收集：30 筆，10/12–10/16"
+          ],
+          [
+            "manifest",
+            "記錄版本、筆數、來源和 SHA-256 指紋"
+          ],
+          [
+            "run_eval.py",
+            "一行指令跑完驗收，印出指紋、MAPE、PASS／FAIL"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "示範資料，非真實客戶：結構照抄就好。把這四個檔案換成你自己題目的資料、模型和基線。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "接下來我用一個示範案例，北風烘焙。這是示範資料，不是真實客戶。整個驗收就四個檔案。history.csv 是一百二十天的銷量，兩家店、三個品項。acceptance_v1.csv 是凍結的驗收集，三十筆，十月十二號到十六號。manifest 記錄版本、筆數、來源，還有指紋。run_eval.py 一行指令跑完驗收。模型很簡單，同一個星期幾、近四週平均，再做天氣跟假日的調整。基線是上週同一天。門檻是 MAPE 小於等於百分之十五，而且要比基線好。兩個條件都過，才叫 PASS。你的題目照這個結構，把四個檔案換成你自己的就好。",
+      "estimatedSeconds": 57,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "現場三步",
+      "sourceHash": "d4f97a7328b8a260444ebaefe73f07f65386e84f824f6d8e808d98d6d992e44c",
+      "extractedContent": {
+        "eyebrow": "11 / 現場三步（真實輸出）",
+        "kicker": "",
+        "headings": [
+          "驗收集一動，指紋就變"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [],
+        "table": [
+          [
+            "步驟",
+            "輸入",
+            "SHA-256",
+            "模型 MAPE",
+            "基線 MAPE",
+            "判讀"
+          ],
+          [
+            "① 跑一次",
+            "python run_eval.py acceptance_v1.csv",
+            "848d82f6…aceb87",
+            "11.43%",
+            "17.15%",
+            "PASS"
+          ],
+          [
+            "② 重跑",
+            "同一份 acceptance_v1.csv",
+            "848d82f6…aceb87",
+            "11.43%",
+            "17.15%",
+            "完全一樣"
+          ],
+          [
+            "③ 竄改檔",
+            "acceptance_v1_tampered.csv",
+            "8dad44df…ac248",
+            "12.57%",
+            "18.44%",
+            "指紋不同"
+          ],
+          [
+            "③ 現場改一筆",
+            "某筆銷量 59 → 177",
+            "90356119…e841",
+            "13.53%",
+            "—",
+            "指紋不同"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "注意：竄改後 MAPE 還是低於 15%，只看 PASS 抓不到。要看指紋對不對得上。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "我們現場做三步，這些是真的跑出來的輸出。第一步，python run_eval.py acceptance_v1.csv。它先印出驗收集的 SHA-256 指紋，848d82f6 開頭。模型 MAPE 百分之十一點四三，基線百分之十七點一五，PASS。第二步，再跑一次。指紋、數字，完全一樣。這就是可重跑。第三步，換成被竄改過的檔案。指紋變成 8dad44df 開頭。MAPE 變成十二點五七，基線十八點四四。我再現場改一筆，把五十九改成一百七十七。指紋又變了，MAPE 變十三點五三。注意，竄改後 MAPE 還是低於百分之十五。只看 PASS，你抓不到。所以要看指紋。結論是：驗收集一動，指紋就變。繳件時，請附上驗收集的 SHA-256。",
+      "estimatedSeconds": 68,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "在 Cursor 怎麼做",
+      "sourceHash": "dc46ee6f08ce8b9e99cc82d22c68634b3c6f5f44a4411e1bc76fc56b1cbcd06d",
+      "extractedContent": {
+        "eyebrow": "12 / 在 Cursor 怎麼做",
+        "kicker": "",
+        "headings": [
+          "AI 寫程式；驗收集和門檻，由你來定"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "你的驗收集說明",
+            "paragraph": "",
+            "bullets": [
+              "筆數：＿＿ 筆；來源：＿＿",
+              "預期輸出：＿＿",
+              "通過門檻：＿＿（指標＋數字＋對基線）",
+              "跑法：一行指令"
+            ]
+          },
+          {
+            "heading": "AI 改完，你負責驗收",
+            "paragraph": "AI 加了新功能，舊數字一定要用同一份驗收集重跑。總 MAPE 變了，先問為什麼，不要直接收下。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [
+          {
+            "title": "Open Folder",
+            "description": "打開整個專案資料夾"
+          },
+          {
+            "title": "Ctrl+` 終端機",
+            "description": "跑指令：python 或 py"
+          },
+          {
+            "title": "Ctrl+L 問 AI",
+            "description": "請它解釋或加功能，例如各品項 MAPE"
+          },
+          {
+            "title": "重跑驗收",
+            "description": "固定驗收集再跑，總 MAPE 不變才算數"
+          }
+        ],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "在 Cursor 裡面怎麼做？四個動作。第一，Open Folder，把整個專案資料夾打開。第二，按 Ctrl 加反引號，打開終端機，跑指令。Windows 上 python 不行的話，就打 py。第三，按 Ctrl 加 L，請 AI 解釋程式，或幫你加功能，例如算各品項的 MAPE。第四，最重要。AI 改完之後，用同一份固定驗收集再跑一次。總 MAPE 沒有變，才算驗收。如果變了，先問為什麼，不要直接收下。AI 可以寫程式，但驗收集跟門檻，是你來定。現在就請你當場寫三到五行：驗收集幾筆、資料從哪裡來、預期輸出是什麼、通過門檻是什麼、怎麼跑。",
+      "estimatedSeconds": 57,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s13",
+      "index": 13,
+      "title": "Grok Bot 參考實例",
+      "sourceHash": "6384f6eeea0712981e32822b45117d97dadcbcb0182807dd1e62ece971f7ba51",
+      "extractedContent": {
+        "eyebrow": "13 / Grok Bot × 巨量分析",
         "kicker": "",
         "headings": [
           "助教可以先起草，核准和口徑還是在講師"
@@ -593,12 +982,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s9",
-      "index": 9,
+      "slideId": "s14",
+      "index": 14,
       "title": "AI 工具繳交規範",
-      "sourceHash": "9dac62e7713cbcfbba3d1e7b002e183eb6f3aa25d18e3787f315483960c68b0d",
+      "sourceHash": "38acd2d1bbd8e84c06133e68d5962390507dc69d3c1624c88a49ac3ca8c847e4",
       "extractedContent": {
-        "eyebrow": "09 / AI 工具繳交規範",
+        "eyebrow": "14 / AI 工具繳交規範",
         "kicker": "",
         "headings": [
           "工具可以換，要交的是重跑得起來的東西"
@@ -678,80 +1067,12 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s10",
-      "index": 10,
-      "title": "PBL 雙軌",
-      "sourceHash": "353ab5e729d77981a4dcc97f76735e03fed11afa18e3dd7cb9cbeb9df761f885",
-      "extractedContent": {
-        "eyebrow": "10 / PBL 雙軌",
-        "kicker": "",
-        "headings": [
-          "先過門，再決定要不要加碼"
-        ],
-        "lead": "",
-        "stamp": "",
-        "cards": [
-          {
-            "heading": "先過必過項",
-            "paragraph": "",
-            "bullets": [
-              "基線表：數字＋期間＋口徑＋來源",
-              "一條最小可跑路徑",
-              "驗收集已凍結、版本化，跑法 3–5 行",
-              "一個指標對基線；限制／失敗寫一頁"
-            ]
-          },
-          {
-            "heading": "過門檻之後才加碼",
-            "paragraph": "",
-            "bullets": [
-              "多指標基線",
-              "真實 API／排程",
-              "CI／儀表板",
-              "A/B 或回測"
-            ]
-          }
-        ],
-        "table": null,
-        "flowSteps": [],
-        "svgLabels": [],
-        "callouts": [
-          "超前換到的是展示和分享。不會因為做得比較深，就提早給期末分。必過項是空的，加碼也不算。"
-        ],
-        "phases": [],
-        "facts": [],
-        "slideFooter": "",
-        "opUrls": []
-      },
-      "script": "PBL 有兩條軌。S 軌求穩。先把必過項做完。基線。一條最小路徑。驗收集已凍結、標上版本。跑法三到五行。一個對照指標。限制頁。F 軌是過了門檻再加碼。例如多指標基線、真實 API 或排程、CI 或儀表板、A/B 或回測。超前可以換展示和分享。不會因此提早給期末分數。必過項是空的，加碼也不算。今天先走 S 軌。F 軌的東西，先放旁邊。",
-      "estimatedSeconds": 35,
-      "status": "draft",
-      "voice": {
-        "provider": "openai",
-        "voiceId": "nova",
-        "speed": 1
-      },
-      "audioUrl": null,
-      "audioDurationSeconds": null,
-      "presenter": {
-        "name": "黃燕忠",
-        "avatarVideoUrl": null
-      },
-      "avatarVideoUrl": null,
-      "captionsUrl": null,
-      "cuePoints": [],
-      "generatedAt": "2026-10-16T10:30:00.000Z",
-      "approvedAt": null,
-      "approvedBy": null,
-      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
-    },
-    {
-      "slideId": "s11",
-      "index": 11,
+      "slideId": "s15",
+      "index": 15,
       "title": "本週作業與工作室",
-      "sourceHash": "96501f0de5b09dcf0b69b7aa4ef4e926c5b8176674ebb97c4f8d9e53b9bcbf2a",
+      "sourceHash": "c83a80beeebce85a44ce09a269bd6663b41789f5280ab8589de6dfeb2110ec8c",
       "extractedContent": {
-        "eyebrow": "11 / 本週作業與工作室",
+        "eyebrow": "15 / 本週作業與工作室",
         "kicker": "",
         "headings": [
           "短講評、三分鐘 demo、抽查三格"
@@ -809,12 +1130,99 @@
       "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
     },
     {
-      "slideId": "s12",
-      "index": 12,
-      "title": "下課檢查清單",
-      "sourceHash": "477f21781bd97aef256de1b91214683ff52b43a02629de27d9607757e748196c",
+      "slideId": "s16",
+      "index": 16,
+      "title": "接下來四週",
+      "sourceHash": "d203bf816d3414ee43c0828e91aa85e25a58b233e5d43b7742e84214cf7e3076",
       "extractedContent": {
-        "eyebrow": "12 / 下課檢查清單",
+        "eyebrow": "16 / 接下來四週",
+        "kicker": "",
+        "headings": [
+          "W5 凍結、W6 交換重跑、W7–W8 當場 Demo"
+        ],
+        "lead": "",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "驗收集＋SHA-256",
+            "paragraph": "v1 檔案和指紋一起交。",
+            "bullets": []
+          },
+          {
+            "heading": "跑法",
+            "paragraph": "3–5 行，別組照著能重跑。",
+            "bullets": []
+          },
+          {
+            "heading": "結果 CSV",
+            "paragraph": "每筆預測、實際、誤差。",
+            "bullets": []
+          },
+          {
+            "heading": "一頁失敗案例",
+            "paragraph": "錯最離譜的 3 筆，寫為什麼。",
+            "bullets": []
+          }
+        ],
+        "table": [
+          [
+            "週次",
+            "要做出來的",
+            "課堂怎麼驗"
+          ],
+          [
+            "W5 · 今天",
+            "凍結 acceptance v1＋manifest，算出第一個指標",
+            "每組 2 分鐘：基線／結果／門檻"
+          ],
+          [
+            "W6",
+            "證據包四件（見下方）",
+            "組間交換，照跑法重跑別組的"
+          ],
+          [
+            "W7–W8",
+            "期中 Prototype：AISDLC 四段各一頁",
+            "Demo 當場重跑，不放錄影"
+          ]
+        ],
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "最後看接下來四週。今天 W5，把驗收集 v1 跟 manifest 凍結，算出第一個指標。等一下每組兩分鐘，報三件事：基線、結果、門檻。W6 交證據包，四件。第一，驗收集加 SHA-256。第二，跑法。第三，結果 CSV。第四，一頁失敗案例，挑錯得最離譜的三筆，寫為什麼。W6 課堂上，組跟組交換，照對方的跑法重跑。W7 到 W8 是期中 Prototype。用 AISDLC 的四段，各寫一頁。Demo 要當場重跑，不放錄影。錄影只能證明那一次跑過。還是那句話：同一組輸入，重跑才算數。",
+      "estimatedSeconds": 51,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-10-17T00:24:13.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "課前口語講稿草稿（繁中，Jack 黃老師第一人稱）。講師覆核前不視為核准稿。"
+    },
+    {
+      "slideId": "s17",
+      "index": 17,
+      "title": "下課檢查清單",
+      "sourceHash": "1b3637e52e20bb70b7d76e10c72b90d23fe2dded21e4811f867a7978af3b1a5a",
+      "extractedContent": {
+        "eyebrow": "17 / 下課檢查清單",
         "kicker": "",
         "headings": [
           "走之前對一下這六項"
@@ -874,8 +1282,8 @@
     }
   ],
   "meta": {
-    "lastExtractedAt": "2026-10-16T10:30:00.000Z",
-    "totalEstimatedSeconds": 509,
+    "lastExtractedAt": "2026-10-17T00:24:13.000Z",
+    "totalEstimatedSeconds": 817,
     "ttsCostEstimateUsd": 0
   }
 }
