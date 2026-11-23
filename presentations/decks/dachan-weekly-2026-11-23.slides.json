@@ -102,7 +102,7 @@
       "title": "福成營運通",
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "福成營運通 fyhGoogle",
+      "eyebrow": "營業日 11/16–11/22｜資料來源：fyhGoogle GitHub commit 紀錄",
       "kicker": "",
       "h1": "",
       "h2": "福成營運通 fyhGoogle｜本週進度",
@@ -114,8 +114,12 @@
           "tag": null,
           "tagClass": null,
           "heading": "本週完成",
-          "paragraph": "待補",
-          "bullets": []
+          "paragraph": "",
+          "bullets": [
+            "系統從 v0.1.174 更新到 v0.1.184，一週發了 10 個版本。",
+            "生產預估（11/20）：加入「前一天工廠出貨」對照，數量取整數，可一鍵套用前一天的出貨調整。",
+            "線上訂單（11/20）：新增每日出貨統計表，常溫、冷凍分組並顯示商品代碼；修正寶興自取單沒有匯入每日出貨的問題。"
+          ]
         },
         {
           "num": "02",
@@ -130,19 +134,17 @@
           "tag": null,
           "tagClass": null,
           "heading": "需主管協助",
-          "paragraph": "待補",
+          "paragraph": "無",
           "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
-      "callouts": [
-        "本週資料待阿福營運通週報產出後補上"
-      ],
+      "callouts": [],
       "phases": [],
       "facts": [],
       "footerBrand": "黃燕忠｜AI發展顧問",
-      "notes": "福成營運通這週的進度資料還在整理，稍後補上，我先跳到下一頁。",
+      "notes": "福成營運通這週發了 10 個版本，從 0.1.174 到 0.1.184。兩個重點：第一，生產預估加上前一天工廠出貨的對照，可以一鍵套用；第二，線上訂單新增每日出貨統計表，常溫冷凍分開、有商品代碼，也修好了寶興自取單沒進每日出貨的問題。下週計畫我再補充。",
       "links": [],
       "footerPage": "3 / 5"
     },
