@@ -396,31 +396,31 @@
           "num": "IDE",
           "tag": null,
           "tagClass": null,
-          "heading": "有檔案的編輯器",
-          "paragraph": "左邊看得到檔案，中間改內容。上課改後台，用這個。",
+          "heading": "自己改檔",
+          "paragraph": "看很多檔、用擴充功能。程式在這台電腦的資料夾。上課改後台，用這個。",
           "bullets": []
         },
         {
           "num": "Agents",
           "tag": null,
           "tagClass": null,
-          "heading": "只有對話的視窗",
-          "paragraph": "Agents Window 沒有檔案區。要回去：Cmd/Ctrl+Shift+P，輸入 Open IDE。",
+          "heading": "同時看多個 Agent",
+          "paragraph": "Agents Window 用來在本機和雲端之間交接。它以任務為中心，不是檔案列表。",
           "bullets": []
         },
         {
           "num": "手機",
           "tag": null,
           "tagClass": null,
-          "heading": "看進度、下短指令",
-          "paragraph": "適合看做到哪。不要在手機貼長提示詞，也不要在手機改檔。",
+          "heading": "離開座位時看",
+          "paragraph": "下短任務、看 diff（改了哪幾行）。Android 仍用網頁 cursor.com/agents。",
           "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "名詞｜IDE：有檔案列表的那個視窗。Agents Window：打開來主要是跟 AI 對話的那個視窗。"
+        "名詞｜IDE：有檔案列表的編輯器。Agents Window：以 Agent 任務為中心的工作區。"
       ],
       "footerBrand": "AIDC.work",
       "title": "三個畫面",
@@ -429,47 +429,47 @@
       "footerPage": "8 / 36"
     },
     {
-      "layout": "cards-three",
+      "layout": "cards-two",
       "hero": false,
-      "eyebrow": "Cursor 複習 / 三個地方的檔案",
+      "eyebrow": "Cursor 複習 / 什麼時候換",
       "kicker": "",
       "h1": "",
-      "h2": "本機、GitHub、Cloud Agent 不是同一份",
+      "h2": "看要做的事，再決定留在哪",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": "本機",
+          "num": "IDE",
           "tag": null,
           "tagClass": null,
-          "heading": "在你這台電腦",
-          "paragraph": "資料夾裡的檔案。Cursor 上課改的是這一份。",
-          "bullets": []
+          "heading": "留在編輯器",
+          "paragraph": "",
+          "bullets": [
+            "手改畫面",
+            "逐步除錯",
+            "用擴充功能"
+          ]
         },
         {
-          "num": "GitHub",
+          "num": "Agents",
           "tag": null,
           "tagClass": null,
-          "heading": "雲端的副本",
-          "paragraph": "換一台電腦還在。你要上傳，別人才看得到。",
-          "bullets": []
-        },
-        {
-          "num": "Cloud",
-          "tag": null,
-          "tagClass": null,
-          "heading": "在別台電腦改",
-          "paragraph": "Cloud Agent 改完，不會自動出現在你眼前。它預設會開一個 PR。",
-          "bullets": []
+          "heading": "改去任務視窗",
+          "paragraph": "",
+          "bullets": [
+            "同時修問題、寫文件、看 PR",
+            "或把任務交到雲端",
+            "兩邊可以同時開"
+          ]
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "名詞｜PR：請你看過再合併的請求。開了 PR 還不等於已經改到你的電腦，也不等於已經上線。"
+        "一個聊天不要管兩個專案。名詞｜repo：一個專案，通常也對到 GitHub 上的一個專案。"
       ],
       "footerBrand": "AIDC.work",
-      "title": "工作怎麼交接",
+      "title": "什麼時候換",
       "index": 9,
       "slideId": "s9",
       "footerPage": "9 / 36"
@@ -477,178 +477,184 @@
     {
       "layout": "table",
       "hero": false,
-      "eyebrow": "Cursor 複習 / 換專案",
+      "eyebrow": "Cursor 複習 / 兩個指令",
       "kicker": "",
       "h1": "",
-      "h2": "貼提示詞之前，先確認是哪一個專案",
+      "h2": "兩個指令，在兩個畫面之間換",
       "lead": "",
       "stamp": "",
       "cards": [],
       "flowSteps": [],
       "table": [
         [
-          "步驟",
-          "你看哪裡",
-          "看到什麼算對"
+          "你要做",
+          "按什麼",
+          "會到哪"
         ],
         [
-          "1",
-          "視窗標題",
-          "是上週的後台專案，不是別的資料夾"
+          "打開任務視窗",
+          "Ctrl 或 Cmd，再加 Shift+P，輸入 Open Agents Window",
+          "Agents Window"
         ],
         [
-          "2",
-          "左邊檔案",
-          "有 src/worker.js"
+          "回到編輯器",
+          "同一個選單，輸入 Open IDE",
+          "有檔案的 IDE"
         ],
         [
-          "3",
-          "要換專案",
-          "File → Open Folder，選另一個資料夾"
+          "只找一個檔",
+          "Ctrl 或 Cmd+P",
+          "搜檔名"
         ],
         [
-          "4",
-          "Agents Window",
-          "先點對專案名稱，再打字"
+          "搜整份專案",
+          "Ctrl 或 Cmd，再加 Shift+F",
+          "搜全文"
         ]
       ],
       "callouts": [
-        "在錯的資料夾裡貼提示詞，會改到別的專案。不確定就先停。"
+        "左邊沒有檔案、只剩對話，就先切回 Open IDE。上課改後台用這個。"
       ],
       "footerBrand": "AIDC.work",
-      "title": "換專案",
+      "title": "兩個指令",
       "index": 10,
       "slideId": "s10",
       "footerPage": "10 / 36"
     },
     {
-      "layout": "cards-two",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "Cursor 複習 / 先 Pull",
+      "eyebrow": "Cursor 複習 / 檔案在哪",
       "kicker": "",
       "h1": "",
-      "h2": "GitHub 被改過，你的電腦還是舊的",
+      "h2": "先問：改的是哪一份",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": "為什麼",
+          "num": "Cloud",
           "tag": null,
           "tagClass": null,
-          "heading": "雲端改完，本機不會自己跟上",
-          "paragraph": "",
-          "bullets": [
-            "Cloud Agent 或別的工具改了 GitHub",
-            "你打開 Cursor，看到的仍是上次那一版",
-            "兩邊同時改，會打架"
-          ]
+          "heading": "電腦可以關",
+          "paragraph": "Cloud Agent 複製 GitHub 上的專案，在另一條分支做完再推回去。",
+          "bullets": []
         },
         {
-          "num": "怎麼做",
+          "num": "Remote",
           "tag": null,
           "tagClass": null,
-          "heading": "動手之前先拉下來",
-          "paragraph": "",
-          "bullets": [
-            "左邊點原始碼控制（分岔圖示）",
-            "按 Pull（拉下最新版）",
-            "成功：檔案跟上 GitHub",
-            "有衝突就停，問講師"
-          ]
+          "heading": "電腦要醒著",
+          "paragraph": "Remote Control 用手機下指令，讀檔和測試仍在你這台電腦。",
+          "bullets": []
+        },
+        {
+          "num": "手機",
+          "tag": null,
+          "tagClass": null,
+          "heading": "改的是遠端",
+          "paragraph": "選已經接上的專案和分支再開工。碰不到還沒上傳的本機檔。",
+          "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "名詞｜Pull：把 GitHub 上較新的版本拉回你的電腦。還沒 Pull，不要開始改。"
+        "Git 是真相，聊天不是。先對上同一個 repo、branch、PR 再 Pull。名詞｜branch：一條工作線。push：送到 GitHub。Pull：拉回這台電腦。"
       ],
       "footerBrand": "AIDC.work",
-      "title": "先拉最新版",
+      "title": "檔案在哪",
       "index": 11,
       "slideId": "s11",
       "footerPage": "11 / 36"
     },
     {
-      "layout": "cards-two",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "Cursor 複習 / PR 與語音",
+      "eyebrow": "Cursor 複習 / 11 月 23 日",
       "kicker": "",
       "h1": "",
-      "h2": "雲端預設開 PR；用講的也要看改了什麼",
+      "h2": "這週多記三件事",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": "PR",
-          "tag": null,
-          "tagClass": null,
-          "heading": "Cloud Agent 預設每次都開",
-          "paragraph": "它改完會開一個 PR，請你審。不要看到 PR 就按合併。上課先不要用 Cloud。",
-          "bullets": []
-        },
-        {
           "num": "語音",
           "tag": null,
           "tagClass": null,
-          "heading": "可以講，仍要看檔案",
-          "paragraph": "語音對話是用講的下指令。講完一樣看它改了哪些檔，不要只聽它說好了。",
+          "heading": "可以講，不是聽寫",
+          "paragraph": "11/6 起有語音對話。講完仍要看它改了哪些檔。",
+          "bullets": []
+        },
+        {
+          "num": "PR",
+          "tag": null,
+          "tagClass": null,
+          "heading": "預設每次都開",
+          "paragraph": "11/9 那週起每次都開，除非關掉 Always create PRs（總是開 PR）。",
+          "bullets": []
+        },
+        {
+          "num": "Win",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可能直接開在任務視窗",
+          "paragraph": "Windows 3.29：上次若停在 Agents Window，從檔案總管開啟會直接在那開新 Agent。",
           "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "上課規則不變：用本機 IDE，輸入框下面不要選 Cloud。"
+        "名詞｜PR：請你看過再合併的請求。看到先不要合併。上課仍用本機 IDE，不要選 Cloud。"
       ],
       "footerBrand": "AIDC.work",
-      "title": "PR 與語音",
+      "title": "三件新事",
       "index": 12,
       "slideId": "s12",
       "footerPage": "12 / 36"
     },
     {
-      "layout": "cards-two",
+      "layout": "cards-three",
       "hero": false,
-      "eyebrow": "Cursor 複習 / 好了／卡住",
+      "eyebrow": "Cursor 複習 / 先問再改",
       "kicker": "",
       "h1": "",
-      "h2": "打開後台之前，先對這四項",
+      "h2": "先避開三個坑，再開新對話問",
       "lead": "",
       "stamp": "",
       "cards": [
         {
-          "num": "好了",
+          "num": "1",
           "tag": null,
           "tagClass": null,
-          "heading": "可以往下",
-          "paragraph": "",
-          "bullets": [
-            "左邊看得到檔案",
-            "標題是上週的後台專案",
-            "輸入框下面不是 Cloud",
-            "剛 Pull 過，或確認沒人改過 GitHub"
-          ]
+          "heading": "一個聊天通吃",
+          "paragraph": "A 專案的路徑規則會混進 B。換專案就開新聊天。",
+          "bullets": []
         },
         {
-          "num": "卡住",
+          "num": "2",
           "tag": null,
           "tagClass": null,
-          "heading": "先做這三個",
-          "paragraph": "",
-          "bullets": [
-            "只有對話：Cmd/Ctrl+Shift+P，輸入 Open IDE",
-            "檔案像舊的：先 Pull",
-            "跳出 PR：先不要合併，問講師"
-          ]
+          "heading": "手機等於本機",
+          "paragraph": "雲端改的是複本。本機要 pull 同一個 branch，才看得到。",
+          "bullets": []
+        },
+        {
+          "num": "3",
+          "tag": null,
+          "tagClass": null,
+          "heading": "密鑰寫進提示詞",
+          "paragraph": "只寫環境變數的名字。值放 Cursor Secrets（放密碼的地方）。",
+          "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "這四項對了，再做下一頁：打開上週專案。"
+        "5 分鐘先問、不改檔：「請先不要改檔。這個任務該留在 IDE 還是 Agents Window？檔案還沒 push，用 Remote Control 還是 Cloud Agent？PR 是預設每次都開，還是靠一句 draft？題目只加一行 README。做完停下來。」"
       ],
       "footerBrand": "AIDC.work",
-      "title": "Cursor 自我檢查",
+      "title": "先問再改",
       "index": 13,
       "slideId": "s13",
       "footerPage": "13 / 36"
@@ -703,10 +709,10 @@
     {
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "角色 / 先對詞 · 對齊第 1 週",
+      "eyebrow": "角色 / 先對詞 · 第三階段",
       "kicker": "",
       "h1": "",
-      "h2": "CRUD、API、RBAC 各用一句話",
+      "h2": "用這三句，把一個功能講成規格",
       "lead": "",
       "stamp": "",
       "cards": [
@@ -714,31 +720,31 @@
           "num": "CRUD",
           "tag": null,
           "tagClass": null,
-          "heading": "資料會怎麼變",
-          "paragraph": "新增、讀取、更新、刪除。上週的使用者管理就是這四個。",
+          "heading": "CRUD：資料如何新增、讀取、更新、刪除",
+          "paragraph": "上週的使用者管理就是這四件事。",
           "bullets": []
         },
         {
           "num": "API",
           "tag": null,
           "tagClass": null,
-          "heading": "兩邊說好的入口",
-          "paragraph": "前端請後端做事的門口。例如送出詢問是一個，查詢問清單是另一個。",
+          "heading": "API：前端與後端如何溝通",
+          "paragraph": "送出詢問是一個入口，查清單是另一個。",
           "bullets": []
         },
         {
           "num": "RBAC",
           "tag": null,
           "tagClass": null,
-          "heading": "依角色，不依人",
-          "paragraph": "角色權限控管。先定角色能做什麼，再把人放進角色。",
+          "heading": "RBAC：不同角色有哪些權限",
+          "paragraph": "先定角色能做什麼，再把人放進去。",
           "bullets": []
         }
       ],
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "這三句對齊第 1 週投影片，也對齊公開詞彙表：RBAC 是依使用者角色決定可查看或操作哪些功能。"
+        "目標是能把一個功能拆成可開發的規格。Authentication＝你是誰（沒登入回 401）。Authorization＝你能做什麼（登入了但沒權限回 403）。"
       ],
       "footerBrand": "AIDC.work",
       "title": "三個詞",
@@ -1133,13 +1139,13 @@
       "flowSteps": [],
       "table": [],
       "callouts": [
-        "和第 3、4 週一樣：先看計畫。你點頭之後，才貼下一句。"
+        "詞彙表的練習叫「設計 RBAC 權限表」：先看計畫，你點頭之後才貼下一句。"
       ],
       "footerBrand": "AIDC.work",
       "title": "先出計畫",
       "promptBlock": {
         "label": "整段複製，貼到 Cursor",
-        "text": "誰會用：我。請先當顧問，不要改任何檔案。\n要做什麼：規劃 Northgo 後台的角色權限。角色只有三種：管理員、業務、客服。\n長什麼樣：用繁體中文給一張表。列出來誰可以看詢問、改狀態、刪詢問、管帳號。並寫沒有權限時，/api/admin 要回 403 和哪一句中文。\n限制：不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
+        "text": "誰會用：我。請先當顧問，不要改任何檔案。\n要做什麼：設計 RBAC 權限表，先不要改檔。角色只有三種：管理員、業務、客服。\n長什麼樣：用繁體中文給一張表。列出來誰可以看詢問、改狀態、刪詢問、管帳號。並寫沒登入回 401、沒權限回 403，各用哪一句中文。\n限制：不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
       "slideId": "s25",
       "index": 25,
