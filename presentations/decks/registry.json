@@ -325,6 +325,21 @@
       "listed": true,
       "sortOrder": 0,
       "summary": "90 分鐘教師研習。對照已上線的 ydutest：平台執行時不跑 AI。教師 AI 分身與 AI 問答助教都還在規劃中。最後每人寫一頁提案。"
+    },
+    {
+      "deckId": "dachan-weekly-2026-11-23",
+      "title": "大成集團主管會議 AI發展顧問 週報 2026-11-23",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "大成集團主管會議 AI發展顧問週報 2026-11-23。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。本週沒有需主管決策事項，共 5 頁。",
+      "createdAt": "2026-11-23T01:10:00.000Z",
+      "updatedAt": "2026-11-23T01:10:00.000Z",
+      "categoryId": "internal",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "KDS 與福成營運通本週進度、Cargill 牛肉加工 AI 新知，以及門市 KDS 日報內訓建議。2026/11/23 主管會議。"
     }
   ],
   "categories": [

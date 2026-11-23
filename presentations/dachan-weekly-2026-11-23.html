@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="dachan-weekly-2026-11-23">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="大成集團主管會議 AI發展顧問 週報 2026-11-23。黃燕忠｜AI發展顧問。">
+  <title>大成集團主管會議 AI發展顧問 週報 2026-11-23</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer;
+    }
+    .toolbar button:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 46px 40px 52px; position: relative; overflow: auto;
+    }
+    .slide::before {
+      content: "黃燕忠｜AI發展顧問";
+      position: absolute; top: 14px; left: 40px; z-index: 2;
+      color: var(--text); font-weight: 700;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .slide-page {
+      position: absolute; top: 14px; right: 40px; z-index: 2;
+      color: var(--muted); font-weight: 700;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .04em; }
+    .kicker {
+      display: inline-flex; align-self: flex-start; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(15px * var(--font-scale)); font-weight: 700;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(36px, 4.2vw, 56px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 6px; font-size: calc(clamp(22px, 2.2vw, 30px) * var(--font-scale)); line-height: 1.25; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(15px * var(--font-scale)); line-height: 1.5; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(16px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 14px;
+      display: flex; justify-content: space-between; gap: 12px;
+      color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .footer span:first-child { color: var(--text); }
+    .grid { display: grid; gap: 10px; margin-top: 12px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px;
+    }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(16px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(14px * var(--font-scale)); line-height: 1.45; }
+    .card ul { margin: 0; padding-left: 1.15em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(14px * var(--font-scale)); line-height: 1.45;
+    }
+    #s2 .card p, #s2 .card li, #s4 .card li { font-size: calc(13px * var(--font-scale)); line-height: 1.4; }
+    #s2 .card, #s4 .card { padding: 10px 12px; }
+    #s3 .callout {
+      margin-top: 14px; padding: 0; border: none; background: transparent;
+      color: var(--muted); font-size: calc(12px * var(--font-scale));
+    }
+    .slide-links { margin: 8px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { text-decoration: underline; }
+    aside.notes { display: none; }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      #deck-header { height: auto; min-height: var(--header-h); flex-wrap: wrap; row-gap: 6px; padding: 6px 8px; }
+      #deck { padding-top: 108px; }
+      .slide { width: calc(100vw - 16px); aspect-ratio: auto; min-height: 70vh; padding: 40px 16px 48px; }
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .slide::before, .slide-page, .footer { left: 16px; right: 16px; }
+      .slide::before { left: 16px; }
+      #deck-header .brand { font-size: 13px; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(420px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">黃燕忠｜AI發展顧問</a></div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 5</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+      <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+    </div>
+  </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">大成集團主管會議｜2026/11/23（一）</p>
+      <h1>AI發展顧問 週報</h1>
+      
+      <p class="stamp">黃燕忠 博士｜AI發展顧問</p>
+      <aside class="notes">各位主管午安，我是燕忠。今天五分鐘，先報告 KDS 和福成營運通兩個專案進度，再分享一則 AI 新知和一個內訓建議。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>1 / 5</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="鳥貴族 KDS">
+<p class="eyebrow">營業日 11/16–11/22｜資料來源：KDS 系統自動通知信</p><h2>鳥貴族 KDS｜本週進度</h2><div class="grid two"><article class="card"><div class="num">完成</div><strong>本週完成</strong><ul><li>每日批次匯入 6 次執行，共新增 40,200 筆出餐資料，涵蓋 7 家門市（TW0001–TW0007）。</li><li>11/20 早上 07:00 匯入失敗（系統訊息：未知錯誤）；11/21 那次一次處理 14 個檔案、0 失敗，資料已補進。</li><li>每日營運報表照常寄送各門市與全門市彙總。</li></ul></article><article class="card"><div class="num">11/22</div><strong>11/22（日）全門市</strong><ul><li>出餐單品 8,410、訂單 510、品項 129。</li><li>工作站比例 K1 48.85%、K2 31.9%、K3 19.25%。</li><li>異常等待 456 筆、異常製作 136 筆。</li><li>異常最多的是信義店（TW0002）191 筆。</li></ul></article><article class="card"><div class="num">觀察</div><strong>觀察</strong><p>各門市日報仍是一店寄兩封（主旨有/無「- TW000x」），上週已發現，原因待查。</p></article><article class="card"><div class="num">待補</div><strong>下週計畫、需主管協助</strong><ul><li>下週計畫：待補</li><li>需主管協助：待補</li></ul></article></div>
+      <aside class="notes">KDS 這週資料匯入大致順利，6 次排程共匯進四萬多筆出餐資料。11/20 早上那次失敗，隔天自動補回，資料沒有缺。週日全門市出了 8,410 份單品、510 張訂單。異常等待時間最多的是信義店，可以請門市一起看原因。另外日報重複寄送的問題還在查。下週計畫和需要協助的部分我再補充。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>2 / 5</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="福成營運通">
+<p class="eyebrow">營業日 11/16–11/22｜資料來源：fyhGoogle GitHub commit 紀錄</p><h2>福成營運通 fyhGoogle｜本週進度</h2><div class="grid three"><article class="card"><div class="num">01</div><strong>本週完成</strong><ul><li>系統從 v0.1.174 更新到 v0.1.184，一週發了 10 個版本。</li><li>生產預估（11/20）：加入「前一天工廠出貨」對照，數量取整數，可一鍵套用前一天的出貨調整。</li><li>線上訂單（11/20）：新增每日出貨統計表，常溫、冷凍分組並顯示商品代碼；修正寶興自取單沒有匯入每日出貨的問題。</li></ul></article><article class="card"><div class="num">02</div><strong>下週計畫</strong><p>待補</p></article><article class="card"><div class="num">03</div><strong>需主管協助</strong><p>無</p></article></div>
+      <aside class="notes">福成營運通這週發了 10 個版本，從 0.1.174 到 0.1.184。兩個重點：第一，生產預估加上前一天工廠出貨的對照，可以一鍵套用；第二，線上訂單新增每日出貨統計表，常溫冷凍分開、有商品代碼，也修好了寶興自取單沒進每日出貨的問題。下週計畫我再補充。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>3 / 5</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="AI 新知">
+<p class="eyebrow">AI 新知</p><h2>Cargill 把 AI 用在牛肉加工</h2><p class="lead">來源：MEAT+POULTRY，2026/11/17</p><div class="grid two"><article class="card"><div class="num">重點</div><strong>重點</strong><ul><li>2020–21 年先找外部合作，18 個月後發現工程、營運、現場各走各的方向，於是喊停，改組內部資料科學團隊。</li><li>CarVe 影像 AI：提升分切產出率，還能看出每位員工下刀次數（例：20 刀 vs 35 刀），用在教育訓練與職安。</li><li>與 C3.ai 做排產優化，分析 300 萬個變數，把客戶需求和進場牛隻對起來，減少零售端打折或丟棄的肉。</li><li>SizeR 雷達量測屠體肉量與油花，正在把屠體資料回饋到飼養端。</li></ul></article><article class="card"><div class="num">意義</div><strong>對大成的意義</strong><ul><li>飼料、肉品、通路一條龍，正適合把「下游需求 → 排產 → 屠體資料 → 飼養/飼料」串起來。</li><li>先對齊目標與現場流程再談技術，內部要有懂業務的資料團隊，外包不能取代。</li><li>可從排產預估、分切產出率這類能算出效益的題目先試。</li></ul></article></div><p class="slide-links"><a href="https://www.meatpoultry.com/articles/34336-how-cargill-aligned-ai-with-beef-processing-operations" target="_blank" rel="noopener noreferrer">來源：MEAT+POULTRY，2026/11/17</a></p>
+      <aside class="notes">這週分享 Cargill 的例子。他們一開始找外部廠商做 AI，一年半後發現大家方向不一致，就果斷喊停，改成自己養資料團隊。現在用影像 AI 看分切產出率，連每個人下幾刀都看得到，用來教育訓練；排產系統把客戶需求和進來的牛對起來，減少賣場報廢。對大成來說，我們飼料、肉品、通路都有，最有機會把下游需求一路串回飼養端。關鍵是先把目標和現場流程對齊，再談技術。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>4 / 5</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="內訓建議">
+<h2>內訓建議</h2><div class="grid three"><article class="card"><div class="num">對象</div><strong>對象</strong><p>餐飲事業門市主管與營運管理人員</p></article><article class="card"><div class="num">主題</div><strong>主題/工具</strong><p>看懂 KDS 每日營運報表（工作站比例、異常等待/製作時間），搭配生成式 AI 助手把日報整理成晨會三重點</p></article><article class="card"><div class="num">效益</div><strong>預期效益</strong><p>主管每天能快速抓到異常門市與工作站，晨會從看數字變成討論改善；也是把 Cargill「用資料做教育訓練」的做法落到我們自己的門市</p></article></div>
+      <aside class="notes">內訓建議：先找餐飲門市主管和營運同仁，上一堂看懂 KDS 日報的課，再教大家用 AI 助手把日報整理成晨會三個重點。目標是讓主管每天一眼看到哪家店、哪個工作站需要處理。以上報告，謝謝。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>5 / 5</span></div>
+    </section>
+  </main>
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="dachan-weekly-2026-11-23">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const HEAD_LABEL = "黃燕忠｜AI發展顧問";
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "大成集團主管會議 AI發展顧問 週報 2026-11-23";
+      const LS_KEY = "ai-ppt-dachan-weekly-2026-11-23-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      slides.forEach((slide, i) => {
+        const page = document.createElement("span");
+        page.className = "slide-page";
+        page.textContent = (i + 1) + " / " + total;
+        slide.appendChild(page);
+        const foot = slide.querySelector(".footer span");
+        if (foot) foot.textContent = HEAD_LABEL;
+      });
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>
