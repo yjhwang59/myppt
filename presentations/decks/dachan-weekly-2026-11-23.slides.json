@@ -1,0 +1,252 @@
+{
+  "version": "1.0.0",
+  "deckId": "dachan-weekly-2026-11-23",
+  "title": "大成集團主管會議 AI發展顧問 週報 2026-11-23",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "layout": "hero",
+      "hero": true,
+      "eyebrow": "",
+      "kicker": "大成集團主管會議｜2026/11/23（一）",
+      "h1": "AI發展顧問 週報",
+      "h2": "",
+      "lead": "",
+      "stamp": "黃燕忠 博士｜AI發展顧問",
+      "cards": [],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "各位主管午安，我是燕忠。今天五分鐘，先報告 KDS 和福成營運通兩個專案進度，再分享一則 AI 新知和一個內訓建議。",
+      "links": [],
+      "footerPage": "1 / 5"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "鳥貴族 KDS",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "營業日 11/16–11/22｜資料來源：KDS 系統自動通知信",
+      "kicker": "",
+      "h1": "",
+      "h2": "鳥貴族 KDS｜本週進度",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "完成",
+          "tag": null,
+          "tagClass": null,
+          "heading": "本週完成",
+          "paragraph": "",
+          "bullets": [
+            "每日批次匯入 6 次執行，共新增 40,200 筆出餐資料，涵蓋 7 家門市（TW0001–TW0007）。",
+            "11/20 早上 07:00 匯入失敗（系統訊息：未知錯誤）；11/21 那次一次處理 14 個檔案、0 失敗，資料已補進。",
+            "每日營運報表照常寄送各門市與全門市彙總。"
+          ]
+        },
+        {
+          "num": "11/22",
+          "tag": null,
+          "tagClass": null,
+          "heading": "11/22（日）全門市",
+          "paragraph": "",
+          "bullets": [
+            "出餐單品 8,410、訂單 510、品項 129。",
+            "工作站比例 K1 48.85%、K2 31.9%、K3 19.25%。",
+            "異常等待 456 筆、異常製作 136 筆。",
+            "異常最多的是信義店（TW0002）191 筆。"
+          ]
+        },
+        {
+          "num": "觀察",
+          "tag": null,
+          "tagClass": null,
+          "heading": "觀察",
+          "paragraph": "各門市日報仍是一店寄兩封（主旨有/無「- TW000x」），上週已發現，原因待查。",
+          "bullets": []
+        },
+        {
+          "num": "待補",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下週計畫、需主管協助",
+          "paragraph": "",
+          "bullets": [
+            "下週計畫：待補",
+            "需主管協助：待補"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "KDS 這週資料匯入大致順利，6 次排程共匯進四萬多筆出餐資料。11/20 早上那次失敗，隔天自動補回，資料沒有缺。週日全門市出了 8,410 份單品、510 張訂單。異常等待時間最多的是信義店，可以請門市一起看原因。另外日報重複寄送的問題還在查。下週計畫和需要協助的部分我再補充。",
+      "links": [],
+      "footerPage": "2 / 5"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "福成營運通",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "福成營運通 fyhGoogle",
+      "kicker": "",
+      "h1": "",
+      "h2": "福成營運通 fyhGoogle｜本週進度",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "01",
+          "tag": null,
+          "tagClass": null,
+          "heading": "本週完成",
+          "paragraph": "待補",
+          "bullets": []
+        },
+        {
+          "num": "02",
+          "tag": null,
+          "tagClass": null,
+          "heading": "下週計畫",
+          "paragraph": "待補",
+          "bullets": []
+        },
+        {
+          "num": "03",
+          "tag": null,
+          "tagClass": null,
+          "heading": "需主管協助",
+          "paragraph": "待補",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "本週資料待阿福營運通週報產出後補上"
+      ],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "福成營運通這週的進度資料還在整理，稍後補上，我先跳到下一頁。",
+      "links": [],
+      "footerPage": "3 / 5"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "AI 新知",
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "AI 新知",
+      "kicker": "",
+      "h1": "",
+      "h2": "Cargill 把 AI 用在牛肉加工",
+      "lead": "來源：MEAT+POULTRY，2026/11/17",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "重點",
+          "tag": null,
+          "tagClass": null,
+          "heading": "重點",
+          "paragraph": "",
+          "bullets": [
+            "2020–21 年先找外部合作，18 個月後發現工程、營運、現場各走各的方向，於是喊停，改組內部資料科學團隊。",
+            "CarVe 影像 AI：提升分切產出率，還能看出每位員工下刀次數（例：20 刀 vs 35 刀），用在教育訓練與職安。",
+            "與 C3.ai 做排產優化，分析 300 萬個變數，把客戶需求和進場牛隻對起來，減少零售端打折或丟棄的肉。",
+            "SizeR 雷達量測屠體肉量與油花，正在把屠體資料回饋到飼養端。"
+          ]
+        },
+        {
+          "num": "意義",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對大成的意義",
+          "paragraph": "",
+          "bullets": [
+            "飼料、肉品、通路一條龍，正適合把「下游需求 → 排產 → 屠體資料 → 飼養/飼料」串起來。",
+            "先對齊目標與現場流程再談技術，內部要有懂業務的資料團隊，外包不能取代。",
+            "可從排產預估、分切產出率這類能算出效益的題目先試。"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "這週分享 Cargill 的例子。他們一開始找外部廠商做 AI，一年半後發現大家方向不一致，就果斷喊停，改成自己養資料團隊。現在用影像 AI 看分切產出率，連每個人下幾刀都看得到，用來教育訓練；排產系統把客戶需求和進來的牛對起來，減少賣場報廢。對大成來說，我們飼料、肉品、通路都有，最有機會把下游需求一路串回飼養端。關鍵是先把目標和現場流程對齊，再談技術。",
+      "links": [
+        {
+          "label": "來源：MEAT+POULTRY，2026/11/17",
+          "href": "https://www.meatpoultry.com/articles/34336-how-cargill-aligned-ai-with-beef-processing-operations"
+        }
+      ],
+      "footerPage": "4 / 5"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "內訓建議",
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "",
+      "kicker": "",
+      "h1": "",
+      "h2": "內訓建議",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "對象",
+          "tag": null,
+          "tagClass": null,
+          "heading": "對象",
+          "paragraph": "餐飲事業門市主管與營運管理人員",
+          "bullets": []
+        },
+        {
+          "num": "主題",
+          "tag": null,
+          "tagClass": null,
+          "heading": "主題/工具",
+          "paragraph": "看懂 KDS 每日營運報表（工作站比例、異常等待/製作時間），搭配生成式 AI 助手把日報整理成晨會三重點",
+          "bullets": []
+        },
+        {
+          "num": "效益",
+          "tag": null,
+          "tagClass": null,
+          "heading": "預期效益",
+          "paragraph": "主管每天能快速抓到異常門市與工作站，晨會從看數字變成討論改善；也是把 Cargill「用資料做教育訓練」的做法落到我們自己的門市",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [],
+      "phases": [],
+      "facts": [],
+      "footerBrand": "黃燕忠｜AI發展顧問",
+      "notes": "內訓建議：先找餐飲門市主管和營運同仁，上一堂看懂 KDS 日報的課，再教大家用 AI 助手把日報整理成晨會三個重點。目標是讓主管每天一眼看到哪家店、哪個工作站需要處理。以上報告，謝謝。",
+      "links": [],
+      "footerPage": "5 / 5"
+    }
+  ]
+}
