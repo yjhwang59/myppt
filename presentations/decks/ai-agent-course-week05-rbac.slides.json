@@ -32,7 +32,7 @@
       ],
       "slideId": "s1",
       "index": 1,
-      "footerPage": "1 / 30"
+      "footerPage": "1 / 36"
     },
     {
       "layout": "table",
@@ -82,7 +82,7 @@
       "title": "課前檢查",
       "slideId": "s2",
       "index": 2,
-      "footerPage": "2 / 30"
+      "footerPage": "2 / 36"
     },
     {
       "layout": "table",
@@ -107,18 +107,23 @@
           "開場：課前檢查、「好了／卡住」、分組"
         ],
         [
-          "18:36–18:48",
-          "12′",
-          "W4 複習：使用者管理的新增讀取更新刪除"
+          "18:36–18:46",
+          "10′",
+          "W4 複習：使用者管理的四個動作"
         ],
         [
-          "18:48–19:10",
-          "22′",
+          "18:46–18:58",
+          "12′",
+          "Cursor 複習：IDE、Agents Window、先 Pull"
+        ],
+        [
+          "18:58–19:16",
+          "18′",
           "三個詞，和管理員、業務、客服"
         ],
         [
-          "19:10–19:40",
-          "30′",
+          "19:16–19:40",
+          "24′",
           "權限表、403、誰改了什麼"
         ],
         [
@@ -132,24 +137,19 @@
           "休息"
         ],
         [
-          "20:25–20:55",
-          "30′",
+          "20:25–20:52",
+          "27′",
           "練習 2：記下誰改了狀態（選做）"
         ],
         [
-          "20:55–21:10",
-          "15′",
+          "20:52–21:10",
+          "18′",
           "三個假帳號各測一次"
         ],
         [
-          "21:10–21:20",
-          "10′",
-          "成果展示"
-        ],
-        [
-          "21:20–21:30",
-          "10′",
-          "作業、W6 預告、課後問卷"
+          "21:10–21:30",
+          "20′",
+          "成果展示 10′，作業、W6、問卷 10′"
         ]
       ],
       "callouts": [
@@ -159,7 +159,7 @@
       "title": "今天怎麼走",
       "slideId": "s3",
       "index": 3,
-      "footerPage": "3 / 30"
+      "footerPage": "3 / 36"
     },
     {
       "layout": "cards-three",
@@ -217,7 +217,7 @@
       "title": "今天的三件事",
       "slideId": "s4",
       "index": 4,
-      "footerPage": "4 / 30"
+      "footerPage": "4 / 36"
     },
     {
       "layout": "cards-three",
@@ -275,7 +275,7 @@
       "title": "好了／卡住",
       "slideId": "s5",
       "index": 5,
-      "footerPage": "5 / 30"
+      "footerPage": "5 / 36"
     },
     {
       "layout": "cards-three",
@@ -333,7 +333,7 @@
       "title": "分組與角色",
       "slideId": "s6",
       "index": 6,
-      "footerPage": "6 / 30"
+      "footerPage": "6 / 36"
     },
     {
       "layout": "table",
@@ -380,7 +380,278 @@
       "title": "W4 複習",
       "slideId": "s7",
       "index": 7,
-      "footerPage": "7 / 30"
+      "footerPage": "7 / 36"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / 三個畫面",
+      "kicker": "",
+      "h1": "",
+      "h2": "同一個帳號，三個地方各做一件事",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "IDE",
+          "tag": null,
+          "tagClass": null,
+          "heading": "有檔案的編輯器",
+          "paragraph": "左邊看得到檔案，中間改內容。上課改後台，用這個。",
+          "bullets": []
+        },
+        {
+          "num": "Agents",
+          "tag": null,
+          "tagClass": null,
+          "heading": "只有對話的視窗",
+          "paragraph": "Agents Window 沒有檔案區。要回去：Cmd/Ctrl+Shift+P，輸入 Open IDE。",
+          "bullets": []
+        },
+        {
+          "num": "手機",
+          "tag": null,
+          "tagClass": null,
+          "heading": "看進度、下短指令",
+          "paragraph": "適合看做到哪。不要在手機貼長提示詞，也不要在手機改檔。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜IDE：有檔案列表的那個視窗。Agents Window：打開來主要是跟 AI 對話的那個視窗。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "三個畫面",
+      "index": 8,
+      "slideId": "s8",
+      "footerPage": "8 / 36"
+    },
+    {
+      "layout": "cards-three",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / 三個地方的檔案",
+      "kicker": "",
+      "h1": "",
+      "h2": "本機、GitHub、Cloud Agent 不是同一份",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "本機",
+          "tag": null,
+          "tagClass": null,
+          "heading": "在你這台電腦",
+          "paragraph": "資料夾裡的檔案。Cursor 上課改的是這一份。",
+          "bullets": []
+        },
+        {
+          "num": "GitHub",
+          "tag": null,
+          "tagClass": null,
+          "heading": "雲端的副本",
+          "paragraph": "換一台電腦還在。你要上傳，別人才看得到。",
+          "bullets": []
+        },
+        {
+          "num": "Cloud",
+          "tag": null,
+          "tagClass": null,
+          "heading": "在別台電腦改",
+          "paragraph": "Cloud Agent 改完，不會自動出現在你眼前。它預設會開一個 PR。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜PR：請你看過再合併的請求。開了 PR 還不等於已經改到你的電腦，也不等於已經上線。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "工作怎麼交接",
+      "index": 9,
+      "slideId": "s9",
+      "footerPage": "9 / 36"
+    },
+    {
+      "layout": "table",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / 換專案",
+      "kicker": "",
+      "h1": "",
+      "h2": "貼提示詞之前，先確認是哪一個專案",
+      "lead": "",
+      "stamp": "",
+      "cards": [],
+      "flowSteps": [],
+      "table": [
+        [
+          "步驟",
+          "你看哪裡",
+          "看到什麼算對"
+        ],
+        [
+          "1",
+          "視窗標題",
+          "是上週的後台專案，不是別的資料夾"
+        ],
+        [
+          "2",
+          "左邊檔案",
+          "有 src/worker.js"
+        ],
+        [
+          "3",
+          "要換專案",
+          "File → Open Folder，選另一個資料夾"
+        ],
+        [
+          "4",
+          "Agents Window",
+          "先點對專案名稱，再打字"
+        ]
+      ],
+      "callouts": [
+        "在錯的資料夾裡貼提示詞，會改到別的專案。不確定就先停。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "換專案",
+      "index": 10,
+      "slideId": "s10",
+      "footerPage": "10 / 36"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / 先 Pull",
+      "kicker": "",
+      "h1": "",
+      "h2": "GitHub 被改過，你的電腦還是舊的",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "為什麼",
+          "tag": null,
+          "tagClass": null,
+          "heading": "雲端改完，本機不會自己跟上",
+          "paragraph": "",
+          "bullets": [
+            "Cloud Agent 或別的工具改了 GitHub",
+            "你打開 Cursor，看到的仍是上次那一版",
+            "兩邊同時改，會打架"
+          ]
+        },
+        {
+          "num": "怎麼做",
+          "tag": null,
+          "tagClass": null,
+          "heading": "動手之前先拉下來",
+          "paragraph": "",
+          "bullets": [
+            "左邊點原始碼控制（分岔圖示）",
+            "按 Pull（拉下最新版）",
+            "成功：檔案跟上 GitHub",
+            "有衝突就停，問講師"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "名詞｜Pull：把 GitHub 上較新的版本拉回你的電腦。還沒 Pull，不要開始改。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "先拉最新版",
+      "index": 11,
+      "slideId": "s11",
+      "footerPage": "11 / 36"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / PR 與語音",
+      "kicker": "",
+      "h1": "",
+      "h2": "雲端預設開 PR；用講的也要看改了什麼",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "PR",
+          "tag": null,
+          "tagClass": null,
+          "heading": "Cloud Agent 預設每次都開",
+          "paragraph": "它改完會開一個 PR，請你審。不要看到 PR 就按合併。上課先不要用 Cloud。",
+          "bullets": []
+        },
+        {
+          "num": "語音",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以講，仍要看檔案",
+          "paragraph": "語音對話是用講的下指令。講完一樣看它改了哪些檔，不要只聽它說好了。",
+          "bullets": []
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "上課規則不變：用本機 IDE，輸入框下面不要選 Cloud。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "PR 與語音",
+      "index": 12,
+      "slideId": "s12",
+      "footerPage": "12 / 36"
+    },
+    {
+      "layout": "cards-two",
+      "hero": false,
+      "eyebrow": "Cursor 複習 / 好了／卡住",
+      "kicker": "",
+      "h1": "",
+      "h2": "打開後台之前，先對這四項",
+      "lead": "",
+      "stamp": "",
+      "cards": [
+        {
+          "num": "好了",
+          "tag": null,
+          "tagClass": null,
+          "heading": "可以往下",
+          "paragraph": "",
+          "bullets": [
+            "左邊看得到檔案",
+            "標題是上週的後台專案",
+            "輸入框下面不是 Cloud",
+            "剛 Pull 過，或確認沒人改過 GitHub"
+          ]
+        },
+        {
+          "num": "卡住",
+          "tag": null,
+          "tagClass": null,
+          "heading": "先做這三個",
+          "paragraph": "",
+          "bullets": [
+            "只有對話：Cmd/Ctrl+Shift+P，輸入 Open IDE",
+            "檔案像舊的：先 Pull",
+            "跳出 PR：先不要合併，問講師"
+          ]
+        }
+      ],
+      "flowSteps": [],
+      "table": [],
+      "callouts": [
+        "這四項對了，再做下一頁：打開上週專案。"
+      ],
+      "footerBrand": "AIDC.work",
+      "title": "Cursor 自我檢查",
+      "index": 13,
+      "slideId": "s13",
+      "footerPage": "13 / 36"
     },
     {
       "layout": "table",
@@ -425,9 +696,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "打開上週專案",
-      "slideId": "s8",
-      "index": 8,
-      "footerPage": "8 / 30"
+      "slideId": "s14",
+      "index": 14,
+      "footerPage": "14 / 36"
     },
     {
       "layout": "cards-three",
@@ -471,14 +742,14 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "三個詞",
-      "slideId": "s9",
-      "index": 9,
-      "footerPage": "9 / 30"
+      "slideId": "s15",
+      "index": 15,
+      "footerPage": "15 / 36"
     },
     {
       "layout": "cards-two",
       "hero": false,
-      "eyebrow": "角色 / 18:48–19:10",
+      "eyebrow": "角色 / 18:58–19:16",
       "kicker": "",
       "h1": "",
       "h2": "人會換，角色比較穩",
@@ -517,9 +788,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "為什麼不依人",
-      "slideId": "s10",
-      "index": 10,
-      "footerPage": "10 / 30"
+      "slideId": "s16",
+      "index": 16,
+      "footerPage": "16 / 36"
     },
     {
       "layout": "table",
@@ -569,15 +840,15 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "三種角色",
-      "slideId": "s11",
-      "index": 11,
-      "footerPage": "11 / 30"
+      "slideId": "s17",
+      "index": 17,
+      "footerPage": "17 / 36"
     },
     {
       "layout": "hero",
       "hero": true,
       "eyebrow": "",
-      "kicker": "把關 · 30 分鐘（19:10–19:40）",
+      "kicker": "把關 · 24 分鐘（19:16–19:40）",
       "h1": "藏按鈕不夠\n伺服器要回 403",
       "h2": "",
       "lead": "畫面可以少一顆刪除鈕，讓人少點錯。真正算數的是：沒權限的人就算自己打網址，也改不到資料。",
@@ -588,9 +859,9 @@
       "callouts": [],
       "footerBrand": "AIDC.work",
       "title": "擋在哪裡",
-      "slideId": "s12",
-      "index": 12,
-      "footerPage": "12 / 30"
+      "slideId": "s18",
+      "index": 18,
+      "footerPage": "18 / 36"
     },
     {
       "layout": "cards-two",
@@ -634,9 +905,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "兩層一起做",
-      "slideId": "s13",
-      "index": 13,
-      "footerPage": "13 / 30"
+      "slideId": "s19",
+      "index": 19,
+      "footerPage": "19 / 36"
     },
     {
       "layout": "table",
@@ -680,9 +951,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "權限表",
-      "slideId": "s14",
-      "index": 14,
-      "footerPage": "14 / 30"
+      "slideId": "s20",
+      "index": 20,
+      "footerPage": "20 / 36"
     },
     {
       "layout": "cards-three",
@@ -726,9 +997,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "誰改了什麼",
-      "slideId": "s15",
-      "index": 15,
-      "footerPage": "15 / 30"
+      "slideId": "s21",
+      "index": 21,
+      "footerPage": "21 / 36"
     },
     {
       "layout": "hero",
@@ -745,9 +1016,9 @@
       "callouts": [],
       "footerBrand": "AIDC.work",
       "title": "動手做",
-      "slideId": "s16",
-      "index": 16,
-      "footerPage": "16 / 30"
+      "slideId": "s22",
+      "index": 22,
+      "footerPage": "22 / 36"
     },
     {
       "layout": "table",
@@ -802,9 +1073,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "練習前的步驟",
-      "slideId": "s17",
-      "index": 17,
-      "footerPage": "17 / 30"
+      "slideId": "s23",
+      "index": 23,
+      "footerPage": "23 / 36"
     },
     {
       "layout": "cards-two",
@@ -845,9 +1116,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "練習題目",
-      "slideId": "s18",
-      "index": 18,
-      "footerPage": "18 / 30"
+      "slideId": "s24",
+      "index": 24,
+      "footerPage": "24 / 36"
     },
     {
       "layout": "cards",
@@ -870,9 +1141,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰會用：我。請先當顧問，不要改任何檔案。\n要做什麼：規劃 Northgo 後台的角色權限。角色只有三種：管理員、業務、客服。\n長什麼樣：用繁體中文給一張表。列出來誰可以看詢問、改狀態、刪詢問、管帳號。並寫沒有權限時，/api/admin 要回 403 和哪一句中文。\n限制：不要改 src/worker.js，不要寫 migration，不要部署。等我說「照計畫做」再動手，而且不要改計畫本身。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s19",
-      "index": 19,
-      "footerPage": "19 / 30"
+      "slideId": "s25",
+      "index": 25,
+      "footerPage": "25 / 36"
     },
     {
       "layout": "cards",
@@ -895,9 +1166,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰會用：管理員指派角色時會用到這些表。\n要做什麼：寫一份 D1 migration。表有 roles、permissions、role_permissions、user_roles。權限至少有：看詢問、改狀態、刪詢問、管帳號。再加 audit_log：誰、何時、哪一筆、改成什麼。\n長什麼樣：一份 SQL。先放入管理員、業務、客服三個角色，並照我們的權限表把關係寫好。\n限制：不要塞真實客戶。不要改 .dev.vars，不要把它加進 git。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s20",
-      "index": 20,
-      "footerPage": "20 / 30"
+      "slideId": "s26",
+      "index": 26,
+      "footerPage": "26 / 36"
     },
     {
       "layout": "cards",
@@ -920,9 +1191,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰會呼叫：已經登入、打到 /api/admin 開頭的人。程式在 src/worker.js。\n要做什麼：先查出這個人的角色。客服不能刪詢問、不能管帳號，而且只能把狀態改成處理中。業務不能刪詢問、不能管帳號。管理員可以。不允許就回 403，正文「你沒有這個權限」，不要改資料。\n長什麼樣：JSON。刪除和改狀態都走 /api/admin/enquiries。管帳號仍走原本的使用者管理。\n限制：不能只靠藏按鈕。沒登入要先擋，再談角色。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s21",
-      "index": 21,
-      "footerPage": "21 / 30"
+      "slideId": "s27",
+      "index": 27,
+      "footerPage": "27 / 36"
     },
     {
       "layout": "cards",
@@ -945,9 +1216,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰會看：管理員、業務、客服登入同一套後台。\n要做什麼：客服不顯示刪除，也不顯示帳號管理。業務看得到詢問和改狀態，看不到帳號管理。管理員全部看得到。\n長什麼樣：繁體中文。按鈕直接不出現，不要只變成灰色。\n限制：藏按鈕不夠。伺服器仍要回 403。文字若在 content/site.js，就改那裡。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s22",
-      "index": 22,
-      "footerPage": "22 / 30"
+      "slideId": "s28",
+      "index": 28,
+      "footerPage": "28 / 36"
     },
     {
       "layout": "cards",
@@ -970,9 +1241,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰來測：我自己，用三個假帳號。\n要做什麼：管理員、業務、客服各登入一次。客服請求刪除一筆詢問，應得到 403，而且那筆還在。業務打開帳號管理，應進不去。管理員可以把另一個假帳號改成客服。\n長什麼樣：每個角色三行：帳號、做了什麼、看到什麼。\n限制：帳號用 admin.test、sales.test、service.test。密碼不要寫進對話。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s23",
-      "index": 23,
-      "footerPage": "23 / 30"
+      "slideId": "s29",
+      "index": 29,
+      "footerPage": "29 / 36"
     },
     {
       "layout": "cards",
@@ -995,9 +1266,9 @@
         "label": "整段複製，貼到 Cursor",
         "text": "誰會看這張紀錄：只有管理員。\n要做什麼：業務把一筆詢問從「新進」改成「已回覆」時，寫進 audit_log：帳號、時間、哪一筆、舊狀態、新狀態。客服讀這張紀錄要得到 403。\n長什麼樣：管理員在明細頁看得到一行字：「sales.test 在什麼時間把狀態改成已回覆」。\n限制：時間用伺服器的時間。不要記錄密碼。這題選做。只用假帳號。不要寫密碼進對話，不要把 .dev.vars 放進 git。"
       },
-      "slideId": "s24",
-      "index": 24,
-      "footerPage": "24 / 30"
+      "slideId": "s30",
+      "index": 30,
+      "footerPage": "30 / 36"
     },
     {
       "layout": "table",
@@ -1052,14 +1323,14 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "驗收表",
-      "slideId": "s25",
-      "index": 25,
-      "footerPage": "25 / 30"
+      "slideId": "s31",
+      "index": 31,
+      "footerPage": "31 / 36"
     },
     {
       "layout": "cards-three",
       "hero": false,
-      "eyebrow": "安全 / 15 分鐘（20:55–21:10）",
+      "eyebrow": "安全 / 18 分鐘（20:52–21:10）",
       "kicker": "",
       "h1": "",
       "h2": "測角色用假帳號，密碼留在自己電腦",
@@ -1098,9 +1369,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "假帳號",
-      "slideId": "s26",
-      "index": 26,
-      "footerPage": "26 / 30"
+      "slideId": "s32",
+      "index": 32,
+      "footerPage": "32 / 36"
     },
     {
       "layout": "table",
@@ -1161,13 +1432,13 @@
         ]
       ],
       "callouts": [
-        "提示詞在第 19 到 24 頁。步驟表在第 17 頁。密碼不要寫進 README。"
+        "提示詞在第 25 到第 30 頁。步驟表在第 23 頁。Cursor 複習在第 8 到第 13 頁。密碼不要寫進 README。"
       ],
       "footerBrand": "AIDC.work",
       "title": "回家照著做",
-      "slideId": "s27",
-      "index": 27,
-      "footerPage": "27 / 30"
+      "slideId": "s33",
+      "index": 33,
+      "footerPage": "33 / 36"
     },
     {
       "layout": "cards-three",
@@ -1211,9 +1482,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "成果展示",
-      "slideId": "s28",
-      "index": 28,
-      "footerPage": "28 / 30"
+      "slideId": "s34",
+      "index": 34,
+      "footerPage": "34 / 36"
     },
     {
       "layout": "table",
@@ -1268,9 +1539,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "作業",
-      "slideId": "s29",
-      "index": 29,
-      "footerPage": "29 / 30"
+      "slideId": "s35",
+      "index": 35,
+      "footerPage": "35 / 36"
     },
     {
       "layout": "table",
@@ -1310,9 +1581,9 @@
       ],
       "footerBrand": "AIDC.work",
       "title": "W6 預告",
-      "slideId": "s30",
-      "index": 30,
-      "footerPage": "30 / 30"
+      "slideId": "s36",
+      "index": 36,
+      "footerPage": "36 / 36"
     }
   ]
 }
