@@ -1,0 +1,867 @@
+{
+  "version": "1.0.0",
+  "deckId": "aidc-blog-learning-brief-2026-11-27",
+  "deckPath": "aidc-blog-learning-brief-2026-11-27.html",
+  "title": "AIDC Blog 學習簡報：我和 AI 協作｜2026-11-27",
+  "sourceType": "html",
+  "sourceFlavor": "ai-eip-native",
+  "promptVersion": "1.0.0",
+  "modelVersion": null,
+  "voice": {
+    "provider": "openai",
+    "voiceId": "nova",
+    "speed": 1
+  },
+  "presenter": {
+    "name": "黃燕忠",
+    "avatarVideoUrl": null
+  },
+  "slides": [
+    {
+      "slideId": "s1",
+      "index": 1,
+      "title": "封面",
+      "sourceHash": "5f91317538bcc662827e63667b9e3202bf415ba1733479154ca4307d7cb40459",
+      "extractedContent": {
+        "eyebrow": "",
+        "kicker": "AIDC.work Blog｜2026-11-27（五）",
+        "headings": [
+          "AIDC Blog 學習簡報：我和 AI 協作"
+        ],
+        "lead": "公開網址 100（sitemap；文章 63＋簡報 37；11-20 快照為 92，+8）。新刊 8 份簡報，實質更新 19 篇文章＋12 份簡報。",
+        "stamp": "黃燕忠｜AI發展顧問｜台北",
+        "cards": [],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "各位好，我是黃燕忠。今天是 11 月 27 日，星期五，台北時間。這份是 AIDC Blog 的學習簡報，題目是「我和 AI 協作」。我們看的範圍就是 aidc.work 的 Blog。公開網址現在是 100 個，sitemap 裡文章 63、簡報 37。11 月 20 日的快照是 92，所以這週多了 8 個。多出來的是 8 份新簡報。另外有 19 篇文章，和 12 份本來就有的簡報，做了實質更新。",
+      "estimatedSeconds": 38,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s2",
+      "index": 2,
+      "title": "本週更新總覽",
+      "sourceHash": "4ec97bf0de874f3192832ff985c04bdaaff65ca4a2133d32ca48a9ae737b2fd2",
+      "extractedContent": {
+        "eyebrow": "本週更新總覽",
+        "kicker": "",
+        "headings": [
+          "沒有新文章，新增 8 份教學簡報"
+        ],
+        "lead": "每日時效核對（PR #62–#64、#67），加上公開頁小修（PR #65）。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "每日時效核對",
+            "paragraph": "PR #62（11-22）、#63（11-23）、#64（11-24）、#67（11-26）已合併。主架構不變。",
+            "bullets": []
+          },
+          {
+            "heading": "公開頁小修｜PR #65",
+            "paragraph": "企業 AI 上路學程、四模組學程、AI Agent 導論、大宗物資課程：修正時數、名額與失效連結。不算實質更新。",
+            "bullets": []
+          },
+          {
+            "heading": "本週沒有新文章網址",
+            "paragraph": "新增 8 份教學簡報。公開網址 100（文章 63＋簡報 37；11-20 快照 92，+8）。",
+            "bullets": []
+          },
+          {
+            "heading": "實質更新 19 篇＋12 份簡報",
+            "paragraph": "",
+            "bullets": [
+              "CEO 工作坊、Grok 4.5、客服 Agent、不會寫程式",
+              "Cursor 方案、專有名詞、系統架構、LINE 分身",
+              "期末發表、週報 Skill、閱讀順序、3 分鐘週報"
+            ]
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "不算更新：約 30 份簡報在 sitemap 的時間是 11-25 11:3x UTC，是 v0.1.115–118 重新部署，沒有內容 PR。Draft PR #66、#56 還沒合併，不計入。會員文 multi-agent-worktree-development-workflow 仍未列入 sitemap。"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "先講這週怎麼更新。沒有新的文章網址。每天做的是時效核對，已經合併的是 PR 62、63、64 和 67，日期分別是 11 月 22、23、24 和 26 日。主架構沒有改，補的是數字、連結和時效。PR 65 是公開頁小修，改了企業 AI 上路學程、四模組學程、AI Agent 導論，還有大宗物資課程的時數、名額和失效連結。這四頁不算實質更新。實質更新是 19 篇文章，加上 12 份既有簡報：CEO 工作坊、Grok 4.5、客服 Agent、不會寫程式、Cursor 方案、專有名詞、系統架構、LINE 分身、期末發表、週報 Skill、閱讀順序，和 3 分鐘週報。這些簡報都列在簡報清單那一頁。另外，大約 30 份簡報在 sitemap 的時間是 11 月 25 日 11 點 30 幾分 UTC，那是 v0.1.115 到 118 重新部署，沒有內容 PR，不算更新。Draft PR 66 和 56 還沒合併，先不計入。有一篇會員文，檔名是 multi-agent-worktree-development-workflow，仍未列入 sitemap。",
+      "estimatedSeconds": 95,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s3",
+      "index": 3,
+      "title": "新簡報：工具與工作區",
+      "sourceHash": "9212564a198776b0b3c7b4c36fc2e5285b205dae742c039e3a93f9b053ac9e8f",
+      "extractedContent": {
+        "eyebrow": "新簡報｜工具與工作區",
+        "kicker": "",
+        "headings": [
+          "切換、工作區、Bot 和編輯器、VS Code 新手"
+        ],
+        "lead": "Agents Window 切換、Cursor Multi-root、Grok Bot vs. Cursor Grok、VS Code 新手。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "Agents Window 切換",
+            "paragraph": "12 頁，PR #63。多專案不亂。文章補了語音對話，Cloud Agent 預設每次開 PR。",
+            "bullets": []
+          },
+          {
+            "heading": "Cursor Multi-root",
+            "paragraph": "11 頁，PR #67。四道閘門判斷哪些專案放同一區。IDE 3.29 修正；Cloud Agent 多倉庫是另一條路。",
+            "bullets": []
+          },
+          {
+            "heading": "Grok Bot vs. Cursor Grok",
+            "paragraph": "PR #67。成果落在信箱流程，還是落在 Git。補了長上下文計價。",
+            "bullets": []
+          },
+          {
+            "heading": "VS Code 新手",
+            "paragraph": "12 頁，PR #63。先調查再改檔。工具版本更新；讀 AGENTS.md 的預設沒變。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "工具和工作區，這週有四份新簡報。第一份是 Agents Window、IDE 和 Cloud Agent 怎麼切，會員，12 頁，PR 63。重點是多專案不要亂。文章也補了語音對話，以及 Cloud Agent 預設每次都會開 PR。第二份是 Cursor Multi-root，11 頁，PR 67。用四道閘門判斷哪些專案可以放在同一個工作區。IDE 3.29 有修正；Cloud Agent 的多倉庫是另一條路，不要混在一起。第三份是 Grok Bot 對上 Cursor Grok，會員，也是 PR 67。先問成果要落在信箱流程，還是落在 Git。這篇也補了長上下文計價。第四份是 VS Code 加上 Codex、Claude Code 的新手簡報，會員，12 頁，PR 63。原則是先調查再改檔。工具版本有更新，讀 AGENTS.md 的預設沒有變。",
+      "estimatedSeconds": 76,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s4",
+      "index": 4,
+      "title": "新簡報：規劃與架構",
+      "sourceHash": "aeeecfcf1c31c8962a14183cb8b7db7c69fdd54462c484344eaddf41e84d3846",
+      "extractedContent": {
+        "eyebrow": "新簡報｜規劃與架構",
+        "kicker": "",
+        "headings": [
+          "閘門、OKR、技術架構圖、ERD"
+        ],
+        "lead": "SRS／Go-No-Go、OKR 到工作系統、技術架構圖（技術主管版）、ERD 到分析資料集。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "SRS／Go-No-Go",
+            "paragraph": "PR #64。先決定值不值得做。加權表不變，補了新內容。",
+            "bullets": []
+          },
+          {
+            "heading": "OKR／KPI 到工作系統",
+            "paragraph": "PR #64。OKR 不是考績。補了承諾型與企圖型的評分色帶。",
+            "bullets": []
+          },
+          {
+            "heading": "技術架構圖（技術主管版）",
+            "paragraph": "本週首次出現在 sitemap。",
+            "bullets": []
+          },
+          {
+            "heading": "從 ERD 到分析資料集",
+            "paragraph": "資料粒度與 JOIN。文章本身仍是草稿，只有簡報公開。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "規劃和架構也是四份新簡報，這四份大綱沒有標會員。SRS 到 Go、No-Go 是 PR 64，先決定這件事值不值得做。加權表沒有變，補的是新內容。OKR、KPI 那份也是 PR 64，從目標管理走到工作系統設計。請記得 OKR 不是考績，這週補了評分色帶，承諾型和企圖型不一樣。技術架構圖是技術主管版，這週第一次出現在 sitemap。ERD 到分析資料集，講的是資料粒度和 JOIN。文章本身還是草稿，現在只有簡報公開。",
+      "estimatedSeconds": 44,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s5",
+      "index": 5,
+      "title": "Cursor 與 Grok 現況",
+      "sourceHash": "8eb3a630ff1f4b01dd56de1acd6276c5d1c6199c317d7c8704175358a5296061",
+      "extractedContent": {
+        "eyebrow": "Cursor 與 Grok 現況",
+        "kicker": "",
+        "headings": [
+          "方案、加價，和人沒在場時的核准"
+        ],
+        "lead": "Plus 每月 8 美元，沒有 Cloud Agents、不能開 Fast。長上下文加價；GPT-5.6 Sol 促銷日已過。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "Plus 每月 8 美元",
+            "paragraph": "沒有 Cloud Agents、不能開 Fast。方案改掛 X 訂閱。",
+            "bullets": []
+          },
+          {
+            "heading": "長上下文會加價",
+            "paragraph": "Cursor 月費沒變。GPT-5.6 Sol 促銷日已過。",
+            "bullets": []
+          },
+          {
+            "heading": "核准約 30 分鐘過期",
+            "paragraph": "你不在場時開始的核准，約 30 分鐘過期。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "Cursor 和 Grok 的現況，請記三句。第一，Plus 是每月 8 美元，方案改掛在 X 訂閱；Plus 沒有 Cloud Agents，也不能開 Fast。8 美元和沒有 Cloud Agents，寫在 Grok 4.5 實戰那篇。第二，長上下文會加價。Cursor 的月費沒有變，但是 GPT-5.6 Sol 的促銷日已經過了，這是 Cursor 方案那篇的更新，那篇是會員。第三，你不在場的時候開始的核准，大約 30 分鐘就過期。這是 Grok Bot 對 Cursor Grok 補上的，那篇也是會員，同時補了長上下文的計價。",
+      "estimatedSeconds": 53,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s6",
+      "index": 6,
+      "title": "企業導入提醒",
+      "sourceHash": "24b458b16264c18b2452fa59144a4bdf78177373aa26276ecfede36fcf0d545e",
+      "extractedContent": {
+        "eyebrow": "企業導入提醒",
+        "kicker": "",
+        "headings": [
+          "先盤點，自己要接得了手，OKR 不是考績"
+        ],
+        "lead": "32% 對 6% 只適用最早期。Gartner：廠商做完、自己接不了手。承諾型 1.0，企圖型約 0.7。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "先盤點流程，再買工具",
+            "paragraph": "32% 對 6% 只適用最早期。本週補 11%「重新發明」。",
+            "bullets": []
+          },
+          {
+            "heading": "廠商做完、自己接不了手",
+            "paragraph": "客服那篇補了 Gartner 70% 預測。要可追蹤、可治理，自己要接得了手。",
+            "bullets": []
+          },
+          {
+            "heading": "OKR 不是考績",
+            "paragraph": "承諾型要做到 1.0，企圖型約 0.7。評分色帶把承諾型和企圖型分開。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "企業導入，三個提醒。第一，先盤點流程，再買工具。32% 對 6% 只適用最早期，這週在盤點那篇補了 11%「重新發明」。CEO 三小時工作坊的課前說明，也補了數字範圍和這份 11% 的調查。第二，客服申訴那篇是會員，補了 Gartner 的 70% 預測：廠商做完，自己接不了手。所以要可追蹤、可治理，而且自己要接得了手。第三，OKR 不是考績。承諾型要做到 1.0，企圖型大約 0.7。",
+      "estimatedSeconds": 40,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s7",
+      "index": 7,
+      "title": "學習路徑總覽",
+      "sourceHash": "408506875cb74ae8ef3a1c9c75ab1d7bbcc168be36f744059caf5400d1b47e36",
+      "extractedContent": {
+        "eyebrow": "學習路徑總覽",
+        "kicker": "",
+        "headings": [
+          "入門概念 → 工具與工作流 → 實作案例 → 進階／系統化"
+        ],
+        "lead": "由淺到深、由概念到實作。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "分類 1｜入門概念",
+            "paragraph": "共同語言、選工具、GitHub。本週：【更新】不會寫程式、專有名詞、VS Code 新手（新簡報）。",
+            "bullets": []
+          },
+          {
+            "heading": "分類 2｜工具與工作流",
+            "paragraph": "Cursor、Bot 團隊、規則檔。本週：【更新】Cursor 方案、Agents Window、Multi-root、Grok Bot vs Cursor Grok（三份新簡報）。",
+            "bullets": []
+          },
+          {
+            "heading": "分類 3｜實作案例",
+            "paragraph": "真實案例與驗收。本週：【更新】Grok 4.5 實戰、LINE 分身、客服 Agent、3 分鐘週報、週報 Skill。",
+            "bullets": []
+          },
+          {
+            "heading": "分類 4｜進階／系統化",
+            "paragraph": "盤點→規格→閘門→架構→管理。本週：【更新】盤點、SRS／Go-No-Go、OKR、架構、期末發表；【新刊】技術架構圖、ERD 簡報。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "本週主線：先選對工具與工作區 → 分清 Bot 和編輯器 → 從流程盤點到 Go／No-Go → 用 OKR 與週報管節奏"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "學習路徑由淺到深、由概念到實作，四個分類。分類一是入門概念，共同語言、選工具、GitHub。這週更新了不會寫程式、專有名詞，VS Code 新手還有新簡報。分類二是工具與工作流，Cursor、Bot 團隊、規則檔。這週更新了 Cursor 方案、Agents Window、Multi-root，還有 Grok Bot 對 Cursor Grok，其中三份是新簡報。分類三是實作案例，看真實案例和怎麼驗收。分類四是進階和系統化，從盤點走到規格、閘門、架構和管理。本週主線請沿著這句走：先選對工具與工作區，分清 Bot 和編輯器，從流程盤點到 Go、No-Go，再用 OKR 和週報管節奏。閱讀順序那篇是會員，簡報也一起更新了，這週已收錄上週新刊，包括模型怎麼選、派工不等於完成、Worktree，和校方測驗平台。所有簡報都在簡報清單那一頁。",
+      "estimatedSeconds": 79,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s8",
+      "index": 8,
+      "title": "分類 1 入門概念",
+      "sourceHash": "217b61539461aa5347e85a7eb920153e0715620f384db38d30dcfc1d573b1043",
+      "extractedContent": {
+        "eyebrow": "分類 1｜入門概念",
+        "kicker": "",
+        "headings": [
+          "不會寫程式 → 專有名詞 → 主管五問 → 選工具"
+        ],
+        "lead": "目標：有共同語言；選對第一套工具；練好 GitHub 基本功。接著是 VS Code 新手 → 模型與 Token → PR／GitHub → gh 登入。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "【更新】不會寫程式也能做 AI 系統開發嗎？",
+            "paragraph": "先破門檻，也看清安全風險。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】AI 系統開發中英專有名詞",
+            "paragraph": "共同語言。",
+            "bullets": []
+          },
+          {
+            "heading": "AI 時代主管五問",
+            "paragraph": "主管的判斷框架。",
+            "bullets": []
+          },
+          {
+            "heading": "選第一套工具",
+            "paragraph": "第一天先開本機資料夾。再看 Cursor、Codex、Claude Code 怎麼選。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】VS Code + Codex／Claude Code 新手",
+            "paragraph": "先調查再改檔。簡報是【新刊・會員】。",
+            "bullets": []
+          },
+          {
+            "heading": "Cursor 模型與 Token（會員）",
+            "paragraph": "看懂用量從哪裡扣。",
+            "bullets": []
+          },
+          {
+            "heading": "什麼是 PR → GitHub 教材",
+            "paragraph": "版控一路練。",
+            "bullets": []
+          },
+          {
+            "heading": "用 5W1H 搞懂 gh auth login",
+            "paragraph": "讓專案連上 GitHub。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "分類一的目標：先有共同語言，選對第一套工具，練好 GitHub 的基本功。不會寫程式那篇先破門檻，也把安全風險講清楚。AI 程式碼的安全通過率仍大約 56%，這篇還改掉了 404 連結。專有名詞是會員，拿來當共同語言。MCP 下一版對準 2027 年 3 月，AAIF 已經到 10 個專案。主管五問，是主管的判斷框架。選工具有兩篇：初學那天先開本機資料夾；另一篇是 Cursor、Codex、Claude Code 怎麼選。VS Code 新手是會員，簡報這週新刊，原則是先調查再改檔。模型與 Token 也是會員，先看懂用量從哪裡扣。版控從什麼是 PR 開始，接到 GitHub 教材。大綱寫的是教材 1 到 4，這一頁放的是大綱給出的兩個網址：什麼是 PR，和教材 1。最後用 5W1H 搞懂 gh auth login，讓專案連上 GitHub。",
+      "estimatedSeconds": 76,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s9",
+      "index": 9,
+      "title": "分類 2 工具與工作流",
+      "sourceHash": "c01dd770467e11324416f3e520aa1ce9010283cf869222475e69abf178315c12",
+      "extractedContent": {
+        "eyebrow": "分類 2｜工具與工作流",
+        "kicker": "",
+        "headings": [
+          "Cursor 方案 → Agents Window → Multi-root → AGENTS.md"
+        ],
+        "lead": "目標：用對 Cursor 方案與工作區；分清 Bot 和編輯器；派工後一定驗收。後面接到 Grok Bot、Bot 團隊與驗收。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "【更新・會員】Cursor 方案、模式、Auto 與 Token",
+            "paragraph": "規則要寫進 repo。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】Agents Window／IDE／Cloud Agent 切換",
+            "paragraph": "多專案不亂。簡報是【新刊・會員】。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】Cursor Multi-root 工作區",
+            "paragraph": "四道閘門判斷哪些專案放同一區。簡報是【新刊】。",
+            "bullets": []
+          },
+          {
+            "heading": "AGENTS.md 是什麼？",
+            "paragraph": "規則檔什麼時候會被讀。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】Grok Bot vs. Cursor Grok",
+            "paragraph": "成果落在信箱流程，還是落在 Git。簡報是【新刊・會員】。",
+            "bullets": []
+          },
+          {
+            "heading": "Grok Bots 小公司 AI 團隊（會員）",
+            "paragraph": "接到已派工≠已完成。組隊、派工、驗收。",
+            "bullets": []
+          },
+          {
+            "heading": "個人化 Blog AI Agents",
+            "paragraph": "生成、上稿、部署分開。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "分類二的目標：用對 Cursor 的方案和工作區，分清 Bot 和編輯器，派工之後一定要驗收。Cursor 方案、模式、Auto 和 Token 是會員，規則要寫進 repo。Agents Window 切換也是會員，簡報是新刊，多專案才不會亂。Multi-root 這篇是公開更新，簡報新刊，用四道閘門看哪些專案放同一區。AGENTS.md 講規則檔什麼時候會被讀。Grok Bot 對 Cursor Grok 是會員，簡報新刊，先看成果落在信箱流程還是落在 Git。接著是 Grok Bots 小公司 AI 團隊，這篇標了會員，再接到已派工不等於已完成。組隊、派工、驗收要分開。最後，個人化 Blog 的 AI Agents，生成、上稿、部署要分開做。",
+      "estimatedSeconds": 67,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s10",
+      "index": 10,
+      "title": "分類 3 實作案例",
+      "sourceHash": "d505fe9ad0b3c30901b465cc055623f5ad2cb96c120e2d86afe470e564302682",
+      "extractedContent": {
+        "eyebrow": "分類 3｜實作案例",
+        "kicker": "",
+        "headings": [
+          "Grok 4.5 → LINE 分身 → 客服 Agent → 週報"
+        ],
+        "lead": "目標：從真實案例學「AI 用在哪一段」與怎麼驗收。週報 Skill → 3 分鐘週報 → 育達平台。Prompt 定規格、Skill 蒐證、RAG 燈號。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "【更新】Cursor + Grok 4.5 實戰",
+            "paragraph": "一句模糊需求做到可發布。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】企業 LINE 群分身助理",
+            "paragraph": "少回覆、多存檔、人核准。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】客服申訴到 AI Agent",
+            "paragraph": "可追蹤、可治理，自己要接得了手。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】週報 Prompt 到 Skill",
+            "paragraph": "Prompt 定規格、Skill 蒐證。更正「三家都讀 .agents/skills/」。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】3 分鐘決策週報",
+            "paragraph": "修正交叉參考，補 5 分鐘練習。",
+            "bullets": []
+          },
+          {
+            "heading": "育達公約測驗平台（會員）",
+            "paragraph": "AI 只用在開發期。",
+            "bullets": []
+          },
+          {
+            "heading": "手機建站 mybike",
+            "paragraph": "手機也能派工。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "分類三的目標：從真實案例學，AI 用在哪一段，以及怎麼驗收。Grok 4.5 實戰，是把一句模糊需求做到可發布。LINE 群分身是會員。少回覆、多存檔、人核准，這條沒有變，這週補了新內容。客服申訴到 AI Agent 也是會員，要可追蹤、可治理，自己要接得了手。週報這邊兩篇都有更新。Prompt 到 Skill，更正了「三家都讀 .agents/skills/」。3 分鐘決策週報，修正了交叉參考，補了 5 分鐘練習。大綱把這兩篇放在一起：Prompt 定規格、Skill 蒐證、RAG 燈號。育達公約測驗平台是會員，AI 只用在開發期。手機建站 mybike，手機也能派工。",
+      "estimatedSeconds": 60,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s11",
+      "index": 11,
+      "title": "分類 4 進階／系統化",
+      "sourceHash": "3c32fd74f66033270ff4dd93f47e5a33c9fc76d3e788c0da6dcba986286be79b",
+      "extractedContent": {
+        "eyebrow": "分類 4｜進階／系統化",
+        "kicker": "",
+        "headings": [
+          "盤點 → CEO 工作坊 → SRS／Go-No-Go → AISDLC"
+        ],
+        "lead": "目標：盤點 → 規格 → 閘門 → 架構 → 管理節奏。後面是架構 → OKR → 期末發表 → ERD。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "【更新】企業導入 AI 第一步：盤點流程",
+            "paragraph": "先盤點再買工具。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】CEO AI 工作坊",
+            "paragraph": "主管 30 天行動計畫。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】SRS、可行性評估到 Go／No-Go",
+            "paragraph": "先決定值不值得做。簡報是【新刊】。",
+            "bullets": []
+          },
+          {
+            "heading": "AI SDLC 九階段",
+            "paragraph": "每關都有閘門。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新・會員】Next.js 模組化單體架構",
+            "paragraph": "另有【新刊】技術架構圖簡報，技術主管版。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】目標管理到工作系統設計",
+            "paragraph": "OKR 不是考績。簡報是【新刊】。",
+            "bullets": []
+          },
+          {
+            "heading": "【更新】期末專題發表",
+            "paragraph": "15 分鐘格式與評分規準。",
+            "bullets": []
+          },
+          {
+            "heading": "【新刊】從 ERD 到分析資料集",
+            "paragraph": "資料粒度與 JOIN。文章仍是草稿，只有簡報公開。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "分類四的目標：盤點，到規格，到閘門，到架構，再到管理節奏。盤點流程那篇，先盤點再買工具。CEO 工作坊，是主管 30 天的行動計畫。SRS 到 Go、No-Go，先決定值不值得做，簡報是新刊。AI SDLC 九階段，每一關都有閘門。Next.js 模組化單體架構是會員，這週補了 11 月 3 日的安全更新，版本是 15.5.29 和 16.4.5。技術架構圖簡報是新刊，給技術主管看。目標管理到工作系統，OKR 不是考績，簡報也是新刊。期末發表是 15 分鐘的格式和評分規準，這週補了一點：只 demo 成功路徑，也適用 Agent。最後，ERD 到分析資料集的簡報是新刊，講資料粒度和 JOIN。文章仍是草稿。",
+      "estimatedSeconds": 63,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    },
+    {
+      "slideId": "s12",
+      "index": 12,
+      "title": "下週重點",
+      "sourceHash": "9cd55d578fa70e3e6e89efac76720d14d5f7a496679666a601c23dc3c9ff078c",
+      "extractedContent": {
+        "eyebrow": "下週重點",
+        "kicker": "",
+        "headings": [
+          "精讀三篇，兩件待決定"
+        ],
+        "lead": "精讀：Grok Bot vs. Cursor Grok、Multi-root、SRS 到 Go／No-Go。",
+        "stamp": "",
+        "cards": [
+          {
+            "heading": "精讀｜Grok Bot vs. Cursor Grok",
+            "paragraph": "【更新・會員】文章，加上【新刊・會員】簡報。補了長上下文計價。",
+            "bullets": []
+          },
+          {
+            "heading": "精讀｜Cursor Multi-root",
+            "paragraph": "【更新】文章，加上【新刊】簡報。IDE 3.29 修正；Cloud Agent 多倉庫是另一條路。",
+            "bullets": []
+          },
+          {
+            "heading": "精讀｜SRS 到 Go／No-Go",
+            "paragraph": "【更新】文章，加上【新刊】簡報。先決定值不值得做。",
+            "bullets": []
+          },
+          {
+            "heading": "Draft PR #66，ERD 文章仍是草稿",
+            "paragraph": "PR #66 是 11-25 時效核對，還沒合併。ERD 簡報已公開，文章仍是草稿。",
+            "bullets": []
+          }
+        ],
+        "table": null,
+        "flowSteps": [],
+        "svgLabels": [],
+        "callouts": [
+          "開講主線：選對方案與工作區 → Bot 和編輯器分工 → 先盤點、再過 Go／No-Go → 用 OKR 和 3 分鐘週報管節奏"
+        ],
+        "phases": [],
+        "facts": [],
+        "slideFooter": "",
+        "opUrls": []
+      },
+      "script": "下週建議精讀三篇。第一，Grok Bot 對 Cursor Grok，有新簡報，也補了計價，這篇是會員。第二，Cursor Multi-root 工作區，有新簡報。第三，SRS 到 Go、No-Go，有新簡報。開講可以沿著這條主線：選對方案與工作區，Bot 和編輯器分工，先盤點、再過 Go、No-Go，再用 OKR 和 3 分鐘週報管節奏。請再提醒一次：Cursor Plus 沒有 Cloud Agents、不能開 Fast；長上下文會加價；你不在場時開始的核准，大約 30 分鐘過期。待你決定的有兩件。Draft PR 66 是 11 月 25 日的時效核對，還沒合併。ERD 文章仍是草稿，但簡報已經公開。快照放在 /workspace/aidc-blog-weekly-2026-11-27/aidc-blog-snapshot-2026-11-27.json，下週五拿來比對。總覽裡也寫了 PR 56 還沒合併，和 66 一樣先不計入。",
+      "estimatedSeconds": 86,
+      "status": "draft",
+      "voice": {
+        "provider": "openai",
+        "voiceId": "nova",
+        "speed": 1
+      },
+      "audioUrl": null,
+      "audioDurationSeconds": null,
+      "presenter": {
+        "name": "黃燕忠",
+        "avatarVideoUrl": null
+      },
+      "avatarVideoUrl": null,
+      "captionsUrl": null,
+      "cuePoints": [],
+      "generatedAt": "2026-11-27T03:20:00.000Z",
+      "approvedAt": null,
+      "approvedBy": null,
+      "generationNotes": "週五學習口語講稿，依 2026-11-27 大綱寫入，未另生成"
+    }
+  ],
+  "meta": {
+    "lastExtractedAt": "2026-11-27T03:20:00.000Z",
+    "totalEstimatedSeconds": 777,
+    "ttsCostEstimateUsd": 0
+  }
+}

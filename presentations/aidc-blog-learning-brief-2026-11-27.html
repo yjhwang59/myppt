@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light" data-deck-id="aidc-blog-learning-brief-2026-11-27">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AIDC Blog 學習簡報：我和 AI 協作。2026-11-27。公開 100 個網址，新刊 8 份簡報，實質更新 19 篇文章與 12 份既有簡報。黃燕忠｜AI發展顧問。">
+  <title>AIDC Blog 學習簡報：我和 AI 協作｜2026-11-27</title>
+  <style>
+    :root {
+      --bg: #f8fafc; --panel: #fff; --card: #f1f5f9; --card-2: #e2e8f0;
+      --text: #0f172a; --muted: #475569; --line: #cbd5e1; --accent: #0d9488;
+      --portal-bright: #0f766e; --data: #0284c7; --good: #16a34a; --warn: #b45309; --bad: #be123c;
+      --header-h: 52px; --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.1);
+      --font-scale: 1.15; --deck-scale: 1;
+      --slide-bg: #fff;
+      --hero-bg: linear-gradient(160deg, #ecfdf5 0%, #f0fdfa 40%, #f8fafc 100%);
+      --flow-bg: linear-gradient(90deg, #ecfdf5, #f8fafc 50%, #fffbeb);
+      --kicker-bg: #ccfbf1; --kicker-border: #99f6e4; --kicker-text: #0f766e;
+      --num-bg: #ccfbf1; --num-text: #0f766e;
+      --callout-bg: #eff6ff; --callout-border: #bfdbfe; --callout-text: #1e3a8a; --callout-strong: #1e40af;
+      --risk-bg: #fff7ed; --risk-border: #fdba74;
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1220; --panel: #111a2e; --card: #17233b; --card-2: #1c2b48;
+      --text: #e8eef9; --muted: #9aa8c2; --line: #2a3b5c; --accent: #2dd4bf;
+      --portal-bright: #14b8a6; --data: #38bdf8; --good: #34d399; --warn: #fbbf24; --bad: #fb7185;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --slide-bg: linear-gradient(180deg, #0e1628, #0a1220);
+      --hero-bg: radial-gradient(900px 500px at 18% 18%, rgba(45,212,191,.22), transparent 55%), linear-gradient(160deg, #0b1730, #09101d);
+      --flow-bg: linear-gradient(90deg, rgba(15,118,110,.25), rgba(30,58,95,.2));
+      --kicker-bg: rgba(45,212,191,.15); --kicker-border: rgba(45,212,191,.35); --kicker-text: #99f6e4;
+      --num-bg: rgba(45,212,191,.18); --num-text: #5eead4;
+      --callout-bg: rgba(37,99,235,.12); --callout-border: rgba(59,130,246,.35);
+      --callout-text: #dbeafe; --callout-strong: #fff;
+      --risk-bg: rgba(245,158,11,.12); --risk-border: rgba(251,191,36,.4);
+      --slogan-bg: #042f2e; --slogan-text: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      font-size: calc(15px * var(--font-scale));
+    }
+    #deck-header {
+      position: fixed; inset: 0 0 auto 0; height: var(--header-h); z-index: 50;
+      display: flex; align-items: center; gap: 12px; padding: 0 16px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    body.presenting #deck-header { opacity: 0; }
+    body.presenting #deck-header:hover { opacity: .95; }
+    .brand { font-weight: 700; font-size: 14px; white-space: nowrap; }
+    .brand a { color: inherit; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    #progress { flex: 1; height: 6px; background: color-mix(in srgb, var(--line) 80%, transparent); border-radius: 999px; overflow: hidden; }
+    #progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--portal-bright), var(--data)); transition: width .25s; }
+    .toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .toolbar button, .toolbar a.btn-link {
+      appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+      border-radius: 10px; padding: 6px 10px; font-size: 13px; cursor: pointer; text-decoration: none;
+    }
+    .toolbar button:hover, .toolbar a.btn-link:hover { border-color: var(--accent); }
+    #type-scale-label { min-width: 42px; text-align: center; color: var(--muted); font-size: 12px; font-weight: 700; }
+    #slide-counter { min-width: 64px; text-align: center; color: var(--muted); font-size: 13px; }
+    #deck {
+      padding: calc(var(--header-h) + 18px) 0 24px; min-height: 100%;
+      display: flex; justify-content: center; align-items: flex-start;
+    }
+    .slide {
+      display: none; width: min(1280px, calc(100vw - 32px)); aspect-ratio: 16 / 9;
+      background: var(--slide-bg); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 42px 36px 52px; position: relative; overflow: auto;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.hero { justify-content: center; background: var(--hero-bg); }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: calc(13px * var(--font-scale)); font-weight: 700; letter-spacing: .06em; }
+    .kicker {
+      display: inline-flex; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(13px * var(--font-scale)); font-weight: 600;
+    }
+    h1 { margin: 0 0 12px; font-size: calc(clamp(30px, 3.4vw, 46px) * var(--font-scale)); line-height: 1.15; }
+    h2 { margin: 0 0 8px; font-size: calc(clamp(22px, 2.2vw, 32px) * var(--font-scale)); line-height: 1.2; }
+    .lead { margin: 0; color: var(--muted); font-size: calc(clamp(15px, 1.3vw, 18px) * var(--font-scale)); line-height: 1.55; max-width: 62ch; }
+    .stamp { margin-top: 18px; color: var(--muted); font-size: calc(14px * var(--font-scale)); }
+    .footer {
+      position: absolute; left: 40px; right: 40px; bottom: 16px;
+      display: flex; justify-content: space-between; gap: 12px; color: var(--muted);
+      font-size: calc(12px * var(--font-scale));
+    }
+    .footer .instructor { color: var(--text); font-weight: 600; }
+    .grid { display: grid; gap: 12px; margin-top: 14px; }
+    .grid.two { grid-template-columns: 1fr 1fr; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+    .grid.four { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px;
+    }
+    .card.risk { background: var(--risk-bg); border-color: var(--risk-border); }
+    .card > strong { display: block; margin-bottom: 6px; font-size: calc(15px * var(--font-scale)); }
+    .card p, .card li { margin: 0; color: var(--muted); font-size: calc(13px * var(--font-scale)); line-height: 1.5; }
+    .card ul { margin: 0; padding-left: 1.1em; }
+    .card li + li { margin-top: 4px; }
+    .num {
+      display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 6px;
+      background: var(--num-bg); color: var(--num-text); font-size: calc(12px * var(--font-scale)); font-weight: 700;
+    }
+    .callout {
+      margin-top: 12px; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid var(--callout-border); background: var(--callout-bg); color: var(--callout-text);
+      font-size: calc(13px * var(--font-scale)); line-height: 1.45;
+    }
+    .callout strong { color: var(--callout-strong); }
+    .flow {
+      display: flex; align-items: stretch; gap: 6px; margin-top: 14px; padding: 10px;
+      border-radius: 14px; background: var(--flow-bg); border: 1px solid var(--line); overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1; min-width: 96px; padding: 8px; border-radius: 12px;
+      background: var(--panel); border: 1px solid var(--line);
+    }
+    .flow-step.gate { border-color: var(--kicker-border); }
+    .flow-num {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--num-bg); color: var(--num-text); font-weight: 800; margin-bottom: 6px;
+      font-size: calc(11px * var(--font-scale));
+    }
+    .flow-step strong { display: block; font-size: calc(13px * var(--font-scale)); margin-bottom: 4px; }
+    .flow-desc { margin: 0; color: var(--muted); font-size: calc(11px * var(--font-scale)); line-height: 1.4; }
+    .flow-arrow {
+      flex: 0 0 12px; align-self: center; height: 2px; background: var(--line); position: relative;
+    }
+    .flow-arrow::after {
+      content: ""; position: absolute; right: -4px; top: -4px;
+      border: 5px solid transparent; border-left-color: var(--muted);
+    }
+    .table {
+      width: 100%; border-collapse: collapse; margin-top: 10px;
+      font-size: calc(13px * var(--font-scale));
+    }
+    .table th, .table td {
+      border-bottom: 1px solid var(--line); padding: 7px 8px;
+      text-align: left; vertical-align: top;
+    }
+    .table th { color: var(--muted); font-size: calc(12px * var(--font-scale)); font-weight: 700; }
+    .pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.2em; padding: 2px 10px; border-radius: 999px; font-weight: 800;
+      font-size: calc(12px * var(--font-scale));
+    }
+    .pill.g { background: color-mix(in srgb, var(--good) 22%, transparent); color: var(--good); }
+    .pill.y { background: #fef3c7; color: #b45309; }
+    .pill.r { background: #ffe4e6; color: #be123c; }
+    :root[data-theme="dark"] .pill.y { background: rgba(245, 158, 11, .2); color: #fbbf24; }
+    :root[data-theme="dark"] .pill.r { background: rgba(244, 63, 94, .2); color: #fb7185; }
+    .pitch {
+      margin-top: 14px; padding: 16px 18px; border-radius: 16px;
+      border: 1px solid var(--kicker-border); background: var(--kicker-bg);
+      font-size: calc(clamp(15px, 1.4vw, 18px) * var(--font-scale)); line-height: 1.55; color: var(--text);
+    }
+    .slogan-stack {
+      margin-top: 18px; padding: 22px 24px; border-radius: 18px;
+      background: var(--slogan-bg); color: var(--slogan-text);
+    }
+    .slogan-stack p {
+      margin: 0; font-size: calc(clamp(20px, 2.2vw, 28px) * var(--font-scale));
+      font-weight: 800; line-height: 1.45; letter-spacing: -0.02em;
+    }
+    .slogan-stack p + p { margin-top: 8px; }
+    .mini-note { margin: 10px 0 0; color: var(--muted); font-size: calc(12px * var(--font-scale)); }
+    body.presenting #deck { padding: 0; min-height: 100vh; align-items: center; background: #000; }
+    body.presenting .slide {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale));
+      margin: 0; width: 1280px; height: 720px; aspect-ratio: auto; border-radius: 0; border: none;
+    }
+    /* week01: layouts used by build:deck that this shell did not style yet */
+    .grid.six { grid-template-columns: repeat(3, 1fr); }
+    .table td strong { color: var(--text); }
+    .arch-svg-wrap { margin-top: 10px; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+    .arch-svg-wrap svg { width: 100%; height: 100%; max-height: 470px; }
+    .arch-svg-wrap .ly { fill: var(--card); stroke: var(--line); }
+    .arch-svg-wrap .ly-ai { fill: var(--kicker-bg); stroke: var(--kicker-border); }
+    .arch-svg-wrap .t1 { fill: var(--text); font-weight: 800; font-size: 28px; }
+    .arch-svg-wrap .t2 { fill: var(--muted); font-size: 22px; }
+    .arch-svg-wrap .t3 { fill: var(--accent); font-weight: 700; font-size: 22px; }
+    .arch-svg-wrap .ar { stroke: var(--muted); stroke-width: 2.5; fill: none; }
+    .arch-svg-wrap .ar-d { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; }
+    .arch-svg-wrap .hd { fill: var(--accent); font-weight: 800; font-size: 20px; }
+    .arch-svg-wrap .ln { stroke: var(--line); stroke-width: 2; }
+    /* week01: classroom-readable sizes (projector at the back of a 12-person room) */
+    .slide h2 { font-size: calc(clamp(24px, 2.5vw, 34px) * var(--font-scale)); margin-bottom: 4px; }
+    .slide .lead { font-size: calc(17px * var(--font-scale)); max-width: none; }
+    .slide .eyebrow { font-size: calc(14px * var(--font-scale)); }
+    .slide .grid { gap: 16px; margin-top: 18px; }
+    .slide .card { padding: 18px 20px; }
+    .slide .card > strong { font-size: calc(19px * var(--font-scale)); margin-bottom: 8px; }
+    .slide .card p, .slide .card li { font-size: calc(17px * var(--font-scale)); line-height: 1.55; }
+    .slide.active:not(.hero) { justify-content: center; padding-bottom: 56px; }
+    .slide.active:not(.hero) > .eyebrow { margin-top: 0; }
+    .slide .card li + li { margin-top: 6px; }
+    .slide .num { font-size: calc(14px * var(--font-scale)); }
+    .slide .table { font-size: calc(16.5px * var(--font-scale)); margin-top: 14px; }
+    .slide .table th { font-size: calc(14px * var(--font-scale)); }
+    .slide .table td:first-child, .slide .table th:first-child { white-space: nowrap; }
+    .slide .table th, .slide .table td { padding: 8px 10px; }
+    .slide .flow { gap: 8px; margin-top: 18px; padding: 14px; }
+    .slide .flow-step { padding: 14px 12px; }
+    .slide .flow-num { width: 30px; height: 30px; font-size: calc(14px * var(--font-scale)); }
+    .slide .flow-step strong { font-size: calc(17px * var(--font-scale)); margin-bottom: 6px; }
+    .slide .flow-desc { font-size: calc(16px * var(--font-scale)); line-height: 1.5; }
+    .slide .callout { font-size: calc(17px * var(--font-scale)); padding: 12px 16px; margin-top: 16px; }
+    .slide.hero h1 { font-size: calc(clamp(40px, 4.6vw, 60px) * var(--font-scale)); }
+    .slide.hero .lead { font-size: calc(20px * var(--font-scale)); max-width: 46ch; }
+    .slide.hero .stamp { font-size: calc(15px * var(--font-scale)); }
+    .slide-prompt { position: relative; margin: 6px 0 0; border: 1px solid var(--kicker-border); border-radius: 14px; background: var(--card); padding: 12px 16px 14px; }
+    .slide-prompt figcaption { font-size: calc(14px * var(--font-scale)); font-weight: 700; color: var(--kicker-text); margin-bottom: 6px; padding-right: 80px; }
+    .slide-prompt pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: calc(16px * var(--font-scale)); line-height: 1.55; color: var(--text); }
+    .slide-prompt .prompt-copy { position: absolute; top: 10px; right: 12px; font: inherit; font-size: calc(13px * var(--font-scale)); font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 1px solid var(--kicker-border); background: var(--kicker-bg); color: var(--kicker-text); cursor: pointer; }
+    .slide-links { position: absolute; top: 28px; right: 40px; margin: 0; display: flex; gap: 8px; z-index: 2; }
+    .slide-links a {
+      display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px;
+      background: var(--kicker-bg); border: 1px solid var(--kicker-border); color: var(--kicker-text);
+      font-size: calc(14px * var(--font-scale)); font-weight: 700; text-decoration: none;
+    }
+    .slide-links a::after { content: "↗"; margin-left: 6px; }
+    .slide-links a:hover { border-color: var(--accent); text-decoration: underline; }
+    @media (max-width: 760px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      #deck-header { height: auto; min-height: var(--header-h); flex-wrap: wrap; row-gap: 6px; padding: 6px 8px; }
+      #deck { padding-top: 108px; }
+      .slide { width: calc(100vw - 16px); aspect-ratio: auto; min-height: 0; overflow: auto; padding: 20px 16px 44px; }
+      .grid.two, .grid.three, .grid.six { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { display: none; }
+      .table { display: table; width: 100%; }
+      .slide .table td, .slide .table th, .slide .table td:first-child, .slide .table th:first-child { white-space: normal; word-break: break-word; }
+      .footer { left: 16px; right: 16px; }
+      .slide::before { left: 16px; }
+      #deck-header .brand { display: none; }
+      .slide-links { position: static; margin-top: 10px; flex-wrap: wrap; }
+    }
+    @media print {
+      #deck-header, #narration-panel { display: none !important; }
+      #deck { padding: 0; display: block; }
+      .slide { display: flex !important; page-break-after: always; width: 100%; aspect-ratio: 16/9; box-shadow: none; border-radius: 0; }
+    }
+
+    /* 這一堂引用多、表格密，連結改排在內文下方，避免壓到標題。 */
+    .slide-links { position: static; margin: 12px 0 0; flex-wrap: wrap; max-width: 100%; }
+    .slide-links a { font-size: calc(12.5px * var(--font-scale)); padding: 4px 10px; line-height: 1.35; }
+    .slide .table { font-size: calc(14.5px * var(--font-scale)); }
+    .slide .table th, .slide .table td { padding: 5px 8px; line-height: 1.35; }
+    .slide.active:not(.hero) { justify-content: flex-start; }
+    .grid.six .card { padding: 12px 14px; }
+    .grid.six .card > strong, .grid.six .card p { font-size: calc(15px * var(--font-scale)); }
+    .slide .flow-step { min-width: 0; }
+    .slide::before {
+      content: "黃燕忠｜AI發展顧問";
+      position: absolute; top: 12px; left: 36px; z-index: 2;
+      color: var(--text); font-weight: 700;
+      font-size: calc(12px * var(--font-scale));
+    }
+    #s2 .card, #s7 .card, #s8 .card, #s9 .card, #s10 .card, #s11 .card, #s12 .card { padding: 8px 10px; }
+    #s2 .grid, #s7 .grid, #s8 .grid, #s9 .grid, #s10 .grid, #s11 .grid, #s12 .grid { gap: 8px; margin-top: 8px; }
+    #s2 .card > strong, #s7 .card > strong, #s8 .card > strong, #s9 .card > strong, #s10 .card > strong, #s11 .card > strong, #s12 .card > strong {
+      font-size: calc(14px * var(--font-scale)); margin-bottom: 3px;
+    }
+    #s2 .card p, #s7 .card p, #s8 .card p, #s9 .card p, #s10 .card p, #s11 .card p, #s12 .card p,
+    #s2 .card li, #s8 .card li {
+      font-size: calc(12px * var(--font-scale)); line-height: 1.35;
+    }
+    #s8 .lead, #s9 .lead, #s10 .lead, #s11 .lead, #s7 .lead, #s2 .lead, #s12 .lead {
+      font-size: calc(13.5px * var(--font-scale));
+    }
+    #s3 .slide-links a, #s4 .slide-links a, #s8 .slide-links a, #s9 .slide-links a, #s10 .slide-links a, #s11 .slide-links a, #s12 .slide-links a {
+      font-size: calc(11.5px * var(--font-scale)); padding: 2px 8px;
+    }
+    #s8 h2, #s9 h2, #s10 h2, #s11 h2 { font-size: calc(clamp(20px, 2vw, 28px) * var(--font-scale)); }
+    aside.notes { display: none; }
+    .kicker { align-self: flex-start; }
+    .slide.has-prompt.active { justify-content: flex-start; }
+    .slide.has-prompt .slide-prompt { flex: 0 0 auto; min-height: 0; overflow: visible; }
+  </style>
+  <style id="narration-chrome-css">
+#narration-panel{position:fixed;right:16px;bottom:16px;z-index:90;width:min(420px,92vw);max-height:70vh;overflow:auto;background:rgba(15,23,42,.94);color:#e2e8f0;border:1px solid #334155;border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.45);display:none}
+#narration-panel.open{display:block}
+#narration-panel.minimized{max-height:none;width:auto}
+#narration-panel.minimized #narration-script,#narration-panel.minimized #narration-avatar,#narration-panel.minimized .narration-settings{display:none}
+#narration-panel header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+#narration-panel .icon-btn{background:#1e293b;border:1px solid #475569;color:#e2e8f0;border-radius:8px;cursor:pointer}
+#narration-script{font-size:14px;line-height:1.55;margin:8px 0;white-space:pre-wrap}
+#narration-progress{height:4px;background:#334155;border-radius:4px;overflow:hidden;margin:8px 0}
+#narration-progress-bar{display:block;height:100%;width:0;background:#14b8a6}
+.narration-controls{display:flex;gap:8px;margin:8px 0}
+.narration-controls button{padding:6px 10px;border-radius:8px;border:1px solid #475569;background:#334155;color:#e2e8f0;cursor:pointer}
+.narration-settings{display:grid;gap:6px;font-size:12px;color:#94a3b8}
+#btn-narration{margin-left:8px}
+  </style>
+</head>
+<body>
+  <header id="deck-header">
+    <div class="brand"><a href="/">AIDC 簡報庫</a> <span>·</span> 黃燕忠｜AI發展顧問</div>
+    <div id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+    <div class="toolbar">
+      <button type="button" id="btn-theme" title="切換主題 (T)">🌗</button>
+      <button type="button" id="btn-aminus" title="縮小字體 (Ctrl+-)">A−</button>
+      <span id="type-scale-label">115%</span>
+      <button type="button" id="btn-aplus" title="放大字體 (Ctrl+=)">A＋</button>
+      <button type="button" id="btn-prev" title="上一頁 (←)">‹</button>
+      <span id="slide-counter">1 / 1</span>
+      <button type="button" id="btn-next" title="下一頁 (→)">›</button>
+      <button type="button" id="btn-present" title="全螢幕 (F)">⛶</button>
+      <button type="button" id="btn-print" title="列印 (P)">🖨</button>
+      <button type="button" id="btn-narration" title="講者模式 (N)">講者</button>
+    </div>
+      </header>
+
+  <main id="deck">
+    <section class="slide hero active" id="s1" data-title="封面">
+
+      <p class="kicker">AIDC.work Blog｜2026-11-27（五）</p>
+      <h1>AIDC Blog 學習簡報：<br />我和 AI 協作</h1>
+      <p class="lead">公開網址 100（sitemap；文章 63＋簡報 37；11-20 快照為 92，+8）。新刊 8 份簡報，實質更新 19 篇文章＋12 份簡報。</p>
+      <p class="stamp">黃燕忠｜AI發展顧問｜台北</p><p class="slide-links"><a href="https://aidc.work/blog" target="_blank" rel="noopener noreferrer">AIDC.work Blog</a><a href="https://aidc.work/blog?type=presentation" target="_blank" rel="noopener noreferrer">所有簡報</a></p>
+      <aside class="notes">各位好，我是黃燕忠。今天是 11 月 27 日，星期五，台北時間。這份是 AIDC Blog 的學習簡報，題目是「我和 AI 協作」。我們看的範圍就是 aidc.work 的 Blog。公開網址現在是 100 個，sitemap 裡文章 63、簡報 37。11 月 20 日的快照是 92，所以這週多了 8 個。多出來的是 8 份新簡報。另外有 19 篇文章，和 12 份本來就有的簡報，做了實質更新。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>1 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s2" data-title="本週更新總覽">
+<p class="eyebrow">本週更新總覽</p><h2>沒有新文章，新增 8 份教學簡報</h2><p class="lead">每日時效核對（PR #62–#64、#67），加上公開頁小修（PR #65）。</p><div class="grid two"><article class="card"><div class="num">核對</div><strong>每日時效核對</strong><p>PR #62（11-22）、#63（11-23）、#64（11-24）、#67（11-26）已合併。主架構不變。</p></article><article class="card"><div class="num">小修</div><strong>公開頁小修｜PR #65</strong><p>企業 AI 上路學程、四模組學程、AI Agent 導論、大宗物資課程：修正時數、名額與失效連結。不算實質更新。</p></article><article class="card"><div class="num">新刊</div><strong>本週沒有新文章網址</strong><p>新增 8 份教學簡報。公開網址 100（文章 63＋簡報 37；11-20 快照 92，+8）。</p></article><article class="card"><div class="num">更新</div><strong>實質更新 19 篇＋12 份簡報</strong><ul><li>CEO 工作坊、Grok 4.5、客服 Agent、不會寫程式</li><li>Cursor 方案、專有名詞、系統架構、LINE 分身</li><li>期末發表、週報 Skill、閱讀順序、3 分鐘週報</li></ul></article></div><div class="callout"><strong>不算更新：</strong>約 30 份簡報在 sitemap 的時間是 11-25 11:3x UTC，是 v0.1.115–118 重新部署，沒有內容 PR。Draft PR #66、#56 還沒合併，不計入。會員文 multi-agent-worktree-development-workflow 仍未列入 sitemap。</div><p class="slide-links"><a href="https://aidc.work/blog" target="_blank" rel="noopener noreferrer">AIDC.work Blog</a><a href="https://aidc.work/blog?type=presentation" target="_blank" rel="noopener noreferrer">所有簡報</a></p>
+      <aside class="notes">先講這週怎麼更新。沒有新的文章網址。每天做的是時效核對，已經合併的是 PR 62、63、64 和 67，日期分別是 11 月 22、23、24 和 26 日。主架構沒有改，補的是數字、連結和時效。PR 65 是公開頁小修，改了企業 AI 上路學程、四模組學程、AI Agent 導論，還有大宗物資課程的時數、名額和失效連結。這四頁不算實質更新。實質更新是 19 篇文章，加上 12 份既有簡報：CEO 工作坊、Grok 4.5、客服 Agent、不會寫程式、Cursor 方案、專有名詞、系統架構、LINE 分身、期末發表、週報 Skill、閱讀順序，和 3 分鐘週報。這些簡報都列在簡報清單那一頁。另外，大約 30 份簡報在 sitemap 的時間是 11 月 25 日 11 點 30 幾分 UTC，那是 v0.1.115 到 118 重新部署，沒有內容 PR，不算更新。Draft PR 66 和 56 還沒合併，先不計入。有一篇會員文，檔名是 multi-agent-worktree-development-workflow，仍未列入 sitemap。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>2 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s3" data-title="新簡報：工具與工作區">
+<p class="eyebrow">新簡報｜工具與工作區</p><h2>切換、工作區、Bot 和編輯器、VS Code 新手</h2><p class="lead">Agents Window 切換、Cursor Multi-root、Grok Bot vs. Cursor Grok、VS Code 新手。</p><div class="grid two"><article class="card"><div class="num">新刊・會員</div><strong>Agents Window 切換</strong><p>12 頁，PR #63。多專案不亂。文章補了語音對話，Cloud Agent 預設每次開 PR。</p></article><article class="card"><div class="num">新刊</div><strong>Cursor Multi-root</strong><p>11 頁，PR #67。四道閘門判斷哪些專案放同一區。IDE 3.29 修正；Cloud Agent 多倉庫是另一條路。</p></article><article class="card"><div class="num">新刊・會員</div><strong>Grok Bot vs. Cursor Grok</strong><p>PR #67。成果落在信箱流程，還是落在 Git。補了長上下文計價。</p></article><article class="card"><div class="num">新刊・會員</div><strong>VS Code 新手</strong><p>12 頁，PR #63。先調查再改檔。工具版本更新；讀 AGENTS.md 的預設沒變。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/cursor-agents-window-ide-project-switching-guide" target="_blank" rel="noopener noreferrer">【更新・會員】Agents Window</a><a href="https://aidc.work/blog/cursor-agents-window-ide-project-switching-guide-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】Agents Window 簡報</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit" target="_blank" rel="noopener noreferrer">【更新】Cursor Multi-root</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit-deck" target="_blank" rel="noopener noreferrer">【新刊】Multi-root 簡報</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok" target="_blank" rel="noopener noreferrer">【更新・會員】Grok Bot vs. Cursor Grok</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】Grok Bot 簡報</a><a href="https://aidc.work/blog/vscode-codex-claude-ai-builder-starter-guide" target="_blank" rel="noopener noreferrer">【更新・會員】VS Code 新手</a><a href="https://aidc.work/blog/vscode-codex-claude-ai-builder-starter-guide-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】VS Code 新手簡報</a></p>
+      <aside class="notes">工具和工作區，這週有四份新簡報。第一份是 Agents Window、IDE 和 Cloud Agent 怎麼切，會員，12 頁，PR 63。重點是多專案不要亂。文章也補了語音對話，以及 Cloud Agent 預設每次都會開 PR。第二份是 Cursor Multi-root，11 頁，PR 67。用四道閘門判斷哪些專案可以放在同一個工作區。IDE 3.29 有修正；Cloud Agent 的多倉庫是另一條路，不要混在一起。第三份是 Grok Bot 對上 Cursor Grok，會員，也是 PR 67。先問成果要落在信箱流程，還是落在 Git。這篇也補了長上下文計價。第四份是 VS Code 加上 Codex、Claude Code 的新手簡報，會員，12 頁，PR 63。原則是先調查再改檔。工具版本有更新，讀 AGENTS.md 的預設沒有變。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>3 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s4" data-title="新簡報：規劃與架構">
+<p class="eyebrow">新簡報｜規劃與架構</p><h2>閘門、OKR、技術架構圖、ERD</h2><p class="lead">SRS／Go-No-Go、OKR 到工作系統、技術架構圖（技術主管版）、ERD 到分析資料集。</p><div class="grid two"><article class="card"><div class="num">新刊</div><strong>SRS／Go-No-Go</strong><p>PR #64。先決定值不值得做。加權表不變，補了新內容。</p></article><article class="card"><div class="num">新刊</div><strong>OKR／KPI 到工作系統</strong><p>PR #64。OKR 不是考績。補了承諾型與企圖型的評分色帶。</p></article><article class="card"><div class="num">新刊</div><strong>技術架構圖（技術主管版）</strong><p>本週首次出現在 sitemap。</p></article><article class="card"><div class="num">新刊</div><strong>從 ERD 到分析資料集</strong><p>資料粒度與 JOIN。文章本身仍是草稿，只有簡報公開。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate" target="_blank" rel="noopener noreferrer">【更新】SRS、可行性評估到 Go／No-Go</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate-deck" target="_blank" rel="noopener noreferrer">【新刊】SRS／Go-No-Go 簡報</a><a href="https://aidc.work/blog/from-goal-management-to-work-system-design" target="_blank" rel="noopener noreferrer">【更新】目標管理到工作系統設計</a><a href="https://aidc.work/blog/from-goal-management-to-work-system-design-deck" target="_blank" rel="noopener noreferrer">【新刊】OKR／KPI 簡報</a><a href="https://aidc.work/blog/aidc-work-technical-architecture-deck" target="_blank" rel="noopener noreferrer">【新刊】技術架構圖簡報</a><a href="https://aidc.work/blog/erd-to-analytics-dataset-deck" target="_blank" rel="noopener noreferrer">【新刊】從 ERD 到分析資料集簡報</a></p>
+      <aside class="notes">規劃和架構也是四份新簡報，這四份大綱沒有標會員。SRS 到 Go、No-Go 是 PR 64，先決定這件事值不值得做。加權表沒有變，補的是新內容。OKR、KPI 那份也是 PR 64，從目標管理走到工作系統設計。請記得 OKR 不是考績，這週補了評分色帶，承諾型和企圖型不一樣。技術架構圖是技術主管版，這週第一次出現在 sitemap。ERD 到分析資料集，講的是資料粒度和 JOIN。文章本身還是草稿，現在只有簡報公開。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>4 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s5" data-title="Cursor 與 Grok 現況">
+<p class="eyebrow">Cursor 與 Grok 現況</p><h2>方案、加價，和人沒在場時的核准</h2><p class="lead">Plus 每月 8 美元，沒有 Cloud Agents、不能開 Fast。長上下文加價；GPT-5.6 Sol 促銷日已過。</p><div class="grid three"><article class="card"><div class="num">8 美元</div><strong>Plus 每月 8 美元</strong><p>沒有 Cloud Agents、不能開 Fast。方案改掛 X 訂閱。</p></article><article class="card"><div class="num">加價</div><strong>長上下文會加價</strong><p>Cursor 月費沒變。GPT-5.6 Sol 促銷日已過。</p></article><article class="card"><div class="num">30 分</div><strong>核准約 30 分鐘過期</strong><p>你不在場時開始的核准，約 30 分鐘過期。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship" target="_blank" rel="noopener noreferrer">【更新】Cursor + Grok 4.5 實戰</a><a href="https://aidc.work/blog/cursor-ai-system-development-guide" target="_blank" rel="noopener noreferrer">【更新・會員】Cursor 方案、模式、Auto 與 Token</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok" target="_blank" rel="noopener noreferrer">【更新・會員】Grok Bot vs. Cursor Grok</a></p>
+      <aside class="notes">Cursor 和 Grok 的現況，請記三句。第一，Plus 是每月 8 美元，方案改掛在 X 訂閱；Plus 沒有 Cloud Agents，也不能開 Fast。8 美元和沒有 Cloud Agents，寫在 Grok 4.5 實戰那篇。第二，長上下文會加價。Cursor 的月費沒有變，但是 GPT-5.6 Sol 的促銷日已經過了，這是 Cursor 方案那篇的更新，那篇是會員。第三，你不在場的時候開始的核准，大約 30 分鐘就過期。這是 Grok Bot 對 Cursor Grok 補上的，那篇也是會員，同時補了長上下文的計價。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>5 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s6" data-title="企業導入提醒">
+<p class="eyebrow">企業導入提醒</p><h2>先盤點，自己要接得了手，OKR 不是考績</h2><p class="lead">32% 對 6% 只適用最早期。Gartner：廠商做完、自己接不了手。承諾型 1.0，企圖型約 0.7。</p><div class="grid three"><article class="card"><div class="num">盤點</div><strong>先盤點流程，再買工具</strong><p>32% 對 6% 只適用最早期。本週補 11%「重新發明」。</p></article><article class="card"><div class="num">Gartner</div><strong>廠商做完、自己接不了手</strong><p>客服那篇補了 Gartner 70% 預測。要可追蹤、可治理，自己要接得了手。</p></article><article class="card"><div class="num">OKR</div><strong>OKR 不是考績</strong><p>承諾型要做到 1.0，企圖型約 0.7。評分色帶把承諾型和企圖型分開。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-adoption-start-with-process-inventory" target="_blank" rel="noopener noreferrer">【更新】企業導入 AI 第一步：盤點流程</a><a href="https://aidc.work/blog/ceo-ai-workshop-3-hour" target="_blank" rel="noopener noreferrer">【更新】CEO AI 工作坊 3 小時</a><a href="https://aidc.work/blog/customer-complaint-workflow-to-ai-agent" target="_blank" rel="noopener noreferrer">【更新・會員】客服申訴到 AI Agent</a><a href="https://aidc.work/blog/from-goal-management-to-work-system-design" target="_blank" rel="noopener noreferrer">【更新】目標管理到工作系統設計</a></p>
+      <aside class="notes">企業導入，三個提醒。第一，先盤點流程，再買工具。32% 對 6% 只適用最早期，這週在盤點那篇補了 11%「重新發明」。CEO 三小時工作坊的課前說明，也補了數字範圍和這份 11% 的調查。第二，客服申訴那篇是會員，補了 Gartner 的 70% 預測：廠商做完，自己接不了手。所以要可追蹤、可治理，而且自己要接得了手。第三，OKR 不是考績。承諾型要做到 1.0，企圖型大約 0.7。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>6 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s7" data-title="學習路徑總覽">
+<p class="eyebrow">學習路徑總覽</p><h2>入門概念 → 工具與工作流 → 實作案例 → 進階／系統化</h2><p class="lead">由淺到深、由概念到實作。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>分類 1｜入門概念</strong><p>共同語言、選工具、GitHub。本週：【更新】不會寫程式、專有名詞、VS Code 新手（新簡報）。</p></article><article class="card"><div class="num">02</div><strong>分類 2｜工具與工作流</strong><p>Cursor、Bot 團隊、規則檔。本週：【更新】Cursor 方案、Agents Window、Multi-root、Grok Bot vs Cursor Grok（三份新簡報）。</p></article><article class="card"><div class="num">03</div><strong>分類 3｜實作案例</strong><p>真實案例與驗收。本週：【更新】Grok 4.5 實戰、LINE 分身、客服 Agent、3 分鐘週報、週報 Skill。</p></article><article class="card"><div class="num">04</div><strong>分類 4｜進階／系統化</strong><p>盤點→規格→閘門→架構→管理。本週：【更新】盤點、SRS／Go-No-Go、OKR、架構、期末發表；【新刊】技術架構圖、ERD 簡報。</p></article></div><div class="callout"><strong>本週主線：</strong>先選對工具與工作區 → 分清 Bot 和編輯器 → 從流程盤點到 Go／No-Go → 用 OKR 與週報管節奏</div><p class="slide-links"><a href="https://aidc.work/blog/aidc-blog-reading-path" target="_blank" rel="noopener noreferrer">【更新・會員】Blog 分類與推薦閱讀順序</a><a href="https://aidc.work/blog/aidc-blog-reading-path-deck" target="_blank" rel="noopener noreferrer">閱讀順序簡報</a><a href="https://aidc.work/blog?type=presentation" target="_blank" rel="noopener noreferrer">所有簡報</a></p>
+      <aside class="notes">學習路徑由淺到深、由概念到實作，四個分類。分類一是入門概念，共同語言、選工具、GitHub。這週更新了不會寫程式、專有名詞，VS Code 新手還有新簡報。分類二是工具與工作流，Cursor、Bot 團隊、規則檔。這週更新了 Cursor 方案、Agents Window、Multi-root，還有 Grok Bot 對 Cursor Grok，其中三份是新簡報。分類三是實作案例，看真實案例和怎麼驗收。分類四是進階和系統化，從盤點走到規格、閘門、架構和管理。本週主線請沿著這句走：先選對工具與工作區，分清 Bot 和編輯器，從流程盤點到 Go、No-Go，再用 OKR 和週報管節奏。閱讀順序那篇是會員，簡報也一起更新了，這週已收錄上週新刊，包括模型怎麼選、派工不等於完成、Worktree，和校方測驗平台。所有簡報都在簡報清單那一頁。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>7 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s8" data-title="分類 1 入門概念">
+<p class="eyebrow">分類 1｜入門概念</p><h2>不會寫程式 → 專有名詞 → 主管五問 → 選工具</h2><p class="lead">目標：有共同語言；選對第一套工具；練好 GitHub 基本功。接著是 VS Code 新手 → 模型與 Token → PR／GitHub → gh 登入。</p><div class="grid two"><article class="card"><div class="num">更新</div><strong>【更新】不會寫程式也能做 AI 系統開發嗎？</strong><p>先破門檻，也看清安全風險。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】AI 系統開發中英專有名詞</strong><p>共同語言。</p></article><article class="card"><div class="num">03</div><strong>AI 時代主管五問</strong><p>主管的判斷框架。</p></article><article class="card"><div class="num">04</div><strong>選第一套工具</strong><p>第一天先開本機資料夾。再看 Cursor、Codex、Claude Code 怎麼選。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】VS Code + Codex／Claude Code 新手</strong><p>先調查再改檔。簡報是【新刊・會員】。</p></article><article class="card"><div class="num">會員</div><strong>Cursor 模型與 Token（會員）</strong><p>看懂用量從哪裡扣。</p></article><article class="card"><div class="num">07</div><strong>什麼是 PR → GitHub 教材</strong><p>版控一路練。</p></article><article class="card"><div class="num">08</div><strong>用 5W1H 搞懂 gh auth login</strong><p>讓專案連上 GitHub。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/non-programmer-ai-system-development" target="_blank" rel="noopener noreferrer">【更新】不會寫程式也能做 AI 系統開發嗎？</a><a href="https://aidc.work/blog/new-member-article" target="_blank" rel="noopener noreferrer">【更新・會員】AI 系統開發中英專有名詞</a><a href="https://aidc.work/blog/five-questions-managers-must-ask-in-ai-era" target="_blank" rel="noopener noreferrer">AI 時代主管五問</a><a href="https://aidc.work/blog/cursor-beginner-no-github-required" target="_blank" rel="noopener noreferrer">初學 Cursor 要先裝 GitHub 嗎？</a><a href="https://aidc.work/blog/cursor-codex-claude-beginner-choice" target="_blank" rel="noopener noreferrer">Cursor、Codex、Claude Code 怎麼選？</a><a href="https://aidc.work/blog/vscode-codex-claude-ai-builder-starter-guide" target="_blank" rel="noopener noreferrer">【更新・會員】VS Code 新手入門</a><a href="https://aidc.work/blog/vscode-codex-claude-ai-builder-starter-guide-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】VS Code 新手簡報</a><a href="https://aidc.work/blog/cursor-models-token-beginner-guide" target="_blank" rel="noopener noreferrer">Cursor 模型與 Token（會員）</a><a href="https://aidc.work/blog/what-is-a-pull-request" target="_blank" rel="noopener noreferrer">什麼是 PR</a><a href="https://aidc.work/blog/github-ai-builder-01-repo-version-control" target="_blank" rel="noopener noreferrer">GitHub 教材 1</a><a href="https://aidc.work/blog/ai-project-github-gh-auth-login-5w1h" target="_blank" rel="noopener noreferrer">用 5W1H 搞懂 gh auth login</a></p>
+      <aside class="notes">分類一的目標：先有共同語言，選對第一套工具，練好 GitHub 的基本功。不會寫程式那篇先破門檻，也把安全風險講清楚。AI 程式碼的安全通過率仍大約 56%，這篇還改掉了 404 連結。專有名詞是會員，拿來當共同語言。MCP 下一版對準 2027 年 3 月，AAIF 已經到 10 個專案。主管五問，是主管的判斷框架。選工具有兩篇：初學那天先開本機資料夾；另一篇是 Cursor、Codex、Claude Code 怎麼選。VS Code 新手是會員，簡報這週新刊，原則是先調查再改檔。模型與 Token 也是會員，先看懂用量從哪裡扣。版控從什麼是 PR 開始，接到 GitHub 教材。大綱寫的是教材 1 到 4，這一頁放的是大綱給出的兩個網址：什麼是 PR，和教材 1。最後用 5W1H 搞懂 gh auth login，讓專案連上 GitHub。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>8 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s9" data-title="分類 2 工具與工作流">
+<p class="eyebrow">分類 2｜工具與工作流</p><h2>Cursor 方案 → Agents Window → Multi-root → AGENTS.md</h2><p class="lead">目標：用對 Cursor 方案與工作區；分清 Bot 和編輯器；派工後一定驗收。後面接到 Grok Bot、Bot 團隊與驗收。</p><div class="grid two"><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】Cursor 方案、模式、Auto 與 Token</strong><p>規則要寫進 repo。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】Agents Window／IDE／Cloud Agent 切換</strong><p>多專案不亂。簡報是【新刊・會員】。</p></article><article class="card"><div class="num">更新</div><strong>【更新】Cursor Multi-root 工作區</strong><p>四道閘門判斷哪些專案放同一區。簡報是【新刊】。</p></article><article class="card"><div class="num">04</div><strong>AGENTS.md 是什麼？</strong><p>規則檔什麼時候會被讀。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】Grok Bot vs. Cursor Grok</strong><p>成果落在信箱流程，還是落在 Git。簡報是【新刊・會員】。</p></article><article class="card"><div class="num">會員</div><strong>Grok Bots 小公司 AI 團隊（會員）</strong><p>接到已派工≠已完成。組隊、派工、驗收。</p></article><article class="card"><div class="num">07</div><strong>個人化 Blog AI Agents</strong><p>生成、上稿、部署分開。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/cursor-ai-system-development-guide" target="_blank" rel="noopener noreferrer">【更新・會員】Cursor 方案、模式、Auto 與 Token</a><a href="https://aidc.work/blog/cursor-agents-window-ide-project-switching-guide" target="_blank" rel="noopener noreferrer">【更新・會員】Agents Window</a><a href="https://aidc.work/blog/cursor-agents-window-ide-project-switching-guide-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】Agents Window 簡報</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit" target="_blank" rel="noopener noreferrer">【更新】Cursor Multi-root</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit-deck" target="_blank" rel="noopener noreferrer">【新刊】Multi-root 簡報</a><a href="https://aidc.work/blog/agents-md-codex-claude-cursor-guide" target="_blank" rel="noopener noreferrer">AGENTS.md 是什麼？</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok" target="_blank" rel="noopener noreferrer">【更新・會員】Grok Bot vs. Cursor Grok</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】Grok Bot 簡報</a><a href="https://aidc.work/blog/grok-bots-small-company-ai-team" target="_blank" rel="noopener noreferrer">Grok Bots 小公司 AI 團隊（會員）</a><a href="https://aidc.work/blog/grok-bot-team-dispatch-not-done" target="_blank" rel="noopener noreferrer">已派工≠已完成</a><a href="https://aidc.work/blog/personalized-blog-ai-agents-workflow" target="_blank" rel="noopener noreferrer">個人化 Blog AI Agents</a></p>
+      <aside class="notes">分類二的目標：用對 Cursor 的方案和工作區，分清 Bot 和編輯器，派工之後一定要驗收。Cursor 方案、模式、Auto 和 Token 是會員，規則要寫進 repo。Agents Window 切換也是會員，簡報是新刊，多專案才不會亂。Multi-root 這篇是公開更新，簡報新刊，用四道閘門看哪些專案放同一區。AGENTS.md 講規則檔什麼時候會被讀。Grok Bot 對 Cursor Grok 是會員，簡報新刊，先看成果落在信箱流程還是落在 Git。接著是 Grok Bots 小公司 AI 團隊，這篇標了會員，再接到已派工不等於已完成。組隊、派工、驗收要分開。最後，個人化 Blog 的 AI Agents，生成、上稿、部署要分開做。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>9 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s10" data-title="分類 3 實作案例">
+<p class="eyebrow">分類 3｜實作案例</p><h2>Grok 4.5 → LINE 分身 → 客服 Agent → 週報</h2><p class="lead">目標：從真實案例學「AI 用在哪一段」與怎麼驗收。週報 Skill → 3 分鐘週報 → 育達平台。Prompt 定規格、Skill 蒐證、RAG 燈號。</p><div class="grid two"><article class="card"><div class="num">更新</div><strong>【更新】Cursor + Grok 4.5 實戰</strong><p>一句模糊需求做到可發布。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】企業 LINE 群分身助理</strong><p>少回覆、多存檔、人核准。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】客服申訴到 AI Agent</strong><p>可追蹤、可治理，自己要接得了手。</p></article><article class="card"><div class="num">更新</div><strong>【更新】週報 Prompt 到 Skill</strong><p>Prompt 定規格、Skill 蒐證。更正「三家都讀 .agents/skills/」。</p></article><article class="card"><div class="num">更新</div><strong>【更新】3 分鐘決策週報</strong><p>修正交叉參考，補 5 分鐘練習。</p></article><article class="card"><div class="num">會員</div><strong>育達公約測驗平台（會員）</strong><p>AI 只用在開發期。</p></article><article class="card"><div class="num">07</div><strong>手機建站 mybike</strong><p>手機也能派工。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/cursor-grok-45-prompt-to-ship" target="_blank" rel="noopener noreferrer">【更新】Cursor + Grok 4.5 實戰</a><a href="https://aidc.work/blog/enterprise-line-group-clone-assistant" target="_blank" rel="noopener noreferrer">【更新・會員】企業 LINE 群分身助理</a><a href="https://aidc.work/blog/customer-complaint-workflow-to-ai-agent" target="_blank" rel="noopener noreferrer">【更新・會員】客服申訴到 AI Agent</a><a href="https://aidc.work/blog/weekly-report-prompt-vs-skill" target="_blank" rel="noopener noreferrer">【更新】週報 Prompt 到 Skill</a><a href="https://aidc.work/blog/weekly-project-status-report-3-minute-decision" target="_blank" rel="noopener noreferrer">【更新】3 分鐘決策週報</a><a href="https://aidc.work/blog/ydu-covenant-quiz-ai-dev-no-runtime-ai" target="_blank" rel="noopener noreferrer">育達公約測驗平台（會員）</a><a href="https://aidc.work/blog/cursor-agent-mobile-mybike-github-cloudflare" target="_blank" rel="noopener noreferrer">手機建站 mybike</a></p>
+      <aside class="notes">分類三的目標：從真實案例學，AI 用在哪一段，以及怎麼驗收。Grok 4.5 實戰，是把一句模糊需求做到可發布。LINE 群分身是會員。少回覆、多存檔、人核准，這條沒有變，這週補了新內容。客服申訴到 AI Agent 也是會員，要可追蹤、可治理，自己要接得了手。週報這邊兩篇都有更新。Prompt 到 Skill，更正了「三家都讀 .agents/skills/」。3 分鐘決策週報，修正了交叉參考，補了 5 分鐘練習。大綱把這兩篇放在一起：Prompt 定規格、Skill 蒐證、RAG 燈號。育達公約測驗平台是會員，AI 只用在開發期。手機建站 mybike，手機也能派工。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>10 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s11" data-title="分類 4 進階／系統化">
+<p class="eyebrow">分類 4｜進階／系統化</p><h2>盤點 → CEO 工作坊 → SRS／Go-No-Go → AISDLC</h2><p class="lead">目標：盤點 → 規格 → 閘門 → 架構 → 管理節奏。後面是架構 → OKR → 期末發表 → ERD。</p><div class="grid two"><article class="card"><div class="num">更新</div><strong>【更新】企業導入 AI 第一步：盤點流程</strong><p>先盤點再買工具。</p></article><article class="card"><div class="num">更新</div><strong>【更新】CEO AI 工作坊</strong><p>主管 30 天行動計畫。</p></article><article class="card"><div class="num">更新</div><strong>【更新】SRS、可行性評估到 Go／No-Go</strong><p>先決定值不值得做。簡報是【新刊】。</p></article><article class="card"><div class="num">04</div><strong>AI SDLC 九階段</strong><p>每關都有閘門。</p></article><article class="card"><div class="num">更新・會員</div><strong>【更新・會員】Next.js 模組化單體架構</strong><p>另有【新刊】技術架構圖簡報，技術主管版。</p></article><article class="card"><div class="num">更新</div><strong>【更新】目標管理到工作系統設計</strong><p>OKR 不是考績。簡報是【新刊】。</p></article><article class="card"><div class="num">更新</div><strong>【更新】期末專題發表</strong><p>15 分鐘格式與評分規準。</p></article><article class="card"><div class="num">新刊</div><strong>【新刊】從 ERD 到分析資料集</strong><p>資料粒度與 JOIN。文章仍是草稿，只有簡報公開。</p></article></div><p class="slide-links"><a href="https://aidc.work/blog/ai-adoption-start-with-process-inventory" target="_blank" rel="noopener noreferrer">【更新】盤點流程</a><a href="https://aidc.work/blog/ceo-ai-workshop-3-hour" target="_blank" rel="noopener noreferrer">【更新】CEO AI 工作坊</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate" target="_blank" rel="noopener noreferrer">【更新】SRS 到 Go／No-Go</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate-deck" target="_blank" rel="noopener noreferrer">【新刊】SRS／Go-No-Go 簡報</a><a href="https://aidc.work/blog/ai-system-development-lifecycle-aisdlc" target="_blank" rel="noopener noreferrer">AI SDLC 九階段</a><a href="https://aidc.work/blog/aidc-work-nextjs-modular-monolith-architecture" target="_blank" rel="noopener noreferrer">【更新・會員】Next.js 模組化單體架構</a><a href="https://aidc.work/blog/aidc-work-technical-architecture-deck" target="_blank" rel="noopener noreferrer">【新刊】技術架構圖簡報</a><a href="https://aidc.work/blog/from-goal-management-to-work-system-design" target="_blank" rel="noopener noreferrer">【更新】目標管理到工作系統設計</a><a href="https://aidc.work/blog/from-goal-management-to-work-system-design-deck" target="_blank" rel="noopener noreferrer">【新刊】OKR／KPI 簡報</a><a href="https://aidc.work/blog/ai-system-development-final-presentation" target="_blank" rel="noopener noreferrer">【更新】期末專題發表</a><a href="https://aidc.work/blog/erd-to-analytics-dataset-deck" target="_blank" rel="noopener noreferrer">【新刊】從 ERD 到分析資料集簡報</a></p>
+      <aside class="notes">分類四的目標：盤點，到規格，到閘門，到架構，再到管理節奏。盤點流程那篇，先盤點再買工具。CEO 工作坊，是主管 30 天的行動計畫。SRS 到 Go、No-Go，先決定值不值得做，簡報是新刊。AI SDLC 九階段，每一關都有閘門。Next.js 模組化單體架構是會員，這週補了 11 月 3 日的安全更新，版本是 15.5.29 和 16.4.5。技術架構圖簡報是新刊，給技術主管看。目標管理到工作系統，OKR 不是考績，簡報也是新刊。期末發表是 15 分鐘的格式和評分規準，這週補了一點：只 demo 成功路徑，也適用 Agent。最後，ERD 到分析資料集的簡報是新刊，講資料粒度和 JOIN。文章仍是草稿。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>11 / 12</span></div>
+    </section>
+
+    <section class="slide" id="s12" data-title="下週重點">
+<p class="eyebrow">下週重點</p><h2>精讀三篇，兩件待決定</h2><p class="lead">精讀：Grok Bot vs. Cursor Grok、Multi-root、SRS 到 Go／No-Go。</p><div class="grid two"><article class="card"><div class="num">01</div><strong>精讀｜Grok Bot vs. Cursor Grok</strong><p>【更新・會員】文章，加上【新刊・會員】簡報。補了長上下文計價。</p></article><article class="card"><div class="num">02</div><strong>精讀｜Cursor Multi-root</strong><p>【更新】文章，加上【新刊】簡報。IDE 3.29 修正；Cloud Agent 多倉庫是另一條路。</p></article><article class="card"><div class="num">03</div><strong>精讀｜SRS 到 Go／No-Go</strong><p>【更新】文章，加上【新刊】簡報。先決定值不值得做。</p></article><article class="card"><div class="num">待決定</div><strong>Draft PR #66，ERD 文章仍是草稿</strong><p>PR #66 是 11-25 時效核對，還沒合併。ERD 簡報已公開，文章仍是草稿。</p></article></div><div class="callout"><strong>開講主線：</strong>選對方案與工作區 → Bot 和編輯器分工 → 先盤點、再過 Go／No-Go → 用 OKR 和 3 分鐘週報管節奏</div><p class="slide-links"><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok" target="_blank" rel="noopener noreferrer">【更新・會員】Grok Bot vs. Cursor Grok</a><a href="https://aidc.work/blog/grok-bot-vs-cursor-grok-deck" target="_blank" rel="noopener noreferrer">【新刊・會員】Grok Bot 簡報</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit" target="_blank" rel="noopener noreferrer">【更新】Cursor Multi-root</a><a href="https://aidc.work/blog/cursor-multi-root-workspace-fit-deck" target="_blank" rel="noopener noreferrer">【新刊】Multi-root 簡報</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate" target="_blank" rel="noopener noreferrer">【更新】SRS 到 Go／No-Go</a><a href="https://aidc.work/blog/ai-feasibility-srs-mvp-stage-gate-deck" target="_blank" rel="noopener noreferrer">【新刊】SRS／Go-No-Go 簡報</a></p>
+      <aside class="notes">下週建議精讀三篇。第一，Grok Bot 對 Cursor Grok，有新簡報，也補了計價，這篇是會員。第二，Cursor Multi-root 工作區，有新簡報。第三，SRS 到 Go、No-Go，有新簡報。開講可以沿著這條主線：選對方案與工作區，Bot 和編輯器分工，先盤點、再過 Go、No-Go，再用 OKR 和 3 分鐘週報管節奏。請再提醒一次：Cursor Plus 沒有 Cloud Agents、不能開 Fast；長上下文會加價；你不在場時開始的核准，大約 30 分鐘過期。待你決定的有兩件。Draft PR 66 是 11 月 25 日的時效核對，還沒合併。ERD 文章仍是草稿，但簡報已經公開。快照放在 /workspace/aidc-blog-weekly-2026-11-27/aidc-blog-snapshot-2026-11-27.json，下週五拿來比對。總覽裡也寫了 PR 56 還沒合併，和 66 一樣先不計入。</aside>
+      <div class="footer"><span>黃燕忠｜AI發展顧問</span><span>12 / 12</span></div>
+    </section>
+  </main>
+
+
+  <aside id="narration-panel" aria-hidden="true" aria-label="講者模式" data-deck-id="aidc-blog-learning-brief-2026-11-27">
+    <header>
+      <div class="header-left">
+        <strong>講者模式</strong>
+        <span id="narration-status">載入中…</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="narration-minimize" title="最小化" aria-label="最小化">－</button>
+        <button type="button" class="icon-btn" id="narration-close" title="關閉講者模式 (N)" aria-label="關閉">×</button>
+      </div>
+    </header>
+    <div id="narration-avatar" aria-hidden="true"></div>
+    <p id="narration-script">載入講稿…</p>
+    <div id="narration-progress" aria-hidden="true"><i id="narration-progress-bar"></i></div>
+    <div class="narration-controls">
+      <button type="button" id="narration-prev-seg" title="上一頁">⏮</button>
+      <button type="button" id="narration-play" title="播放 / 暫停 (R)">▶</button>
+      <button type="button" id="narration-stop" title="停止">⏹</button>
+      <button type="button" id="narration-next-seg" title="下一頁">⏭</button>
+    </div>
+    <div class="narration-settings">
+      <label><input type="checkbox" id="narration-auto-advance" checked>播完自動翻頁</label>
+      <label><input type="checkbox" id="narration-auto-play-next" checked>翻頁後自動播放</label>
+      <label>音量<input type="range" id="narration-volume" min="0" max="1" step="0.05" value="1"></label>
+      <label>語速<input type="range" id="narration-rate" min="0.75" max="1.5" step="0.05" value="1"><span id="narration-rate-value">1.0×</span></label>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const counter = document.getElementById("slide-counter");
+      const bar = document.getElementById("progress-bar");
+      const scaleLabel = document.getElementById("type-scale-label");
+      const brand = "AIDC Blog 學習簡報：我和 AI 協作";
+      const LS_KEY = "ai-ppt-aidc-blog-learning-brief-2026-11-27-font-scale";
+      let index = Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      if (index < 0) index = 0;
+      let fontScale = 1.15;
+      try {
+        const saved = parseFloat(localStorage.getItem(LS_KEY) || "");
+        if (!Number.isNaN(saved) && saved >= 0.8 && saved <= 1.8) fontScale = saved;
+      } catch (_) {}
+
+      document.getElementById("btn-theme").addEventListener("click", () => {
+        const root = document.documentElement;
+        root.setAttribute("data-theme", root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      });
+
+      function applyFontScale() {
+        document.documentElement.style.setProperty("--font-scale", fontScale.toFixed(2));
+        scaleLabel.textContent = Math.round(fontScale * 100) + "%";
+        try { localStorage.setItem(LS_KEY, fontScale.toFixed(2)); } catch (_) {}
+      }
+      function updateFontScale(delta) {
+        fontScale = Math.max(0.8, Math.min(1.8, +(fontScale + delta).toFixed(2)));
+        applyFontScale();
+      }
+      document.getElementById("btn-aminus").addEventListener("click", () => updateFontScale(-0.1));
+      document.getElementById("btn-aplus").addEventListener("click", () => updateFontScale(0.1));
+      applyFontScale();
+
+      function updateDeckScale() {
+        if (document.fullscreenElement) {
+          const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+          document.documentElement.style.setProperty("--deck-scale", scale.toFixed(4));
+        } else {
+          document.documentElement.style.setProperty("--deck-scale", "1");
+        }
+      }
+      window.addEventListener("resize", updateDeckScale);
+
+      function show(i, options = {}) {
+        index = (i + total) % total;
+        slides.forEach((s, n) => s.classList.toggle("active", n === index));
+        counter.textContent = (index + 1) + " / " + total;
+        bar.style.width = (((index + 1) / total) * 100).toFixed(2) + "%";
+        document.title = (slides[index].dataset.title ? slides[index].dataset.title + " · " : "") + brand;
+        if (!options.skipHash && slides[index].id) {
+          history.replaceState(null, "", "#" + slides[index].id);
+        }
+        document.dispatchEvent(new CustomEvent("deck:slidechange", {
+          detail: {
+            index,
+            slideId: slides[index].id,
+            title: slides[index].dataset.title || "",
+          },
+        }));
+      }
+
+      function showBySlideId(slideId) {
+        const idx = slides.findIndex((s) => s.id === slideId);
+        if (idx >= 0) show(idx);
+      }
+
+      function parseInitialSlide() {
+        const hash = (location.hash || "").replace(/^#/, "");
+        const slideParam = new URLSearchParams(location.search).get("slide");
+        if (hash && slides.some((s) => s.id === hash)) {
+          return slides.findIndex((s) => s.id === hash);
+        }
+        if (slideParam) {
+          const id = slideParam.startsWith("s") ? slideParam : "s" + slideParam;
+          const idx = slides.findIndex((s) => s.id === id);
+          if (idx >= 0) return idx;
+        }
+        return Math.max(0, slides.findIndex((s) => s.classList.contains("active")));
+      }
+
+      window.addEventListener("hashchange", () => {
+        const hash = (location.hash || "").replace(/^#/, "");
+        if (hash) showBySlideId(hash);
+      });
+
+      function next() { show(index + 1); }
+      function prev() { show(index - 1); }
+
+      document.addEventListener("deck:request-next", () => next());
+      document.addEventListener("deck:request-prev", () => prev());
+      window.deckController = { show, next, prev, getIndex: () => index };
+
+      document.getElementById("btn-prev").addEventListener("click", prev);
+      document.getElementById("btn-next").addEventListener("click", next);
+      document.getElementById("btn-print").addEventListener("click", () => window.print());
+      const btnPresent = document.getElementById("btn-present");
+      btnPresent.addEventListener("click", () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+        else document.exitFullscreen?.();
+      });
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        updateDeckScale();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        const tag = (e.target && e.target.tagName) || "";
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+        else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+        else if (e.key === "Home") { e.preventDefault(); show(0); }
+        else if (e.key === "End") { e.preventDefault(); show(total - 1); }
+        else if (e.key === "f" || e.key === "F") { e.preventDefault(); btnPresent.click(); }
+        else if (e.key === "t" || e.key === "T") { e.preventDefault(); document.getElementById("btn-theme").click(); }
+        else if ((e.key === "p" || e.key === "P") && !e.ctrlKey && !e.metaKey) { e.preventDefault(); window.print(); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "-" || e.key === "_")) { e.preventDefault(); updateFontScale(-0.1); }
+        else if ((e.ctrlKey || e.metaKey) && (e.key === "=" || e.key === "+")) { e.preventDefault(); updateFontScale(0.1); }
+        else if ((e.ctrlKey || e.metaKey) && e.key === "0") { e.preventDefault(); fontScale = 1.15; applyFontScale(); }
+      });
+
+      show(parseInitialSlide());
+    })();
+
+    document.querySelectorAll(".slide-prompt").forEach(function (fig) {
+      var pre = fig.querySelector("pre"); if (!pre) return;
+      var b = document.createElement("button"); b.type = "button"; b.className = "prompt-copy"; b.textContent = "複製";
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var t = pre.textContent, ok = function () { b.textContent = "已複製"; setTimeout(function () { b.textContent = "複製"; }, 1500); };
+        var fb = function () { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (err) { b.textContent = "請手動選取"; } document.body.removeChild(ta); };
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+      });
+      fig.appendChild(b);
+    });
+  </script>
+  <script src="narration/deck-narration-player.js"></script>
+</body>
+</html>

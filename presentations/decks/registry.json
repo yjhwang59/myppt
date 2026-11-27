@@ -340,6 +340,21 @@
       "listed": true,
       "sortOrder": 0,
       "summary": "KDS 與福成營運通本週進度、Cargill 牛肉加工 AI 新知，以及門市 KDS 日報內訓建議。2026/11/23 主管會議。"
+    },
+    {
+      "deckId": "aidc-blog-learning-brief-2026-11-27",
+      "title": "AIDC Blog 學習簡報：我和 AI 協作｜2026-11-27",
+      "sourceType": "html",
+      "format": "slides-json",
+      "pipeline": "native",
+      "htmlRebuild": "safe",
+      "note": "2026-11-27 週五 Blog 學習簡報。slides.json 為 SSOT，講稿在 notes 與 narration manifest。改內容請改 JSON 再 build:deck。",
+      "createdAt": "2026-11-27T03:20:00.000Z",
+      "updatedAt": "2026-11-27T03:20:00.000Z",
+      "categoryId": "strategy",
+      "listed": true,
+      "sortOrder": 0,
+      "summary": "公開 100 個網址（+8）。新刊 8 份簡報，實質更新 19 篇文章與 12 份既有簡報。"
     }
   ],
   "categories": [
